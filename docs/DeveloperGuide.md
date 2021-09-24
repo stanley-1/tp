@@ -4,30 +4,48 @@ title: Developer Guide
 ---
 * Table of Contents
 {:toc}
+1. [Acknowledgements](#acknowledgements)
+2. [Setting up, getting started](#setting-up-getting-started)
+3. [Design](#design)
+    1. [Architecture](#architecture)
+    2. [UI Component](#ui)
+    3. [Logic Component](#logic)
+    4. [Model Component](#model)
+    5. [Storage Component](#storage)
+    6. [Common Classes](#common)
+4. [Implementation](#implementation)
+5. [Documentation](#docs)
+6. [Appendix: Requirements](#requirements)
+    1. [Product Scope](#scope)
+    2. [User Stories](#user-stories)
+    3. [Use Cases](#use-cases)
+    4. [Non-Functional Requirements](#nfr)
+    5. [Glossary](#glossary)
+    
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Acknowledgements**
+## **Acknowledgements** <a name="acknowledgements"></a>
 
 * {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
 * Adapted from [_SE-Education_](https://se-education.org/addressbook-level3/DeveloperGuide.html) 's original *AddressBook*
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Setting up, getting started**
+## **Setting up, getting started** <a name="setting-up-getting-started"></a>
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Design**
+## **Design** <a name="design"></a>
 
 <div markdown="span" class="alert alert-primary">
 
 :bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
 </div>
 
-### Architecture
+### Architecture <a name="architecture"></a>
 
 <img src="images/ArchitectureDiagram.png" width="280" />
 
@@ -68,7 +86,7 @@ For example, the `Logic` component defines its API in the `Logic.java` interface
 
 The sections below give more details of each component.
 
-### UI component
+### UI component <a name="ui"></a>
 
 The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
 
@@ -85,7 +103,7 @@ The `UI` component,
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
 * depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
 
-### Logic component
+### Logic component <a name="logic"></a>
 
 **API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
 
@@ -114,7 +132,7 @@ How the parsing works:
 * When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
-### Model component
+### Model component <a name="model"></a>
 **API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
 
 <img src="images/ModelClassDiagram.png" width="450" />
@@ -134,7 +152,7 @@ The `Model` component,
 </div>
 
 
-### Storage component
+### Storage component <a name="storage"></a>
 
 **API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
 
@@ -145,13 +163,13 @@ The `Storage` component,
 * inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
-### Common classes
+### Common classes <a name="common"></a>
 
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Implementation**
+## **Implementation** <a name="implementation"></a>
 
 This section describes some noteworthy details on how certain features are implemented.
 
@@ -242,7 +260,7 @@ _{Explain here how the data archiving feature will be implemented}_
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Documentation, logging, testing, configuration, dev-ops**
+## **Documentation, logging, testing, configuration, dev-ops** <a name="docs"></a>
 
 * [Documentation guide](Documentation.md)
 * [Testing guide](Testing.md)
@@ -252,9 +270,9 @@ _{Explain here how the data archiving feature will be implemented}_
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Requirements**
+## **Appendix: Requirements** <a name="requirements"></a>
 
-### Product scope
+### Product scope <a name="scope"></a>
 
 **Target user profile**:
 
@@ -269,7 +287,7 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Our product serves as an integrated dashboard for a user to retrieve the social media activities and account information of his / her contacts. This makes it seamless for the user to interact with his / her contacts instead of having to access each social media account that the contact owns.
 
-### User stories
+### User stories <a name="user-stories"></a>
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
@@ -306,7 +324,7 @@ Categories: CF - Core Functionalities, G - Guide, OOC - Organization of Contacts
 
 
 
-### Use Cases
+### Use Cases <a name="use-cases"></a>
 
 (For all use cases below, the **System** is `SociaLite` and the **Actor** is the `user`, unless specified otherwise)
 
@@ -610,7 +628,7 @@ Categories: CF - Core Functionalities, G - Guide, OOC - Organization of Contacts
 
 
 
-### Non-Functional Requirements
+### Non-Functional Requirements <a name="nfr"></a>
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
@@ -618,7 +636,7 @@ Categories: CF - Core Functionalities, G - Guide, OOC - Organization of Contacts
 
 *{More to be added}*
 
-### Glossary
+### Glossary <a name="glossary"></a>
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
