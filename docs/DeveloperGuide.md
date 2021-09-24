@@ -327,8 +327,8 @@ Categories: CF - Core Functionalities, G - Guide, OOC - Organization of Contacts
     * 1a1. SociaLite shows an error message.
         
         Use case resumes at step 1.
-    
-    
+
+<br/>
     
 **Use Case 02: List entries in SociaLite**
 
@@ -345,7 +345,7 @@ Categories: CF - Core Functionalities, G - Guide, OOC - Organization of Contacts
 
   Use case ends.
 
-
+<br/>
 
 **Use Case 03: Edit entries in SociaLite**
 
@@ -376,6 +376,7 @@ Categories: CF - Core Functionalities, G - Guide, OOC - Organization of Contacts
 
       Use case resumes at step 2.
 
+<br/>
 
 **Use Case 04: Find a contact**
 
@@ -392,6 +393,7 @@ Categories: CF - Core Functionalities, G - Guide, OOC - Organization of Contacts
 
   Use case ends.
 
+<br/>
 
 **Use Case 05: Delete a person**
 
@@ -417,6 +419,8 @@ Categories: CF - Core Functionalities, G - Guide, OOC - Organization of Contacts
       Use case resumes at step 2.
 
 
+<br/>
+
 ***Organisation of Contacts***
 
 **Use Case 06: Create new category**
@@ -438,8 +442,7 @@ Categories: CF - Core Functionalities, G - Guide, OOC - Organization of Contacts
 
       Use case ends.
 
-
-
+<br/>
 
 **Use Case 07: Query categories**
 
@@ -458,6 +461,7 @@ Categories: CF - Core Functionalities, G - Guide, OOC - Organization of Contacts
 
       Use case ends.
 
+<br/>
 
 **Use Case 08: Edit categories**
 
@@ -468,6 +472,7 @@ Categories: CF - Core Functionalities, G - Guide, OOC - Organization of Contacts
 
     Use case ends.
 
+<br/>
 
 **Use Case 09: Delete categories**
 
@@ -498,6 +503,7 @@ Categories: CF - Core Functionalities, G - Guide, OOC - Organization of Contacts
 
       Use case resumes at step 2.
 
+<br/>
 
 **Use Case 10: Retrieve last queried contact**
 
@@ -508,6 +514,8 @@ Categories: CF - Core Functionalities, G - Guide, OOC - Organization of Contacts
 
     Use case ends.
 
+
+<br/>
 
 ***Customization Tools***
 
@@ -534,6 +542,7 @@ Categories: CF - Core Functionalities, G - Guide, OOC - Organization of Contacts
 
       Use case resumes at step 2.
 
+<br/>
 
 **Use Case 12: View contact card**
 
@@ -558,6 +567,8 @@ Categories: CF - Core Functionalities, G - Guide, OOC - Organization of Contacts
 
       Use case resumes at step 2.
 
+<br/>
+
 ***Help Guide & Exiting***
 
 **Use Case 13: View User Guide**
@@ -569,6 +580,7 @@ Categories: CF - Core Functionalities, G - Guide, OOC - Organization of Contacts
 
     Use case ends.
 
+<br/>
 
 **Use Case 14: Purge contacts stored in SociaLite**
 
@@ -579,7 +591,7 @@ Categories: CF - Core Functionalities, G - Guide, OOC - Organization of Contacts
     
     Use case ends.
 
-
+<br/>
 
 **Use Case 15: Exit application**
 
@@ -594,7 +606,7 @@ Categories: CF - Core Functionalities, G - Guide, OOC - Organization of Contacts
 
 *{More to be added}*
 
-
+<br/>
 
 
 
