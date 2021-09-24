@@ -5,7 +5,7 @@ title: About Us
 
 ## Meet our team!
 
-**SociaLite** is a project is built for CS2103T Software Engineering.
+**SociaLite** is a project built for CS2103T Software Engineering.
 
 We are a team based in the School of Computing, National University of Singapore.
 
