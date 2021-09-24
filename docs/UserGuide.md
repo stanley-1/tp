@@ -369,7 +369,7 @@ Action | Format, Examples
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Create Categories** | `tag INDEX [t/TAG]`
-**Edit Categories** | `tag -u INDEX [t/TAG] [t/NEWTAG`
+**Edit Categories** | `tag -u INDEX [t/TAG] [t/NEWTAG]`
 **Query Category** | `tag [t/TAG]`
 **Delete Category** | `tag -d INDEX [t/TAG]`
 **Filter based on platform** | `[PLATFORM]`
