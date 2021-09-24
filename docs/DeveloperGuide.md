@@ -10,6 +10,7 @@ title: Developer Guide
 ## **Acknowledgements**
 
 * {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+* Adapted from [_SE-Education_](https://se-education.org/addressbook-level3/DeveloperGuide.html) 's original *AddressBook*
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -257,46 +258,107 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
-* can type fast
+* avid social media user
+* prefers desktop apps over other types
 * prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+* needs to manage a significant number of contacts
+* wants to catch up with their contacts’ activities quickly 
+* wants to connect with their followers/friends on various social media platforms through an all-in-one dashboard
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: 
 
+Our product serves as an integrated dashboard for a user to retrieve the social media activities and account information of his / her contacts. This makes it seamless for the user to interact with his / her contacts instead of having to access each social media account that the contact owns.
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+Categories: CF - Core Functionalities, G - Guide, OOC - Organization of Contacts, EOA - Ease of Accessibility, COC - Customization of Contacts
 
-*{More to be added}*
+|Priority| Category | As a / an …​                              | I want to …​                                                                    | So that I can…​                                                                                      |
+|--------| -------- | -------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+|`* * *` | CF       | beginner user                                | add contacts                                                                       | access my contacts' details                                                                             |
+|`* * *` | CF       | beginner user                                | delete contacts                                                                    | remove irrelevant entries                                                                               |
+|`* * *` | CF       | beginner user                                | access the social media handles of my contacts                                     | have quicker access to my contacts' social media pages                                                  |
+|`* * *` | CF       | forgetful user                               | save my contacts' social media handles                                             | easily access my contact's social media account without having to recall the exact handle               |
+|`* *`   | CF       | user                                         | browse a list of all my contacts                                                   | view all my contacts at a glance                                                                        |
+|`* *`   | G        | new user                                     | view a help message                                                                | learn how to use SociaLite                                                                              |
+|`* *`   | G        | new user                                     | view sample contacts when I initialise the app                                     | try out the features without having to add actual data                                                  |
+|`* *`   | G        | new user adopting the app for my own use     | purge all data                                                                     | delete sample contacts and add real data                                                                |
+|`* *`   | OOC      | organized user                               | create categories to group my contacts                                             | organize my list of contacts                                                                            |
+|`* *`   | OOC      | organized user                               | edit categories as and when required                                               | repurpose such pre-existing categories                                                                  |
+|`* *`   | OOC      | organized user                               | query a group of contacts                                                          | have greater ease of access to my frequent contacts and efficiently contact people for similar purposes |
+|`* *`   | EOA      | avid social media user with many connections | be redirected to my chosen contact's social media platform                         | avoid initialising every social media platform and search for his/her account manually                  |
+|`*`     | CF       | beginner user                                | update contacts                                                                    | modify existing social media handles and add new ones when they are created                             |
+|`*`     | CF       | beginner user                                | view the recent feed of my contacts                                                | have more meaningful and frequent interactions with my contacts on multiple platforms                   |
+|`*`     | OOC      | organised user                               | delete categories associated with contacts                                         | declutter my address book when the category is no longer relevant                                       |
+|`*`     | OOC      | intermediate user                            | filter contacts based on social media platform                                     | find out whose social media contacts I have not gotten and request it from them                         |
+|`*`     | OOC      | user                                         | track when I last queried my contact's information                                 | find out who I have not communicated with for an extended period of time                                |
+|`*`     | EOA      | expert user                                  | customise the information presented to me when the app is initialised              | view the social media contacts of my close friends quickly without keying in additional prompts         |
+|`*`     | EOA      | frequent user                                | create keyboard shortcuts/hotkeys                                                  | quickly pull up the social media handles of a contact-of-interest in the least keystrokes possible      |
+|`*`     | COC      | user                                         | add a profile picture for my contacts                                              | better recognize their appearance                                                                       |
+|`*`     | COC      | user                                         | add notes about contacts                                                           | recall specific items about my contacts                                                                 |
+|`*`     | COC      | user                                         | add dates of special occasions (birthdays/appointments) associated with my contact | view important information of my contacts                                                               |
+|`*`     | COC      | user                                         | set reminders for special occasions associated with my contact                     | be alerted of these events                                                                              |
+|`*`     | COC      | user                                         | view a dashboard of significant events associated with my contact                  | be reminded of these dates                                                                              |
+|`*`     | COC      | user                                         | forward relevant details of an existing contact                                    | easily share such information upon request                                                              |
 
-### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
 
-**MSS**
+### Use Cases
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+(For all use cases below, the **System** is `SociaLite` and the **Actor** is the `user`, unless specified otherwise)
+
+***Basic Functionalities*** 
+
+**Use Case 01: Add a person**
+
+*MSS*
+
+1.  User requests to add a new contact
+2.  SociaLite adds the contact
 
     Use case ends.
 
-**Extensions**
+*Extensions*
+
+* 1a. User's input does not conform with the specified format.
+    * 1a1. SociaLite shows an error message.
+        
+        Use case resumes at step 1.
+    
+    
+    
+**Use Case 02: List entries in SociaLite**
+
+*MSS*
+
+1.  User requests to list contacts
+2.  SociaLite shows a list of contacts
+
+    Use case ends.
+
+*Extensions*
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+
+
+**Use Case 03: Edit entries in SociaLite**
+
+*MSS*
+
+1.  User requests to list contacts
+2.  SociaLite shows a list of contacts
+3.  User requests to edit a specific contact in the list
+4.  SociaLite updates the contact with the specified input
+
+    Use case ends.
+
+*Extensions*
 
 * 2a. The list is empty.
 
@@ -304,11 +366,237 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. SociaLite shows an error message.
 
       Use case resumes at step 2.
 
+* 3b. User's input does not conform with the specified format.
+
+    * 3a1. SociaLite shows an error message.
+
+      Use case resumes at step 2.
+
+
+**Use Case 04: Find a contact**
+
+*MSS*
+
+1.  User requests to locate a specific contact through keywords
+2.  SociaLite shows a list of contacts that matches the given criteria
+
+    Use case ends.
+
+*Extensions*
+
+* 2a. The list is empty as there are no matches found.
+
+  Use case ends.
+
+
+**Use Case 05: Delete a person**
+
+*MSS*
+
+1.  User requests to list contacts
+2.  SociaLite shows a list of contacts
+3.  User requests to delete a specific contact in the list
+4.  SociaLite deletes the contact
+
+    Use case ends.
+
+*Extensions*
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. SociaLite shows an error message.
+
+      Use case resumes at step 2.
+
+
+***Organisation of Contacts***
+
+**Use Case 06: Create new category**
+
+*MSS*
+
+1.  User types in command to create a new category (with category name)
+2.  SociaLite shows a list of contacts
+3.  User can select multiple contacts to add to the category
+4.  User selects `create` button
+
+    Use case ends.
+
+*Extensions*
+
+* 2a. Category exists.
+  
+    * 2a1. SociaLite shows an error message.
+
+      Use case ends.
+
+
+
+
+**Use Case 07: Query categories**
+
+*MSS*
+
+1.  User types in `query` command (with category name)
+2.  SociaLite shows a list of contacts in the category specified
+
+    Use case ends.
+
+*Extensions*
+
+* 2a. Category does not exist.
+
+    * 2a1. SociaLite shows an error message.
+
+      Use case ends.
+
+
+**Use Case 08: Edit categories**
+
+*MSS*
+
+1.  User enters command to add contact to the category
+2.  SociaLite shows a list of updated contacts in the category
+
+    Use case ends.
+
+
+**Use Case 09: Delete categories**
+
+*MSS*
+
+1.  User requests to list contacts
+2.  SociaLite shows a list of contacts
+3.  User requests to delete a category tagged to a specific contact in the list
+4.  SociaLite deletes the tag
+
+    Use case ends.
+
+*Extensions*
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. SociaLite shows an error message.
+
+      Use case resumes at step 2.
+
+* 3b. The given category does not exist.
+
+    * 3a1. SociaLite shows an error message.
+
+      Use case resumes at step 2.
+
+
+**Use Case 10: Retrieve last queried contact**
+
+*MSS*
+
+1.  User requests to retrieve the information of the last queried contact
+2.  SociaLite returns the entry that fits this criteria
+
+    Use case ends.
+
+
+***Customization Tools***
+
+**Use Case 11: Add remark for a specific contact**
+
+*MSS*
+
+1.  User requests to **list contacts (UC02)** or **find contact (UC04)**
+2.  SociaLite returns a list of contacts according to the UC called
+3.  User specifies a remark to be added to the specified contact's entry
+4.  SociaLite adds a remark to the specified contact's entry
+
+    Use case ends.
+
+*Extensions*
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. SociaLite shows an error message.
+
+      Use case resumes at step 2.
+
+
+**Use Case 12: View contact card**
+
+*MSS*
+
+1.  User requests to **list contacts (UC02)** or **find contact (UC04)**
+2.  SociaLite returns a list of contacts according to the UC called
+3.  User specifies the index of his desired contact
+4.  SociaLite opens a contact card which presents all previously stored details associated with the contact
+
+    Use case ends.
+
+*Extensions*
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. SociaLite shows an error message.
+
+      Use case resumes at step 2.
+
+***Help Guide & Exiting***
+
+**Use Case 13: View User Guide**
+
+*MSS*
+
+1.  User requests to view User Guide
+2.  SociaLite displays a link to User Guide
+
+    Use case ends.
+
+
+**Use Case 14: Purge contacts stored in SociaLite**
+
+*MSS*
+
+1.  User requests to clear all existing contacts (from demo version)
+2.  SociaLite clears specimen data from memory
+    
+    Use case ends.
+
+
+
+**Use Case 15: Exit application**
+
+*MSS*
+
+1.  User types in command to exit application
+2.  SociaLite closes
+
+    Use case ends.
+
+
+
 *{More to be added}*
+
+
+
+
 
 ### Non-Functional Requirements
 
@@ -322,6 +610,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Social Media**:  Various communication platforms such as Instagram, Facebook, Twitter, TikTok, Telegram
 
 --------------------------------------------------------------------------------------------------------------------
 
