@@ -42,9 +42,9 @@ SociaLite is a **desktop app for connecting you with your contacts’ social med
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `addressbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
+1. Download the latest `socialite.jar` from [here](https://github.com/AY2122S1-CS2103T-F11-4/tp/).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+1. Copy the file to the folder you want to use as the _home folder_ for your SociaLite.
 
 1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
@@ -197,6 +197,7 @@ Finds out the contacts that are associated with a particular tag.
 Format: `tag [t/TAG]`
 * Queries all contacts that are tied to `TAG`.
 * The tag must be existent and associated with certain contacts in the address book.
+
 Examples:
 * `tag t/family` Checks all contacts in the address book which the user categorises as “family”.
 * `tag t/work` Checks all contacts in the address book which the user categorises as “work”.
@@ -285,14 +286,14 @@ Format: `exit`
 
 ### Saving the data
 
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+SociaLite data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 ### Editing the data file
 
-AddressBook data are saved as a JSON file `[JAR file location]/data/SociaLite.json`. Advanced users are welcome to update data directly by editing that data file.
+SociaLite data are saved as a JSON file `[JAR file location]/data/SociaLite.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.
+If your changes to the data file makes its format invalid, SociaLite will discard all data and start with an empty data file at the next run.
 </div>
 
 ## Coming Soon <a name="coming_soon"></a>
@@ -304,6 +305,7 @@ Format: `picture INDEX l/FILEPATH`
 * Adds a profile picture to the contact at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index must be a **positive integer** 1, 2, 3, …​
+
 Examples:
 * `list` followed by `picture 1 l/Desktop/AnniePic.png`  adds the image found at the specified file path to Annie Baker’s listing in the app.
 * `find Charlie` followed by `picture 1 l/Desktop/CharliePic.png` adds the image found at the specified file path to Charlie Decker’s listing in the app.
@@ -317,6 +319,7 @@ Format: `remind INDEX r/[DAYS]`
 * The index must be a **positive integer** 1, 2, 3, …​
 * Users will be reminded of the event `[DAYS]` days in advance of the actual date.
 * By default, a reminder will appear on the user’s dashboard 3 days prior to the event if no input is specified under the `[DAYS]` field.
+
 Examples:
 For the purpose of illustrating examples in this feature, assume that the following events exist within Annie Baker’s contact card:
 
@@ -335,6 +338,7 @@ Format: `date INDEX d/YYYY-MM-DD i/DETAILS`
 * The index must be a **positive integer** 1, 2, 3, …​
 * Date must be presented in `YYYY-MM-DD` format.
 * Significance of the specified date is stated at the end under the `DETAILS` field.
+
 Examples:
 * `list` followed by `date 1 d/2021-09-14 i/Meeting` adds the event “Meeting” which falls on 14 Sep 2021, to Annie Baker’s listing in the app.
 * `find Annie` followed by `date 1 d/2021-10-10 i/Lunch Appointment` adds the event “Lunch Appointment” which falls on 10 Oct 2021 to Annie Baker’s listing.
@@ -346,6 +350,7 @@ Format: `forward INDEX`
 * Forwards the contact card of the person at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index must be a **positive integer** 1, 2, 3, …​
+
 Examples:
 * `list` followed by `forward 2` creates a file to store the contact details of Charlie Decker.
 * `find Annie` followed by `forward 1` creates a file to store Annie Baker’s contact details.
@@ -355,7 +360,7 @@ Examples:
 ## FAQ <a name="faq"></a>
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous SociaLite home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
