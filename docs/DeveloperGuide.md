@@ -5,7 +5,7 @@ title: Developer Guide
 * Table of Contents
 {:toc}
 1. [Acknowledgements](#acknowledgements)
-2. [Setting up, getting started](#setting-up-getting-started)
+2. [Setting Up, Getting Started](#setting-up-getting-started)
 3. [Design](#design)
     1. [Architecture](#architecture)
     2. [UI Component](#ui)
@@ -32,9 +32,9 @@ title: Developer Guide
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Setting up, getting started** <a name="setting-up-getting-started"></a>
+## **Setting Up, Getting Started** <a name="setting-up-getting-started"></a>
 
-Refer to the guide [_Setting up and getting started_](SettingUp.md).
+Refer to the guide [_Setting Up and Getting Started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -285,43 +285,73 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Value proposition**: 
 
-Our product serves as an integrated dashboard for a user to retrieve the social media activities and account information of his / her contacts. This makes it seamless for the user to interact with his / her contacts instead of having to access each social media account that the contact owns.
+Our product serves as an integrated dashboard for a user to retrieve the social media activities and account information of his/her contacts. This makes it seamless for the user to interact with his/her contacts instead of having to access each social media account that the contact owns.
 
 ### User stories <a name="user-stories"></a>
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-Categories: CF - Core Functionalities, G - Guide, OOC - Organization of Contacts, EOA - Ease of Accessibility, COC - Customization of Contacts
+<br/>
 
-|Priority| Category | As a / an …​                              | I want to …​                                                                    | So that I can…​                                                                                      |
-|--------| -------- | -------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-|`* * *` | CF       | beginner user                                | add contacts                                                                       | access my contacts' details                                                                             |
-|`* * *` | CF       | beginner user                                | delete contacts                                                                    | remove irrelevant entries                                                                               |
-|`* * *` | CF       | beginner user                                | access the social media handles of my contacts                                     | have quicker access to my contacts' social media pages                                                  |
-|`* * *` | CF       | forgetful user                               | save my contacts' social media handles                                             | easily access my contact's social media account without having to recall the exact handle               |
-|`* *`   | CF       | user                                         | browse a list of all my contacts                                                   | view all my contacts at a glance                                                                        |
-|`* *`   | G        | new user                                     | view a help message                                                                | learn how to use SociaLite                                                                              |
-|`* *`   | G        | new user                                     | view sample contacts when I initialise the app                                     | try out the features without having to add actual data                                                  |
-|`* *`   | G        | new user adopting the app for my own use     | purge all data                                                                     | delete sample contacts and add real data                                                                |
-|`* *`   | OOC      | organized user                               | create categories to group my contacts                                             | organize my list of contacts                                                                            |
-|`* *`   | OOC      | organized user                               | edit categories as and when required                                               | repurpose such pre-existing categories                                                                  |
-|`* *`   | OOC      | organized user                               | query a group of contacts                                                          | have greater ease of access to my frequent contacts and efficiently contact people for similar purposes |
-|`* *`   | EOA      | avid social media user with many connections | be redirected to my chosen contact's social media platform                         | avoid initialising every social media platform and search for his/her account manually                  |
-|`*`     | CF       | beginner user                                | update contacts                                                                    | modify existing social media handles and add new ones when they are created                             |
-|`*`     | CF       | beginner user                                | view the recent feed of my contacts                                                | have more meaningful and frequent interactions with my contacts on multiple platforms                   |
-|`*`     | OOC      | organised user                               | delete categories associated with contacts                                         | declutter my address book when the category is no longer relevant                                       |
-|`*`     | OOC      | intermediate user                            | filter contacts based on social media platform                                     | find out whose social media contacts I have not gotten and request it from them                         |
-|`*`     | OOC      | user                                         | track when I last queried my contact's information                                 | find out who I have not communicated with for an extended period of time                                |
-|`*`     | EOA      | expert user                                  | customise the information presented to me when the app is initialised              | view the social media contacts of my close friends quickly without keying in additional prompts         |
-|`*`     | EOA      | frequent user                                | create keyboard shortcuts/hotkeys                                                  | quickly pull up the social media handles of a contact-of-interest in the least keystrokes possible      |
-|`*`     | COC      | user                                         | add a profile picture for my contacts                                              | better recognize their appearance                                                                       |
-|`*`     | COC      | user                                         | add notes about contacts                                                           | recall specific items about my contacts                                                                 |
-|`*`     | COC      | user                                         | add dates of special occasions (birthdays/appointments) associated with my contact | view important information of my contacts                                                               |
-|`*`     | COC      | user                                         | set reminders for special occasions associated with my contact                     | be alerted of these events                                                                              |
-|`*`     | COC      | user                                         | view a dashboard of significant events associated with my contact                  | be reminded of these dates                                                                              |
-|`*`     | COC      | user                                         | forward relevant details of an existing contact                                    | easily share such information upon request                                                              |
+_Core Functionalities_
 
+|Priority| As a / an …​                              | I want to …​                                                                    | So that I can…​                                                                                      |
+|--------| -------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+|`* * *` | beginner user                                | add contacts                                                                       | access my contacts' details                                                                             |
+|`* * *` | beginner user                                | delete contacts                                                                    | remove irrelevant entries                                                                               |
+|`* * *` | beginner user                                | access the social media handles of my contacts                                     | have quicker access to my contacts' social media pages                                                  |
+|`* * *` | forgetful user                               | save my contacts' social media handles                                             | easily access my contact's social media account without having to recall the exact handle               |
+|`* *`   | user                                         | browse a list of all my contacts                                                   | view all my contacts at a glance                                                                        |
+|`*`     | beginner user                                | update contacts                                                                    | modify existing social media handles and add new ones when they are created                             |
+|`*`     | beginner user                                | view the recent feed of my contacts                                                | have more meaningful and frequent interactions with my contacts on multiple platforms                   |
 
+<br/>
+
+_Guide for New Users_
+
+|Priority| As a / an …​                              | I want to …​                                                                    | So that I can…​                                                                                      |
+|--------| -------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+|`* *`   | new user                                     | view a help message                                                                | learn how to use SociaLite                                                                              |
+|`* *`   | new user                                     | view sample contacts when I initialise the app                                     | try out the features without having to add actual data                                                  |
+|`* *`   | new user adopting the app for my own use     | purge all data                                                                     | delete sample contacts and add real data                                                                |
+
+<br/>
+
+_Organization of Contacts_
+
+|Priority| As a / an …​                              | I want to …​                                                                    | So that I can…​                                                                                      |
+|--------| -------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+|`* *`   | organized user                               | create categories to group my contacts                                             | organize my list of contacts                                                                            |
+|`* *`   | organized user                               | edit categories as and when required                                               | repurpose such pre-existing categories                                                                  |
+|`* *`   | organized user                               | query a group of contacts                                                          | have greater ease of access to my frequent contacts and efficiently contact people for similar purposes |
+|`*`     | organised user                               | delete categories associated with contacts                                         | declutter my address book when the category is no longer relevant                                       |
+|`*`     | intermediate user                            | filter contacts based on social media platform                                     | find out whose social media contacts I have not gotten and request it from them                         |
+|`*`     | user                                         | track when I last queried my contact's information                                 | find out who I have not communicated with for an extended period of time                                |
+
+<br/>
+
+_Ease of Accessibility_
+
+|Priority| As a / an …​                              | I want to …​                                                                    | So that I can…​                                                                                      |
+|--------| -------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+|`* *`   | avid social media user with many connections | be redirected to my chosen contact's social media platform                         | avoid initialising every social media platform and search for his/her account manually                  |
+|`*`     | expert user                                  | customise the information presented to me when the app is initialised              | view the social media contacts of my close friends quickly without keying in additional prompts         |
+|`*`     | frequent user                                | create keyboard shortcuts/hotkeys                                                  | quickly pull up the social media handles of a contact-of-interest in the least keystrokes possible      |
+
+<br/>
+
+_Customization of Contacts_
+
+|Priority| As a / an …​                              | I want to …​                                                                    | So that I can…​                                                                                      |
+|--------| -------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+|`*`     | user                                         | add a profile picture for my contacts                                              | better recognize their appearance                                                                       |
+|`*`     | user                                         | add notes about contacts                                                           | recall specific items about my contacts                                                                 |
+|`*`     | user                                         | add dates of special occasions (birthdays/appointments) associated with my contact | view important information of my contacts                                                               |
+|`*`     | user                                         | set reminders for special occasions associated with my contact                     | be alerted of these events                                                                              |
+|`*`     | user                                         | view a dashboard of significant events associated with my contact                  | be reminded of these dates                                                                              |
+|`*`     | user                                         | forward relevant details of an existing contact                                    | easily share such information upon request                                                              |
+
+<br/>
 
 
 ### Use Cases <a name="use-cases"></a>
@@ -632,7 +662,8 @@ Categories: CF - Core Functionalities, G - Guide, OOC - Organization of Contacts
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+3.  Should be intuitive enough for users of all technical backgrounds to operate.
+4.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 
 *{More to be added}*
 
