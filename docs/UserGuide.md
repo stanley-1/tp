@@ -171,7 +171,7 @@ Creates tags to categorise the contacts in the address book.
 Format: `tag INDEX [t/TAG]`
 * Add a category `TAG` to the person at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
-* The index must be a **positive integer** 1, 2, 3, …​
+* The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
 * `tag 2 t/family` Adds a tag called “family” to the 2nd person in the address book.
@@ -184,7 +184,7 @@ Format: `tag -u INDEX [t/TAG] [t/NEWTAG]`
 * Edit and change a category `TAG` to `NEWTAG` for a person at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The tag must be existent for the person enquired upon.
-* The index must be a **positive integer** 1, 2, 3, …​
+* The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
 * `tag -u 2 t/famy t/family` Changes a tag called “famy” to “family” for the 2nd person in the address book.
@@ -209,7 +209,7 @@ Deletes tags that are associated with contacts in the address book.
 Format: `tag -d INDEX [t/TAG]`
 * Delete a category `TAG` to the person at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
-* The index must be a **positive integer** 1, 2, 3, …​
+* The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
 * `tag -d 2 t/family` Deletes a tag called “family” to the 2nd person in the address book.
@@ -247,7 +247,7 @@ Adds special notes about a contact.
 Format: `remark INDEX r/[TEXT]`
 * Adds a note about the contact at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
-* The index must be a **positive integer** 1, 2, 3, …​
+* The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
 * `list` followed by `remark 2 r/Doesn’t like vegetables`  adds the remark “Doesn’t like vegetables” to Charlie Decker’s listing in the address book.
@@ -260,7 +260,7 @@ Opens a contact card which presents all previously stored details (e.g.: name, s
 Format: `view INDEX`
 * Adds a date for the contact at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
-* The index must be a **positive integer** 1, 2, 3, …​
+* The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
 * `list` followed by `view 1` opens Annie Baker’s contact card for the user’s perusal.
@@ -304,7 +304,7 @@ Adds a profile picture to an existing contact.
 Format: `picture INDEX l/FILEPATH`
 * Adds a profile picture to the contact at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
-* The index must be a **positive integer** 1, 2, 3, …​
+* The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
 * `list` followed by `picture 1 l/Desktop/AnniePic.png`  adds the image found at the specified file path to Annie Baker’s listing in the app.
@@ -316,7 +316,7 @@ Set reminders for special occasions associated with a contact. In order to set a
 Format: `remind INDEX r/[DAYS]`
 * Sets a reminder for an event at the specified `INDEX` associated with the contact.
 * The index refers to the index number shown in the contact’s list of events.
-* The index must be a **positive integer** 1, 2, 3, …​
+* The index **must be a positive integer** 1, 2, 3, …​
 * Users will be reminded of the event `[DAYS]` days in advance of the actual date.
 * By default, a reminder will appear on the user’s dashboard 3 days prior to the event if no input is specified under the `[DAYS]` field.
 
@@ -335,7 +335,7 @@ Adds dates of special occasions (birthdays, appointments) associated with a cont
 Format: `date INDEX d/YYYY-MM-DD i/DETAILS`
 * Adds a date for the contact at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
-* The index must be a **positive integer** 1, 2, 3, …​
+* The index **must be a positive integer** 1, 2, 3, …​
 * Date must be presented in `YYYY-MM-DD` format.
 * Significance of the specified date is stated at the end under the `DETAILS` field.
 
@@ -349,7 +349,7 @@ Forwards the contact card of the specified person by storing data in a separate 
 Format: `forward INDEX`
 * Forwards the contact card of the person at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
-* The index must be a **positive integer** 1, 2, 3, …​
+* The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
 * `list` followed by `forward 2` creates a file to store the contact details of Charlie Decker.
