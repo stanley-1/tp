@@ -1,7 +1,6 @@
 package socialite.logic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static socialite.testutil.Assert.assertThrows;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -10,8 +9,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
+import socialite.commons.core.Messages;
 import socialite.logic.commands.AddCommand;
 import socialite.logic.commands.CommandResult;
+import socialite.logic.commands.CommandTestUtil;
 import socialite.logic.commands.ListCommand;
 import socialite.logic.commands.exceptions.CommandException;
 import socialite.logic.parser.exceptions.ParseException;
@@ -23,10 +24,8 @@ import socialite.model.person.Person;
 import socialite.storage.JsonAddressBookStorage;
 import socialite.storage.JsonUserPrefsStorage;
 import socialite.storage.StorageManager;
-import socialite.testutil.PersonBuilder;
-import socialite.commons.core.Messages;
-import socialite.logic.commands.CommandTestUtil;
 import socialite.testutil.Assert;
+import socialite.testutil.PersonBuilder;
 import socialite.testutil.TypicalPersons;
 
 public class LogicManagerTest {
@@ -76,8 +75,8 @@ public class LogicManagerTest {
         logic = new LogicManager(model, storage);
 
         // Execute add command
-        String addCommand = AddCommand.COMMAND_WORD + CommandTestUtil.NAME_DESC_AMY + CommandTestUtil.PHONE_DESC_AMY + CommandTestUtil.EMAIL_DESC_AMY
-                + CommandTestUtil.ADDRESS_DESC_AMY;
+        String addCommand = AddCommand.COMMAND_WORD + CommandTestUtil.NAME_DESC_AMY
+                + CommandTestUtil.PHONE_DESC_AMY + CommandTestUtil.EMAIL_DESC_AMY + CommandTestUtil.ADDRESS_DESC_AMY;
         Person expectedPerson = new PersonBuilder(TypicalPersons.AMY).withTags().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addPerson(expectedPerson);

@@ -1,7 +1,5 @@
 package socialite.logic.commands;
 
-import static socialite.logic.commands.CommandTestUtil.assertCommandSuccess;
-
 import org.junit.jupiter.api.Test;
 
 import socialite.model.AddressBook;

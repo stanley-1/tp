@@ -1,7 +1,6 @@
 package socialite.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static socialite.testutil.Assert.assertThrows;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -11,8 +10,8 @@ import org.junit.jupiter.api.Test;
 import socialite.commons.exceptions.IllegalValueException;
 import socialite.commons.util.JsonUtil;
 import socialite.model.AddressBook;
-import socialite.testutil.TypicalPersons;
 import socialite.testutil.Assert;
+import socialite.testutil.TypicalPersons;
 
 public class JsonSerializableAddressBookTest {
 

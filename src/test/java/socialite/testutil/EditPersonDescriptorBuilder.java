@@ -4,13 +4,13 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import socialite.logic.commands.EditCommand;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
 import socialite.model.person.Name;
 import socialite.model.person.Person;
 import socialite.model.person.Phone;
 import socialite.model.tag.Tag;
-import socialite.logic.commands.EditCommand;
 
 /**
  * A utility class to help with building EditPersonDescriptor objects.

@@ -2,7 +2,9 @@ package socialite.logic.parser;
 
 import org.junit.jupiter.api.Test;
 
+import socialite.commons.core.Messages;
 import socialite.logic.commands.AddCommand;
+import socialite.logic.commands.CommandTestUtil;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
 import socialite.model.person.Name;
@@ -10,8 +12,6 @@ import socialite.model.person.Person;
 import socialite.model.person.Phone;
 import socialite.model.tag.Tag;
 import socialite.testutil.PersonBuilder;
-import socialite.commons.core.Messages;
-import socialite.logic.commands.CommandTestUtil;
 import socialite.testutil.TypicalPersons;
 
 public class AddCommandParserTest {
@@ -19,7 +19,8 @@ public class AddCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() {
-        Person expectedPerson = new PersonBuilder(TypicalPersons.BOB).withTags(CommandTestUtil.VALID_TAG_FRIEND).build();
+        Person expectedPerson =
+                new PersonBuilder(TypicalPersons.BOB).withTags(CommandTestUtil.VALID_TAG_FRIEND).build();
 
         // whitespace only preamble
         CommandParserTestUtil.assertParseSuccess(parser, CommandTestUtil.PREAMBLE_WHITESPACE

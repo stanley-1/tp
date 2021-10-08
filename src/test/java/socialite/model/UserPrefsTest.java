@@ -1,7 +1,5 @@
 package socialite.model;
 
-import static socialite.testutil.Assert.assertThrows;
-
 import org.junit.jupiter.api.Test;
 
 import socialite.testutil.Assert;

@@ -2,7 +2,6 @@ package socialite.commons.core;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static socialite.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 

@@ -2,7 +2,9 @@ package socialite.logic.parser;
 
 import org.junit.jupiter.api.Test;
 
+import socialite.commons.core.Messages;
 import socialite.commons.core.index.Index;
+import socialite.logic.commands.CommandTestUtil;
 import socialite.logic.commands.EditCommand;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
@@ -10,8 +12,6 @@ import socialite.model.person.Name;
 import socialite.model.person.Phone;
 import socialite.model.tag.Tag;
 import socialite.testutil.EditPersonDescriptorBuilder;
-import socialite.commons.core.Messages;
-import socialite.logic.commands.CommandTestUtil;
 import socialite.testutil.TypicalIndexes;
 
 public class EditCommandParserTest {
@@ -83,7 +83,7 @@ public class EditCommandParserTest {
 
         // invalid phone followed by valid email
         CommandParserTestUtil.assertParseFailure(
-                parser,"1" + CommandTestUtil.INVALID_PHONE_DESC
+                parser, "1" + CommandTestUtil.INVALID_PHONE_DESC
                         + CommandTestUtil.EMAIL_DESC_AMY, Phone.MESSAGE_CONSTRAINTS
         );
 
