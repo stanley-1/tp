@@ -111,7 +111,8 @@ class JsonAdaptedPerson {
         if (telegram != null && !Telegram.isValidHandle(telegram)) {
             throw new IllegalValueException(Telegram.MESSAGE_CONSTRAINTS);
         }
-        final Telegram modelTelegram = telegram != null ? new Telegram(telegram): null;
+
+        final Telegram modelTelegram = telegram != null ? new Telegram(telegram) : null;
 
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelTelegram);
     }
