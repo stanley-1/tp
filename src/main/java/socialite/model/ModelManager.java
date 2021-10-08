@@ -1,7 +1,6 @@
 package socialite.model;
 
 import static java.util.Objects.requireNonNull;
-import static socialite.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
 import java.util.function.Predicate;
@@ -11,8 +10,8 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import socialite.commons.core.GuiSettings;
 import socialite.commons.core.LogsCenter;
-import socialite.model.person.Person;
 import socialite.commons.util.CollectionUtil;
+import socialite.model.person.Person;
 
 /**
  * Represents the in-memory model of the address book data.

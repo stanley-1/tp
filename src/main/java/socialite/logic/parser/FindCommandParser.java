@@ -2,10 +2,10 @@ package socialite.logic.parser;
 
 import java.util.Arrays;
 
+import socialite.commons.core.Messages;
 import socialite.logic.commands.FindCommand;
 import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.person.NameContainsKeywordsPredicate;
-import socialite.commons.core.Messages;
 
 /**
  * Parses input arguments and creates a new FindCommand object

@@ -7,9 +7,9 @@ import socialite.commons.core.GuiSettings;
 import socialite.logic.commands.CommandResult;
 import socialite.logic.commands.exceptions.CommandException;
 import socialite.logic.parser.exceptions.ParseException;
+import socialite.model.Model;
 import socialite.model.ReadOnlyAddressBook;
 import socialite.model.person.Person;
-import socialite.model.Model;
 
 /**
  * API of the Logic component

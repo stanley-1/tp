@@ -1,7 +1,6 @@
 package socialite.model.person;
 
 import static java.util.Objects.requireNonNull;
-import static socialite.commons.util.AppUtil.checkArgument;
 
 import socialite.commons.util.AppUtil;
 

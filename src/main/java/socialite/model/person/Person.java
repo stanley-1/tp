@@ -1,14 +1,12 @@
 package socialite.model.person;
 
-import static socialite.commons.util.CollectionUtil.requireAllNonNull;
-
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import socialite.model.tag.Tag;
 import socialite.commons.util.CollectionUtil;
+import socialite.model.tag.Tag;
 
 /**
  * Represents a Person in the address book.

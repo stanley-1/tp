@@ -1,9 +1,9 @@
 package socialite.logic.parser;
 
+import socialite.commons.core.Messages;
 import socialite.commons.core.index.Index;
 import socialite.logic.commands.DeleteCommand;
 import socialite.logic.parser.exceptions.ParseException;
-import socialite.commons.core.Messages;
 
 /**
  * Parses input arguments and creates a new DeleteCommand object

@@ -3,6 +3,7 @@ package socialite.logic.parser;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import socialite.commons.core.Messages;
 import socialite.logic.commands.AddCommand;
 import socialite.logic.commands.ClearCommand;
 import socialite.logic.commands.Command;
@@ -13,7 +14,6 @@ import socialite.logic.commands.FindCommand;
 import socialite.logic.commands.HelpCommand;
 import socialite.logic.commands.ListCommand;
 import socialite.logic.parser.exceptions.ParseException;
-import socialite.commons.core.Messages;
 
 /**
  * Parses user input.

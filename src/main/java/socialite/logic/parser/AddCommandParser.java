@@ -9,6 +9,7 @@ import static socialite.logic.parser.CliSyntax.PREFIX_TAG;
 import java.util.Set;
 import java.util.stream.Stream;
 
+import socialite.commons.core.Messages;
 import socialite.logic.commands.AddCommand;
 import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.person.Address;
@@ -17,7 +18,6 @@ import socialite.model.person.Name;
 import socialite.model.person.Person;
 import socialite.model.person.Phone;
 import socialite.model.tag.Tag;
-import socialite.commons.core.Messages;
 
 /**
  * Parses input arguments and creates a new AddCommand object
