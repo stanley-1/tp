@@ -11,7 +11,6 @@ import org.junit.jupiter.api.io.TempDir;
 
 import socialite.commons.core.Messages;
 import socialite.logic.commands.AddCommand;
-import socialite.logic.commands.Command;
 import socialite.logic.commands.CommandResult;
 import socialite.logic.commands.CommandTestUtil;
 import socialite.logic.commands.ListCommand;

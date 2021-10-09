@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import socialite.commons.core.Messages;
 import socialite.logic.commands.AddCommand;
-import socialite.logic.commands.Command;
 import socialite.logic.commands.CommandTestUtil;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
@@ -39,7 +38,7 @@ public class AddCommandParserTest {
         CommandParserTestUtil.assertParseSuccess(parser, CommandTestUtil.NAME_DESC_BOB
                 + CommandTestUtil.PHONE_DESC_AMY + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.EMAIL_DESC_BOB
                 + CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.TAG_DESC_FRIEND
-                +CommandTestUtil.TELEGRAM_DESC_BOB, new AddCommand(expectedPerson));
+                + CommandTestUtil.TELEGRAM_DESC_BOB, new AddCommand(expectedPerson));
 
         // multiple emails - last email accepted
         CommandParserTestUtil.assertParseSuccess(parser, CommandTestUtil.NAME_DESC_BOB
