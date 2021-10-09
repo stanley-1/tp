@@ -32,6 +32,7 @@ public class PersonUtil {
         person.getTags().stream().forEach(
             s -> sb.append(CliSyntax.PREFIX_TAG + s.tagName + " ")
         );
+        sb.append(CliSyntax.PREFIX_TELEGRAM + person.getTelegram().value + " ");
         return sb.toString();
     }
 
@@ -48,11 +49,13 @@ public class PersonUtil {
         if (descriptor.getTags().isPresent()) {
             Set<Tag> tags = descriptor.getTags().get();
             if (tags.isEmpty()) {
-                sb.append(CliSyntax.PREFIX_TAG);
+                sb.append(CliSyntax.PREFIX_TAG).append(" ");
             } else {
                 tags.forEach(s -> sb.append(CliSyntax.PREFIX_TAG).append(s.tagName).append(" "));
             }
         }
+        descriptor.getTelegram().ifPresent(telegram -> sb.append(CliSyntax.PREFIX_TELEGRAM)
+                .append(telegram.value).append(" "));
         return sb.toString();
     }
 }

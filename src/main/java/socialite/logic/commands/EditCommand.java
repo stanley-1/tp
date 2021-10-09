@@ -211,7 +211,8 @@ public class EditCommand extends Command {
         }
 
         public Optional<Telegram> getTelegram() {
-            return (telegram != null) ? Optional.of(telegram) : Optional.empty();
+//            return (telegram != null) ? Optional.of(telegram) : Optional.empty();
+            return Optional.ofNullable(telegram);
         }
 
         @Override
