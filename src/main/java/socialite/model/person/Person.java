@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import socialite.commons.util.CollectionUtil;
+import socialite.model.handle.Facebook;
 import socialite.model.tag.Tag;
 
 /**
@@ -23,16 +24,20 @@ public class Person {
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
 
+    // Social media handle fields
+    private final Facebook facebook;
+
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Facebook facebook) {
         CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        this.facebook = facebook;
     }
 
     public Name getName() {
@@ -57,6 +62,10 @@ public class Person {
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
+    }
+
+    public Facebook getFacebook() {
+        return facebook;
     }
 
     /**
@@ -91,13 +100,14 @@ public class Person {
                 && otherPerson.getPhone().equals(getPhone())
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getAddress().equals(getAddress())
-                && otherPerson.getTags().equals(getTags());
+                && otherPerson.getTags().equals(getTags())
+                && otherPerson.getFacebook().equals(getFacebook());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, phone, email, address, tags, facebook);
     }
 
     @Override
@@ -116,6 +126,11 @@ public class Person {
             builder.append("; Tags: ");
             tags.forEach(builder::append);
         }
+
+        if (getFacebook() != null) {
+            builder.append("; Facebook: ").append(getFacebook());
+        }
+
         return builder.toString();
     }
 

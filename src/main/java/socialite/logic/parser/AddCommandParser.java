@@ -49,7 +49,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         Facebook facebook = ParserUtil.parseFacebook(argMultimap.getValue(PREFIX_FACEBOOK).get());
 
-        Person person = new Person(name, phone, email, address, tagList);
+        Person person = new Person(name, phone, email, address, tagList, facebook);
 
         return new AddCommand(person);
     }
