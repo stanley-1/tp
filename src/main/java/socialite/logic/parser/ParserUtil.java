@@ -9,6 +9,7 @@ import java.util.Set;
 import socialite.commons.core.index.Index;
 import socialite.commons.util.StringUtil;
 import socialite.logic.parser.exceptions.ParseException;
+import socialite.model.handle.Facebook;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
 import socialite.model.person.Name;
@@ -120,5 +121,20 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String handle} into a {@code Facebook}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code handle} is invalid for Facebook.
+     */
+    public static Facebook parseFacebook(String handle) throws ParseException {
+        requireNonNull(handle);
+        String trimmedHandle = handle.trim();
+        if (!Facebook.isValidHandle(trimmedHandle)) {
+            throw new ParseException(Facebook.MESSAGE_CONSTRAINTS);
+        }
+        return new Facebook(trimmedHandle);
     }
 }
