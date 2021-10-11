@@ -111,7 +111,7 @@ class JsonAdaptedPerson {
         if (facebook != null && !Facebook.isValidHandle(facebook)) {
             throw new IllegalValueException(Facebook.MESSAGE_CONSTRAINTS);
         }
-        final Facebook modelFacebook = facebook != null ? new Facebook(facebook): null;
+        final Facebook modelFacebook = facebook != null ? new Facebook(facebook) : null;
 
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelFacebook);
     }
