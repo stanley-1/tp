@@ -1,12 +1,16 @@
 package socialite.ui;
 
+import java.awt.*;
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 import socialite.model.person.Person;
 
 /**
@@ -37,6 +41,10 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label address;
     @FXML
+    private ImageView twitterIcon;
+    @FXML
+    private Label twitter;
+    @FXML
     private Label email;
     @FXML
     private FlowPane tags;
@@ -52,6 +60,8 @@ public class PersonCard extends UiPart<Region> {
         phone.setText(person.getPhone().value);
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
+        twitterIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/twitter.png")));
+        twitter.setText(" @" + person.getTwitter().value);
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));

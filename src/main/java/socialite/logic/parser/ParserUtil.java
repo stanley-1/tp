@@ -9,6 +9,7 @@ import java.util.Set;
 import socialite.commons.core.index.Index;
 import socialite.commons.util.StringUtil;
 import socialite.logic.parser.exceptions.ParseException;
+import socialite.model.handle.Twitter;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
 import socialite.model.person.Name;
@@ -93,6 +94,15 @@ public class ParserUtil {
             throw new ParseException(Email.MESSAGE_CONSTRAINTS);
         }
         return new Email(trimmedEmail);
+    }
+
+    public static Twitter parseTwitter(String twitter) throws ParseException {
+        requireNonNull(twitter);
+        String trimmedTwitter = twitter.trim();
+        if (!Twitter.isValidHandle(trimmedTwitter)) {
+            throw new ParseException(Twitter.MESSAGE_CONSTRAINTS);
+        }
+        return new Twitter(trimmedTwitter);
     }
 
     /**
