@@ -13,7 +13,7 @@ public class Instagram {
     public static final String MESSAGE_CONSTRAINTS =
             "Instagram handles should only contain alphanumeric characters, periods & underscores."
             + "A handle is limited to 30 characters and can't use other punctuation marks.\n"
-            + "https://www.dummies.com/business/marketing/social-media-marketing/choosing-instagram-name-username-business/";
+            + "https://tinyurl.com/instaHandle";
     public static final String VALIDATION_REGEX = "^[a-zA-Z0-9._]{1,30}$";
     public final String value;
 
