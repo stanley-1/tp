@@ -19,6 +19,7 @@ public class Twitter {
 
     public static boolean isValidHandle(String value) {
         return value.matches(VALIDATION_REGEX);
+//        return true;
     }
 
     @Override
