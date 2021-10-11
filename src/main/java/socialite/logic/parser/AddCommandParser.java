@@ -48,7 +48,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         Instagram instagram = ParserUtil.parseInstagram(argMultimap.getValue(PREFIX_INSTAGRAM).get());
 
-        Person person = new Person(name, phone, email, address, tagList);
+        Person person = new Person(name, phone, email, address, tagList, instagram);
 
         return new AddCommand(person);
     }
