@@ -107,7 +107,8 @@ class JsonAdaptedPerson {
         final Address modelAddress = new Address(address);
 
         if (twitter == null) {
-            throw new IllegalValueException((String.format(MISSING_FIELD_MESSAGE_FORMAT, Twitter.class.getSimpleName())));
+            throw new IllegalValueException((String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Twitter.class.getSimpleName())));
         }
         if (!Twitter.isValidHandle(twitter)) {
             throw new IllegalValueException(Twitter.MESSAGE_CONSTRAINTS);

@@ -96,6 +96,14 @@ public class ParserUtil {
         return new Email(trimmedEmail);
     }
 
+    /**
+     * Parses a {@code String twitter} into an {@code Twitter}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @param twitter twtter handle to add
+     * @return the created Twitter object
+     * @throws ParseException if the given {@code twitter} is invalid
+     */
     public static Twitter parseTwitter(String twitter) throws ParseException {
         requireNonNull(twitter);
         String trimmedTwitter = twitter.trim();

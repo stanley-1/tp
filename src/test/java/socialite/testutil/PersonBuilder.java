@@ -3,12 +3,12 @@ package socialite.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
+import socialite.model.handle.Twitter;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
 import socialite.model.person.Name;
 import socialite.model.person.Person;
 import socialite.model.person.Phone;
-import socialite.model.handle.Twitter;
 import socialite.model.tag.Tag;
 import socialite.model.util.SampleDataUtil;
 

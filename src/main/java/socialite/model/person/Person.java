@@ -6,8 +6,8 @@ import java.util.Objects;
 import java.util.Set;
 
 import socialite.commons.util.CollectionUtil;
-import socialite.model.tag.Tag;
 import socialite.model.handle.Twitter;
+import socialite.model.tag.Tag;
 
 /**
  * Represents a Person in the address book.
@@ -54,7 +54,9 @@ public class Person {
         return address;
     }
 
-    public Twitter getTwitter() { return twitter; }
+    public Twitter getTwitter() {
+        return twitter;
+    }
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}

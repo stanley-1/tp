@@ -1,7 +1,12 @@
 package socialite.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static socialite.logic.parser.CliSyntax.*;
+import static socialite.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static socialite.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static socialite.logic.parser.CliSyntax.PREFIX_NAME;
+import static socialite.logic.parser.CliSyntax.PREFIX_PHONE;
+import static socialite.logic.parser.CliSyntax.PREFIX_TAG;
+import static socialite.logic.parser.CliSyntax.PREFIX_TWITTER;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -184,9 +189,13 @@ public class EditCommand extends Command {
             return Optional.ofNullable(address);
         }
 
-        public void setTwitter(Twitter twitter) { this.twitter = twitter; }
+        public void setTwitter(Twitter twitter) {
+            this.twitter = twitter;
+        }
 
-        public Optional<Twitter> getTwitter() { return Optional.ofNullable(this.twitter); }
+        public Optional<Twitter> getTwitter() {
+            return Optional.ofNullable(this.twitter);
+        }
 
         /**
          * Sets {@code tags} to this object's {@code tags}.

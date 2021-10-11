@@ -6,20 +6,27 @@ import socialite.commons.util.AppUtil;
 
 public class Twitter {
 
-    public final String value;
-    public static final String MESSAGE_CONSTRAINTS = "Handle should only consist of alphanumerical characters" +
-            "and underscores, should be between 4-15 characters long";
+    public static final String MESSAGE_CONSTRAINTS = "Handle should only consist of alphanumerical characters"
+            + "and underscores, should be between 4-15 characters long";
     public static final String VALIDATION_REGEX = "^[a-zA-Z0-9_]{4,15}";
+    public final String value;
 
+    /**
+     * Constructor for {@code Twitter} object
+     *
+     * @param value Twitter handle
+     */
     public Twitter(String value) {
         requireNonNull(value);
         AppUtil.checkArgument(isValidHandle(value), MESSAGE_CONSTRAINTS);
         this.value = value;
     }
 
+    /**
+     * Checks if given twitter handle is valid
+     */
     public static boolean isValidHandle(String value) {
         return value.matches(VALIDATION_REGEX);
-//        return true;
     }
 
     @Override

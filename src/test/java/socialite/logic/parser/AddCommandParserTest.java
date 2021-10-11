@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import socialite.commons.core.Messages;
 import socialite.logic.commands.AddCommand;
-import socialite.logic.commands.Command;
 import socialite.logic.commands.CommandTestUtil;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
