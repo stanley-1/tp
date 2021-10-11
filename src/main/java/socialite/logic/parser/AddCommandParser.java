@@ -2,10 +2,10 @@ package socialite.logic.parser;
 
 import static socialite.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static socialite.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static socialite.logic.parser.CliSyntax.PREFIX_FACEBOOK;
 import static socialite.logic.parser.CliSyntax.PREFIX_NAME;
 import static socialite.logic.parser.CliSyntax.PREFIX_PHONE;
 import static socialite.logic.parser.CliSyntax.PREFIX_TAG;
-import static socialite.logic.parser.CliSyntax.PREFIX_FACEBOOK;
 
 import java.util.Set;
 import java.util.stream.Stream;
