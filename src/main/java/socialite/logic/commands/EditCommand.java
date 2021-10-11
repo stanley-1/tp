@@ -211,7 +211,7 @@ public class EditCommand extends Command {
         }
 
         public Optional<Facebook> getFacebook() {
-            return (facebook != null) ? Optional.of(facebook) : Optional.empty();
+            return Optional.ofNullable(facebook);
         }
 
         @Override
