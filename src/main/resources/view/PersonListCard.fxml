@@ -34,7 +34,7 @@
       <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
       <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
       <HBox alignment="CENTER_LEFT">
-        <ImageView fx:id="twitterIcon" fitHeight="10" fitWidth="10" pickOnBounds="true" preserveRatio="true"/>
+        <ImageView fx:id="twitterIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true"/>
         <Label fx:id="twitter" styleClass="cell_small_label" text="\$twitter" />
       </HBox>
     </VBox>
