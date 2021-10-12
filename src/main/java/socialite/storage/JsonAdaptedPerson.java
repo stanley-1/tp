@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import socialite.commons.exceptions.IllegalValueException;
+import socialite.model.handle.TikTok;
 import socialite.model.handle.Twitter;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
@@ -29,6 +30,7 @@ class JsonAdaptedPerson {
     private final String phone;
     private final String email;
     private final String address;
+    private final String tiktok;
     private final String twitter;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
@@ -38,15 +40,17 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("twitter") String twitter, @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
+            @JsonProperty("tagged") List<JsonAdaptedTag> tagged, @JsonProperty("twitter") String twitter,
+            @JsonProperty("tiktok") String tiktok) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.twitter = twitter;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
+        this.tiktok = tiktok;
+        this.twitter = twitter;
     }
 
     /**
@@ -57,10 +61,11 @@ class JsonAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
-        twitter = source.getTwitter().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+        tiktok = source.getTiktok().value;
+        twitter = source.getTwitter().value;
     }
 
     /**
@@ -106,6 +111,8 @@ class JsonAdaptedPerson {
         }
         final Address modelAddress = new Address(address);
 
+        final Set<Tag> modelTags = new HashSet<>(personTags);
+
         if (twitter == null) {
             throw new IllegalValueException((String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Twitter.class.getSimpleName())));
@@ -115,8 +122,16 @@ class JsonAdaptedPerson {
         }
         final Twitter modeTwitter = new Twitter(twitter);
 
-        final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modeTwitter);
+        if (tiktok == null) {
+            throw new IllegalValueException((String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    TikTok.class.getSimpleName())));
+        }
+        if (!TikTok.isValidHandle(tiktok)) {
+            throw new IllegalValueException(TikTok.MESSAGE_CONSTRAINTS);
+        }
+        final TikTok modelTikTok = new TikTok(tiktok);
+
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelTikTok, modeTwitter);
     }
 
 }

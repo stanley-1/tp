@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import socialite.commons.util.CollectionUtil;
+import socialite.model.handle.TikTok;
 import socialite.model.handle.Twitter;
 import socialite.model.tag.Tag;
 
@@ -22,20 +23,22 @@ public class Person {
 
     // Data fields
     private final Address address;
-    private final Twitter twitter;
     private final Set<Tag> tags = new HashSet<>();
+    private final TikTok tiktok;
+    private final Twitter twitter;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Twitter twitter) {
-        CollectionUtil.requireAllNonNull(name, phone, email, address, twitter, tags);
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, TikTok tiktok, Twitter twitter) {
+        CollectionUtil.requireAllNonNull(name, phone, email, address, tags, tiktok, twitter);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.twitter = twitter;
         this.tags.addAll(tags);
+        this.tiktok = tiktok;
+        this.twitter = twitter;
     }
 
     public Name getName() {
@@ -56,6 +59,10 @@ public class Person {
 
     public Twitter getTwitter() {
         return twitter;
+    }
+
+    public TikTok getTiktok() {
+        return tiktok;
     }
 
     /**
@@ -98,14 +105,15 @@ public class Person {
                 && otherPerson.getPhone().equals(getPhone())
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getAddress().equals(getAddress())
-                && otherPerson.getTwitter().equals(getTwitter())
-                && otherPerson.getTags().equals(getTags());
+                && otherPerson.getTags().equals(getTags())
+                && otherPerson.getTiktok().equals(getTiktok())
+                && otherPerson.getTwitter().equals(getTwitter());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, twitter, tags);
+        return Objects.hash(name, phone, email, address, tags, tiktok, twitter);
     }
 
     @Override
@@ -117,15 +125,17 @@ public class Person {
                 .append("; Email: ")
                 .append(getEmail())
                 .append("; Address: ")
-                .append(getAddress())
-                .append("; Twitter: ")
-                .append(getTwitter());
+                .append(getAddress());
 
         Set<Tag> tags = getTags();
         if (!tags.isEmpty()) {
             builder.append("; Tags: ");
             tags.forEach(builder::append);
         }
+
+        builder.append("; TikTok: ").append(getTiktok());
+        builder.append("; Twitter: ").append(getTwitter());
+
         return builder.toString();
     }
 

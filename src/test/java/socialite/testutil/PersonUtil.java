@@ -29,10 +29,11 @@ public class PersonUtil {
         sb.append(CliSyntax.PREFIX_PHONE + person.getPhone().value + " ");
         sb.append(CliSyntax.PREFIX_EMAIL + person.getEmail().value + " ");
         sb.append(CliSyntax.PREFIX_ADDRESS + person.getAddress().value + " ");
-        sb.append(CliSyntax.PREFIX_TWITTER + person.getTwitter().value + " ");
         person.getTags().stream().forEach(
             s -> sb.append(CliSyntax.PREFIX_TAG + s.tagName + " ")
         );
+        sb.append(CliSyntax.PREFIX_TIKTOK + person.getTiktok().value + " ");
+        sb.append(CliSyntax.PREFIX_TWITTER + person.getTwitter().value + " ");
         return sb.toString();
     }
 
@@ -48,6 +49,9 @@ public class PersonUtil {
                 .append(address.value).append(" "));
         descriptor.getTwitter().ifPresent(twitter -> sb.append(CliSyntax.PREFIX_TWITTER).append(twitter.value)
                 .append(" "));
+        descriptor.getTikTok().ifPresent(tiktok -> sb.append(CliSyntax.PREFIX_TIKTOK).append(tiktok.value)
+                .append(" "));
+
         if (descriptor.getTags().isPresent()) {
             Set<Tag> tags = descriptor.getTags().get();
             if (tags.isEmpty()) {
@@ -56,6 +60,7 @@ public class PersonUtil {
                 tags.forEach(s -> sb.append(CliSyntax.PREFIX_TAG).append(s.tagName).append(" "));
             }
         }
+
         return sb.toString();
     }
 }

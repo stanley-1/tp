@@ -6,6 +6,7 @@ import static socialite.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static socialite.logic.parser.CliSyntax.PREFIX_NAME;
 import static socialite.logic.parser.CliSyntax.PREFIX_PHONE;
 import static socialite.logic.parser.CliSyntax.PREFIX_TAG;
+import static socialite.logic.parser.CliSyntax.PREFIX_TIKTOK;
 import static socialite.logic.parser.CliSyntax.PREFIX_TWITTER;
 
 import java.util.Collections;
@@ -19,6 +20,7 @@ import socialite.commons.core.index.Index;
 import socialite.commons.util.CollectionUtil;
 import socialite.logic.commands.exceptions.CommandException;
 import socialite.model.Model;
+import socialite.model.handle.TikTok;
 import socialite.model.handle.Twitter;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
@@ -44,6 +46,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "[" + PREFIX_TWITTER + "TWITTER]"
+            + "[" + PREFIX_TIKTOK + "TIKTOK]"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
@@ -99,10 +102,12 @@ public class EditCommand extends Command {
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
-        Twitter updatedTwitter = editPersonDescriptor.getTwitter().orElse(personToEdit.getTwitter());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        Twitter updatedTwitter = editPersonDescriptor.getTwitter().orElse(personToEdit.getTwitter());
+        TikTok updatedTikTok = editPersonDescriptor.getTikTok().orElse(personToEdit.getTiktok());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedTwitter);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags,
+                updatedTikTok, updatedTwitter);
     }
 
     @Override
@@ -132,8 +137,9 @@ public class EditCommand extends Command {
         private Phone phone;
         private Email email;
         private Address address;
-        private Twitter twitter;
         private Set<Tag> tags;
+        private TikTok tiktok;
+        private Twitter twitter;
 
         public EditPersonDescriptor() {}
 
@@ -146,8 +152,9 @@ public class EditCommand extends Command {
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
             setAddress(toCopy.address);
-            setTwitter(toCopy.twitter);
             setTags(toCopy.tags);
+            setTikTok(toCopy.tiktok);
+            setTwitter(toCopy.twitter);
         }
 
         /**
@@ -189,14 +196,6 @@ public class EditCommand extends Command {
             return Optional.ofNullable(address);
         }
 
-        public void setTwitter(Twitter twitter) {
-            this.twitter = twitter;
-        }
-
-        public Optional<Twitter> getTwitter() {
-            return Optional.ofNullable(this.twitter);
-        }
-
         /**
          * Sets {@code tags} to this object's {@code tags}.
          * A defensive copy of {@code tags} is used internally.
@@ -212,6 +211,22 @@ public class EditCommand extends Command {
          */
         public Optional<Set<Tag>> getTags() {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
+        }
+
+        public void setTikTok(TikTok tiktok) {
+            this.tiktok = tiktok;
+        }
+
+        public Optional<TikTok> getTikTok() {
+            return Optional.ofNullable(this.tiktok);
+        }
+
+        public void setTwitter(Twitter twitter) {
+            this.twitter = twitter;
+        }
+
+        public Optional<Twitter> getTwitter() {
+            return Optional.ofNullable(this.twitter);
         }
 
         @Override
@@ -233,8 +248,9 @@ public class EditCommand extends Command {
                     && getPhone().equals(e.getPhone())
                     && getEmail().equals(e.getEmail())
                     && getAddress().equals(e.getAddress())
-                    && getTwitter().equals(e.getTwitter())
-                    && getTags().equals(e.getTags());
+                    && getTags().equals(e.getTags())
+                    && getTikTok().equals(e.getTikTok())
+                    && getTwitter().equals(e.getTwitter());
         }
     }
 }

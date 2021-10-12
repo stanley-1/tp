@@ -9,6 +9,7 @@ import java.util.Set;
 import socialite.commons.core.index.Index;
 import socialite.commons.util.StringUtil;
 import socialite.logic.parser.exceptions.ParseException;
+import socialite.model.handle.TikTok;
 import socialite.model.handle.Twitter;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
@@ -97,23 +98,6 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String twitter} into an {@code Twitter}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @param twitter twtter handle to add
-     * @return the created Twitter object
-     * @throws ParseException if the given {@code twitter} is invalid
-     */
-    public static Twitter parseTwitter(String twitter) throws ParseException {
-        requireNonNull(twitter);
-        String trimmedTwitter = twitter.trim();
-        if (!Twitter.isValidHandle(trimmedTwitter)) {
-            throw new ParseException(Twitter.MESSAGE_CONSTRAINTS);
-        }
-        return new Twitter(trimmedTwitter);
-    }
-
-    /**
      * Parses a {@code String tag} into a {@code Tag}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -138,5 +122,39 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String twitter} into an {@code Twitter}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @param twitter twtter handle to add
+     * @return the created Twitter object
+     * @throws ParseException if the given {@code twitter} is invalid
+     */
+    public static Twitter parseTwitter(String twitter) throws ParseException {
+        requireNonNull(twitter);
+        String trimmedTwitter = twitter.trim();
+        if (!Twitter.isValidHandle(trimmedTwitter)) {
+            throw new ParseException(Twitter.MESSAGE_CONSTRAINTS);
+        }
+        return new Twitter(trimmedTwitter);
+    }
+
+    /**
+     * Parses a {@code String tiktok} into an {@code TikTok}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @param tiktok tiktok handle to add
+     * @return the created TikTok object
+     * @throws ParseException if the given {@code tiktok} is invalid
+     */
+    public static TikTok parseTikTok(String tiktok) throws ParseException {
+        requireNonNull(tiktok);
+        String trimmedTikTok = tiktok.trim();
+        if (!TikTok.isValidHandle(trimmedTikTok)) {
+            throw new ParseException(TikTok.MESSAGE_CONSTRAINTS);
+        }
+        return new TikTok(trimmedTikTok);
     }
 }

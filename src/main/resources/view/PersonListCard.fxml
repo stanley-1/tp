@@ -37,6 +37,11 @@
         <ImageView fx:id="twitterIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true"/>
         <Label fx:id="twitter" styleClass="cell_small_label" text="\$twitter" />
       </HBox>
+      <HBox alignment="CENTER_LEFT">
+        <ImageView fx:id="tiktokIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true"/>
+        <Label fx:id="tiktok" styleClass="cell_small_label" text="\$tiktok" />
+      </HBox>
+      <FlowPane fx:id="handles" />
     </VBox>
   </GridPane>
 </HBox>

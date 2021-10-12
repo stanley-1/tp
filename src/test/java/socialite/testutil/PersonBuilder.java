@@ -3,6 +3,7 @@ package socialite.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
+import socialite.model.handle.TikTok;
 import socialite.model.handle.Twitter;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
@@ -22,13 +23,15 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_TWITTER = "amy_bee";
+    public static final String DEFAULT_TIKTOK = "amy.bee";
 
     private Name name;
     private Phone phone;
     private Email email;
     private Address address;
-    private Twitter twitter;
     private Set<Tag> tags;
+    private TikTok tiktok;
+    private Twitter twitter;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -38,8 +41,9 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
-        twitter = new Twitter(DEFAULT_TWITTER);
         tags = new HashSet<>();
+        tiktok = new TikTok(DEFAULT_TIKTOK);
+        twitter = new Twitter(DEFAULT_TWITTER);
     }
 
     /**
@@ -50,8 +54,9 @@ public class PersonBuilder {
         phone = personToCopy.getPhone();
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
-        twitter = personToCopy.getTwitter();
         tags = new HashSet<>(personToCopy.getTags());
+        tiktok = personToCopy.getTiktok();
+        twitter = personToCopy.getTwitter();
     }
 
     /**
@@ -95,15 +100,23 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Email} of the {@code Person} that we are building.
+     * Sets the {@code Twitter} of the {@code Person} that we are building.
      */
     public PersonBuilder withTwitter(String twitter) {
         this.twitter = new Twitter(twitter);
         return this;
     }
 
+    /**
+     * Sets the {@code TikTok} of the {@code Person} that we are building
+     */
+    public PersonBuilder withTikTok(String tiktok) {
+        this.tiktok = new TikTok(tiktok);
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, email, address, tags, twitter);
+        return new Person(name, phone, email, address, tags, tiktok, twitter);
     }
 
 }

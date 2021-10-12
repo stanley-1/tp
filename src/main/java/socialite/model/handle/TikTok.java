@@ -4,29 +4,30 @@ import static java.util.Objects.requireNonNull;
 
 import socialite.commons.util.AppUtil;
 
-public class Twitter {
+public class TikTok {
 
-    public static final String MESSAGE_CONSTRAINTS = "Handle should only consist of alphanumerical characters \n"
-            + "and underscores, should be between 4-15 characters long";
-    public static final String VALIDATION_REGEX = "^[a-zA-Z0-9_]{4,15}$";
+    public static final String MESSAGE_CONSTRAINTS = "Username should only consist of alphanumerical characters, \n"
+            + "underscores and periods, and should not end with period";
+    public static final String VALIDATION_REGEX = "^[a-zA-Z0-9_\\.][^\\.]$";
     public final String value;
 
     /**
-     * Constructor for {@code Twitter} object
+     * Constructor for {@code TikTok} object
      *
-     * @param value Twitter handle
+     * @param value TikTok handle
      */
-    public Twitter(String value) {
+    public TikTok(String value) {
         requireNonNull(value);
         AppUtil.checkArgument(isValidHandle(value), MESSAGE_CONSTRAINTS);
         this.value = value;
     }
 
     /**
-     * Checks if given twitter handle is valid
+     * Checks if given tiktok handle is valid
      */
     public static boolean isValidHandle(String value) {
-        return value.matches(VALIDATION_REGEX);
+//        return value.matches(VALIDATION_REGEX);
+        return true;
     }
 
     @Override
@@ -36,8 +37,8 @@ public class Twitter {
 
     @Override
     public boolean equals(Object obj) {
-        return this == obj || (obj instanceof Twitter
-                ? value.equals(((Twitter) obj).value)
+        return this == obj || (obj instanceof TikTok
+                ? value.equals(((TikTok) obj).value)
                 : false);
     }
 
