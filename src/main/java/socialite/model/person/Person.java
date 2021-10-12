@@ -8,6 +8,7 @@ import java.util.Set;
 import socialite.commons.util.CollectionUtil;
 import socialite.model.handle.Facebook;
 import socialite.model.handle.Instagram;
+import socialite.model.handle.Telegram;
 import socialite.model.tag.Tag;
 
 /**
@@ -28,12 +29,13 @@ public class Person {
     // Social media handle fields
     private final Facebook facebook;
     private final Instagram instagram;
+    private final Telegram telegram;
 
     /**
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Facebook facebook,
-                  Instagram instagram) {
+                  Instagram instagram, Telegram telegram) {
         CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
@@ -42,6 +44,7 @@ public class Person {
         this.tags.addAll(tags);
         this.facebook = facebook;
         this.instagram = instagram;
+        this.telegram = telegram;
     }
 
     public Name getName() {
@@ -74,6 +77,10 @@ public class Person {
 
     public Instagram getInstagram() {
         return instagram;
+    }
+
+    public Telegram getTelegram() {
+        return telegram;
     }
 
     /**
@@ -110,13 +117,14 @@ public class Person {
                 && otherPerson.getAddress().equals(getAddress())
                 && otherPerson.getTags().equals(getTags())
                 && otherPerson.getFacebook().equals(getFacebook())
-                && otherPerson.getInstagram().equals(getInstagram());
+                && otherPerson.getInstagram().equals(getInstagram())
+                && otherPerson.getTelegram().equals(getTelegram());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, facebook, instagram);
+        return Objects.hash(name, phone, email, address, tags, facebook, instagram, telegram);
     }
 
     @Override
@@ -142,6 +150,11 @@ public class Person {
 
         if (getInstagram() != null) {
             builder.append("; Instagram: ").append(getInstagram());
+        }
+
+
+        if (getTelegram() != null) {
+            builder.append("; Telegram: ").append(getTelegram());
         }
 
         return builder.toString();

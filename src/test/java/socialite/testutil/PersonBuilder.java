@@ -5,6 +5,7 @@ import java.util.Set;
 
 import socialite.model.handle.Facebook;
 import socialite.model.handle.Instagram;
+import socialite.model.handle.Telegram;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
 import socialite.model.person.Name;
@@ -24,6 +25,7 @@ public class PersonBuilder {
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_FACEBOOK = "amy.bee";
     public static final String DEFAULT_INSTAGRAM = "amy.bee";
+    public static final String DEFAULT_TELEGRAM = "amy_bee";
 
     private Name name;
     private Phone phone;
@@ -32,6 +34,7 @@ public class PersonBuilder {
     private Set<Tag> tags;
     private Facebook facebook;
     private Instagram instagram;
+    private Telegram telegram;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -44,6 +47,7 @@ public class PersonBuilder {
         tags = new HashSet<>();
         facebook = new Facebook(DEFAULT_FACEBOOK);
         instagram = new Instagram(DEFAULT_INSTAGRAM);
+        telegram = new Telegram(DEFAULT_TELEGRAM);
     }
 
     /**
@@ -57,6 +61,7 @@ public class PersonBuilder {
         tags = new HashSet<>(personToCopy.getTags());
         facebook = personToCopy.getFacebook();
         instagram = personToCopy.getInstagram();
+        telegram = personToCopy.getTelegram();
     }
 
     /**
@@ -115,8 +120,16 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Telegram} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withTelegram(String telegram) {
+        this.telegram = new Telegram(telegram);
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, email, address, tags, facebook, instagram);
+        return new Person(name, phone, email, address, tags, facebook, instagram, telegram);
     }
 
 }

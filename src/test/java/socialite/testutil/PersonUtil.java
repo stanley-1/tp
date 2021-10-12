@@ -34,6 +34,7 @@ public class PersonUtil {
         );
         sb.append(CliSyntax.PREFIX_FACEBOOK + person.getFacebook().value + " ");
         sb.append(CliSyntax.PREFIX_INSTAGRAM + person.getInstagram().value + " ");
+        sb.append(CliSyntax.PREFIX_TELEGRAM + person.getTelegram().value + " ");
         return sb.toString();
     }
 
@@ -59,6 +60,8 @@ public class PersonUtil {
                 .append(facebook.value).append(" "));
         descriptor.getInstagram().ifPresent(instagram -> sb.append(CliSyntax.PREFIX_INSTAGRAM)
                 .append(instagram.value).append(" "));
+        descriptor.getTelegram().ifPresent(telegram -> sb.append(CliSyntax.PREFIX_TELEGRAM)
+                .append(telegram.value).append(" "));
         return sb.toString();
     }
 }

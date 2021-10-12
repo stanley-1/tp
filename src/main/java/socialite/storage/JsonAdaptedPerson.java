@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import socialite.commons.exceptions.IllegalValueException;
 import socialite.model.handle.Facebook;
 import socialite.model.handle.Instagram;
+import socialite.model.handle.Telegram;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
 import socialite.model.person.Name;
@@ -33,6 +34,7 @@ class JsonAdaptedPerson {
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
     private final String facebook;
     private final String instagram;
+    private final String telegram;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -41,7 +43,7 @@ class JsonAdaptedPerson {
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
             @JsonProperty("tagged") List<JsonAdaptedTag> tagged, @JsonProperty("facebook") String facebook,
-            @JsonProperty("instagram") String instagram) {
+            @JsonProperty("instagram") String instagram, @JsonProperty("telegram") String telegram) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -51,6 +53,7 @@ class JsonAdaptedPerson {
         }
         this.facebook = facebook;
         this.instagram = instagram;
+        this.telegram = telegram;
     }
 
     /**
@@ -66,6 +69,7 @@ class JsonAdaptedPerson {
                 .collect(Collectors.toList()));
         facebook = source.getFacebook().value;
         instagram = source.getInstagram().value;
+        telegram = source.getTelegram().value;
     }
 
     /**
@@ -123,7 +127,14 @@ class JsonAdaptedPerson {
         }
         final Instagram modelInstagram = instagram != null ? new Instagram(instagram) : null;
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelFacebook, modelInstagram);
+        if (telegram != null && !Telegram.isValidHandle(telegram)) {
+            throw new IllegalValueException(Telegram.MESSAGE_CONSTRAINTS);
+        }
+
+        final Telegram modelTelegram = telegram != null ? new Telegram(telegram) : null;
+
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags,
+                modelFacebook, modelInstagram, modelTelegram);
     }
 
 }

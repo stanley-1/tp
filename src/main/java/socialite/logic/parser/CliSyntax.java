@@ -15,5 +15,6 @@ public class CliSyntax {
     /* Social media handle prefix definitions */
     public static final Prefix PREFIX_FACEBOOK = new Prefix("fb/");
     public static final Prefix PREFIX_INSTAGRAM = new Prefix("ig/");
+    public static final Prefix PREFIX_TELEGRAM = new Prefix("tele/");
 
 }
