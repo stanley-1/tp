@@ -12,7 +12,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_ADDRESS = new Prefix("a/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
 
-    /* SociaLite specific prefix definitions */
+    /* Social media handle prefix definitions */
     public static final Prefix PREFIX_FACEBOOK = new Prefix("fb/");
 
 }
