@@ -11,7 +11,7 @@ import socialite.commons.util.AppUtil;
 public class Instagram {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Instagram handles should only contain alphanumeric characters, periods & underscores."
+            "Instagram handles should only contain alphanumeric characters, periods & underscores.\n"
             + "A handle is limited to 30 characters and can't use other punctuation marks.\n"
             + "https://tinyurl.com/instaHandle";
     public static final String VALIDATION_REGEX = "^[a-zA-Z0-9._]{1,30}$";
