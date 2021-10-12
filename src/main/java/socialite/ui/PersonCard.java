@@ -4,6 +4,8 @@ import java.util.Comparator;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
@@ -39,6 +41,8 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label email;
     @FXML
+    private ImageView telegramIcon;
+    @FXML
     private Label telegram;
     @FXML
     private FlowPane tags;
@@ -57,7 +61,8 @@ public class PersonCard extends UiPart<Region> {
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
-        telegram.setText("Telegram: @" + person.getTelegram().value);
+        telegramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/telegram.png")));
+        telegram.setText(" @" + person.getTelegram().value);
     }
 
     @Override

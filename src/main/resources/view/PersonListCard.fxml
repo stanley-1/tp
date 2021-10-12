@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
@@ -31,7 +32,10 @@
       <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
       <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
       <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
-      <Label fx:id="telegram" styleClass="cell_small_label" text="\$telegram" />
+      <HBox alignment="CENTER_LEFT">
+        <ImageView fx:id="telegramIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true" />
+        <Label fx:id="telegram" styleClass="cell_small_label" text="\$telegram" />
+      </HBox>
     </VBox>
   </GridPane>
 </HBox>
