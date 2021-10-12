@@ -3,11 +3,15 @@ package socialite.logic.parser;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import static socialite.logic.parser.CliSyntax.PREFIX_REMARK;
+import static socialite.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
+
 
 import socialite.commons.core.Messages;
 import socialite.logic.commands.AddCommand;
@@ -28,6 +32,7 @@ import socialite.testutil.EditPersonDescriptorBuilder;
 import socialite.testutil.PersonBuilder;
 import socialite.testutil.PersonUtil;
 import socialite.testutil.TypicalIndexes;
+
 
 public class AddressBookParserTest {
 
@@ -104,7 +109,10 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_remark() throws Exception {
-        assertTrue(parser.parseCommand(RemarkCommand.COMMAND_WORD) instanceof RemarkCommand);
+        final String remark = "Some remark.";
+        RemarkCommand command = (RemarkCommand) parser.parseCommand(RemarkCommand.COMMAND_WORD + " "
+                + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_REMARK + remark);
+        assertEquals(new RemarkCommand(INDEX_FIRST_PERSON, remark), command);
     }
 
 }
