@@ -133,7 +133,8 @@ class JsonAdaptedPerson {
 
         final Telegram modelTelegram = telegram != null ? new Telegram(telegram) : null;
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelFacebook, modelInstagram, modelTelegram);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags,
+                modelFacebook, modelInstagram, modelTelegram);
     }
 
 }

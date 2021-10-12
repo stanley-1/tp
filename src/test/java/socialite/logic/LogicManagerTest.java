@@ -78,7 +78,7 @@ public class LogicManagerTest {
         String addCommand = AddCommand.COMMAND_WORD + CommandTestUtil.NAME_DESC_AMY
                 + CommandTestUtil.PHONE_DESC_AMY + CommandTestUtil.EMAIL_DESC_AMY
                 + CommandTestUtil.ADDRESS_DESC_AMY + CommandTestUtil.FACEBOOK_DESC_AMY
-                + CommandTestUtil.INSTAGRAM_DESC_AMY CommandTestUtil.TELEGRAM_DESC_AMY;
+                + CommandTestUtil.INSTAGRAM_DESC_AMY + CommandTestUtil.TELEGRAM_DESC_AMY;
 
         Person expectedPerson = new PersonBuilder(TypicalPersons.AMY).withTags().build();
         ModelManager expectedModel = new ModelManager();
