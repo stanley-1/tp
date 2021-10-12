@@ -27,6 +27,7 @@ import socialite.logic.commands.RemarkCommand;
 import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.person.NameContainsKeywordsPredicate;
 import socialite.model.person.Person;
+import socialite.model.person.Remark;
 import socialite.testutil.Assert;
 import socialite.testutil.EditPersonDescriptorBuilder;
 import socialite.testutil.PersonBuilder;
@@ -109,9 +110,9 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_remark() throws Exception {
-        final String remark = "Some remark.";
+        final Remark remark = new Remark("Some remark.");
         RemarkCommand command = (RemarkCommand) parser.parseCommand(RemarkCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_REMARK + remark);
+                + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_REMARK + remark.value);
         assertEquals(new RemarkCommand(INDEX_FIRST_PERSON, remark), command);
     }
 

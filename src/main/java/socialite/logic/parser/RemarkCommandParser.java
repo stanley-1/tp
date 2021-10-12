@@ -9,6 +9,7 @@ import socialite.commons.core.index.Index;
 import socialite.commons.exceptions.IllegalValueException;
 import socialite.logic.commands.RemarkCommand;
 import socialite.logic.parser.exceptions.ParseException;
+import socialite.model.person.Remark;
 
 /**
  * Parses input arguments and creates a new {@code RemarkCommand} object
@@ -32,7 +33,7 @@ public class RemarkCommandParser implements Parser<RemarkCommand> {
 
         String remark = argMultimap.getValue(PREFIX_REMARK).orElse("");
 
-        return new RemarkCommand(index, remark);
+        return new RemarkCommand(index, new Remark(remark));
     }
 }
 
