@@ -28,7 +28,7 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Twitter twitter, Set<Tag> tags) {
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Twitter twitter) {
         CollectionUtil.requireAllNonNull(name, phone, email, address, twitter, tags);
         this.name = name;
         this.phone = phone;

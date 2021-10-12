@@ -6,7 +6,7 @@ import socialite.commons.util.AppUtil;
 
 public class Twitter {
 
-    public static final String MESSAGE_CONSTRAINTS = "Handle should only consist of alphanumerical characters"
+    public static final String MESSAGE_CONSTRAINTS = "Handle should only consist of alphanumerical characters \n"
             + "and underscores, should be between 4-15 characters long";
     public static final String VALIDATION_REGEX = "^[a-zA-Z0-9_]{4,15}";
     public final String value;

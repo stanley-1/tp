@@ -116,7 +116,7 @@ class JsonAdaptedPerson {
         final Twitter modeTwitter = new Twitter(twitter);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modeTwitter, modelTags);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modeTwitter);
     }
 
 }

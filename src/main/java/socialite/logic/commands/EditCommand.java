@@ -102,7 +102,7 @@ public class EditCommand extends Command {
         Twitter updatedTwitter = editPersonDescriptor.getTwitter().orElse(personToEdit.getTwitter());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTwitter, updatedTags);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedTwitter);
     }
 
     @Override

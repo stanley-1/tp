@@ -48,7 +48,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Twitter twitter = ParserUtil.parseTwitter(argMultimap.getValue(PREFIX_TWITTER).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Person person = new Person(name, phone, email, address, twitter, tagList);
+        Person person = new Person(name, phone, email, address, tagList, twitter);
 
         return new AddCommand(person);
     }
