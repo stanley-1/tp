@@ -40,7 +40,7 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("tagged") List<JsonAdaptedTag> tagged, @JsonProperty("facebook") String facebook, 
+            @JsonProperty("tagged") List<JsonAdaptedTag> tagged, @JsonProperty("facebook") String facebook,
             @JsonProperty("instagram") String instagram) {
         this.name = name;
         this.phone = phone;
@@ -117,7 +117,7 @@ class JsonAdaptedPerson {
             throw new IllegalValueException(Facebook.MESSAGE_CONSTRAINTS);
         }
         final Facebook modelFacebook = facebook != null ? new Facebook(facebook) : null;
-      
+
         if (instagram != null && !Instagram.isValidHandle(instagram)) {
             throw new IllegalValueException(Instagram.MESSAGE_CONSTRAINTS);
         }

@@ -35,16 +35,20 @@ public class TypicalPersons {
             .withEmail("johnd@example.com").withPhone("98765432")
             .withTags("owesMoney", "friends").withFacebook("benson.m").withInstagram("benson.m").build();
     public static final Person CARL = new PersonBuilder().withName("Carl Kurz").withPhone("95352563")
-            .withEmail("heinz@example.com").withAddress("wall street").withFacebook("carl.k").withInstagram("carl.k").build();
+            .withEmail("heinz@example.com").withAddress("wall street").withFacebook("carl.k")
+            .withInstagram("carl.k").build();
     public static final Person DANIEL = new PersonBuilder().withName("Daniel Meier").withPhone("87652533")
             .withEmail("cornelia@example.com").withAddress("10th street").withTags("friends")
             .withFacebook("daniel.m").withInstagram("daniel.m").build();
     public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withPhone("9482224")
-            .withEmail("werner@example.com").withAddress("michegan ave").withFacebook("elle.m").withInstagram("elle.m").build();
+            .withEmail("werner@example.com").withAddress("michegan ave").withFacebook("elle.m")
+            .withInstagram("elle.m").build();
     public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz").withPhone("9482427")
-            .withEmail("lydia@example.com").withAddress("little tokyo").withFacebook("fiona.k").withInstagram("fiona.k").build();
+            .withEmail("lydia@example.com").withAddress("little tokyo").withFacebook("fiona.k")
+            .withInstagram("fiona.k").build();
     public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("9482442")
-            .withEmail("anna@example.com").withAddress("4th street").withFacebook("george.b").withInstagram("george.b").build();
+            .withEmail("anna@example.com").withAddress("4th street").withFacebook("george.b")
+            .withInstagram("george.b").build();
 
     // Manually added
     public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withPhone("8482424")

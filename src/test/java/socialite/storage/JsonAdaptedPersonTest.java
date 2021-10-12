@@ -137,7 +137,7 @@ public class JsonAdaptedPersonTest {
         String expectedMessage = Facebook.MESSAGE_CONSTRAINTS;
         Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
-  
+
     @Test
     public void toModelType_invalidInstagram_throwsIllegalValueException() {
         JsonAdaptedPerson person = new JsonAdaptedPerson(

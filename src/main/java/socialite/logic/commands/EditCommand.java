@@ -106,7 +106,8 @@ public class EditCommand extends Command {
         Facebook updatedFacebook = editPersonDescriptor.getFacebook().orElse(personToEdit.getFacebook());
         Instagram updatedInstagram = editPersonDescriptor.getInstagram().orElse(personToEdit.getInstagram());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedFacebook, updatedInstagram);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedFacebook,
+                updatedInstagram);
     }
 
     @Override

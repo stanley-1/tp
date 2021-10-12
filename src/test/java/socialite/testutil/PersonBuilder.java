@@ -107,7 +107,7 @@ public class PersonBuilder {
         return this;
     }
 
-     /** 
+    /**
      * Sets the {@code Facebook} of the {@code Person} that we are building.
      */
     public PersonBuilder withFacebook(String facebook) {

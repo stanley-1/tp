@@ -138,7 +138,7 @@ public class ParserUtil {
         }
         return new Facebook(trimmedHandle);
     }
-  
+
     /**
      * Parses a {@code String handle} into a {@code Instagram}.
      * Leading and trailing whitespaces will be trimmed.
