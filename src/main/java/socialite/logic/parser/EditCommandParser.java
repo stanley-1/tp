@@ -3,6 +3,7 @@ package socialite.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static socialite.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static socialite.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static socialite.logic.parser.CliSyntax.PREFIX_FACEBOOK;
 import static socialite.logic.parser.CliSyntax.PREFIX_INSTAGRAM;
 import static socialite.logic.parser.CliSyntax.PREFIX_NAME;
 import static socialite.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -33,7 +34,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(
-                        args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG, PREFIX_INSTAGRAM
+                        args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG, PREFIX_FACEBOOK, PREFIX_INSTAGRAM
                 );
 
         Index index;
@@ -63,6 +64,9 @@ public class EditCommandParser implements Parser<EditCommand> {
 
         if (argMultimap.getValue(PREFIX_INSTAGRAM).isPresent()) {
             editPersonDescriptor.setInstagram(ParserUtil.parseInstagram(argMultimap.getValue(PREFIX_INSTAGRAM).get()));
+
+        if (argMultimap.getValue(PREFIX_FACEBOOK).isPresent()) {
+            editPersonDescriptor.setFacebook(ParserUtil.parseFacebook(argMultimap.getValue(PREFIX_FACEBOOK).get()));
         }
 
         if (!editPersonDescriptor.isAnyFieldEdited()) {

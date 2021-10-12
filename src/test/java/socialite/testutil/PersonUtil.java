@@ -32,6 +32,7 @@ public class PersonUtil {
         person.getTags().stream().forEach(
             s -> sb.append(CliSyntax.PREFIX_TAG + s.tagName + " ")
         );
+        sb.append(CliSyntax.PREFIX_FACEBOOK + person.getFacebook().value + " ");
         sb.append(CliSyntax.PREFIX_INSTAGRAM + person.getInstagram().value + " ");
         return sb.toString();
     }
@@ -54,6 +55,8 @@ public class PersonUtil {
                 tags.forEach(s -> sb.append(CliSyntax.PREFIX_TAG).append(s.tagName).append(" "));
             }
         }
+        descriptor.getFacebook().ifPresent(facebook -> sb.append(CliSyntax.PREFIX_FACEBOOK)
+                .append(facebook.value).append(" "));
         descriptor.getInstagram().ifPresent(instagram -> sb.append(CliSyntax.PREFIX_INSTAGRAM)
                 .append(instagram.value).append(" "));
         return sb.toString();
