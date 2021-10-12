@@ -11,7 +11,7 @@ import socialite.commons.util.AppUtil;
 public class Facebook {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "A Facebook username should only contain alphanumeric characters and full stops."
+            "A Facebook username should only contain alphanumeric characters and full stops.\n"
             + "It must also be at least 5 characters long.\n"
             + "https://www.facebook.com/help/105399436216001/?helpref=uf_share";
     public static final String VALIDATION_REGEX = "^[a-zA-Z0-9.]{5,}$";
