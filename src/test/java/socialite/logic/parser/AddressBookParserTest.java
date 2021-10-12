@@ -18,6 +18,8 @@ import socialite.logic.commands.ExitCommand;
 import socialite.logic.commands.FindCommand;
 import socialite.logic.commands.HelpCommand;
 import socialite.logic.commands.ListCommand;
+import socialite.logic.commands.RemarkCommand;
+
 import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.person.NameContainsKeywordsPredicate;
 import socialite.model.person.Person;
@@ -99,4 +101,10 @@ public class AddressBookParserTest {
         Assert.assertThrows(ParseException.class, Messages.MESSAGE_UNKNOWN_COMMAND, ()
             -> parser.parseCommand("unknownCommand"));
     }
+
+    @Test
+    public void parseCommand_remark() throws Exception {
+        assertTrue(parser.parseCommand(RemarkCommand.COMMAND_WORD) instanceof RemarkCommand);
+    }
+
 }
