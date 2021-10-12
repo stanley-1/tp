@@ -35,6 +35,7 @@
       <HBox alignment="CENTER_LEFT">
         <ImageView fx:id="facebookIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true" />
         <Label fx:id="facebook" styleClass="cell_small_label" text="\$facebook" />
+        <ImageView fx:id="instagramIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true" />
         <Label fx:id="instagram" styleClass="cell_small_label" text="\$instagram" />
       </HBox>
     </VBox>
