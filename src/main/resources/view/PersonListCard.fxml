@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
@@ -33,6 +33,10 @@
       <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
       <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
       <HBox alignment="CENTER_LEFT">
+        <ImageView fx:id="facebookIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true" />
+        <Label fx:id="facebook" styleClass="cell_small_label" text="\$facebook" />
+        <ImageView fx:id="instagramIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true" />
+        <Label fx:id="instagram" styleClass="cell_small_label" text="\$instagram" />
         <ImageView fx:id="telegramIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true" />
         <Label fx:id="telegram" styleClass="cell_small_label" text="\$telegram" />
       </HBox>

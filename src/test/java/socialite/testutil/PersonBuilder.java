@@ -3,6 +3,8 @@ package socialite.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
+import socialite.model.handle.Facebook;
+import socialite.model.handle.Instagram;
 import socialite.model.handle.Telegram;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
@@ -21,6 +23,8 @@ public class PersonBuilder {
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
+    public static final String DEFAULT_FACEBOOK = "amy.bee";
+    public static final String DEFAULT_INSTAGRAM = "amy.bee";
     public static final String DEFAULT_TELEGRAM = "amy_bee";
 
     private Name name;
@@ -28,6 +32,8 @@ public class PersonBuilder {
     private Email email;
     private Address address;
     private Set<Tag> tags;
+    private Facebook facebook;
+    private Instagram instagram;
     private Telegram telegram;
 
     /**
@@ -39,6 +45,8 @@ public class PersonBuilder {
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
+        facebook = new Facebook(DEFAULT_FACEBOOK);
+        instagram = new Instagram(DEFAULT_INSTAGRAM);
         telegram = new Telegram(DEFAULT_TELEGRAM);
     }
 
@@ -51,6 +59,8 @@ public class PersonBuilder {
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
         tags = new HashSet<>(personToCopy.getTags());
+        facebook = personToCopy.getFacebook();
+        instagram = personToCopy.getInstagram();
         telegram = personToCopy.getTelegram();
     }
 
@@ -95,6 +105,22 @@ public class PersonBuilder {
     }
 
     /**
+     * Sets the {@code Instagram} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withInstagram(String instagram) {
+        this.instagram = new Instagram(instagram);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Facebook} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withFacebook(String facebook) {
+        this.facebook = new Facebook(facebook);
+        return this;
+    }
+
+    /**
      * Sets the {@code Telegram} of the {@code Person} that we are building.
      */
     public PersonBuilder withTelegram(String telegram) {
@@ -103,7 +129,7 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, phone, email, address, tags, telegram);
+        return new Person(name, phone, email, address, tags, facebook, instagram, telegram);
     }
 
 }

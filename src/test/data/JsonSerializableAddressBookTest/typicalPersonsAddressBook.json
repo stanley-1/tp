@@ -6,6 +6,8 @@
     "email" : "alice@example.com",
     "address" : "123, Jurong West Ave 6, #08-111",
     "tagged" : [ "friends" ],
+    "facebook" : "alice.p",
+    "instagram" : "alice.p"
     "telegram": "alice_pauline"
   }, {
     "name" : "Benson Meier",
@@ -13,6 +15,8 @@
     "email" : "johnd@example.com",
     "address" : "311, Clementi Ave 2, #02-25",
     "tagged" : [ "owesMoney", "friends" ],
+    "facebook" : "benson.m",
+    "instagram" : "benson.m"
     "telegram": "benson_meier"
   }, {
     "name" : "Carl Kurz",
@@ -20,6 +24,8 @@
     "email" : "heinz@example.com",
     "address" : "wall street",
     "tagged" : [ ],
+    "facebook" : "carl.k",
+    "instagram" : "carl.k"
     "telegram": "carl_kurz"
   }, {
     "name" : "Daniel Meier",
@@ -27,6 +33,8 @@
     "email" : "cornelia@example.com",
     "address" : "10th street",
     "tagged" : [ "friends" ],
+    "facebook" : "daniel.m",
+    "instagram" : "daniel.m"
     "telegram": "daniel_meier"
   }, {
     "name" : "Elle Meyer",
@@ -34,6 +42,8 @@
     "email" : "werner@example.com",
     "address" : "michegan ave",
     "tagged" : [ ],
+    "facebook" : "elle.m",
+    "instagram" : "elle.m"
     "telegram": "elle_meyer"
   }, {
     "name" : "Fiona Kunz",
@@ -41,6 +51,8 @@
     "email" : "lydia@example.com",
     "address" : "little tokyo",
     "tagged" : [ ],
+    "facebook" : "fiona.k",
+    "instagram" : "fiona.k"
     "telegram": "fiona_kunz"
   }, {
     "name" : "George Best",
@@ -48,6 +60,8 @@
     "email" : "anna@example.com",
     "address" : "4th street",
     "tagged" : [ ],
+    "facebook" : "george.b",
+    "instagram" : "george.b"
     "telegram": "george_best"
   } ]
 }

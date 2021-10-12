@@ -3,6 +3,8 @@ package socialite.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static socialite.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static socialite.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static socialite.logic.parser.CliSyntax.PREFIX_FACEBOOK;
+import static socialite.logic.parser.CliSyntax.PREFIX_INSTAGRAM;
 import static socialite.logic.parser.CliSyntax.PREFIX_NAME;
 import static socialite.logic.parser.CliSyntax.PREFIX_PHONE;
 import static socialite.logic.parser.CliSyntax.PREFIX_TAG;
@@ -33,7 +35,8 @@ public class EditCommandParser implements Parser<EditCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(
-                        args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG, PREFIX_TELEGRAM
+                        args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG,
+                        PREFIX_FACEBOOK, PREFIX_INSTAGRAM, PREFIX_TELEGRAM
                 );
 
         Index index;
@@ -60,6 +63,14 @@ public class EditCommandParser implements Parser<EditCommand> {
             editPersonDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editPersonDescriptor::setTags);
+
+        if (argMultimap.getValue(PREFIX_INSTAGRAM).isPresent()) {
+            editPersonDescriptor.setInstagram(ParserUtil.parseInstagram(argMultimap.getValue(PREFIX_INSTAGRAM).get()));
+        }
+
+        if (argMultimap.getValue(PREFIX_FACEBOOK).isPresent()) {
+            editPersonDescriptor.setFacebook(ParserUtil.parseFacebook(argMultimap.getValue(PREFIX_FACEBOOK).get()));
+        }
 
         if (argMultimap.getValue(PREFIX_TELEGRAM).isPresent()) {
             editPersonDescriptor.setTelegram(ParserUtil.parseTelegram(argMultimap.getValue(PREFIX_TELEGRAM).get()));
