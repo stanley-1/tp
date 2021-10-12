@@ -1,6 +1,5 @@
 package socialite.logic.parser;
 
-
 import static java.util.Objects.requireNonNull;
 import static socialite.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static socialite.logic.parser.CliSyntax.PREFIX_REMARK;
@@ -36,4 +35,3 @@ public class RemarkCommandParser implements Parser<RemarkCommand> {
         return new RemarkCommand(index, new Remark(remark));
     }
 }
-
