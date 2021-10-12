@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static socialite.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static socialite.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static socialite.logic.parser.CliSyntax.PREFIX_FACEBOOK;
+import static socialite.logic.parser.CliSyntax.PREFIX_INSTAGRAM;
 import static socialite.logic.parser.CliSyntax.PREFIX_NAME;
 import static socialite.logic.parser.CliSyntax.PREFIX_PHONE;
 import static socialite.logic.parser.CliSyntax.PREFIX_TAG;
@@ -20,6 +21,7 @@ import socialite.commons.util.CollectionUtil;
 import socialite.logic.commands.exceptions.CommandException;
 import socialite.model.Model;
 import socialite.model.handle.Facebook;
+import socialite.model.handle.Instagram;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
 import socialite.model.person.Name;
@@ -43,7 +45,8 @@ public class EditCommand extends Command {
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_TAG + "TAG]... "
-            + "[" + PREFIX_FACEBOOK + "FACEBOOK]\n"
+            + "[" + PREFIX_FACEBOOK + "FACEBOOK] "
+            + "[" + PREFIX_INSTAGRAM + "INSTAGRAM]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
@@ -101,8 +104,10 @@ public class EditCommand extends Command {
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
         Facebook updatedFacebook = editPersonDescriptor.getFacebook().orElse(personToEdit.getFacebook());
+        Instagram updatedInstagram = editPersonDescriptor.getInstagram().orElse(personToEdit.getInstagram());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedFacebook);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedFacebook,
+                updatedInstagram);
     }
 
     @Override
@@ -134,6 +139,7 @@ public class EditCommand extends Command {
         private Address address;
         private Set<Tag> tags;
         private Facebook facebook;
+        private Instagram instagram;
 
         public EditPersonDescriptor() {}
 
@@ -148,13 +154,14 @@ public class EditCommand extends Command {
             setAddress(toCopy.address);
             setTags(toCopy.tags);
             setFacebook(toCopy.facebook);
+            setInstagram(toCopy.instagram);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags, facebook);
+            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags, facebook, instagram);
         }
 
         public void setName(Name name) {
@@ -206,6 +213,15 @@ public class EditCommand extends Command {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
 
+
+        public void setInstagram(Instagram instagram) {
+            this.instagram = instagram;
+        }
+
+        public Optional<Instagram> getInstagram() {
+            return Optional.ofNullable(instagram);
+        }
+
         public void setFacebook(Facebook facebook) {
             this.facebook = facebook;
         }
@@ -234,7 +250,8 @@ public class EditCommand extends Command {
                     && getEmail().equals(e.getEmail())
                     && getAddress().equals(e.getAddress())
                     && getTags().equals(e.getTags())
-                    && getFacebook().equals(e.getFacebook());
+                    && getFacebook().equals(e.getFacebook())
+                    && getInstagram().equals(e.getInstagram());
         }
     }
 }

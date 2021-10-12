@@ -7,6 +7,7 @@ import java.util.Set;
 
 import socialite.commons.util.CollectionUtil;
 import socialite.model.handle.Facebook;
+import socialite.model.handle.Instagram;
 import socialite.model.tag.Tag;
 
 /**
@@ -26,11 +27,13 @@ public class Person {
 
     // Social media handle fields
     private final Facebook facebook;
+    private final Instagram instagram;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Facebook facebook) {
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Facebook facebook,
+                  Instagram instagram) {
         CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
@@ -38,6 +41,7 @@ public class Person {
         this.address = address;
         this.tags.addAll(tags);
         this.facebook = facebook;
+        this.instagram = instagram;
     }
 
     public Name getName() {
@@ -66,6 +70,10 @@ public class Person {
 
     public Facebook getFacebook() {
         return facebook;
+    }
+
+    public Instagram getInstagram() {
+        return instagram;
     }
 
     /**
@@ -101,13 +109,14 @@ public class Person {
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getAddress().equals(getAddress())
                 && otherPerson.getTags().equals(getTags())
-                && otherPerson.getFacebook().equals(getFacebook());
+                && otherPerson.getFacebook().equals(getFacebook())
+                && otherPerson.getInstagram().equals(getInstagram());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, facebook);
+        return Objects.hash(name, phone, email, address, tags, facebook, instagram);
     }
 
     @Override
@@ -129,6 +138,10 @@ public class Person {
 
         if (getFacebook() != null) {
             builder.append("; Facebook: ").append(getFacebook());
+        }
+
+        if (getInstagram() != null) {
+            builder.append("; Instagram: ").append(getInstagram());
         }
 
         return builder.toString();

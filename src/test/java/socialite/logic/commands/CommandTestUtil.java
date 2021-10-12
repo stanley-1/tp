@@ -34,6 +34,8 @@ public class CommandTestUtil {
     public static final String VALID_TAG_FRIEND = "friend";
     public static final String VALID_FACEBOOK_AMY = "amy.facebook";
     public static final String VALID_FACEBOOK_BOB = "bob.facebook";
+    public static final String VALID_INSTAGRAM_AMY = "amy.insta";
+    public static final String VALID_INSTAGRAM_BOB = "bob.insta";
 
     public static final String NAME_DESC_AMY = " " + CliSyntax.PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + CliSyntax.PREFIX_NAME + VALID_NAME_BOB;
@@ -47,6 +49,8 @@ public class CommandTestUtil {
     public static final String TAG_DESC_HUSBAND = " " + CliSyntax.PREFIX_TAG + VALID_TAG_HUSBAND;
     public static final String FACEBOOK_DESC_AMY = " " + CliSyntax.PREFIX_FACEBOOK + VALID_FACEBOOK_AMY;
     public static final String FACEBOOK_DESC_BOB = " " + CliSyntax.PREFIX_FACEBOOK + VALID_FACEBOOK_BOB;
+    public static final String INSTAGRAM_DESC_AMY = " " + CliSyntax.PREFIX_INSTAGRAM + VALID_INSTAGRAM_AMY;
+    public static final String INSTAGRAM_DESC_BOB = " " + CliSyntax.PREFIX_INSTAGRAM + VALID_INSTAGRAM_BOB;
 
     // '&' not allowed in names
     public static final String INVALID_NAME_DESC = " " + CliSyntax.PREFIX_NAME + "James&";

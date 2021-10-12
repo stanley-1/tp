@@ -45,6 +45,10 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label facebook;
     @FXML
+    private ImageView instagramIcon;
+    @FXML
+    private Label instagram;
+    @FXML
     private FlowPane tags;
 
     /**
@@ -63,6 +67,8 @@ public class PersonCard extends UiPart<Region> {
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
         facebookIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/facebook.png")));
         facebook.setText(" @" + person.getFacebook().value);
+        instagramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/instagram.png")));
+        instagram.setText(" @" + person.getInstagram().value);
     }
 
     @Override

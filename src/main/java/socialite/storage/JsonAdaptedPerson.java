@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import socialite.commons.exceptions.IllegalValueException;
 import socialite.model.handle.Facebook;
+import socialite.model.handle.Instagram;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
 import socialite.model.person.Name;
@@ -31,6 +32,7 @@ class JsonAdaptedPerson {
     private final String address;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
     private final String facebook;
+    private final String instagram;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -38,7 +40,8 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("tagged") List<JsonAdaptedTag> tagged, @JsonProperty("facebook") String facebook) {
+            @JsonProperty("tagged") List<JsonAdaptedTag> tagged, @JsonProperty("facebook") String facebook,
+            @JsonProperty("instagram") String instagram) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -47,6 +50,7 @@ class JsonAdaptedPerson {
             this.tagged.addAll(tagged);
         }
         this.facebook = facebook;
+        this.instagram = instagram;
     }
 
     /**
@@ -61,6 +65,7 @@ class JsonAdaptedPerson {
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
         facebook = source.getFacebook().value;
+        instagram = source.getInstagram().value;
     }
 
     /**
@@ -113,7 +118,12 @@ class JsonAdaptedPerson {
         }
         final Facebook modelFacebook = facebook != null ? new Facebook(facebook) : null;
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelFacebook);
+        if (instagram != null && !Instagram.isValidHandle(instagram)) {
+            throw new IllegalValueException(Instagram.MESSAGE_CONSTRAINTS);
+        }
+        final Instagram modelInstagram = instagram != null ? new Instagram(instagram) : null;
+
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelFacebook, modelInstagram);
     }
 
 }

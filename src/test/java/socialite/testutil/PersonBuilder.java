@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import socialite.model.handle.Facebook;
+import socialite.model.handle.Instagram;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
 import socialite.model.person.Name;
@@ -22,6 +23,7 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_FACEBOOK = "amy.bee";
+    public static final String DEFAULT_INSTAGRAM = "amy.bee";
 
     private Name name;
     private Phone phone;
@@ -29,6 +31,7 @@ public class PersonBuilder {
     private Address address;
     private Set<Tag> tags;
     private Facebook facebook;
+    private Instagram instagram;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -40,6 +43,7 @@ public class PersonBuilder {
         address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
         facebook = new Facebook(DEFAULT_FACEBOOK);
+        instagram = new Instagram(DEFAULT_INSTAGRAM);
     }
 
     /**
@@ -52,6 +56,7 @@ public class PersonBuilder {
         address = personToCopy.getAddress();
         tags = new HashSet<>(personToCopy.getTags());
         facebook = personToCopy.getFacebook();
+        instagram = personToCopy.getInstagram();
     }
 
     /**
@@ -95,6 +100,14 @@ public class PersonBuilder {
     }
 
     /**
+     * Sets the {@code Instagram} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withInstagram(String instagram) {
+        this.instagram = new Instagram(instagram);
+        return this;
+    }
+
+    /**
      * Sets the {@code Facebook} of the {@code Person} that we are building.
      */
     public PersonBuilder withFacebook(String facebook) {
@@ -103,7 +116,7 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, phone, email, address, tags, facebook);
+        return new Person(name, phone, email, address, tags, facebook, instagram);
     }
 
 }

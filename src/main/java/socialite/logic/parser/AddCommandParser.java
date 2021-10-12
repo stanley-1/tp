@@ -3,6 +3,7 @@ package socialite.logic.parser;
 import static socialite.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static socialite.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static socialite.logic.parser.CliSyntax.PREFIX_FACEBOOK;
+import static socialite.logic.parser.CliSyntax.PREFIX_INSTAGRAM;
 import static socialite.logic.parser.CliSyntax.PREFIX_NAME;
 import static socialite.logic.parser.CliSyntax.PREFIX_PHONE;
 import static socialite.logic.parser.CliSyntax.PREFIX_TAG;
@@ -14,6 +15,7 @@ import socialite.commons.core.Messages;
 import socialite.logic.commands.AddCommand;
 import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.handle.Facebook;
+import socialite.model.handle.Instagram;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
 import socialite.model.person.Name;
@@ -34,7 +36,8 @@ public class AddCommandParser implements Parser<AddCommand> {
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(
-                        args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG, PREFIX_FACEBOOK
+                        args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG, PREFIX_FACEBOOK,
+                        PREFIX_INSTAGRAM
                 );
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)
@@ -48,8 +51,9 @@ public class AddCommandParser implements Parser<AddCommand> {
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         Facebook facebook = ParserUtil.parseFacebook(argMultimap.getValue(PREFIX_FACEBOOK).get());
+        Instagram instagram = ParserUtil.parseInstagram(argMultimap.getValue(PREFIX_INSTAGRAM).get());
 
-        Person person = new Person(name, phone, email, address, tagList, facebook);
+        Person person = new Person(name, phone, email, address, tagList, facebook, instagram);
 
         return new AddCommand(person);
     }
