@@ -10,6 +10,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import socialite.commons.exceptions.IllegalValueException;
+import socialite.model.handle.Facebook;
+import socialite.model.handle.Instagram;
+import socialite.model.handle.Telegram;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
 import socialite.model.person.Name;
@@ -31,6 +34,9 @@ class JsonAdaptedPerson {
     private final String address;
     private final String remark;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
+    private final String facebook;
+    private final String instagram;
+    private final String telegram;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -38,7 +44,9 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("remark") String remark, @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
+            @JsonProperty("remark") String remark, @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
+            @JsonProperty("facebook") String facebook, @JsonProperty("instagram") String instagram,
+            @JsonProperty("telegram") String telegram) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -47,6 +55,9 @@ class JsonAdaptedPerson {
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
+        this.facebook = facebook;
+        this.instagram = instagram;
+        this.telegram = telegram;
     }
 
     /**
@@ -61,6 +72,9 @@ class JsonAdaptedPerson {
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+        facebook = source.getFacebook().value;
+        instagram = source.getInstagram().value;
+        telegram = source.getTelegram().value;
     }
 
     /**
@@ -112,7 +126,24 @@ class JsonAdaptedPerson {
         final Remark modelRemark = new Remark(remark);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelRemark, modelTags);
-    }
 
+        if (facebook != null && !Facebook.isValidHandle(facebook)) {
+            throw new IllegalValueException(Facebook.MESSAGE_CONSTRAINTS);
+        }
+        final Facebook modelFacebook = facebook != null ? new Facebook(facebook) : null;
+
+        if (instagram != null && !Instagram.isValidHandle(instagram)) {
+            throw new IllegalValueException(Instagram.MESSAGE_CONSTRAINTS);
+        }
+        final Instagram modelInstagram = instagram != null ? new Instagram(instagram) : null;
+
+        if (telegram != null && !Telegram.isValidHandle(telegram)) {
+            throw new IllegalValueException(Telegram.MESSAGE_CONSTRAINTS);
+        }
+
+        final Telegram modelTelegram = telegram != null ? new Telegram(telegram) : null;
+
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelRemark, modelTags,
+                modelFacebook, modelInstagram, modelTelegram);
+    }
 }

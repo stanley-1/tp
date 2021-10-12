@@ -3,9 +3,12 @@ package socialite.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static socialite.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static socialite.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static socialite.logic.parser.CliSyntax.PREFIX_FACEBOOK;
+import static socialite.logic.parser.CliSyntax.PREFIX_INSTAGRAM;
 import static socialite.logic.parser.CliSyntax.PREFIX_NAME;
 import static socialite.logic.parser.CliSyntax.PREFIX_PHONE;
 import static socialite.logic.parser.CliSyntax.PREFIX_TAG;
+import static socialite.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -18,6 +21,9 @@ import socialite.commons.core.index.Index;
 import socialite.commons.util.CollectionUtil;
 import socialite.logic.commands.exceptions.CommandException;
 import socialite.model.Model;
+import socialite.model.handle.Facebook;
+import socialite.model.handle.Instagram;
+import socialite.model.handle.Telegram;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
 import socialite.model.person.Name;
@@ -41,7 +47,10 @@ public class EditCommand extends Command {
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
-            + "[" + PREFIX_TAG + "TAG]...\n"
+            + "[" + PREFIX_TAG + "TAG]... "
+            + "[" + PREFIX_FACEBOOK + "FACEBOOK] "
+            + "[" + PREFIX_INSTAGRAM + "INSTAGRAM] "
+            + "[" + PREFIX_TELEGRAM + "TELEGRAM]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
@@ -99,8 +108,12 @@ public class EditCommand extends Command {
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Remark updatedRemark = personToEdit.getRemark(); //does not allow editing remarks
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        Facebook updatedFacebook = editPersonDescriptor.getFacebook().orElse(personToEdit.getFacebook());
+        Instagram updatedInstagram = editPersonDescriptor.getInstagram().orElse(personToEdit.getInstagram());
+        Telegram updatedTelegram = editPersonDescriptor.getTelegram().orElse(personToEdit.getTelegram());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedRemark, updatedTags);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedRemark, updatedTags, updatedFacebook,
+                updatedInstagram, updatedTelegram);
     }
 
     @Override
@@ -131,6 +144,9 @@ public class EditCommand extends Command {
         private Email email;
         private Address address;
         private Set<Tag> tags;
+        private Facebook facebook;
+        private Instagram instagram;
+        private Telegram telegram;
 
         public EditPersonDescriptor() {}
 
@@ -144,13 +160,16 @@ public class EditCommand extends Command {
             setEmail(toCopy.email);
             setAddress(toCopy.address);
             setTags(toCopy.tags);
+            setFacebook(toCopy.facebook);
+            setInstagram(toCopy.instagram);
+            setTelegram(toCopy.telegram);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags, facebook, instagram, telegram);
         }
 
         public void setName(Name name) {
@@ -202,6 +221,31 @@ public class EditCommand extends Command {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
 
+
+        public void setInstagram(Instagram instagram) {
+            this.instagram = instagram;
+        }
+
+        public Optional<Instagram> getInstagram() {
+            return Optional.ofNullable(instagram);
+        }
+
+        public void setFacebook(Facebook facebook) {
+            this.facebook = facebook;
+        }
+
+        public Optional<Facebook> getFacebook() {
+            return Optional.ofNullable(facebook);
+        }
+
+        public void setTelegram(Telegram telegram) {
+            this.telegram = telegram;
+        }
+
+        public Optional<Telegram> getTelegram() {
+            return Optional.ofNullable(telegram);
+        }
+
         @Override
         public boolean equals(Object other) {
             // short circuit if same object
@@ -221,7 +265,10 @@ public class EditCommand extends Command {
                     && getPhone().equals(e.getPhone())
                     && getEmail().equals(e.getEmail())
                     && getAddress().equals(e.getAddress())
-                    && getTags().equals(e.getTags());
+                    && getTags().equals(e.getTags())
+                    && getFacebook().equals(e.getFacebook())
+                    && getInstagram().equals(e.getInstagram())
+                    && getTelegram().equals(e.getTelegram());
         }
     }
 }

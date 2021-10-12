@@ -3,6 +3,9 @@ package socialite.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
+import socialite.model.handle.Facebook;
+import socialite.model.handle.Instagram;
+import socialite.model.handle.Telegram;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
 import socialite.model.person.Name;
@@ -20,7 +23,10 @@ public class PersonBuilder {
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
+    public static final String DEFAULT_FACEBOOK = "amy.bee";
+    public static final String DEFAULT_INSTAGRAM = "amy.bee";
     public static final String DEFAULT_REMARK = "She likes aardvarks.";
+    public static final String DEFAULT_TELEGRAM = "amy_bee";
 
     private Name name;
     private Phone phone;
@@ -28,6 +34,13 @@ public class PersonBuilder {
     private Address address;
     private Remark remark;
     private Set<Tag> tags;
+    private Facebook facebook;
+    private Instagram instagram;
+    private Telegram telegram;
+
+    /**
+     * Creates a {@code PersonBuilder} with the default details.
+     */
     public PersonBuilder() {
         name = new Name(DEFAULT_NAME);
         phone = new Phone(DEFAULT_PHONE);
@@ -35,6 +48,9 @@ public class PersonBuilder {
         address = new Address(DEFAULT_ADDRESS);
         remark = new Remark(DEFAULT_REMARK);
         tags = new HashSet<>();
+        facebook = new Facebook(DEFAULT_FACEBOOK);
+        instagram = new Instagram(DEFAULT_INSTAGRAM);
+        telegram = new Telegram(DEFAULT_TELEGRAM);
     }
     /**
      * Initializes the PersonBuilder with the data of {@code personToCopy}.
@@ -46,6 +62,9 @@ public class PersonBuilder {
         address = personToCopy.getAddress();
         remark = personToCopy.getRemark();
         tags = new HashSet<>(personToCopy.getTags());
+        facebook = personToCopy.getFacebook();
+        instagram = personToCopy.getInstagram();
+        telegram = personToCopy.getTelegram();
     }
     /**
      * Sets the {@code Name} of the {@code Person} that we are building.
@@ -82,6 +101,7 @@ public class PersonBuilder {
         this.email = new Email(email);
         return this;
     }
+
     /**
      * Sets the {@code Remark} of the {@code Person} that we are building.
      */
@@ -89,7 +109,32 @@ public class PersonBuilder {
         this.remark = new Remark(remark);
         return this;
     }
+
+    /**
+     * Sets the {@code Instagram} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withInstagram(String instagram) {
+        this.instagram = new Instagram(instagram);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Facebook} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withFacebook(String facebook) {
+        this.facebook = new Facebook(facebook);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Telegram} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withTelegram(String telegram) {
+        this.telegram = new Telegram(telegram);
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, email, address, remark, tags);
+        return new Person(name, phone, email, address, remark, tags, facebook, instagram, telegram);
     }
 }

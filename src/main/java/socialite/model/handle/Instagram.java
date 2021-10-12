@@ -5,31 +5,31 @@ import static java.util.Objects.requireNonNull;
 import socialite.commons.util.AppUtil;
 
 /**
- * Represents a Person's Telegram handle in SociaLite.
+ * Represents a Person's Instagram handle in SociaLite.
  * Guarantees: immutable; handle is valid as declared in {@link #isValidHandle(String)}
  */
-public class Telegram {
+public class Instagram {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Telegram handles should only contain alphanumeric characters and underscores, "
-            + "and it should be at least 5 characters long.\n"
-            + "https://telegram.org/faq#q-what-can-i-use-as-my-username";
-    public static final String VALIDATION_REGEX = "^[a-zA-Z0-9_]{5,}$";
+            "Instagram handles should only contain alphanumeric characters, periods & underscores.\n"
+            + "A handle is limited to 30 characters and can't use other punctuation marks.\n"
+            + "https://tinyurl.com/instaHandle";
+    public static final String VALIDATION_REGEX = "^[a-zA-Z0-9._]{1,30}$";
     public final String value;
 
     /**
-     * Constructs a {@code Telegram}.
+     * Constructs a {@code Instagram}.
      *
-     * @param handle A valid Telegram handle.
+     * @param handle A valid Instagram handle.
      */
-    public Telegram(String handle) {
+    public Instagram(String handle) {
         requireNonNull(handle);
         AppUtil.checkArgument(isValidHandle(handle), MESSAGE_CONSTRAINTS);
         value = handle;
     }
 
     /**
-     * Returns if a given handle is a valid Telegram handle.
+     * Returns if a given input is a valid Facebook username.
      */
     public static boolean isValidHandle(String test) {
         return test.matches(VALIDATION_REGEX);
@@ -43,8 +43,8 @@ public class Telegram {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Telegram // instanceof handles nulls
-                && value.equals(((Telegram) other).value)); // state check
+                || (other instanceof Instagram // instanceof handles nulls
+                && value.equals(((Instagram) other).value)); // state check
     }
 
     @Override
