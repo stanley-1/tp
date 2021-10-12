@@ -58,7 +58,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Instagram instagram = ParserUtil.parseInstagram(argMultimap.getValue(PREFIX_INSTAGRAM).get());
         Telegram telegram = ParserUtil.parseTelegram(argMultimap.getValue(PREFIX_TELEGRAM).get());
 
-        Person person = new Person(name, phone, email, address, remark tagList, facebook, instagram, telegram);
+        Person person = new Person(name, phone, email, address, remark, tagList, facebook, instagram, telegram);
 
         return new AddCommand(person);
     }

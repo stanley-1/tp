@@ -1,7 +1,7 @@
 package socialite.logic.commands;
 
-import static socialite.logic.parser.CliSyntax.PREFIX_REMARK;
 import static socialite.commons.util.CollectionUtil.requireAllNonNull;
+import static socialite.logic.parser.CliSyntax.PREFIX_REMARK;
 import static socialite.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.List;
@@ -9,7 +9,6 @@ import java.util.List;
 import socialite.commons.core.Messages;
 import socialite.commons.core.index.Index;
 import socialite.logic.commands.exceptions.CommandException;
-
 import socialite.model.Model;
 import socialite.model.person.Person;
 import socialite.model.person.Remark;
@@ -58,7 +57,8 @@ public class RemarkCommand extends Command {
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                personToEdit.getAddress(), remark, personToEdit.getTags());
+                personToEdit.getAddress(), remark, personToEdit.getTags(), personToEdit.getFacebook(),
+                personToEdit.getInstagram(), personToEdit.getTelegram());
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);

@@ -2,7 +2,6 @@ package socialite.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import static socialite.logic.commands.CommandTestUtil.VALID_REMARK_AMY;
 import static socialite.logic.commands.CommandTestUtil.VALID_REMARK_BOB;
 import static socialite.logic.commands.CommandTestUtil.assertCommandFailure;

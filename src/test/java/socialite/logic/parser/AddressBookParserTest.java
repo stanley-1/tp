@@ -2,7 +2,6 @@ package socialite.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import static socialite.logic.parser.CliSyntax.PREFIX_REMARK;
 import static socialite.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
@@ -11,7 +10,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
-
 
 import socialite.commons.core.Messages;
 import socialite.logic.commands.AddCommand;
@@ -23,7 +21,6 @@ import socialite.logic.commands.FindCommand;
 import socialite.logic.commands.HelpCommand;
 import socialite.logic.commands.ListCommand;
 import socialite.logic.commands.RemarkCommand;
-
 import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.person.NameContainsKeywordsPredicate;
 import socialite.model.person.Person;

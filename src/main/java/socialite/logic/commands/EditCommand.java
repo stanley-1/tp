@@ -112,8 +112,8 @@ public class EditCommand extends Command {
         Instagram updatedInstagram = editPersonDescriptor.getInstagram().orElse(personToEdit.getInstagram());
         Telegram updatedTelegram = editPersonDescriptor.getTelegram().orElse(personToEdit.getTelegram());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedRemark, updatedTags, updatedFacebook,
-                updatedInstagram, updatedTelegram);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedRemark, updatedTags,
+                updatedFacebook, updatedInstagram, updatedTelegram);
     }
 
     @Override

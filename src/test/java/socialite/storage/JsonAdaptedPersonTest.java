@@ -144,7 +144,7 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_invalidFacebook_throwsIllegalValueException() {
         JsonAdaptedPerson person = new JsonAdaptedPerson(
-                VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS,
+                VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_REMARK, VALID_TAGS,
                 INVALID_FACEBOOK, VALID_INSTAGRAM, VALID_TELEGRAM
         );
         String expectedMessage = Facebook.MESSAGE_CONSTRAINTS;
@@ -154,7 +154,7 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_invalidInstagram_throwsIllegalValueException() {
         JsonAdaptedPerson person = new JsonAdaptedPerson(
-                VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS,
+                VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_REMARK, VALID_TAGS,
                 VALID_FACEBOOK, INVALID_INSTAGRAM, VALID_TELEGRAM
         );
         String expectedMessage = Instagram.MESSAGE_CONSTRAINTS;
@@ -164,7 +164,7 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_invalidTelegram_throwsIllegalValueException() {
         JsonAdaptedPerson person = new JsonAdaptedPerson(
-                VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS,
+                VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_REMARK, VALID_TAGS,
                 VALID_FACEBOOK, VALID_INSTAGRAM, INVALID_TELEGRAM
         );
         String expectedMessage = Telegram.MESSAGE_CONSTRAINTS;
