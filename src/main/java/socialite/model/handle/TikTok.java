@@ -8,7 +8,7 @@ public class TikTok {
 
     public static final String MESSAGE_CONSTRAINTS = "Username should only consist of alphanumerical characters, \n"
             + "underscores and periods, and should not end with period";
-    public static final String VALIDATION_REGEX = "^[a-zA-Z0-9_\\.][^\\.]$";
+    public static final String VALIDATION_REGEX = "^[a-zA-Z0-9._]*[a-zA-Z0-9_]$";
     public final String value;
 
     /**
@@ -26,8 +26,7 @@ public class TikTok {
      * Checks if given tiktok handle is valid
      */
     public static boolean isValidHandle(String value) {
-//        return value.matches(VALIDATION_REGEX);
-        return true;
+        return value.matches(VALIDATION_REGEX);
     }
 
     @Override
