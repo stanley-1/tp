@@ -49,5 +49,4 @@ public class FacebookTest {
         assertTrue(Facebook.isValidHandle("Nat.321")); // start with uppercase letter
 
     }
-    
 }
