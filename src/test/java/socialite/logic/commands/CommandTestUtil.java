@@ -32,6 +32,8 @@ public class CommandTestUtil {
     public static final String VALID_ADDRESS_BOB = "Block 123, Bobby Street 3";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
+    public static final String VALID_FACEBOOK_AMY = "amy.facebook";
+    public static final String VALID_FACEBOOK_BOB = "bob.facebook";
     public static final String VALID_INSTAGRAM_AMY = "amy.insta";
     public static final String VALID_INSTAGRAM_BOB = "bob.insta";
 
@@ -45,6 +47,8 @@ public class CommandTestUtil {
     public static final String ADDRESS_DESC_BOB = " " + CliSyntax.PREFIX_ADDRESS + VALID_ADDRESS_BOB;
     public static final String TAG_DESC_FRIEND = " " + CliSyntax.PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + CliSyntax.PREFIX_TAG + VALID_TAG_HUSBAND;
+    public static final String FACEBOOK_DESC_AMY = " " + CliSyntax.PREFIX_FACEBOOK + VALID_FACEBOOK_AMY;
+    public static final String FACEBOOK_DESC_BOB = " " + CliSyntax.PREFIX_FACEBOOK + VALID_FACEBOOK_BOB;
     public static final String INSTAGRAM_DESC_AMY = " " + CliSyntax.PREFIX_INSTAGRAM + VALID_INSTAGRAM_AMY;
     public static final String INSTAGRAM_DESC_BOB = " " + CliSyntax.PREFIX_INSTAGRAM + VALID_INSTAGRAM_BOB;
 

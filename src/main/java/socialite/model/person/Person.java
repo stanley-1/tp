@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import socialite.commons.util.CollectionUtil;
+import socialite.model.handle.Facebook;
 import socialite.model.handle.Instagram;
 import socialite.model.tag.Tag;
 
@@ -25,18 +26,20 @@ public class Person {
     private final Set<Tag> tags = new HashSet<>();
 
     // Social media handle fields
+    private final Facebook facebook;
     private final Instagram instagram;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Instagram instagram) {
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Facebook facebook, Instagram instagram) {
         CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        this.facebook = facebook;
         this.instagram = instagram;
     }
 
@@ -64,6 +67,10 @@ public class Person {
         return Collections.unmodifiableSet(tags);
     }
 
+    public Facebook getFacebook() {
+        return facebook;
+    }
+  
     public Instagram getInstagram() {
         return instagram;
     }
@@ -101,13 +108,14 @@ public class Person {
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getAddress().equals(getAddress())
                 && otherPerson.getTags().equals(getTags())
+                && otherPerson.getFacebook().equals(getFacebook())
                 && otherPerson.getInstagram().equals(getInstagram());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, instagram);
+        return Objects.hash(name, phone, email, address, tags, facebook, instagram);
     }
 
     @Override
@@ -127,6 +135,9 @@ public class Person {
             tags.forEach(builder::append);
         }
 
+        if (getFacebook() != null) {
+            builder.append("; Facebook: ").append(getFacebook());
+  
         if (getInstagram() != null) {
             builder.append("; Instagram: ").append(getInstagram());
         }
