@@ -3,9 +3,12 @@ package socialite.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static socialite.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static socialite.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static socialite.logic.parser.CliSyntax.PREFIX_FACEBOOK;
+import static socialite.logic.parser.CliSyntax.PREFIX_INSTAGRAM;
 import static socialite.logic.parser.CliSyntax.PREFIX_NAME;
 import static socialite.logic.parser.CliSyntax.PREFIX_PHONE;
 import static socialite.logic.parser.CliSyntax.PREFIX_TAG;
+import static socialite.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 import static socialite.logic.parser.CliSyntax.PREFIX_TIKTOK;
 import static socialite.logic.parser.CliSyntax.PREFIX_TWITTER;
 
@@ -33,8 +36,10 @@ public class EditCommandParser implements Parser<EditCommand> {
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
-                        PREFIX_TAG, PREFIX_TIKTOK, PREFIX_TWITTER);
+                ArgumentTokenizer.tokenize(
+                        args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG,
+                        PREFIX_FACEBOOK, PREFIX_INSTAGRAM, PREFIX_TELEGRAM, PREFIX_TIKTOK, PREFIX_TWITTER
+                );
 
         Index index;
 
@@ -66,6 +71,18 @@ public class EditCommandParser implements Parser<EditCommand> {
             editPersonDescriptor.setTwitter(ParserUtil.parseTwitter(argMultimap.getValue(PREFIX_TWITTER).get()));
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editPersonDescriptor::setTags);
+
+        if (argMultimap.getValue(PREFIX_INSTAGRAM).isPresent()) {
+            editPersonDescriptor.setInstagram(ParserUtil.parseInstagram(argMultimap.getValue(PREFIX_INSTAGRAM).get()));
+        }
+
+        if (argMultimap.getValue(PREFIX_FACEBOOK).isPresent()) {
+            editPersonDescriptor.setFacebook(ParserUtil.parseFacebook(argMultimap.getValue(PREFIX_FACEBOOK).get()));
+        }
+
+        if (argMultimap.getValue(PREFIX_TELEGRAM).isPresent()) {
+            editPersonDescriptor.setTelegram(ParserUtil.parseTelegram(argMultimap.getValue(PREFIX_TELEGRAM).get()));
+        }
 
         if (!editPersonDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);

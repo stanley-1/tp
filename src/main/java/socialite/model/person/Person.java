@@ -6,6 +6,9 @@ import java.util.Objects;
 import java.util.Set;
 
 import socialite.commons.util.CollectionUtil;
+import socialite.model.handle.Facebook;
+import socialite.model.handle.Instagram;
+import socialite.model.handle.Telegram;
 import socialite.model.handle.TikTok;
 import socialite.model.handle.Twitter;
 import socialite.model.tag.Tag;
@@ -24,19 +27,28 @@ public class Person {
     // Data fields
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
+
+    // Social media handle fields
+    private final Facebook facebook;
+    private final Instagram instagram;
+    private final Telegram telegram;
     private final TikTok tiktok;
     private final Twitter twitter;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, TikTok tiktok, Twitter twitter) {
-        CollectionUtil.requireAllNonNull(name, phone, email, address, tags, tiktok, twitter);
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Facebook facebook,
+                  Instagram instagram, Telegram telegram, TikTok tiktok, Twitter twitter) {
+        CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        this.facebook = facebook;
+        this.instagram = instagram;
+        this.telegram = telegram;
         this.tiktok = tiktok;
         this.twitter = twitter;
     }
@@ -73,6 +85,18 @@ public class Person {
         return Collections.unmodifiableSet(tags);
     }
 
+    public Facebook getFacebook() {
+        return facebook;
+    }
+
+    public Instagram getInstagram() {
+        return instagram;
+    }
+
+    public Telegram getTelegram() {
+        return telegram;
+    }
+
     /**
      * Returns true if both persons have the same name.
      * This defines a weaker notion of equality between two persons.
@@ -106,6 +130,9 @@ public class Person {
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getAddress().equals(getAddress())
                 && otherPerson.getTags().equals(getTags())
+                && otherPerson.getFacebook().equals(getFacebook())
+                && otherPerson.getInstagram().equals(getInstagram())
+                && otherPerson.getTelegram().equals(getTelegram())
                 && otherPerson.getTiktok().equals(getTiktok())
                 && otherPerson.getTwitter().equals(getTwitter());
     }
@@ -113,7 +140,7 @@ public class Person {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, tiktok, twitter);
+        return Objects.hash(name, phone, email, address, tags, facebook, instagram, telegram, tiktok, twitter);
     }
 
     @Override
@@ -133,8 +160,26 @@ public class Person {
             tags.forEach(builder::append);
         }
 
-        builder.append("; TikTok: ").append(getTiktok());
-        builder.append("; Twitter: ").append(getTwitter());
+        if (getFacebook() != null) {
+            builder.append("; Facebook: ").append(getFacebook());
+        }
+
+        if (getInstagram() != null) {
+            builder.append("; Instagram: ").append(getInstagram());
+        }
+
+
+        if (getTelegram() != null) {
+            builder.append("; Telegram: ").append(getTelegram());
+        }
+
+        if (getTiktok() != null) {
+            builder.append("; TikTok: ").append(getTiktok());
+        }
+
+        if (getTwitter() != null) {
+            builder.append("; Twitter: ").append(getTwitter());
+        }
 
         return builder.toString();
     }

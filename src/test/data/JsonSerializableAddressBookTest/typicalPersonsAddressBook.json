@@ -6,6 +6,9 @@
     "email" : "alice@example.com",
     "address" : "123, Jurong West Ave 6, #08-111",
     "tagged" : [ "friends" ],
+    "facebook" : "alice.p",
+    "instagram" : "alice.p",
+    "telegram": "alice_pauline",
     "tiktok": "alice.pauline",
     "twitter": "alice_pauline"
   }, {
@@ -14,6 +17,9 @@
     "email" : "johnd@example.com",
     "address" : "311, Clementi Ave 2, #02-25",
     "tagged" : [ "owesMoney", "friends" ],
+    "facebook" : "benson.m",
+    "instagram" : "benson.m",
+    "telegram": "benson_meier",
     "tiktok": "benson.meier",
     "twitter": "bensonMeier"
   }, {
@@ -22,6 +28,9 @@
     "email" : "heinz@example.com",
     "address" : "wall street",
     "tagged" : [ ],
+    "facebook" : "carl.k",
+    "instagram" : "carl.k",
+    "telegram": "carl_kurz",
     "tiktok": "carl.kurz",
     "twitter": "carl"
   }, {
@@ -30,6 +39,9 @@
     "email" : "cornelia@example.com",
     "address" : "10th street",
     "tagged" : [ "friends" ],
+    "facebook" : "daniel.m",
+    "instagram" : "daniel.m",
+    "telegram": "daniel_meier",
     "tiktok": "daniel.meier",
     "twitter": "DanielMeier"
   }, {
@@ -38,6 +50,9 @@
     "email" : "werner@example.com",
     "address" : "michegan ave",
     "tagged" : [ ],
+    "facebook" : "elle.m",
+    "instagram" : "elle.m",
+    "telegram": "elle_meyer",
     "tiktok": "elle.meyer",
     "twitter": "elle_meyer01"
   }, {
@@ -46,6 +61,9 @@
     "email" : "lydia@example.com",
     "address" : "little tokyo",
     "tagged" : [ ],
+    "facebook" : "fiona.k",
+    "instagram" : "fiona.k",
+    "telegram": "fiona_kunz",
     "tiktok": "fiona.kunz",
     "twitter": "fiona_kunz"
   }, {
@@ -54,6 +72,9 @@
     "email" : "anna@example.com",
     "address" : "4th street",
     "tagged" : [ ],
+    "facebook" : "george.b",
+    "instagram" : "george.b",
+    "telegram": "george_best",
     "tiktok": "george.best",
     "twitter": "georgeBest"
   } ]

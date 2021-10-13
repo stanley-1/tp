@@ -10,6 +10,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import socialite.commons.exceptions.IllegalValueException;
+import socialite.model.handle.Facebook;
+import socialite.model.handle.Instagram;
+import socialite.model.handle.Telegram;
 import socialite.model.handle.TikTok;
 import socialite.model.handle.Twitter;
 import socialite.model.person.Address;
@@ -30,9 +33,12 @@ class JsonAdaptedPerson {
     private final String phone;
     private final String email;
     private final String address;
+    private final List<JsonAdaptedTag> tagged = new ArrayList<>();
+    private final String facebook;
+    private final String instagram;
+    private final String telegram;
     private final String tiktok;
     private final String twitter;
-    private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -40,7 +46,9 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("tagged") List<JsonAdaptedTag> tagged, @JsonProperty("twitter") String twitter,
+            @JsonProperty("tagged") List<JsonAdaptedTag> tagged, @JsonProperty("facebook") String facebook,
+            @JsonProperty("instagram") String instagram, @JsonProperty("telegram") String telegram,
+            @JsonProperty("twitter") String twitter,
             @JsonProperty("tiktok") String tiktok) {
         this.name = name;
         this.phone = phone;
@@ -49,6 +57,9 @@ class JsonAdaptedPerson {
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
+        this.facebook = facebook;
+        this.instagram = instagram;
+        this.telegram = telegram;
         this.tiktok = tiktok;
         this.twitter = twitter;
     }
@@ -64,6 +75,9 @@ class JsonAdaptedPerson {
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+        facebook = source.getFacebook().value;
+        instagram = source.getInstagram().value;
+        telegram = source.getTelegram().value;
         tiktok = source.getTiktok().value;
         twitter = source.getTwitter().value;
     }
@@ -112,6 +126,25 @@ class JsonAdaptedPerson {
         final Address modelAddress = new Address(address);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
+
+        if (facebook != null && !Facebook.isValidHandle(facebook)) {
+            throw new IllegalValueException(Facebook.MESSAGE_CONSTRAINTS);
+        }
+        final Facebook modelFacebook = facebook != null ? new Facebook(facebook) : null;
+
+        if (instagram != null && !Instagram.isValidHandle(instagram)) {
+            throw new IllegalValueException(Instagram.MESSAGE_CONSTRAINTS);
+        }
+        final Instagram modelInstagram = instagram != null ? new Instagram(instagram) : null;
+
+        if (telegram != null && !Telegram.isValidHandle(telegram)) {
+            throw new IllegalValueException(Telegram.MESSAGE_CONSTRAINTS);
+        }
+
+        final Telegram modelTelegram = telegram != null ? new Telegram(telegram) : null;
+
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags,
+                modelFacebook, modelInstagram, modelTelegram);
 
         if (twitter == null) {
             throw new IllegalValueException((String.format(MISSING_FIELD_MESSAGE_FORMAT,
