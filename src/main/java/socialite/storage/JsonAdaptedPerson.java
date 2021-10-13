@@ -143,9 +143,6 @@ class JsonAdaptedPerson {
 
         final Telegram modelTelegram = telegram != null ? new Telegram(telegram) : null;
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags,
-                modelFacebook, modelInstagram, modelTelegram);
-
         if (twitter == null) {
             throw new IllegalValueException((String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Twitter.class.getSimpleName())));
@@ -164,7 +161,8 @@ class JsonAdaptedPerson {
         }
         final TikTok modelTikTok = new TikTok(tiktok);
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelTikTok, modeTwitter);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelFacebook, modelInstagram,
+                modelTelegram, modelTikTok, modeTwitter);
     }
 
 }

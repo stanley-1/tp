@@ -62,8 +62,6 @@ public class PersonCard extends UiPart<Region> {
     private Label telegram;
     @FXML
     private FlowPane tags;
-    @FXML
-    private FlowPane handles;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -80,19 +78,15 @@ public class PersonCard extends UiPart<Region> {
         tiktok.setText(" @" + person.getTiktok().value + " ");
         twitterIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/twitter.png")));
         twitter.setText(" @" + person.getTwitter().value + " ");
-        handles.getChildren().add(twitterIcon);
-        handles.getChildren().add(twitter);
-        handles.getChildren().add(tiktokIcon);
-        handles.getChildren().add(tiktok);
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
         facebookIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/facebook.png")));
-        facebook.setText(" @" + person.getFacebook().value);
+        facebook.setText(" @" + person.getFacebook().value + " ");
         instagramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/instagram.png")));
-        instagram.setText(" @" + person.getInstagram().value);
+        instagram.setText(" @" + person.getInstagram().value + " ");
         telegramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/telegram.png")));
-        telegram.setText(" @" + person.getTelegram().value);
+        telegram.setText(" @" + person.getTelegram().value + " ");
     }
 
     @Override

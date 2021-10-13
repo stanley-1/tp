@@ -28,8 +28,6 @@ import java.util.List;
 import socialite.model.AddressBook;
 import socialite.model.person.Person;
 
-import static socialite.logic.commands.CommandTestUtil.*;
-
 /**
  * A utility class containing a list of {@code Person} objects to be used in tests.
  */

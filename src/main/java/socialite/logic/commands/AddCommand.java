@@ -8,9 +8,9 @@ import static socialite.logic.parser.CliSyntax.PREFIX_INSTAGRAM;
 import static socialite.logic.parser.CliSyntax.PREFIX_NAME;
 import static socialite.logic.parser.CliSyntax.PREFIX_PHONE;
 import static socialite.logic.parser.CliSyntax.PREFIX_TAG;
+import static socialite.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 import static socialite.logic.parser.CliSyntax.PREFIX_TIKTOK;
 import static socialite.logic.parser.CliSyntax.PREFIX_TWITTER;
-import static socialite.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 
 import socialite.logic.commands.exceptions.CommandException;
 import socialite.model.Model;

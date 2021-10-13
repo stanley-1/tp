@@ -7,9 +7,9 @@ import static socialite.logic.parser.CliSyntax.PREFIX_INSTAGRAM;
 import static socialite.logic.parser.CliSyntax.PREFIX_NAME;
 import static socialite.logic.parser.CliSyntax.PREFIX_PHONE;
 import static socialite.logic.parser.CliSyntax.PREFIX_TAG;
+import static socialite.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 import static socialite.logic.parser.CliSyntax.PREFIX_TIKTOK;
 import static socialite.logic.parser.CliSyntax.PREFIX_TWITTER;
-import static socialite.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 
 import java.util.Set;
 import java.util.stream.Stream;
@@ -61,7 +61,8 @@ public class AddCommandParser implements Parser<AddCommand> {
         TikTok tiktok = ParserUtil.parseTikTok(argMultimap.getValue(PREFIX_TIKTOK).get());
         Twitter twitter = ParserUtil.parseTwitter(argMultimap.getValue(PREFIX_TWITTER).get());
 
-        Person person = new Person(name, phone, email, address, tagList, facebook, instagram, telegram, tiktok, twitter);
+        Person person = new Person(name, phone, email, address, tagList, facebook,
+                instagram, telegram, tiktok, twitter);
 
         return new AddCommand(person);
     }
