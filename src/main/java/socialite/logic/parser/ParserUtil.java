@@ -16,6 +16,7 @@ import socialite.model.person.Address;
 import socialite.model.person.Email;
 import socialite.model.person.Name;
 import socialite.model.person.Phone;
+import socialite.model.person.Remark;
 import socialite.model.tag.Tag;
 
 /**
@@ -96,6 +97,18 @@ public class ParserUtil {
             throw new ParseException(Email.MESSAGE_CONSTRAINTS);
         }
         return new Email(trimmedEmail);
+    }
+
+    /**
+     * Parses a {@code String remark} into an {@code Remark}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code remark} is invalid.
+     */
+    public static Remark parseRemark(String remark) throws ParseException {
+        requireNonNull(remark);
+        String trimmedRemark = remark.trim();
+        return new Remark(trimmedRemark);
     }
 
     /**

@@ -24,6 +24,7 @@ public class Person {
 
     // Data fields
     private final Address address;
+    private final Remark remark;
     private final Set<Tag> tags = new HashSet<>();
 
     // Social media handle fields
@@ -34,13 +35,14 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Facebook facebook,
-                  Instagram instagram, Telegram telegram) {
+    public Person(Name name, Phone phone, Email email, Address address, Remark remark, Set<Tag> tags,
+                  Facebook facebook, Instagram instagram, Telegram telegram) {
         CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.remark = remark;
         this.tags.addAll(tags);
         this.facebook = facebook;
         this.instagram = instagram;
@@ -61,6 +63,10 @@ public class Person {
 
     public Address getAddress() {
         return address;
+    }
+
+    public Remark getRemark() {
+        return remark;
     }
 
     /**
@@ -115,6 +121,7 @@ public class Person {
                 && otherPerson.getPhone().equals(getPhone())
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getAddress().equals(getAddress())
+                && otherPerson.getRemark().equals(getRemark())
                 && otherPerson.getTags().equals(getTags())
                 && otherPerson.getFacebook().equals(getFacebook())
                 && otherPerson.getInstagram().equals(getInstagram())
@@ -136,7 +143,9 @@ public class Person {
                 .append("; Email: ")
                 .append(getEmail())
                 .append("; Address: ")
-                .append(getAddress());
+                .append(getAddress())
+                .append("; Remark: ")
+                .append(getRemark());
 
         Set<Tag> tags = getTags();
         if (!tags.isEmpty()) {
