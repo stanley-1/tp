@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 import socialite.commons.core.Messages;
+import socialite.logic.commands.Command;
 import socialite.logic.commands.AddCommand;
 import socialite.logic.commands.ClearCommand;
 import socialite.logic.commands.DeleteCommand;
@@ -39,7 +40,8 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_add() throws Exception {
         Person person = new PersonBuilder().build();
-        AddCommand command = (AddCommand) parser.parseCommand(PersonUtil.getAddCommand(person));
+        Command parseCommand = parser.parseCommand(PersonUtil.getAddCommand(person));
+        AddCommand command = (AddCommand) parseCommand;
         AddCommand newCommand = new AddCommand(person);
         assertEquals(newCommand, command);
     }
