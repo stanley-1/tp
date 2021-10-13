@@ -2,6 +2,8 @@ package socialite.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static socialite.logic.parser.CliSyntax.PREFIX_REMARK;
+import static socialite.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,20 +14,24 @@ import org.junit.jupiter.api.Test;
 import socialite.commons.core.Messages;
 import socialite.logic.commands.AddCommand;
 import socialite.logic.commands.ClearCommand;
+import socialite.logic.commands.Command;
 import socialite.logic.commands.DeleteCommand;
 import socialite.logic.commands.EditCommand;
 import socialite.logic.commands.ExitCommand;
 import socialite.logic.commands.FindCommand;
 import socialite.logic.commands.HelpCommand;
 import socialite.logic.commands.ListCommand;
+import socialite.logic.commands.RemarkCommand;
 import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.person.NameContainsKeywordsPredicate;
 import socialite.model.person.Person;
+import socialite.model.person.Remark;
 import socialite.testutil.Assert;
 import socialite.testutil.EditPersonDescriptorBuilder;
 import socialite.testutil.PersonBuilder;
 import socialite.testutil.PersonUtil;
 import socialite.testutil.TypicalIndexes;
+
 
 public class AddressBookParserTest {
 
@@ -34,8 +40,10 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_add() throws Exception {
         Person person = new PersonBuilder().build();
-        AddCommand command = (AddCommand) parser.parseCommand(PersonUtil.getAddCommand(person));
-        assertEquals(new AddCommand(person), command);
+        Command parseCommand = parser.parseCommand(PersonUtil.getAddCommand(person));
+        AddCommand command = (AddCommand) parseCommand;
+        AddCommand newCommand = new AddCommand(person);
+        assertEquals(newCommand, command);
     }
 
     @Test
@@ -99,4 +107,13 @@ public class AddressBookParserTest {
         Assert.assertThrows(ParseException.class, Messages.MESSAGE_UNKNOWN_COMMAND, ()
             -> parser.parseCommand("unknownCommand"));
     }
+
+    @Test
+    public void parseCommand_remark() throws Exception {
+        final Remark remark = new Remark("Some remark.");
+        RemarkCommand command = (RemarkCommand) parser.parseCommand(RemarkCommand.COMMAND_WORD + " "
+                + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_REMARK + remark.value);
+        assertEquals(new RemarkCommand(INDEX_FIRST_PERSON, remark), command);
+    }
+
 }

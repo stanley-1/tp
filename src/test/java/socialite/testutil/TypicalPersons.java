@@ -12,6 +12,8 @@ import static socialite.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static socialite.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static socialite.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static socialite.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
+import static socialite.logic.commands.CommandTestUtil.VALID_REMARK_AMY;
+import static socialite.logic.commands.CommandTestUtil.VALID_REMARK_BOB;
 import static socialite.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static socialite.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static socialite.logic.commands.CommandTestUtil.VALID_TELEGRAM_AMY;
@@ -35,12 +37,12 @@ public class TypicalPersons {
 
     public static final Person ALICE = new PersonBuilder().withName("Alice Pauline")
             .withAddress("123, Jurong West Ave 6, #08-111").withEmail("alice@example.com")
-            .withPhone("94351253").withTags("friends")
+            .withPhone("94351253").withRemark("She likes aardvarks.").withTags("friends")
             .withFacebook("alice.p").withInstagram("alice.p").withTelegram("alice_pauline")
             .withTikTok("alice.pauline").withTwitter("alice_pauline").build();
     public static final Person BENSON = new PersonBuilder().withName("Benson Meier")
-            .withAddress("311, Clementi Ave 2, #02-25")
-            .withEmail("johnd@example.com").withPhone("98765432").withTags("owesMoney", "friends")
+            .withAddress("311, Clementi Ave 2, #02-25").withEmail("johnd@example.com").withPhone("98765432")
+            .withRemark("He can't take beer!").withTags("owesMoney", "friends")
             .withFacebook("benson.m").withInstagram("benson.m").withTelegram("benson_meier")
             .withTikTok("benson.meier").withTwitter("bensonMeier").build();
     public static final Person CARL = new PersonBuilder().withName("Carl Kurz").withPhone("95352563")
@@ -74,11 +76,13 @@ public class TypicalPersons {
 
     // Manually added - Person's details found in {@code CommandTestUtil}
     public static final Person AMY = new PersonBuilder().withName(VALID_NAME_AMY).withPhone(VALID_PHONE_AMY)
-            .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY).withTags(VALID_TAG_FRIEND)
+            .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
+            .withRemark(VALID_REMARK_AMY).withTags(VALID_TAG_FRIEND)
             .withFacebook(VALID_FACEBOOK_AMY).withInstagram(VALID_INSTAGRAM_AMY)
             .withTelegram(VALID_TELEGRAM_AMY).withTikTok(VALID_TIKTOK_AMY).withTwitter(VALID_TWITTER_AMY).build();
     public static final Person BOB = new PersonBuilder().withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
-            .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
+            .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
+            .withRemark(VALID_REMARK_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
             .withFacebook(VALID_FACEBOOK_BOB).withInstagram(VALID_INSTAGRAM_BOB)
             .withTelegram(VALID_TELEGRAM_BOB).withTikTok(VALID_TIKTOK_BOB).withTwitter(VALID_TWITTER_BOB).build();
 

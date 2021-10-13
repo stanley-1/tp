@@ -62,7 +62,8 @@ public class PersonCard extends UiPart<Region> {
     private Label telegram;
     @FXML
     private FlowPane tags;
-
+    @FXML
+    private Label remark;
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
      */
@@ -74,6 +75,7 @@ public class PersonCard extends UiPart<Region> {
         phone.setText(person.getPhone().value);
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
+        remark.setText(person.getRemark().value);
         tiktokIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/tik-tok.png")));
         tiktok.setText(" @" + person.getTiktok().value + " ");
         twitterIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/twitter.png")));

@@ -20,6 +20,7 @@ import socialite.model.person.Email;
 import socialite.model.person.Name;
 import socialite.model.person.Person;
 import socialite.model.person.Phone;
+import socialite.model.person.Remark;
 import socialite.model.tag.Tag;
 
 /**
@@ -33,6 +34,7 @@ class JsonAdaptedPerson {
     private final String phone;
     private final String email;
     private final String address;
+    private final String remark;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
     private final String facebook;
     private final String instagram;
@@ -46,14 +48,15 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("tagged") List<JsonAdaptedTag> tagged, @JsonProperty("facebook") String facebook,
-            @JsonProperty("instagram") String instagram, @JsonProperty("telegram") String telegram,
-            @JsonProperty("twitter") String twitter,
+            @JsonProperty("remark") String remark, @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
+            @JsonProperty("facebook") String facebook, @JsonProperty("instagram") String instagram,
+            @JsonProperty("telegram") String telegram, @JsonProperty("twitter") String twitter,
             @JsonProperty("tiktok") String tiktok) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.remark = remark;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
@@ -72,6 +75,7 @@ class JsonAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
+        remark = source.getRemark().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -125,6 +129,11 @@ class JsonAdaptedPerson {
         }
         final Address modelAddress = new Address(address);
 
+        if (remark == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Remark.class.getSimpleName()));
+        }
+        final Remark modelRemark = new Remark(remark);
+
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
         if (facebook != null && !Facebook.isValidHandle(facebook)) {
@@ -161,8 +170,7 @@ class JsonAdaptedPerson {
         }
         final TikTok modelTikTok = new TikTok(tiktok);
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelFacebook, modelInstagram,
-                modelTelegram, modelTikTok, modeTwitter);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelRemark, modelTags, modelFacebook,
+                modelInstagram, modelTelegram, modelTikTok, modeTwitter);
     }
-
 }
