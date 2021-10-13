@@ -56,9 +56,9 @@ public class EditCommand extends Command {
             + "[" + PREFIX_TAG + "TAG]... "
             + "[" + PREFIX_FACEBOOK + "FACEBOOK] "
             + "[" + PREFIX_INSTAGRAM + "INSTAGRAM] "
-            + "[" + PREFIX_TELEGRAM + "TELEGRAM]\n"
-            + "[" + PREFIX_TWITTER + "TWITTER]"
-            + "[" + PREFIX_TIKTOK + "TIKTOK]"
+            + "[" + PREFIX_TELEGRAM + "TELEGRAM] "
+            + "[" + PREFIX_TIKTOK + "TIKTOK] "
+            + "[" + PREFIX_TWITTER + "TWITTER]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
