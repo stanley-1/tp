@@ -12,9 +12,9 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 import socialite.commons.core.Messages;
-import socialite.logic.commands.Command;
 import socialite.logic.commands.AddCommand;
 import socialite.logic.commands.ClearCommand;
+import socialite.logic.commands.Command;
 import socialite.logic.commands.DeleteCommand;
 import socialite.logic.commands.EditCommand;
 import socialite.logic.commands.ExitCommand;
