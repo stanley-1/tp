@@ -36,6 +36,8 @@ public class PersonUtil {
         sb.append(CliSyntax.PREFIX_FACEBOOK + person.getFacebook().value + " ");
         sb.append(CliSyntax.PREFIX_INSTAGRAM + person.getInstagram().value + " ");
         sb.append(CliSyntax.PREFIX_TELEGRAM + person.getTelegram().value + " ");
+        sb.append(CliSyntax.PREFIX_TIKTOK + person.getTiktok().value + " ");
+        sb.append(CliSyntax.PREFIX_TWITTER + person.getTwitter().value + " ");
         return sb.toString();
     }
 
@@ -50,6 +52,7 @@ public class PersonUtil {
         descriptor.getAddress().ifPresent(address -> sb.append(CliSyntax.PREFIX_ADDRESS)
                 .append(address.value).append(" "));
         descriptor.getRemark().ifPresent(remark -> sb.append(CliSyntax.PREFIX_REMARK).append(remark.value).append(" "));
+
         if (descriptor.getTags().isPresent()) {
             Set<Tag> tags = descriptor.getTags().get();
             if (tags.isEmpty()) {
@@ -64,6 +67,11 @@ public class PersonUtil {
                 .append(instagram.value).append(" "));
         descriptor.getTelegram().ifPresent(telegram -> sb.append(CliSyntax.PREFIX_TELEGRAM)
                 .append(telegram.value).append(" "));
+        descriptor.getTwitter().ifPresent(twitter -> sb.append(CliSyntax.PREFIX_TWITTER)
+                .append(twitter.value).append(" "));
+        descriptor.getTikTok().ifPresent(tiktok -> sb.append(CliSyntax.PREFIX_TIKTOK)
+                .append(tiktok.value).append(" "));
+
         return sb.toString();
     }
 }

@@ -6,6 +6,8 @@ import java.util.Set;
 import socialite.model.handle.Facebook;
 import socialite.model.handle.Instagram;
 import socialite.model.handle.Telegram;
+import socialite.model.handle.TikTok;
+import socialite.model.handle.Twitter;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
 import socialite.model.person.Name;
@@ -27,6 +29,8 @@ public class PersonBuilder {
     public static final String DEFAULT_INSTAGRAM = "amy.bee";
     public static final String DEFAULT_REMARK = "";
     public static final String DEFAULT_TELEGRAM = "amy_bee";
+    public static final String DEFAULT_TWITTER = "amy_bee";
+    public static final String DEFAULT_TIKTOK = "amy.bee";
 
     private Name name;
     private Phone phone;
@@ -37,6 +41,8 @@ public class PersonBuilder {
     private Facebook facebook;
     private Instagram instagram;
     private Telegram telegram;
+    private TikTok tiktok;
+    private Twitter twitter;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -51,7 +57,10 @@ public class PersonBuilder {
         facebook = new Facebook(DEFAULT_FACEBOOK);
         instagram = new Instagram(DEFAULT_INSTAGRAM);
         telegram = new Telegram(DEFAULT_TELEGRAM);
+        tiktok = new TikTok(DEFAULT_TIKTOK);
+        twitter = new Twitter(DEFAULT_TWITTER);
     }
+
     /**
      * Initializes the PersonBuilder with the data of {@code personToCopy}.
      */
@@ -65,7 +74,10 @@ public class PersonBuilder {
         facebook = personToCopy.getFacebook();
         instagram = personToCopy.getInstagram();
         telegram = personToCopy.getTelegram();
+        tiktok = personToCopy.getTiktok();
+        twitter = personToCopy.getTwitter();
     }
+
     /**
      * Sets the {@code Name} of the {@code Person} that we are building.
      */
@@ -73,6 +85,7 @@ public class PersonBuilder {
         this.name = new Name(name);
         return this;
     }
+
     /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Person} that we are building.
      */
@@ -80,6 +93,7 @@ public class PersonBuilder {
         this.tags = SampleDataUtil.getTagSet(tags);
         return this;
     }
+
     /**
      * Sets the {@code Address} of the {@code Person} that we are building.
      */
@@ -87,6 +101,7 @@ public class PersonBuilder {
         this.address = new Address(address);
         return this;
     }
+
     /**
      * Sets the {@code Phone} of the {@code Person} that we are building.
      */
@@ -94,6 +109,7 @@ public class PersonBuilder {
         this.phone = new Phone(phone);
         return this;
     }
+
     /**
      * Sets the {@code Email} of the {@code Person} that we are building.
      */
@@ -134,7 +150,24 @@ public class PersonBuilder {
         return this;
     }
 
-    public Person build() {
-        return new Person(name, phone, email, address, remark, tags, facebook, instagram, telegram);
+    /**
+     * Sets the {@code Twitter} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withTwitter(String twitter) {
+        this.twitter = new Twitter(twitter);
+        return this;
     }
+
+    /**
+     * Sets the {@code TikTok} of the {@code Person} that we are building
+     */
+    public PersonBuilder withTikTok(String tiktok) {
+        this.tiktok = new TikTok(tiktok);
+        return this;
+    }
+
+    public Person build() {
+        return new Person(name, phone, email, address, remark, tags, facebook, instagram, telegram, tiktok, twitter);
+    }
+
 }

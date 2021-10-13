@@ -41,6 +41,8 @@ public class EditPersonDescriptorBuilder {
         descriptor.setFacebook(person.getFacebook());
         descriptor.setInstagram(person.getInstagram());
         descriptor.setTelegram(person.getTelegram());
+        descriptor.setTikTok(person.getTiktok());
+        descriptor.setTwitter(person.getTwitter());
     }
 
     /**

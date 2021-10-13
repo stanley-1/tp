@@ -9,6 +9,8 @@ import static socialite.logic.parser.CliSyntax.PREFIX_NAME;
 import static socialite.logic.parser.CliSyntax.PREFIX_PHONE;
 import static socialite.logic.parser.CliSyntax.PREFIX_TAG;
 import static socialite.logic.parser.CliSyntax.PREFIX_TELEGRAM;
+import static socialite.logic.parser.CliSyntax.PREFIX_TIKTOK;
+import static socialite.logic.parser.CliSyntax.PREFIX_TWITTER;
 
 import socialite.logic.commands.exceptions.CommandException;
 import socialite.model.Model;
@@ -30,7 +32,9 @@ public class AddCommand extends Command {
             + "[" + PREFIX_TAG + "TAG]... "
             + "[" + PREFIX_FACEBOOK + "FACEBOOK] "
             + "[" + PREFIX_INSTAGRAM + "INSTAGRAM] "
-            + "[" + PREFIX_TELEGRAM + "TELEGRAM]\n"
+            + "[" + PREFIX_TELEGRAM + "TELEGRAM] "
+            + "[" + PREFIX_TIKTOK + "TIKTOK] "
+            + "[" + PREFIX_TWITTER + "TWITTER]\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
             + PREFIX_PHONE + "98765432 "
@@ -40,7 +44,9 @@ public class AddCommand extends Command {
             + PREFIX_TAG + "owesMoney "
             + PREFIX_FACEBOOK + "john.doe"
             + PREFIX_INSTAGRAM + "john.doe"
-            + PREFIX_TELEGRAM + "johndoe";
+            + PREFIX_TELEGRAM + "johndoe"
+            + PREFIX_TIKTOK + "johndoe"
+            + PREFIX_TWITTER + "johndoe";
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";

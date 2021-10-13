@@ -9,6 +9,8 @@ import socialite.commons.util.CollectionUtil;
 import socialite.model.handle.Facebook;
 import socialite.model.handle.Instagram;
 import socialite.model.handle.Telegram;
+import socialite.model.handle.TikTok;
+import socialite.model.handle.Twitter;
 import socialite.model.tag.Tag;
 
 /**
@@ -31,12 +33,14 @@ public class Person {
     private final Facebook facebook;
     private final Instagram instagram;
     private final Telegram telegram;
+    private final TikTok tiktok;
+    private final Twitter twitter;
 
     /**
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Remark remark, Set<Tag> tags,
-                  Facebook facebook, Instagram instagram, Telegram telegram) {
+                  Facebook facebook, Instagram instagram, Telegram telegram, TikTok tiktok, Twitter twitter) {
         CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
@@ -47,6 +51,8 @@ public class Person {
         this.facebook = facebook;
         this.instagram = instagram;
         this.telegram = telegram;
+        this.tiktok = tiktok;
+        this.twitter = twitter;
     }
 
     public Name getName() {
@@ -67,6 +73,14 @@ public class Person {
 
     public Remark getRemark() {
         return remark;
+    }
+
+    public Twitter getTwitter() {
+        return twitter;
+    }
+
+    public TikTok getTiktok() {
+        return tiktok;
     }
 
     /**
@@ -125,13 +139,15 @@ public class Person {
                 && otherPerson.getTags().equals(getTags())
                 && otherPerson.getFacebook().equals(getFacebook())
                 && otherPerson.getInstagram().equals(getInstagram())
-                && otherPerson.getTelegram().equals(getTelegram());
+                && otherPerson.getTelegram().equals(getTelegram())
+                && otherPerson.getTiktok().equals(getTiktok())
+                && otherPerson.getTwitter().equals(getTwitter());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, facebook, instagram, telegram);
+        return Objects.hash(name, phone, email, address, tags, facebook, instagram, telegram, tiktok, twitter);
     }
 
     @Override
@@ -164,6 +180,14 @@ public class Person {
 
         if (getTelegram() != null) {
             builder.append("; Telegram: ").append(getTelegram());
+        }
+
+        if (getTiktok() != null) {
+            builder.append("; TikTok: ").append(getTiktok());
+        }
+
+        if (getTwitter() != null) {
+            builder.append("; Twitter: ").append(getTwitter());
         }
 
         return builder.toString();

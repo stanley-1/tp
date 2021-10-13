@@ -17,5 +17,6 @@ public class CliSyntax {
     public static final Prefix PREFIX_FACEBOOK = new Prefix("fb/");
     public static final Prefix PREFIX_INSTAGRAM = new Prefix("ig/");
     public static final Prefix PREFIX_TELEGRAM = new Prefix("tele/");
-
+    public static final Prefix PREFIX_TIKTOK = new Prefix("tiktok/");
+    public static final Prefix PREFIX_TWITTER = new Prefix("twitter/");
 }

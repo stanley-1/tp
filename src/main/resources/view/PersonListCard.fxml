@@ -40,6 +40,10 @@
         <Label fx:id="instagram" styleClass="cell_small_label" text="\$instagram" />
         <ImageView fx:id="telegramIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true" />
         <Label fx:id="telegram" styleClass="cell_small_label" text="\$telegram" />
+        <ImageView fx:id="twitterIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true"/>
+        <Label fx:id="twitter" styleClass="cell_small_label" text="\$twitter" />
+        <ImageView fx:id="tiktokIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true"/>
+        <Label fx:id="tiktok" styleClass="cell_small_label" text="\$tiktok" />
       </HBox>
     </VBox>
   </GridPane>

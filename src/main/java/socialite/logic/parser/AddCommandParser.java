@@ -9,6 +9,8 @@ import static socialite.logic.parser.CliSyntax.PREFIX_PHONE;
 import static socialite.logic.parser.CliSyntax.PREFIX_REMARK;
 import static socialite.logic.parser.CliSyntax.PREFIX_TAG;
 import static socialite.logic.parser.CliSyntax.PREFIX_TELEGRAM;
+import static socialite.logic.parser.CliSyntax.PREFIX_TIKTOK;
+import static socialite.logic.parser.CliSyntax.PREFIX_TWITTER;
 
 import java.util.Set;
 import java.util.stream.Stream;
@@ -19,6 +21,8 @@ import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.handle.Facebook;
 import socialite.model.handle.Instagram;
 import socialite.model.handle.Telegram;
+import socialite.model.handle.TikTok;
+import socialite.model.handle.Twitter;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
 import socialite.model.person.Name;
@@ -41,8 +45,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(
                         args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_REMARK, PREFIX_TAG,
-                        PREFIX_FACEBOOK, PREFIX_INSTAGRAM, PREFIX_TELEGRAM
-                );
+                        PREFIX_FACEBOOK, PREFIX_INSTAGRAM, PREFIX_TELEGRAM, PREFIX_TIKTOK, PREFIX_TWITTER);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -58,8 +61,11 @@ public class AddCommandParser implements Parser<AddCommand> {
         Facebook facebook = ParserUtil.parseFacebook(argMultimap.getValue(PREFIX_FACEBOOK).get());
         Instagram instagram = ParserUtil.parseInstagram(argMultimap.getValue(PREFIX_INSTAGRAM).get());
         Telegram telegram = ParserUtil.parseTelegram(argMultimap.getValue(PREFIX_TELEGRAM).get());
+        TikTok tiktok = ParserUtil.parseTikTok(argMultimap.getValue(PREFIX_TIKTOK).get());
+        Twitter twitter = ParserUtil.parseTwitter(argMultimap.getValue(PREFIX_TWITTER).get());
 
-        Person person = new Person(name, phone, email, address, remark, tagList, facebook, instagram, telegram);
+        Person person = new Person(name, phone, email, address, remark, tagList, facebook,
+                instagram, telegram, tiktok, twitter);
 
         return new AddCommand(person);
     }

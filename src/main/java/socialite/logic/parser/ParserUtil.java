@@ -12,6 +12,8 @@ import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.handle.Facebook;
 import socialite.model.handle.Instagram;
 import socialite.model.handle.Telegram;
+import socialite.model.handle.TikTok;
+import socialite.model.handle.Twitter;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
 import socialite.model.person.Name;
@@ -181,5 +183,39 @@ public class ParserUtil {
             throw new ParseException(Telegram.MESSAGE_CONSTRAINTS);
         }
         return new Telegram(trimmedHandle);
+    }
+
+    /**
+     * Parses a {@code String twitter} into an {@code Twitter}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @param twitter twtter handle to add
+     * @return the created Twitter object
+     * @throws ParseException if the given {@code twitter} is invalid
+     */
+    public static Twitter parseTwitter(String twitter) throws ParseException {
+        requireNonNull(twitter);
+        String trimmedTwitter = twitter.trim();
+        if (!Twitter.isValidHandle(trimmedTwitter)) {
+            throw new ParseException(Twitter.MESSAGE_CONSTRAINTS);
+        }
+        return new Twitter(trimmedTwitter);
+    }
+
+    /**
+     * Parses a {@code String tiktok} into an {@code TikTok}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @param tiktok tiktok handle to add
+     * @return the created TikTok object
+     * @throws ParseException if the given {@code tiktok} is invalid
+     */
+    public static TikTok parseTikTok(String tiktok) throws ParseException {
+        requireNonNull(tiktok);
+        String trimmedTikTok = tiktok.trim();
+        if (!TikTok.isValidHandle(trimmedTikTok)) {
+            throw new ParseException(TikTok.MESSAGE_CONSTRAINTS);
+        }
+        return new TikTok(trimmedTikTok);
     }
 }

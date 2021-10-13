@@ -10,6 +10,8 @@ import static socialite.logic.parser.CliSyntax.PREFIX_PHONE;
 import static socialite.logic.parser.CliSyntax.PREFIX_REMARK;
 import static socialite.logic.parser.CliSyntax.PREFIX_TAG;
 import static socialite.logic.parser.CliSyntax.PREFIX_TELEGRAM;
+import static socialite.logic.parser.CliSyntax.PREFIX_TIKTOK;
+import static socialite.logic.parser.CliSyntax.PREFIX_TWITTER;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -37,7 +39,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(
                         args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_REMARK, PREFIX_TAG,
-                        PREFIX_FACEBOOK, PREFIX_INSTAGRAM, PREFIX_TELEGRAM
+                        PREFIX_FACEBOOK, PREFIX_INSTAGRAM, PREFIX_TELEGRAM, PREFIX_TIKTOK, PREFIX_TWITTER
                 );
 
         Index index;
@@ -67,6 +69,12 @@ public class EditCommandParser implements Parser<EditCommand> {
             editPersonDescriptor.setRemark(ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).get()));
         }
 
+        if (argMultimap.getValue(PREFIX_TIKTOK).isPresent()) {
+            editPersonDescriptor.setTikTok(ParserUtil.parseTikTok(argMultimap.getValue(PREFIX_TIKTOK).get()));
+        }
+        if (argMultimap.getValue(PREFIX_TWITTER).isPresent()) {
+            editPersonDescriptor.setTwitter(ParserUtil.parseTwitter(argMultimap.getValue(PREFIX_TWITTER).get()));
+        }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editPersonDescriptor::setTags);
 
         if (argMultimap.getValue(PREFIX_INSTAGRAM).isPresent()) {
