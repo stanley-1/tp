@@ -25,7 +25,7 @@ public class PersonBuilder {
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_FACEBOOK = "amy.bee";
     public static final String DEFAULT_INSTAGRAM = "amy.bee";
-    public static final String DEFAULT_REMARK = "She likes aardvarks.";
+    public static final String DEFAULT_REMARK = "";
     public static final String DEFAULT_TELEGRAM = "amy_bee";
 
     private Name name;
