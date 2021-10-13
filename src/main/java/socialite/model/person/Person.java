@@ -144,7 +144,7 @@ public class Person {
                 .append(getEmail())
                 .append("; Address: ")
                 .append(getAddress())
-                .append(" Remark: ")
+                .append("; Remark: ")
                 .append(getRemark());
 
         Set<Tag> tags = getTags();
