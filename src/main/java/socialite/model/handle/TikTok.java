@@ -39,9 +39,7 @@ public class TikTok {
 
     @Override
     public boolean equals(Object obj) {
-        return this == obj || (obj instanceof TikTok
-                ? value.equals(((TikTok) obj).value)
-                : false);
+        return this == obj || (obj instanceof TikTok && value.equals(((TikTok) obj).value));
     }
 
     @Override

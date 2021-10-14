@@ -1,6 +1,7 @@
 package socialite.ui;
 
 import java.util.Comparator;
+import java.util.Optional;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -76,23 +77,61 @@ public class PersonCard extends UiPart<Region> {
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
         remark.setText(person.getRemark().value);
-        if (person.getTiktok().value.isPresent() && person.getTiktok().value.get() != "") {
-            tiktok.setText(" @" + person.getTiktok().value.orElse("") + " ");
-            tiktokIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/tik-tok.png")));
-        } else {
-            tiktok.setText("");
-        }
-        twitterIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/twitter.png")));
-        twitter.setText(" @" + person.getTwitter().value + " ");
+        this.makeHandle(person.getFacebook().value, "facebook");
+        this.makeHandle(person.getInstagram().value, "instagram");
+        this.makeHandle(person.getTelegram().value, "telegram");
+        this.makeHandle(person.getTiktok().value, "tiktok");
+        this.makeHandle(person.getTwitter().value, "twitter");
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
-        facebookIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/facebook.png")));
-        facebook.setText(" @" + person.getFacebook().value + " ");
-        instagramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/instagram.png")));
-        instagram.setText(" @" + person.getInstagram().value + " ");
-        telegramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/telegram.png")));
-        telegram.setText(" @" + person.getTelegram().value + " ");
+    }
+
+    private void makeHandle(Optional<String> handleValue, String handleName) {
+        String value = handleValue.orElse(null);
+        switch (handleName) {
+            case "facebook":
+                if (value != null && !value.equals("")) {
+                    this.facebook.setText("@" + value + " ");
+                    this.facebookIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/facebook.png")));
+                } else {
+                    this.facebook.setText(null);
+                }
+                break;
+            case "instagram":
+                if (value != null && !value.equals("")) {
+                    this.instagram.setText("@" + value + " ");
+                    this.instagramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/instagram.png")));
+                } else {
+                    this.instagram.setText(null);
+                }
+                break;
+            case "telegram":
+                if (value != null && !value.equals("")) {
+                    this.telegram.setText("@" + value + " ");
+                    this.telegramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/telegram.png")));
+                } else {
+                    this.telegram.setText(null);
+                }
+                break;
+            case "tiktok":
+                if (value != null && !value.equals("")) {
+                    this.tiktok.setText("@" + value + " ");
+                    this.tiktokIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/tik-tok.png")));
+                } else {
+                    this.tiktok.setText(null);
+                }
+                break;
+            case "twitter":
+                if (value != null && !value.equals("")) {
+                    this.twitter.setText("@" + value + " ");
+                    this.twitterIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/twitter.png")));
+                } else {
+                    this.twitter.setText(null);
+                }
+                break;
+        }
+
     }
 
     @Override

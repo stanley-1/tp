@@ -79,11 +79,11 @@ class JsonAdaptedPerson {
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
-        facebook = source.getFacebook().value;
-        instagram = source.getInstagram().value;
-        telegram = source.getTelegram().value;
-        tiktok = source.getTiktok().value.orElse("");
-        twitter = source.getTwitter().value;
+        facebook = source.getFacebook().value.orElse(null);
+        instagram = source.getInstagram().value.orElse(null);
+        telegram = source.getTelegram().value.orElse(null);
+        tiktok = source.getTiktok().value.orElse(null);
+        twitter = source.getTwitter().value.orElse(null);
     }
 
     /**
@@ -136,36 +136,27 @@ class JsonAdaptedPerson {
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
-        if (facebook != null && !Facebook.isValidHandle(facebook)) {
+        if (facebook != null && !instagram.equals("") && !Facebook.isValidHandle(facebook)) {
             throw new IllegalValueException(Facebook.MESSAGE_CONSTRAINTS);
         }
         final Facebook modelFacebook = facebook != null ? new Facebook(facebook) : null;
 
-        if (instagram != null && !Instagram.isValidHandle(instagram)) {
+        if (instagram != null && !instagram.equals("") && !Instagram.isValidHandle(instagram)) {
             throw new IllegalValueException(Instagram.MESSAGE_CONSTRAINTS);
         }
         final Instagram modelInstagram = instagram != null ? new Instagram(instagram) : null;
 
-        if (telegram != null && !Telegram.isValidHandle(telegram)) {
+        if (telegram != null && !telegram.equals("") && !Telegram.isValidHandle(telegram)) {
             throw new IllegalValueException(Telegram.MESSAGE_CONSTRAINTS);
         }
-
         final Telegram modelTelegram = telegram != null ? new Telegram(telegram) : null;
 
-        if (twitter == null) {
-            throw new IllegalValueException((String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    Twitter.class.getSimpleName())));
-        }
-        if (!Twitter.isValidHandle(twitter)) {
+        if (twitter != null && !twitter.equals("") && !Twitter.isValidHandle(twitter)) {
             throw new IllegalValueException(Twitter.MESSAGE_CONSTRAINTS);
         }
         final Twitter modeTwitter = new Twitter(twitter);
 
-//        if (tiktok == null) {
-//            throw new IllegalValueException((String.format(MISSING_FIELD_MESSAGE_FORMAT,
-//                    TikTok.class.getSimpleName())));
-//        }
-        if (tiktok != "" && !TikTok.isValidHandle(tiktok)) {
+        if (tiktok != null && !tiktok.equals("") && !TikTok.isValidHandle(tiktok)) {
             throw new IllegalValueException(TikTok.MESSAGE_CONSTRAINTS);
         }
         final TikTok modelTikTok = new TikTok(tiktok);

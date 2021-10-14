@@ -70,23 +70,28 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
 
         if (argMultimap.getValue(PREFIX_TIKTOK).isPresent()) {
-            editPersonDescriptor.setTikTok(ParserUtil.parseTikTok(argMultimap.getValue(PREFIX_TIKTOK).orElse(null)));
+            editPersonDescriptor.setTikTok(ParserUtil.parseTikTok(
+                    argMultimap.getValue(PREFIX_TIKTOK).orElse(null)));
         }
         if (argMultimap.getValue(PREFIX_TWITTER).isPresent()) {
-            editPersonDescriptor.setTwitter(ParserUtil.parseTwitter(argMultimap.getValue(PREFIX_TWITTER).get()));
+            editPersonDescriptor.setTwitter(ParserUtil.parseTwitter(
+                    argMultimap.getValue(PREFIX_TWITTER).orElse(null)));
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editPersonDescriptor::setTags);
 
         if (argMultimap.getValue(PREFIX_INSTAGRAM).isPresent()) {
-            editPersonDescriptor.setInstagram(ParserUtil.parseInstagram(argMultimap.getValue(PREFIX_INSTAGRAM).get()));
+            editPersonDescriptor.setInstagram(ParserUtil.parseInstagram(
+                    argMultimap.getValue(PREFIX_INSTAGRAM).orElse(null)));
         }
 
         if (argMultimap.getValue(PREFIX_FACEBOOK).isPresent()) {
-            editPersonDescriptor.setFacebook(ParserUtil.parseFacebook(argMultimap.getValue(PREFIX_FACEBOOK).get()));
+            editPersonDescriptor.setFacebook(ParserUtil.parseFacebook(
+                    argMultimap.getValue(PREFIX_FACEBOOK).orElse(null)));
         }
 
         if (argMultimap.getValue(PREFIX_TELEGRAM).isPresent()) {
-            editPersonDescriptor.setTelegram(ParserUtil.parseTelegram(argMultimap.getValue(PREFIX_TELEGRAM).get()));
+            editPersonDescriptor.setTelegram(ParserUtil.parseTelegram(
+                    argMultimap.getValue(PREFIX_TELEGRAM).orElse(null)));
         }
 
         if (!editPersonDescriptor.isAnyFieldEdited()) {

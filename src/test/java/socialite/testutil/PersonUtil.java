@@ -33,11 +33,11 @@ public class PersonUtil {
         person.getTags().stream().forEach(
             s -> sb.append(CliSyntax.PREFIX_TAG + s.tagName + " ")
         );
-        sb.append(CliSyntax.PREFIX_FACEBOOK + person.getFacebook().value + " ");
-        sb.append(CliSyntax.PREFIX_INSTAGRAM + person.getInstagram().value + " ");
-        sb.append(CliSyntax.PREFIX_TELEGRAM + person.getTelegram().value + " ");
-        sb.append(CliSyntax.PREFIX_TIKTOK + person.getTiktok().value + " ");
-        sb.append(CliSyntax.PREFIX_TWITTER + person.getTwitter().value + " ");
+        sb.append(CliSyntax.PREFIX_FACEBOOK + person.getFacebook().value.orElse(null) + " ");
+        sb.append(CliSyntax.PREFIX_INSTAGRAM + person.getInstagram().value.orElse(null) + " ");
+        sb.append(CliSyntax.PREFIX_TELEGRAM + person.getTelegram().value.orElse(null) + " ");
+        sb.append(CliSyntax.PREFIX_TIKTOK + person.getTiktok().value.orElse(null) + " ");
+        sb.append(CliSyntax.PREFIX_TWITTER + person.getTwitter().value.orElse(null) + " ");
         return sb.toString();
     }
 
@@ -62,15 +62,15 @@ public class PersonUtil {
             }
         }
         descriptor.getFacebook().ifPresent(facebook -> sb.append(CliSyntax.PREFIX_FACEBOOK)
-                .append(facebook.value).append(" "));
+                .append(facebook.value.orElse(null)).append(" "));
         descriptor.getInstagram().ifPresent(instagram -> sb.append(CliSyntax.PREFIX_INSTAGRAM)
-                .append(instagram.value).append(" "));
+                .append(instagram.value.orElse(null)).append(" "));
         descriptor.getTelegram().ifPresent(telegram -> sb.append(CliSyntax.PREFIX_TELEGRAM)
-                .append(telegram.value).append(" "));
+                .append(telegram.value.orElse(null)).append(" "));
         descriptor.getTwitter().ifPresent(twitter -> sb.append(CliSyntax.PREFIX_TWITTER)
-                .append(twitter.value).append(" "));
+                .append(twitter.value.orElse(null)).append(" "));
         descriptor.getTikTok().ifPresent(tiktok -> sb.append(CliSyntax.PREFIX_TIKTOK)
-                .append(tiktok.value).append(" "));
+                .append(tiktok.value.orElse(null)).append(" "));
 
         return sb.toString();
     }

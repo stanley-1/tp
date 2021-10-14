@@ -1,7 +1,6 @@
 package socialite.model.handle;
 
-import static java.util.Objects.requireNonNull;
-
+import java.util.Optional;
 import socialite.commons.util.AppUtil;
 
 /**
@@ -15,7 +14,7 @@ public class Telegram {
             + "and it should be at least 5 characters long.\n"
             + "https://telegram.org/faq#q-what-can-i-use-as-my-username";
     public static final String VALIDATION_REGEX = "^[a-zA-Z0-9_]{5,}$";
-    public final String value;
+    public final Optional<String> value;
 
     /**
      * Constructs a {@code Telegram}.
@@ -23,9 +22,10 @@ public class Telegram {
      * @param handle A valid Telegram handle.
      */
     public Telegram(String handle) {
-        requireNonNull(handle);
-        AppUtil.checkArgument(isValidHandle(handle), MESSAGE_CONSTRAINTS);
-        value = handle;
+        if (handle != null && !handle.equals("")) {
+            AppUtil.checkArgument(isValidHandle(handle), MESSAGE_CONSTRAINTS);
+        }
+        value = Optional.ofNullable(handle);
     }
 
     /**
@@ -37,7 +37,7 @@ public class Telegram {
 
     @Override
     public String toString() {
-        return value;
+        return value.orElse("");
     }
 
     @Override

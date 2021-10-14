@@ -1,7 +1,6 @@
 package socialite.model.handle;
 
-import static java.util.Objects.requireNonNull;
-
+import java.util.Optional;
 import socialite.commons.util.AppUtil;
 
 /**
@@ -15,7 +14,7 @@ public class Instagram {
             + "A handle is limited to 30 characters and can't use other punctuation marks.\n"
             + "https://tinyurl.com/instaHandle";
     public static final String VALIDATION_REGEX = "^[a-zA-Z0-9._]{1,30}$";
-    public final String value;
+    public final Optional<String> value;
 
     /**
      * Constructs a {@code Instagram}.
@@ -23,9 +22,10 @@ public class Instagram {
      * @param handle A valid Instagram handle.
      */
     public Instagram(String handle) {
-        requireNonNull(handle);
-        AppUtil.checkArgument(isValidHandle(handle), MESSAGE_CONSTRAINTS);
-        value = handle;
+        if (handle != null && !handle.equals("")) {
+            AppUtil.checkArgument(isValidHandle(handle), MESSAGE_CONSTRAINTS);
+        }
+        value = Optional.ofNullable(handle);
     }
 
     /**
@@ -37,7 +37,7 @@ public class Instagram {
 
     @Override
     public String toString() {
-        return value;
+        return value.orElse("");
     }
 
     @Override
