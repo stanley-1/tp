@@ -10,17 +10,6 @@ import socialite.testutil.Assert;
 public class FacebookTest {
 
     @Test
-    public void constructor_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> new Facebook(null));
-    }
-
-    @Test
-    public void constructor_invalidFacebook_throwsIllegalArgumentException() {
-        String invalidFacebook = "";
-        Assert.assertThrows(IllegalArgumentException.class, () -> new Facebook(invalidFacebook));
-    }
-
-    @Test
     public void isValidHandle() {
         // null Facebook username
         Assert.assertThrows(NullPointerException.class, () -> Facebook.isValidHandle(null));

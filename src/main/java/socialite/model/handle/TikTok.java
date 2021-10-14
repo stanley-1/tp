@@ -18,8 +18,7 @@ public class TikTok {
      * @param value TikTok handle
      */
     public TikTok(String value) {
-//        requireNonNull(value);
-        if (value != null && !value.equals("") ) {
+        if (value != null && !value.equals("")) {
             AppUtil.checkArgument(isValidHandle(value), MESSAGE_CONSTRAINTS);
         }
         this.value = Optional.ofNullable(value);

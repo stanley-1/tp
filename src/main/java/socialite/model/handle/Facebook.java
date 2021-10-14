@@ -1,6 +1,7 @@
 package socialite.model.handle;
 
 import java.util.Optional;
+
 import socialite.commons.util.AppUtil;
 
 /**

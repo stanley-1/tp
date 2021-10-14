@@ -90,51 +90,52 @@ public class PersonCard extends UiPart<Region> {
     private void makeHandle(Optional<String> handleValue, String handleName) {
         String value = handleValue.orElse(null);
         switch (handleName) {
-            case "facebook":
-                if (value != null && !value.equals("")) {
-                    this.facebook.setText("@" + value + " ");
-                    this.facebookIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/facebook.png")));
-                } else {
-                    this.facebook.setText(null);
-                    this.facebookIcon.setFitWidth(0);
-                }
-                break;
-            case "instagram":
-                if (value != null && !value.equals("")) {
-                    this.instagram.setText("@" + value + " ");
-                    this.instagramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/instagram.png")));
-                } else {
-                    this.instagram.setText(null);
-                    this.instagramIcon.setFitWidth(0);
-                }
-                break;
-            case "telegram":
-                if (value != null && !value.equals("")) {
-                    this.telegram.setText("@" + value + " ");
-                    this.telegramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/telegram.png")));
-                } else {
-                    this.telegram.setText(null);
-                    this.telegramIcon.setFitWidth(0);
-                }
-                break;
-            case "tiktok":
-                if (value != null && !value.equals("")) {
-                    this.tiktok.setText("@" + value + " ");
-                    this.tiktokIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/tik-tok.png")));
-                } else {
-                    this.tiktok.setText(null);
-                    this.tiktokIcon.setFitWidth(0);
-                }
-                break;
-            case "twitter":
-                if (value != null && !value.equals("")) {
-                    this.twitter.setText("@" + value + " ");
-                    this.twitterIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/twitter.png")));
-                } else {
-                    this.twitter.setText(null);
-                    this.twitterIcon.setFitWidth(0);
-                }
-                break;
+        case "facebook":
+            if (value != null && !value.equals("")) {
+                this.facebook.setText("@" + value + " ");
+                this.facebookIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/facebook.png")));
+            } else {
+                this.facebook.setText(null);
+                this.facebookIcon.setFitWidth(0);
+            }
+            break;
+        case "instagram":
+            if (value != null && !value.equals("")) {
+                this.instagram.setText("@" + value + " ");
+                this.instagramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/instagram.png")));
+            } else {
+                this.instagram.setText(null);
+                this.instagramIcon.setFitWidth(0);
+            }
+            break;
+        case "telegram":
+            if (value != null && !value.equals("")) {
+                this.telegram.setText("@" + value + " ");
+                this.telegramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/telegram.png")));
+            } else {
+                this.telegram.setText(null);
+                this.telegramIcon.setFitWidth(0);
+            }
+            break;
+        case "tiktok":
+            if (value != null && !value.equals("")) {
+                this.tiktok.setText("@" + value + " ");
+                this.tiktokIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/tik-tok.png")));
+            } else {
+                this.tiktok.setText(null);
+                this.tiktokIcon.setFitWidth(0);
+            }
+            break;
+        case "twitter":
+            if (value != null && !value.equals("")) {
+                this.twitter.setText("@" + value + " ");
+                this.twitterIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/twitter.png")));
+            } else {
+                this.twitter.setText(null);
+                this.twitterIcon.setFitWidth(0);
+            }
+            break;
+        default:
         }
 
     }
