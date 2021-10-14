@@ -39,22 +39,22 @@ public class TypicalPersons {
             .withAddress("123, Jurong West Ave 6, #08-111").withEmail("alice@example.com")
             .withPhone("94351253").withRemark("She likes aardvarks.").withTags("friends")
             .withFacebook("alice.p").withInstagram("alice.p").withTelegram("alice_pauline")
-            .withTikTok("alice.pauline").withTwitter("alice_pauline").build();
+            .withTikTok("alice.pauline").withTwitter(null).build();
     public static final Person BENSON = new PersonBuilder().withName("Benson Meier")
             .withAddress("311, Clementi Ave 2, #02-25").withEmail("johnd@example.com").withPhone("98765432")
             .withRemark("He can't take beer!").withTags("owesMoney", "friends")
             .withFacebook("benson.m").withInstagram("benson.m").withTelegram("benson_meier")
-            .withTikTok("benson.meier").withTwitter("bensonMeier").build();
+            .withTikTok(null).withTwitter("bensonMeier").build();
     public static final Person CARL = new PersonBuilder().withName("Carl Kurz").withPhone("95352563")
             .withEmail("heinz@example.com").withAddress("wall street").withFacebook("carl.k")
-            .withInstagram("carl.k").withTelegram("carl_kurz")
+            .withInstagram("carl.k").withTelegram(null)
             .withTikTok("carl.kurz").withTwitter("carl").build();
     public static final Person DANIEL = new PersonBuilder().withName("Daniel Meier").withPhone("87652533")
             .withEmail("cornelia@example.com").withAddress("10th street").withTags("friends")
-            .withFacebook("daniel.m").withInstagram("daniel.m").withTelegram("daniel_meier")
+            .withFacebook("daniel.m").withInstagram(null).withTelegram("daniel_meier")
             .withTikTok("daniel.meier").withTwitter("DanielMeier").build();
     public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withPhone("9482224")
-            .withEmail("werner@example.com").withAddress("michegan ave").withFacebook("elle.m")
+            .withEmail("werner@example.com").withAddress("michegan ave").withFacebook(null)
             .withInstagram("elle.m").withTelegram("elle_meyer").withTikTok("elle.meyer")
             .withTwitter("elle_meyer01").build();
     public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz").withPhone("9482427")

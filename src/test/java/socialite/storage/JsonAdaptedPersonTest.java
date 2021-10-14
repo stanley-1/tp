@@ -11,6 +11,8 @@ import socialite.commons.exceptions.IllegalValueException;
 import socialite.model.handle.Facebook;
 import socialite.model.handle.Instagram;
 import socialite.model.handle.Telegram;
+import socialite.model.handle.TikTok;
+import socialite.model.handle.Twitter;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
 import socialite.model.person.Name;
@@ -27,6 +29,8 @@ public class JsonAdaptedPersonTest {
     private static final String INVALID_FACEBOOK = "cannot_have_underscore";
     private static final String INVALID_INSTAGRAM = "cannot_be_longer_than_30_characters";
     private static final String INVALID_TELEGRAM = "cannot.have.dot";
+    private static final String INVALID_TIKTOK = "weird@name$.";
+    private static final String INVALID_TWITTER = "toolongand.havedoasdft";
 
     private static final String VALID_NAME = TypicalPersons.BENSON.getName().toString();
     private static final String VALID_PHONE = TypicalPersons.BENSON.getPhone().toString();
@@ -170,6 +174,26 @@ public class JsonAdaptedPersonTest {
                 VALID_FACEBOOK, VALID_INSTAGRAM, INVALID_TELEGRAM, VALID_TIKTOK, VALID_TWITTER
         );
         String expectedMessage = Telegram.MESSAGE_CONSTRAINTS;
+        Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+    }
+
+    @Test
+    public void toModelType_invalidTiktok_throwsIllegalValueException() {
+        JsonAdaptedPerson person = new JsonAdaptedPerson(
+                VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_REMARK, VALID_TAGS,
+                VALID_FACEBOOK, VALID_INSTAGRAM, VALID_TELEGRAM, INVALID_TIKTOK, VALID_TWITTER
+        );
+        String expectedMessage = TikTok.MESSAGE_CONSTRAINTS;
+        Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+    }
+
+    @Test
+    public void toModelType_invalidTwitter_throwsIllegalValueException() {
+        JsonAdaptedPerson person = new JsonAdaptedPerson(
+                VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_REMARK, VALID_TAGS,
+                VALID_FACEBOOK, VALID_INSTAGRAM, VALID_TELEGRAM, VALID_TIKTOK, INVALID_TWITTER
+        );
+        String expectedMessage = Twitter.MESSAGE_CONSTRAINTS;
         Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
 }

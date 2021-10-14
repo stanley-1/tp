@@ -50,8 +50,8 @@ class JsonAdaptedPerson {
             @JsonProperty("email") String email, @JsonProperty("address") String address,
             @JsonProperty("remark") String remark, @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
             @JsonProperty("facebook") String facebook, @JsonProperty("instagram") String instagram,
-            @JsonProperty("telegram") String telegram, @JsonProperty("twitter") String twitter,
-            @JsonProperty("tiktok") String tiktok) {
+            @JsonProperty("telegram") String telegram, @JsonProperty("tiktok") String tiktok,
+            @JsonProperty("twitter") String twitter) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -136,7 +136,7 @@ class JsonAdaptedPerson {
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
-        if (facebook != null && !instagram.equals("") && !Facebook.isValidHandle(facebook)) {
+        if (facebook != null && !facebook.equals("") && !Facebook.isValidHandle(facebook)) {
             throw new IllegalValueException(Facebook.MESSAGE_CONSTRAINTS);
         }
         final Facebook modelFacebook = new Facebook(facebook);
