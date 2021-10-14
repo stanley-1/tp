@@ -96,6 +96,7 @@ public class PersonCard extends UiPart<Region> {
                     this.facebookIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/facebook.png")));
                 } else {
                     this.facebook.setText(null);
+                    this.facebookIcon.setFitWidth(0);
                 }
                 break;
             case "instagram":
@@ -104,6 +105,7 @@ public class PersonCard extends UiPart<Region> {
                     this.instagramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/instagram.png")));
                 } else {
                     this.instagram.setText(null);
+                    this.instagramIcon.setFitWidth(0);
                 }
                 break;
             case "telegram":
@@ -112,6 +114,7 @@ public class PersonCard extends UiPart<Region> {
                     this.telegramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/telegram.png")));
                 } else {
                     this.telegram.setText(null);
+                    this.telegramIcon.setFitWidth(0);
                 }
                 break;
             case "tiktok":
@@ -120,6 +123,7 @@ public class PersonCard extends UiPart<Region> {
                     this.tiktokIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/tik-tok.png")));
                 } else {
                     this.tiktok.setText(null);
+                    this.tiktokIcon.setFitWidth(0);
                 }
                 break;
             case "twitter":
@@ -128,6 +132,7 @@ public class PersonCard extends UiPart<Region> {
                     this.twitterIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/twitter.png")));
                 } else {
                     this.twitter.setText(null);
+                    this.twitterIcon.setFitWidth(0);
                 }
                 break;
         }

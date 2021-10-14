@@ -139,17 +139,17 @@ class JsonAdaptedPerson {
         if (facebook != null && !instagram.equals("") && !Facebook.isValidHandle(facebook)) {
             throw new IllegalValueException(Facebook.MESSAGE_CONSTRAINTS);
         }
-        final Facebook modelFacebook = facebook != null ? new Facebook(facebook) : null;
+        final Facebook modelFacebook = new Facebook(facebook);
 
         if (instagram != null && !instagram.equals("") && !Instagram.isValidHandle(instagram)) {
             throw new IllegalValueException(Instagram.MESSAGE_CONSTRAINTS);
         }
-        final Instagram modelInstagram = instagram != null ? new Instagram(instagram) : null;
+        final Instagram modelInstagram = new Instagram(instagram);
 
         if (telegram != null && !telegram.equals("") && !Telegram.isValidHandle(telegram)) {
             throw new IllegalValueException(Telegram.MESSAGE_CONSTRAINTS);
         }
-        final Telegram modelTelegram = telegram != null ? new Telegram(telegram) : null;
+        final Telegram modelTelegram = new Telegram(telegram);
 
         if (twitter != null && !twitter.equals("") && !Twitter.isValidHandle(twitter)) {
             throw new IllegalValueException(Twitter.MESSAGE_CONSTRAINTS);
