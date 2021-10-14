@@ -76,8 +76,12 @@ public class PersonCard extends UiPart<Region> {
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
         remark.setText(person.getRemark().value);
-        tiktokIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/tik-tok.png")));
-        tiktok.setText(" @" + person.getTiktok().value + " ");
+        if (person.getTiktok().value.isPresent() && person.getTiktok().value.get() != "") {
+            tiktok.setText(" @" + person.getTiktok().value.orElse("") + " ");
+            tiktokIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/tik-tok.png")));
+        } else {
+            tiktok.setText("");
+        }
         twitterIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/twitter.png")));
         twitter.setText(" @" + person.getTwitter().value + " ");
         person.getTags().stream()

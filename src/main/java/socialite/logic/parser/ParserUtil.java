@@ -211,7 +211,10 @@ public class ParserUtil {
      * @throws ParseException if the given {@code tiktok} is invalid
      */
     public static TikTok parseTikTok(String tiktok) throws ParseException {
-        requireNonNull(tiktok);
+//        requireNonNull(tiktok);
+        if (tiktok == null) {
+            return new TikTok(null);
+        }
         String trimmedTikTok = tiktok.trim();
         if (!TikTok.isValidHandle(trimmedTikTok)) {
             throw new ParseException(TikTok.MESSAGE_CONSTRAINTS);

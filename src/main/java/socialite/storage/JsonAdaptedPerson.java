@@ -82,7 +82,7 @@ class JsonAdaptedPerson {
         facebook = source.getFacebook().value;
         instagram = source.getInstagram().value;
         telegram = source.getTelegram().value;
-        tiktok = source.getTiktok().value;
+        tiktok = source.getTiktok().value.orElse("");
         twitter = source.getTwitter().value;
     }
 
@@ -161,11 +161,11 @@ class JsonAdaptedPerson {
         }
         final Twitter modeTwitter = new Twitter(twitter);
 
-        if (tiktok == null) {
-            throw new IllegalValueException((String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    TikTok.class.getSimpleName())));
-        }
-        if (!TikTok.isValidHandle(tiktok)) {
+//        if (tiktok == null) {
+//            throw new IllegalValueException((String.format(MISSING_FIELD_MESSAGE_FORMAT,
+//                    TikTok.class.getSimpleName())));
+//        }
+        if (tiktok != "" && !TikTok.isValidHandle(tiktok)) {
             throw new IllegalValueException(TikTok.MESSAGE_CONSTRAINTS);
         }
         final TikTok modelTikTok = new TikTok(tiktok);

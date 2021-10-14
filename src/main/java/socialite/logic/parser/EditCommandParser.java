@@ -70,7 +70,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
 
         if (argMultimap.getValue(PREFIX_TIKTOK).isPresent()) {
-            editPersonDescriptor.setTikTok(ParserUtil.parseTikTok(argMultimap.getValue(PREFIX_TIKTOK).get()));
+            editPersonDescriptor.setTikTok(ParserUtil.parseTikTok(argMultimap.getValue(PREFIX_TIKTOK).orElse(null)));
         }
         if (argMultimap.getValue(PREFIX_TWITTER).isPresent()) {
             editPersonDescriptor.setTwitter(ParserUtil.parseTwitter(argMultimap.getValue(PREFIX_TWITTER).get()));
