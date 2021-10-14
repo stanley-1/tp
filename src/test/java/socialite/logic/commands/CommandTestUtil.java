@@ -26,15 +26,39 @@ public class CommandTestUtil {
     public static final String VALID_NAME_BOB = "Bob Choo";
     public static final String VALID_PHONE_AMY = "11111111";
     public static final String VALID_PHONE_BOB = "22222222";
+    public static final String VALID_REMARK_AMY = "Like skiing.";
+    public static final String VALID_REMARK_BOB = "Favourite pastime: Eating";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
+    public static final String VALID_FACEBOOK_AMY = "amy.facebook";
+    public static final String VALID_FACEBOOK_BOB = "bob.facebook";
+    public static final String VALID_INSTAGRAM_AMY = "amy.insta";
+    public static final String VALID_INSTAGRAM_BOB = "bob.insta";
+    public static final String VALID_TELEGRAM_AMY = "amy_telegram";
+    public static final String VALID_TELEGRAM_BOB = "bob_telegram";
+    public static final String VALID_TIKTOK_AMY = "amy.bee";
+    public static final String VALID_TIKTOK_BOB = "bob.choo";
+    public static final String VALID_TWITTER_AMY = "amy_bee";
+    public static final String VALID_TWITTER_BOB = "bob_chOo99";
 
     public static final String NAME_DESC_AMY = " " + CliSyntax.PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + CliSyntax.PREFIX_NAME + VALID_NAME_BOB;
     public static final String PHONE_DESC_AMY = " " + CliSyntax.PREFIX_PHONE + VALID_PHONE_AMY;
     public static final String PHONE_DESC_BOB = " " + CliSyntax.PREFIX_PHONE + VALID_PHONE_BOB;
+    public static final String REMARK_DESC_AMY = " " + CliSyntax.PREFIX_REMARK + VALID_REMARK_AMY;
+    public static final String REMARK_DESC_BOB = " " + CliSyntax.PREFIX_REMARK + VALID_REMARK_BOB;
     public static final String TAG_DESC_FRIEND = " " + CliSyntax.PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + CliSyntax.PREFIX_TAG + VALID_TAG_HUSBAND;
+    public static final String FACEBOOK_DESC_AMY = " " + CliSyntax.PREFIX_FACEBOOK + VALID_FACEBOOK_AMY;
+    public static final String FACEBOOK_DESC_BOB = " " + CliSyntax.PREFIX_FACEBOOK + VALID_FACEBOOK_BOB;
+    public static final String INSTAGRAM_DESC_AMY = " " + CliSyntax.PREFIX_INSTAGRAM + VALID_INSTAGRAM_AMY;
+    public static final String INSTAGRAM_DESC_BOB = " " + CliSyntax.PREFIX_INSTAGRAM + VALID_INSTAGRAM_BOB;
+    public static final String TELEGRAM_DESC_AMY = " " + CliSyntax.PREFIX_TELEGRAM + VALID_TELEGRAM_AMY;
+    public static final String TELEGRAM_DESC_BOB = " " + CliSyntax.PREFIX_TELEGRAM + VALID_TELEGRAM_BOB;
+    public static final String TIKTOK_DESC_AMY = " " + CliSyntax.PREFIX_TIKTOK + VALID_TIKTOK_AMY;
+    public static final String TIKTOK_DESC_BOB = " " + CliSyntax.PREFIX_TIKTOK + VALID_TIKTOK_BOB;
+    public static final String TWITTER_DESC_AMY = " " + CliSyntax.PREFIX_TWITTER + VALID_TWITTER_AMY;
+    public static final String TWITTER_DESC_BOB = " " + CliSyntax.PREFIX_TWITTER + VALID_TWITTER_BOB;
 
     // '&' not allowed in names
     public static final String INVALID_NAME_DESC = " " + CliSyntax.PREFIX_NAME + "James&";

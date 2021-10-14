@@ -6,6 +6,11 @@ import java.util.Objects;
 import java.util.Set;
 
 import socialite.commons.util.CollectionUtil;
+import socialite.model.handle.Facebook;
+import socialite.model.handle.Instagram;
+import socialite.model.handle.Telegram;
+import socialite.model.handle.TikTok;
+import socialite.model.handle.Twitter;
 import socialite.model.tag.Tag;
 
 /**
@@ -19,16 +24,31 @@ public class Person {
     private final Phone phone;
 
     // Data fields
+    private final Remark remark;
     private final Set<Tag> tags = new HashSet<>();
+
+    // Social media handle fields
+    private final Facebook facebook;
+    private final Instagram instagram;
+    private final Telegram telegram;
+    private final TikTok tiktok;
+    private final Twitter twitter;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Set<Tag> tags) {
+    public Person(Name name, Phone phone, Remark remark, Set<Tag> tags,
+                  Facebook facebook, Instagram instagram, Telegram telegram, TikTok tiktok, Twitter twitter) {
         CollectionUtil.requireAllNonNull(name, phone, tags);
         this.name = name;
         this.phone = phone;
+        this.remark = remark;
         this.tags.addAll(tags);
+        this.facebook = facebook;
+        this.instagram = instagram;
+        this.telegram = telegram;
+        this.tiktok = tiktok;
+        this.twitter = twitter;
     }
 
     public Name getName() {
@@ -39,12 +59,36 @@ public class Person {
         return phone;
     }
 
+    public Remark getRemark() {
+        return remark;
+    }
+
+    public Twitter getTwitter() {
+        return twitter;
+    }
+
+    public TikTok getTiktok() {
+        return tiktok;
+    }
+
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
+    }
+
+    public Facebook getFacebook() {
+        return facebook;
+    }
+
+    public Instagram getInstagram() {
+        return instagram;
+    }
+
+    public Telegram getTelegram() {
+        return telegram;
     }
 
     /**
@@ -77,13 +121,19 @@ public class Person {
         Person otherPerson = (Person) other;
         return otherPerson.getName().equals(getName())
                 && otherPerson.getPhone().equals(getPhone())
-                && otherPerson.getTags().equals(getTags());
+                && otherPerson.getRemark().equals(getRemark())
+                && otherPerson.getTags().equals(getTags())
+                && otherPerson.getFacebook().equals(getFacebook())
+                && otherPerson.getInstagram().equals(getInstagram())
+                && otherPerson.getTelegram().equals(getTelegram())
+                && otherPerson.getTiktok().equals(getTiktok())
+                && otherPerson.getTwitter().equals(getTwitter());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, tags);
+        return Objects.hash(name, phone, tags, facebook, instagram, telegram, tiktok, twitter);
     }
 
     @Override
@@ -91,13 +141,37 @@ public class Person {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
                 .append("; Phone: ")
-                .append(getPhone());
+                .append(getPhone())
+                .append("; Remark: ")
+                .append(getRemark());
 
         Set<Tag> tags = getTags();
         if (!tags.isEmpty()) {
             builder.append("; Tags: ");
             tags.forEach(builder::append);
         }
+
+        if (getFacebook() != null) {
+            builder.append("; Facebook: ").append(getFacebook());
+        }
+
+        if (getInstagram() != null) {
+            builder.append("; Instagram: ").append(getInstagram());
+        }
+
+
+        if (getTelegram() != null) {
+            builder.append("; Telegram: ").append(getTelegram());
+        }
+
+        if (getTiktok() != null) {
+            builder.append("; TikTok: ").append(getTiktok());
+        }
+
+        if (getTwitter() != null) {
+            builder.append("; Twitter: ").append(getTwitter());
+        }
+
         return builder.toString();
     }
 

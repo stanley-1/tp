@@ -32,7 +32,13 @@ public class EditPersonDescriptorBuilder {
         descriptor = new EditCommand.EditPersonDescriptor();
         descriptor.setName(person.getName());
         descriptor.setPhone(person.getPhone());
+        descriptor.setRemark(person.getRemark());
         descriptor.setTags(person.getTags());
+        descriptor.setFacebook(person.getFacebook());
+        descriptor.setInstagram(person.getInstagram());
+        descriptor.setTelegram(person.getTelegram());
+        descriptor.setTikTok(person.getTiktok());
+        descriptor.setTwitter(person.getTwitter());
     }
 
     /**
