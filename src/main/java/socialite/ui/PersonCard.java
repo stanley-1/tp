@@ -39,6 +39,14 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label address;
     @FXML
+    private ImageView tiktokIcon;
+    @FXML
+    private Label tiktok;
+    @FXML
+    private ImageView twitterIcon;
+    @FXML
+    private Label twitter;
+    @FXML
     private Label email;
     @FXML
     private ImageView facebookIcon;
@@ -49,8 +57,13 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label instagram;
     @FXML
+    private ImageView telegramIcon;
+    @FXML
+    private Label telegram;
+    @FXML
     private FlowPane tags;
-
+    @FXML
+    private Label remark;
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
      */
@@ -62,13 +75,20 @@ public class PersonCard extends UiPart<Region> {
         phone.setText(person.getPhone().value);
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
+        remark.setText(person.getRemark().value);
+        tiktokIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/tik-tok.png")));
+        tiktok.setText(" @" + person.getTiktok().value + " ");
+        twitterIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/twitter.png")));
+        twitter.setText(" @" + person.getTwitter().value + " ");
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
         facebookIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/facebook.png")));
-        facebook.setText(" @" + person.getFacebook().value);
+        facebook.setText(" @" + person.getFacebook().value + " ");
         instagramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/instagram.png")));
-        instagram.setText(" @" + person.getInstagram().value);
+        instagram.setText(" @" + person.getInstagram().value + " ");
+        telegramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/telegram.png")));
+        telegram.setText(" @" + person.getTelegram().value + " ");
     }
 
     @Override

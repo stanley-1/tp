@@ -12,11 +12,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import socialite.commons.exceptions.IllegalValueException;
 import socialite.model.handle.Facebook;
 import socialite.model.handle.Instagram;
+import socialite.model.handle.Telegram;
+import socialite.model.handle.TikTok;
+import socialite.model.handle.Twitter;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
 import socialite.model.person.Name;
 import socialite.model.person.Person;
 import socialite.model.person.Phone;
+import socialite.model.person.Remark;
 import socialite.model.tag.Tag;
 
 /**
@@ -30,9 +34,13 @@ class JsonAdaptedPerson {
     private final String phone;
     private final String email;
     private final String address;
+    private final String remark;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
     private final String facebook;
     private final String instagram;
+    private final String telegram;
+    private final String tiktok;
+    private final String twitter;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -40,17 +48,23 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("tagged") List<JsonAdaptedTag> tagged, @JsonProperty("facebook") String facebook,
-            @JsonProperty("instagram") String instagram) {
+            @JsonProperty("remark") String remark, @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
+            @JsonProperty("facebook") String facebook, @JsonProperty("instagram") String instagram,
+            @JsonProperty("telegram") String telegram, @JsonProperty("twitter") String twitter,
+            @JsonProperty("tiktok") String tiktok) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.remark = remark;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
         this.facebook = facebook;
         this.instagram = instagram;
+        this.telegram = telegram;
+        this.tiktok = tiktok;
+        this.twitter = twitter;
     }
 
     /**
@@ -61,11 +75,15 @@ class JsonAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
+        remark = source.getRemark().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
         facebook = source.getFacebook().value;
         instagram = source.getInstagram().value;
+        telegram = source.getTelegram().value;
+        tiktok = source.getTiktok().value;
+        twitter = source.getTwitter().value;
     }
 
     /**
@@ -111,6 +129,11 @@ class JsonAdaptedPerson {
         }
         final Address modelAddress = new Address(address);
 
+        if (remark == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Remark.class.getSimpleName()));
+        }
+        final Remark modelRemark = new Remark(remark);
+
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
         if (facebook != null && !Facebook.isValidHandle(facebook)) {
@@ -123,7 +146,31 @@ class JsonAdaptedPerson {
         }
         final Instagram modelInstagram = instagram != null ? new Instagram(instagram) : null;
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelFacebook, modelInstagram);
-    }
+        if (telegram != null && !Telegram.isValidHandle(telegram)) {
+            throw new IllegalValueException(Telegram.MESSAGE_CONSTRAINTS);
+        }
 
+        final Telegram modelTelegram = telegram != null ? new Telegram(telegram) : null;
+
+        if (twitter == null) {
+            throw new IllegalValueException((String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Twitter.class.getSimpleName())));
+        }
+        if (!Twitter.isValidHandle(twitter)) {
+            throw new IllegalValueException(Twitter.MESSAGE_CONSTRAINTS);
+        }
+        final Twitter modeTwitter = new Twitter(twitter);
+
+        if (tiktok == null) {
+            throw new IllegalValueException((String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    TikTok.class.getSimpleName())));
+        }
+        if (!TikTok.isValidHandle(tiktok)) {
+            throw new IllegalValueException(TikTok.MESSAGE_CONSTRAINTS);
+        }
+        final TikTok modelTikTok = new TikTok(tiktok);
+
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelRemark, modelTags, modelFacebook,
+                modelInstagram, modelTelegram, modelTikTok, modeTwitter);
+    }
 }

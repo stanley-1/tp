@@ -32,11 +32,18 @@
       <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
       <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
       <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
+      <Label fx:id="remark" styleClass="cell_small_label" text="\$remark" />
       <HBox alignment="CENTER_LEFT">
         <ImageView fx:id="facebookIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true" />
         <Label fx:id="facebook" styleClass="cell_small_label" text="\$facebook" />
         <ImageView fx:id="instagramIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true" />
         <Label fx:id="instagram" styleClass="cell_small_label" text="\$instagram" />
+        <ImageView fx:id="telegramIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true" />
+        <Label fx:id="telegram" styleClass="cell_small_label" text="\$telegram" />
+        <ImageView fx:id="twitterIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true"/>
+        <Label fx:id="twitter" styleClass="cell_small_label" text="\$twitter" />
+        <ImageView fx:id="tiktokIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true"/>
+        <Label fx:id="tiktok" styleClass="cell_small_label" text="\$tiktok" />
       </HBox>
     </VBox>
   </GridPane>

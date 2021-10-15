@@ -7,7 +7,11 @@ import static socialite.logic.parser.CliSyntax.PREFIX_FACEBOOK;
 import static socialite.logic.parser.CliSyntax.PREFIX_INSTAGRAM;
 import static socialite.logic.parser.CliSyntax.PREFIX_NAME;
 import static socialite.logic.parser.CliSyntax.PREFIX_PHONE;
+import static socialite.logic.parser.CliSyntax.PREFIX_REMARK;
 import static socialite.logic.parser.CliSyntax.PREFIX_TAG;
+import static socialite.logic.parser.CliSyntax.PREFIX_TELEGRAM;
+import static socialite.logic.parser.CliSyntax.PREFIX_TIKTOK;
+import static socialite.logic.parser.CliSyntax.PREFIX_TWITTER;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -22,11 +26,15 @@ import socialite.logic.commands.exceptions.CommandException;
 import socialite.model.Model;
 import socialite.model.handle.Facebook;
 import socialite.model.handle.Instagram;
+import socialite.model.handle.Telegram;
+import socialite.model.handle.TikTok;
+import socialite.model.handle.Twitter;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
 import socialite.model.person.Name;
 import socialite.model.person.Person;
 import socialite.model.person.Phone;
+import socialite.model.person.Remark;
 import socialite.model.tag.Tag;
 
 /**
@@ -44,9 +52,13 @@ public class EditCommand extends Command {
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
+            + "[" + PREFIX_REMARK + "REMARK] "
             + "[" + PREFIX_TAG + "TAG]... "
             + "[" + PREFIX_FACEBOOK + "FACEBOOK] "
-            + "[" + PREFIX_INSTAGRAM + "INSTAGRAM]\n"
+            + "[" + PREFIX_INSTAGRAM + "INSTAGRAM] "
+            + "[" + PREFIX_TELEGRAM + "TELEGRAM] "
+            + "[" + PREFIX_TIKTOK + "TIKTOK] "
+            + "[" + PREFIX_TWITTER + "TWITTER]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
@@ -102,12 +114,16 @@ public class EditCommand extends Command {
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
+        Remark updatedRemark = editPersonDescriptor.getRemark().orElse(personToEdit.getRemark());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
         Facebook updatedFacebook = editPersonDescriptor.getFacebook().orElse(personToEdit.getFacebook());
         Instagram updatedInstagram = editPersonDescriptor.getInstagram().orElse(personToEdit.getInstagram());
+        Telegram updatedTelegram = editPersonDescriptor.getTelegram().orElse(personToEdit.getTelegram());
+        Twitter updatedTwitter = editPersonDescriptor.getTwitter().orElse(personToEdit.getTwitter());
+        TikTok updatedTikTok = editPersonDescriptor.getTikTok().orElse(personToEdit.getTiktok());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedFacebook,
-                updatedInstagram);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedRemark, updatedTags,
+                updatedFacebook, updatedInstagram, updatedTelegram, updatedTikTok, updatedTwitter);
     }
 
     @Override
@@ -137,9 +153,13 @@ public class EditCommand extends Command {
         private Phone phone;
         private Email email;
         private Address address;
+        private Remark remark;
         private Set<Tag> tags;
         private Facebook facebook;
         private Instagram instagram;
+        private Telegram telegram;
+        private TikTok tiktok;
+        private Twitter twitter;
 
         public EditPersonDescriptor() {}
 
@@ -152,16 +172,21 @@ public class EditCommand extends Command {
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
             setAddress(toCopy.address);
+            setRemark(toCopy.remark);
             setTags(toCopy.tags);
             setFacebook(toCopy.facebook);
             setInstagram(toCopy.instagram);
+            setTelegram(toCopy.telegram);
+            setTikTok(toCopy.tiktok);
+            setTwitter(toCopy.twitter);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags, facebook, instagram);
+            return CollectionUtil.isAnyNonNull(name, phone, email, address, remark,
+                    tags, facebook, instagram, telegram, tiktok, twitter);
         }
 
         public void setName(Name name) {
@@ -194,6 +219,14 @@ public class EditCommand extends Command {
 
         public Optional<Address> getAddress() {
             return Optional.ofNullable(address);
+        }
+
+        public void setRemark(Remark remark) {
+            this.remark = remark;
+        }
+
+        public Optional<Remark> getRemark() {
+            return Optional.ofNullable(remark);
         }
 
         /**
@@ -230,6 +263,30 @@ public class EditCommand extends Command {
             return Optional.ofNullable(facebook);
         }
 
+        public void setTelegram(Telegram telegram) {
+            this.telegram = telegram;
+        }
+
+        public Optional<Telegram> getTelegram() {
+            return Optional.ofNullable(telegram);
+        }
+
+        public void setTikTok(TikTok tiktok) {
+            this.tiktok = tiktok;
+        }
+
+        public Optional<TikTok> getTikTok() {
+            return Optional.ofNullable(this.tiktok);
+        }
+
+        public void setTwitter(Twitter twitter) {
+            this.twitter = twitter;
+        }
+
+        public Optional<Twitter> getTwitter() {
+            return Optional.ofNullable(this.twitter);
+        }
+
         @Override
         public boolean equals(Object other) {
             // short circuit if same object
@@ -249,9 +306,13 @@ public class EditCommand extends Command {
                     && getPhone().equals(e.getPhone())
                     && getEmail().equals(e.getEmail())
                     && getAddress().equals(e.getAddress())
+                    && getRemark().equals(e.getRemark())
                     && getTags().equals(e.getTags())
                     && getFacebook().equals(e.getFacebook())
-                    && getInstagram().equals(e.getInstagram());
+                    && getInstagram().equals(e.getInstagram())
+                    && getTelegram().equals(e.getTelegram())
+                    && getTikTok().equals(e.getTikTok())
+                    && getTwitter().equals(e.getTwitter());
         }
     }
 }

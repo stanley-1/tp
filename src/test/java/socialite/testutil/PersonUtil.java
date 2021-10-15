@@ -29,11 +29,15 @@ public class PersonUtil {
         sb.append(CliSyntax.PREFIX_PHONE + person.getPhone().value + " ");
         sb.append(CliSyntax.PREFIX_EMAIL + person.getEmail().value + " ");
         sb.append(CliSyntax.PREFIX_ADDRESS + person.getAddress().value + " ");
+        sb.append(person.getRemark().value + " ");
         person.getTags().stream().forEach(
             s -> sb.append(CliSyntax.PREFIX_TAG + s.tagName + " ")
         );
         sb.append(CliSyntax.PREFIX_FACEBOOK + person.getFacebook().value + " ");
         sb.append(CliSyntax.PREFIX_INSTAGRAM + person.getInstagram().value + " ");
+        sb.append(CliSyntax.PREFIX_TELEGRAM + person.getTelegram().value + " ");
+        sb.append(CliSyntax.PREFIX_TIKTOK + person.getTiktok().value + " ");
+        sb.append(CliSyntax.PREFIX_TWITTER + person.getTwitter().value + " ");
         return sb.toString();
     }
 
@@ -47,6 +51,8 @@ public class PersonUtil {
         descriptor.getEmail().ifPresent(email -> sb.append(CliSyntax.PREFIX_EMAIL).append(email.value).append(" "));
         descriptor.getAddress().ifPresent(address -> sb.append(CliSyntax.PREFIX_ADDRESS)
                 .append(address.value).append(" "));
+        descriptor.getRemark().ifPresent(remark -> sb.append(CliSyntax.PREFIX_REMARK).append(remark.value).append(" "));
+
         if (descriptor.getTags().isPresent()) {
             Set<Tag> tags = descriptor.getTags().get();
             if (tags.isEmpty()) {
@@ -59,6 +65,13 @@ public class PersonUtil {
                 .append(facebook.value).append(" "));
         descriptor.getInstagram().ifPresent(instagram -> sb.append(CliSyntax.PREFIX_INSTAGRAM)
                 .append(instagram.value).append(" "));
+        descriptor.getTelegram().ifPresent(telegram -> sb.append(CliSyntax.PREFIX_TELEGRAM)
+                .append(telegram.value).append(" "));
+        descriptor.getTwitter().ifPresent(twitter -> sb.append(CliSyntax.PREFIX_TWITTER)
+                .append(twitter.value).append(" "));
+        descriptor.getTikTok().ifPresent(tiktok -> sb.append(CliSyntax.PREFIX_TIKTOK)
+                .append(tiktok.value).append(" "));
+
         return sb.toString();
     }
 }

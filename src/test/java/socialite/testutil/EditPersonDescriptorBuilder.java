@@ -36,9 +36,13 @@ public class EditPersonDescriptorBuilder {
         descriptor.setPhone(person.getPhone());
         descriptor.setEmail(person.getEmail());
         descriptor.setAddress(person.getAddress());
+        descriptor.setRemark(person.getRemark());
         descriptor.setTags(person.getTags());
         descriptor.setFacebook(person.getFacebook());
         descriptor.setInstagram(person.getInstagram());
+        descriptor.setTelegram(person.getTelegram());
+        descriptor.setTikTok(person.getTiktok());
+        descriptor.setTwitter(person.getTwitter());
     }
 
     /**

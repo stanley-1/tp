@@ -5,11 +5,15 @@ import java.util.Set;
 
 import socialite.model.handle.Facebook;
 import socialite.model.handle.Instagram;
+import socialite.model.handle.Telegram;
+import socialite.model.handle.TikTok;
+import socialite.model.handle.Twitter;
 import socialite.model.person.Address;
 import socialite.model.person.Email;
 import socialite.model.person.Name;
 import socialite.model.person.Person;
 import socialite.model.person.Phone;
+import socialite.model.person.Remark;
 import socialite.model.tag.Tag;
 import socialite.model.util.SampleDataUtil;
 
@@ -17,21 +21,28 @@ import socialite.model.util.SampleDataUtil;
  * A utility class to help with building Person objects.
  */
 public class PersonBuilder {
-
     public static final String DEFAULT_NAME = "Amy Bee";
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_FACEBOOK = "amy.bee";
     public static final String DEFAULT_INSTAGRAM = "amy.bee";
+    public static final String DEFAULT_REMARK = "";
+    public static final String DEFAULT_TELEGRAM = "amy_bee";
+    public static final String DEFAULT_TWITTER = "amy_bee";
+    public static final String DEFAULT_TIKTOK = "amy.bee";
 
     private Name name;
     private Phone phone;
     private Email email;
     private Address address;
+    private Remark remark;
     private Set<Tag> tags;
     private Facebook facebook;
     private Instagram instagram;
+    private Telegram telegram;
+    private TikTok tiktok;
+    private Twitter twitter;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -41,9 +52,13 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
+        remark = new Remark(DEFAULT_REMARK);
         tags = new HashSet<>();
         facebook = new Facebook(DEFAULT_FACEBOOK);
         instagram = new Instagram(DEFAULT_INSTAGRAM);
+        telegram = new Telegram(DEFAULT_TELEGRAM);
+        tiktok = new TikTok(DEFAULT_TIKTOK);
+        twitter = new Twitter(DEFAULT_TWITTER);
     }
 
     /**
@@ -54,9 +69,13 @@ public class PersonBuilder {
         phone = personToCopy.getPhone();
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
+        remark = personToCopy.getRemark();
         tags = new HashSet<>(personToCopy.getTags());
         facebook = personToCopy.getFacebook();
         instagram = personToCopy.getInstagram();
+        telegram = personToCopy.getTelegram();
+        tiktok = personToCopy.getTiktok();
+        twitter = personToCopy.getTwitter();
     }
 
     /**
@@ -100,6 +119,14 @@ public class PersonBuilder {
     }
 
     /**
+     * Sets the {@code Remark} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withRemark(String remark) {
+        this.remark = new Remark(remark);
+        return this;
+    }
+
+    /**
      * Sets the {@code Instagram} of the {@code Person} that we are building.
      */
     public PersonBuilder withInstagram(String instagram) {
@@ -115,8 +142,32 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Telegram} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withTelegram(String telegram) {
+        this.telegram = new Telegram(telegram);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Twitter} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withTwitter(String twitter) {
+        this.twitter = new Twitter(twitter);
+        return this;
+    }
+
+    /**
+     * Sets the {@code TikTok} of the {@code Person} that we are building
+     */
+    public PersonBuilder withTikTok(String tiktok) {
+        this.tiktok = new TikTok(tiktok);
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, email, address, tags, facebook, instagram);
+        return new Person(name, phone, email, address, remark, tags, facebook, instagram, telegram, tiktok, twitter);
     }
 
 }
