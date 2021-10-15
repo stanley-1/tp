@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import socialite.commons.core.Messages;
 import socialite.logic.commands.AddCommand;
 import socialite.logic.commands.CommandTestUtil;
-import socialite.model.person.Address;
-import socialite.model.person.Email;
 import socialite.model.person.Name;
 import socialite.model.person.Person;
 import socialite.model.person.Phone;
@@ -24,40 +22,24 @@ public class AddCommandParserTest {
 
         // whitespace only preamble
         CommandParserTestUtil.assertParseSuccess(parser, CommandTestUtil.PREAMBLE_WHITESPACE
-                + CommandTestUtil.NAME_DESC_BOB + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.EMAIL_DESC_BOB
-                + CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.REMARK_DESC_BOB
-                + CommandTestUtil.TAG_DESC_FRIEND + CommandTestUtil.FACEBOOK_DESC_BOB
-                + CommandTestUtil.INSTAGRAM_DESC_BOB + CommandTestUtil.TELEGRAM_DESC_BOB
-                + CommandTestUtil.TIKTOK_DESC_BOB + CommandTestUtil.TWITTER_DESC_BOB, new AddCommand(expectedPerson));
+                + CommandTestUtil.NAME_DESC_BOB + CommandTestUtil.PHONE_DESC_BOB
+                + CommandTestUtil.REMARK_DESC_BOB + CommandTestUtil.TAG_DESC_FRIEND
+                + CommandTestUtil.FACEBOOK_DESC_BOB + CommandTestUtil.INSTAGRAM_DESC_BOB
+                + CommandTestUtil.TELEGRAM_DESC_BOB + CommandTestUtil.TIKTOK_DESC_BOB
+                + CommandTestUtil.TWITTER_DESC_BOB, new AddCommand(expectedPerson));
 
         // multiple names - last name accepted
         CommandParserTestUtil.assertParseSuccess(parser, CommandTestUtil.NAME_DESC_AMY
-                + CommandTestUtil.NAME_DESC_BOB + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.EMAIL_DESC_BOB
-                + CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.REMARK_DESC_BOB + CommandTestUtil.TAG_DESC_FRIEND
+                + CommandTestUtil.NAME_DESC_BOB + CommandTestUtil.PHONE_DESC_BOB
+                + CommandTestUtil.REMARK_DESC_BOB + CommandTestUtil.TAG_DESC_FRIEND
                 + CommandTestUtil.FACEBOOK_DESC_BOB + CommandTestUtil.INSTAGRAM_DESC_BOB
                 + CommandTestUtil.TELEGRAM_DESC_BOB + CommandTestUtil.TIKTOK_DESC_BOB
                 + CommandTestUtil.TWITTER_DESC_BOB, new AddCommand(expectedPerson));
 
         // multiple phones - last phone accepted
         CommandParserTestUtil.assertParseSuccess(parser, CommandTestUtil.NAME_DESC_BOB
-                + CommandTestUtil.PHONE_DESC_AMY + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.EMAIL_DESC_BOB
-                + CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.REMARK_DESC_BOB + CommandTestUtil.TAG_DESC_FRIEND
-                + CommandTestUtil.FACEBOOK_DESC_BOB + CommandTestUtil.INSTAGRAM_DESC_BOB
-                + CommandTestUtil.TELEGRAM_DESC_BOB + CommandTestUtil.TIKTOK_DESC_BOB
-                + CommandTestUtil.TWITTER_DESC_BOB, new AddCommand(expectedPerson));
-
-        // multiple emails - last email accepted
-        CommandParserTestUtil.assertParseSuccess(parser, CommandTestUtil.NAME_DESC_BOB
-                + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.EMAIL_DESC_AMY + CommandTestUtil.EMAIL_DESC_BOB
-                + CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.REMARK_DESC_BOB + CommandTestUtil.TAG_DESC_FRIEND
-                + CommandTestUtil.FACEBOOK_DESC_BOB + CommandTestUtil.INSTAGRAM_DESC_BOB
-                + CommandTestUtil.TELEGRAM_DESC_BOB + CommandTestUtil.TIKTOK_DESC_BOB
-                + CommandTestUtil.TWITTER_DESC_BOB, new AddCommand(expectedPerson));
-
-        // multiple addresses - last address accepted
-        CommandParserTestUtil.assertParseSuccess(parser, CommandTestUtil.NAME_DESC_BOB
-                + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.EMAIL_DESC_BOB + CommandTestUtil.ADDRESS_DESC_AMY
-                + CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.REMARK_DESC_BOB + CommandTestUtil.TAG_DESC_FRIEND
+                + CommandTestUtil.PHONE_DESC_AMY + CommandTestUtil.PHONE_DESC_BOB
+                + CommandTestUtil.REMARK_DESC_BOB + CommandTestUtil.TAG_DESC_FRIEND
                 + CommandTestUtil.FACEBOOK_DESC_BOB + CommandTestUtil.INSTAGRAM_DESC_BOB
                 + CommandTestUtil.TELEGRAM_DESC_BOB + CommandTestUtil.TIKTOK_DESC_BOB
                 + CommandTestUtil.TWITTER_DESC_BOB, new AddCommand(expectedPerson));
@@ -67,8 +49,8 @@ public class AddCommandParserTest {
                 .withTags(CommandTestUtil.VALID_TAG_FRIEND, CommandTestUtil.VALID_TAG_HUSBAND)
                 .build();
         CommandParserTestUtil.assertParseSuccess(parser, CommandTestUtil.NAME_DESC_BOB
-                + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.EMAIL_DESC_BOB + CommandTestUtil.ADDRESS_DESC_BOB
-                + CommandTestUtil.REMARK_DESC_BOB + CommandTestUtil.TAG_DESC_HUSBAND + CommandTestUtil.TAG_DESC_FRIEND
+                + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.REMARK_DESC_BOB
+                + CommandTestUtil.TAG_DESC_HUSBAND + CommandTestUtil.TAG_DESC_FRIEND
                 + CommandTestUtil.FACEBOOK_DESC_BOB + CommandTestUtil.INSTAGRAM_DESC_BOB
                 + CommandTestUtil.TELEGRAM_DESC_BOB + CommandTestUtil.TIKTOK_DESC_BOB
                 + CommandTestUtil.TWITTER_DESC_BOB, new AddCommand(expectedPersonMultipleTags));
@@ -79,11 +61,10 @@ public class AddCommandParserTest {
         // zero tags
         Person expectedPerson = new PersonBuilder(TypicalPersons.AMY).withTags().build();
         CommandParserTestUtil.assertParseSuccess(parser, CommandTestUtil.NAME_DESC_AMY
-                        + CommandTestUtil.PHONE_DESC_AMY + CommandTestUtil.EMAIL_DESC_AMY
-                        + CommandTestUtil.ADDRESS_DESC_AMY + CommandTestUtil.REMARK_DESC_AMY
-                        + CommandTestUtil.ADDRESS_DESC_AMY + CommandTestUtil.FACEBOOK_DESC_AMY
-                        + CommandTestUtil.INSTAGRAM_DESC_AMY + CommandTestUtil.TELEGRAM_DESC_AMY
-                        + CommandTestUtil.TIKTOK_DESC_AMY + CommandTestUtil.TWITTER_DESC_AMY,
+                        + CommandTestUtil.PHONE_DESC_AMY + CommandTestUtil.REMARK_DESC_AMY
+                        + CommandTestUtil.FACEBOOK_DESC_AMY + CommandTestUtil.INSTAGRAM_DESC_AMY
+                        + CommandTestUtil.TELEGRAM_DESC_AMY + CommandTestUtil.TIKTOK_DESC_AMY
+                        + CommandTestUtil.TWITTER_DESC_AMY,
                 new AddCommand(expectedPerson));
     }
 
@@ -93,32 +74,17 @@ public class AddCommandParserTest {
 
         // missing name prefix
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.VALID_NAME_BOB
-                        + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.EMAIL_DESC_BOB
-                        + CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.TIKTOK_DESC_BOB
+                        + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.TIKTOK_DESC_BOB
                         + CommandTestUtil.TWITTER_DESC_BOB , expectedMessage);
 
         // missing phone prefix
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.NAME_DESC_BOB
-                        + CommandTestUtil.VALID_PHONE_BOB + CommandTestUtil.EMAIL_DESC_BOB
-                        + CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.TIKTOK_DESC_BOB
-                        + CommandTestUtil.TWITTER_DESC_BOB, expectedMessage);
-
-        // missing email prefix
-        CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.NAME_DESC_BOB
-                        + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.VALID_EMAIL_BOB
-                        + CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.TIKTOK_DESC_BOB
-                        + CommandTestUtil.TWITTER_DESC_BOB, expectedMessage);
-
-        // missing address prefix
-        CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.NAME_DESC_BOB
-                        + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.EMAIL_DESC_BOB
-                        + CommandTestUtil.VALID_ADDRESS_BOB + CommandTestUtil.TIKTOK_DESC_BOB
+                        + CommandTestUtil.VALID_PHONE_BOB + CommandTestUtil.TIKTOK_DESC_BOB
                         + CommandTestUtil.TWITTER_DESC_BOB, expectedMessage);
 
         // all prefixes missing
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.VALID_NAME_BOB
-                        + CommandTestUtil.VALID_PHONE_BOB + CommandTestUtil.VALID_EMAIL_BOB
-                        + CommandTestUtil.VALID_ADDRESS_BOB + CommandTestUtil.TIKTOK_DESC_BOB
+                        + CommandTestUtil.VALID_PHONE_BOB + CommandTestUtil.TIKTOK_DESC_BOB
                         + CommandTestUtil.TWITTER_DESC_BOB, expectedMessage);
     }
 
@@ -126,45 +92,33 @@ public class AddCommandParserTest {
     public void parse_invalidValue_failure() {
         // invalid name
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.INVALID_NAME_DESC
-                + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.EMAIL_DESC_BOB + CommandTestUtil.ADDRESS_DESC_BOB
-                + CommandTestUtil.TAG_DESC_HUSBAND + CommandTestUtil.TAG_DESC_FRIEND + CommandTestUtil.TIKTOK_DESC_BOB
+                + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.TAG_DESC_HUSBAND
+                + CommandTestUtil.TAG_DESC_FRIEND + CommandTestUtil.TIKTOK_DESC_BOB
                 + CommandTestUtil.TWITTER_DESC_BOB,
                 Name.MESSAGE_CONSTRAINTS);
 
         // invalid phone
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.NAME_DESC_BOB
-                + CommandTestUtil.INVALID_PHONE_DESC + CommandTestUtil.EMAIL_DESC_BOB + CommandTestUtil.ADDRESS_DESC_BOB
-                + CommandTestUtil.TAG_DESC_HUSBAND + CommandTestUtil.TAG_DESC_FRIEND + CommandTestUtil.TIKTOK_DESC_BOB
-                + CommandTestUtil.TWITTER_DESC_BOB, Phone.MESSAGE_CONSTRAINTS);
-
-        // invalid email
-        CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.NAME_DESC_BOB
-                + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.INVALID_EMAIL_DESC + CommandTestUtil.ADDRESS_DESC_BOB
-                + CommandTestUtil.TAG_DESC_HUSBAND + CommandTestUtil.TAG_DESC_FRIEND + CommandTestUtil.TIKTOK_DESC_BOB
-                + CommandTestUtil.TWITTER_DESC_BOB, Email.MESSAGE_CONSTRAINTS);
-
-        // invalid address
-        CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.NAME_DESC_BOB
-                + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.EMAIL_DESC_BOB + CommandTestUtil.INVALID_ADDRESS_DESC
-                + CommandTestUtil.TAG_DESC_HUSBAND + CommandTestUtil.TAG_DESC_FRIEND + CommandTestUtil.TIKTOK_DESC_BOB
-                + CommandTestUtil.TWITTER_DESC_BOB, Address.MESSAGE_CONSTRAINTS);
+                + CommandTestUtil.INVALID_PHONE_DESC + CommandTestUtil.TAG_DESC_HUSBAND
+                + CommandTestUtil.TAG_DESC_FRIEND + CommandTestUtil.TIKTOK_DESC_BOB
+                + CommandTestUtil.TWITTER_DESC_BOB,
+                Phone.MESSAGE_CONSTRAINTS);
 
         // invalid tag
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.NAME_DESC_BOB
-                + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.EMAIL_DESC_BOB + CommandTestUtil.ADDRESS_DESC_BOB
-                + CommandTestUtil.REMARK_DESC_BOB + CommandTestUtil.INVALID_TAG_DESC + CommandTestUtil.VALID_TAG_FRIEND
-                + CommandTestUtil.TIKTOK_DESC_BOB + CommandTestUtil.TWITTER_DESC_BOB, Tag.MESSAGE_CONSTRAINTS);
+                + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.REMARK_DESC_BOB
+                + CommandTestUtil.INVALID_TAG_DESC + CommandTestUtil.VALID_TAG_FRIEND
+                + CommandTestUtil.TIKTOK_DESC_BOB + CommandTestUtil.TWITTER_DESC_BOB,
+                Tag.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.INVALID_NAME_DESC
-                        + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.EMAIL_DESC_BOB
-                        + CommandTestUtil.INVALID_ADDRESS_DESC + CommandTestUtil.TIKTOK_DESC_BOB
+                        + CommandTestUtil.INVALID_PHONE_DESC + CommandTestUtil.TIKTOK_DESC_BOB
                         + CommandTestUtil.TWITTER_DESC_BOB, Name.MESSAGE_CONSTRAINTS);
 
         // non-empty preamble
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.PREAMBLE_NON_EMPTY
                         + CommandTestUtil.NAME_DESC_BOB + CommandTestUtil.PHONE_DESC_BOB
-                        + CommandTestUtil.EMAIL_DESC_BOB + CommandTestUtil.ADDRESS_DESC_BOB
                         + CommandTestUtil.TAG_DESC_HUSBAND + CommandTestUtil.TAG_DESC_FRIEND
                         + CommandTestUtil.TIKTOK_DESC_BOB + CommandTestUtil.TWITTER_DESC_BOB,
                 String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
