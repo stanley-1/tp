@@ -1,7 +1,5 @@
 package socialite.model.person;
 
-import static socialite.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static socialite.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static socialite.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static socialite.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static socialite.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
@@ -31,8 +29,8 @@ public class PersonTest {
 
         // same name, all other attributes different -> returns true
         Person editedAlice = new PersonBuilder(TypicalPersons.ALICE)
-                .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB)
-                .withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
+                .withPhone(VALID_PHONE_BOB)
+                .withTags(VALID_TAG_HUSBAND).build();
         Assertions.assertTrue(TypicalPersons.ALICE.isSamePerson(editedAlice));
 
         // different name, all other attributes same -> returns false
@@ -73,14 +71,6 @@ public class PersonTest {
 
         // different phone -> returns false
         editedAlice = new PersonBuilder(TypicalPersons.ALICE).withPhone(VALID_PHONE_BOB).build();
-        Assertions.assertFalse(TypicalPersons.ALICE.equals(editedAlice));
-
-        // different email -> returns false
-        editedAlice = new PersonBuilder(TypicalPersons.ALICE).withEmail(VALID_EMAIL_BOB).build();
-        Assertions.assertFalse(TypicalPersons.ALICE.equals(editedAlice));
-
-        // different address -> returns false
-        editedAlice = new PersonBuilder(TypicalPersons.ALICE).withAddress(VALID_ADDRESS_BOB).build();
         Assertions.assertFalse(TypicalPersons.ALICE.equals(editedAlice));
 
         // different tags -> returns false
