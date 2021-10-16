@@ -38,8 +38,6 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label phone;
     @FXML
-    private Label address;
-    @FXML
     private ImageView tiktokIcon;
     @FXML
     private Label tiktok;
@@ -47,8 +45,6 @@ public class PersonCard extends UiPart<Region> {
     private ImageView twitterIcon;
     @FXML
     private Label twitter;
-    @FXML
-    private Label email;
     @FXML
     private ImageView facebookIcon;
     @FXML
@@ -74,8 +70,6 @@ public class PersonCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
         phone.setText(person.getPhone().value);
-        address.setText(person.getAddress().value);
-        email.setText(person.getEmail().value);
         remark.setText(person.getRemark().value);
         this.makeHandle(person.getFacebook().value, "facebook");
         this.makeHandle(person.getInstagram().value, "instagram");

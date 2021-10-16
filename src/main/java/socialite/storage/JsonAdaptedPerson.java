@@ -15,8 +15,6 @@ import socialite.model.handle.Instagram;
 import socialite.model.handle.Telegram;
 import socialite.model.handle.TikTok;
 import socialite.model.handle.Twitter;
-import socialite.model.person.Address;
-import socialite.model.person.Email;
 import socialite.model.person.Name;
 import socialite.model.person.Person;
 import socialite.model.person.Phone;
@@ -32,8 +30,6 @@ class JsonAdaptedPerson {
 
     private final String name;
     private final String phone;
-    private final String email;
-    private final String address;
     private final String remark;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
     private final String facebook;
@@ -47,15 +43,12 @@ class JsonAdaptedPerson {
      */
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-            @JsonProperty("email") String email, @JsonProperty("address") String address,
             @JsonProperty("remark") String remark, @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
             @JsonProperty("facebook") String facebook, @JsonProperty("instagram") String instagram,
             @JsonProperty("telegram") String telegram, @JsonProperty("tiktok") String tiktok,
             @JsonProperty("twitter") String twitter) {
         this.name = name;
         this.phone = phone;
-        this.email = email;
-        this.address = address;
         this.remark = remark;
         if (tagged != null) {
             this.tagged.addAll(tagged);
@@ -73,8 +66,6 @@ class JsonAdaptedPerson {
     public JsonAdaptedPerson(Person source) {
         name = source.getName().fullName;
         phone = source.getPhone().value;
-        email = source.getEmail().value;
-        address = source.getAddress().value;
         remark = source.getRemark().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
@@ -113,22 +104,6 @@ class JsonAdaptedPerson {
         }
         final Phone modelPhone = new Phone(phone);
 
-        if (email == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
-        }
-        if (!Email.isValidEmail(email)) {
-            throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
-        }
-        final Email modelEmail = new Email(email);
-
-        if (address == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
-        }
-        if (!Address.isValidAddress(address)) {
-            throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
-        }
-        final Address modelAddress = new Address(address);
-
         if (remark == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Remark.class.getSimpleName()));
         }
@@ -161,7 +136,7 @@ class JsonAdaptedPerson {
         }
         final TikTok modelTikTok = new TikTok(tiktok);
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelRemark, modelTags, modelFacebook,
+        return new Person(modelName, modelPhone, modelRemark, modelTags, modelFacebook,
                 modelInstagram, modelTelegram, modelTikTok, modeTwitter);
     }
 }

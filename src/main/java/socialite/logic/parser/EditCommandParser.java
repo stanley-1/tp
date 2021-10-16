@@ -1,8 +1,6 @@
 package socialite.logic.parser;
 
 import static java.util.Objects.requireNonNull;
-import static socialite.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static socialite.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static socialite.logic.parser.CliSyntax.PREFIX_FACEBOOK;
 import static socialite.logic.parser.CliSyntax.PREFIX_INSTAGRAM;
 import static socialite.logic.parser.CliSyntax.PREFIX_NAME;
@@ -38,8 +36,8 @@ public class EditCommandParser implements Parser<EditCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(
-                        args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_REMARK, PREFIX_TAG,
-                        PREFIX_FACEBOOK, PREFIX_INSTAGRAM, PREFIX_TELEGRAM, PREFIX_TIKTOK, PREFIX_TWITTER
+                        args, PREFIX_NAME, PREFIX_PHONE, PREFIX_REMARK, PREFIX_TAG, PREFIX_FACEBOOK,
+                        PREFIX_INSTAGRAM, PREFIX_TELEGRAM, PREFIX_TIKTOK, PREFIX_TWITTER
                 );
 
         Index index;
@@ -58,12 +56,6 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
         if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
             editPersonDescriptor.setPhone(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
-        }
-        if (argMultimap.getValue(PREFIX_EMAIL).isPresent()) {
-            editPersonDescriptor.setEmail(ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get()));
-        }
-        if (argMultimap.getValue(PREFIX_ADDRESS).isPresent()) {
-            editPersonDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
         }
         if (argMultimap.getValue(PREFIX_REMARK).isPresent()) {
             editPersonDescriptor.setRemark(ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).get()));
