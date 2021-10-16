@@ -5,12 +5,12 @@ import java.util.Optional;
 
 import socialite.commons.util.AppUtil;
 
-public class TikTok {
+public class TikTok extends Handle {
 
     public static final String MESSAGE_CONSTRAINTS = "Username should only consist of alphanumerical characters, "
             + "underscores and periods, and should not end with period";
     public static final String VALIDATION_REGEX = "^[a-zA-Z0-9._]*[a-zA-Z0-9_]$";
-    public final Optional<String> value;
+//    public final Optional<String> value;
 
     /**
      * Constructor for {@code TikTok} object

@@ -8,14 +8,14 @@ import socialite.commons.util.AppUtil;
  * Represents a Person's Instagram handle in SociaLite.
  * Guarantees: immutable; handle is valid as declared in {@link #isValidHandle(String)}
  */
-public class Instagram {
+public class Instagram extends Handle {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Instagram handles should only contain alphanumeric characters, periods & underscores.\n"
             + "A handle is limited to 30 characters and can't use other punctuation marks.\n"
             + "https://tinyurl.com/instaHandle";
     public static final String VALIDATION_REGEX = "^[a-zA-Z0-9._]{1,30}$";
-    public final Optional<String> value;
+//    public final Optional<String> value;
 
     /**
      * Constructs a {@code Instagram}.

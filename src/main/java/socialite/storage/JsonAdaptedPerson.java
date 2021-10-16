@@ -70,11 +70,11 @@ class JsonAdaptedPerson {
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
-        facebook = source.getFacebook().value.orElse(null);
-        instagram = source.getInstagram().value.orElse(null);
-        telegram = source.getTelegram().value.orElse(null);
-        tiktok = source.getTiktok().value.orElse(null);
-        twitter = source.getTwitter().value.orElse(null);
+        facebook = source.getFacebook().get();
+        instagram = source.getInstagram().get();
+        telegram = source.getTelegram().get();
+        tiktok = source.getTiktok().get();
+        twitter = source.getTwitter().get();
     }
 
     /**

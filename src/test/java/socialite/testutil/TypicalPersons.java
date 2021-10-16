@@ -40,7 +40,7 @@ public class TypicalPersons {
             .withFacebook("benson.m").withInstagram("benson.m").withTelegram("benson_meier")
             .withTikTok(null).withTwitter("bensonMeier").build();
     public static final Person CARL = new PersonBuilder().withName("Carl Kurz").withPhone("95352563")
-            .withFacebook("carl.k").withInstagram("carl.k").withTelegram("carl_kurz")
+            .withFacebook("carl.k").withInstagram("carl.k").withTelegram(null)
             .withTikTok("carl.kurz").withTwitter("carl").build();
     public static final Person DANIEL = new PersonBuilder().withName("Daniel Meier").withPhone("87652533")
             .withTags("friends").withFacebook("daniel.m").withInstagram(null).withTelegram("daniel_meier")
