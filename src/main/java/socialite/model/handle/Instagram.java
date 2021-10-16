@@ -15,7 +15,6 @@ public class Instagram extends Handle {
             + "A handle is limited to 30 characters and can't use other punctuation marks.\n"
             + "https://tinyurl.com/instaHandle";
     public static final String VALIDATION_REGEX = "^[a-zA-Z0-9._]{1,30}$";
-//    public final Optional<String> value;
 
     /**
      * Constructs a {@code Instagram}.

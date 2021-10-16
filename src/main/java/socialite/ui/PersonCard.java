@@ -1,7 +1,6 @@
 package socialite.ui;
 
 import java.util.Comparator;
-import java.util.Optional;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -10,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import socialite.model.handle.Handle;
 import socialite.model.person.Person;
 
 /**
@@ -71,18 +71,18 @@ public class PersonCard extends UiPart<Region> {
         name.setText(person.getName().fullName);
         phone.setText(person.getPhone().value);
         remark.setText(person.getRemark().value);
-        this.makeHandle(person.getFacebook().value, "facebook");
-        this.makeHandle(person.getInstagram().value, "instagram");
-        this.makeHandle(person.getTelegram().value, "telegram");
-        this.makeHandle(person.getTiktok().value, "tiktok");
-        this.makeHandle(person.getTwitter().value, "twitter");
+        this.makeHandle(person.getFacebook(), "facebook");
+        this.makeHandle(person.getInstagram(), "instagram");
+        this.makeHandle(person.getTelegram(), "telegram");
+        this.makeHandle(person.getTiktok(), "tiktok");
+        this.makeHandle(person.getTwitter(), "twitter");
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 
-    private void makeHandle(Optional<String> handleValue, String handleName) {
-        String value = handleValue.orElse(null);
+    private void makeHandle(Handle handle, String handleName) {
+        String value = handle.get();
         switch (handleName) {
         case "facebook":
             if (value != null && !value.equals("")) {

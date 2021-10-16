@@ -16,7 +16,6 @@ public class Facebook extends Handle {
             + "Furthermore, it should not contain \".com\" or \".net\"\n"
             + "https://www.facebook.com/help/105399436216001/?helpref=uf_share";
     public static final String VALIDATION_REGEX = "^([a-zA-Z0-9.](?!((\\.com|\\.net))+$)){5,}$";
-//    public final Optional<String> value;
 
     /**
      * Constructs a {@code Facebook}.

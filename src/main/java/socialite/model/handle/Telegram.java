@@ -15,7 +15,6 @@ public class Telegram extends Handle {
             + "and it should be at least 5 characters long.\n"
             + "https://telegram.org/faq#q-what-can-i-use-as-my-username";
     public static final String VALIDATION_REGEX = "^[a-zA-Z0-9_]{5,}$";
-//    public final Optional<String> value;
 
     /**
      * Constructs a {@code Telegram}.
