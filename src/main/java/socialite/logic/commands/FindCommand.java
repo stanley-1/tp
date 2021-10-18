@@ -14,10 +14,13 @@ public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names contain any of "
-            + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
-            + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + " alice bob charlie";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters contacts based on specified keywords.\n"
+            + "Keywords can be in the form of tags (prefix with 't/'),\n"
+            + "handles (prefix with 'p/'), and names (no prefix needed).\n"
+            + "Returns all contacts containing ALL keywords listed in the command.\n"
+            + "Parameters: find [KEYWORDS]...\n"
+            + "Example: " + COMMAND_WORD + " alice t/colleagues p/instagram\n"
+            + "Type 'find all/' to reset to full list of contacts";
 
     private final NameContainsKeywordsPredicate predicate;
 
