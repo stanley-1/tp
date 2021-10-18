@@ -1,6 +1,7 @@
 package socialite.ui;
 
 import java.awt.Desktop;
+import java.io.IOException;
 import java.net.URI;
 import java.util.Comparator;
 
@@ -85,7 +86,7 @@ public class PersonCard extends UiPart<Region> {
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 
-    private void openBrowser(Platform platform, String username) {
+    private String getUrl(Platform platform, String username) {
         String url;
         String path;
         switch (platform) {
@@ -113,17 +114,28 @@ public class PersonCard extends UiPart<Region> {
             url = "http://www.google.com";
             path = "/";
         }
+        return url + path;
+    }
+
+    private void openBrowser(String url) {
         if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
             try {
-                Desktop.getDesktop().browse(new URI(url + path));
+                Desktop.getDesktop().browse(new URI(url));
             } catch (Exception e) {
                 System.out.println(e.toString());
             }
         } else {
+            String os = System.getProperty("os.name").toLowerCase();
             Runtime runtime = Runtime.getRuntime();
             try {
-                runtime.exec("xdg-open " + url + path);
-            } catch (Exception e) {
+                if (os.indexOf("win") >= 0) {
+                    runtime.exec("rundll32 url.dll,FileProtocolHandler " + url);
+                } else if (os.indexOf("mac") >= 0) {
+                    runtime.exec("open " + url);
+                } else if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) {
+                    runtime.exec("xdg-open " + url);
+                }
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -138,7 +150,8 @@ public class PersonCard extends UiPart<Region> {
                 this.facebookIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/facebook.png")));
                 this.facebook.setOnMouseEntered(Event -> this.facebook.setUnderline(true));
                 this.facebook.setOnMouseExited(Event -> this.facebook.setUnderline(false));
-                this.facebook.setOnMouseClicked(Event -> this.openBrowser(Platform.FACEBOOK, this.facebook.getText()));
+                this.facebook.setOnMouseClicked(Event -> this.openBrowser(
+                        this.getUrl(Platform.FACEBOOK, this.facebook.getText())));
             } else {
                 this.facebook.setText(null);
                 this.facebookIcon.setFitWidth(0);
@@ -151,7 +164,7 @@ public class PersonCard extends UiPart<Region> {
                 this.instagram.setOnMouseEntered(Event -> this.instagram.setUnderline(true));
                 this.instagram.setOnMouseExited(Event -> this.instagram.setUnderline(false));
                 this.instagram.setOnMouseClicked(Event -> this.openBrowser(
-                        Platform.INSTAGRAM, this.instagram.getText()));
+                        this.getUrl(Platform.INSTAGRAM, this.instagram.getText())));
             } else {
                 this.instagram.setText(null);
                 this.instagramIcon.setFitWidth(0);
@@ -163,7 +176,8 @@ public class PersonCard extends UiPart<Region> {
                 this.telegramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/telegram.png")));
                 this.telegram.setOnMouseEntered(Event -> this.telegram.setUnderline(true));
                 this.telegram.setOnMouseExited(Event -> this.telegram.setUnderline(false));
-                this.telegram.setOnMouseClicked(Event -> this.openBrowser(Platform.TELEGRAM, this.telegram.getText()));
+                this.telegram.setOnMouseClicked(Event -> this.openBrowser(
+                        this.getUrl(Platform.TELEGRAM, this.telegram.getText())));
             } else {
                 this.telegram.setText(null);
                 this.telegramIcon.setFitWidth(0);
@@ -175,7 +189,8 @@ public class PersonCard extends UiPart<Region> {
                 this.tiktokIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/tik-tok.png")));
                 this.tiktok.setOnMouseEntered(Event -> this.tiktok.setUnderline(true));
                 this.tiktok.setOnMouseExited(Event -> this.tiktok.setUnderline(false));
-                this.tiktok.setOnMouseClicked(Event -> this.openBrowser(Platform.TIKTOK, this.tiktok.getText()));
+                this.tiktok.setOnMouseClicked(Event -> this.openBrowser(
+                        this.getUrl(Platform.TIKTOK, this.tiktok.getText())));
             } else {
                 this.tiktok.setText(null);
                 this.tiktokIcon.setFitWidth(0);
@@ -187,7 +202,8 @@ public class PersonCard extends UiPart<Region> {
                 this.twitterIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/twitter.png")));
                 this.twitter.setOnMouseEntered(Event -> this.twitter.setUnderline(true));
                 this.twitter.setOnMouseExited(Event -> this.twitter.setUnderline(false));
-                this.twitter.setOnMouseClicked(Event -> this.openBrowser(Platform.TWITTER, this.twitter.getText()));
+                this.twitter.setOnMouseClicked(Event -> this.openBrowser(
+                        this.getUrl(Platform.TWITTER, this.twitter.getText())));
             } else {
                 this.twitter.setText(null);
                 this.twitterIcon.setFitWidth(0);
