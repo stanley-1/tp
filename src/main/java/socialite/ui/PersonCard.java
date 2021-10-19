@@ -1,8 +1,6 @@
 package socialite.ui;
 
-import java.awt.Desktop;
 import java.io.IOException;
-import java.net.URI;
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
@@ -118,26 +116,18 @@ public class PersonCard extends UiPart<Region> {
     }
 
     private void openBrowser(String url) {
-        if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
-            try {
-                Desktop.getDesktop().browse(new URI(url));
-            } catch (Exception e) {
-                System.out.println(e.toString());
+        String os = System.getProperty("os.name").toLowerCase();
+        Runtime runtime = Runtime.getRuntime();
+        try {
+            if (os.indexOf("win") >= 0) {
+                runtime.exec("rundll32 url.dll,FileProtocolHandler " + url);
+            } else if (os.indexOf("mac") >= 0) {
+                runtime.exec("open " + url);
+            } else if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) {
+                runtime.exec("xdg-open " + url);
             }
-        } else {
-            String os = System.getProperty("os.name").toLowerCase();
-            Runtime runtime = Runtime.getRuntime();
-            try {
-                if (os.indexOf("win") >= 0) {
-                    runtime.exec("rundll32 url.dll,FileProtocolHandler " + url);
-                } else if (os.indexOf("mac") >= 0) {
-                    runtime.exec("open " + url);
-                } else if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) {
-                    runtime.exec("xdg-open " + url);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
