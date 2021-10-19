@@ -1,6 +1,7 @@
 package socialite.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+
 import socialite.model.Model;
 
 /**
@@ -19,6 +20,10 @@ public class HelpCommand extends Command {
 
     private final String answer;
 
+    /**
+     * Creates a HelpCommand with the formulated response.
+     * @param response Response determined by HelpCommandParser
+     */
     public HelpCommand(String response) {
         requireNonNull(response);
         answer = response;
@@ -36,6 +41,7 @@ public class HelpCommand extends Command {
 
     }
 
+    @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof HelpCommand // instanceof handles nulls
