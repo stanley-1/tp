@@ -9,13 +9,14 @@ import socialite.model.tag.Tag;
 /**
  * Tests that a {@code Person}'s {@code Name} matches any of the keywords given.
  */
-public class NameContainsKeywordsPredicate implements Predicate<Person> {
+public class containsKeywordsPredicate implements Predicate<Person> {
     private final List<String> keywords;
 
-    public NameContainsKeywordsPredicate(List<String> keywords) {
+    public containsKeywordsPredicate(List<String> keywords) {
         this.keywords = keywords;
     }
 
+    //helper functions to test person's name, tags or handles respectively.
     private boolean testName(Person person, String keyword) {
         return StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword);
     }
@@ -51,6 +52,10 @@ public class NameContainsKeywordsPredicate implements Predicate<Person> {
     @Override
     public boolean test(Person person) {
         //Tests just one person. For their name, tags or handles.
+        if (keywords.size() == 0){
+            return false;
+        }
+
         if (keywords.get(0).equals("all/")) {
             return true;
         }
@@ -72,8 +77,8 @@ public class NameContainsKeywordsPredicate implements Predicate<Person> {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof NameContainsKeywordsPredicate // instanceof handles nulls
-                && keywords.equals(((NameContainsKeywordsPredicate) other).keywords)); // state check
+                || (other instanceof containsKeywordsPredicate // instanceof handles nulls
+                && keywords.equals(((containsKeywordsPredicate) other).keywords)); // state check
     }
 
 }
