@@ -12,8 +12,8 @@ import socialite.logic.commands.exceptions.CommandException;
 import socialite.logic.parser.CliSyntax;
 import socialite.model.AddressBook;
 import socialite.model.Model;
-import socialite.model.person.containsKeywordsPredicate;
 import socialite.model.person.Person;
+import socialite.model.person.containsKeywordsPredicate;
 import socialite.testutil.Assert;
 import socialite.testutil.EditPersonDescriptorBuilder;
 
