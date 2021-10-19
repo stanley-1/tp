@@ -21,8 +21,8 @@ public class NameContainsKeywordsPredicate implements Predicate<Person> {
     }
 
     private boolean testTags(Person person, String keyword) {
-        for (Tag tag : person.getTags()){
-            if (StringUtil.containsWordIgnoreCase(tag.tagName, keyword)){
+        for (Tag tag : person.getTags()) {
+            if (StringUtil.containsWordIgnoreCase(tag.tagName, keyword)) {
                 return true;
             }
         }
@@ -31,7 +31,7 @@ public class NameContainsKeywordsPredicate implements Predicate<Person> {
 
     private boolean testPlatforms(Person person, String keyword) {
 
-        switch (keyword){
+        switch (keyword) {
         case "facebook":
             return !person.getFacebook().value.equals("");
         case "instagram":
@@ -51,18 +51,22 @@ public class NameContainsKeywordsPredicate implements Predicate<Person> {
     @Override
     public boolean test(Person person) {
         //Tests just one person. For their name, tags or handles.
-        for (String keyword : keywords){
-            if (keyword.equals("all/")){
-                return true;
-            } else if(keyword.startsWith("t/")){
-                return testTags(person, keyword.substring(2));
-            } else if (keyword.startsWith("p/")){
-                return testPlatforms(person, keyword.substring(2));
-            } else{
-                return testName(person, keyword);
+        if (keywords.get(0).equals("all/")) {
+            return true;
+        }
+
+        boolean matchesAll = true;
+
+        for (String keyword : keywords) {
+            if (keyword.startsWith("t/")) {
+                matchesAll = matchesAll && testTags(person, keyword.substring(2));
+            } else if (keyword.startsWith("p/")) {
+                matchesAll = matchesAll && testPlatforms(person, keyword.substring(2));
+            } else {
+                matchesAll = matchesAll && testName(person, keyword);
             }
         }
-        return true;
+        return matchesAll;
     }
 
     @Override
