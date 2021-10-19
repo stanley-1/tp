@@ -52,7 +52,7 @@ public class containsKeywordsPredicate implements Predicate<Person> {
     @Override
     public boolean test(Person person) {
         //Tests just one person. For their name, tags or handles.
-        if (keywords.size() == 0){
+        if (keywords.size() == 0) {
             return false;
         }
 
