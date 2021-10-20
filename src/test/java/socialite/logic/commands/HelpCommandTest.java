@@ -1,5 +1,7 @@
 package socialite.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static socialite.logic.commands.CommandTestUtil.assertCommandSuccess;
 
 import org.junit.jupiter.api.Test;
@@ -52,6 +54,22 @@ public class HelpCommandTest {
         CommandResult expectedCommandResult =
                 new CommandResult(RemarkCommand.MESSAGE_USAGE, false, false);
         assertCommandSuccess(new HelpCommand(RemarkCommand.MESSAGE_USAGE), model, expectedCommandResult, expectedModel);
+    }
+
+    @Test
+    public void equals() {
+        HelpCommand helpFirstCommand = new HelpCommand(AddCommand.MESSAGE_USAGE);
+        HelpCommand helpSecondCommand = new HelpCommand(HelpCommand.GENERIC_RESPONSE);
+
+        // same object -> returns true
+        assertTrue(helpFirstCommand.equals(helpFirstCommand));
+
+        // same values -> returns true
+        HelpCommand helpFirstCommandCopy = new HelpCommand(AddCommand.MESSAGE_USAGE);
+        assertTrue(helpFirstCommand.equals(helpFirstCommandCopy));
+
+        // different Help Commands -> returns false
+        assertFalse(helpFirstCommand.equals(helpSecondCommand));
     }
 
 }
