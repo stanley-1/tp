@@ -8,7 +8,7 @@ import socialite.commons.exceptions.DataConversionException;
 import socialite.model.ReadOnlyCommandHistory;
 
 /**
- * Represents a storage for {@link CommandHistory}.
+ * Represents a storage for {@link ReadOnlyCommandHistory}.
  */
 public interface CommandHistoryStorage {
     /**

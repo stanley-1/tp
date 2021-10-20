@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import socialite.commons.core.LogsCenter;
 import socialite.commons.exceptions.DataConversionException;
 import socialite.model.ReadOnlyAddressBook;
+import socialite.model.ReadOnlyCommandHistory;
 import socialite.model.ReadOnlyUserPrefs;
 import socialite.model.UserPrefs;
 
@@ -19,14 +20,19 @@ public class StorageManager implements Storage {
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
     private AddressBookStorage addressBookStorage;
     private UserPrefsStorage userPrefsStorage;
+    private CommandHistoryStorage commandHistoryStorage;
 
     /**
      * Creates a {@code StorageManager} with the given {@code AddressBookStorage} and {@code UserPrefStorage}.
      */
-    public StorageManager(AddressBookStorage addressBookStorage, UserPrefsStorage userPrefsStorage) {
+    public StorageManager(
+            AddressBookStorage addressBookStorage,
+            UserPrefsStorage userPrefsStorage,
+            CommandHistoryStorage commandHistoryStorage) {
         super();
         this.addressBookStorage = addressBookStorage;
         this.userPrefsStorage = userPrefsStorage;
+        this.commandHistoryStorage = commandHistoryStorage;
     }
 
     // ================ UserPrefs methods ==============================
@@ -74,6 +80,36 @@ public class StorageManager implements Storage {
     public void saveAddressBook(ReadOnlyAddressBook addressBook, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
         addressBookStorage.saveAddressBook(addressBook, filePath);
+    }
+
+
+    // ================ CommandHistory methods ==============================
+
+    @Override
+    public Path getCommandHistoryFilePath() {
+        return commandHistoryStorage.getCommandHistoryFilePath();
+    }
+
+    @Override
+    public Optional<ReadOnlyCommandHistory> readCommandHistory() throws DataConversionException, IOException {
+        return readCommandHistory(commandHistoryStorage.getCommandHistoryFilePath());
+    }
+
+    @Override
+    public Optional<ReadOnlyCommandHistory> readCommandHistory(Path filePath) throws DataConversionException, IOException {
+        logger.fine("Attempting to read command history from file: " + filePath);
+        return commandHistoryStorage.readCommandHistory(filePath);
+    }
+
+    @Override
+    public void saveCommandHistory(ReadOnlyCommandHistory commandHistory) throws IOException {
+        saveCommandHistory(commandHistory, commandHistoryStorage.getCommandHistoryFilePath());
+    }
+
+    @Override
+    public void saveCommandHistory(ReadOnlyCommandHistory commandHistory, Path filePath) throws IOException {
+        logger.fine("Attempting to save command history from file: " + filePath);
+        commandHistoryStorage.saveCommandHistory(commandHistory, filePath);
     }
 
 }

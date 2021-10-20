@@ -22,6 +22,7 @@ import socialite.model.ReadOnlyAddressBook;
 import socialite.model.UserPrefs;
 import socialite.model.person.Person;
 import socialite.storage.JsonAddressBookStorage;
+import socialite.storage.JsonCommandHistoryStorage;
 import socialite.storage.JsonUserPrefsStorage;
 import socialite.storage.StorageManager;
 import socialite.testutil.Assert;
@@ -42,7 +43,9 @@ public class LogicManagerTest {
         JsonAddressBookStorage addressBookStorage =
                 new JsonAddressBookStorage(temporaryFolder.resolve("addressBook.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        JsonCommandHistoryStorage commandHistoryStorage =
+                new JsonCommandHistoryStorage(temporaryFolder.resolve("commandHistory.json"));
+        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage, commandHistoryStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -71,7 +74,9 @@ public class LogicManagerTest {
                 new JsonAddressBookIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionAddressBook.json"));
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        JsonCommandHistoryStorage commandHistoryStorage =
+                new JsonCommandHistoryStorage(temporaryFolder.resolve("ioExceptionCommandHistory.json"));
+        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage, commandHistoryStorage);
         logic = new LogicManager(model, storage);
 
         // Execute add command
