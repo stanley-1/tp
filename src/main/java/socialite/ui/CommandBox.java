@@ -3,6 +3,8 @@ package socialite.ui;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
 import socialite.logic.Logic;
 import socialite.logic.commands.CommandResult;
@@ -48,6 +50,23 @@ public class CommandBox extends UiPart<Region> {
         } catch (CommandException | ParseException e) {
             setStyleToIndicateCommandFailure();
         }
+    }
+
+    /**
+     * Handles the up/down key arrow pressed event.
+     */
+    @FXML
+    private void handleCommandKeyPressed(KeyEvent event) {
+        if (event.getCode() == KeyCode.UP) {
+            commandTextField.setText("up");
+            commandTextField.positionCaret(commandTextField.getLength());
+        }
+
+        if (event.getCode() == KeyCode.DOWN) {
+            commandTextField.setText("down");
+            commandTextField.positionCaret(commandTextField.getLength());
+        }
+
     }
 
     /**
