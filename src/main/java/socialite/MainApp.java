@@ -23,7 +23,9 @@ import socialite.model.ReadOnlyUserPrefs;
 import socialite.model.UserPrefs;
 import socialite.model.util.SampleDataUtil;
 import socialite.storage.AddressBookStorage;
+import socialite.storage.CommandHistoryStorage;
 import socialite.storage.JsonAddressBookStorage;
+import socialite.storage.JsonCommandHistoryStorage;
 import socialite.storage.JsonUserPrefsStorage;
 import socialite.storage.Storage;
 import socialite.storage.StorageManager;
@@ -57,6 +59,7 @@ public class MainApp extends Application {
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
         AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
+        CommandHistoryStorage commandHistoryStorage =new JsonCommandHistoryStorage(userPrefs.getCommandHistoryFilePath());
         storage = new StorageManager(addressBookStorage, userPrefsStorage);
 
         initLogging(config);
