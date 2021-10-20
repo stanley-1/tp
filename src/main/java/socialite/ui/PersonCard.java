@@ -84,37 +84,6 @@ public class PersonCard extends UiPart<Region> {
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 
-    private String getUrl(Platform platform, String username) {
-        String url;
-        String path;
-        switch (platform) {
-        case FACEBOOK:
-            url = "http://www.facebook.com/";
-            path = username;
-            break;
-        case INSTAGRAM:
-            url = "http://www.instagram.com/";
-            path = username.substring(1);
-            break;
-        case TELEGRAM:
-            url = "https://www.t.me/";
-            path = username.substring(1);
-            break;
-        case TIKTOK:
-            url = "http://www.tiktok.com/";
-            path = username;
-            break;
-        case TWITTER:
-            url = "http://www.twitter.com/";
-            path = username.substring(1);
-            break;
-        default:
-            url = "http://www.google.com";
-            path = "/";
-        }
-        return url + path;
-    }
-
     private void openBrowser(String url) {
         String os = System.getProperty("os.name").toLowerCase();
         Runtime runtime = Runtime.getRuntime();
@@ -141,7 +110,7 @@ public class PersonCard extends UiPart<Region> {
                 this.facebook.setOnMouseEntered(Event -> this.facebook.setUnderline(true));
                 this.facebook.setOnMouseExited(Event -> this.facebook.setUnderline(false));
                 this.facebook.setOnMouseClicked(Event -> this.openBrowser(
-                        this.getUrl(Platform.FACEBOOK, this.facebook.getText())));
+                        person.getFacebook().getUrl()));
             } else {
                 this.facebook.setText(null);
                 this.facebookIcon.setFitWidth(0);
@@ -154,7 +123,7 @@ public class PersonCard extends UiPart<Region> {
                 this.instagram.setOnMouseEntered(Event -> this.instagram.setUnderline(true));
                 this.instagram.setOnMouseExited(Event -> this.instagram.setUnderline(false));
                 this.instagram.setOnMouseClicked(Event -> this.openBrowser(
-                        this.getUrl(Platform.INSTAGRAM, this.instagram.getText())));
+                        person.getInstagram().getUrl()));
             } else {
                 this.instagram.setText(null);
                 this.instagramIcon.setFitWidth(0);
@@ -167,7 +136,7 @@ public class PersonCard extends UiPart<Region> {
                 this.telegram.setOnMouseEntered(Event -> this.telegram.setUnderline(true));
                 this.telegram.setOnMouseExited(Event -> this.telegram.setUnderline(false));
                 this.telegram.setOnMouseClicked(Event -> this.openBrowser(
-                        this.getUrl(Platform.TELEGRAM, this.telegram.getText())));
+                        person.getTelegram().getUrl()));
             } else {
                 this.telegram.setText(null);
                 this.telegramIcon.setFitWidth(0);
@@ -180,7 +149,7 @@ public class PersonCard extends UiPart<Region> {
                 this.tiktok.setOnMouseEntered(Event -> this.tiktok.setUnderline(true));
                 this.tiktok.setOnMouseExited(Event -> this.tiktok.setUnderline(false));
                 this.tiktok.setOnMouseClicked(Event -> this.openBrowser(
-                        this.getUrl(Platform.TIKTOK, this.tiktok.getText())));
+                        person.getTiktok().getUrl()));
             } else {
                 this.tiktok.setText(null);
                 this.tiktokIcon.setFitWidth(0);
@@ -193,7 +162,7 @@ public class PersonCard extends UiPart<Region> {
                 this.twitter.setOnMouseEntered(Event -> this.twitter.setUnderline(true));
                 this.twitter.setOnMouseExited(Event -> this.twitter.setUnderline(false));
                 this.twitter.setOnMouseClicked(Event -> this.openBrowser(
-                        this.getUrl(Platform.TWITTER, this.twitter.getText())));
+                        person.getTwitter().getUrl()));
             } else {
                 this.twitter.setText(null);
                 this.twitterIcon.setFitWidth(0);

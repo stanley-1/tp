@@ -31,6 +31,11 @@ public class TikTok extends Handle {
     }
 
     @Override
+    public String getUrl() {
+        return "http://www.tiktok.com/@" + this.get();
+    }
+
+    @Override
     public String toString() {
         return this.value.orElse("");
     }

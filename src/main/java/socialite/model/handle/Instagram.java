@@ -36,6 +36,11 @@ public class Instagram extends Handle {
     }
 
     @Override
+    public String getUrl() {
+        return "http://www.instagram.com/" + this.get();
+    }
+
+    @Override
     public String toString() {
         return value.orElse("");
     }
