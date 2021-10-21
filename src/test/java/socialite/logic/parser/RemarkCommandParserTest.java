@@ -32,7 +32,7 @@ public class RemarkCommandParserTest {
 
     @Test
     public void parse_missingCompulsoryField_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, RemarkCommand.MESSAGE_USAGE);
+        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, RemarkCommand.MESSAGE_HELP_GUIDE);
 
         // no parameters
         assertParseFailure(parser, RemarkCommand.COMMAND_WORD, expectedMessage);

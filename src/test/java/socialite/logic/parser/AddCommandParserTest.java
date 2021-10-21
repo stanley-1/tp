@@ -70,7 +70,7 @@ public class AddCommandParserTest {
 
     @Test
     public void parse_compulsoryFieldMissing_failure() {
-        String expectedMessage = String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE);
+        String expectedMessage = String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_HELP_GUIDE);
 
         // missing name prefix
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.VALID_NAME_BOB
@@ -121,6 +121,6 @@ public class AddCommandParserTest {
                         + CommandTestUtil.NAME_DESC_BOB + CommandTestUtil.PHONE_DESC_BOB
                         + CommandTestUtil.TAG_DESC_HUSBAND + CommandTestUtil.TAG_DESC_FRIEND
                         + CommandTestUtil.TIKTOK_DESC_BOB + CommandTestUtil.TWITTER_DESC_BOB,
-                String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+                String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_HELP_GUIDE));
     }
 }

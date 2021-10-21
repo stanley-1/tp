@@ -1,6 +1,6 @@
 package socialite.model.handle;
 
-import static java.util.Objects.requireNonNull;
+import java.util.Optional;
 
 import socialite.commons.util.AppUtil;
 
@@ -8,7 +8,7 @@ import socialite.commons.util.AppUtil;
  * Represents a Person's Facebook username in SociaLite.
  * Guarantees: immutable; handle is valid as declared in {@link #isValidHandle(String)}
  */
-public class Facebook {
+public class Facebook extends Handle {
 
     public static final String MESSAGE_CONSTRAINTS =
             "A Facebook username should only contain alphanumeric characters and full stops.\n"
@@ -16,7 +16,6 @@ public class Facebook {
             + "Furthermore, it should not contain \".com\" or \".net\"\n"
             + "https://www.facebook.com/help/105399436216001/?helpref=uf_share";
     public static final String VALIDATION_REGEX = "^([a-zA-Z0-9.](?!((\\.com|\\.net))+$)){5,}$";
-    public final String value;
 
     /**
      * Constructs a {@code Facebook}.
@@ -24,9 +23,10 @@ public class Facebook {
      * @param handle A valid Facebook username.
      */
     public Facebook(String handle) {
-        requireNonNull(handle);
-        AppUtil.checkArgument(isValidHandle(handle), MESSAGE_CONSTRAINTS);
-        value = handle;
+        if (handle != null && !handle.equals("")) {
+            AppUtil.checkArgument(isValidHandle(handle), MESSAGE_CONSTRAINTS);
+        }
+        value = Optional.ofNullable(handle);
     }
 
     /**
@@ -38,7 +38,7 @@ public class Facebook {
 
     @Override
     public String toString() {
-        return value;
+        return value.orElse("");
     }
 
     @Override

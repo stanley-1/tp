@@ -10,17 +10,6 @@ import socialite.testutil.Assert;
 public class InstagramTest {
 
     @Test
-    public void constructor_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> new Instagram(null));
-    }
-
-    @Test
-    public void constructor_invalidInstagram_throwsIllegalArgumentException() {
-        String invalidInstagram = "";
-        Assert.assertThrows(IllegalArgumentException.class, () -> new Instagram(invalidInstagram));
-    }
-
-    @Test
     public void isValidHandle() {
         // null Instagram handle
         Assert.assertThrows(NullPointerException.class, () -> Instagram.isValidHandle(null));

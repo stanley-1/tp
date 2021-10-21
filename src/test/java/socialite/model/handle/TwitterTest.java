@@ -9,16 +9,6 @@ import socialite.testutil.Assert;
 
 public class TwitterTest {
     @Test
-    public void constructor_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> new Twitter(null));
-    }
-
-    @Test
-    public void constructor_invalidEmail_throwsIllegalArgumentException() {
-        Assert.assertThrows(IllegalArgumentException.class, () -> new Twitter(""));
-    }
-
-    @Test
     public void isValidHandle() {
         // check null
         Assert.assertThrows(NullPointerException.class, () -> Twitter.isValidHandle(null));

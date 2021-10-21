@@ -152,24 +152,24 @@ public class Person {
         }
 
         if (getFacebook() != null) {
-            builder.append("; Facebook: ").append(getFacebook());
+            builder.append("; Facebook: ").append(getFacebook().get());
         }
 
         if (getInstagram() != null) {
-            builder.append("; Instagram: ").append(getInstagram());
+            builder.append("; Instagram: ").append(getInstagram().get());
         }
 
 
         if (getTelegram() != null) {
-            builder.append("; Telegram: ").append(getTelegram());
+            builder.append("; Telegram: ").append(getTelegram().get());
         }
 
         if (getTiktok() != null) {
-            builder.append("; TikTok: ").append(getTiktok());
+            builder.append("; TikTok: ").append(getTiktok().get());
         }
 
         if (getTwitter() != null) {
-            builder.append("; Twitter: ").append(getTwitter());
+            builder.append("; Twitter: ").append(getTwitter().get());
         }
 
         return builder.toString();
