@@ -311,8 +311,9 @@ _Guide for New Users_
 
 |Priority| As a / an …​                              | I want to …​                                                                    | So that I can…​                                                                                      |
 |--------| -------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-|`* *`   | new user                                     | view a help message                                                                | learn how to use SociaLite                                                                              |
+|`* *`   | new user                                     | view the User Guide                                                                | learn how to use SociaLite comprehensively                                                              |
 |`* *`   | new user                                     | view sample contacts when I initialise the app                                     | try out the features without having to add actual data                                                  |
+|`* *`   | new / returning user                         | access in-app guidance for a specific command                                      | (re)learn the syntax of a selected command without having to open the User Guide via a browser          |
 |`* *`   | new user adopting the app for my own use     | purge all data                                                                     | delete sample contacts and add real data                                                                |
 
 <br/>
@@ -624,13 +625,32 @@ _Customization of Contacts_
 *MSS*
 
 1.  User requests to view User Guide
-2.  SociaLite displays a link to User Guide
+2.  SociaLite displays a link to User Guide and instructions to obtain in-app guidance for five selected commands
 
     Use case ends.
 
 <br/>
 
-**Use Case 14: Purge contacts stored in SociaLite**
+**Use Case 14: View in-app guidance for selected commands**
+
+*MSS*
+
+1.  User requests to view in-app guidance for one out of five selected commands
+2.  SociaLite returns an overview and quick guide of the command given as input
+
+    Use case ends.
+
+*Extensions* 
+
+* 1a. The keyword given as input is invalid.
+
+    * 1a1. SociaLite launches HelpWindow for **User Guide (UC13)** by default
+    
+        Use case ends.
+
+<br/>
+
+**Use Case 15: Purge contacts stored in SociaLite**
 
 *MSS*
 
@@ -641,7 +661,7 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 15: Exit application**
+**Use Case 16: Exit application**
 
 *MSS*
 
