@@ -2,8 +2,6 @@ package socialite.logic;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -14,7 +12,6 @@ import socialite.logic.commands.CommandResult;
 import socialite.logic.commands.exceptions.CommandException;
 import socialite.logic.parser.AddressBookParser;
 import socialite.logic.parser.exceptions.ParseException;
-import socialite.model.CommandHistory;
 import socialite.model.Model;
 import socialite.model.ReadOnlyAddressBook;
 import socialite.model.ReadOnlyCommandHistory;

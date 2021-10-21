@@ -96,7 +96,8 @@ public class StorageManager implements Storage {
     }
 
     @Override
-    public Optional<ReadOnlyCommandHistory> readCommandHistory(Path filePath) throws DataConversionException, IOException {
+    public Optional<ReadOnlyCommandHistory> readCommandHistory(Path filePath)
+            throws DataConversionException, IOException {
         logger.fine("Attempting to read command history from file: " + filePath);
         return commandHistoryStorage.readCommandHistory(filePath);
     }

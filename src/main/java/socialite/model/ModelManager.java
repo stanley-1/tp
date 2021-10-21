@@ -3,7 +3,6 @@ package socialite.model;
 import static java.util.Objects.requireNonNull;
 
 import java.nio.file.Path;
-import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -12,7 +11,6 @@ import javafx.collections.transformation.FilteredList;
 import socialite.commons.core.GuiSettings;
 import socialite.commons.core.LogsCenter;
 import socialite.commons.util.CollectionUtil;
-import socialite.logic.commands.Command;
 import socialite.model.person.Person;
 
 /**

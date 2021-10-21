@@ -5,8 +5,6 @@ import static java.util.Objects.requireNonNull;
 import java.util.ArrayList;
 import java.util.List;
 
-import socialite.storage.CommandHistoryStorage;
-
 public class CommandHistory implements ReadOnlyCommandHistory {
 
     private List<String> history;
@@ -17,13 +15,17 @@ public class CommandHistory implements ReadOnlyCommandHistory {
 
     public CommandHistory() {}
 
+    /**
+     * Creates a CommandHistory using the commands in the {@code toBeCopied}.
+     */
     public CommandHistory(ReadOnlyCommandHistory toBeCopied) {
         this();
         resetData(toBeCopied);
     }
 
-
-
+    /**
+     * Resets the existing data of this {@code CommandHistory} with {@code newData}.
+     */
     public void resetData(ReadOnlyCommandHistory newData) {
         requireNonNull(newData);
         this.history = newData.getCommandHistory();

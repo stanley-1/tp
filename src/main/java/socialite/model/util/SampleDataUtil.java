@@ -55,9 +55,9 @@ public class SampleDataUtil {
 
     public static String[] getSampleCommands() {
         return new String[] {
-                "list",
-                "help",
-                "help add",
+            "list",
+            "help",
+            "help add",
         };
     }
 

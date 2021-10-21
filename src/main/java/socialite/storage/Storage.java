@@ -1,12 +1,9 @@
 package socialite.storage;
 
 import java.io.IOException;
-import java.nio.file.Path;
-import java.util.List;
 import java.util.Optional;
 
 import socialite.commons.exceptions.DataConversionException;
-import socialite.model.CommandHistory;
 import socialite.model.ReadOnlyAddressBook;
 import socialite.model.ReadOnlyCommandHistory;
 import socialite.model.ReadOnlyUserPrefs;

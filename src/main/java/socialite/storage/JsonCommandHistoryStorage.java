@@ -4,14 +4,11 @@ import static java.util.Objects.requireNonNull;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.List;
 import java.util.Optional;
 
 import socialite.commons.exceptions.DataConversionException;
 import socialite.commons.util.FileUtil;
 import socialite.commons.util.JsonUtil;
-import socialite.logic.commands.Command;
-import socialite.model.CommandHistory;
 import socialite.model.ReadOnlyCommandHistory;
 
 public class JsonCommandHistoryStorage implements CommandHistoryStorage {
@@ -51,6 +48,7 @@ public class JsonCommandHistoryStorage implements CommandHistoryStorage {
         saveCommandHistory(commandHistory, filePath);
     }
 
+    @Override
     public void saveCommandHistory(ReadOnlyCommandHistory commandHistory, Path filePath) throws IOException {
         requireNonNull(commandHistory);
         requireNonNull(filePath);

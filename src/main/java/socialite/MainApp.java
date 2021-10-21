@@ -61,7 +61,8 @@ public class MainApp extends Application {
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
         AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
-        CommandHistoryStorage commandHistoryStorage =new JsonCommandHistoryStorage(userPrefs.getCommandHistoryFilePath());
+        CommandHistoryStorage commandHistoryStorage =
+                new JsonCommandHistoryStorage(userPrefs.getCommandHistoryFilePath());
         storage = new StorageManager(addressBookStorage, userPrefsStorage, commandHistoryStorage);
 
         initLogging(config);
@@ -104,10 +105,12 @@ public class MainApp extends Application {
             }
             initialCommandHistory = commandHistoryOptional.orElseGet(SampleDataUtil::getSampleCommandHistory);
         } catch (DataConversionException e) {
-            logger.warning("Command history file not in the correct format. Will be starting with an empty CommandHistory");
+            logger.warning(
+                    "Command history file not in the correct format. Will be starting with an empty CommandHistory");
             initialCommandHistory = new CommandHistory();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the command history. Will be starting with an empty CommandHistory");
+            logger.warning(
+                    "Problem while reading from the command history. Will be starting with an empty CommandHistory");
             initialCommandHistory = new CommandHistory();
         }
 

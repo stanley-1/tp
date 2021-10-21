@@ -26,6 +26,9 @@ public class JsonSerializableCommandHistory {
         history.addAll(source.getCommandHistory());
     }
 
+    /**
+     * Converts this command history into the model's {@code CommandHistory} object.
+     */
     public CommandHistory toModelType() {
         CommandHistory commandHistory = new CommandHistory();
         for (String command : history) {
