@@ -27,7 +27,7 @@ public class PersonUtil {
         StringBuilder sb = new StringBuilder();
         sb.append(CliSyntax.PREFIX_NAME + person.getName().fullName + " ");
         sb.append(CliSyntax.PREFIX_PHONE + person.getPhone().value + " ");
-        sb.append(person.getRemark().value + " ");
+        sb.append(person.getRemark().get() + " ");
         person.getTags().stream().forEach(
             s -> sb.append(CliSyntax.PREFIX_TAG + s.tagName + " ")
         );
@@ -46,7 +46,7 @@ public class PersonUtil {
         StringBuilder sb = new StringBuilder();
         descriptor.getName().ifPresent(name -> sb.append(CliSyntax.PREFIX_NAME).append(name.fullName).append(" "));
         descriptor.getPhone().ifPresent(phone -> sb.append(CliSyntax.PREFIX_PHONE).append(phone.value).append(" "));
-        descriptor.getRemark().ifPresent(remark -> sb.append(CliSyntax.PREFIX_REMARK).append(remark.value).append(" "));
+        descriptor.getRemark().ifPresent(remark -> sb.append(CliSyntax.PREFIX_REMARK).append(remark.get()).append(" "));
 
         if (descriptor.getTags().isPresent()) {
             Set<Tag> tags = descriptor.getTags().get();
