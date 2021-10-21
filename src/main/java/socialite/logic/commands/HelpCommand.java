@@ -1,5 +1,7 @@
 package socialite.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
 import socialite.model.Model;
 
 /**
@@ -14,8 +16,35 @@ public class HelpCommand extends Command {
 
     public static final String SHOWING_HELP_MESSAGE = "Opened help window.";
 
+    public static final String GENERIC_RESPONSE = "default";
+
+    private final String answer;
+
+    /**
+     * Creates a HelpCommand with the formulated response.
+     * @param response Response determined by HelpCommandParser
+     */
+    public HelpCommand(String response) {
+        requireNonNull(response);
+        answer = response;
+    }
+
     @Override
     public CommandResult execute(Model model) {
-        return new CommandResult(SHOWING_HELP_MESSAGE, true, false);
+        requireNonNull(answer);
+
+        if (answer == GENERIC_RESPONSE) {
+            return new CommandResult(SHOWING_HELP_MESSAGE, true, false);
+        } else {
+            return new CommandResult(answer);
+        }
+
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof HelpCommand // instanceof handles nulls
+                && answer.equals(((HelpCommand) other).answer));
     }
 }
