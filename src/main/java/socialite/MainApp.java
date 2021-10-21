@@ -87,30 +87,30 @@ public class MainApp extends Application {
         try {
             addressBookOptional = storage.readAddressBook();
             if (addressBookOptional.isEmpty()) {
-                logger.info("Address book file not found. Will be starting with a sample AddressBook");
+                logger.info("AddressBook file not found. Will be starting with a sample AddressBook");
             }
             initialAddressBook = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
         } catch (DataConversionException e) {
-            logger.warning("Address book file not in the correct format. Will be starting with an empty AddressBook");
+            logger.warning("AddressBook file not in the correct format. Will be starting with an empty AddressBook");
             initialAddressBook = new AddressBook();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the address book. Will be starting with an empty AddressBook");
+            logger.warning("Problem while reading from the AddressBook. Will be starting with an empty AddressBook");
             initialAddressBook = new AddressBook();
         }
 
         try {
             commandHistoryOptional = storage.readCommandHistory();
             if (commandHistoryOptional.isEmpty()) {
-                logger.info("Command history file not found. Will be starting with a new CommandHistory");
+                logger.info("CommandHistory file not found. Will be starting with a new CommandHistory");
             }
             initialCommandHistory = commandHistoryOptional.orElseGet(SampleDataUtil::getSampleCommandHistory);
         } catch (DataConversionException e) {
             logger.warning(
-                    "Command history file not in the correct format. Will be starting with an empty CommandHistory");
+                    "CommandHistory file not in the correct format. Will be starting with an empty CommandHistory");
             initialCommandHistory = new CommandHistory();
         } catch (IOException e) {
             logger.warning(
-                    "Problem while reading from the command history. Will be starting with an empty CommandHistory");
+                    "Problem while reading from the CommandHistory. Will be starting with an empty CommandHistory");
             initialCommandHistory = new CommandHistory();
         }
 

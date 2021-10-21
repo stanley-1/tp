@@ -39,7 +39,7 @@ public class ModelManager implements Model {
 
         logger.fine("Initializing with:"
                 + "\naddress book: " + addressBook
-                + "\nuser prefs " + userPrefs
+                + "\nuser prefs: " + userPrefs
                 + "\ncommand history: " + commandHistory);
     }
 

@@ -11,6 +11,9 @@ import socialite.commons.util.FileUtil;
 import socialite.commons.util.JsonUtil;
 import socialite.model.ReadOnlyCommandHistory;
 
+/**
+ * A class to access CommandHistory data stored as a json file on the hard disk.
+ */
 public class JsonCommandHistoryStorage implements CommandHistoryStorage {
 
     private Path filePath;

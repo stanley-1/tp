@@ -44,7 +44,7 @@ public class CommandHistory implements ReadOnlyCommandHistory {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof CommandHistory) // instaceof handles nulls
+                || (other instanceof CommandHistory) // instanceof handles nulls
                 && history.equals(((CommandHistory) other).history);
     }
 
