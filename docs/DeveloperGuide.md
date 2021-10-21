@@ -474,8 +474,8 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to list contacts
-2.  SociaLite shows a list of contacts
+1.  User requests to list contacts (UC02) or find contact (UC04)
+2. SociaLite returns a list of contacts according to the UC called
 3.  User requests to open handle in browser
 
     Use case ends.
