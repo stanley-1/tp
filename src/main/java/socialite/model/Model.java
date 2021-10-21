@@ -86,5 +86,8 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
 
+
     ReadOnlyCommandHistory getCommandHistory();
+
+    void addCommandHistory(String command);
 }

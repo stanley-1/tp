@@ -137,9 +137,16 @@ public class ModelManager implements Model {
         filteredPersons.setPredicate(predicate);
     }
 
+    //=========== Command History ============================================================================
+
     @Override
     public CommandHistory getCommandHistory() {
         return commandHistory;
+    }
+
+    @Override
+    public void addCommandHistory(String command) {
+        commandHistory.addCommand(command);
     }
 
     @Override
