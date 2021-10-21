@@ -52,11 +52,11 @@ public class AddCommandParser implements Parser<AddCommand> {
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         Remark remark = ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).orElse(""));
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-        Facebook facebook = ParserUtil.parseFacebook(argMultimap.getValue(PREFIX_FACEBOOK).get());
-        Instagram instagram = ParserUtil.parseInstagram(argMultimap.getValue(PREFIX_INSTAGRAM).get());
-        Telegram telegram = ParserUtil.parseTelegram(argMultimap.getValue(PREFIX_TELEGRAM).get());
-        TikTok tiktok = ParserUtil.parseTikTok(argMultimap.getValue(PREFIX_TIKTOK).get());
-        Twitter twitter = ParserUtil.parseTwitter(argMultimap.getValue(PREFIX_TWITTER).get());
+        Facebook facebook = ParserUtil.parseFacebook(argMultimap.getValue(PREFIX_FACEBOOK).orElse(null));
+        Instagram instagram = ParserUtil.parseInstagram(argMultimap.getValue(PREFIX_INSTAGRAM).orElse(null));
+        Telegram telegram = ParserUtil.parseTelegram(argMultimap.getValue(PREFIX_TELEGRAM).orElse(null));
+        TikTok tiktok = ParserUtil.parseTikTok(argMultimap.getValue(PREFIX_TIKTOK).orElse(null));
+        Twitter twitter = ParserUtil.parseTwitter(argMultimap.getValue(PREFIX_TWITTER).orElse(null));
 
         Person person = new Person(name, phone, remark, tagList, facebook,
                 instagram, telegram, tiktok, twitter);

@@ -5,24 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import socialite.testutil.Assert;
-
 public class TelegramTest {
-    @Test
-    public void constructor_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> new Telegram(null));
-    }
-
-    @Test
-    public void constructor_invalidTelegram_throwsIllegalArgumentException() {
-        String invalidTelegram = "";
-        Assert.assertThrows(IllegalArgumentException.class, () -> new Telegram(invalidTelegram));
-    }
 
     @Test
     public void isValidTelegram() {
         // null telegram handle
-        Assert.assertThrows(NullPointerException.class, () -> new Telegram(null));
+        // Assert.assertThrows(NullPointerException.class, () -> new Telegram(null));
 
         // blank telegram handle
         assertFalse(Telegram.isValidHandle("")); // empty string
