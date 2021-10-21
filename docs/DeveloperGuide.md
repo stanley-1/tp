@@ -301,6 +301,7 @@ _Core Functionalities_
 |`* * *` | beginner user                                | delete contacts                                                                    | remove irrelevant entries                                                                               |
 |`* * *` | beginner user                                | access the social media handles of my contacts                                     | have quicker access to my contacts' social media pages                                                  |
 |`* * *` | forgetful user                               | save my contacts' social media handles                                             | easily access my contact's social media account without having to recall the exact handle               |
+|`* * *` | user                                         | visit the social media site when I click on the handle                             | easily go to the social media site, without having to switch to the browser while remembering the handle|
 |`* *`   | user                                         | browse a list of all my contacts                                                   | view all my contacts at a glance                                                                        |
 |`*`     | beginner user                                | update contacts                                                                    | modify existing social media handles and add new ones when they are created                             |
 |`*`     | beginner user                                | view the recent feed of my contacts                                                | have more meaningful and frequent interactions with my contacts on multiple platforms                   |
@@ -469,9 +470,27 @@ _Customization of Contacts_
 
 <br/>
 
+**Use Case 06: Go to social media site**
+
+*MSS*
+
+1.  User requests to list contacts
+2.  SociaLite shows a list of contacts
+3.  User requests to open handle in browser
+
+    Use case ends.
+
+*Extensions*
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+<br/>
+
 ***Organisation of Contacts***
 
-**Use Case 06: Create new category**
+**Use Case 07: Create new category**
 
 *MSS*
 
@@ -492,7 +511,7 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 07: Query categories**
+**Use Case 08: Query categories**
 
 *MSS*
 
@@ -511,7 +530,7 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 08: Edit categories**
+**Use Case 09: Edit categories**
 
 *MSS*
 
@@ -522,7 +541,7 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 09: Delete categories**
+**Use Case 10: Delete categories**
 
 *MSS*
 
@@ -553,7 +572,7 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 10: Retrieve last queried contact**
+**Use Case 11: Retrieve last queried contact**
 
 *MSS*
 
@@ -567,7 +586,7 @@ _Customization of Contacts_
 
 ***Customization Tools***
 
-**Use Case 11: Add remark for a specific contact**
+**Use Case 12: Add remark for a specific contact**
 
 *MSS*
 
@@ -592,7 +611,7 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 12: View contact card**
+**Use Case 13: View contact card**
 
 *MSS*
 
@@ -619,7 +638,7 @@ _Customization of Contacts_
 
 ***Help Guide & Exiting***
 
-**Use Case 13: View User Guide**
+**Use Case 14: View User Guide**
 
 *MSS*
 
@@ -630,7 +649,7 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 14: Purge contacts stored in SociaLite**
+**Use Case 15: Purge contacts stored in SociaLite**
 
 *MSS*
 
@@ -641,7 +660,7 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 15: Exit application**
+**Use Case 16: Exit application**
 
 *MSS*
 
