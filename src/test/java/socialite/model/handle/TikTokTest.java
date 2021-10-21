@@ -5,24 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import socialite.testutil.Assert;
-
 public class TikTokTest {
     @Test
-    public void constructor_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> new TikTok(null));
-    }
-
-    @Test
-    public void constructor_invalidEmail_throwsIllegalArgumentException() {
-        Assert.assertThrows(IllegalArgumentException.class, () -> new TikTok(""));
-    }
-
-    @Test
     public void isValidHandle() {
-        // check null
-        Assert.assertThrows(NullPointerException.class, () -> TikTok.isValidHandle(null));
-
         // check empty string and spaces
         assertFalse(TikTok.isValidHandle(""));
         assertFalse(TikTok.isValidHandle("  "));

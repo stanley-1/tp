@@ -1,6 +1,6 @@
 package socialite.model.handle;
 
-import static java.util.Objects.requireNonNull;
+import java.util.Optional;
 
 import socialite.commons.util.AppUtil;
 
@@ -8,14 +8,13 @@ import socialite.commons.util.AppUtil;
  * Represents a Person's Instagram handle in SociaLite.
  * Guarantees: immutable; handle is valid as declared in {@link #isValidHandle(String)}
  */
-public class Instagram {
+public class Instagram extends Handle {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Instagram handles should only contain alphanumeric characters, periods & underscores.\n"
             + "A handle is limited to 30 characters and can't use other punctuation marks.\n"
             + "https://tinyurl.com/instaHandle";
     public static final String VALIDATION_REGEX = "^[a-zA-Z0-9._]{1,30}$";
-    public final String value;
 
     /**
      * Constructs a {@code Instagram}.
@@ -23,9 +22,10 @@ public class Instagram {
      * @param handle A valid Instagram handle.
      */
     public Instagram(String handle) {
-        requireNonNull(handle);
-        AppUtil.checkArgument(isValidHandle(handle), MESSAGE_CONSTRAINTS);
-        value = handle;
+        if (handle != null && !handle.equals("")) {
+            AppUtil.checkArgument(isValidHandle(handle), MESSAGE_CONSTRAINTS);
+        }
+        value = Optional.ofNullable(handle);
     }
 
     /**
@@ -37,7 +37,7 @@ public class Instagram {
 
     @Override
     public String toString() {
-        return value;
+        return value.orElse("");
     }
 
     @Override

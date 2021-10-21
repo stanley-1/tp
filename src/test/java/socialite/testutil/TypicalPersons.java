@@ -34,19 +34,19 @@ public class TypicalPersons {
     public static final Person ALICE = new PersonBuilder().withName("Alice Pauline")
             .withPhone("94351253").withRemark("She likes aardvarks.").withTags("friends")
             .withFacebook("alice.p").withInstagram("alice.p").withTelegram("alice_pauline")
-            .withTikTok("alice.pauline").withTwitter("alice_pauline").build();
+            .withTikTok("alice.pauline").withTwitter(null).build();
     public static final Person BENSON = new PersonBuilder().withName("Benson Meier")
             .withPhone("98765432").withRemark("He can't take beer!").withTags("owesMoney", "friends")
             .withFacebook("benson.m").withInstagram("benson.m").withTelegram("benson_meier")
-            .withTikTok("benson.meier").withTwitter("bensonMeier").build();
+            .withTikTok(null).withTwitter("bensonMeier").build();
     public static final Person CARL = new PersonBuilder().withName("Carl Kurz").withPhone("95352563")
-            .withFacebook("carl.k").withInstagram("carl.k").withTelegram("carl_kurz")
+            .withFacebook("carl.k").withInstagram("carl.k").withTelegram(null)
             .withTikTok("carl.kurz").withTwitter("carl").build();
     public static final Person DANIEL = new PersonBuilder().withName("Daniel Meier").withPhone("87652533")
-            .withTags("friends").withFacebook("daniel.m").withInstagram("daniel.m").withTelegram("daniel_meier")
+            .withTags("friends").withFacebook("daniel.m").withInstagram(null).withTelegram("daniel_meier")
             .withTikTok("daniel.meier").withTwitter("DanielMeier").build();
     public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withPhone("9482224")
-            .withFacebook("elle.m").withInstagram("elle.m").withTelegram("elle_meyer").withTikTok("elle.meyer")
+            .withFacebook(null).withInstagram("elle.m").withTelegram("elle_meyer").withTikTok("elle.meyer")
             .withTwitter("elle_meyer01").build();
     public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz").withPhone("9482427")
             .withFacebook("fiona.k").withInstagram("fiona.k").withTelegram("fiona_kunz")

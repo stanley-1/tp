@@ -72,10 +72,8 @@ public class ParserUtil {
     /**
      * Parses a {@code String remark} into an {@code Remark}.
      * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code remark} is invalid.
      */
-    public static Remark parseRemark(String remark) throws ParseException {
+    public static Remark parseRemark(String remark) {
         requireNonNull(remark);
         String trimmedRemark = remark.trim();
         return new Remark(trimmedRemark);
@@ -115,7 +113,9 @@ public class ParserUtil {
      * @throws ParseException if the given {@code handle} is invalid for Facebook.
      */
     public static Facebook parseFacebook(String handle) throws ParseException {
-        requireNonNull(handle);
+        if (handle == null || handle.equals("")) {
+            return new Facebook(null);
+        }
         String trimmedHandle = handle.trim();
         if (!Facebook.isValidHandle(trimmedHandle)) {
             throw new ParseException(Facebook.MESSAGE_CONSTRAINTS);
@@ -130,7 +130,9 @@ public class ParserUtil {
      * @throws ParseException if the given {@code handle} is invalid for Instagram.
      */
     public static Instagram parseInstagram(String handle) throws ParseException {
-        requireNonNull(handle);
+        if (handle == null || handle.equals("")) {
+            return new Instagram(null);
+        }
         String trimmedHandle = handle.trim();
         if (!Instagram.isValidHandle(trimmedHandle)) {
             throw new ParseException(Instagram.MESSAGE_CONSTRAINTS);
@@ -145,7 +147,9 @@ public class ParserUtil {
      * @throws ParseException if the given {@code handle} is invalid for Telegram.
      */
     public static Telegram parseTelegram(String handle) throws ParseException {
-        requireNonNull(handle);
+        if (handle == null || handle.equals("")) {
+            return new Telegram(null);
+        }
         String trimmedHandle = handle.trim();
         if (!Telegram.isValidHandle(trimmedHandle)) {
             throw new ParseException(Telegram.MESSAGE_CONSTRAINTS);
@@ -162,7 +166,9 @@ public class ParserUtil {
      * @throws ParseException if the given {@code twitter} is invalid
      */
     public static Twitter parseTwitter(String twitter) throws ParseException {
-        requireNonNull(twitter);
+        if (twitter == null || twitter.equals("")) {
+            return new Twitter(null);
+        }
         String trimmedTwitter = twitter.trim();
         if (!Twitter.isValidHandle(trimmedTwitter)) {
             throw new ParseException(Twitter.MESSAGE_CONSTRAINTS);
@@ -179,7 +185,9 @@ public class ParserUtil {
      * @throws ParseException if the given {@code tiktok} is invalid
      */
     public static TikTok parseTikTok(String tiktok) throws ParseException {
-        requireNonNull(tiktok);
+        if (tiktok == null || tiktok.equals("")) {
+            return new TikTok(null);
+        }
         String trimmedTikTok = tiktok.trim();
         if (!TikTok.isValidHandle(trimmedTikTok)) {
             throw new ParseException(TikTok.MESSAGE_CONSTRAINTS);
