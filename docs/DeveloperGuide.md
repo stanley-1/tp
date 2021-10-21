@@ -680,7 +680,7 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 16: Exit application**
+**Use Case 17: Exit application**
 
 *MSS*
 
