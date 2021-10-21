@@ -16,6 +16,7 @@ import socialite.logic.commands.CommandTestUtil;
 import socialite.logic.commands.ListCommand;
 import socialite.logic.commands.exceptions.CommandException;
 import socialite.logic.parser.exceptions.ParseException;
+import socialite.model.CommandHistory;
 import socialite.model.Model;
 import socialite.model.ModelManager;
 import socialite.model.ReadOnlyAddressBook;
@@ -134,7 +135,7 @@ public class LogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new CommandHistory());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 
