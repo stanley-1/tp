@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import socialite.model.handle.Handle;
 import socialite.model.person.Person;
+import socialite.model.person.Remark;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -70,7 +71,8 @@ public class PersonCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
         phone.setText(person.getPhone().value);
-        remark.setText(person.getRemark().value);
+        remark.managedProperty().bind(remark.visibleProperty());
+        this.makeRemark(person.getRemark());
         this.makeHandle(person.getFacebook(), "facebook");
         this.makeHandle(person.getInstagram(), "instagram");
         this.makeHandle(person.getTelegram(), "telegram");
@@ -79,6 +81,17 @@ public class PersonCard extends UiPart<Region> {
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+    }
+
+    private void makeRemark(Remark remark) {
+        String value = remark.get();
+        if (value != null && !value.equals("")) {
+            this.remark.setText(value);
+            this.remark.setVisible(true);
+        } else {
+            this.remark.setText("");
+            this.remark.setVisible(false);
+        }
     }
 
     private void makeHandle(Handle handle, String handleName) {

@@ -141,15 +141,8 @@ public class Person {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
                 .append("; Phone: ")
-                .append(getPhone())
-                .append("; Remark: ")
-                .append(getRemark());
+                .append(getPhone());
 
-        Set<Tag> tags = getTags();
-        if (!tags.isEmpty()) {
-            builder.append("; Tags: ");
-            tags.forEach(builder::append);
-        }
 
         if (getFacebook() != null) {
             builder.append("; Facebook: ").append(getFacebook().get());
@@ -170,6 +163,16 @@ public class Person {
 
         if (getTwitter() != null) {
             builder.append("; Twitter: ").append(getTwitter().get());
+        }
+
+        if (getRemark() != null) {
+            builder.append("; Remark: ").append(getRemark().get());
+        }
+
+        Set<Tag> tags = getTags();
+        if (!tags.isEmpty()) {
+            builder.append("; Tags: ");
+            tags.forEach(builder::append);
         }
 
         return builder.toString();
