@@ -663,7 +663,7 @@ _Customization of Contacts_
 
 * 1a. The keyword given as input is invalid.
 
-    * 1a1. SociaLite launches HelpWindow for **User Guide (UC13)** by default
+    * 1a1. SociaLite launches HelpWindow for **User Guide (UC14)** by default
     
         Use case ends.
 
