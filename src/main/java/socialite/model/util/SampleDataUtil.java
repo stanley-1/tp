@@ -5,7 +5,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import socialite.model.AddressBook;
+import socialite.model.CommandHistory;
 import socialite.model.ReadOnlyAddressBook;
+import socialite.model.ReadOnlyCommandHistory;
 import socialite.model.handle.Facebook;
 import socialite.model.handle.Instagram;
 import socialite.model.handle.Telegram;
@@ -51,6 +53,15 @@ public class SampleDataUtil {
         };
     }
 
+    public static String[] getSampleCommands() {
+        return new String[] {
+                "list",
+                "help",
+                "help add",
+        };
+    }
+
+
     public static ReadOnlyAddressBook getSampleAddressBook() {
         AddressBook sampleAb = new AddressBook();
         for (Person samplePerson : getSamplePersons()) {
@@ -68,4 +79,11 @@ public class SampleDataUtil {
                 .collect(Collectors.toSet());
     }
 
+    public static ReadOnlyCommandHistory getSampleCommandHistory() {
+        CommandHistory sampleCh = new CommandHistory();
+        for (String sampleCommand : getSampleCommands()) {
+            sampleCh.addCommand(sampleCommand);
+        }
+        return sampleCh;
+    }
 }

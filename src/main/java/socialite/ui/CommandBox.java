@@ -1,5 +1,7 @@
 package socialite.ui;
 
+import java.util.List;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -10,6 +12,7 @@ import socialite.logic.Logic;
 import socialite.logic.commands.CommandResult;
 import socialite.logic.commands.exceptions.CommandException;
 import socialite.logic.parser.exceptions.ParseException;
+import socialite.model.ReadOnlyCommandHistory;
 
 /**
  * The UI component that is responsible for receiving user command inputs.
@@ -20,6 +23,7 @@ public class CommandBox extends UiPart<Region> {
     private static final String FXML = "CommandBox.fxml";
 
     private final CommandExecutor commandExecutor;
+    private final List<String> commandHistory;
 
     @FXML
     private TextField commandTextField;
@@ -27,11 +31,12 @@ public class CommandBox extends UiPart<Region> {
     /**
      * Creates a {@code CommandBox} with the given {@code CommandExecutor}.
      */
-    public CommandBox(CommandExecutor commandExecutor) {
+    public CommandBox(CommandExecutor commandExecutor, ReadOnlyCommandHistory commandHistory) {
         super(FXML);
         this.commandExecutor = commandExecutor;
         // calls #setStyleToDefault() whenever there is a change to the text of the command box.
         commandTextField.textProperty().addListener((unused1, unused2, unused3) -> setStyleToDefault());
+        this.commandHistory = commandHistory.getCommandHistory();
     }
 
     /**

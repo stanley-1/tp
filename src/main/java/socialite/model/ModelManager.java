@@ -3,6 +3,7 @@ package socialite.model;
 import static java.util.Objects.requireNonNull;
 
 import java.nio.file.Path;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -11,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import socialite.commons.core.GuiSettings;
 import socialite.commons.core.LogsCenter;
 import socialite.commons.util.CollectionUtil;
+import socialite.logic.commands.Command;
 import socialite.model.person.Person;
 
 /**
@@ -22,23 +24,29 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
+    private final CommandHistory commandHistory;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(
+            ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs, ReadOnlyCommandHistory commandHistory) {
         super();
         CollectionUtil.requireAllNonNull(addressBook, userPrefs);
-
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        this.commandHistory = new CommandHistory(commandHistory);
+
+        logger.fine("Initializing with:"
+                + "\naddress book: " + addressBook
+                + "\nuser prefs " + userPrefs
+                + "\ncommand history: " + commandHistory);
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new AddressBook(), new UserPrefs(), new CommandHistory());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -127,6 +135,11 @@ public class ModelManager implements Model {
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+    }
+
+    @Override
+    public CommandHistory getCommandHistory() {
+        return commandHistory;
     }
 
     @Override

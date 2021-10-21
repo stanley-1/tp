@@ -16,9 +16,11 @@ import socialite.commons.util.StringUtil;
 import socialite.logic.Logic;
 import socialite.logic.LogicManager;
 import socialite.model.AddressBook;
+import socialite.model.CommandHistory;
 import socialite.model.Model;
 import socialite.model.ModelManager;
 import socialite.model.ReadOnlyAddressBook;
+import socialite.model.ReadOnlyCommandHistory;
 import socialite.model.ReadOnlyUserPrefs;
 import socialite.model.UserPrefs;
 import socialite.model.util.SampleDataUtil;
@@ -78,22 +80,38 @@ public class MainApp extends Application {
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         Optional<ReadOnlyAddressBook> addressBookOptional;
-        ReadOnlyAddressBook initialData;
+        ReadOnlyAddressBook initialAddressBook;
+        Optional<ReadOnlyCommandHistory> commandHistoryOptional;
+        ReadOnlyCommandHistory initialCommandHistory;
         try {
             addressBookOptional = storage.readAddressBook();
-            if (!addressBookOptional.isPresent()) {
-                logger.info("Data file not found. Will be starting with a sample AddressBook");
+            if (addressBookOptional.isEmpty()) {
+                logger.info("Address book file not found. Will be starting with a sample AddressBook");
             }
-            initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
+            initialAddressBook = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
         } catch (DataConversionException e) {
-            logger.warning("Data file not in the correct format. Will be starting with an empty AddressBook");
-            initialData = new AddressBook();
+            logger.warning("Address book file not in the correct format. Will be starting with an empty AddressBook");
+            initialAddressBook = new AddressBook();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
-            initialData = new AddressBook();
+            logger.warning("Problem while reading from the address book. Will be starting with an empty AddressBook");
+            initialAddressBook = new AddressBook();
         }
 
-        return new ModelManager(initialData, userPrefs);
+        try {
+            commandHistoryOptional = storage.readCommandHistory();
+            if (commandHistoryOptional.isEmpty()) {
+                logger.info("Command history file not found. Will be starting with a new CommandHistory");
+            }
+            initialCommandHistory = commandHistoryOptional.orElseGet(SampleDataUtil::getSampleCommandHistory);
+        } catch (DataConversionException e) {
+            logger.warning("Command history file not in the correct format. Will be starting with an empty CommandHistory");
+            initialCommandHistory = new CommandHistory();
+        } catch (IOException e) {
+            logger.warning("Problem while reading from the command history. Will be starting with an empty CommandHistory");
+            initialCommandHistory = new CommandHistory();
+        }
+
+        return new ModelManager(initialAddressBook, userPrefs, initialCommandHistory);
     }
 
     private void initLogging(Config config) {
