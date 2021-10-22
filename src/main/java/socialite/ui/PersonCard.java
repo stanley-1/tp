@@ -1,5 +1,6 @@
 package socialite.ui;
 
+import java.io.IOException;
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import socialite.model.handle.Handle;
+import socialite.model.handle.Handle.Platform;
 import socialite.model.person.Person;
 
 /**
@@ -31,6 +33,8 @@ public class PersonCard extends UiPart<Region> {
 
     @FXML
     private HBox cardPane;
+    @FXML
+    private HBox handles;
     @FXML
     private Label name;
     @FXML
@@ -71,59 +75,96 @@ public class PersonCard extends UiPart<Region> {
         name.setText(person.getName().fullName);
         phone.setText(person.getPhone().value);
         remark.setText(person.getRemark().value);
-        this.makeHandle(person.getFacebook(), "facebook");
-        this.makeHandle(person.getInstagram(), "instagram");
-        this.makeHandle(person.getTelegram(), "telegram");
-        this.makeHandle(person.getTiktok(), "tiktok");
-        this.makeHandle(person.getTwitter(), "twitter");
+        this.makeHandle(person.getFacebook(), Platform.FACEBOOK);
+        this.makeHandle(person.getInstagram(), Platform.INSTAGRAM);
+        this.makeHandle(person.getTelegram(), Platform.TELEGRAM);
+        this.makeHandle(person.getTiktok(), Platform.TIKTOK);
+        this.makeHandle(person.getTwitter(), Platform.TWITTER);
+        this.handles.setSpacing(8);
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 
-    private void makeHandle(Handle handle, String handleName) {
+    private void openBrowser(String url) {
+        String os = System.getProperty("os.name").toLowerCase();
+        Runtime runtime = Runtime.getRuntime();
+        try {
+            if (os.indexOf("win") >= 0) {
+                runtime.exec("rundll32 url.dll,FileProtocolHandler " + url);
+            } else if (os.indexOf("mac") >= 0) {
+                runtime.exec("open " + url);
+            } else if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) {
+                runtime.exec("xdg-open " + url);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void makeHandle(Handle handle, Platform platform) {
         String value = handle.get();
-        switch (handleName) {
-        case "facebook":
+        switch (platform) {
+        case FACEBOOK:
             if (value != null && !value.equals("")) {
-                this.facebook.setText("@" + value + " ");
+                this.facebook.setText(value);
                 this.facebookIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/facebook.png")));
+                this.facebook.setOnMouseEntered(Event -> this.facebook.setUnderline(true));
+                this.facebook.setOnMouseExited(Event -> this.facebook.setUnderline(false));
+                this.facebook.setOnMouseClicked(Event -> this.openBrowser(
+                        person.getFacebook().getUrl()));
             } else {
                 this.facebook.setText(null);
                 this.facebookIcon.setFitWidth(0);
             }
             break;
-        case "instagram":
+        case INSTAGRAM:
             if (value != null && !value.equals("")) {
-                this.instagram.setText("@" + value + " ");
+                this.instagram.setText("@" + value);
                 this.instagramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/instagram.png")));
+                this.instagram.setOnMouseEntered(Event -> this.instagram.setUnderline(true));
+                this.instagram.setOnMouseExited(Event -> this.instagram.setUnderline(false));
+                this.instagram.setOnMouseClicked(Event -> this.openBrowser(
+                        person.getInstagram().getUrl()));
             } else {
                 this.instagram.setText(null);
                 this.instagramIcon.setFitWidth(0);
             }
             break;
-        case "telegram":
+        case TELEGRAM:
             if (value != null && !value.equals("")) {
-                this.telegram.setText("@" + value + " ");
+                this.telegram.setText("@" + value);
                 this.telegramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/telegram.png")));
+                this.telegram.setOnMouseEntered(Event -> this.telegram.setUnderline(true));
+                this.telegram.setOnMouseExited(Event -> this.telegram.setUnderline(false));
+                this.telegram.setOnMouseClicked(Event -> this.openBrowser(
+                        person.getTelegram().getUrl()));
             } else {
                 this.telegram.setText(null);
                 this.telegramIcon.setFitWidth(0);
             }
             break;
-        case "tiktok":
+        case TIKTOK:
             if (value != null && !value.equals("")) {
-                this.tiktok.setText("@" + value + " ");
+                this.tiktok.setText("@" + value);
                 this.tiktokIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/tik-tok.png")));
+                this.tiktok.setOnMouseEntered(Event -> this.tiktok.setUnderline(true));
+                this.tiktok.setOnMouseExited(Event -> this.tiktok.setUnderline(false));
+                this.tiktok.setOnMouseClicked(Event -> this.openBrowser(
+                        person.getTiktok().getUrl()));
             } else {
                 this.tiktok.setText(null);
                 this.tiktokIcon.setFitWidth(0);
             }
             break;
-        case "twitter":
+        case TWITTER:
             if (value != null && !value.equals("")) {
-                this.twitter.setText("@" + value + " ");
+                this.twitter.setText("@" + value);
                 this.twitterIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/twitter.png")));
+                this.twitter.setOnMouseEntered(Event -> this.twitter.setUnderline(true));
+                this.twitter.setOnMouseExited(Event -> this.twitter.setUnderline(false));
+                this.twitter.setOnMouseClicked(Event -> this.openBrowser(
+                        person.getTwitter().getUrl()));
             } else {
                 this.twitter.setText(null);
                 this.twitterIcon.setFitWidth(0);
