@@ -12,8 +12,8 @@ import socialite.logic.commands.exceptions.CommandException;
 import socialite.logic.parser.CliSyntax;
 import socialite.model.AddressBook;
 import socialite.model.Model;
+import socialite.model.person.ContainsKeywordsPredicate;
 import socialite.model.person.Person;
-import socialite.model.person.containsKeywordsPredicate;
 import socialite.testutil.Assert;
 import socialite.testutil.EditPersonDescriptorBuilder;
 
@@ -131,7 +131,7 @@ public class CommandTestUtil {
 
         Person person = model.getFilteredPersonList().get(targetIndex.getZeroBased());
         final String[] splitName = person.getName().fullName.split("\\s+");
-        model.updateFilteredPersonList(new containsKeywordsPredicate(Arrays.asList(splitName[0])));
+        model.updateFilteredPersonList(new ContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredPersonList().size());
     }
