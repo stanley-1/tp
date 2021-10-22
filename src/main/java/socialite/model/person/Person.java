@@ -144,28 +144,27 @@ public class Person {
                 .append(getPhone());
 
 
-        if (getFacebook() != null) {
+        if (getFacebook().get() != null) {
             builder.append("; Facebook: ").append(getFacebook().get());
         }
 
-        if (getInstagram() != null) {
+        if (getInstagram().get() != null) {
             builder.append("; Instagram: ").append(getInstagram().get());
         }
 
-
-        if (getTelegram() != null) {
+        if (getTelegram().get() != null) {
             builder.append("; Telegram: ").append(getTelegram().get());
         }
 
-        if (getTiktok() != null) {
+        if (getTiktok().get() != null) {
             builder.append("; TikTok: ").append(getTiktok().get());
         }
 
-        if (getTwitter() != null) {
+        if (getTwitter().get() != null) {
             builder.append("; Twitter: ").append(getTwitter().get());
         }
 
-        if (getRemark() != null) {
+        if (getRemark().get() != null) {
             builder.append("; Remark: ").append(getRemark().get());
         }
 

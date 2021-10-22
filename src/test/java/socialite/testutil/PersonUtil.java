@@ -27,7 +27,7 @@ public class PersonUtil {
         StringBuilder sb = new StringBuilder();
         sb.append(CliSyntax.PREFIX_NAME + person.getName().fullName + " ");
         sb.append(CliSyntax.PREFIX_PHONE + person.getPhone().value + " ");
-        sb.append(person.getRemark().get() + " ");
+        sb.append(CliSyntax.PREFIX_REMARK + person.getRemark().get() + " ");
         person.getTags().stream().forEach(
             s -> sb.append(CliSyntax.PREFIX_TAG + s.tagName + " ")
         );

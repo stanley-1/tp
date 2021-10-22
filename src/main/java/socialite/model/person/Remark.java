@@ -15,7 +15,6 @@ public class Remark {
      * @param remark A valid remark.
      */
     public Remark(String remark) {
-
         value = Optional.ofNullable(remark);
     }
 
