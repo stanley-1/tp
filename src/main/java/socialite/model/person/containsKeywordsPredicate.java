@@ -56,10 +56,6 @@ public class containsKeywordsPredicate implements Predicate<Person> {
             return false;
         }
 
-        if (keywords.get(0).equals("all/")) {
-            return true;
-        }
-
         boolean matchesAll = true;
 
         for (String keyword : keywords) {
