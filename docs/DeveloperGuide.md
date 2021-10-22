@@ -320,14 +320,15 @@ _Guide for New Users_
 
 _Organization of Contacts_
 
-|Priority| As a / an …​                              | I want to …​                                                                    | So that I can…​                                                                                      |
-|--------| -------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-|`* *`   | organized user                               | create categories to group my contacts                                             | organize my list of contacts                                                                            |
-|`* *`   | organized user                               | edit categories as and when required                                               | repurpose such pre-existing categories                                                                  |
-|`* *`   | organized user                               | query a group of contacts                                                          | have greater ease of access to my frequent contacts and efficiently contact people for similar purposes |
-|`*`     | organised user                               | delete categories associated with contacts                                         | declutter my address book when the category is no longer relevant                                       |
-|`*`     | intermediate user                            | filter contacts based on social media platform                                     | find out whose social media contacts I have not gotten and request it from them                         |
-|`*`     | user                                         | track when I last queried my contact's information                                 | find out who I have not communicated with for an extended period of time                                |
+| Priority | As a / an …​       | I want to …​                                        | So that I can…​                                               |
+| -------- | ----------------- | -------------------------------------------------- | ------------------------------------------------------------ |
+| `* *`    | organised user    | create categories to group my contacts             | organize my list of contacts                                 |
+| `* *`    | organised user    | edit categories as and when required               | repurpose such pre-existing categories                       |
+| `* *`    | organised user    | query a group of contacts                          | have greater ease of access to my frequent contacts and efficiently contact people for similar purposes |
+| `*`      | organised user    | delete categories associated with contacts         | declutter my address book when the category is no longer relevant |
+| `*`      | intermediate user | filter contacts based on social media platform     | find out whose social media contacts I have not gotten and request it from them |
+| `*`      | user              | track when I last queried my contact's information | find out who I have not communicated with for an extended period of time |
+| `*`      | user              | navigate through my command history                | make slight adjustments to the previous commands if I happen to have a typo |
 
 <br/>
 
