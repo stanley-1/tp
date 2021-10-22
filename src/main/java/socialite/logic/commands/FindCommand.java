@@ -20,7 +20,11 @@ public class FindCommand extends Command {
             + "Parameters: find [KEYWORDS]; "
             + "Example: " + COMMAND_WORD + " alice t/colleagues p/instagram";
 
+
     private final containsKeywordsPredicate predicate;
+
+    public static final String MESSAGE_HELP_GUIDE = "Enter 'help find' for in-app guidance.";
+
 
     public FindCommand(containsKeywordsPredicate predicate) {
         this.predicate = predicate;

@@ -31,11 +31,11 @@ public class PersonUtil {
         person.getTags().stream().forEach(
             s -> sb.append(CliSyntax.PREFIX_TAG + s.tagName + " ")
         );
-        sb.append(CliSyntax.PREFIX_FACEBOOK + person.getFacebook().value + " ");
-        sb.append(CliSyntax.PREFIX_INSTAGRAM + person.getInstagram().value + " ");
-        sb.append(CliSyntax.PREFIX_TELEGRAM + person.getTelegram().value + " ");
-        sb.append(CliSyntax.PREFIX_TIKTOK + person.getTiktok().value + " ");
-        sb.append(CliSyntax.PREFIX_TWITTER + person.getTwitter().value + " ");
+        sb.append(CliSyntax.PREFIX_FACEBOOK + person.getFacebook().get() + " ");
+        sb.append(CliSyntax.PREFIX_INSTAGRAM + person.getInstagram().get() + " ");
+        sb.append(CliSyntax.PREFIX_TELEGRAM + person.getTelegram().get() + " ");
+        sb.append(CliSyntax.PREFIX_TIKTOK + person.getTiktok().get() + " ");
+        sb.append(CliSyntax.PREFIX_TWITTER + person.getTwitter().get() + " ");
         return sb.toString();
     }
 
@@ -57,15 +57,15 @@ public class PersonUtil {
             }
         }
         descriptor.getFacebook().ifPresent(facebook -> sb.append(CliSyntax.PREFIX_FACEBOOK)
-                .append(facebook.value).append(" "));
+                .append(facebook.get()).append(" "));
         descriptor.getInstagram().ifPresent(instagram -> sb.append(CliSyntax.PREFIX_INSTAGRAM)
-                .append(instagram.value).append(" "));
+                .append(instagram.get()).append(" "));
         descriptor.getTelegram().ifPresent(telegram -> sb.append(CliSyntax.PREFIX_TELEGRAM)
-                .append(telegram.value).append(" "));
+                .append(telegram.get()).append(" "));
         descriptor.getTwitter().ifPresent(twitter -> sb.append(CliSyntax.PREFIX_TWITTER)
-                .append(twitter.value).append(" "));
+                .append(twitter.get()).append(" "));
         descriptor.getTikTok().ifPresent(tiktok -> sb.append(CliSyntax.PREFIX_TIKTOK)
-                .append(tiktok.value).append(" "));
+                .append(tiktok.get()).append(" "));
 
         return sb.toString();
     }
