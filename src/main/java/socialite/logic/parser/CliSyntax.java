@@ -18,6 +18,6 @@ public class CliSyntax {
     public static final Prefix PREFIX_TIKTOK = new Prefix("tiktok/");
     public static final Prefix PREFIX_TWITTER = new Prefix("twitter/");
 
-    /* Important dates for the person */
-    public static final Prefix PREFIX_DATES = new Prefix("dates/");
+    /* Used to indicate important dates for the person */
+    public static final Prefix PREFIX_DATE = new Prefix("date/");
 }

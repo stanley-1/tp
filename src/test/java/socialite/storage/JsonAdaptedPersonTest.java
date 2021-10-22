@@ -137,8 +137,8 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_invalidTiktok_throwsIllegalValueException() {
         JsonAdaptedPerson person = new JsonAdaptedPerson(
-                VALID_NAME, VALID_PHONE, VALID_REMARK, VALID_TAGS,
-                VALID_FACEBOOK, VALID_INSTAGRAM, VALID_TELEGRAM, INVALID_TIKTOK, VALID_TWITTER
+                VALID_NAME, VALID_PHONE, VALID_REMARK, VALID_TAGS, VALID_FACEBOOK, VALID_INSTAGRAM,
+                VALID_TELEGRAM, INVALID_TIKTOK, VALID_TWITTER, VALID_DATES
         );
         String expectedMessage = TikTok.MESSAGE_CONSTRAINTS;
         Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
@@ -147,8 +147,8 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_invalidTwitter_throwsIllegalValueException() {
         JsonAdaptedPerson person = new JsonAdaptedPerson(
-                VALID_NAME, VALID_PHONE, VALID_REMARK, VALID_TAGS,
-                VALID_FACEBOOK, VALID_INSTAGRAM, VALID_TELEGRAM, VALID_TIKTOK, INVALID_TWITTER
+                VALID_NAME, VALID_PHONE, VALID_REMARK, VALID_TAGS, VALID_FACEBOOK, VALID_INSTAGRAM,
+                VALID_TELEGRAM, VALID_TIKTOK, INVALID_TWITTER, VALID_DATES
         );
         String expectedMessage = Twitter.MESSAGE_CONSTRAINTS;
         Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
