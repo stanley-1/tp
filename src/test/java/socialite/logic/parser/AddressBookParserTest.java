@@ -23,9 +23,9 @@ import socialite.logic.commands.HelpCommand;
 import socialite.logic.commands.ListCommand;
 import socialite.logic.commands.RemarkCommand;
 import socialite.logic.parser.exceptions.ParseException;
-import socialite.model.person.NameContainsKeywordsPredicate;
 import socialite.model.person.Person;
 import socialite.model.person.Remark;
+import socialite.model.person.containsKeywordsPredicate;
 import socialite.testutil.Assert;
 import socialite.testutil.EditPersonDescriptorBuilder;
 import socialite.testutil.PersonBuilder;
@@ -80,7 +80,7 @@ public class AddressBookParserTest {
         List<String> keywords = Arrays.asList("foo", "bar", "baz");
         FindCommand command = (FindCommand) parser.parseCommand(
                 FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
+        assertEquals(new FindCommand(new containsKeywordsPredicate(keywords)), command);
     }
 
     @Test
