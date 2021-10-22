@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -33,6 +34,8 @@ public class PersonCard extends UiPart<Region> {
 
     @FXML
     private HBox cardPane;
+    @FXML
+    private HBox handles;
     @FXML
     private Label name;
     @FXML
@@ -78,7 +81,7 @@ public class PersonCard extends UiPart<Region> {
         this.makeHandle(person.getTelegram(), Platform.TELEGRAM);
         this.makeHandle(person.getTiktok(), Platform.TIKTOK);
         this.makeHandle(person.getTwitter(), Platform.TWITTER);
-
+        this.handles.setSpacing(8);
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
@@ -105,7 +108,7 @@ public class PersonCard extends UiPart<Region> {
         switch (platform) {
         case FACEBOOK:
             if (value != null && !value.equals("")) {
-                this.facebook.setText(value + " ");
+                this.facebook.setText(value);
                 this.facebookIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/facebook.png")));
                 this.facebook.setOnMouseEntered(Event -> this.facebook.setUnderline(true));
                 this.facebook.setOnMouseExited(Event -> this.facebook.setUnderline(false));
@@ -118,7 +121,7 @@ public class PersonCard extends UiPart<Region> {
             break;
         case INSTAGRAM:
             if (value != null && !value.equals("")) {
-                this.instagram.setText("@" + value + " ");
+                this.instagram.setText("@" + value);
                 this.instagramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/instagram.png")));
                 this.instagram.setOnMouseEntered(Event -> this.instagram.setUnderline(true));
                 this.instagram.setOnMouseExited(Event -> this.instagram.setUnderline(false));
@@ -131,7 +134,7 @@ public class PersonCard extends UiPart<Region> {
             break;
         case TELEGRAM:
             if (value != null && !value.equals("")) {
-                this.telegram.setText("@" + value + " ");
+                this.telegram.setText("@" + value);
                 this.telegramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/telegram.png")));
                 this.telegram.setOnMouseEntered(Event -> this.telegram.setUnderline(true));
                 this.telegram.setOnMouseExited(Event -> this.telegram.setUnderline(false));
@@ -144,7 +147,7 @@ public class PersonCard extends UiPart<Region> {
             break;
         case TIKTOK:
             if (value != null && !value.equals("")) {
-                this.tiktok.setText("@" + value + " ");
+                this.tiktok.setText("@" + value);
                 this.tiktokIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/tik-tok.png")));
                 this.tiktok.setOnMouseEntered(Event -> this.tiktok.setUnderline(true));
                 this.tiktok.setOnMouseExited(Event -> this.tiktok.setUnderline(false));
@@ -157,7 +160,7 @@ public class PersonCard extends UiPart<Region> {
             break;
         case TWITTER:
             if (value != null && !value.equals("")) {
-                this.twitter.setText("@" + value + " ");
+                this.twitter.setText("@" + value);
                 this.twitterIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/twitter.png")));
                 this.twitter.setOnMouseEntered(Event -> this.twitter.setUnderline(true));
                 this.twitter.setOnMouseExited(Event -> this.twitter.setUnderline(false));

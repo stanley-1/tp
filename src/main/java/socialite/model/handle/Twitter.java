@@ -31,7 +31,7 @@ public class Twitter extends Handle {
 
     @Override
     public String getUrl() {
-        return "http://www.twitter.com/" + this.get();
+        return "https://www.twitter.com/" + this.get();
     }
 
     @Override

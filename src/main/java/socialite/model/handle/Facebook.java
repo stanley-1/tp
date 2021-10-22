@@ -38,7 +38,7 @@ public class Facebook extends Handle {
 
     @Override
     public String getUrl() {
-        return "http://www.facebook.com/" + this.get();
+        return "https://www.facebook.com/" + this.get();
     }
 
     @Override

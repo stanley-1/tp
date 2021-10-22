@@ -37,7 +37,7 @@ public class Instagram extends Handle {
 
     @Override
     public String getUrl() {
-        return "http://www.instagram.com/" + this.get();
+        return "https://www.instagram.com/" + this.get();
     }
 
     @Override
