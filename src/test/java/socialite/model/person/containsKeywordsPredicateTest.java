@@ -83,7 +83,7 @@ public class containsKeywordsPredicateTest {
     @Test
     public void test_tagContainsKeywords() {
         containsKeywordsPredicate predicate = new containsKeywordsPredicate(Arrays.asList("t/colleagues"));
-        assertTrue(predicate.test(new PersonBuilder().withName("Alice").withTags("colleagues","friends").build()));
+        assertTrue(predicate.test(new PersonBuilder().withName("Alice").withTags("colleagues", "friends").build()));
         assertFalse(predicate.test(new PersonBuilder().withName("Bob").withTags("friends").build()));
     }
 
