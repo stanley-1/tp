@@ -1,7 +1,15 @@
 package socialite.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static socialite.logic.parser.CliSyntax.*;
+import static socialite.logic.parser.CliSyntax.PREFIX_DATE;
+import static socialite.logic.parser.CliSyntax.PREFIX_FACEBOOK;
+import static socialite.logic.parser.CliSyntax.PREFIX_INSTAGRAM;
+import static socialite.logic.parser.CliSyntax.PREFIX_NAME;
+import static socialite.logic.parser.CliSyntax.PREFIX_PHONE;
+import static socialite.logic.parser.CliSyntax.PREFIX_TAG;
+import static socialite.logic.parser.CliSyntax.PREFIX_TELEGRAM;
+import static socialite.logic.parser.CliSyntax.PREFIX_TIKTOK;
+import static socialite.logic.parser.CliSyntax.PREFIX_TWITTER;
 
 import socialite.logic.commands.exceptions.CommandException;
 import socialite.model.Model;
