@@ -155,7 +155,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void addCommandHistory(String command) {
+        public void addCommandToHistory(String command) {
             throw new AssertionError("This method should not be called.");
         }
     }

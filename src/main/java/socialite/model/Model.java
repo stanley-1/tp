@@ -91,5 +91,5 @@ public interface Model {
     /**
      * Adds the given command to the command history.
      */
-    void addCommandHistory(String command);
+    void addCommandToHistory(String command);
 }
