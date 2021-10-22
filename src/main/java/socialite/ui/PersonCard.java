@@ -66,6 +66,8 @@ public class PersonCard extends UiPart<Region> {
     private FlowPane tags;
     @FXML
     private Label remark;
+
+
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
      */
@@ -100,82 +102,83 @@ public class PersonCard extends UiPart<Region> {
     }
 
 
-        private void makeHandle(Handle handle, Platform platform) {
-            Label label = null;
-            ImageView icon = null;
-            switch (platform) {
-            case FACEBOOK:
-                label = this.facebook;
-                icon = this.facebookIcon;
-                break;
-            case INSTAGRAM:
-                label = this.instagram;
-                icon = this.instagramIcon;
-                break;
-            case TELEGRAM:
-                label = this.telegram;
-                icon = this.telegramIcon;
-                break;
-            case TIKTOK:
-                label = this.tiktok;
-                icon = this.tiktokIcon;
-                break;
-            case TWITTER:
-                label = this.twitter;
-                icon = this.twitterIcon;
-                break;
-            default:
-            }
+    private void makeHandle(Handle handle, Platform platform) {
+        Label label = null;
+        ImageView icon = null;
 
-            // if platform is correct, label and icon should not be null
-            assert label != null;
-            assert icon != null;
-
-            label.managedProperty().bind(label.visibleProperty());
-            icon.managedProperty().bind(icon.visibleProperty());
-            renderHandle(handle.get(), label, icon, "/images/" + platform + ".png");
+        switch (platform) {
+        case FACEBOOK:
+            label = this.facebook;
+            icon = this.facebookIcon;
+            break;
+        case INSTAGRAM:
+            label = this.instagram;
+            icon = this.instagramIcon;
+            break;
+        case TELEGRAM:
+            label = this.telegram;
+            icon = this.telegramIcon;
+            break;
+        case TIKTOK:
+            label = this.tiktok;
+            icon = this.tiktokIcon;
+            break;
+        case TWITTER:
+            label = this.twitter;
+            icon = this.twitterIcon;
+            break;
+        default:
         }
 
+        // if platform is correct, label and icon should not be null
+        assert label != null;
+        assert icon != null;
 
-        private void renderHandle(String handle, Label label, ImageView icon, String iconFilePath) {
-            if (handle != null && !handle.equals("")) {
-                label.setText("@" + handle + " ");
-                label.setVisible(true);
-                icon.setImage(new Image(this.getClass().getResourceAsStream(iconFilePath)));
-                icon.setVisible(true);
+        label.managedProperty().bind(label.visibleProperty());
+        icon.managedProperty().bind(icon.visibleProperty());
+        renderHandle(handle, label, icon, "/images/" + platform.name() + ".png");
+    }
 
-                label.setOnMouseEntered(Event -> label.setUnderline(true));
-                label.setOnMouseExited(Event -> label.setUnderline(false));
-                label.setOnMouseClicked(Event -> this.openBrowser(person.getInstagram().getUrl()));
-            } else {
-                label.setText(null);
-                label.setVisible(false);
-                icon.setVisible(false);
-            }
+
+    private void renderHandle(Handle handle, Label label, ImageView icon, String iconFilePath) {
+        if (handle.get() != null && !handle.get().equals("")) {
+            icon.setImage(new Image(this.getClass().getResourceAsStream(iconFilePath)));
+            icon.setVisible(true);
+
+            label.setText("@" + handle + " ");
+            label.setVisible(true);
+            label.setOnMouseEntered(Event -> label.setUnderline(true));
+            label.setOnMouseExited(Event -> label.setUnderline(false));
+            label.setOnMouseClicked(Event -> this.openBrowser(handle.getUrl()));
+        } else {
+            icon.setVisible(false);
+            label.setText(null);
+            label.setVisible(false);
         }
+    }
 
-        private void openBrowser(String url) {
-            String os = System.getProperty("os.name").toLowerCase();
-            Runtime runtime = Runtime.getRuntime();
-            try {
-                if (os.indexOf("win") >= 0) {
-                    runtime.exec("rundll32 url.dll,FileProtocolHandler " + url);
-                } else if (os.indexOf("mac") >= 0) {
-                    runtime.exec("open " + url);
-                } else if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) {
-                    runtime.exec("xdg-open " + url);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+    private void openBrowser(String url) {
+        String os = System.getProperty("os.name").toLowerCase();
+        Runtime runtime = Runtime.getRuntime();
+        try {
+            if (os.indexOf("win") >= 0) {
+                runtime.exec("rundll32 url.dll,FileProtocolHandler " + url);
+            } else if (os.indexOf("mac") >= 0) {
+                runtime.exec("open " + url);
+            } else if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) {
+                runtime.exec("xdg-open " + url);
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+    }
 
-        @Override
-        public boolean equals(Object other) {
-            // short circuit if same object
-            if (other == this) {
-                return true;
-            }
+    @Override
+    public boolean equals(Object other) {
+        // short circuit if same object
+        if (other == this) {
+            return true;
+        }
 
         // instanceof handles nulls
         if (!(other instanceof PersonCard)) {
