@@ -34,15 +34,15 @@ public class containsKeywordsPredicate implements Predicate<Person> {
 
         switch (keyword) {
         case "facebook":
-            return !person.getFacebook().value.equals("");
+            return !(person.getFacebook().get() == null);
         case "instagram":
-            return !person.getInstagram().value.equals("");
+            return !(person.getInstagram().get() == null);
         case "telegram":
-            return !person.getTelegram().value.equals("");
+            return !(person.getTelegram().get() == null);
         case "tiktok":
-            return !person.getTiktok().value.equals("");
+            return !(person.getTiktok().get() == null);
         case "twitter":
-            return !person.getTwitter().value.equals("");
+            return !(person.getTwitter().get() == null);
         default:
             return false;
         }
