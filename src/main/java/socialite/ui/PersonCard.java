@@ -89,63 +89,61 @@ public class PersonCard extends UiPart<Region> {
             this.remark.setText(value);
             this.remark.setVisible(true);
         } else {
-            this.remark.setText("");
+            this.remark.setText(null);
             this.remark.setVisible(false);
         }
     }
 
-    private void makeHandle(Handle handle, String handleName) {
-        String value = handle.get();
-        switch (handleName) {
+    private void makeHandle(Handle handle, String platform) {
+        Label label = null;
+        ImageView icon = null;
+        switch (platform) {
         case "facebook":
-            if (value != null && !value.equals("")) {
-                this.facebook.setText("@" + value + " ");
-                this.facebookIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/facebook.png")));
-            } else {
-                this.facebook.setText(null);
-                this.facebookIcon.setFitWidth(0);
-            }
+            label = this.facebook;
+            icon = this.facebookIcon;
             break;
         case "instagram":
-            if (value != null && !value.equals("")) {
-                this.instagram.setText("@" + value + " ");
-                this.instagramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/instagram.png")));
-            } else {
-                this.instagram.setText(null);
-                this.instagramIcon.setFitWidth(0);
-            }
+            label = this.instagram;
+            icon = this.instagramIcon;
             break;
         case "telegram":
-            if (value != null && !value.equals("")) {
-                this.telegram.setText("@" + value + " ");
-                this.telegramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/telegram.png")));
-            } else {
-                this.telegram.setText(null);
-                this.telegramIcon.setFitWidth(0);
-            }
+            label = this.telegram;
+            icon = this.telegramIcon;
             break;
         case "tiktok":
-            if (value != null && !value.equals("")) {
-                this.tiktok.setText("@" + value + " ");
-                this.tiktokIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/tik-tok.png")));
-            } else {
-                this.tiktok.setText(null);
-                this.tiktokIcon.setFitWidth(0);
-            }
+            label = this.tiktok;
+            icon = this.tiktokIcon;
             break;
         case "twitter":
-            if (value != null && !value.equals("")) {
-                this.twitter.setText("@" + value + " ");
-                this.twitterIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/twitter.png")));
-            } else {
-                this.twitter.setText(null);
-                this.twitterIcon.setFitWidth(0);
-            }
+            label = this.twitter;
+            icon = this.twitterIcon;
             break;
         default:
         }
 
+        // if platform is correct, label and icon should not be null
+        assert label != null;
+        assert icon != null;
+
+        label.managedProperty().bind(label.visibleProperty());
+        icon.managedProperty().bind(icon.visibleProperty());
+        renderHandle(handle.get(), label, icon, "/images/" + platform + ".png");
     }
+
+
+    private void renderHandle(String handle, Label label, ImageView icon, String iconFilePath) {
+        if (handle != null && !handle.equals("")) {
+            label.setText("@" + handle + " ");
+            label.setVisible(true);
+            icon.setImage(new Image(this.getClass().getResourceAsStream(iconFilePath)));
+            icon.setVisible(true);
+        } else {
+            label.setText(null);
+            label.setVisible(false);
+            icon.setVisible(false);
+        }
+    }
+
 
     @Override
     public boolean equals(Object other) {
