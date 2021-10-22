@@ -26,7 +26,8 @@ public class AddCommandParserTest {
                 + CommandTestUtil.REMARK_DESC_BOB + CommandTestUtil.TAG_DESC_FRIEND
                 + CommandTestUtil.FACEBOOK_DESC_BOB + CommandTestUtil.INSTAGRAM_DESC_BOB
                 + CommandTestUtil.TELEGRAM_DESC_BOB + CommandTestUtil.TIKTOK_DESC_BOB
-                + CommandTestUtil.TWITTER_DESC_BOB, new AddCommand(expectedPerson));
+                + CommandTestUtil.TWITTER_DESC_BOB + CommandTestUtil.DATE_DESC_BOB,
+                new AddCommand(expectedPerson));
 
         // multiple names - last name accepted
         CommandParserTestUtil.assertParseSuccess(parser, CommandTestUtil.NAME_DESC_AMY
@@ -34,7 +35,8 @@ public class AddCommandParserTest {
                 + CommandTestUtil.REMARK_DESC_BOB + CommandTestUtil.TAG_DESC_FRIEND
                 + CommandTestUtil.FACEBOOK_DESC_BOB + CommandTestUtil.INSTAGRAM_DESC_BOB
                 + CommandTestUtil.TELEGRAM_DESC_BOB + CommandTestUtil.TIKTOK_DESC_BOB
-                + CommandTestUtil.TWITTER_DESC_BOB, new AddCommand(expectedPerson));
+                + CommandTestUtil.TWITTER_DESC_BOB + CommandTestUtil.DATE_DESC_BOB,
+                new AddCommand(expectedPerson));
 
         // multiple phones - last phone accepted
         CommandParserTestUtil.assertParseSuccess(parser, CommandTestUtil.NAME_DESC_BOB
@@ -42,7 +44,8 @@ public class AddCommandParserTest {
                 + CommandTestUtil.REMARK_DESC_BOB + CommandTestUtil.TAG_DESC_FRIEND
                 + CommandTestUtil.FACEBOOK_DESC_BOB + CommandTestUtil.INSTAGRAM_DESC_BOB
                 + CommandTestUtil.TELEGRAM_DESC_BOB + CommandTestUtil.TIKTOK_DESC_BOB
-                + CommandTestUtil.TWITTER_DESC_BOB, new AddCommand(expectedPerson));
+                + CommandTestUtil.TWITTER_DESC_BOB + CommandTestUtil.DATE_DESC_BOB,
+                new AddCommand(expectedPerson));
 
         // multiple tags - all accepted
         Person expectedPersonMultipleTags = new PersonBuilder(TypicalPersons.BOB)
@@ -53,7 +56,8 @@ public class AddCommandParserTest {
                 + CommandTestUtil.TAG_DESC_HUSBAND + CommandTestUtil.TAG_DESC_FRIEND
                 + CommandTestUtil.FACEBOOK_DESC_BOB + CommandTestUtil.INSTAGRAM_DESC_BOB
                 + CommandTestUtil.TELEGRAM_DESC_BOB + CommandTestUtil.TIKTOK_DESC_BOB
-                + CommandTestUtil.TWITTER_DESC_BOB, new AddCommand(expectedPersonMultipleTags));
+                + CommandTestUtil.TWITTER_DESC_BOB + CommandTestUtil.DATE_DESC_BOB,
+                new AddCommand(expectedPersonMultipleTags));
     }
 
     @Test
@@ -64,7 +68,7 @@ public class AddCommandParserTest {
                         + CommandTestUtil.PHONE_DESC_AMY + CommandTestUtil.REMARK_DESC_AMY
                         + CommandTestUtil.FACEBOOK_DESC_AMY + CommandTestUtil.INSTAGRAM_DESC_AMY
                         + CommandTestUtil.TELEGRAM_DESC_AMY + CommandTestUtil.TIKTOK_DESC_AMY
-                        + CommandTestUtil.TWITTER_DESC_AMY,
+                        + CommandTestUtil.TWITTER_DESC_AMY + CommandTestUtil.DATE_DESC_AMY,
                 new AddCommand(expectedPerson));
     }
 

@@ -79,7 +79,7 @@ public class LogicManagerTest {
                 + CommandTestUtil.PHONE_DESC_AMY + CommandTestUtil.REMARK_DESC_AMY
                 + CommandTestUtil.FACEBOOK_DESC_AMY + CommandTestUtil.INSTAGRAM_DESC_AMY
                 + CommandTestUtil.TELEGRAM_DESC_AMY + CommandTestUtil.TIKTOK_DESC_AMY
-                + CommandTestUtil.TWITTER_DESC_AMY;
+                + CommandTestUtil.TWITTER_DESC_AMY + CommandTestUtil.DATE_DESC_AMY;
 
         Person expectedPerson = new PersonBuilder(TypicalPersons.AMY).withTags().build();
         ModelManager expectedModel = new ModelManager();

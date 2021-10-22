@@ -8,6 +8,7 @@ import socialite.model.handle.Instagram;
 import socialite.model.handle.Telegram;
 import socialite.model.handle.TikTok;
 import socialite.model.handle.Twitter;
+import socialite.model.person.Date;
 import socialite.model.person.Dates;
 import socialite.model.person.Name;
 import socialite.model.person.Person;
@@ -145,10 +146,10 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Dates} of the {@code Person} that we are building
+     * Add a {@code Date} to the {@code Person} that we are building
      */
-    public PersonBuilder withDates(Dates dates) {
-        this.dates = new Dates(dates);
+    public PersonBuilder withDate(String date) {
+        this.dates.addDate(new Date(date));
         return this;
     }
 
