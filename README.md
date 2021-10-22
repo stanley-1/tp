@@ -6,7 +6,7 @@
 
 ![Ui](docs/images/Ui.png)
 
-**SociaLite** is a project developed for the CS2103T Software Engineering module by [our team](docs/AboutUs.md), based off [AddressBook Level 3](https://github.com/se-edu/addressbook-level3). It is a desktop app for **connecting you with your contacts’ social media pages**, optimised for use via a command line interface (CLI) while still having the benefits of a graphical user interface (GUI). If you can type fast, SociaLite can get you to your contacts’ social media pages faster than traditional GUI apps!
+**SociaLite** is a project developed for the CS2103T Software Engineering module by [our team](docs/AboutUs.md), based off [AddressBook Level 3](https://github.com/se-edu/addressbook-level3). It is a desktop app for **connecting you with your contacts’ social media pages**, optimized for use via a command line interface (CLI) while still having the benefits of a graphical user interface (GUI). If you can type fast, SociaLite can get you to your contacts’ social media pages faster than traditional GUI apps!
 
 ### Getting Started
 
