@@ -52,7 +52,8 @@ ModelManager ....u|> Model
 ModelManager --->"~* filtered" Person
 
 AddressBook *--> "1" UniquePersonList
-UniquePersonList --r> "~* all" Person
+UniquePersonList -r> "~* all" Person
+UniquePersonList -[hidden]-> AddressBook
 
 Person *----> Name
 Person *----> Phone
