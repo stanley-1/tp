@@ -10,7 +10,8 @@ public class Dates {
     public static final String MESSAGE_CONSTRAINTS =
             "Dates should be formatted as NAME:YYYY-MM-DD";
 
-    public static final String VALIDATION_REGEX = "([\\w\\s]+:\\d{4}-\\d{2}-\\d{2})(\\s+[\\w\\s]+:\\d{4}-\\d{2}-\\d{2})*";
+    public static final String VALIDATION_REGEX =
+            "([\\w\\s]+:\\d{4}-\\d{2}-\\d{2})(\\s+[\\w\\s]+:\\d{4}-\\d{2}-\\d{2})*";
 
 
     public final HashMap<String, Date> value;
@@ -19,6 +20,10 @@ public class Dates {
         value = new HashMap<>();
     }
 
+    /**
+     * Creates a new Dates object from the input string.
+     * @param dates The input string to generate dates from.
+     */
     public Dates(String dates) {
         Pattern pattern = Pattern.compile("([\\w\\s]+):(\\d{4})-(\\d{2})-(\\d{2})\\s*");
         Matcher matcher = pattern.matcher(dates);
@@ -35,6 +40,10 @@ public class Dates {
         }
     }
 
+    /**
+     * Creates a new Dates object by copying the given HashMap of dates.
+     * @param dates The HashMap to get dates from.
+     */
     public Dates(HashMap<String, Date> dates) {
         value = new HashMap<>(dates);
     }

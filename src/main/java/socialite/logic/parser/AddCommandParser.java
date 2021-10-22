@@ -1,8 +1,5 @@
 package socialite.logic.parser;
 
-import java.util.Set;
-import java.util.stream.Stream;
-
 import static socialite.logic.parser.CliSyntax.PREFIX_DATES;
 import static socialite.logic.parser.CliSyntax.PREFIX_FACEBOOK;
 import static socialite.logic.parser.CliSyntax.PREFIX_INSTAGRAM;
@@ -13,6 +10,9 @@ import static socialite.logic.parser.CliSyntax.PREFIX_TAG;
 import static socialite.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 import static socialite.logic.parser.CliSyntax.PREFIX_TIKTOK;
 import static socialite.logic.parser.CliSyntax.PREFIX_TWITTER;
+
+import java.util.Set;
+import java.util.stream.Stream;
 
 import socialite.commons.core.Messages;
 import socialite.logic.commands.AddCommand;
