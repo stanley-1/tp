@@ -5,7 +5,7 @@ import java.util.Arrays;
 import socialite.commons.core.Messages;
 import socialite.logic.commands.FindCommand;
 import socialite.logic.parser.exceptions.ParseException;
-import socialite.model.person.NameContainsKeywordsPredicate;
+import socialite.model.person.containsKeywordsPredicate;
 
 /**
  * Parses input arguments and creates a new FindCommand object
@@ -26,7 +26,7 @@ public class FindCommandParser implements Parser<FindCommand> {
 
         String[] nameKeywords = trimmedArgs.split("\\s+");
 
-        return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
+        return new FindCommand(new containsKeywordsPredicate(Arrays.asList(nameKeywords)));
     }
 
 }

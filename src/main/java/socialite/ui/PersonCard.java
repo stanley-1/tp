@@ -1,5 +1,6 @@
 package socialite.ui;
 
+import java.io.IOException;
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import socialite.model.handle.Handle;
+import socialite.model.handle.Handle.Platform;
 import socialite.model.person.Person;
 import socialite.model.person.Remark;
 
@@ -32,6 +34,8 @@ public class PersonCard extends UiPart<Region> {
 
     @FXML
     private HBox cardPane;
+    @FXML
+    private HBox handles;
     @FXML
     private Label name;
     @FXML
@@ -73,11 +77,12 @@ public class PersonCard extends UiPart<Region> {
         phone.setText(person.getPhone().value);
         remark.managedProperty().bind(remark.visibleProperty());
         this.makeRemark(person.getRemark());
-        this.makeHandle(person.getFacebook(), "facebook");
-        this.makeHandle(person.getInstagram(), "instagram");
-        this.makeHandle(person.getTelegram(), "telegram");
-        this.makeHandle(person.getTiktok(), "tiktok");
-        this.makeHandle(person.getTwitter(), "twitter");
+        this.makeHandle(person.getFacebook(), Platform.FACEBOOK);
+        this.makeHandle(person.getInstagram(), Platform.INSTAGRAM);
+        this.makeHandle(person.getTelegram(), Platform.TELEGRAM);
+        this.makeHandle(person.getTiktok(), Platform.TIKTOK);
+        this.makeHandle(person.getTwitter(), Platform.TWITTER);
+        this.handles.setSpacing(8);
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
@@ -94,63 +99,83 @@ public class PersonCard extends UiPart<Region> {
         }
     }
 
-    private void makeHandle(Handle handle, String platform) {
-        Label label = null;
-        ImageView icon = null;
-        switch (platform) {
-        case "facebook":
-            label = this.facebook;
-            icon = this.facebookIcon;
-            break;
-        case "instagram":
-            label = this.instagram;
-            icon = this.instagramIcon;
-            break;
-        case "telegram":
-            label = this.telegram;
-            icon = this.telegramIcon;
-            break;
-        case "tiktok":
-            label = this.tiktok;
-            icon = this.tiktokIcon;
-            break;
-        case "twitter":
-            label = this.twitter;
-            icon = this.twitterIcon;
-            break;
-        default:
+
+        private void makeHandle(Handle handle, Platform platform) {
+            Label label = null;
+            ImageView icon = null;
+            switch (platform) {
+            case FACEBOOK:
+                label = this.facebook;
+                icon = this.facebookIcon;
+                break;
+            case INSTAGRAM:
+                label = this.instagram;
+                icon = this.instagramIcon;
+                break;
+            case TELEGRAM:
+                label = this.telegram;
+                icon = this.telegramIcon;
+                break;
+            case TIKTOK:
+                label = this.tiktok;
+                icon = this.tiktokIcon;
+                break;
+            case TWITTER:
+                label = this.twitter;
+                icon = this.twitterIcon;
+                break;
+            default:
+            }
+
+            // if platform is correct, label and icon should not be null
+            assert label != null;
+            assert icon != null;
+
+            label.managedProperty().bind(label.visibleProperty());
+            icon.managedProperty().bind(icon.visibleProperty());
+            renderHandle(handle.get(), label, icon, "/images/" + platform + ".png");
         }
 
-        // if platform is correct, label and icon should not be null
-        assert label != null;
-        assert icon != null;
 
-        label.managedProperty().bind(label.visibleProperty());
-        icon.managedProperty().bind(icon.visibleProperty());
-        renderHandle(handle.get(), label, icon, "/images/" + platform + ".png");
-    }
+        private void renderHandle(String handle, Label label, ImageView icon, String iconFilePath) {
+            if (handle != null && !handle.equals("")) {
+                label.setText("@" + handle + " ");
+                label.setVisible(true);
+                icon.setImage(new Image(this.getClass().getResourceAsStream(iconFilePath)));
+                icon.setVisible(true);
 
-
-    private void renderHandle(String handle, Label label, ImageView icon, String iconFilePath) {
-        if (handle != null && !handle.equals("")) {
-            label.setText("@" + handle + " ");
-            label.setVisible(true);
-            icon.setImage(new Image(this.getClass().getResourceAsStream(iconFilePath)));
-            icon.setVisible(true);
-        } else {
-            label.setText(null);
-            label.setVisible(false);
-            icon.setVisible(false);
+                label.setOnMouseEntered(Event -> label.setUnderline(true));
+                label.setOnMouseExited(Event -> label.setUnderline(false));
+                label.setOnMouseClicked(Event -> this.openBrowser(person.getInstagram().getUrl()));
+            } else {
+                label.setText(null);
+                label.setVisible(false);
+                icon.setVisible(false);
+            }
         }
-    }
 
-
-    @Override
-    public boolean equals(Object other) {
-        // short circuit if same object
-        if (other == this) {
-            return true;
+        private void openBrowser(String url) {
+            String os = System.getProperty("os.name").toLowerCase();
+            Runtime runtime = Runtime.getRuntime();
+            try {
+                if (os.indexOf("win") >= 0) {
+                    runtime.exec("rundll32 url.dll,FileProtocolHandler " + url);
+                } else if (os.indexOf("mac") >= 0) {
+                    runtime.exec("open " + url);
+                } else if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) {
+                    runtime.exec("xdg-open " + url);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+
+        @Override
+        public boolean equals(Object other) {
+            // short circuit if same object
+            if (other == this) {
+                return true;
+            }
 
         // instanceof handles nulls
         if (!(other instanceof PersonCard)) {

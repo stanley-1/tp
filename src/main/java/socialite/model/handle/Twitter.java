@@ -30,6 +30,11 @@ public class Twitter extends Handle {
     }
 
     @Override
+    public String getUrl() {
+        return "https://www.twitter.com/" + this.get();
+    }
+
+    @Override
     public String toString() {
         return this.value.orElse("");
     }

@@ -36,6 +36,11 @@ public class Telegram extends Handle {
     }
 
     @Override
+    public String getUrl() {
+        return "https://www.t.me/" + this.get();
+    }
+
+    @Override
     public String toString() {
         return value.orElse("");
     }
