@@ -13,7 +13,6 @@ import socialite.model.handle.Instagram;
 import socialite.model.handle.Telegram;
 import socialite.model.handle.TikTok;
 import socialite.model.handle.Twitter;
-import socialite.model.person.Dates;
 import socialite.model.person.Name;
 import socialite.model.person.Person;
 import socialite.model.person.Phone;
@@ -41,8 +40,9 @@ public class JsonAdaptedPersonTest {
     private static final String VALID_TELEGRAM = TypicalPersons.BENSON.getTelegram().toString();
     private static final String VALID_TIKTOK = TypicalPersons.BENSON.getTiktok().toString();
     private static final String VALID_TWITTER = TypicalPersons.BENSON.getTwitter().toString();
-    // TODO(@bnjmnt4n)
-    private static final Dates VALID_DATES = TypicalPersons.BENSON.getDates();
+    private static final List<JsonAdaptedDate> VALID_DATES = TypicalPersons.BENSON.getDates().value.values().stream()
+            .map(JsonAdaptedDate::new)
+            .collect(Collectors.toList());
 
     @Test
     public void toModelType_validPersonDetails_returnsPerson() throws Exception {
