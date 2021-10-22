@@ -51,7 +51,7 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
-        Remark remark = ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).orElse(""));
+        Remark remark = ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).orElse(null));
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         Facebook facebook = ParserUtil.parseFacebook(argMultimap.getValue(PREFIX_FACEBOOK).orElse(null));
         Instagram instagram = ParserUtil.parseInstagram(argMultimap.getValue(PREFIX_INSTAGRAM).orElse(null));

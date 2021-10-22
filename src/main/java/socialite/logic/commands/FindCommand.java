@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import socialite.commons.core.Messages;
 import socialite.model.Model;
-import socialite.model.person.containsKeywordsPredicate;
+import socialite.model.person.ContainsKeywordsPredicate;
 
 /**
  * Finds and lists all persons in address book whose name contains any of the argument keywords.
@@ -22,9 +22,9 @@ public class FindCommand extends Command {
             + "Parameters: find [KEYWORDS]; "
             + "Example: " + COMMAND_WORD + " alice t/colleagues p/instagram";
 
-    private final containsKeywordsPredicate predicate;
+    private final ContainsKeywordsPredicate predicate;
 
-    public FindCommand(containsKeywordsPredicate predicate) {
+    public FindCommand(ContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 

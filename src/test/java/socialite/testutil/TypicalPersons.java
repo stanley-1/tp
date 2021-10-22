@@ -40,20 +40,20 @@ public class TypicalPersons {
             .withFacebook("benson.m").withInstagram("benson.m").withTelegram("benson_meier")
             .withTikTok(null).withTwitter("bensonMeier").build();
     public static final Person CARL = new PersonBuilder().withName("Carl Kurz").withPhone("95352563")
-            .withFacebook("carl.k").withInstagram("carl.k").withTelegram(null)
+            .withFacebook("carl.k").withRemark(null).withInstagram("carl.k").withTelegram(null)
             .withTikTok("carl.kurz").withTwitter("carl").build();
     public static final Person DANIEL = new PersonBuilder().withName("Daniel Meier").withPhone("87652533")
-            .withTags("friends").withFacebook("daniel.m").withInstagram(null).withTelegram("daniel_meier")
-            .withTikTok("daniel.meier").withTwitter("DanielMeier").build();
-    public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withPhone("9482224")
+            .withRemark(null).withTags("friends").withFacebook("daniel.m").withInstagram(null)
+            .withTelegram("daniel_meier").withTikTok("daniel.meier").withTwitter("DanielMeier").build();
+    public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withPhone("9482224").withRemark(null)
             .withFacebook(null).withInstagram("elle.m").withTelegram("elle_meyer").withTikTok("elle.meyer")
             .withTwitter("elle_meyer01").build();
-    public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz").withPhone("9482427")
+    public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz").withPhone("9482427").withRemark(null)
             .withFacebook("fiona.k").withInstagram("fiona.k").withTelegram("fiona_kunz")
             .withTikTok("fiona.kunz").withTwitter("fiona_kunz").build();
     public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("9482442")
-            .withFacebook("george.b").withInstagram("george.b").withTelegram("george_best").withTikTok("george.best")
-            .withTwitter("georgeBest").build();
+            .withRemark(null).withFacebook("george.b").withInstagram("george.b").withTelegram("george_best")
+            .withTikTok("george.best").withTwitter("georgeBest").build();
 
     // Manually added
     public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withPhone("8482424")
