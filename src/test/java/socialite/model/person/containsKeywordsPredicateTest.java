@@ -72,4 +72,20 @@ public class containsKeywordsPredicateTest {
         assertFalse(predicate.test(new PersonBuilder().withName("Alice").withPhone("12345")
                 .build()));
     }
+
+    @Test
+    public void test_personHasHandles() {
+        containsKeywordsPredicate predicate = new containsKeywordsPredicate(Arrays.asList("p/instagram"));
+        assertTrue(predicate.test(new PersonBuilder().withName("Alice").withInstagram("dummy_link").build()));
+        assertFalse(predicate.test(new PersonBuilder().withName("Bob").withInstagram(null).build()));
+    }
+
+    @Test
+    public void test_tagContainsKeywords() {
+        containsKeywordsPredicate predicate = new containsKeywordsPredicate(Arrays.asList("t/colleagues"));
+        assertTrue(predicate.test(new PersonBuilder().withName("Alice").withTags("colleagues","friends").build()));
+        assertFalse(predicate.test(new PersonBuilder().withName("Bob").withTags("friends").build()));
+    }
+
+
 }
