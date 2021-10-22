@@ -15,7 +15,7 @@ import socialite.model.ReadOnlyCommandHistory;
  */
 @JsonRootName(value = "history")
 public class JsonSerializableCommandHistory {
-    private final List<String> history = new ArrayList<>(); //TODO: find out the type
+    private final List<String> history = new ArrayList<>();
 
     @JsonCreator
     public JsonSerializableCommandHistory(@JsonProperty("history") List<String> history) {

@@ -23,7 +23,8 @@ public class StorageManager implements Storage {
     private CommandHistoryStorage commandHistoryStorage;
 
     /**
-     * Creates a {@code StorageManager} with the given {@code AddressBookStorage} and {@code UserPrefStorage}.
+     * Creates a {@code StorageManager} with the given {@code AddressBookStorage},
+     * @code UserPrefStorage}, {@code commandHistoryStorage}.
      */
     public StorageManager(
             AddressBookStorage addressBookStorage,

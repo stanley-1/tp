@@ -30,7 +30,7 @@ public class CommandBox extends UiPart<Region> {
     private TextField commandTextField;
 
     /**
-     * Creates a {@code CommandBox} with the given {@code CommandExecutor}.
+     * Creates a {@code CommandBox} with the given {@code CommandExecutor} and given {@Code ReadOnlyCommandHistory}.
      */
     public CommandBox(CommandExecutor commandExecutor, ReadOnlyCommandHistory commandHistory) {
         super(FXML);

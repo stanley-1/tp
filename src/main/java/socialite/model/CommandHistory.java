@@ -9,6 +9,10 @@ public class CommandHistory implements ReadOnlyCommandHistory {
 
     private List<String> history;
 
+    /*
+     * This non-static initialization block logic is copied over from AddressBook to avoid duplication
+     * between constructors.
+     */
     {
         history = new ArrayList<>();
     }

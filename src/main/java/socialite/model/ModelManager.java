@@ -25,7 +25,7 @@ public class ModelManager implements Model {
     private final CommandHistory commandHistory;
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given addressBook, userPrefs and commandHistory.
      */
     public ModelManager(
             ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs, ReadOnlyCommandHistory commandHistory) {
@@ -143,7 +143,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void addCommandHistory(String command) {
+    public void addCommandToHistory(String command) {
         commandHistory.addCommand(command);
     }
 
