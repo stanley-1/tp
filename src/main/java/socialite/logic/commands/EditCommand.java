@@ -1,6 +1,7 @@
 package socialite.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static socialite.logic.parser.CliSyntax.PREFIX_DATE;
 import static socialite.logic.parser.CliSyntax.PREFIX_FACEBOOK;
 import static socialite.logic.parser.CliSyntax.PREFIX_INSTAGRAM;
 import static socialite.logic.parser.CliSyntax.PREFIX_NAME;
@@ -53,7 +54,8 @@ public class EditCommand extends Command {
             + "[" + PREFIX_INSTAGRAM + "INSTAGRAM] "
             + "[" + PREFIX_TELEGRAM + "TELEGRAM] "
             + "[" + PREFIX_TIKTOK + "TIKTOK] "
-            + "[" + PREFIX_TWITTER + "TWITTER]\n"
+            + "[" + PREFIX_TWITTER + "TWITTER] "
+            + "[" + PREFIX_DATE + "NAME:YYYY-MM-DD]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 ";
 
