@@ -25,7 +25,7 @@
   }, {
     "name" : "Carl Kurz",
     "phone" : "95352563",
-    "remark" : "",
+    "remark" : null,
     "tagged" : [ ],
     "facebook" : "carl.k",
     "instagram" : "carl.k",
@@ -36,7 +36,7 @@
   }, {
     "name" : "Daniel Meier",
     "phone" : "87652533",
-    "remark" : "",
+    "remark" : null,
     "tagged" : [ "friends" ],
     "facebook" : "daniel.m",
     "instagram" : null,
@@ -50,7 +50,7 @@
   }, {
     "name" : "Elle Meyer",
     "phone" : "9482224",
-    "remark" : "",
+    "remark" : null,
     "tagged" : [ ],
     "facebook" : null,
     "instagram" : "elle.m",
@@ -61,7 +61,7 @@
   }, {
     "name" : "Fiona Kunz",
     "phone" : "9482427",
-    "remark" : "",
+    "remark" : null,
     "tagged" : [ ],
     "facebook" : "fiona.k",
     "instagram" : "fiona.k",
@@ -75,7 +75,7 @@
   }, {
     "name" : "George Best",
     "phone" : "9482442",
-    "remark" : "",
+    "remark" : null,
     "tagged" : [ ],
     "facebook" : "george.b",
     "instagram" : "george.b",

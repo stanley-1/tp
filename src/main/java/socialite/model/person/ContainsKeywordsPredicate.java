@@ -9,10 +9,10 @@ import socialite.model.tag.Tag;
 /**
  * Tests that a {@code Person}'s {@code Name} matches any of the keywords given.
  */
-public class containsKeywordsPredicate implements Predicate<Person> {
+public class ContainsKeywordsPredicate implements Predicate<Person> {
     private final List<String> keywords;
 
-    public containsKeywordsPredicate(List<String> keywords) {
+    public ContainsKeywordsPredicate(List<String> keywords) {
         this.keywords = keywords;
     }
 
@@ -73,8 +73,8 @@ public class containsKeywordsPredicate implements Predicate<Person> {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof containsKeywordsPredicate // instanceof handles nulls
-                && keywords.equals(((containsKeywordsPredicate) other).keywords)); // state check
+                || (other instanceof ContainsKeywordsPredicate // instanceof handles nulls
+                && keywords.equals(((ContainsKeywordsPredicate) other).keywords)); // state check
     }
 
 }

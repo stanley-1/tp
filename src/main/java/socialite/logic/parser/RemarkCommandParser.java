@@ -31,8 +31,8 @@ public class RemarkCommandParser implements Parser<RemarkCommand> {
                     MESSAGE_INVALID_COMMAND_FORMAT, RemarkCommand.MESSAGE_HELP_GUIDE), ive);
         }
 
-        String remark = argMultimap.getValue(PREFIX_REMARK).orElse("");
+        Remark remark = ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).orElse(null));
 
-        return new RemarkCommand(index, new Remark(remark));
+        return new RemarkCommand(index, remark);
     }
 }

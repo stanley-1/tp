@@ -23,35 +23,40 @@ import socialite.model.tag.Tag;
  */
 public class SampleDataUtil {
 
-    public static final Remark EMPTY_REMARK = new Remark("");
+    public static final Remark EMPTY_REMARK = new Remark(null);
+    public static final Facebook EMPTY_FACEBOOK = new Facebook(null);
+    public static final Instagram EMPTY_INSTAGRAM = new Instagram(null);
+    public static final Telegram EMPTY_TELEGRAM = new Telegram(null);
+    public static final TikTok EMPTY_TIKTOK = new TikTok(null);
+    public static final Twitter EMPTY_TWITTER = new Twitter(null);
 
     public static Person[] getSamplePersons() {
         // TODO(@bnjmnt4n)
         return new Person[] {
             new Person(new Name("Alex Yeoh"), new Phone("87438807"), EMPTY_REMARK,
                 getTagSet("friends"), new Facebook("alex.yeoh"), new Instagram("alex.yeoh"),
-                new Telegram("alyeoh"), new TikTok("alex.yeoh"), new Twitter("alexy"),
+                new Telegram("alyeoh"), new TikTok("alex.yeoh"), EMPTY_TWITTER,
                 new Dates()),
             new Person(new Name("Bernice Yu"), new Phone("99272758"), EMPTY_REMARK,
                 getTagSet("colleagues", "friends"), new Facebook("bern.yu"),
-                new Instagram("bern.yu"), new Telegram("bern_yu"),
+                EMPTY_INSTAGRAM, new Telegram("bern_yu"),
                 new TikTok("bernice.yu"), new Twitter("berniceyu"), new Dates()),
-            new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"), EMPTY_REMARK,
-                getTagSet("neighbours"), new Facebook("charlotte.oli"),
+            new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Remark("Her birthday coming!"),
+                getTagSet("neighbours"), EMPTY_FACEBOOK,
                 new Instagram("charlotte.oli"), new Telegram("olichar"),
-                new TikTok("charlotte.olive"), new Twitter("charolive"), new Dates()),
+                EMPTY_TIKTOK, new Twitter("charolive"), new Dates(),
             new Person(new Name("David Li"), new Phone("91031282"), EMPTY_REMARK,
                 getTagSet("family"), new Facebook("davey"),
-                new Instagram("davey"), new Telegram("david_li"), new TikTok("david"),
-                new Twitter("david"), new Dates()),
-            new Person(new Name("Irfan Ibrahim"), new Phone("92492021"), EMPTY_REMARK,
+                new Instagram("davey"), new Telegram("david_li"), new TikTok("david"), new Twitter("david"),
+                new Dates()),
+            new Person(new Name("Irfan Ibrahim"), new Phone("92492021"), new Remark("Outing on Saturday"),
                 getTagSet("classmates"), new Facebook("irfan.him"),
                 new Instagram("irfan.him"), new Telegram("irfan_ibrahim"),
                 new TikTok("irfan"), new Twitter("irfanibrahim"), new Dates()),
             new Person(new Name("Roy Balakrishnan"), new Phone("92624417"), EMPTY_REMARK,
                 getTagSet("colleagues"), new Facebook("balaroy"),
-                new Instagram("balaroy"), new Telegram("roybala"),
-                new TikTok("roy.balakrishnan"), new Twitter("royB"), new Dates())
+                new Instagram("balaroy"), EMPTY_TELEGRAM,
+                EMPTY_TIKTOK, new Twitter("royB"), new Dates())
         };
     }
 

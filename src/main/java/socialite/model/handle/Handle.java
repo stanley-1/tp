@@ -22,5 +22,5 @@ public abstract class Handle {
         return this.value.orElse(null);
     }
 
-    abstract String getUrl();
+    public abstract String getUrl();
 }

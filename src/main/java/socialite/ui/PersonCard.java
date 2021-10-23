@@ -13,6 +13,7 @@ import javafx.scene.layout.Region;
 import socialite.model.handle.Handle;
 import socialite.model.handle.Handle.Platform;
 import socialite.model.person.Person;
+import socialite.model.person.Remark;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -67,6 +68,8 @@ public class PersonCard extends UiPart<Region> {
     private FlowPane dates;
     @FXML
     private Label remark;
+
+
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
      */
@@ -76,7 +79,8 @@ public class PersonCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
         phone.setText(person.getPhone().value);
-        remark.setText(person.getRemark().value);
+        remark.managedProperty().bind(remark.visibleProperty());
+        this.makeRemark(person.getRemark());
         this.makeHandle(person.getFacebook(), Platform.FACEBOOK);
         this.makeHandle(person.getInstagram(), Platform.INSTAGRAM);
         this.makeHandle(person.getTelegram(), Platform.TELEGRAM);
@@ -89,6 +93,73 @@ public class PersonCard extends UiPart<Region> {
         person.getDates().value.values().stream()
                 .sorted(Comparator.comparing(date -> date.getDate()))
                 .forEach(date -> dates.getChildren().add(new Label(date.toString())));
+    }
+
+    private void makeRemark(Remark remark) {
+        String value = remark.get();
+        if (value != null && !value.equals("")) {
+            this.remark.setText(value);
+            this.remark.setVisible(true);
+        } else {
+            this.remark.setText(null);
+            this.remark.setVisible(false);
+        }
+    }
+
+
+    private void makeHandle(Handle handle, Platform platform) {
+        Label label = null;
+        ImageView icon = null;
+
+        switch (platform) {
+        case FACEBOOK:
+            label = this.facebook;
+            icon = this.facebookIcon;
+            break;
+        case INSTAGRAM:
+            label = this.instagram;
+            icon = this.instagramIcon;
+            break;
+        case TELEGRAM:
+            label = this.telegram;
+            icon = this.telegramIcon;
+            break;
+        case TIKTOK:
+            label = this.tiktok;
+            icon = this.tiktokIcon;
+            break;
+        case TWITTER:
+            label = this.twitter;
+            icon = this.twitterIcon;
+            break;
+        default:
+        }
+
+        // if platform is correct, label and icon should not be null
+        assert label != null;
+        assert icon != null;
+
+        label.managedProperty().bind(label.visibleProperty());
+        icon.managedProperty().bind(icon.visibleProperty());
+        renderHandle(handle, label, icon, "/images/" + platform.name() + ".png");
+    }
+
+
+    private void renderHandle(Handle handle, Label label, ImageView icon, String iconFilePath) {
+        if (handle.get() != null && !handle.get().equals("")) {
+            icon.setImage(new Image(this.getClass().getResourceAsStream(iconFilePath)));
+            icon.setVisible(true);
+
+            label.setText("@" + handle + " ");
+            label.setVisible(true);
+            label.setOnMouseEntered(Event -> label.setUnderline(true));
+            label.setOnMouseExited(Event -> label.setUnderline(false));
+            label.setOnMouseClicked(Event -> this.openBrowser(handle.getUrl()));
+        } else {
+            icon.setVisible(false);
+            label.setText(null);
+            label.setVisible(false);
+        }
     }
 
     private void openBrowser(String url) {
@@ -105,79 +176,6 @@ public class PersonCard extends UiPart<Region> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private void makeHandle(Handle handle, Platform platform) {
-        String value = handle.get();
-        switch (platform) {
-        case FACEBOOK:
-            if (value != null && !value.equals("")) {
-                this.facebook.setText(value);
-                this.facebookIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/facebook.png")));
-                this.facebook.setOnMouseEntered(Event -> this.facebook.setUnderline(true));
-                this.facebook.setOnMouseExited(Event -> this.facebook.setUnderline(false));
-                this.facebook.setOnMouseClicked(Event -> this.openBrowser(
-                        person.getFacebook().getUrl()));
-            } else {
-                this.facebook.setText(null);
-                this.facebookIcon.setFitWidth(0);
-            }
-            break;
-        case INSTAGRAM:
-            if (value != null && !value.equals("")) {
-                this.instagram.setText("@" + value);
-                this.instagramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/instagram.png")));
-                this.instagram.setOnMouseEntered(Event -> this.instagram.setUnderline(true));
-                this.instagram.setOnMouseExited(Event -> this.instagram.setUnderline(false));
-                this.instagram.setOnMouseClicked(Event -> this.openBrowser(
-                        person.getInstagram().getUrl()));
-            } else {
-                this.instagram.setText(null);
-                this.instagramIcon.setFitWidth(0);
-            }
-            break;
-        case TELEGRAM:
-            if (value != null && !value.equals("")) {
-                this.telegram.setText("@" + value);
-                this.telegramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/telegram.png")));
-                this.telegram.setOnMouseEntered(Event -> this.telegram.setUnderline(true));
-                this.telegram.setOnMouseExited(Event -> this.telegram.setUnderline(false));
-                this.telegram.setOnMouseClicked(Event -> this.openBrowser(
-                        person.getTelegram().getUrl()));
-            } else {
-                this.telegram.setText(null);
-                this.telegramIcon.setFitWidth(0);
-            }
-            break;
-        case TIKTOK:
-            if (value != null && !value.equals("")) {
-                this.tiktok.setText("@" + value);
-                this.tiktokIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/tik-tok.png")));
-                this.tiktok.setOnMouseEntered(Event -> this.tiktok.setUnderline(true));
-                this.tiktok.setOnMouseExited(Event -> this.tiktok.setUnderline(false));
-                this.tiktok.setOnMouseClicked(Event -> this.openBrowser(
-                        person.getTiktok().getUrl()));
-            } else {
-                this.tiktok.setText(null);
-                this.tiktokIcon.setFitWidth(0);
-            }
-            break;
-        case TWITTER:
-            if (value != null && !value.equals("")) {
-                this.twitter.setText("@" + value);
-                this.twitterIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/twitter.png")));
-                this.twitter.setOnMouseEntered(Event -> this.twitter.setUnderline(true));
-                this.twitter.setOnMouseExited(Event -> this.twitter.setUnderline(false));
-                this.twitter.setOnMouseClicked(Event -> this.openBrowser(
-                        person.getTwitter().getUrl()));
-            } else {
-                this.twitter.setText(null);
-                this.twitterIcon.setFitWidth(0);
-            }
-            break;
-        default:
-        }
-
     }
 
     @Override
