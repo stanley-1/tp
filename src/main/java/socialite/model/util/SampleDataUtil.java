@@ -31,7 +31,6 @@ public class SampleDataUtil {
     public static final Twitter EMPTY_TWITTER = new Twitter(null);
 
     public static Person[] getSamplePersons() {
-        // TODO(@bnjmnt4n)
         return new Person[] {
             new Person(new Name("Alex Yeoh"), new Phone("87438807"), EMPTY_REMARK,
                 getTagSet("friends"), new Facebook("alex.yeoh"), new Instagram("alex.yeoh"),
@@ -44,7 +43,7 @@ public class SampleDataUtil {
             new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Remark("Her birthday coming!"),
                 getTagSet("neighbours"), EMPTY_FACEBOOK,
                 new Instagram("charlotte.oli"), new Telegram("olichar"),
-                EMPTY_TIKTOK, new Twitter("charolive"), new Dates(),
+                EMPTY_TIKTOK, new Twitter("charolive"), new Dates()),
             new Person(new Name("David Li"), new Phone("91031282"), EMPTY_REMARK,
                 getTagSet("family"), new Facebook("davey"),
                 new Instagram("davey"), new Telegram("david_li"), new TikTok("david"), new Twitter("david"),
