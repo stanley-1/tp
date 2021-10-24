@@ -58,7 +58,8 @@ public class EditCommandParser implements Parser<EditCommand> {
             editPersonDescriptor.setPhone(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
         }
         if (argMultimap.getValue(PREFIX_REMARK).isPresent()) {
-            editPersonDescriptor.setRemark(ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).get()));
+            editPersonDescriptor.setRemark(ParserUtil.parseRemark(
+                    argMultimap.getValue(PREFIX_REMARK).orElse(null)));
         }
 
         if (argMultimap.getValue(PREFIX_TIKTOK).isPresent()) {

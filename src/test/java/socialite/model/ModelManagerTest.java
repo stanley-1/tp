@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import socialite.commons.core.GuiSettings;
-import socialite.model.person.NameContainsKeywordsPredicate;
+import socialite.model.person.ContainsKeywordsPredicate;
 import socialite.testutil.AddressBookBuilder;
 import socialite.testutil.Assert;
 import socialite.testutil.TypicalPersons;
@@ -120,8 +120,8 @@ public class ModelManagerTest {
 
         // different filteredList -> returns false
         String[] keywords = TypicalPersons.ALICE.getName().fullName.split("\\s+");
-        modelManager.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertNotEquals(modelManager, new ModelManager(addressBook, userPrefs, commandHistory));
+        modelManager.updateFilteredPersonList(new ContainsKeywordsPredicate(Arrays.asList(keywords)));
+        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs, commandHistory)));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);

@@ -141,35 +141,37 @@ public class Person {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
                 .append("; Phone: ")
-                .append(getPhone())
-                .append("; Remark: ")
-                .append(getRemark());
+                .append(getPhone());
+
+
+        if (getFacebook().get() != null) {
+            builder.append("; Facebook: ").append(getFacebook().get());
+        }
+
+        if (getInstagram().get() != null) {
+            builder.append("; Instagram: ").append(getInstagram().get());
+        }
+
+        if (getTelegram().get() != null) {
+            builder.append("; Telegram: ").append(getTelegram().get());
+        }
+
+        if (getTiktok().get() != null) {
+            builder.append("; TikTok: ").append(getTiktok().get());
+        }
+
+        if (getTwitter().get() != null) {
+            builder.append("; Twitter: ").append(getTwitter().get());
+        }
+
+        if (getRemark().get() != null) {
+            builder.append("; Remark: ").append(getRemark().get());
+        }
 
         Set<Tag> tags = getTags();
         if (!tags.isEmpty()) {
             builder.append("; Tags: ");
             tags.forEach(builder::append);
-        }
-
-        if (getFacebook() != null) {
-            builder.append("; Facebook: ").append(getFacebook().get());
-        }
-
-        if (getInstagram() != null) {
-            builder.append("; Instagram: ").append(getInstagram().get());
-        }
-
-
-        if (getTelegram() != null) {
-            builder.append("; Telegram: ").append(getTelegram().get());
-        }
-
-        if (getTiktok() != null) {
-            builder.append("; TikTok: ").append(getTiktok().get());
-        }
-
-        if (getTwitter() != null) {
-            builder.append("; Twitter: ").append(getTwitter().get());
         }
 
         return builder.toString();

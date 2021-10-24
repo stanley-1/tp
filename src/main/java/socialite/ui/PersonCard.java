@@ -1,5 +1,6 @@
 package socialite.ui;
 
+import java.io.IOException;
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
@@ -10,7 +11,9 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import socialite.model.handle.Handle;
+import socialite.model.handle.Handle.Platform;
 import socialite.model.person.Person;
+import socialite.model.person.Remark;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -31,6 +34,8 @@ public class PersonCard extends UiPart<Region> {
 
     @FXML
     private HBox cardPane;
+    @FXML
+    private HBox handles;
     @FXML
     private Label name;
     @FXML
@@ -61,6 +66,8 @@ public class PersonCard extends UiPart<Region> {
     private FlowPane tags;
     @FXML
     private Label remark;
+
+
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
      */
@@ -70,68 +77,100 @@ public class PersonCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
         phone.setText(person.getPhone().value);
-        remark.setText(person.getRemark().value);
-        this.makeHandle(person.getFacebook(), "facebook");
-        this.makeHandle(person.getInstagram(), "instagram");
-        this.makeHandle(person.getTelegram(), "telegram");
-        this.makeHandle(person.getTiktok(), "tiktok");
-        this.makeHandle(person.getTwitter(), "twitter");
+        remark.managedProperty().bind(remark.visibleProperty());
+        this.makeRemark(person.getRemark());
+        this.makeHandle(person.getFacebook(), Platform.FACEBOOK);
+        this.makeHandle(person.getInstagram(), Platform.INSTAGRAM);
+        this.makeHandle(person.getTelegram(), Platform.TELEGRAM);
+        this.makeHandle(person.getTiktok(), Platform.TIKTOK);
+        this.makeHandle(person.getTwitter(), Platform.TWITTER);
+        this.handles.setSpacing(8);
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 
-    private void makeHandle(Handle handle, String handleName) {
-        String value = handle.get();
-        switch (handleName) {
-        case "facebook":
-            if (value != null && !value.equals("")) {
-                this.facebook.setText("@" + value + " ");
-                this.facebookIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/facebook.png")));
-            } else {
-                this.facebook.setText(null);
-                this.facebookIcon.setFitWidth(0);
-            }
+    private void makeRemark(Remark remark) {
+        String value = remark.get();
+        if (value != null && !value.equals("")) {
+            this.remark.setText(value);
+            this.remark.setVisible(true);
+        } else {
+            this.remark.setText(null);
+            this.remark.setVisible(false);
+        }
+    }
+
+
+    private void makeHandle(Handle handle, Platform platform) {
+        Label label = null;
+        ImageView icon = null;
+
+        switch (platform) {
+        case FACEBOOK:
+            label = this.facebook;
+            icon = this.facebookIcon;
             break;
-        case "instagram":
-            if (value != null && !value.equals("")) {
-                this.instagram.setText("@" + value + " ");
-                this.instagramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/instagram.png")));
-            } else {
-                this.instagram.setText(null);
-                this.instagramIcon.setFitWidth(0);
-            }
+        case INSTAGRAM:
+            label = this.instagram;
+            icon = this.instagramIcon;
             break;
-        case "telegram":
-            if (value != null && !value.equals("")) {
-                this.telegram.setText("@" + value + " ");
-                this.telegramIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/telegram.png")));
-            } else {
-                this.telegram.setText(null);
-                this.telegramIcon.setFitWidth(0);
-            }
+        case TELEGRAM:
+            label = this.telegram;
+            icon = this.telegramIcon;
             break;
-        case "tiktok":
-            if (value != null && !value.equals("")) {
-                this.tiktok.setText("@" + value + " ");
-                this.tiktokIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/tik-tok.png")));
-            } else {
-                this.tiktok.setText(null);
-                this.tiktokIcon.setFitWidth(0);
-            }
+        case TIKTOK:
+            label = this.tiktok;
+            icon = this.tiktokIcon;
             break;
-        case "twitter":
-            if (value != null && !value.equals("")) {
-                this.twitter.setText("@" + value + " ");
-                this.twitterIcon.setImage(new Image(this.getClass().getResourceAsStream("/images/twitter.png")));
-            } else {
-                this.twitter.setText(null);
-                this.twitterIcon.setFitWidth(0);
-            }
+        case TWITTER:
+            label = this.twitter;
+            icon = this.twitterIcon;
             break;
         default:
         }
 
+        // if platform is correct, label and icon should not be null
+        assert label != null;
+        assert icon != null;
+
+        label.managedProperty().bind(label.visibleProperty());
+        icon.managedProperty().bind(icon.visibleProperty());
+        renderHandle(handle, label, icon, "/images/" + platform.name() + ".png");
+    }
+
+
+    private void renderHandle(Handle handle, Label label, ImageView icon, String iconFilePath) {
+        if (handle.get() != null && !handle.get().equals("")) {
+            icon.setImage(new Image(this.getClass().getResourceAsStream(iconFilePath)));
+            icon.setVisible(true);
+
+            label.setText("@" + handle + " ");
+            label.setVisible(true);
+            label.setOnMouseEntered(Event -> label.setUnderline(true));
+            label.setOnMouseExited(Event -> label.setUnderline(false));
+            label.setOnMouseClicked(Event -> this.openBrowser(handle.getUrl()));
+        } else {
+            icon.setVisible(false);
+            label.setText(null);
+            label.setVisible(false);
+        }
+    }
+
+    private void openBrowser(String url) {
+        String os = System.getProperty("os.name").toLowerCase();
+        Runtime runtime = Runtime.getRuntime();
+        try {
+            if (os.indexOf("win") >= 0) {
+                runtime.exec("rundll32 url.dll,FileProtocolHandler " + url);
+            } else if (os.indexOf("mac") >= 0) {
+                runtime.exec("open " + url);
+            } else if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) {
+                runtime.exec("xdg-open " + url);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
