@@ -14,6 +14,7 @@ import socialite.logic.parser.AddressBookParser;
 import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.Model;
 import socialite.model.ReadOnlyAddressBook;
+import socialite.model.ReadOnlyCommandHistory;
 import socialite.model.person.Person;
 import socialite.storage.Storage;
 
@@ -41,11 +42,14 @@ public class LogicManager implements Logic {
     public CommandResult execute(String commandText) throws CommandException, ParseException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
 
+        model.addCommandToHistory(commandText);
+
         CommandResult commandResult;
         Command command = addressBookParser.parseCommand(commandText);
         commandResult = command.execute(model);
 
         try {
+            storage.saveCommandHistory(model.getCommandHistory());
             storage.saveAddressBook(model.getAddressBook());
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
@@ -77,5 +81,10 @@ public class LogicManager implements Logic {
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
+    }
+
+    @Override
+    public ReadOnlyCommandHistory getCommandHistory() {
+        return model.getCommandHistory();
     }
 }
