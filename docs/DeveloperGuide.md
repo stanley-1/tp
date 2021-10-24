@@ -336,6 +336,7 @@ _Ease of Accessibility_
 
 |Priority| As a / an …​                              | I want to …​                                                                    | So that I can…​                                                                                      |
 |--------| -------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+|`* * *` | user with many contacts                      | find a contact by name, tag or handle                                              | easily find a contact without having to scroll through my entire contact list
 |`* *`   | avid social media user with many connections | be redirected to my chosen contact's social media platform                         | avoid initialising every social media platform and search for his/her account manually                  |
 |`*`     | expert user                                  | customise the information presented to me when the app is initialised              | view the social media contacts of my close friends quickly without keying in additional prompts         |
 |`*`     | frequent user                                | create keyboard shortcuts/hotkeys                                                  | quickly pull up the social media handles of a contact-of-interest in the least keystrokes possible      |
@@ -637,6 +638,8 @@ _Customization of Contacts_
 
 <br/>
 
+
+
 ***Help Guide & Exiting***
 
 **Use Case 14: View User Guide**
@@ -690,6 +693,19 @@ _Customization of Contacts_
     Use case ends.
 
 
+***Ease of Accessibility***
+
+**Use Case 18: Finding a contact in the list**
+
+1. User types in the 'find' command with the names, tags and/or handle types to search for 
+2. Socialite shows all contacts matching all given input keywords in the UI, and the number of contacts found.
+
+    Use case ends.
+
+*Extensions*
+* 2a. No contacts match all given keywords, blank list is returned
+    
+    Use case ends.
 
 *{More to be added}*
 
