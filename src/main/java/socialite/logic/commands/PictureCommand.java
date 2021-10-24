@@ -54,7 +54,7 @@ public class PictureCommand extends Command {
         if (!person.getProfilePicture().equals(ProfilePicture.DEFAULT_PICTURE)) {
             // TODO: delete file
             this.storage.deleteProfilePicture(
-                    storage.getProfilePictureFolderPath() + person.getProfilePicture().value);
+                    "src/main/resources" + person.getProfilePicture().value);
         }
         // TODO: add new file, change person's profile picture
         storage.saveProfilePicture(file);
