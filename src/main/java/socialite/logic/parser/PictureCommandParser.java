@@ -1,0 +1,31 @@
+package socialite.logic.parser;
+
+import socialite.commons.core.index.Index;
+import socialite.logic.commands.PictureCommand;
+import socialite.logic.parser.exceptions.ParseException;
+import socialite.storage.Storage;
+import socialite.ui.MainWindow;
+
+import java.io.File;
+
+import static java.util.Objects.requireNonNull;
+
+public class PictureCommandParser implements Parser<PictureCommand> {
+
+    public PictureCommand parse(String args, Storage storage) throws ParseException {
+        requireNonNull(args);
+
+        Index index;
+
+        try {
+            index = ParserUtil.parseIndex(args);
+        } catch (ParseException pe) {
+            // TODO: Use proper error message
+            throw new ParseException("invalid index");
+        }
+
+        MainWindow window = MainWindow.getWindow();
+        File file = window.getFile();
+        return new PictureCommand(index, file, storage);
+    }
+}

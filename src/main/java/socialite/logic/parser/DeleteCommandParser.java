@@ -4,6 +4,7 @@ import socialite.commons.core.Messages;
 import socialite.commons.core.index.Index;
 import socialite.logic.commands.DeleteCommand;
 import socialite.logic.parser.exceptions.ParseException;
+import socialite.storage.Storage;
 
 /**
  * Parses input arguments and creates a new DeleteCommand object
@@ -15,7 +16,7 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
      * and returns a DeleteCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-    public DeleteCommand parse(String args) throws ParseException {
+    public DeleteCommand parse(String args, Storage storage) throws ParseException {
         try {
             Index index = ParserUtil.parseIndex(args);
             return new DeleteCommand(index);

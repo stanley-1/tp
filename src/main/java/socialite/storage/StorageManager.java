@@ -1,7 +1,9 @@
 package socialite.storage;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -19,14 +21,17 @@ public class StorageManager implements Storage {
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
     private AddressBookStorage addressBookStorage;
     private UserPrefsStorage userPrefsStorage;
+    private ProfilePictureStorage profilePictureStorage;
 
     /**
      * Creates a {@code StorageManager} with the given {@code AddressBookStorage} and {@code UserPrefStorage}.
      */
-    public StorageManager(AddressBookStorage addressBookStorage, UserPrefsStorage userPrefsStorage) {
+    public StorageManager(
+            AddressBookStorage addressBookStorage, UserPrefsStorage userPrefsStorage, ProfilePictureStorage profilePictureStorage) {
         super();
         this.addressBookStorage = addressBookStorage;
         this.userPrefsStorage = userPrefsStorage;
+        this.profilePictureStorage = profilePictureStorage;
     }
 
     // ================ UserPrefs methods ==============================
@@ -76,4 +81,20 @@ public class StorageManager implements Storage {
         addressBookStorage.saveAddressBook(addressBook, filePath);
     }
 
+    // ================ Profile Picture methods ==============================
+
+    @Override
+    public Path getProfilePictureFolderPath() {
+        return profilePictureStorage.getProfilePictureFolderPath();
+    }
+
+    @Override
+    public void deleteProfilePicture(String name) {
+        profilePictureStorage.deleteProfilePicture(name);
+    }
+
+    @Override
+    public void saveProfilePicture(File file) {
+        profilePictureStorage.saveProfilePicture(file);
+    }
 }

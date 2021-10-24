@@ -26,6 +26,7 @@ import socialite.model.person.Person;
 import socialite.model.person.Phone;
 import socialite.model.person.Remark;
 import socialite.model.tag.Tag;
+import socialite.storage.Storage;
 
 /**
  * Parses input arguments and creates a new AddCommand object
@@ -37,7 +38,7 @@ public class AddCommandParser implements Parser<AddCommand> {
      * and returns an AddCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-    public AddCommand parse(String args) throws ParseException {
+    public AddCommand parse(String args, Storage storage) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(
                         args, PREFIX_NAME, PREFIX_PHONE, PREFIX_REMARK, PREFIX_TAG,

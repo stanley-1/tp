@@ -9,6 +9,7 @@ import socialite.commons.exceptions.IllegalValueException;
 import socialite.logic.commands.RemarkCommand;
 import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.person.Remark;
+import socialite.storage.Storage;
 
 /**
  * Parses input arguments and creates a new {@code RemarkCommand} object
@@ -19,7 +20,7 @@ public class RemarkCommandParser implements Parser<RemarkCommand> {
      * and returns a {@code RemarkCommand} object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-    public RemarkCommand parse(String args) throws ParseException {
+    public RemarkCommand parse(String args, Storage storage) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_REMARK);
 

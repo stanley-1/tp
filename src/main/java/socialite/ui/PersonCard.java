@@ -10,9 +10,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.shape.Circle;
 import socialite.model.handle.Handle;
 import socialite.model.handle.Handle.Platform;
 import socialite.model.person.Person;
+import socialite.model.person.ProfilePicture;
 import socialite.model.person.Remark;
 
 /**
@@ -66,6 +68,8 @@ public class PersonCard extends UiPart<Region> {
     private FlowPane tags;
     @FXML
     private Label remark;
+    @FXML
+    private ImageView profilePicture;
 
 
     /**
@@ -77,6 +81,7 @@ public class PersonCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
         phone.setText(person.getPhone().value);
+
         remark.managedProperty().bind(remark.visibleProperty());
         this.makeRemark(person.getRemark());
         this.makeHandle(person.getFacebook(), Platform.FACEBOOK);
@@ -85,6 +90,17 @@ public class PersonCard extends UiPart<Region> {
         this.makeHandle(person.getTiktok(), Platform.TIKTOK);
         this.makeHandle(person.getTwitter(), Platform.TWITTER);
         this.handles.setSpacing(8);
+
+        this.profilePicture.setImage(new Image(
+                this.getClass().getResourceAsStream(this.person.getProfilePicture().value)
+        ));
+        Circle clip = new Circle(30);
+        this.profilePicture.setFitHeight(60);
+        this.profilePicture.setFitWidth(60);
+        clip.setCenterX(profilePicture.getFitHeight()/2);
+        clip.setCenterY(profilePicture.getFitWidth()/2);
+        this.profilePicture.setClip(clip);
+
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));

@@ -26,6 +26,7 @@ public class Person {
     // Data fields
     private final Remark remark;
     private final Set<Tag> tags = new HashSet<>();
+    private ProfilePicture profilePicture = ProfilePicture.DEFAULT_PICTURE;
 
     // Social media handle fields
     private final Facebook facebook;
@@ -79,6 +80,10 @@ public class Person {
         return Collections.unmodifiableSet(tags);
     }
 
+    public ProfilePicture getProfilePicture() {
+        return profilePicture;
+    }
+
     public Facebook getFacebook() {
         return facebook;
     }
@@ -91,6 +96,9 @@ public class Person {
         return telegram;
     }
 
+    public void setProfilePicture(String value) {
+        this.profilePicture = new ProfilePicture(value);
+    }
     /**
      * Returns true if both persons have the same name.
      * This defines a weaker notion of equality between two persons.
