@@ -7,6 +7,6 @@
   <TextField fx:id="commandTextField"
              onAction="#handleCommandEntered"
              onKeyPressed="#handleCommandKeyPressed"
-             promptText="Enter command here..."/>
+             promptText="Enter command here... (or use up/down to navigate through history!)"/>
 </StackPane>
 

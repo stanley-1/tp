@@ -35,33 +35,43 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
-    private HBox handles;
-    @FXML
     private Label name;
     @FXML
     private Label id;
     @FXML
     private Label phone;
     @FXML
-    private ImageView tiktokIcon;
+    private HBox handles;
     @FXML
-    private Label tiktok;
-    @FXML
-    private ImageView twitterIcon;
-    @FXML
-    private Label twitter;
+    private HBox facebook;
     @FXML
     private ImageView facebookIcon;
     @FXML
-    private Label facebook;
+    private Label facebookHandle;
+    @FXML
+    private HBox instagram;
     @FXML
     private ImageView instagramIcon;
     @FXML
-    private Label instagram;
+    private Label instagramHandle;
+    @FXML
+    private HBox telegram;
     @FXML
     private ImageView telegramIcon;
     @FXML
-    private Label telegram;
+    private Label telegramHandle;
+    @FXML
+    private HBox tiktok;
+    @FXML
+    private ImageView tiktokIcon;
+    @FXML
+    private Label tiktokHandle;
+    @FXML
+    private HBox twitter;
+    @FXML
+    private ImageView twitterIcon;
+    @FXML
+    private Label twitterHandle;
     @FXML
     private FlowPane tags;
     @FXML
@@ -78,13 +88,13 @@ public class PersonCard extends UiPart<Region> {
         name.setText(person.getName().fullName);
         phone.setText(person.getPhone().value);
         remark.managedProperty().bind(remark.visibleProperty());
+        handles.setSpacing(8);
         this.makeRemark(person.getRemark());
         this.makeHandle(person.getFacebook(), Platform.FACEBOOK);
         this.makeHandle(person.getInstagram(), Platform.INSTAGRAM);
         this.makeHandle(person.getTelegram(), Platform.TELEGRAM);
         this.makeHandle(person.getTiktok(), Platform.TIKTOK);
         this.makeHandle(person.getTwitter(), Platform.TWITTER);
-        this.handles.setSpacing(8);
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
@@ -103,57 +113,59 @@ public class PersonCard extends UiPart<Region> {
 
 
     private void makeHandle(Handle handle, Platform platform) {
+        HBox box = null;
         Label label = null;
         ImageView icon = null;
 
         switch (platform) {
         case FACEBOOK:
-            label = this.facebook;
+            box = this.facebook;
+            label = this.facebookHandle;
             icon = this.facebookIcon;
             break;
         case INSTAGRAM:
-            label = this.instagram;
+            box = this.instagram;
+            label = this.instagramHandle;
             icon = this.instagramIcon;
             break;
         case TELEGRAM:
-            label = this.telegram;
+            box = this.telegram;
+            label = this.telegramHandle;
             icon = this.telegramIcon;
             break;
         case TIKTOK:
-            label = this.tiktok;
+            box = this.tiktok;
+            label = this.tiktokHandle;
             icon = this.tiktokIcon;
             break;
         case TWITTER:
-            label = this.twitter;
+            box = this.twitter;
+            label = this.twitterHandle;
             icon = this.twitterIcon;
             break;
         default:
         }
 
         // if platform is correct, label and icon should not be null
+        assert box != null;
         assert label != null;
         assert icon != null;
 
-        label.managedProperty().bind(label.visibleProperty());
-        icon.managedProperty().bind(icon.visibleProperty());
-        renderHandle(handle, label, icon, "/images/" + platform.name().toLowerCase() + ".png");
+        box.managedProperty().bind(box.visibleProperty());
+        renderHandle(box, handle, label, icon, "/images/" + platform.name().toLowerCase() + ".png");
     }
 
 
-    private void renderHandle(Handle handle, Label label, ImageView icon, String iconFilePath) {
+    private void renderHandle(HBox box, Handle handle, Label label, ImageView icon, String iconFilePath) {
         if (handle.get() != null && !handle.get().equals("")) {
+            box.setVisible(true);
             icon.setImage(new Image(this.getClass().getResourceAsStream(iconFilePath)));
-            icon.setVisible(true);
-
             label.setText("@" + handle + " ");
-            label.setVisible(true);
             label.setOnMouseEntered(Event -> label.setUnderline(true));
             label.setOnMouseExited(Event -> label.setUnderline(false));
             label.setOnMouseClicked(Event -> this.openBrowser(handle.getUrl()));
         } else {
-            icon.setVisible(false);
-            label.setText(null);
-            label.setVisible(false);
+            box.setVisible(false);
         }
     }
 
