@@ -91,9 +91,16 @@ public class PersonCard extends UiPart<Region> {
         this.makeHandle(person.getTwitter(), Platform.TWITTER);
         this.handles.setSpacing(8);
 
-        this.profilePicture.setImage(new Image(
-                this.getClass().getResourceAsStream(this.person.getProfilePicture().value)
-        ));
+        try {
+            this.profilePicture.setImage(new Image(
+                    this.getClass().getResourceAsStream("/" + this.person.getProfilePicture().value.toString())
+            ));
+        } catch (NullPointerException e) {
+            this.profilePicture.setImage(new Image(
+                this.getClass().getResourceAsStream("/" + ProfilePicture.DEFAULT_PICTURE.value.toString())
+            ));
+        }
+
         Circle clip = new Circle(30);
         this.profilePicture.setFitHeight(60);
         this.profilePicture.setFitWidth(60);

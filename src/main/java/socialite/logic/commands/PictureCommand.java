@@ -9,6 +9,8 @@ import socialite.model.person.ProfilePicture;
 import socialite.storage.Storage;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 import static java.util.Objects.requireNonNull;
@@ -24,7 +26,7 @@ public class PictureCommand extends Command {
 
     public PictureCommand(Index index, File picture, Storage storage) {
         requireNonNull(index);
-        requireNonNull(picture);
+        requireNonNull(storage);
 
         this.index = index;
         this.picture = picture;
@@ -33,6 +35,9 @@ public class PictureCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
+        if (this.picture == null) {
+            return new CommandResult("Command aborted");
+        }
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
 
@@ -53,13 +58,14 @@ public class PictureCommand extends Command {
         // TODO: place file in profilepictures folder
         if (!person.getProfilePicture().equals(ProfilePicture.DEFAULT_PICTURE)) {
             // TODO: delete file
+            System.out.println(person.getProfilePicture().value);
             this.storage.deleteProfilePicture(
-                    "src/main/resources" + person.getProfilePicture().value);
+                    person.getProfilePicture().value);
         }
         // TODO: add new file, change person's profile picture
-        storage.saveProfilePicture(file);
-        person.setProfilePicture("/images/profilepictures/" + file.getName());
-        System.out.println(file.getName());
+        storage.saveProfilePicture(file, person.getName().fullName);
+        person.setProfilePicture(Paths.get("images", "profilepictures",
+                person.getName().fullName + file.getName()));
         return person;
     }
 

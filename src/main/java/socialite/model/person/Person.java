@@ -1,5 +1,6 @@
 package socialite.model.person;
 
+import java.nio.file.Path;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
@@ -96,7 +97,7 @@ public class Person {
         return telegram;
     }
 
-    public void setProfilePicture(String value) {
+    public void setProfilePicture(Path value) {
         this.profilePicture = new ProfilePicture(value);
     }
     /**
@@ -131,6 +132,7 @@ public class Person {
                 && otherPerson.getPhone().equals(getPhone())
                 && otherPerson.getRemark().equals(getRemark())
                 && otherPerson.getTags().equals(getTags())
+                && otherPerson.getProfilePicture().equals(getProfilePicture())
                 && otherPerson.getFacebook().equals(getFacebook())
                 && otherPerson.getInstagram().equals(getInstagram())
                 && otherPerson.getTelegram().equals(getTelegram())

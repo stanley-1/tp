@@ -12,6 +12,9 @@ public class ProfilePictureStorageManager implements ProfilePictureStorage {
 
     public static final Path PROFILE_PIC_FOLDER_PATH = Paths.get(
             "src", "main", "resources", "images", "profilepictures");
+    public static final Path PROFILE_PIC_DELETE_PATH = Paths.get(
+            "src", "main", "resources"
+    );
 
     public ProfilePictureStorageManager() {
         if (!Files.exists(PROFILE_PIC_FOLDER_PATH)) {
@@ -28,10 +31,15 @@ public class ProfilePictureStorageManager implements ProfilePictureStorage {
         return PROFILE_PIC_FOLDER_PATH;
     }
 
+    public Path getProfilePicDeletePath() {
+        return PROFILE_PIC_DELETE_PATH;
+    }
+
     @Override
-    public void deleteProfilePicture(String name) {
+    public void deleteProfilePicture(Path name) {
         try {
-            Path pictureToDelete = getProfilePictureFolderPath().resolve(name);
+            Path pictureToDelete = getProfilePicDeletePath().resolve(name.toString());
+            System.out.println("path: " + pictureToDelete.toString());
             Files.delete(pictureToDelete);
         } catch (InvalidPathException ipe) {
             System.out.println(ipe.toString());
@@ -43,9 +51,9 @@ public class ProfilePictureStorageManager implements ProfilePictureStorage {
     }
 
     @Override
-    public void saveProfilePicture(File file) {
+    public void saveProfilePicture(File file, String prefix) {
         try {
-            Files.copy(file.toPath(), getProfilePictureFolderPath().resolve(file.getName()));
+            Files.copy(file.toPath(), getProfilePictureFolderPath().resolve(prefix + file.getName()));
         } catch (IOException ioe) {
             System.out.println(ioe.toString());
         }

@@ -1,5 +1,6 @@
 package socialite.storage;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -38,7 +39,7 @@ class JsonAdaptedPerson {
     private final String telegram;
     private final String tiktok;
     private final String twitter;
-    private final String profilePic;
+    private final Path profilePic;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -56,7 +57,7 @@ class JsonAdaptedPerson {
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
-        this.profilePic = profilePic;
+        this.profilePic = Path.of(profilePic);
         this.facebook = facebook;
         this.instagram = instagram;
         this.telegram = telegram;

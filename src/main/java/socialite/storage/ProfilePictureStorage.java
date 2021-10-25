@@ -16,8 +16,8 @@ public interface ProfilePictureStorage {
      */
     Path getProfilePictureFolderPath();
 
-    void deleteProfilePicture(String name);
+    void deleteProfilePicture(Path name);
 
-    void saveProfilePicture(File profilePicture);
+    void saveProfilePicture(File profilePicture, String prefix);
 
 }

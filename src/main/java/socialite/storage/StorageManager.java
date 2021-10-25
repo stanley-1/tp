@@ -89,12 +89,12 @@ public class StorageManager implements Storage {
     }
 
     @Override
-    public void deleteProfilePicture(String name) {
+    public void deleteProfilePicture(Path name) {
         profilePictureStorage.deleteProfilePicture(name);
     }
 
     @Override
-    public void saveProfilePicture(File file) {
-        profilePictureStorage.saveProfilePicture(file);
+    public void saveProfilePicture(File file, String prefix) {
+        profilePictureStorage.saveProfilePicture(file, prefix);
     }
 }
