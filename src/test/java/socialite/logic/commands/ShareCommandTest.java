@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import socialite.commons.core.Messages;
 import socialite.commons.core.index.Index;
+import socialite.logic.commands.exceptions.CommandException;
 import socialite.model.CommandHistory;
 import socialite.model.Model;
 import socialite.model.ModelManager;
@@ -32,9 +33,11 @@ public class ShareCommandTest {
         String expectedMessage =
                 String.format(ShareCommand.MESSAGE_SHARE_PERSON_SUCCESS, personToShare.toSharingString());
 
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new CommandHistory());
-
-        CommandTestUtil.assertCommandSuccess(shareCommand, model, expectedMessage, expectedModel);
+        try {
+            assertEquals(expectedMessage, shareCommand.execute(model).getFeedbackToUser());
+        } catch (CommandException ce) {
+            throw new AssertionError("Execution of command should not fail.", ce);
+        }
     }
 
     @Test
@@ -55,10 +58,11 @@ public class ShareCommandTest {
         String expectedMessage =
                 String.format(ShareCommand.MESSAGE_SHARE_PERSON_SUCCESS, personToShare.toSharingString());
 
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new CommandHistory());
-        CommandTestUtil.showPersonAtIndex(expectedModel, TypicalIndexes.INDEX_FIRST_PERSON);
-
-        CommandTestUtil.assertCommandSuccess(shareCommand, model, expectedMessage, expectedModel);
+        try {
+            assertEquals(expectedMessage, shareCommand.execute(model).getFeedbackToUser());
+        } catch (CommandException ce) {
+            throw new AssertionError("Execution of command should not fail.", ce);
+        }
     }
 
     @Test
