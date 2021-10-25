@@ -2,8 +2,8 @@ package socialite.model.person;
 
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.regex.Pattern;
 
-import socialite.commons.util.StringUtil;
 import socialite.model.tag.Tag;
 
 /**
@@ -18,15 +18,20 @@ public class ContainsKeywordsPredicate implements Predicate<Person> {
 
     //helper functions to test person's name, tags or handles respectively.
     private boolean testName(Person person, String keyword) {
-        return StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword);
+        String name = person.getName().fullName;
+        return Pattern.compile(Pattern.quote(keyword), Pattern.CASE_INSENSITIVE).matcher(name).find();
     }
 
     private boolean testTags(Person person, String keyword) {
         for (Tag tag : person.getTags()) {
-            if (StringUtil.containsWordIgnoreCase(tag.tagName, keyword)) {
+            String tagName = tag.tagName;
+            boolean tagMatches = Pattern.compile(Pattern.quote(keyword), Pattern.CASE_INSENSITIVE)
+                    .matcher(tagName).find();
+            if (tagMatches) {
                 return true;
             }
         }
+        //if none of the person's tags match the keyword.
         return false;
     }
 
