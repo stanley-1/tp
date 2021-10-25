@@ -368,20 +368,12 @@ Examples:
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**Add** | `add n/NAME p/PHONE [t/TAG]... [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]` 
 **List** | `list`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [h/HANDLE] [t/TAG]…`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Create Categories** | `tag INDEX [t/TAG]`
-**Edit Categories** | `tag -u INDEX [t/TAG] [t/NEWTAG]`
-**Query Category** | `tag [t/TAG]`
-**Delete Category** | `tag -d INDEX [t/TAG]`
-**Filter based on platform** | `[PLATFORM]`
-**Last Queried contact** | `last`
-**Add Remark** | `remark INDEX r/[TEXT]`
-**View Contact card** | `view INDEX`
-**View help** | `help`
-**Remove all data** | `purge`
+**Edit** | `edit INDEX [n/NAME] [p/PHONE] [r/REMARK] [t/TAG]... [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]` 
+**Find** | `find KEYWORD` 
+**Delete** | `delete INDEX` 
+**Add Remark** | `remark INDEX r/[REMARK]` 
+**View help** | `help [COMMAND_WORD]` 
 **Exit** | `exit`
 **Help** | `help`
