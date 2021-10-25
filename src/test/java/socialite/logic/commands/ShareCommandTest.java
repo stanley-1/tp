@@ -12,7 +12,6 @@ import socialite.model.CommandHistory;
 import socialite.model.Model;
 import socialite.model.ModelManager;
 import socialite.model.UserPrefs;
-import socialite.model.person.Person;
 import socialite.testutil.TypicalIndexes;
 import socialite.testutil.TypicalPersons;
 
