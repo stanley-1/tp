@@ -21,7 +21,7 @@ title: Developer Guide
     3. [Use Cases](#use-cases)
     4. [Non-Functional Requirements](#nfr)
     5. [Glossary](#glossary)
-    
+
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -507,7 +507,7 @@ _Customization of Contacts_
 *Extensions*
 
 * 2a. Category exists.
-  
+
     * 2a1. SociaLite shows an error message.
 
       Use case ends.
@@ -638,11 +638,40 @@ _Customization of Contacts_
 
 <br/>
 
+**Use Case 14: Add date(s) to contact**
 
+*MSS*
+
+1.  User requests to **list contacts (UC02)** or **find contact (UC04)**
+2.  SociaLite returns a list of contacts according to the UC called
+3.  User specifies the index of his desired contact, and the dates to be associated with the contact
+4.  SociaLite adds the specified dates to the user's contact entry
+
+    Use case ends.
+
+*Extensions*
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. SociaLite shows an error message.
+
+      Use case resumes at step 2.
+
+* 3b. The given date(s) do not match the valid date format.
+
+    * 3b1. SociaLite shows an error message.
+
+      Use case resumes at step 2.
+
+<br/>
 
 ***Help Guide & Exiting***
 
-**Use Case 14: View User Guide**
+**Use Case 15: View User Guide**
 
 *MSS*
 
@@ -653,7 +682,7 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 15: View in-app guidance for selected commands**
+**Use Case 16: View in-app guidance for selected commands**
 
 *MSS*
 
@@ -666,24 +695,24 @@ _Customization of Contacts_
 
 * 1a. The keyword given as input is invalid.
 
-    * 1a1. SociaLite launches HelpWindow for **User Guide (UC14)** by default
+    * 1a1. SociaLite launches HelpWindow for **User Guide (UC15)** by default
     
         Use case ends.
 
 <br/>
 
-**Use Case 16: Purge contacts stored in SociaLite**
+**Use Case 17: Purge contacts stored in SociaLite**
 
 *MSS*
 
 1.  User requests to clear all existing contacts (from demo version)
 2.  SociaLite clears specimen data from memory
-    
+
     Use case ends.
 
 <br/>
 
-**Use Case 17: Exit application**
+**Use Case 18: Exit application**
 
 *MSS*
 
@@ -695,7 +724,7 @@ _Customization of Contacts_
 
 ***Ease of Accessibility***
 
-**Use Case 18: Finding a contact in the list**
+**Use Case 19: Finding a contact in the list**
 
 1. User types in the 'find' command with the names, tags and/or handle types to search for 
 2. Socialite shows all contacts matching all given input keywords in the UI, and the number of contacts found.
@@ -704,7 +733,7 @@ _Customization of Contacts_
 
 *Extensions*
 * 2a. No contacts match all given keywords, blank list is returned
-    
+
     Use case ends.
 
 *{More to be added}*
