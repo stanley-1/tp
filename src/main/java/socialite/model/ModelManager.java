@@ -22,23 +22,29 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
+    private final CommandHistory commandHistory;
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given addressBook, userPrefs and commandHistory.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(
+            ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs, ReadOnlyCommandHistory commandHistory) {
         super();
         CollectionUtil.requireAllNonNull(addressBook, userPrefs);
-
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        this.commandHistory = new CommandHistory(commandHistory);
+
+        logger.fine("Initializing with:"
+                + "\naddress book: " + addressBook
+                + "\nuser prefs: " + userPrefs
+                + "\ncommand history: " + commandHistory);
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new AddressBook(), new UserPrefs(), new CommandHistory());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -127,6 +133,18 @@ public class ModelManager implements Model {
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+    }
+
+    //=========== Command History ============================================================================
+
+    @Override
+    public CommandHistory getCommandHistory() {
+        return commandHistory;
+    }
+
+    @Override
+    public void addCommandToHistory(String command) {
+        commandHistory.addCommand(command);
     }
 
     @Override

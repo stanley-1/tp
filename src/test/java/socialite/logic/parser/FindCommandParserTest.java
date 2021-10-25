@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import socialite.commons.core.Messages;
 import socialite.logic.commands.FindCommand;
-import socialite.model.person.NameContainsKeywordsPredicate;
+import socialite.model.person.ContainsKeywordsPredicate;
 
 public class FindCommandParserTest {
 
@@ -15,14 +15,14 @@ public class FindCommandParserTest {
     @Test
     public void parse_emptyArg_throwsParseException() {
         CommandParserTestUtil.assertParseFailure(parser,
-                "     ", String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+                "     ", String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_HELP_GUIDE));
     }
 
     @Test
     public void parse_validArgs_returnsFindCommand() {
         // no leading and trailing whitespaces
         FindCommand expectedFindCommand =
-                new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList("Alice", "Bob")));
+                new FindCommand(new ContainsKeywordsPredicate(Arrays.asList("Alice", "Bob")));
         CommandParserTestUtil.assertParseSuccess(parser, "Alice Bob", expectedFindCommand);
 
         // multiple whitespaces between keywords

@@ -23,7 +23,7 @@ public class PersonBuilder {
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_FACEBOOK = "amy.bee";
     public static final String DEFAULT_INSTAGRAM = "amy.bee";
-    public static final String DEFAULT_REMARK = "";
+    public static final String DEFAULT_REMARK = "remark";
     public static final String DEFAULT_TELEGRAM = "amy_bee";
     public static final String DEFAULT_TWITTER = "amy_bee";
     public static final String DEFAULT_TIKTOK = "amy.bee";

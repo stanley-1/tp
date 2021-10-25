@@ -9,6 +9,7 @@ import socialite.logic.commands.exceptions.CommandException;
 import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.Model;
 import socialite.model.ReadOnlyAddressBook;
+import socialite.model.ReadOnlyCommandHistory;
 import socialite.model.person.Person;
 
 /**
@@ -48,4 +49,6 @@ public interface Logic {
      * Set the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
+
+    ReadOnlyCommandHistory getCommandHistory();
 }

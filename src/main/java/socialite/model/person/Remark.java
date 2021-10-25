@@ -1,13 +1,13 @@
 package socialite.model.person;
 
-import static java.util.Objects.requireNonNull;
+import java.util.Optional;
 
 /**
  * Represents a Person's remark in the address book.
  * Guarantees: immutable; is always valid
  */
 public class Remark {
-    public final String value;
+    public final Optional<String> value;
 
     /**
      * Constructs a {@code Remark}.
@@ -15,13 +15,17 @@ public class Remark {
      * @param remark A valid remark.
      */
     public Remark(String remark) {
-        requireNonNull(remark);
-        value = remark;
+        value = Optional.ofNullable(remark);
     }
+
+    public String get() {
+        return this.value.orElse(null);
+    }
+
 
     @Override
     public String toString() {
-        return value;
+        return value.orElse("");
     }
 
     @Override

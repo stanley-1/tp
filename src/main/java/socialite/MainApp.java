@@ -16,14 +16,18 @@ import socialite.commons.util.StringUtil;
 import socialite.logic.Logic;
 import socialite.logic.LogicManager;
 import socialite.model.AddressBook;
+import socialite.model.CommandHistory;
 import socialite.model.Model;
 import socialite.model.ModelManager;
 import socialite.model.ReadOnlyAddressBook;
+import socialite.model.ReadOnlyCommandHistory;
 import socialite.model.ReadOnlyUserPrefs;
 import socialite.model.UserPrefs;
 import socialite.model.util.SampleDataUtil;
 import socialite.storage.AddressBookStorage;
+import socialite.storage.CommandHistoryStorage;
 import socialite.storage.JsonAddressBookStorage;
+import socialite.storage.JsonCommandHistoryStorage;
 import socialite.storage.JsonUserPrefsStorage;
 import socialite.storage.Storage;
 import socialite.storage.StorageManager;
@@ -57,7 +61,9 @@ public class MainApp extends Application {
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
         AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
-        storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        CommandHistoryStorage commandHistoryStorage =
+                new JsonCommandHistoryStorage(userPrefs.getCommandHistoryFilePath());
+        storage = new StorageManager(addressBookStorage, userPrefsStorage, commandHistoryStorage);
 
         initLogging(config);
 
@@ -75,22 +81,40 @@ public class MainApp extends Application {
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         Optional<ReadOnlyAddressBook> addressBookOptional;
-        ReadOnlyAddressBook initialData;
+        ReadOnlyAddressBook initialAddressBook;
+        Optional<ReadOnlyCommandHistory> commandHistoryOptional;
+        ReadOnlyCommandHistory initialCommandHistory;
         try {
             addressBookOptional = storage.readAddressBook();
-            if (!addressBookOptional.isPresent()) {
-                logger.info("Data file not found. Will be starting with a sample AddressBook");
+            if (addressBookOptional.isEmpty()) {
+                logger.info("AddressBook file not found. Will be starting with a sample AddressBook");
             }
-            initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
+            initialAddressBook = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
         } catch (DataConversionException e) {
-            logger.warning("Data file not in the correct format. Will be starting with an empty AddressBook");
-            initialData = new AddressBook();
+            logger.warning("AddressBook file not in the correct format. Will be starting with an empty AddressBook");
+            initialAddressBook = new AddressBook();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
-            initialData = new AddressBook();
+            logger.warning("Problem while reading from the AddressBook. Will be starting with an empty AddressBook");
+            initialAddressBook = new AddressBook();
         }
 
-        return new ModelManager(initialData, userPrefs);
+        try {
+            commandHistoryOptional = storage.readCommandHistory();
+            if (commandHistoryOptional.isEmpty()) {
+                logger.info("CommandHistory file not found. Will be starting with a new CommandHistory");
+            }
+            initialCommandHistory = commandHistoryOptional.orElseGet(SampleDataUtil::getSampleCommandHistory);
+        } catch (DataConversionException e) {
+            logger.warning(
+                    "CommandHistory file not in the correct format. Will be starting with an empty CommandHistory");
+            initialCommandHistory = new CommandHistory();
+        } catch (IOException e) {
+            logger.warning(
+                    "Problem while reading from the CommandHistory. Will be starting with an empty CommandHistory");
+            initialCommandHistory = new CommandHistory();
+        }
+
+        return new ModelManager(initialAddressBook, userPrefs, initialCommandHistory);
     }
 
     private void initLogging(Config config) {
@@ -175,6 +199,8 @@ public class MainApp extends Application {
     public void stop() {
         logger.info("============================ [ Stopping Address Book ] =============================");
         try {
+            storage.saveAddressBook(model.getAddressBook());
+            storage.saveCommandHistory(model.getCommandHistory());
             storage.saveUserPrefs(model.getUserPrefs());
         } catch (IOException e) {
             logger.severe("Failed to save preferences " + StringUtil.getDetails(e));

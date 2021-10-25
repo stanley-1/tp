@@ -46,7 +46,7 @@ public class EditCommandParser implements Parser<EditCommand> {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
             throw new ParseException(
-                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe
+                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_HELP_GUIDE), pe
             );
         }
 
@@ -58,7 +58,8 @@ public class EditCommandParser implements Parser<EditCommand> {
             editPersonDescriptor.setPhone(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
         }
         if (argMultimap.getValue(PREFIX_REMARK).isPresent()) {
-            editPersonDescriptor.setRemark(ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).get()));
+            editPersonDescriptor.setRemark(ParserUtil.parseRemark(
+                    argMultimap.getValue(PREFIX_REMARK).orElse(null)));
         }
 
         if (argMultimap.getValue(PREFIX_TIKTOK).isPresent()) {

@@ -301,6 +301,7 @@ _Core Functionalities_
 |`* * *` | beginner user                                | delete contacts                                                                    | remove irrelevant entries                                                                               |
 |`* * *` | beginner user                                | access the social media handles of my contacts                                     | have quicker access to my contacts' social media pages                                                  |
 |`* * *` | forgetful user                               | save my contacts' social media handles                                             | easily access my contact's social media account without having to recall the exact handle               |
+|`* * *` | user                                         | visit the social media site when I click on the handle                             | easily go to the social media site, without having to switch to the browser while remembering the handle|
 |`* *`   | user                                         | browse a list of all my contacts                                                   | view all my contacts at a glance                                                                        |
 |`*`     | beginner user                                | update contacts                                                                    | modify existing social media handles and add new ones when they are created                             |
 |`*`     | beginner user                                | view the recent feed of my contacts                                                | have more meaningful and frequent interactions with my contacts on multiple platforms                   |
@@ -311,8 +312,9 @@ _Guide for New Users_
 
 |Priority| As a / an …​                              | I want to …​                                                                    | So that I can…​                                                                                      |
 |--------| -------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-|`* *`   | new user                                     | view a help message                                                                | learn how to use SociaLite                                                                              |
+|`* *`   | new user                                     | view the User Guide                                                                | learn how to use SociaLite comprehensively                                                              |
 |`* *`   | new user                                     | view sample contacts when I initialise the app                                     | try out the features without having to add actual data                                                  |
+|`* *`   | new / returning user                         | access in-app guidance for a specific command                                      | (re)learn the syntax of a selected command without having to open the User Guide via a browser          |
 |`* *`   | new user adopting the app for my own use     | purge all data                                                                     | delete sample contacts and add real data                                                                |
 
 <br/>
@@ -334,6 +336,7 @@ _Ease of Accessibility_
 
 |Priority| As a / an …​                              | I want to …​                                                                    | So that I can…​                                                                                      |
 |--------| -------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+|`* * *` | user with many contacts                      | find a contact by name, tag or handle                                              | easily find a contact without having to scroll through my entire contact list
 |`* *`   | avid social media user with many connections | be redirected to my chosen contact's social media platform                         | avoid initialising every social media platform and search for his/her account manually                  |
 |`*`     | expert user                                  | customise the information presented to me when the app is initialised              | view the social media contacts of my close friends quickly without keying in additional prompts         |
 |`*`     | frequent user                                | create keyboard shortcuts/hotkeys                                                  | quickly pull up the social media handles of a contact-of-interest in the least keystrokes possible      |
@@ -469,9 +472,27 @@ _Customization of Contacts_
 
 <br/>
 
+**Use Case 06: Go to social media site**
+
+*MSS*
+
+1.  User requests to list contacts (UC02) or find contact (UC04)
+2. SociaLite returns a list of contacts according to the UC called
+3.  User requests to open handle in browser
+
+    Use case ends.
+
+*Extensions*
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+<br/>
+
 ***Organisation of Contacts***
 
-**Use Case 06: Create new category**
+**Use Case 07: Create new category**
 
 *MSS*
 
@@ -492,7 +513,7 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 07: Query categories**
+**Use Case 08: Query categories**
 
 *MSS*
 
@@ -511,7 +532,7 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 08: Edit categories**
+**Use Case 09: Edit categories**
 
 *MSS*
 
@@ -522,7 +543,7 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 09: Delete categories**
+**Use Case 10: Delete categories**
 
 *MSS*
 
@@ -553,7 +574,7 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 10: Retrieve last queried contact**
+**Use Case 11: Retrieve last queried contact**
 
 *MSS*
 
@@ -567,7 +588,7 @@ _Customization of Contacts_
 
 ***Customization Tools***
 
-**Use Case 11: Add remark for a specific contact**
+**Use Case 12: Add remark for a specific contact**
 
 *MSS*
 
@@ -592,7 +613,7 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 12: View contact card**
+**Use Case 13: View contact card**
 
 *MSS*
 
@@ -617,20 +638,41 @@ _Customization of Contacts_
 
 <br/>
 
+
+
 ***Help Guide & Exiting***
 
-**Use Case 13: View User Guide**
+**Use Case 14: View User Guide**
 
 *MSS*
 
 1.  User requests to view User Guide
-2.  SociaLite displays a link to User Guide
+2.  SociaLite displays a link to User Guide and instructions to obtain in-app guidance for five selected commands
 
     Use case ends.
 
 <br/>
 
-**Use Case 14: Purge contacts stored in SociaLite**
+**Use Case 15: View in-app guidance for selected commands**
+
+*MSS*
+
+1.  User requests to view in-app guidance for one out of five selected commands
+2.  SociaLite returns an overview and quick guide of the command given as input
+
+    Use case ends.
+
+*Extensions* 
+
+* 1a. The keyword given as input is invalid.
+
+    * 1a1. SociaLite launches HelpWindow for **User Guide (UC14)** by default
+    
+        Use case ends.
+
+<br/>
+
+**Use Case 16: Purge contacts stored in SociaLite**
 
 *MSS*
 
@@ -641,7 +683,7 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 15: Exit application**
+**Use Case 17: Exit application**
 
 *MSS*
 
@@ -651,6 +693,19 @@ _Customization of Contacts_
     Use case ends.
 
 
+***Ease of Accessibility***
+
+**Use Case 18: Finding a contact in the list**
+
+1. User types in the 'find' command with the names, tags and/or handle types to search for 
+2. Socialite shows all contacts matching all given input keywords in the UI, and the number of contacts found.
+
+    Use case ends.
+
+*Extensions*
+* 2a. No contacts match all given keywords, blank list is returned
+    
+    Use case ends.
 
 *{More to be added}*
 

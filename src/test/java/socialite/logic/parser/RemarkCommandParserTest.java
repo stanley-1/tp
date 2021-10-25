@@ -26,13 +26,13 @@ public class RemarkCommandParserTest {
 
         // no remark
         userInput = targetIndex.getOneBased() + " " + PREFIX_REMARK;
-        expectedCommand = new RemarkCommand(INDEX_FIRST_PERSON, new Remark(""));
+        expectedCommand = new RemarkCommand(INDEX_FIRST_PERSON, new Remark(null));
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 
     @Test
     public void parse_missingCompulsoryField_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, RemarkCommand.MESSAGE_USAGE);
+        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, RemarkCommand.MESSAGE_HELP_GUIDE);
 
         // no parameters
         assertParseFailure(parser, RemarkCommand.COMMAND_WORD, expectedMessage);
