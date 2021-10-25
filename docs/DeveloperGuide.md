@@ -21,7 +21,7 @@ title: Developer Guide
     3. [Use Cases](#use-cases)
     4. [Non-Functional Requirements](#nfr)
     5. [Glossary](#glossary)
-    
+
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -41,8 +41,7 @@ Refer to the guide [_Setting Up and Getting Started_](SettingUp.md).
 ## **Design** <a name="design"></a>
 
 <div markdown="span" class="alert alert-primary">
-
-:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
+:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2122S1-CS2103T-F11-4/tp/tree/master/docs/diagrams) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
 </div>
 
 ### Architecture <a name="architecture"></a>
@@ -55,8 +54,9 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** has two classes called [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
-* At app launch: Initializes the components in the correct sequence, and connects them up with each other.
+**`Main`** has two classes called [`Main`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/java/socialite/Main.java) and [`MainApp`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/java/socialite/MainApp.java). It is responsible for,
+
+* At app launch: Initializes the components in the correct sequence, and connects them with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
 [**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
@@ -88,13 +88,13 @@ The sections below give more details of each component.
 
 ### UI component <a name="ui"></a>
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/java/socialite/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -105,7 +105,7 @@ The `UI` component,
 
 ### Logic component <a name="logic"></a>
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -133,7 +133,7 @@ How the parsing works:
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component <a name="model"></a>
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/java/socialite/model/Model.java)
 
 <img src="images/ModelClassDiagram.png" width="450" />
 
@@ -154,18 +154,18 @@ The `Model` component,
 
 ### Storage component <a name="storage"></a>
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/java/socialite/storage/Storage.java)
 
 <img src="images/StorageClassDiagram.png" width="550" />
 
 The `Storage` component,
-* can save both address book data and user preference data in json format, and read them back into corresponding objects.
-* inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
+* can save address book data, user preference data and command history data in json format, and read them back into corresponding objects.
+* inherits from `AddressBookStorage`, `UserPrefStorage` and `CommandHistoryStorage` which means it can be treated as any one (if the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
 ### Common classes <a name="common"></a>
 
-Classes used by multiple components are in the `seedu.addressbook.commons` package.
+Classes used by multiple components are in the `socialite.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -321,14 +321,15 @@ _Guide for New Users_
 
 _Organization of Contacts_
 
-|Priority| As a / an …​                              | I want to …​                                                                    | So that I can…​                                                                                      |
-|--------| -------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-|`* *`   | organized user                               | create categories to group my contacts                                             | organize my list of contacts                                                                            |
-|`* *`   | organized user                               | edit categories as and when required                                               | repurpose such pre-existing categories                                                                  |
-|`* *`   | organized user                               | query a group of contacts                                                          | have greater ease of access to my frequent contacts and efficiently contact people for similar purposes |
-|`*`     | organised user                               | delete categories associated with contacts                                         | declutter my address book when the category is no longer relevant                                       |
-|`*`     | intermediate user                            | filter contacts based on social media platform                                     | find out whose social media contacts I have not gotten and request it from them                         |
-|`*`     | user                                         | track when I last queried my contact's information                                 | find out who I have not communicated with for an extended period of time                                |
+| Priority | As a / an …​       | I want to …​                                        | So that I can…​                                               |
+| -------- | ----------------- | -------------------------------------------------- | ------------------------------------------------------------ |
+| `* *`    | organized user    | create categories to group my contacts             | organize my list of contacts                                 |
+| `* *`    | organized user    | edit categories as and when required               | repurpose such pre-existing categories                       |
+| `* *`    | organized user    | query a group of contacts                          | have greater ease of access to my frequent contacts and efficiently contact people for similar purposes |
+| `*`      | organized user    | delete categories associated with contacts         | declutter my address book when the category is no longer relevant |
+| `*`      | intermediate user | filter contacts based on social media platform     | find out whose social media contacts I have not gotten and request it from them |
+| `*`      | user              | track when I last queried my contact's information | find out who I have not communicated with for an extended period of time |
+| `*`      | user              | navigate through my command history                | make slight adjustments to my last command if I happen to have a typo |
 
 <br/>
 
@@ -336,6 +337,7 @@ _Ease of Accessibility_
 
 |Priority| As a / an …​                              | I want to …​                                                                    | So that I can…​                                                                                      |
 |--------| -------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+|`* * *` | user with many contacts                      | find a contact by name, tag or handle                                              | easily find a contact without having to scroll through my entire contact list
 |`* *`   | avid social media user with many connections | be redirected to my chosen contact's social media platform                         | avoid initialising every social media platform and search for his/her account manually                  |
 |`*`     | expert user                                  | customise the information presented to me when the app is initialised              | view the social media contacts of my close friends quickly without keying in additional prompts         |
 |`*`     | frequent user                                | create keyboard shortcuts/hotkeys                                                  | quickly pull up the social media handles of a contact-of-interest in the least keystrokes possible      |
@@ -374,12 +376,13 @@ _Customization of Contacts_
 *Extensions*
 
 * 1a. User's input does not conform with the specified format.
+    
     * 1a1. SociaLite shows an error message.
-        
+      
         Use case resumes at step 1.
 
 <br/>
-    
+
 **Use Case 02: List entries in SociaLite**
 
 *MSS*
@@ -468,7 +471,6 @@ _Customization of Contacts_
 
       Use case resumes at step 2.
 
-
 <br/>
 
 **Use Case 06: Go to social media site**
@@ -505,7 +507,7 @@ _Customization of Contacts_
 *Extensions*
 
 * 2a. Category exists.
-  
+
     * 2a1. SociaLite shows an error message.
 
       Use case ends.
@@ -582,7 +584,6 @@ _Customization of Contacts_
 
     Use case ends.
 
-
 <br/>
 
 ***Customization Tools***
@@ -637,9 +638,40 @@ _Customization of Contacts_
 
 <br/>
 
+**Use Case 14: Add date(s) to contact**
+
+*MSS*
+
+1.  User requests to **list contacts (UC02)** or **find contact (UC04)**
+2.  SociaLite returns a list of contacts according to the UC called
+3.  User specifies the index of his desired contact, and the dates to be associated with the contact
+4.  SociaLite adds the specified dates to the user's contact entry
+
+    Use case ends.
+
+*Extensions*
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. SociaLite shows an error message.
+
+      Use case resumes at step 2.
+
+* 3b. The given date(s) do not match the valid date format.
+
+    * 3b1. SociaLite shows an error message.
+
+      Use case resumes at step 2.
+
+<br/>
+
 ***Help Guide & Exiting***
 
-**Use Case 14: View User Guide**
+**Use Case 15: View User Guide**
 
 *MSS*
 
@@ -650,7 +682,7 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 15: View in-app guidance for selected commands**
+**Use Case 16: View in-app guidance for selected commands**
 
 *MSS*
 
@@ -663,24 +695,24 @@ _Customization of Contacts_
 
 * 1a. The keyword given as input is invalid.
 
-    * 1a1. SociaLite launches HelpWindow for **User Guide (UC14)** by default
+    * 1a1. SociaLite launches HelpWindow for **User Guide (UC15)** by default
     
         Use case ends.
 
 <br/>
 
-**Use Case 16: Purge contacts stored in SociaLite**
+**Use Case 17: Purge contacts stored in SociaLite**
 
 *MSS*
 
 1.  User requests to clear all existing contacts (from demo version)
 2.  SociaLite clears specimen data from memory
-    
+
     Use case ends.
 
 <br/>
 
-**Use Case 17: Exit application**
+**Use Case 18: Exit application**
 
 *MSS*
 
@@ -690,6 +722,19 @@ _Customization of Contacts_
     Use case ends.
 
 
+***Ease of Accessibility***
+
+**Use Case 19: Finding a contact in the list**
+
+1. User types in the 'find' command with the names, tags and/or handle types to search for 
+2. Socialite shows all contacts matching all given input keywords in the UI, and the number of contacts found.
+
+    Use case ends.
+
+*Extensions*
+* 2a. No contacts match all given keywords, blank list is returned
+
+    Use case ends.
 
 *{More to be added}*
 
@@ -701,8 +746,9 @@ _Customization of Contacts_
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  Should be intuitive enough for users of all technical backgrounds to operate.
-4.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+3.  Should be able to keep track of at least 1000 past commands without noticeable lag when tracking past commands.
+4.  Should be intuitive enough for users of all technical backgrounds to operate.
+5.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 
 *{More to be added}*
 

@@ -101,8 +101,12 @@ public class Person {
         this.profilePicture = new ProfilePicture(value);
     }
     /**
-     * Returns true if both persons have the same name.
-     * This defines a weaker notion of equality between two persons.
+     * Returns true if both persons have the same name and phone number.
+     * Rationale: Two unique persons can share the same first and last name.
+     * For example, a user might be friends with two different individuals who are named "Alice Jones".
+     * However, each Alice Jones will have a different phone number, similar to a unique National ID.
+     * Hence, the phone number shall act as the tiebreaker to differentiate the two individuals instead.
+     * Overall, this method defines a weaker notion of equality between two persons.
      */
     public boolean isSamePerson(Person otherPerson) {
         if (otherPerson == this) {
@@ -110,7 +114,8 @@ public class Person {
         }
 
         return otherPerson != null
-                && otherPerson.getName().equals(getName());
+                && otherPerson.getName().equals(getName())
+                && otherPerson.getPhone().equals(getPhone());
     }
 
     /**

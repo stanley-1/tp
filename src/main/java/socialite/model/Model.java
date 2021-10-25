@@ -84,4 +84,12 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
+
+    /** Returns an unmodifiable command history that the user has entered so far */
+    ReadOnlyCommandHistory getCommandHistory();
+
+    /**
+     * Adds the given command to the command history.
+     */
+    void addCommandToHistory(String command);
 }

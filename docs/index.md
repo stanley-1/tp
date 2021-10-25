@@ -2,20 +2,18 @@
 layout: page
 title: SociaLite
 ---
-##SociaLite
+# SociaLite
+
+[![CI Status](https://github.com/AY2122S1-CS2103T-F11-4/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2122S1-CS2103T-F11-4/tp/actions)
+
+[![codecov](https://codecov.io/gh/AY2122S1-CS2103T-F11-4/tp/branch/master/graph/badge.svg?token=KPARXU5FYH)](https://codecov.io/gh/AY2122S1-CS2103T-F11-4/tp)
 
 ![Ui](images/Ui.png)
-(Ui pic to be added)
 
-**SociaLite is a desktop application for managing your contact details.** 
-(Features to be listed here)
+**SociaLite** is a project developed for the CS2103T Software Engineering module by [our team](docs/AboutUs.md), based off [AddressBook Level 3](https://github.com/se-edu/addressbook-level3). It is a desktop app for **connecting you with your contacts’ social media pages**, optimized for use via a command line interface (CLI) while still having the benefits of a graphical user interface (GUI). If you can type fast, SociaLite can get you to your contacts’ social media pages faster than traditional GUI apps!
 
-###Getting Started
-* If you are interested in using SociaLite, check out the **User Guide** (link to be added).
-* If you are interested about developing SociaLite, check out the **Developer Guide** (link to be added)
+### Getting Started
 
-###About Us
-Names and pictures of team members to be put here.
+* If you are interested in using SociaLite, check out the [**User Guide**](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/docs/UserGuide.md).
+* If you are interested about developing SociaLite, check out the [**Developer Guide**](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/docs/DeveloperGuide.md).
 
-###Acknowledgements
-Libraries and code sources used to be put here.
