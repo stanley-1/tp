@@ -1,5 +1,7 @@
 package socialite.ui;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Comparator;
 
@@ -16,6 +18,7 @@ import socialite.model.handle.Handle.Platform;
 import socialite.model.person.Person;
 import socialite.model.person.ProfilePicture;
 import socialite.model.person.Remark;
+import socialite.storage.ProfilePictureStorageManager;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -92,10 +95,10 @@ public class PersonCard extends UiPart<Region> {
         this.handles.setSpacing(8);
 
         try {
-            this.profilePicture.setImage(new Image(
-                    this.getClass().getResourceAsStream("/" + this.person.getProfilePicture().value.toString())
-            ));
-        } catch (NullPointerException e) {
+            this.profilePicture.setImage(new Image( new FileInputStream(
+                    ProfilePictureStorageManager.getInstance().get(this.person.getProfilePicture().value.toString())
+            )));
+        } catch (NullPointerException | FileNotFoundException e) {
             this.profilePicture.setImage(new Image(
                     this.getClass().getResourceAsStream("/" + ProfilePicture.DEFAULT_PICTURE.value.toString())
             ));

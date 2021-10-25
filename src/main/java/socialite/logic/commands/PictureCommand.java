@@ -64,8 +64,7 @@ public class PictureCommand extends Command {
         }
         // TODO: add new file, change person's profile picture
         storage.saveProfilePicture(file, person.getName().fullName);
-        person.setProfilePicture(Paths.get("images", "profilepictures",
-                person.getName().fullName + file.getName()));
+        person.setProfilePicture(Paths.get(person.getName().fullName + file.getName()));
         return person;
     }
 

@@ -65,7 +65,7 @@ public class MainApp extends Application {
         AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
         CommandHistoryStorage commandHistoryStorage =
                 new JsonCommandHistoryStorage(userPrefs.getCommandHistoryFilePath());
-        ProfilePictureStorage profilePictureStorage = new ProfilePictureStorageManager();
+        ProfilePictureStorage profilePictureStorage = ProfilePictureStorageManager.getInstance();
         storage = new StorageManager(
                 addressBookStorage, userPrefsStorage, commandHistoryStorage, profilePictureStorage);
 
