@@ -28,9 +28,13 @@ public class ShareCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_SHARE_PERSON_SUCCESS = "Copied to the Clipboard:\n"
-            + "%1$s\n"
+            + "%1$s\n";
+
+    public static final String MESSAGE_SHARE_PERSON_TEMPLATE = "Here are the social media handles for %1$s!\n"
+            + "%2$s\n"
             + "Hey, have you tried SociaLite? I have enjoyed using it, you should check it out too!\n"
             + "https://ay2122s1-cs2103t-f11-4.github.io/tp/";
+
 
     public static final String MESSAGE_HELP_GUIDE = "Enter 'help share' for in-app guidance.";
 
@@ -53,7 +57,7 @@ public class ShareCommand extends Command {
         String feedbackToUser = String.format(MESSAGE_SHARE_PERSON_SUCCESS, contactInfo);
 
         // Copy the message to the system clipboard
-        StringSelection stringSelection = new StringSelection(feedbackToUser);
+        StringSelection stringSelection = new StringSelection(contactInfo);
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
         clipboard.setContents(stringSelection, null);
 

@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import socialite.commons.util.CollectionUtil;
+import socialite.logic.commands.ShareCommand;
 import socialite.model.handle.Facebook;
 import socialite.model.handle.Instagram;
 import socialite.model.handle.Telegram;
@@ -140,31 +141,30 @@ public class Person {
      * Returns a formatted string when user wants to forward the contact using `share` command.
      */
     public String toSharingString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append(String.format("Here are the social media handles for %s!\n", getName()));
-        builder.append("\tPhone: ").append(getPhone());
+        final StringBuilder info = new StringBuilder();
+        info.append("\tPhone: ").append(getPhone());
 
         if (getFacebook().get() != null) {
-            builder.append("\n\tFacebook: ").append(getFacebook().get());
+            info.append("\n\tFacebook: ").append(getFacebook().get());
         }
 
         if (getInstagram().get() != null) {
-            builder.append("\n\tInstagram: ").append(getInstagram().get());
+            info.append("\n\tInstagram: ").append(getInstagram().get());
         }
 
         if (getTelegram().get() != null) {
-            builder.append("\n\tTelegram: ").append(getTelegram().get());
+            info.append("\n\tTelegram: ").append(getTelegram().get());
         }
 
         if (getTiktok().get() != null) {
-            builder.append("\n\tTikTok: ").append(getTiktok().get());
+            info.append("\n\tTikTok: ").append(getTiktok().get());
         }
 
         if (getTwitter().get() != null) {
-            builder.append("\n\tTwitter: ").append(getTwitter().get());
+            info.append("\n\tTwitter: ").append(getTwitter().get());
         }
 
-        return builder.toString();
+        return String.format(ShareCommand.MESSAGE_SHARE_PERSON_TEMPLATE, getName(), info);
     }
 
     @Override
