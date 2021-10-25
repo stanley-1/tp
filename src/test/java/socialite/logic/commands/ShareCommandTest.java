@@ -25,40 +25,11 @@ public class ShareCommandTest {
             new ModelManager(TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
 
     @Test
-    public void execute_validIndexUnfilteredList_success() {
-        Person personToShare = model.getFilteredPersonList().get(TypicalIndexes.INDEX_FIRST_PERSON.getZeroBased());
-        ShareCommand shareCommand = new ShareCommand(TypicalIndexes.INDEX_FIRST_PERSON);
-
-        String expectedMessage =
-                String.format(ShareCommand.MESSAGE_SHARE_PERSON_SUCCESS, personToShare.toSharingString());
-
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new CommandHistory());
-
-        CommandTestUtil.assertCommandSuccess(shareCommand, model, expectedMessage, expectedModel);
-    }
-
-    @Test
     public void execute_invalidIndexUnfilteredList_throwsCommandException() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         ShareCommand shareCommand = new ShareCommand(outOfBoundIndex);
 
         CommandTestUtil.assertCommandFailure(shareCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
-    }
-
-    @Test
-    public void execute_validIndexFilteredList_success() {
-        CommandTestUtil.showPersonAtIndex(model, TypicalIndexes.INDEX_FIRST_PERSON);
-
-        Person personToShare = model.getFilteredPersonList().get(TypicalIndexes.INDEX_FIRST_PERSON.getZeroBased());
-        ShareCommand shareCommand = new ShareCommand(TypicalIndexes.INDEX_FIRST_PERSON);
-
-        String expectedMessage =
-                String.format(ShareCommand.MESSAGE_SHARE_PERSON_SUCCESS, personToShare.toSharingString());
-
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new CommandHistory());
-        CommandTestUtil.showPersonAtIndex(expectedModel, TypicalIndexes.INDEX_FIRST_PERSON);
-
-        CommandTestUtil.assertCommandSuccess(shareCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
