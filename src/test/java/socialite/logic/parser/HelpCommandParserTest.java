@@ -8,6 +8,7 @@ import socialite.logic.commands.EditCommand;
 import socialite.logic.commands.FindCommand;
 import socialite.logic.commands.HelpCommand;
 import socialite.logic.commands.RemarkCommand;
+import socialite.logic.commands.ShareCommand;
 
 
 public class HelpCommandParserTest {
@@ -42,6 +43,11 @@ public class HelpCommandParserTest {
     @Test
     public void parse_validArgRemark_returnsHelpForRemark() {
         CommandParserTestUtil.assertParseSuccess(parser, "remark", new HelpCommand(RemarkCommand.MESSAGE_USAGE));
+    }
+
+    @Test
+    public void parse_validArgShare_returnsHelpForShare() {
+        CommandParserTestUtil.assertParseSuccess(parser, "share", new HelpCommand(ShareCommand.MESSAGE_USAGE));
     }
 
     @Test

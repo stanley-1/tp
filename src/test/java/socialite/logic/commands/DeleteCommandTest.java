@@ -16,8 +16,7 @@ import socialite.testutil.TypicalIndexes;
 import socialite.testutil.TypicalPersons;
 
 /**
- * Contains integration tests (interaction with the Model) and unit tests for
- * {@code DeleteCommand}.
+ * Contains integration tests (interaction with the Model) and unit tests for {@code DeleteCommand}.
  */
 public class DeleteCommandTest {
 
