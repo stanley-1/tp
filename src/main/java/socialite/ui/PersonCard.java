@@ -97,7 +97,7 @@ public class PersonCard extends UiPart<Region> {
             ));
         } catch (NullPointerException e) {
             this.profilePicture.setImage(new Image(
-                this.getClass().getResourceAsStream("/" + ProfilePicture.DEFAULT_PICTURE.value.toString())
+                    this.getClass().getResourceAsStream("/" + ProfilePicture.DEFAULT_PICTURE.value.toString())
             ));
         }
 
