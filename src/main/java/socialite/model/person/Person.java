@@ -133,7 +133,38 @@ public class Person {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, tags, facebook, instagram, telegram, tiktok, twitter);
+        return Objects.hash(name, phone, remark, tags, facebook, instagram, telegram, tiktok, twitter);
+    }
+
+    /**
+     * Returns a formatted string when user wants to forward the contact using `share` command.
+     */
+    public String toSharingString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(String.format("Here are the social media handles for %s!\n", getName()));
+        builder.append("\tPhone: ").append(getPhone());
+
+        if (getFacebook().get() != null) {
+            builder.append("\n\tFacebook: ").append(getFacebook().get());
+        }
+
+        if (getInstagram().get() != null) {
+            builder.append("\n\tInstagram: ").append(getInstagram().get());
+        }
+
+        if (getTelegram().get() != null) {
+            builder.append("\n\tTelegram: ").append(getTelegram().get());
+        }
+
+        if (getTiktok().get() != null) {
+            builder.append("\n\tTikTok: ").append(getTiktok().get());
+        }
+
+        if (getTwitter().get() != null) {
+            builder.append("\n\tTwitter: ").append(getTwitter().get());
+        }
+
+        return builder.toString();
     }
 
     @Override

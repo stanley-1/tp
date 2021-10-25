@@ -3,6 +3,9 @@ package socialite.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.util.List;
 
 import socialite.commons.core.Messages;
@@ -25,8 +28,9 @@ public class ShareCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_SHARE_PERSON_SUCCESS = "Copied to the Clipboard:\n"
+            + "%1$s\n"
             + "Hey, have you tried SociaLite? I have enjoyed using it, you should check it out too!\n"
-            + "";
+            + "https://ay2122s1-cs2103t-f11-4.github.io/tp/";
 
     public static final String MESSAGE_HELP_GUIDE = "Enter 'help share' for in-app guidance.";
 
@@ -45,8 +49,15 @@ public class ShareCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        Person personToShare = lastShownList.get(targetIndex.getZeroBased());
-        return new CommandResult(String.format(MESSAGE_SHARE_PERSON_SUCCESS, personToShare));
+        String contactInfo = lastShownList.get(targetIndex.getZeroBased()).toSharingString();
+        String feedbackToUser = String.format(MESSAGE_SHARE_PERSON_SUCCESS, contactInfo);
+
+        // Copy the message to the system clipboard
+        StringSelection stringSelection = new StringSelection(feedbackToUser);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(stringSelection, null);
+
+        return new CommandResult(feedbackToUser);
     }
 
     @Override
