@@ -2,9 +2,12 @@
 layout: page
 title: User Guide
 ---
-SociaLite is a **desktop app for connecting you with your contacts’ social media pages, optimised for use via a Command Line Interface (CLI)** while still having the benefits of a Graphical User Interface (GUI). If you can type fast, SociaLite can get you to your contacts’ social media pages faster than traditional GUI apps!
+Hello there, fellow SociaLites! Welcome to the User Guide for __SociaLite__, a Command Line Interface (CLI) app that connects you with your contact's social media pages! 
 
-* Table of Contents
+You may be a first-time user trying to set up SociaLite or a returning user hoping to explore advanced features. Fret not, all you need to know about this app can be found in this User Guide! 
+Do have a look at our Table of Contents to locate the help you need! 
+
+**Table of Contents**
 1. [Quick Start](#quick_start)
 2. [Features](#features)
     1. [Basic Functionality](#basic_functionality)
@@ -42,29 +45,34 @@ SociaLite is a **desktop app for connecting you with your contacts’ social med
 
 ## Quick Start <a name="quick_start"></a>
 
-1. Ensure you have Java `11` or above installed in your Computer.
+1. Ensure you have `Java 11` or above installed on your Computer.
+   If you don't have `Java 11`, simply click [here](https://www.oracle.com/java/technologies/downloads/) to download the latest Java Development Kit.
 
-1. Download the latest `socialite.jar` from [here](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases).
+2. Download the latest `socialite.jar` from [here](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your SociaLite.
+3. Copy the file to the folder you want to use as the _home folder_ for your SociaLite.
 
-1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/UpdatedUI.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
+5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+   Here are some sample commands to get you started with SociaLite:
 
-   * **`list`** : Lists all contacts.
+   * **`add`** `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh`: Adds a contact named `Alex Yeoh` to SociaLite.
 
-   * **`add`**`n/John Doe p/98765432 t/Friends fb/john.doe` : Adds a contact named `John Doe` to the Address Book.
+   * **`find`** `find Alex` : Searches SociaLite for a contact named `Alex` and displays the contact's information.
+   
+   * **`list`** : Displays all contacts stored on SociaLite.
+   
+   * **`edit`** `edit 1 n/Alexis Yeoh` : Edits the name of the contact at the first position of the list to `Alexis Yeoh`.
 
    * **`delete`**`3` : Deletes the 3rd contact shown in the current list.
 
-   * **`clear`** : Deletes all contacts.
+   * **`clear`** : Deletes all contacts. You will find this handy when deleting the sample contacts stored on SociaLite.
 
    * **`exit`** : Exits the app.
 
-1. Refer to the [Features](#features) below for details of each command.
+6. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -72,24 +80,24 @@ SociaLite is a **desktop app for connecting you with your contacts’ social med
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Notes about the command format:**<br>
+**:information_source: Hold your horses SociaLites! Before you venture any further, here are some standard notations for you to take note of:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+* You provide words in `UPPER_CASE` as input.<br>
+  e.g. in `add n/NAME`, `NAME` is an input which can be used as `add n/John Doe`.
 
 * Items in square brackets are optional.<br>
   e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
 
-* Items with `…`​ after them can be used multiple times including zero times.<br>
+* Items with `…`​ after them can be used any number of times.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
-* Parameters can be in any order.<br>
+* You may type your inputs in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
-* If a parameter is expected only once in the command but you specified it multiple times, only the last occurrence of the parameter will be taken.<br>
+* If an input for a particular field is expected only once in the command but you specified it multiple times, only the last occurrence of the input will be taken.<br>
   e.g. if you specify `p/12341234 p/56785678`, only `p/56785678` will be taken.
 
-* Extraneous parameters for commands that do not take in parameters (such as `list`, `exit` and `clear`) will be ignored.<br>
+* If you type inputs for commands that do not require any additional information (such as `list`, `exit` and `clear`), they will be ignored.<br>
   e.g. if the command specifies `list 123`, it will be interpreted as `list`.
 
 </div>
@@ -435,15 +443,15 @@ Action | Format, Examples
 **Find Contact** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **Access Social Media Page** | Click on social media handle
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Track history** | `UP` or `DOWN` arrow keys
+**Track History** | `UP` or `DOWN` arrow keys
 **Create / Edit Categories** | `edit INDEX [t/TAG]...` <br> e.g., `edit 1 t/Friends`
 **Query Category** | `find t/TAG` <br> e.g., `find t/Friends`
 **Delete Category** | `edit INDEX t/`
-**Add / Edit social media handles** | `edit INDEX [p/PLATFORM]` <br> e.g., `edit 1 fb/Alv1n.y`
-**Query contacts based on platform** | `find p/PLATFORM` <br> e.g., `find p/facebook`
+**Add / Edit Social Media Handles** | `edit INDEX [p/PLATFORM]` <br> e.g., `edit 1 fb/Alv1n.y`
+**Query Contacts Via Platform** | `find p/PLATFORM` <br> e.g., `find p/facebook`
 **Add Remark** | `remark INDEX r/[TEXT]` <br> e.g., `remark 1 r/Likes to swim`
 **Add Profile Picture** | `picture`
 **View Help** | `help`
-**View in-app guidance** | `help COMMAND` <br> e.g., `help add`
-**Remove all data** | `clear`
+**View In-App Guidance** | `help COMMAND` <br> e.g., `help add`
+**Remove All Data** | `clear`
 **Exit** | `exit`
