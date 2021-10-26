@@ -28,7 +28,8 @@ public class StorageManagerTest {
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
         JsonCommandHistoryStorage commandHistoryStorage = new JsonCommandHistoryStorage(getTempFilePath("ch"));
         ProfilePictureStorage profilePictureStorage = ProfilePictureStorageManager.getInstance();
-        storageManager = new StorageManager(addressBookStorage, userPrefsStorage, commandHistoryStorage, profilePictureStorage);
+        storageManager = new StorageManager(
+                addressBookStorage, userPrefsStorage, commandHistoryStorage, profilePictureStorage);
     }
 
     private Path getTempFilePath(String fileName) {

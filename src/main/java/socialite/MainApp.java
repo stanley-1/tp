@@ -1,6 +1,5 @@
 package socialite;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
@@ -20,7 +19,6 @@ import socialite.model.AddressBook;
 import socialite.model.CommandHistory;
 import socialite.model.Model;
 import socialite.model.ModelManager;
-import socialite.model.ProfilePictureList;
 import socialite.model.ReadOnlyAddressBook;
 import socialite.model.ReadOnlyCommandHistory;
 import socialite.model.ReadOnlyUserPrefs;

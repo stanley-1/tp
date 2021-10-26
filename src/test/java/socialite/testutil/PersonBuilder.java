@@ -1,6 +1,5 @@
 package socialite.testutil;
 
-import java.nio.file.Path;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -146,11 +145,18 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Profile Picture} of the (@code Person} that we are building
+     */
     public PersonBuilder withProfilePic(ProfilePicture pic) {
         this.profilePic = pic;
         return this;
     }
 
+    /**
+     * Builds the person
+     * @return the built person
+     */
     public Person build() {
         Person p = new Person(name, phone, remark, tags, facebook, instagram, telegram, tiktok, twitter);
         p.setProfilePicture(profilePic.value);

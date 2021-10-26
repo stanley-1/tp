@@ -1,11 +1,7 @@
 package socialite.storage;
 
-import socialite.model.person.ProfilePicture;
-
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Path;
-import java.util.Optional;
 
 public interface ProfilePictureStorage {
 

@@ -1,7 +1,6 @@
 package socialite.ui;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
@@ -57,17 +56,6 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private FileChooser fileChooser;
 
-    public static MainWindow getWindow(Stage primaryStage, Logic logic) {
-        if (MainWindow.window == null) {
-            MainWindow.window = new MainWindow(primaryStage, logic);
-        }
-        return MainWindow.window;
-    }
-
-    public static MainWindow getWindow() {
-        return MainWindow.window;
-    }
-
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
@@ -83,10 +71,20 @@ public class MainWindow extends UiPart<Stage> {
 
         setAccelerators();
 
-        ArrayList<String> acceptedExtensions = new ArrayList<>(2);
         helpWindow = new HelpWindow();
         fileChooser = new FileChooser();
 
+    }
+
+    public static MainWindow getWindow(Stage primaryStage, Logic logic) {
+        if (MainWindow.window == null) {
+            MainWindow.window = new MainWindow(primaryStage, logic);
+        }
+        return MainWindow.window;
+    }
+
+    public static MainWindow getWindow() {
+        return MainWindow.window;
     }
 
     public Stage getPrimaryStage() {
@@ -216,8 +214,8 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     public File getFile() {
-        fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter(
-                "Profile Picture only accepts .jpg and .png files",
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(
+                "Image formats supported",
                 "*.jpg", "*.png"
         ));
         return this.fileChooser.showOpenDialog(this.primaryStage);

@@ -1,17 +1,18 @@
 package socialite.logic.parser;
 
+import static java.util.Objects.requireNonNull;
+
+import java.io.File;
+
 import socialite.commons.core.index.Index;
 import socialite.logic.commands.PictureCommand;
 import socialite.logic.parser.exceptions.ParseException;
 import socialite.storage.Storage;
 import socialite.ui.MainWindow;
 
-import java.io.File;
-
-import static java.util.Objects.requireNonNull;
-
 public class PictureCommandParser implements Parser<PictureCommand> {
 
+    @Override
     public PictureCommand parse(String args, Storage storage) throws ParseException {
         requireNonNull(args);
 

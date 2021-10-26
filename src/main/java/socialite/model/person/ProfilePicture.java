@@ -1,7 +1,5 @@
 package socialite.model.person;
 
-import socialite.model.handle.Facebook;
-
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -11,9 +9,10 @@ import java.nio.file.Paths;
  */
 public class ProfilePicture {
 
-    public final Path value;
     public static final ProfilePicture DEFAULT_PICTURE = new ProfilePicture(
             Paths.get("images", "default_profile_picture.png"));
+
+    public final Path value;
 
     public ProfilePicture(Path value) {
         this.value = value;

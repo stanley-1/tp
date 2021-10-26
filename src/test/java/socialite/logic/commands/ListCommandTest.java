@@ -3,6 +3,8 @@ package socialite.logic.commands;
 import static socialite.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static socialite.logic.commands.CommandTestUtil.showPersonAtIndex;
 
+import java.io.File;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,8 +14,6 @@ import socialite.model.ModelManager;
 import socialite.model.UserPrefs;
 import socialite.testutil.TypicalIndexes;
 import socialite.testutil.TypicalPersons;
-
-import java.io.File;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for ListCommand.

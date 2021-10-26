@@ -3,6 +3,8 @@ package socialite.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.File;
+
 import org.junit.jupiter.api.Test;
 
 import socialite.commons.core.Messages;
@@ -14,8 +16,6 @@ import socialite.model.UserPrefs;
 import socialite.model.person.Person;
 import socialite.testutil.TypicalIndexes;
 import socialite.testutil.TypicalPersons;
-
-import java.io.File;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for

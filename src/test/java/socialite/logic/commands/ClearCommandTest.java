@@ -1,5 +1,7 @@
 package socialite.logic.commands;
 
+import java.io.File;
+
 import org.junit.jupiter.api.Test;
 
 import socialite.model.AddressBook;
@@ -8,8 +10,6 @@ import socialite.model.Model;
 import socialite.model.ModelManager;
 import socialite.model.UserPrefs;
 import socialite.testutil.TypicalPersons;
-
-import java.io.File;
 
 public class ClearCommandTest {
 

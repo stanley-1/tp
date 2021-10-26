@@ -1,7 +1,6 @@
 package socialite.storage;
 
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.Optional;
 
 import socialite.commons.exceptions.DataConversionException;

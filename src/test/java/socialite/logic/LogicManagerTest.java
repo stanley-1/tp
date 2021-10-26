@@ -20,7 +20,6 @@ import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.CommandHistory;
 import socialite.model.Model;
 import socialite.model.ModelManager;
-import socialite.model.ProfilePictureList;
 import socialite.model.ReadOnlyAddressBook;
 import socialite.model.UserPrefs;
 import socialite.model.person.Person;
@@ -143,7 +142,8 @@ public class LogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new CommandHistory(), new File[0]);
+        Model expectedModel = new ModelManager(
+                model.getAddressBook(), new UserPrefs(), new CommandHistory(), new File[0]);
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 

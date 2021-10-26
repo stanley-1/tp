@@ -10,16 +10,14 @@ import java.nio.file.Paths;
 
 public class ProfilePictureStorageManager implements ProfilePictureStorage {
 
-
-    public static ProfilePictureStorageManager instance;
-
     public static final Path PROFILE_PIC_FOLDER_PATH = Paths.get(
             "data", "profilepictures");
+    private static ProfilePictureStorageManager instance;
 
     private ProfilePictureStorageManager() {
         if (!Files.exists(PROFILE_PIC_FOLDER_PATH)) {
             try {
-                Files.createDirectory(PROFILE_PIC_FOLDER_PATH);
+                Files.createDirectories(PROFILE_PIC_FOLDER_PATH);
             } catch (IOException ioe) {
                 System.out.println(ioe.toString());
             }

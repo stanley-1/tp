@@ -1,6 +1,5 @@
 package socialite.ui;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -14,13 +13,11 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.shape.Circle;
-import socialite.model.ProfilePictureList;
 import socialite.model.handle.Handle;
 import socialite.model.handle.Handle.Platform;
 import socialite.model.person.Person;
 import socialite.model.person.ProfilePicture;
 import socialite.model.person.Remark;
-import socialite.storage.ProfilePictureStorageManager;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -97,8 +94,8 @@ public class PersonCard extends UiPart<Region> {
         this.handles.setSpacing(8);
 
         try {
-            this.profilePicture.setImage(new Image( new FileInputStream(
-                    this.person.getProfilePictureFile()
+            this.profilePicture.setImage(new Image(new FileInputStream(
+                    "data/profilepictures/" + this.person.getProfilePicture().value.toString()
             )));
         } catch (NullPointerException | FileNotFoundException e) {
             this.profilePicture.setImage(new Image(
@@ -109,8 +106,8 @@ public class PersonCard extends UiPart<Region> {
         Circle clip = new Circle(30);
         this.profilePicture.setFitHeight(60);
         this.profilePicture.setFitWidth(60);
-        clip.setCenterX(profilePicture.getFitHeight()/2);
-        clip.setCenterY(profilePicture.getFitWidth()/2);
+        clip.setCenterX(profilePicture.getFitHeight() / 2);
+        clip.setCenterY(profilePicture.getFitWidth() / 2);
         this.profilePicture.setClip(clip);
 
         person.getTags().stream()

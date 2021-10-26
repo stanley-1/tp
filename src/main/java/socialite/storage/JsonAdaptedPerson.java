@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import socialite.commons.exceptions.IllegalValueException;
-import socialite.model.ProfilePictureListInterface;
 import socialite.model.handle.Facebook;
 import socialite.model.handle.Instagram;
 import socialite.model.handle.Telegram;
@@ -20,7 +19,6 @@ import socialite.model.handle.Twitter;
 import socialite.model.person.Name;
 import socialite.model.person.Person;
 import socialite.model.person.Phone;
-import socialite.model.person.ProfilePicture;
 import socialite.model.person.Remark;
 import socialite.model.tag.Tag;
 

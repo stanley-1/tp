@@ -1,5 +1,7 @@
 package socialite.logic.commands;
 
+import java.io.File;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,8 +12,6 @@ import socialite.model.UserPrefs;
 import socialite.model.person.Person;
 import socialite.testutil.PersonBuilder;
 import socialite.testutil.TypicalPersons;
-
-import java.io.File;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code AddCommand}.

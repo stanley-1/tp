@@ -11,6 +11,8 @@ import static socialite.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static socialite.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static socialite.testutil.TypicalPersons.getTypicalAddressBook;
 
+import java.io.File;
+
 import org.junit.jupiter.api.Test;
 
 import socialite.commons.core.Messages;
@@ -23,8 +25,6 @@ import socialite.model.UserPrefs;
 import socialite.model.person.Person;
 import socialite.model.person.Remark;
 import socialite.testutil.PersonBuilder;
-
-import java.io.File;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for RemarkCommand.

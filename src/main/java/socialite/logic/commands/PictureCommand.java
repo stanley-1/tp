@@ -1,5 +1,11 @@
 package socialite.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
+import java.io.File;
+import java.nio.file.Paths;
+import java.util.List;
+
 import socialite.commons.core.Messages;
 import socialite.commons.core.index.Index;
 import socialite.logic.commands.exceptions.CommandException;
@@ -7,13 +13,6 @@ import socialite.model.Model;
 import socialite.model.person.Person;
 import socialite.model.person.ProfilePicture;
 import socialite.storage.Storage;
-
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
-
-import static java.util.Objects.requireNonNull;
 
 public class PictureCommand extends Command {
 
@@ -24,6 +23,12 @@ public class PictureCommand extends Command {
     private final File picture;
     private final Storage storage;
 
+    /**
+     * Creates a command that adds a picture to a person
+     * @param index Index of person to add picture to
+     * @param picture File to add to person
+     * @param storage Storage object for storing file
+     */
     public PictureCommand(Index index, File picture, Storage storage) {
         requireNonNull(index);
         requireNonNull(storage);
