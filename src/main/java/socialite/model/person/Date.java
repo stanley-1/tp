@@ -7,13 +7,14 @@ import java.util.regex.Pattern;
 
 public class Date {
     public static final String MESSAGE_CONSTRAINTS =
-            "Dates should be formatted as NAME:YYYY-MM-DD";
+            "Dates should be formatted as NAME:YYYY-MM-DD or NAME:MM-DD for recurring dates";
 
     public static final String VALIDATION_REGEX =
-            "([\\w\\s]+):(\\d{4})-(\\d{2})-(\\d{2})\\s*";
+            "([\\w\\s]+):(?:(\\d{4})-)?(\\d{2})-(\\d{2})\\s*";
 
     private String name;
     private LocalDate date;
+    private boolean recurring;
 
     /**
      * Construct a new {@code Date} with a given name and value,
@@ -26,12 +27,16 @@ public class Date {
 
         matcher.find();
         String name = matcher.group(1);
-        int year = Integer.parseInt(matcher.group(2));
+        String yearString = matcher.group(2);
+        boolean recurring = yearString == null;
+        
+        int year = recurring ? 0 : Integer.parseInt(yearString);
         int month = Integer.parseInt(matcher.group(3));
         int day = Integer.parseInt(matcher.group(4));
 
         this.name = name;
         this.date = LocalDate.of(year, month, day);
+        this.recurring = recurring;
     }
 
     public String getName() {
