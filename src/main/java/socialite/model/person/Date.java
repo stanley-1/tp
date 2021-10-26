@@ -29,7 +29,7 @@ public class Date {
         String name = matcher.group(1);
         String yearString = matcher.group(2);
         boolean recurring = yearString == null;
-        
+
         int year = recurring ? 0 : Integer.parseInt(yearString);
         int month = Integer.parseInt(matcher.group(3));
         int day = Integer.parseInt(matcher.group(4));
@@ -45,6 +45,10 @@ public class Date {
 
     public LocalDate getDate() {
         return date;
+    }
+
+    public boolean isRecurring() {
+        return recurring;
     }
 
     /**

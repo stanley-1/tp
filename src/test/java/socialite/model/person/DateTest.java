@@ -20,9 +20,19 @@ public class DateTest {
         assertFalse(Date.isValidDate("date name")); // no date
         assertFalse(Date.isValidDate("date name:")); // no date
 
-        // valid date sequences
+        // valid dates
         assertTrue(Date.isValidDate("date:2020-02-02"));
         // name with space character ("date 3")
         assertTrue(Date.isValidDate("date 3:2020-02-03"));
+
+        // recurring dates
+        assertTrue(Date.isValidDate("date:02-02"));
+        assertTrue(Date.isValidDate("date 3:02-03"));
+    }
+
+    @Test
+    public void isRecurring() {
+        assertFalse(new Date("date:2020-02-02").isRecurring());
+        assertTrue(new Date("date:02-02").isRecurring());
     }
 }
