@@ -1,5 +1,6 @@
 package socialite.ui;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -13,6 +14,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.shape.Circle;
+import socialite.model.ProfilePictureList;
 import socialite.model.handle.Handle;
 import socialite.model.handle.Handle.Platform;
 import socialite.model.person.Person;
@@ -96,7 +98,7 @@ public class PersonCard extends UiPart<Region> {
 
         try {
             this.profilePicture.setImage(new Image( new FileInputStream(
-                    ProfilePictureStorageManager.getInstance().get(this.person.getProfilePicture().value.toString())
+                    this.person.getProfilePictureFile()
             )));
         } catch (NullPointerException | FileNotFoundException e) {
             this.profilePicture.setImage(new Image(

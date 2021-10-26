@@ -2,6 +2,7 @@ package socialite.logic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
@@ -19,12 +20,15 @@ import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.CommandHistory;
 import socialite.model.Model;
 import socialite.model.ModelManager;
+import socialite.model.ProfilePictureList;
 import socialite.model.ReadOnlyAddressBook;
 import socialite.model.UserPrefs;
 import socialite.model.person.Person;
 import socialite.storage.JsonAddressBookStorage;
 import socialite.storage.JsonCommandHistoryStorage;
 import socialite.storage.JsonUserPrefsStorage;
+import socialite.storage.ProfilePictureStorage;
+import socialite.storage.ProfilePictureStorageManager;
 import socialite.storage.StorageManager;
 import socialite.testutil.Assert;
 import socialite.testutil.PersonBuilder;
@@ -46,7 +50,9 @@ public class LogicManagerTest {
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
         JsonCommandHistoryStorage commandHistoryStorage =
                 new JsonCommandHistoryStorage(temporaryFolder.resolve("commandHistory.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage, commandHistoryStorage);
+        ProfilePictureStorage profilePictureStorage = ProfilePictureStorageManager.getInstance();
+        StorageManager storage = new StorageManager(
+                addressBookStorage, userPrefsStorage, commandHistoryStorage, profilePictureStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -77,7 +83,9 @@ public class LogicManagerTest {
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
         JsonCommandHistoryStorage commandHistoryStorage =
                 new JsonCommandHistoryStorage(temporaryFolder.resolve("ioExceptionCommandHistory.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage, commandHistoryStorage);
+        ProfilePictureStorage profilePictureStorage = ProfilePictureStorageManager.getInstance();
+        StorageManager storage = new StorageManager(
+                addressBookStorage, userPrefsStorage, commandHistoryStorage, profilePictureStorage);
         logic = new LogicManager(model, storage);
 
         // Execute add command
@@ -135,7 +143,7 @@ public class LogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new CommandHistory());
+        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new CommandHistory(), new File[0]);
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 

@@ -1,5 +1,6 @@
 package socialite.model.person;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.util.Collections;
 import java.util.HashSet;
@@ -7,6 +8,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import socialite.commons.util.CollectionUtil;
+import socialite.model.ProfilePictureList;
 import socialite.model.handle.Facebook;
 import socialite.model.handle.Instagram;
 import socialite.model.handle.Telegram;
@@ -79,6 +81,10 @@ public class Person {
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
+    }
+
+    public File getProfilePictureFile() {
+        return ProfilePictureList.getInstance().getProfilePicture(this.profilePicture.value.toString());
     }
 
     public ProfilePicture getProfilePicture() {

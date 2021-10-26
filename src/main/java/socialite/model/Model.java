@@ -1,5 +1,6 @@
 package socialite.model;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.util.function.Predicate;
 
@@ -92,4 +93,8 @@ public interface Model {
      * Adds the given command to the command history.
      */
     void addCommandToHistory(String command);
+
+    void deleteProfilePicture(Path name);
+
+    void saveProfilePicture(File file, String prefix);
 }

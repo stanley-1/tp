@@ -46,7 +46,7 @@ public class PictureCommand extends Command {
         }
 
         Person personToAddPic = lastShownList.get(index.getZeroBased());
-        Person personWithPic = addPicToPerson(personToAddPic, picture);
+        Person personWithPic = addPicToPerson(personToAddPic, picture, model);
 
         model.setPerson(personToAddPic, personWithPic);
         model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
@@ -54,16 +54,16 @@ public class PictureCommand extends Command {
         return new CommandResult("picture added :-)");
     }
 
-    private Person addPicToPerson(Person person, File file) {
-        // TODO: place file in profilepictures folder
+    private Person addPicToPerson(Person person, File file, Model model) {
         if (!person.getProfilePicture().equals(ProfilePicture.DEFAULT_PICTURE)) {
-            // TODO: delete file
-            System.out.println(person.getProfilePicture().value);
+            // delete file if not default picture
             this.storage.deleteProfilePicture(
                     person.getProfilePicture().value);
+            model.deleteProfilePicture(person.getProfilePicture().value);
         }
-        // TODO: add new file, change person's profile picture
+        // add new file, change person's profile picture
         storage.saveProfilePicture(file, person.getName().fullName);
+        model.saveProfilePicture(file, person.getName().fullName);
         person.setProfilePicture(Paths.get(person.getName().fullName + file.getName()));
         return person;
     }

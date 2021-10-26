@@ -18,6 +18,8 @@ public interface ProfilePictureStorage {
 
     void deleteProfilePicture(Path name);
 
+    File[] getProfilePictures();
+
     void saveProfilePicture(File profilePicture, String prefix);
 
 }

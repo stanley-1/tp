@@ -2,6 +2,7 @@ package socialite.model;
 
 import static java.util.Objects.requireNonNull;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -23,12 +24,16 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final CommandHistory commandHistory;
+    private final ProfilePictureList profilePictureList;
 
     /**
      * Initializes a ModelManager with the given addressBook, userPrefs and commandHistory.
      */
     public ModelManager(
-            ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs, ReadOnlyCommandHistory commandHistory) {
+            ReadOnlyAddressBook addressBook,
+            ReadOnlyUserPrefs userPrefs,
+            ReadOnlyCommandHistory commandHistory,
+            File[] profilePictures) {
         super();
         CollectionUtil.requireAllNonNull(addressBook, userPrefs);
 
@@ -36,6 +41,8 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         this.commandHistory = new CommandHistory(commandHistory);
+        this.profilePictureList = ProfilePictureList.getInstance(profilePictures);
+
 
         logger.fine("Initializing with:"
                 + "\naddress book: " + addressBook
@@ -44,7 +51,7 @@ public class ModelManager implements Model {
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs(), new CommandHistory());
+        this(new AddressBook(), new UserPrefs(), new CommandHistory(), new File[0]);
     }
 
     //=========== UserPrefs ==================================================================================
@@ -164,6 +171,18 @@ public class ModelManager implements Model {
         return addressBook.equals(other.addressBook)
                 && userPrefs.equals(other.userPrefs)
                 && filteredPersons.equals(other.filteredPersons);
+    }
+
+    //=========== Profile Picture ============================================================================
+
+    @Override
+    public void deleteProfilePicture(Path name) {
+        this.profilePictureList.deleteProfilePicture(name);
+    }
+
+    @Override
+    public void saveProfilePicture(File file, String name) {
+        this.profilePictureList.saveProfilePicture(file, name);
     }
 
 }

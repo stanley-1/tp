@@ -1,5 +1,6 @@
 package socialite;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
@@ -19,6 +20,7 @@ import socialite.model.AddressBook;
 import socialite.model.CommandHistory;
 import socialite.model.Model;
 import socialite.model.ModelManager;
+import socialite.model.ProfilePictureList;
 import socialite.model.ReadOnlyAddressBook;
 import socialite.model.ReadOnlyCommandHistory;
 import socialite.model.ReadOnlyUserPrefs;
@@ -118,7 +120,7 @@ public class MainApp extends Application {
             initialCommandHistory = new CommandHistory();
         }
 
-        return new ModelManager(initialAddressBook, userPrefs, initialCommandHistory);
+        return new ModelManager(initialAddressBook, userPrefs, initialCommandHistory, storage.getProfilePictures());
     }
 
     private void initLogging(Config config) {
