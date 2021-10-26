@@ -84,6 +84,8 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private FlowPane tags;
     @FXML
+    private FlowPane dates;
+    @FXML
     private Label remark;
 
 
@@ -107,6 +109,9 @@ public class PersonCard extends UiPart<Region> {
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+        person.getDates().value.values().stream()
+                .sorted(Comparator.comparing(date -> date.getDate()))
+                .forEach(date -> dates.getChildren().add(new Label(date.toString())));
     }
 
     private void makeRemark(Remark remark) {

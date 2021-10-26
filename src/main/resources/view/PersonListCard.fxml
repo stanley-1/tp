@@ -33,6 +33,7 @@
         <Button fx:id="share" onAction="#handleButtonAction" text="Share" HBox.hgrow="NEVER" />
       </HBox>
       <FlowPane fx:id="tags" />
+      <FlowPane fx:id="dates" />
       <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
       <Label fx:id="remark" styleClass="cell_small_label" text="\$remark" />
       <HBox fx:id="handles" spacing="8.0">

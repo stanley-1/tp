@@ -35,11 +35,14 @@ public class Person {
     private final TikTok tiktok;
     private final Twitter twitter;
 
+    private final Dates dates;
+
     /**
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Remark remark, Set<Tag> tags,
-                  Facebook facebook, Instagram instagram, Telegram telegram, TikTok tiktok, Twitter twitter) {
+                  Facebook facebook, Instagram instagram, Telegram telegram, TikTok tiktok, Twitter twitter,
+                  Dates dates) {
         CollectionUtil.requireAllNonNull(name, phone, tags);
         this.name = name;
         this.phone = phone;
@@ -50,6 +53,7 @@ public class Person {
         this.telegram = telegram;
         this.tiktok = tiktok;
         this.twitter = twitter;
+        this.dates = dates;
     }
 
     public Name getName() {
@@ -90,6 +94,10 @@ public class Person {
 
     public Telegram getTelegram() {
         return telegram;
+    }
+
+    public Dates getDates() {
+        return dates;
     }
 
     /**
@@ -139,6 +147,7 @@ public class Person {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
+        return Objects.hash(name, phone, tags, facebook, instagram, telegram, tiktok, twitter, dates);
         return Objects.hash(name, phone, remark, tags, facebook, instagram, telegram, tiktok, twitter);
     }
 

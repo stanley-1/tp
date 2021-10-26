@@ -1,6 +1,7 @@
 package socialite.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static socialite.logic.parser.CliSyntax.PREFIX_DATE;
 import static socialite.logic.parser.CliSyntax.PREFIX_FACEBOOK;
 import static socialite.logic.parser.CliSyntax.PREFIX_INSTAGRAM;
 import static socialite.logic.parser.CliSyntax.PREFIX_NAME;
@@ -30,7 +31,8 @@ public class AddCommand extends Command {
             + "[" + PREFIX_INSTAGRAM + "INSTAGRAM] "
             + "[" + PREFIX_TELEGRAM + "TELEGRAM] "
             + "[" + PREFIX_TIKTOK + "TIKTOK] "
-            + "[" + PREFIX_TWITTER + "TWITTER]\n"
+            + "[" + PREFIX_TWITTER + "TWITTER] "
+            + "[" + PREFIX_DATE + "NAME:YYYY-MM-DD]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
             + PREFIX_PHONE + "98765432 "
@@ -40,7 +42,9 @@ public class AddCommand extends Command {
             + PREFIX_INSTAGRAM + "john.doe "
             + PREFIX_TELEGRAM + "johndoe "
             + PREFIX_TIKTOK + "johndoe "
-            + PREFIX_TWITTER + "johndoe ";
+            + PREFIX_TWITTER + "johndoe "
+            + PREFIX_DATE + "birthday:2000-01-01 "
+            + PREFIX_DATE + "ord:2020-01-01";
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
