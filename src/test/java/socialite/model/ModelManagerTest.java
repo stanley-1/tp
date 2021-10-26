@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -100,10 +101,11 @@ public class ModelManagerTest {
         AddressBook differentAddressBook = new AddressBook();
         UserPrefs userPrefs = new UserPrefs();
         CommandHistory commandHistory = new CommandHistory();
+        File[] profilePictures = new File[0];
 
         // same values -> returns true
-        modelManager = new ModelManager(addressBook, userPrefs, commandHistory);
-        ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs, commandHistory);
+        modelManager = new ModelManager(addressBook, userPrefs, commandHistory, profilePictures);
+        ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs, commandHistory, profilePictures);
         assertEquals(modelManager, modelManagerCopy);
 
         // same object -> returns true
@@ -116,12 +118,13 @@ public class ModelManagerTest {
         assertNotEquals(5, modelManager);
 
         // different addressBook -> returns false
-        assertNotEquals(modelManager, new ModelManager(differentAddressBook, userPrefs, commandHistory));
+        assertNotEquals(modelManager, new ModelManager(
+                differentAddressBook, userPrefs, commandHistory, profilePictures));
 
         // different filteredList -> returns false
         String[] keywords = TypicalPersons.ALICE.getName().fullName.split("\\s+");
         modelManager.updateFilteredPersonList(new ContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs, commandHistory)));
+        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs, commandHistory, profilePictures)));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
@@ -129,6 +132,7 @@ public class ModelManagerTest {
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
-        assertNotEquals(modelManager, new ModelManager(addressBook, differentUserPrefs, commandHistory));
+        assertNotEquals(modelManager, new ModelManager(
+                addressBook, differentUserPrefs, commandHistory, profilePictures));
     }
 }

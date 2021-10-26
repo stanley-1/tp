@@ -25,8 +25,10 @@ public class ProfilePictureList implements ProfilePictureListInterface {
     }
 
     private ProfilePictureList(File[] profilePictures) {
-        for (File profilePicture : profilePictures) {
-            pictures.add(profilePicture);
+        if (profilePictures != null) {
+            for (File profilePicture : profilePictures) {
+                pictures.add(profilePicture);
+            }
         }
     }
 

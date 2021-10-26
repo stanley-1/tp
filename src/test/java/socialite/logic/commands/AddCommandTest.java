@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -158,6 +159,18 @@ public class AddCommandTest {
         public void addCommandToHistory(String command) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public void deleteProfilePicture(Path name) {
+            throw new AssertionError("This method should not be called");
+        }
+
+        @Override
+        public void saveProfilePicture(File file, String name) {
+            throw new AssertionError("This method should not be called");
+        }
+
+
     }
 
     /**

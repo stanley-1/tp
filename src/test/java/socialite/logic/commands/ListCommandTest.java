@@ -13,6 +13,8 @@ import socialite.model.UserPrefs;
 import socialite.testutil.TypicalIndexes;
 import socialite.testutil.TypicalPersons;
 
+import java.io.File;
+
 /**
  * Contains integration tests (interaction with the Model) and unit tests for ListCommand.
  */
@@ -23,8 +25,9 @@ public class ListCommandTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
-        expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new CommandHistory());
+        model = new ModelManager(
+                TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory(), new File[0]);
+        expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new CommandHistory(), new File[0]);
     }
 
     @Test

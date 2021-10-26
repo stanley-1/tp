@@ -82,7 +82,8 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_nullPhone_throwsIllegalValueException() {
         JsonAdaptedPerson person = new JsonAdaptedPerson(
-                VALID_NAME, null, VALID_REMARK, VALID_TAGS, VALID_FACEBOOK, VALID_INSTAGRAM, VALID_TELEGRAM,
+                VALID_NAME, null, VALID_REMARK, VALID_TAGS, VALID_PROFILE_PIC,
+                VALID_FACEBOOK, VALID_INSTAGRAM, VALID_TELEGRAM,
                 VALID_TIKTOK, VALID_TWITTER
         );
         String expectedMessage =
@@ -95,7 +96,7 @@ public class JsonAdaptedPersonTest {
         List<JsonAdaptedTag> invalidTags = new ArrayList<>(VALID_TAGS);
         invalidTags.add(new JsonAdaptedTag(INVALID_TAG));
         JsonAdaptedPerson person = new JsonAdaptedPerson(
-                VALID_NAME, VALID_PHONE, VALID_REMARK, invalidTags, VALID_FACEBOOK, VALID_INSTAGRAM,
+                VALID_NAME, VALID_PHONE, VALID_REMARK, invalidTags, VALID_PROFILE_PIC, VALID_FACEBOOK, VALID_INSTAGRAM,
                 VALID_TELEGRAM, VALID_TIKTOK, VALID_TWITTER
         );
         Assert.assertThrows(IllegalValueException.class, person::toModelType);
@@ -104,7 +105,8 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_invalidFacebook_throwsIllegalValueException() {
         JsonAdaptedPerson person = new JsonAdaptedPerson(
-                VALID_NAME, VALID_PHONE, VALID_REMARK, VALID_TAGS, INVALID_FACEBOOK, VALID_INSTAGRAM,
+                VALID_NAME, VALID_PHONE, VALID_REMARK, VALID_TAGS, VALID_PROFILE_PIC,
+                INVALID_FACEBOOK, VALID_INSTAGRAM,
                 VALID_TELEGRAM, VALID_TIKTOK, VALID_TWITTER
         );
         String expectedMessage = Facebook.MESSAGE_CONSTRAINTS;
@@ -114,7 +116,7 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_invalidInstagram_throwsIllegalValueException() {
         JsonAdaptedPerson person = new JsonAdaptedPerson(
-                VALID_NAME, VALID_PHONE, VALID_REMARK, VALID_TAGS, VALID_FACEBOOK, INVALID_INSTAGRAM,
+                VALID_NAME, VALID_PHONE, VALID_REMARK, VALID_TAGS, VALID_PROFILE_PIC, VALID_FACEBOOK, INVALID_INSTAGRAM,
                 VALID_TELEGRAM, VALID_TIKTOK, VALID_TWITTER
         );
         String expectedMessage = Instagram.MESSAGE_CONSTRAINTS;
@@ -124,7 +126,7 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_invalidTelegram_throwsIllegalValueException() {
         JsonAdaptedPerson person = new JsonAdaptedPerson(
-                VALID_NAME, VALID_PHONE, VALID_REMARK, VALID_TAGS, VALID_FACEBOOK, VALID_INSTAGRAM,
+                VALID_NAME, VALID_PHONE, VALID_REMARK, VALID_TAGS, VALID_PROFILE_PIC, VALID_FACEBOOK, VALID_INSTAGRAM,
                 INVALID_TELEGRAM, VALID_TIKTOK, VALID_TWITTER
         );
         String expectedMessage = Telegram.MESSAGE_CONSTRAINTS;
@@ -134,7 +136,7 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_invalidTiktok_throwsIllegalValueException() {
         JsonAdaptedPerson person = new JsonAdaptedPerson(
-                VALID_NAME, VALID_PHONE, VALID_REMARK, VALID_TAGS,
+                VALID_NAME, VALID_PHONE, VALID_REMARK, VALID_TAGS, VALID_PROFILE_PIC,
                 VALID_FACEBOOK, VALID_INSTAGRAM, VALID_TELEGRAM, INVALID_TIKTOK, VALID_TWITTER
         );
         String expectedMessage = TikTok.MESSAGE_CONSTRAINTS;
@@ -144,7 +146,7 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_invalidTwitter_throwsIllegalValueException() {
         JsonAdaptedPerson person = new JsonAdaptedPerson(
-                VALID_NAME, VALID_PHONE, VALID_REMARK, VALID_TAGS,
+                VALID_NAME, VALID_PHONE, VALID_REMARK, VALID_TAGS, VALID_PROFILE_PIC,
                 VALID_FACEBOOK, VALID_INSTAGRAM, VALID_TELEGRAM, VALID_TIKTOK, INVALID_TWITTER
         );
         String expectedMessage = Twitter.MESSAGE_CONSTRAINTS;

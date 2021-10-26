@@ -11,6 +11,8 @@ import socialite.model.person.Person;
 import socialite.testutil.PersonBuilder;
 import socialite.testutil.TypicalPersons;
 
+import java.io.File;
+
 /**
  * Contains integration tests (interaction with the Model) for {@code AddCommand}.
  */
@@ -20,14 +22,16 @@ public class AddCommandIntegrationTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
+        model = new ModelManager(
+                TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory(), new File[0]);
     }
 
     @Test
     public void execute_newPerson_success() {
         Person validPerson = new PersonBuilder().build();
 
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new CommandHistory());
+        Model expectedModel = new ModelManager(
+                model.getAddressBook(), new UserPrefs(), new CommandHistory(), new File[0]);
         expectedModel.addPerson(validPerson);
 
         CommandTestUtil.assertCommandSuccess(new AddCommand(validPerson), model,

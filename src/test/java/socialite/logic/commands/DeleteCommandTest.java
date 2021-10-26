@@ -15,6 +15,8 @@ import socialite.model.person.Person;
 import socialite.testutil.TypicalIndexes;
 import socialite.testutil.TypicalPersons;
 
+import java.io.File;
+
 /**
  * Contains integration tests (interaction with the Model) and unit tests for
  * {@code DeleteCommand}.
@@ -22,7 +24,8 @@ import socialite.testutil.TypicalPersons;
 public class DeleteCommandTest {
 
     private Model model =
-            new ModelManager(TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
+            new ModelManager(
+                    TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory(), new File[0]);
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -31,7 +34,8 @@ public class DeleteCommandTest {
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS, personToDelete);
 
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new CommandHistory());
+        ModelManager expectedModel = new ModelManager(
+                model.getAddressBook(), new UserPrefs(), new CommandHistory(), new File[0]);
         expectedModel.deletePerson(personToDelete);
 
         CommandTestUtil.assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
@@ -54,7 +58,8 @@ public class DeleteCommandTest {
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS, personToDelete);
 
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new CommandHistory());
+        Model expectedModel = new ModelManager(
+                model.getAddressBook(), new UserPrefs(), new CommandHistory(), new File[0]);
         expectedModel.deletePerson(personToDelete);
         showNoPerson(expectedModel);
 

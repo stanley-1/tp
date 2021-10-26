@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -22,9 +23,11 @@ import socialite.testutil.TypicalPersons;
  */
 public class FindCommandTest {
     private Model model =
-            new ModelManager(TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
+            new ModelManager(
+                    TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory(), new File[0]);
     private Model expectedModel =
-            new ModelManager(TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
+            new ModelManager(
+                    TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory(), new File[0]);
 
     @Test
     public void equals() {

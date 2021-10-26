@@ -18,13 +18,16 @@ import socialite.testutil.PersonBuilder;
 import socialite.testutil.TypicalIndexes;
 import socialite.testutil.TypicalPersons;
 
+import java.io.File;
+
 /**
  * Contains integration tests (interaction with the Model) and unit tests for EditCommand.
  */
 public class EditCommandTest {
 
     private Model model =
-            new ModelManager(TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
+            new ModelManager(
+                    TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory(), new File[0]);
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
@@ -35,7 +38,8 @@ public class EditCommandTest {
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedPerson);
 
         Model expectedModel =
-                new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
+                new ModelManager(
+                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory(), new File[0]);
         expectedModel.setPerson(model.getFilteredPersonList().get(0), editedPerson);
 
         CommandTestUtil.assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -63,7 +67,8 @@ public class EditCommandTest {
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedPerson);
 
         Model expectedModel =
-                new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
+                new ModelManager(new AddressBook(
+                        model.getAddressBook()), new UserPrefs(), new CommandHistory(), new File[0]);
         expectedModel.setPerson(lastPerson, editedPerson);
 
         CommandTestUtil.assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -78,7 +83,8 @@ public class EditCommandTest {
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedPerson);
 
         Model expectedModel =
-                new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
+                new ModelManager(
+                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory(), new File[0]);
 
         CommandTestUtil.assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
@@ -96,7 +102,8 @@ public class EditCommandTest {
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedPerson);
 
         Model expectedModel =
-                new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
+                new ModelManager(
+                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory(), new File[0]);
         expectedModel.setPerson(model.getFilteredPersonList().get(0), editedPerson);
 
         CommandTestUtil.assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
