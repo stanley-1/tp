@@ -36,4 +36,9 @@ public class InstagramTest {
         assertTrue(Instagram.isValidHandle("Nat_321")); // start with uppercase letter
 
     }
+    @Test
+    public void hasLinkPrefix(){
+        Instagram i = new Instagram("name1");
+        assertTrue(i.getUrl().equals("https://www.instagram.com/name1"));
+    }
 }
