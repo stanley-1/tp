@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.io.File;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import socialite.commons.core.Messages;
@@ -67,9 +68,10 @@ public class PictureCommand extends Command {
             model.deleteProfilePicture(person.getProfilePicture().value);
         }
         // add new file, change person's profile picture
-        storage.saveProfilePicture(file, person.getName().fullName);
-        model.saveProfilePicture(file, person.getName().fullName);
-        person.setProfilePicture(Paths.get(person.getName().fullName + file.getName()));
+        String filename = LocalDateTime.now().toString();
+        storage.saveProfilePicture(file, filename);
+        model.saveProfilePicture(file, filename);
+        person.setProfilePicture(Paths.get(filename));
         return person;
     }
 

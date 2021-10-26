@@ -53,9 +53,9 @@ public class ProfilePictureList implements ProfilePictureListInterface {
     /**
      * adds profile picture to model
      * @param file
-     * @param prefix
+     * @param name
      */
-    public void saveProfilePicture(File file, String prefix) {
-        pictures.add(ProfilePictureStorageManager.PROFILE_PIC_FOLDER_PATH.resolve(prefix + file.getName()).toFile());
+    public void saveProfilePicture(File file, String name) {
+        pictures.add(ProfilePictureStorageManager.PROFILE_PIC_FOLDER_PATH.resolve(name).toFile());
     }
 }

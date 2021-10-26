@@ -56,9 +56,9 @@ public class ProfilePictureStorageManager implements ProfilePictureStorage {
     }
 
     @Override
-    public void saveProfilePicture(File file, String prefix) {
+    public void saveProfilePicture(File file, String name) {
         try {
-            Files.copy(file.toPath(), getProfilePictureFolderPath().resolve(prefix + file.getName()));
+            Files.copy(file.toPath(), getProfilePictureFolderPath().resolve(name));
         } catch (IOException ioe) {
             System.out.println(ioe.toString());
         }
