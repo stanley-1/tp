@@ -12,7 +12,7 @@ public class ShareCommandParser implements Parser<ShareCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the ShareCommand
-     * @throws ParseException if the user input does not conform the expected format
+     * @throws ParseException if the user input does not conform with the expected format
      */
     public ShareCommand parse(String args) throws ParseException {
         try {

@@ -15,14 +15,14 @@ import socialite.model.Model;
 import socialite.model.person.Person;
 
 /**
- * Copy a person's contact info to the system clipboard using its displayed index from the address book.
+ * Copies a person's contact info to the system clipboard using its displayed index from the address book.
  */
 public class ShareCommand extends Command {
 
     public static final String COMMAND_WORD = "share";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Copy a person's contact info to the system clipboard "
+            + ": Copies a person's contact info to the system clipboard "
             + "by the index number used in the displayed person list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
