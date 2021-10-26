@@ -39,7 +39,7 @@ public class TelegramTest {
     }
 
     @Test
-    public void hasLinkPrefix(){
+    public void hasLinkPrefix() {
         Telegram t = new Telegram("name1");
         assertTrue(t.getUrl().equals("https://www.t.me/name1"));
     }

@@ -28,7 +28,7 @@ public class TikTokTest {
     }
 
     @Test
-    public void hasLinkPrefix(){
+    public void hasLinkPrefix() {
         TikTok t = new TikTok("name1");
         assertTrue(t.getUrl().equals("https://www.tiktok.com/@name1"));
     }

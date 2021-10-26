@@ -32,7 +32,7 @@ public class TwitterTest {
     }
 
     @Test
-    public void hasLinkPrefix(){
+    public void hasLinkPrefix() {
         Twitter t = new Twitter("name1");
         assertTrue(t.getUrl().equals("https://www.twitter.com/name1"));
     }

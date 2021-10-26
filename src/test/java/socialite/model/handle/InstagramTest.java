@@ -37,7 +37,7 @@ public class InstagramTest {
 
     }
     @Test
-    public void hasLinkPrefix(){
+    public void hasLinkPrefix() {
         Instagram i = new Instagram("name1");
         assertTrue(i.getUrl().equals("https://www.instagram.com/name1"));
     }

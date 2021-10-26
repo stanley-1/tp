@@ -39,7 +39,7 @@ public class FacebookTest {
 
     }
     @Test
-    public void hasLinkPrefix(){
+    public void hasLinkPrefix() {
         Facebook f = new Facebook("name1");
         assertTrue(f.getUrl().equals("https://www.facebook.com/name1"));
     }
