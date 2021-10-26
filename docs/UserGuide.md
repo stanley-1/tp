@@ -448,7 +448,7 @@ Action | Format, Examples
 **Query Category** | `find t/TAG` <br> e.g., `find t/Friends`
 **Delete Category** | `edit INDEX t/`
 **Add / Edit Social Media Handles** | `edit INDEX [p/PLATFORM]` <br> e.g., `edit 1 fb/Alv1n.y`
-**Query Contacts Via Platform** | `find p/PLATFORM` <br> e.g., `find p/facebook`
+**Query Contacts via Platform** | `find p/PLATFORM` <br> e.g., `find p/facebook`
 **Add Remark** | `remark INDEX r/[TEXT]` <br> e.g., `remark 1 r/Likes to swim`
 **Add Profile Picture** | `picture`
 **View Help** | `help`
