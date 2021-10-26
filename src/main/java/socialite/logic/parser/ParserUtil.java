@@ -14,6 +14,8 @@ import socialite.model.handle.Instagram;
 import socialite.model.handle.Telegram;
 import socialite.model.handle.TikTok;
 import socialite.model.handle.Twitter;
+import socialite.model.person.Date;
+import socialite.model.person.Dates;
 import socialite.model.person.Name;
 import socialite.model.person.Phone;
 import socialite.model.person.Remark;
@@ -195,5 +197,39 @@ public class ParserUtil {
             throw new ParseException(TikTok.MESSAGE_CONSTRAINTS);
         }
         return new TikTok(trimmedTikTok);
+    }
+
+    /**
+     * Parses a {@code String date} into a {@code Date}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code date} is invalid.
+     */
+    public static Date parseDate(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+        if (!Date.isValidDate(trimmedDate)) {
+            throw new ParseException(Date.MESSAGE_CONSTRAINTS);
+        }
+        return new Date(trimmedDate);
+    }
+
+    /**
+     * Parses a {@code Collection<String> dates} into a {@code Dates} object.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @param datesCollection the dates to add
+     * @return the created Dates object
+     * @throws ParseException if the given {@code dates} is invalid
+     */
+    public static Dates parseDates(Collection<String> datesCollection) throws ParseException {
+        requireNonNull(datesCollection);
+
+        final Dates dates = new Dates();
+        for (String date : datesCollection) {
+            dates.addDate(parseDate(date));
+        }
+
+        return dates;
     }
 }

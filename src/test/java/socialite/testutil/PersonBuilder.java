@@ -8,6 +8,8 @@ import socialite.model.handle.Instagram;
 import socialite.model.handle.Telegram;
 import socialite.model.handle.TikTok;
 import socialite.model.handle.Twitter;
+import socialite.model.person.Date;
+import socialite.model.person.Dates;
 import socialite.model.person.Name;
 import socialite.model.person.Person;
 import socialite.model.person.Phone;
@@ -37,6 +39,7 @@ public class PersonBuilder {
     private Telegram telegram;
     private TikTok tiktok;
     private Twitter twitter;
+    private Dates dates;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -51,6 +54,7 @@ public class PersonBuilder {
         telegram = new Telegram(DEFAULT_TELEGRAM);
         tiktok = new TikTok(DEFAULT_TIKTOK);
         twitter = new Twitter(DEFAULT_TWITTER);
+        dates = new Dates();
     }
 
     /**
@@ -66,6 +70,7 @@ public class PersonBuilder {
         telegram = personToCopy.getTelegram();
         tiktok = personToCopy.getTiktok();
         twitter = personToCopy.getTwitter();
+        dates = personToCopy.getDates();
     }
 
     /**
@@ -140,8 +145,16 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Add a {@code Date} to the {@code Person} that we are building
+     */
+    public PersonBuilder withDate(String date) {
+        this.dates.addDate(new Date(date));
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, remark, tags, facebook, instagram, telegram, tiktok, twitter);
+        return new Person(name, phone, remark, tags, facebook, instagram, telegram, tiktok, twitter, dates);
     }
 
 }

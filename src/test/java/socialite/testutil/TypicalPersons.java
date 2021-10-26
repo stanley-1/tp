@@ -1,5 +1,7 @@
 package socialite.testutil;
 
+import static socialite.logic.commands.CommandTestUtil.VALID_DATE_AMY;
+import static socialite.logic.commands.CommandTestUtil.VALID_DATE_BOB;
 import static socialite.logic.commands.CommandTestUtil.VALID_FACEBOOK_AMY;
 import static socialite.logic.commands.CommandTestUtil.VALID_FACEBOOK_BOB;
 import static socialite.logic.commands.CommandTestUtil.VALID_INSTAGRAM_AMY;
@@ -44,13 +46,14 @@ public class TypicalPersons {
             .withTikTok("carl.kurz").withTwitter("carl").build();
     public static final Person DANIEL = new PersonBuilder().withName("Daniel Meier").withPhone("87652533")
             .withRemark(null).withTags("friends").withFacebook("daniel.m").withInstagram(null)
-            .withTelegram("daniel_meier").withTikTok("daniel.meier").withTwitter("DanielMeier").build();
+            .withTelegram("daniel_meier").withTikTok("daniel.meier").withTwitter("DanielMeier")
+            .withDate("Wedding Anniversary:2020-02-01").build();
     public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withPhone("9482224").withRemark(null)
             .withFacebook(null).withInstagram("elle.m").withTelegram("elle_meyer").withTikTok("elle.meyer")
             .withTwitter("elle_meyer01").build();
     public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz").withPhone("9482427").withRemark(null)
             .withFacebook("fiona.k").withInstagram("fiona.k").withTelegram("fiona_kunz")
-            .withTikTok("fiona.kunz").withTwitter("fiona_kunz").build();
+            .withTikTok("fiona.kunz").withTwitter("fiona_kunz").withDate("Birthday:2000-02-02").build();
     public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("9482442")
             .withRemark(null).withFacebook("george.b").withInstagram("george.b").withTelegram("george_best")
             .withTikTok("george.best").withTwitter("georgeBest").build();
@@ -65,11 +68,13 @@ public class TypicalPersons {
     public static final Person AMY = new PersonBuilder().withName(VALID_NAME_AMY).withPhone(VALID_PHONE_AMY)
             .withRemark(VALID_REMARK_AMY).withTags(VALID_TAG_FRIEND)
             .withFacebook(VALID_FACEBOOK_AMY).withInstagram(VALID_INSTAGRAM_AMY)
-            .withTelegram(VALID_TELEGRAM_AMY).withTikTok(VALID_TIKTOK_AMY).withTwitter(VALID_TWITTER_AMY).build();
+            .withTelegram(VALID_TELEGRAM_AMY).withTikTok(VALID_TIKTOK_AMY).withTwitter(VALID_TWITTER_AMY)
+            .withDate(VALID_DATE_AMY).build();
     public static final Person BOB = new PersonBuilder().withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
             .withRemark(VALID_REMARK_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
             .withFacebook(VALID_FACEBOOK_BOB).withInstagram(VALID_INSTAGRAM_BOB)
-            .withTelegram(VALID_TELEGRAM_BOB).withTikTok(VALID_TIKTOK_BOB).withTwitter(VALID_TWITTER_BOB).build();
+            .withTelegram(VALID_TELEGRAM_BOB).withTikTok(VALID_TIKTOK_BOB).withTwitter(VALID_TWITTER_BOB)
+            .withDate(VALID_DATE_BOB).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 

@@ -1,6 +1,7 @@
 package socialite.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static socialite.logic.parser.CliSyntax.PREFIX_DATE;
 import static socialite.logic.parser.CliSyntax.PREFIX_FACEBOOK;
 import static socialite.logic.parser.CliSyntax.PREFIX_INSTAGRAM;
 import static socialite.logic.parser.CliSyntax.PREFIX_NAME;
@@ -27,6 +28,7 @@ import socialite.model.handle.Instagram;
 import socialite.model.handle.Telegram;
 import socialite.model.handle.TikTok;
 import socialite.model.handle.Twitter;
+import socialite.model.person.Dates;
 import socialite.model.person.Name;
 import socialite.model.person.Person;
 import socialite.model.person.Phone;
@@ -52,7 +54,8 @@ public class EditCommand extends Command {
             + "[" + PREFIX_INSTAGRAM + "INSTAGRAM] "
             + "[" + PREFIX_TELEGRAM + "TELEGRAM] "
             + "[" + PREFIX_TIKTOK + "TIKTOK] "
-            + "[" + PREFIX_TWITTER + "TWITTER]\n"
+            + "[" + PREFIX_TWITTER + "TWITTER] "
+            + "[" + PREFIX_DATE + "NAME:YYYY-MM-DD]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 ";
 
@@ -113,9 +116,10 @@ public class EditCommand extends Command {
         Telegram updatedTelegram = editPersonDescriptor.getTelegram().orElse(personToEdit.getTelegram());
         Twitter updatedTwitter = editPersonDescriptor.getTwitter().orElse(personToEdit.getTwitter());
         TikTok updatedTikTok = editPersonDescriptor.getTikTok().orElse(personToEdit.getTiktok());
+        Dates updatedDates = editPersonDescriptor.getDates().orElse(personToEdit.getDates());
 
         return new Person(updatedName, updatedPhone, updatedRemark, updatedTags, updatedFacebook, updatedInstagram,
-                updatedTelegram, updatedTikTok, updatedTwitter);
+                updatedTelegram, updatedTikTok, updatedTwitter, updatedDates);
     }
 
     @Override
@@ -150,6 +154,7 @@ public class EditCommand extends Command {
         private Telegram telegram;
         private TikTok tiktok;
         private Twitter twitter;
+        private Dates dates;
 
         public EditPersonDescriptor() {}
 
@@ -167,6 +172,7 @@ public class EditCommand extends Command {
             setTelegram(toCopy.telegram);
             setTikTok(toCopy.tiktok);
             setTwitter(toCopy.twitter);
+            setDates(toCopy.dates);
         }
 
         /**
@@ -174,7 +180,7 @@ public class EditCommand extends Command {
          */
         public boolean isAnyFieldEdited() {
             return CollectionUtil.isAnyNonNull(name, phone, remark, tags, facebook, instagram,
-                    telegram, tiktok, twitter);
+                    telegram, tiktok, twitter, dates);
         }
 
         public void setName(Name name) {
@@ -259,6 +265,14 @@ public class EditCommand extends Command {
             return Optional.ofNullable(this.twitter);
         }
 
+        public void setDates(Dates dates) {
+            this.dates = dates;
+        }
+
+        public Optional<Dates> getDates() {
+            return Optional.ofNullable(this.dates);
+        }
+
         @Override
         public boolean equals(Object other) {
             // short circuit if same object
@@ -282,7 +296,8 @@ public class EditCommand extends Command {
                     && getInstagram().equals(e.getInstagram())
                     && getTelegram().equals(e.getTelegram())
                     && getTikTok().equals(e.getTikTok())
-                    && getTwitter().equals(e.getTwitter());
+                    && getTwitter().equals(e.getTwitter())
+                    && getDates().equals(e.getDates());
         }
     }
 }
