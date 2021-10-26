@@ -27,14 +27,29 @@ public class PersonTest {
         // null -> returns false
         Assertions.assertFalse(TypicalPersons.ALICE.isSamePerson(null));
 
-        // same name, all other attributes different -> returns true
+        // same name, all other attributes different -> returns false
         Person editedAlice = new PersonBuilder(TypicalPersons.ALICE)
                 .withPhone(VALID_PHONE_BOB)
+                .withTags(VALID_TAG_HUSBAND).build();
+        Assertions.assertFalse(TypicalPersons.ALICE.isSamePerson(editedAlice));
+
+        // same phone number, all other attributes different -> returns false
+        editedAlice = new PersonBuilder(TypicalPersons.ALICE)
+                .withName(VALID_NAME_BOB)
+                .withTags(VALID_TAG_HUSBAND).build();
+        Assertions.assertFalse(TypicalPersons.ALICE.isSamePerson(editedAlice));
+
+        // same name and phone number, all other attributes different -> returns true
+        editedAlice = new PersonBuilder(TypicalPersons.ALICE)
                 .withTags(VALID_TAG_HUSBAND).build();
         Assertions.assertTrue(TypicalPersons.ALICE.isSamePerson(editedAlice));
 
         // different name, all other attributes same -> returns false
         editedAlice = new PersonBuilder(TypicalPersons.ALICE).withName(VALID_NAME_BOB).build();
+        Assertions.assertFalse(TypicalPersons.ALICE.isSamePerson(editedAlice));
+
+        // different phone number, all other attributes same -> returns false
+        editedAlice = new PersonBuilder(TypicalPersons.ALICE).withPhone(VALID_PHONE_BOB).build();
         Assertions.assertFalse(TypicalPersons.ALICE.isSamePerson(editedAlice));
 
         // name differs in case, all other attributes same -> returns false

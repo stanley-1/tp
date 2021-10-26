@@ -141,7 +141,7 @@ public class PersonCard extends UiPart<Region> {
 
         label.managedProperty().bind(label.visibleProperty());
         icon.managedProperty().bind(icon.visibleProperty());
-        renderHandle(handle, label, icon, "/images/" + platform.name() + ".png");
+        renderHandle(handle, label, icon, "/images/" + platform.name().toLowerCase() + ".png");
     }
 
 
