@@ -29,9 +29,9 @@
         <Label fx:id="name" text="\$first" styleClass="cell_big_label" />
       </HBox>
       <FlowPane fx:id="tags" />
+      <FlowPane fx:id="dates" />
       <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
       <Label fx:id="remark" styleClass="cell_small_label" text="\$remark" />
-      <FlowPane fx:id="dates" />
       <HBox fx:id="handles">
         <HBox alignment="CENTER_LEFT" styleClass="handle">
           <ImageView fx:id="facebookIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true" />
