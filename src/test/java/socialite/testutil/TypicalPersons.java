@@ -34,26 +34,29 @@ public class TypicalPersons {
     public static final Person ALICE = new PersonBuilder().withName("Alice Pauline")
             .withPhone("94351253").withRemark("She likes aardvarks.").withTags("friends")
             .withFacebook("alice.p").withInstagram("alice.p").withTelegram("alice_pauline")
-            .withTikTok("alice.pauline").withTwitter(null).build();
+            .withTikTok("alice.pauline").withTwitter(null).withProfilePic(PersonBuilder.DEFAULT_PROFILE_PIC).build();
     public static final Person BENSON = new PersonBuilder().withName("Benson Meier")
             .withPhone("98765432").withRemark("He can't take beer!").withTags("owesMoney", "friends")
             .withFacebook("benson.m").withInstagram("benson.m").withTelegram("benson_meier")
-            .withTikTok(null).withTwitter("bensonMeier").build();
+            .withTikTok(null).withTwitter("bensonMeier").withProfilePic(PersonBuilder.DEFAULT_PROFILE_PIC).build();
     public static final Person CARL = new PersonBuilder().withName("Carl Kurz").withPhone("95352563")
             .withFacebook("carl.k").withRemark(null).withInstagram("carl.k").withTelegram(null)
-            .withTikTok("carl.kurz").withTwitter("carl").build();
+            .withTikTok("carl.kurz").withTwitter("carl").withProfilePic(PersonBuilder.DEFAULT_PROFILE_PIC).build();
     public static final Person DANIEL = new PersonBuilder().withName("Daniel Meier").withPhone("87652533")
             .withRemark(null).withTags("friends").withFacebook("daniel.m").withInstagram(null)
-            .withTelegram("daniel_meier").withTikTok("daniel.meier").withTwitter("DanielMeier").build();
+            .withTelegram("daniel_meier").withTikTok("daniel.meier").withTwitter("DanielMeier")
+            .withProfilePic(PersonBuilder.DEFAULT_PROFILE_PIC).build();
     public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withPhone("9482224").withRemark(null)
             .withFacebook(null).withInstagram("elle.m").withTelegram("elle_meyer").withTikTok("elle.meyer")
-            .withTwitter("elle_meyer01").build();
+            .withTwitter("elle_meyer01").withProfilePic(PersonBuilder.DEFAULT_PROFILE_PIC).build();
     public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz").withPhone("9482427").withRemark(null)
             .withFacebook("fiona.k").withInstagram("fiona.k").withTelegram("fiona_kunz")
-            .withTikTok("fiona.kunz").withTwitter("fiona_kunz").build();
+            .withTikTok("fiona.kunz").withTwitter("fiona_kunz").withProfilePic(PersonBuilder.DEFAULT_PROFILE_PIC)
+            .build();
     public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("9482442")
             .withRemark(null).withFacebook("george.b").withInstagram("george.b").withTelegram("george_best")
-            .withTikTok("george.best").withTwitter("georgeBest").build();
+            .withTikTok("george.best").withTwitter("georgeBest").withProfilePic(PersonBuilder.DEFAULT_PROFILE_PIC)
+            .build();
 
     // Manually added
     public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withPhone("8482424")

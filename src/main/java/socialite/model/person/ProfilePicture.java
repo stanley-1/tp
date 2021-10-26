@@ -25,4 +25,9 @@ public class ProfilePicture {
                 || (other instanceof ProfilePicture // instanceof handles nulls
                 && value.toString().equals(((ProfilePicture) other).value.toString())); // state check
     }
+
+    @Override
+    public String toString() {
+        return this.value.toString();
+    }
 }

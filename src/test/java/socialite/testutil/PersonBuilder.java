@@ -1,5 +1,6 @@
 package socialite.testutil;
 
+import java.nio.file.Path;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,6 +12,7 @@ import socialite.model.handle.Twitter;
 import socialite.model.person.Name;
 import socialite.model.person.Person;
 import socialite.model.person.Phone;
+import socialite.model.person.ProfilePicture;
 import socialite.model.person.Remark;
 import socialite.model.tag.Tag;
 import socialite.model.util.SampleDataUtil;
@@ -27,6 +29,7 @@ public class PersonBuilder {
     public static final String DEFAULT_TELEGRAM = "amy_bee";
     public static final String DEFAULT_TWITTER = "amy_bee";
     public static final String DEFAULT_TIKTOK = "amy.bee";
+    public static final ProfilePicture DEFAULT_PROFILE_PIC = ProfilePicture.DEFAULT_PICTURE;
 
     private Name name;
     private Phone phone;
@@ -37,6 +40,7 @@ public class PersonBuilder {
     private Telegram telegram;
     private TikTok tiktok;
     private Twitter twitter;
+    private ProfilePicture profilePic;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -51,6 +55,7 @@ public class PersonBuilder {
         telegram = new Telegram(DEFAULT_TELEGRAM);
         tiktok = new TikTok(DEFAULT_TIKTOK);
         twitter = new Twitter(DEFAULT_TWITTER);
+        profilePic = DEFAULT_PROFILE_PIC;
     }
 
     /**
@@ -66,6 +71,7 @@ public class PersonBuilder {
         telegram = personToCopy.getTelegram();
         tiktok = personToCopy.getTiktok();
         twitter = personToCopy.getTwitter();
+        profilePic = personToCopy.getProfilePicture();
     }
 
     /**
@@ -140,8 +146,15 @@ public class PersonBuilder {
         return this;
     }
 
+    public PersonBuilder withProfilePic(ProfilePicture pic) {
+        this.profilePic = pic;
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, remark, tags, facebook, instagram, telegram, tiktok, twitter);
+        Person p = new Person(name, phone, remark, tags, facebook, instagram, telegram, tiktok, twitter);
+        p.setProfilePicture(profilePic.value);
+        return p;
     }
 
 }

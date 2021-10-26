@@ -39,6 +39,7 @@ public class JsonAdaptedPersonTest {
     private static final String VALID_TELEGRAM = TypicalPersons.BENSON.getTelegram().toString();
     private static final String VALID_TIKTOK = TypicalPersons.BENSON.getTiktok().toString();
     private static final String VALID_TWITTER = TypicalPersons.BENSON.getTwitter().toString();
+    private static final String VALID_PROFILE_PIC = TypicalPersons.BENSON.getProfilePicture().toString();
 
     @Test
     public void toModelType_validPersonDetails_returnsPerson() throws Exception {
@@ -49,7 +50,8 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_invalidName_throwsIllegalValueException() {
         JsonAdaptedPerson person = new JsonAdaptedPerson(
-                INVALID_NAME, VALID_PHONE, VALID_REMARK, VALID_TAGS, VALID_FACEBOOK, VALID_INSTAGRAM,
+                INVALID_NAME, VALID_PHONE, VALID_REMARK, VALID_TAGS, VALID_PROFILE_PIC,
+                VALID_FACEBOOK, VALID_INSTAGRAM,
                 VALID_TELEGRAM, VALID_TIKTOK, VALID_TWITTER
         );
         String expectedMessage = Name.MESSAGE_CONSTRAINTS;
@@ -59,7 +61,7 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_nullName_throwsIllegalValueException() {
         JsonAdaptedPerson person = new JsonAdaptedPerson(
-                null, VALID_PHONE, VALID_REMARK, VALID_TAGS, VALID_FACEBOOK, VALID_INSTAGRAM,
+                null, VALID_PHONE, VALID_REMARK, VALID_TAGS, VALID_PROFILE_PIC, VALID_FACEBOOK, VALID_INSTAGRAM,
                 VALID_TELEGRAM, VALID_TIKTOK, VALID_TWITTER
         );
         String expectedMessage =
@@ -70,7 +72,7 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_invalidPhone_throwsIllegalValueException() {
         JsonAdaptedPerson person = new JsonAdaptedPerson(
-                VALID_NAME, INVALID_PHONE, VALID_REMARK, VALID_TAGS, VALID_FACEBOOK, VALID_INSTAGRAM,
+                VALID_NAME, INVALID_PHONE, VALID_REMARK, VALID_TAGS, VALID_PROFILE_PIC, VALID_FACEBOOK, VALID_INSTAGRAM,
                 VALID_TELEGRAM, VALID_TIKTOK, VALID_TWITTER
         );
         String expectedMessage = Phone.MESSAGE_CONSTRAINTS;
