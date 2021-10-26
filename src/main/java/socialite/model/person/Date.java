@@ -68,11 +68,12 @@ public class Date {
         return other == this // short circuit if same object
                 || (other instanceof Date // instanceof handles nulls
                 && name.equals(((Date) other).name)
-                && date.equals(((Date) other).date)); // state check
+                && date.equals(((Date) other).date)
+                && recurring == ((Date) other).recurring); // state check
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, date);
+        return Objects.hash(name, date, recurring);
     }
 }
