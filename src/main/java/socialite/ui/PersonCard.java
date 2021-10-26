@@ -1,9 +1,16 @@
 package socialite.ui;
 
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.io.IOException;
 import java.util.Comparator;
 
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -38,6 +45,8 @@ public class PersonCard extends UiPart<Region> {
     private Label name;
     @FXML
     private Label id;
+    @FXML
+    private Button share;
     @FXML
     private Label phone;
     @FXML
@@ -78,6 +87,7 @@ public class PersonCard extends UiPart<Region> {
     private Label remark;
 
 
+
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
      */
@@ -88,7 +98,6 @@ public class PersonCard extends UiPart<Region> {
         name.setText(person.getName().fullName);
         phone.setText(person.getPhone().value);
         remark.managedProperty().bind(remark.visibleProperty());
-        handles.setSpacing(8);
         this.makeRemark(person.getRemark());
         this.makeHandle(person.getFacebook(), Platform.FACEBOOK);
         this.makeHandle(person.getInstagram(), Platform.INSTAGRAM);
@@ -183,6 +192,34 @@ public class PersonCard extends UiPart<Region> {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void handleButtonAction() {
+        StringSelection stringSelection = new StringSelection(person.toSharingString());
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(stringSelection, null);
+        share.setText("Copied!");
+
+        // Change the button text back after 2 seconds
+        Task<Void> sleeper = new Task<>() {
+            @Override
+            protected Void call() {
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException ignored) {
+                    // Yet to come up with what to do
+                }
+                return null;
+            }
+        };
+        sleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent event) {
+                share.setText("Share");
+            }
+        });
+        new Thread(sleeper).start();
     }
 
     @Override
