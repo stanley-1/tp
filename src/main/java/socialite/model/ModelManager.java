@@ -24,7 +24,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final CommandHistory commandHistory;
-    private final ProfilePictureList profilePictureList;
+    private final ProfilePictureSyncModel profilePictureSyncModel;
 
     /**
      * Initializes a ModelManager with the given addressBook, userPrefs and commandHistory.
@@ -32,8 +32,7 @@ public class ModelManager implements Model {
     public ModelManager(
             ReadOnlyAddressBook addressBook,
             ReadOnlyUserPrefs userPrefs,
-            ReadOnlyCommandHistory commandHistory,
-            File[] profilePictures) {
+            ReadOnlyCommandHistory commandHistory) {
         super();
         CollectionUtil.requireAllNonNull(addressBook, userPrefs);
 
@@ -41,7 +40,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         this.commandHistory = new CommandHistory(commandHistory);
-        this.profilePictureList = ProfilePictureList.getInstance(profilePictures);
+        this.profilePictureSyncModel = new ProfilePictureSyncModel();
 
 
         logger.fine("Initializing with:"
@@ -51,7 +50,7 @@ public class ModelManager implements Model {
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs(), new CommandHistory(), new File[0]);
+        this(new AddressBook(), new UserPrefs(), new CommandHistory());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -177,12 +176,32 @@ public class ModelManager implements Model {
 
     @Override
     public void deleteProfilePicture(Path name) {
-        this.profilePictureList.deleteProfilePicture(name);
+        this.profilePictureSyncModel.deleteProfilePicture(name);
+    }
+
+    @Override
+    public Path getPicToDelete() {
+        return this.profilePictureSyncModel.getPicToDelete();
+    }
+
+    @Override
+    public String getDest() {
+        return this.profilePictureSyncModel.getDest();
+    }
+
+    @Override
+    public File getSourceFile() {
+        return this.profilePictureSyncModel.getSourceFile();
     }
 
     @Override
     public void saveProfilePicture(File file, String name) {
-        this.profilePictureList.saveProfilePicture(file, name);
+        this.profilePictureSyncModel.saveProfilePicture(file, name);
+    }
+
+    @Override
+    public void clearProfilePictureModel() {
+        this.profilePictureSyncModel.clear();
     }
 
 }

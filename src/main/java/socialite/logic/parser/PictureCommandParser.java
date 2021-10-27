@@ -7,13 +7,12 @@ import java.io.File;
 import socialite.commons.core.index.Index;
 import socialite.logic.commands.PictureCommand;
 import socialite.logic.parser.exceptions.ParseException;
-import socialite.storage.Storage;
 import socialite.ui.MainWindow;
 
 public class PictureCommandParser implements Parser<PictureCommand> {
 
     @Override
-    public PictureCommand parse(String args, Storage storage) throws ParseException {
+    public PictureCommand parse(String args) throws ParseException {
         requireNonNull(args);
 
         Index index;
@@ -27,6 +26,6 @@ public class PictureCommandParser implements Parser<PictureCommand> {
 
         MainWindow window = MainWindow.getWindow();
         File file = window.getFile();
-        return new PictureCommand(index, file, storage);
+        return new PictureCommand(index, file);
     }
 }

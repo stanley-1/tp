@@ -23,7 +23,6 @@ import socialite.logic.commands.EditCommand;
 import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.person.Dates;
 import socialite.model.tag.Tag;
-import socialite.storage.Storage;
 
 /**
  * Parses input arguments and creates a new EditCommand object
@@ -35,7 +34,7 @@ public class EditCommandParser implements Parser<EditCommand> {
      * and returns an EditCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-    public EditCommand parse(String args, Storage storage) throws ParseException {
+    public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(

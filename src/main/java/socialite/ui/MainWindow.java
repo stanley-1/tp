@@ -205,6 +205,11 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
+            if (commandResult.isPictureCommand()) {
+                personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+                personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+            }
+
             return commandResult;
         } catch (CommandException | ParseException e) {
             logger.info("Invalid command: " + commandText);

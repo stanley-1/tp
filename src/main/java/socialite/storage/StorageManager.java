@@ -131,11 +131,6 @@ public class StorageManager implements Storage {
     }
 
     @Override
-    public File[] getProfilePictures() {
-        return profilePictureStorage.getProfilePictures();
-    }
-
-    @Override
     public void saveProfilePicture(File file, String prefix) {
         profilePictureStorage.saveProfilePicture(file, prefix);
     }

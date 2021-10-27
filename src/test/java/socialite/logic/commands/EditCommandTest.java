@@ -27,7 +27,7 @@ public class EditCommandTest {
 
     private Model model =
             new ModelManager(
-                    TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory(), new File[0]);
+                    TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
@@ -39,7 +39,7 @@ public class EditCommandTest {
 
         Model expectedModel =
                 new ModelManager(
-                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory(), new File[0]);
+                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(model.getFilteredPersonList().get(0), editedPerson);
 
         CommandTestUtil.assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -68,7 +68,7 @@ public class EditCommandTest {
 
         Model expectedModel =
                 new ModelManager(new AddressBook(
-                        model.getAddressBook()), new UserPrefs(), new CommandHistory(), new File[0]);
+                        model.getAddressBook()), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(lastPerson, editedPerson);
 
         CommandTestUtil.assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -84,7 +84,7 @@ public class EditCommandTest {
 
         Model expectedModel =
                 new ModelManager(
-                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory(), new File[0]);
+                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
 
         CommandTestUtil.assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
@@ -103,7 +103,7 @@ public class EditCommandTest {
 
         Model expectedModel =
                 new ModelManager(
-                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory(), new File[0]);
+                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(model.getFilteredPersonList().get(0), editedPerson);
 
         CommandTestUtil.assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);

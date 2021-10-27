@@ -118,7 +118,7 @@ public class MainApp extends Application {
             initialCommandHistory = new CommandHistory();
         }
 
-        return new ModelManager(initialAddressBook, userPrefs, initialCommandHistory, storage.getProfilePictures());
+        return new ModelManager(initialAddressBook, userPrefs, initialCommandHistory);
     }
 
     private void initLogging(Config config) {

@@ -45,12 +45,15 @@ public class LogicManager implements Logic {
         model.addCommandToHistory(commandText);
 
         CommandResult commandResult;
-        Command command = addressBookParser.parseCommand(commandText, storage);
+        Command command = addressBookParser.parseCommand(commandText);
         commandResult = command.execute(model);
 
         try {
             storage.saveCommandHistory(model.getCommandHistory());
             storage.saveAddressBook(model.getAddressBook());
+            storage.saveProfilePicture(model.getSourceFile(), model.getDest());
+            storage.deleteProfilePicture(model.getPicToDelete());
+            model.clearProfilePictureModel();
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }

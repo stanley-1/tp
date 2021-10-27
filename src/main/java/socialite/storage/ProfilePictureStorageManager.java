@@ -25,11 +25,6 @@ public class ProfilePictureStorageManager implements ProfilePictureStorage {
     }
 
     @Override
-    public File[] getProfilePictures() {
-        return new File(PROFILE_PIC_FOLDER_PATH.toString()).listFiles();
-    }
-
-    @Override
     public Path getProfilePictureFolderPath() {
         return PROFILE_PIC_FOLDER_PATH;
     }
@@ -43,6 +38,9 @@ public class ProfilePictureStorageManager implements ProfilePictureStorage {
 
     @Override
     public void deleteProfilePicture(Path name) {
+        if (name == null) {
+            return;
+        }
         try {
             Path pictureToDelete = PROFILE_PIC_FOLDER_PATH.resolve(name);
             Files.delete(pictureToDelete);
@@ -57,8 +55,13 @@ public class ProfilePictureStorageManager implements ProfilePictureStorage {
 
     @Override
     public void saveProfilePicture(File file, String name) {
+        if (file == null || name == null) {
+            return;
+        }
         try {
+            System.out.println("before");
             Files.copy(file.toPath(), getProfilePictureFolderPath().resolve(name));
+            System.out.println("After");
         } catch (IOException ioe) {
             System.out.println(ioe.toString());
         }

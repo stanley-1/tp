@@ -12,7 +12,7 @@ public class ExitCommandTest {
     @Test
     public void execute_exit_success() {
         CommandResult expectedCommandResult =
-                new CommandResult(ExitCommand.MESSAGE_EXIT_ACKNOWLEDGEMENT, false, true);
+                new CommandResult(ExitCommand.MESSAGE_EXIT_ACKNOWLEDGEMENT, false, true, false);
         CommandTestUtil.assertCommandSuccess(new ExitCommand(), model, expectedCommandResult, expectedModel);
     }
 }

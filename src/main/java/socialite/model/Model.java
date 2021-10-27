@@ -97,4 +97,12 @@ public interface Model {
     void deleteProfilePicture(Path name);
 
     void saveProfilePicture(File file, String prefix);
+
+    Path getPicToDelete();
+
+    String getDest();
+
+    File getSourceFile();
+
+    void clearProfilePictureModel();
 }

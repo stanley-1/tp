@@ -33,7 +33,7 @@ public class RemarkCommandTest {
 
     private static final String REMARK_STUB = "Some remark";
     private final Model model = new ModelManager(
-            getTypicalAddressBook(), new UserPrefs(), new CommandHistory(), new File[0]);
+            getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
 
 
     @Test
@@ -47,7 +47,7 @@ public class RemarkCommandTest {
 
         Model expectedModel =
                 new ModelManager(
-                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory(), new File[0]);
+                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(firstPerson, editedPerson);
 
         assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);
@@ -65,7 +65,7 @@ public class RemarkCommandTest {
 
         Model expectedModel =
                 new ModelManager(
-                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory(), new File[0]);
+                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(firstPerson, editedPerson);
 
         assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);
@@ -85,7 +85,7 @@ public class RemarkCommandTest {
 
         Model expectedModel =
                 new ModelManager(
-                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory(), new File[0]);
+                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(firstPerson, editedPerson);
 
         assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);

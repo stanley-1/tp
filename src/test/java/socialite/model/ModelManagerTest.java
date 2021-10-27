@@ -101,11 +101,10 @@ public class ModelManagerTest {
         AddressBook differentAddressBook = new AddressBook();
         UserPrefs userPrefs = new UserPrefs();
         CommandHistory commandHistory = new CommandHistory();
-        File[] profilePictures = new File[0];
 
         // same values -> returns true
-        modelManager = new ModelManager(addressBook, userPrefs, commandHistory, profilePictures);
-        ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs, commandHistory, profilePictures);
+        modelManager = new ModelManager(addressBook, userPrefs, commandHistory);
+        ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs, commandHistory);
         assertEquals(modelManager, modelManagerCopy);
 
         // same object -> returns true
@@ -119,12 +118,12 @@ public class ModelManagerTest {
 
         // different addressBook -> returns false
         assertNotEquals(modelManager, new ModelManager(
-                differentAddressBook, userPrefs, commandHistory, profilePictures));
+                differentAddressBook, userPrefs, commandHistory));
 
         // different filteredList -> returns false
         String[] keywords = TypicalPersons.ALICE.getName().fullName.split("\\s+");
         modelManager.updateFilteredPersonList(new ContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs, commandHistory, profilePictures)));
+        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs, commandHistory)));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
@@ -133,6 +132,6 @@ public class ModelManagerTest {
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
         assertNotEquals(modelManager, new ModelManager(
-                addressBook, differentUserPrefs, commandHistory, profilePictures));
+                addressBook, differentUserPrefs, commandHistory));
     }
 }

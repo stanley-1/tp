@@ -170,7 +170,22 @@ public class AddCommandTest {
             throw new AssertionError("This method should not be called");
         }
 
-
+        @Override
+        public Path getPicToDelete() {
+            throw new AssertionError("This method should not be called");
+        }
+        @Override
+        public String getDest() {
+            throw new AssertionError("This method should not be called");
+        }
+        @Override
+        public File getSourceFile() {
+            throw new AssertionError("This method should not be called");
+        }
+        @Override
+        public void clearProfilePictureModel() {
+            throw new AssertionError("This method should not be called");
+        }
     }
 
     /**

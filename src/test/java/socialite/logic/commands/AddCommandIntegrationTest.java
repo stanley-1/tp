@@ -23,7 +23,7 @@ public class AddCommandIntegrationTest {
     @BeforeEach
     public void setUp() {
         model = new ModelManager(
-                TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory(), new File[0]);
+                TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
     }
 
     @Test
@@ -31,7 +31,7 @@ public class AddCommandIntegrationTest {
         Person validPerson = new PersonBuilder().build();
 
         Model expectedModel = new ModelManager(
-                model.getAddressBook(), new UserPrefs(), new CommandHistory(), new File[0]);
+                model.getAddressBook(), new UserPrefs(), new CommandHistory());
         expectedModel.addPerson(validPerson);
 
         CommandTestUtil.assertCommandSuccess(new AddCommand(validPerson), model,

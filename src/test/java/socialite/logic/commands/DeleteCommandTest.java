@@ -25,7 +25,7 @@ public class DeleteCommandTest {
 
     private Model model =
             new ModelManager(
-                    TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory(), new File[0]);
+                    TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -35,7 +35,7 @@ public class DeleteCommandTest {
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS, personToDelete);
 
         ModelManager expectedModel = new ModelManager(
-                model.getAddressBook(), new UserPrefs(), new CommandHistory(), new File[0]);
+                model.getAddressBook(), new UserPrefs(), new CommandHistory());
         expectedModel.deletePerson(personToDelete);
 
         CommandTestUtil.assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
@@ -59,7 +59,7 @@ public class DeleteCommandTest {
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS, personToDelete);
 
         Model expectedModel = new ModelManager(
-                model.getAddressBook(), new UserPrefs(), new CommandHistory(), new File[0]);
+                model.getAddressBook(), new UserPrefs(), new CommandHistory());
         expectedModel.deletePerson(personToDelete);
         showNoPerson(expectedModel);
 

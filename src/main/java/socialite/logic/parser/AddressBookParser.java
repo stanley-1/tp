@@ -16,7 +16,6 @@ import socialite.logic.commands.ListCommand;
 import socialite.logic.commands.PictureCommand;
 import socialite.logic.commands.RemarkCommand;
 import socialite.logic.parser.exceptions.ParseException;
-import socialite.storage.Storage;
 
 /**
  * Parses user input.
@@ -35,7 +34,7 @@ public class AddressBookParser {
      * @return the command based on the user input
      * @throws ParseException if the user input does not conform the expected format
      */
-    public Command parseCommand(String userInput, Storage storage) throws ParseException {
+    public Command parseCommand(String userInput) throws ParseException {
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
         if (!matcher.matches()) {
             throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
@@ -46,19 +45,19 @@ public class AddressBookParser {
         switch (commandWord) {
 
         case AddCommand.COMMAND_WORD:
-            return new AddCommandParser().parse(arguments, storage);
+            return new AddCommandParser().parse(arguments);
 
         case EditCommand.COMMAND_WORD:
-            return new EditCommandParser().parse(arguments, storage);
+            return new EditCommandParser().parse(arguments);
 
         case DeleteCommand.COMMAND_WORD:
-            return new DeleteCommandParser().parse(arguments, storage);
+            return new DeleteCommandParser().parse(arguments);
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
 
         case FindCommand.COMMAND_WORD:
-            return new FindCommandParser().parse(arguments, storage);
+            return new FindCommandParser().parse(arguments);
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
@@ -67,13 +66,13 @@ public class AddressBookParser {
             return new ExitCommand();
 
         case HelpCommand.COMMAND_WORD:
-            return new HelpCommandParser().parse(arguments, storage);
+            return new HelpCommandParser().parse(arguments);
 
         case RemarkCommand.COMMAND_WORD:
-            return new RemarkCommandParser().parse(arguments, storage);
+            return new RemarkCommandParser().parse(arguments);
 
         case PictureCommand.COMMAND_WORD:
-            return new PictureCommandParser().parse(arguments, storage);
+            return new PictureCommandParser().parse(arguments);
 
         default:
             throw new ParseException(Messages.MESSAGE_UNKNOWN_COMMAND);

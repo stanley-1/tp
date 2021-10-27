@@ -14,7 +14,6 @@ import socialite.logic.commands.exceptions.CommandException;
 import socialite.model.Model;
 import socialite.model.person.Person;
 import socialite.model.person.ProfilePicture;
-import socialite.storage.Storage;
 
 public class PictureCommand extends Command {
 
@@ -23,21 +22,17 @@ public class PictureCommand extends Command {
     public static final String COMMAND_WORD = "picture";
     private final Index index;
     private final File picture;
-    private final Storage storage;
 
     /**
      * Creates a command that adds a picture to a person
      * @param index Index of person to add picture to
      * @param picture File to add to person
-     * @param storage Storage object for storing file
      */
-    public PictureCommand(Index index, File picture, Storage storage) {
+    public PictureCommand(Index index, File picture) {
         requireNonNull(index);
-        requireNonNull(storage);
 
         this.index = index;
         this.picture = picture;
-        this.storage = storage;
     }
 
     @Override
@@ -58,19 +53,17 @@ public class PictureCommand extends Command {
         model.setPerson(personToAddPic, personWithPic);
         model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
         //TODO: Use proper feedback message
-        return new CommandResult("picture added :-)");
+        return new CommandResult("picture added :-)", false, false, true);
     }
 
     private Person addPicToPerson(Person person, File file, Model model) {
         if (!person.getProfilePicture().equals(ProfilePicture.DEFAULT_PICTURE)) {
             // delete file if not default picture
-            this.storage.deleteProfilePicture(
-                    person.getProfilePicture().value);
             model.deleteProfilePicture(person.getProfilePicture().value);
         }
+
         // add new file, change person's profile picture
         String filename = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH_mm_ss"));
-        storage.saveProfilePicture(file, filename);
         model.saveProfilePicture(file, filename);
         person.setProfilePicture(Paths.get(filename));
         return person;
