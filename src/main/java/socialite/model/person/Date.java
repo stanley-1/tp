@@ -9,10 +9,10 @@ import java.util.regex.Pattern;
 
 public class Date {
     public static final String MESSAGE_CONSTRAINTS =
-            "Dates should be formatted as NAME:YYYY-MM-DD or NAME:YYYY-MM-DD:yearly for recurring dates";
+            "Dates should be formatted as NAME:YYYY-MM-DD or NAME:YYYY-MM-DD:[monthly|yearly] for recurring dates";
 
     public static final String VALIDATION_REGEX =
-            "([\\w\\s]+):(\\d{4})-(\\d{2})-(\\d{2})(?::(yearly))?\\s*";
+            "([\\w\\s]+):(\\d{4})-(\\d{2})-(\\d{2})(?::(yearly|monthly))?\\s*";
 
     private String name;
     private LocalDate date;
@@ -64,7 +64,7 @@ public class Date {
             return date.isAfter(referenceDate) ? Optional.of(date) : Optional.empty();
         }
 
-        Period interval = Period.of(1, 0, 0);
+        Period interval = getIntervalPeriod(recurrenceInterval);
         LocalDate newDate = LocalDate.from(date);
         while (!newDate.isAfter(referenceDate)) {
             newDate = newDate.plus(interval);
@@ -78,6 +78,17 @@ public class Date {
      */
     public static boolean isValidDate(String test) {
         return test.matches(VALIDATION_REGEX);
+    }
+
+    private static Period getIntervalPeriod(String recurrenceInterval) {
+        switch (recurrenceInterval) {
+        case "yearly":
+            return Period.of(1, 0, 0);
+        case "monthly":
+            return Period.of(0, 1, 0);
+        default:
+            return null;
+        }
     }
 
     @Override
