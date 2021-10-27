@@ -309,15 +309,18 @@ Examples:
 ### Adding a profile picture: `picture`
 Adds a profile picture to an existing contact.
 
-Format: `picture INDEX l/FILEPATH`
-* Adds a profile picture to the contact at the specified `INDEX`.
+Format: `picture INDEX`
+* Opens file browser allowing you to choose any .jpg or .png file as the profile picture.
+* Adds the selected picture to the contact at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `list` followed by `picture 1 l/Desktop/AnniePic.png`  adds the image found at the specified file path to Annie Baker’s listing in the app.
-* `find Charlie` followed by `picture 1 l/Desktop/CharliePic.png` adds the image found at the specified file path to Charlie Decker’s listing in the app.
-
+* `list` followed by `picture 1` opens the file browser to let you choose a picture to add to Annie Baker’s
+  listing in the app.
+* `find Charlie` followed by `picture 1` opens the file browser to let you choose a picture to add to Charlie Decker’s
+  listing in the app.
+  
 --------------------------------------------------------------------------------------------------------------------
 
 ## Help Guide & Exiting <a name="help_guide"></a>
