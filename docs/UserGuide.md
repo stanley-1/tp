@@ -299,8 +299,8 @@ Format: `share INDEX`
 
 Examples:
 
-* `list` followed by `share 2` copies the contact information of Charlie Decker.
-* `find Annie` followed by clicking on the "Share" button copies the information of Annie Baker’s contact.
+* `list` followed by `share 2` copies the information of the second contact in the list displayed by SociaLite.
+* Clicking on the "Share" button of Annie Baker's name card copies her contact information.
 
 
 --------------------------------------------------------------------------------------------------------------------
