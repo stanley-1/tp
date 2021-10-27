@@ -22,9 +22,11 @@ public class ClearCommandTest {
     @Test
     public void execute_nonEmptyAddressBook_success() {
         Model model =
-                new ModelManager(TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
+                new ModelManager(
+                        TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
         Model expectedModel =
-                new ModelManager(TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
+                new ModelManager(
+                        TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
         expectedModel.setAddressBook(new AddressBook());
 
         CommandTestUtil.assertCommandSuccess(new ClearCommand(), model, ClearCommand.MESSAGE_SUCCESS, expectedModel);

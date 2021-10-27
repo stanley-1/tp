@@ -116,7 +116,8 @@ public class ModelManagerTest {
         assertNotEquals(5, modelManager);
 
         // different addressBook -> returns false
-        assertNotEquals(modelManager, new ModelManager(differentAddressBook, userPrefs, commandHistory));
+        assertNotEquals(modelManager, new ModelManager(
+                differentAddressBook, userPrefs, commandHistory));
 
         // different filteredList -> returns false
         String[] keywords = TypicalPersons.ALICE.getName().fullName.split("\\s+");
@@ -129,6 +130,7 @@ public class ModelManagerTest {
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
-        assertNotEquals(modelManager, new ModelManager(addressBook, differentUserPrefs, commandHistory));
+        assertNotEquals(modelManager, new ModelManager(
+                addressBook, differentUserPrefs, commandHistory));
     }
 }

@@ -1,5 +1,6 @@
 package socialite.model.person;
 
+import java.nio.file.Path;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
@@ -27,6 +28,7 @@ public class Person {
     // Data fields
     private final Remark remark;
     private final Set<Tag> tags = new HashSet<>();
+    private ProfilePicture profilePicture = ProfilePicture.DEFAULT_PICTURE;
 
     // Social media handle fields
     private final Facebook facebook;
@@ -84,6 +86,10 @@ public class Person {
         return Collections.unmodifiableSet(tags);
     }
 
+    public ProfilePicture getProfilePicture() {
+        return profilePicture;
+    }
+
     public Facebook getFacebook() {
         return facebook;
     }
@@ -100,6 +106,9 @@ public class Person {
         return dates;
     }
 
+    public void setProfilePicture(Path value) {
+        this.profilePicture = new ProfilePicture(value);
+    }
     /**
      * Returns true if both persons have the same name and phone number.
      * Rationale: Two unique persons can share the same first and last name.
@@ -137,6 +146,7 @@ public class Person {
                 && otherPerson.getPhone().equals(getPhone())
                 && otherPerson.getRemark().equals(getRemark())
                 && otherPerson.getTags().equals(getTags())
+                && otherPerson.getProfilePicture().equals(getProfilePicture())
                 && otherPerson.getFacebook().equals(getFacebook())
                 && otherPerson.getInstagram().equals(getInstagram())
                 && otherPerson.getTelegram().equals(getTelegram())

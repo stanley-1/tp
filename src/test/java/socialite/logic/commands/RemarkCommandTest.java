@@ -30,7 +30,8 @@ import socialite.testutil.PersonBuilder;
 public class RemarkCommandTest {
 
     private static final String REMARK_STUB = "Some remark";
-    private final Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
+    private final Model model = new ModelManager(
+            getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
 
 
     @Test
@@ -43,7 +44,8 @@ public class RemarkCommandTest {
         String expectedMessage = String.format(RemarkCommand.MESSAGE_ADD_REMARK_SUCCESS, editedPerson);
 
         Model expectedModel =
-                new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
+                new ModelManager(
+                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(firstPerson, editedPerson);
 
         assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);
@@ -60,7 +62,8 @@ public class RemarkCommandTest {
         String expectedMessage = String.format(RemarkCommand.MESSAGE_DELETE_REMARK_SUCCESS, editedPerson);
 
         Model expectedModel =
-                new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
+                new ModelManager(
+                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(firstPerson, editedPerson);
 
         assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);
@@ -79,7 +82,8 @@ public class RemarkCommandTest {
         String expectedMessage = String.format(RemarkCommand.MESSAGE_ADD_REMARK_SUCCESS, editedPerson);
 
         Model expectedModel =
-                new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
+                new ModelManager(
+                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(firstPerson, editedPerson);
 
         assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);

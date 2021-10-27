@@ -32,6 +32,7 @@ import socialite.model.person.Dates;
 import socialite.model.person.Name;
 import socialite.model.person.Person;
 import socialite.model.person.Phone;
+import socialite.model.person.ProfilePicture;
 import socialite.model.person.Remark;
 import socialite.model.tag.Tag;
 
@@ -111,6 +112,7 @@ public class EditCommand extends Command {
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Remark updatedRemark = editPersonDescriptor.getRemark().orElse(personToEdit.getRemark());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        ProfilePicture profilePicture = personToEdit.getProfilePicture();
         Facebook updatedFacebook = editPersonDescriptor.getFacebook().orElse(personToEdit.getFacebook());
         Instagram updatedInstagram = editPersonDescriptor.getInstagram().orElse(personToEdit.getInstagram());
         Telegram updatedTelegram = editPersonDescriptor.getTelegram().orElse(personToEdit.getTelegram());
@@ -118,8 +120,10 @@ public class EditCommand extends Command {
         TikTok updatedTikTok = editPersonDescriptor.getTikTok().orElse(personToEdit.getTiktok());
         Dates updatedDates = editPersonDescriptor.getDates().orElse(personToEdit.getDates());
 
-        return new Person(updatedName, updatedPhone, updatedRemark, updatedTags, updatedFacebook, updatedInstagram,
-                updatedTelegram, updatedTikTok, updatedTwitter, updatedDates);
+        Person editedPerson = new Person(updatedName, updatedPhone, updatedRemark, updatedTags, updatedFacebook,
+                updatedInstagram, updatedTelegram, updatedTikTok, updatedTwitter, updatedDates);
+        editedPerson.setProfilePicture(profilePicture.value);
+        return editedPerson;
     }
 
     @Override
@@ -149,6 +153,7 @@ public class EditCommand extends Command {
         private Phone phone;
         private Remark remark;
         private Set<Tag> tags;
+        private ProfilePicture profilePicture;
         private Facebook facebook;
         private Instagram instagram;
         private Telegram telegram;
@@ -167,6 +172,7 @@ public class EditCommand extends Command {
             setPhone(toCopy.phone);
             setRemark(toCopy.remark);
             setTags(toCopy.tags);
+            setProfilePicture(toCopy.profilePicture);
             setFacebook(toCopy.facebook);
             setInstagram(toCopy.instagram);
             setTelegram(toCopy.telegram);
@@ -215,6 +221,7 @@ public class EditCommand extends Command {
             this.tags = (tags != null) ? new HashSet<>(tags) : null;
         }
 
+
         /**
          * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
          * if modification is attempted.
@@ -224,6 +231,13 @@ public class EditCommand extends Command {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
 
+        public void setProfilePicture(ProfilePicture profilePicture) {
+            this.profilePicture = profilePicture;
+        }
+
+        public ProfilePicture getProfilePicture() {
+            return this.profilePicture;
+        }
 
         public void setInstagram(Instagram instagram) {
             this.instagram = instagram;

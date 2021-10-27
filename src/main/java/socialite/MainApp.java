@@ -29,6 +29,8 @@ import socialite.storage.CommandHistoryStorage;
 import socialite.storage.JsonAddressBookStorage;
 import socialite.storage.JsonCommandHistoryStorage;
 import socialite.storage.JsonUserPrefsStorage;
+import socialite.storage.ProfilePictureStorage;
+import socialite.storage.ProfilePictureStorageManager;
 import socialite.storage.Storage;
 import socialite.storage.StorageManager;
 import socialite.storage.UserPrefsStorage;
@@ -63,7 +65,9 @@ public class MainApp extends Application {
         AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
         CommandHistoryStorage commandHistoryStorage =
                 new JsonCommandHistoryStorage(userPrefs.getCommandHistoryFilePath());
-        storage = new StorageManager(addressBookStorage, userPrefsStorage, commandHistoryStorage);
+        ProfilePictureStorage profilePictureStorage = ProfilePictureStorageManager.getInstance();
+        storage = new StorageManager(
+                addressBookStorage, userPrefsStorage, commandHistoryStorage, profilePictureStorage);
 
         initLogging(config);
 

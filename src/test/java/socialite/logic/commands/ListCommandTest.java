@@ -23,7 +23,8 @@ public class ListCommandTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
+        model = new ModelManager(
+                TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
         expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new CommandHistory());
     }
 

@@ -1,5 +1,6 @@
 package socialite.storage;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
@@ -7,6 +8,7 @@ import java.util.logging.Logger;
 
 import socialite.commons.core.LogsCenter;
 import socialite.commons.exceptions.DataConversionException;
+import socialite.model.ProfilePictureSyncModel;
 import socialite.model.ReadOnlyAddressBook;
 import socialite.model.ReadOnlyCommandHistory;
 import socialite.model.ReadOnlyUserPrefs;
@@ -21,18 +23,21 @@ public class StorageManager implements Storage {
     private AddressBookStorage addressBookStorage;
     private UserPrefsStorage userPrefsStorage;
     private CommandHistoryStorage commandHistoryStorage;
+    private ProfilePictureStorage profilePictureStorage;
 
     /**
      * Creates a {@code StorageManager} with the given {@code AddressBookStorage},
-     * @code UserPrefStorage}, {@code commandHistoryStorage}.
+     * @code UserPrefStorage}, {@code commandHistoryStorage}, {@code profilePictureStorage}.
      */
     public StorageManager(
             AddressBookStorage addressBookStorage,
             UserPrefsStorage userPrefsStorage,
-            CommandHistoryStorage commandHistoryStorage) {
+            CommandHistoryStorage commandHistoryStorage,
+            ProfilePictureStorage profilePictureStorage) {
         super();
         this.addressBookStorage = addressBookStorage;
         this.userPrefsStorage = userPrefsStorage;
+        this.profilePictureStorage = profilePictureStorage;
         this.commandHistoryStorage = commandHistoryStorage;
     }
 
@@ -114,4 +119,25 @@ public class StorageManager implements Storage {
         commandHistoryStorage.saveCommandHistory(commandHistory, filePath);
     }
 
+    // ================ Profile Picture methods ==============================
+
+    @Override
+    public Path getProfilePictureFolderPath() {
+        return profilePictureStorage.getProfilePictureFolderPath();
+    }
+
+    @Override
+    public void deleteProfilePicture(Path name) {
+        profilePictureStorage.deleteProfilePicture(name);
+    }
+
+    @Override
+    public void saveProfilePicture(File file, String prefix) {
+        profilePictureStorage.saveProfilePicture(file, prefix);
+    }
+
+    @Override
+    public void syncProfilePictures(ProfilePictureSyncModel.ProfilePictureEditDescriptor profilePictureEditDescriptor) {
+        profilePictureStorage.syncProfilePictures(profilePictureEditDescriptor);
+    }
 }

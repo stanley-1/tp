@@ -1,5 +1,6 @@
 package socialite.ui;
 
+import java.io.File;
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
@@ -9,6 +10,7 @@ import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import socialite.commons.core.GuiSettings;
 import socialite.commons.core.LogsCenter;
@@ -23,6 +25,7 @@ import socialite.logic.parser.exceptions.ParseException;
  */
 public class MainWindow extends UiPart<Stage> {
 
+    private static MainWindow window;
     private static final String FXML = "MainWindow.fxml";
 
     private final Logger logger = LogsCenter.getLogger(getClass());
@@ -50,10 +53,13 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private StackPane statusbarPlaceholder;
 
+    @FXML
+    private FileChooser fileChooser;
+
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
-    public MainWindow(Stage primaryStage, Logic logic) {
+    private MainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
 
         // Set dependencies
@@ -66,6 +72,19 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
+        fileChooser = new FileChooser();
+
+    }
+
+    public static MainWindow getWindow(Stage primaryStage, Logic logic) {
+        if (MainWindow.window == null) {
+            MainWindow.window = new MainWindow(primaryStage, logic);
+        }
+        return MainWindow.window;
+    }
+
+    public static MainWindow getWindow() {
+        return MainWindow.window;
     }
 
     public Stage getPrimaryStage() {
@@ -186,11 +205,24 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
+            if (commandResult.isPictureCommand()) {
+                personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+                personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+            }
+
             return commandResult;
         } catch (CommandException | ParseException e) {
             logger.info("Invalid command: " + commandText);
             resultDisplay.setFeedbackToUser(e.getMessage());
             throw e;
         }
+    }
+
+    public File getFile() {
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(
+                "Image formats supported",
+                "*.jpg", "*.png"
+        ));
+        return this.fileChooser.showOpenDialog(this.primaryStage);
     }
 }

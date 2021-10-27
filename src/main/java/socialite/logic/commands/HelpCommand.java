@@ -34,7 +34,7 @@ public class HelpCommand extends Command {
         requireNonNull(answer);
 
         if (answer == GENERIC_RESPONSE) {
-            return new CommandResult(SHOWING_HELP_MESSAGE, true, false);
+            return new CommandResult(SHOWING_HELP_MESSAGE, true, false, false);
         } else {
             return new CommandResult(answer);
         }
