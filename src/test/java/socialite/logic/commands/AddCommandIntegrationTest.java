@@ -1,7 +1,5 @@
 package socialite.logic.commands;
 
-import java.io.File;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

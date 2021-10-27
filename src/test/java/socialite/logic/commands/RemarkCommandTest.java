@@ -11,8 +11,6 @@ import static socialite.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static socialite.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static socialite.testutil.TypicalPersons.getTypicalAddressBook;
 
-import java.io.File;
-
 import org.junit.jupiter.api.Test;
 
 import socialite.commons.core.Messages;
