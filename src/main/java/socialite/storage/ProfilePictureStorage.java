@@ -1,9 +1,9 @@
 package socialite.storage;
 
-import socialite.model.ProfilePictureSyncModel;
-
 import java.io.File;
 import java.nio.file.Path;
+
+import socialite.model.ProfilePictureSyncModel;
 
 public interface ProfilePictureStorage {
 

@@ -17,6 +17,7 @@ import socialite.commons.core.GuiSettings;
 import socialite.logic.commands.exceptions.CommandException;
 import socialite.model.AddressBook;
 import socialite.model.Model;
+import socialite.model.ProfilePictureSyncModel;
 import socialite.model.ReadOnlyAddressBook;
 import socialite.model.ReadOnlyCommandHistory;
 import socialite.model.ReadOnlyUserPrefs;
@@ -171,17 +172,10 @@ public class AddCommandTest {
         }
 
         @Override
-        public Path getPicToDelete() {
+        public ProfilePictureSyncModel.ProfilePictureEditDescriptor getProfilePictureEditDescriptor() {
             throw new AssertionError("This method should not be called");
         }
-        @Override
-        public String getDest() {
-            throw new AssertionError("This method should not be called");
-        }
-        @Override
-        public File getSourceFile() {
-            throw new AssertionError("This method should not be called");
-        }
+
         @Override
         public void clearProfilePictureModel() {
             throw new AssertionError("This method should not be called");

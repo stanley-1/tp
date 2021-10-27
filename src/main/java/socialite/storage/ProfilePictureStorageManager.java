@@ -1,7 +1,5 @@
 package socialite.storage;
 
-import socialite.model.ProfilePictureSyncModel;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,6 +7,8 @@ import java.nio.file.InvalidPathException;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import socialite.model.ProfilePictureSyncModel;
 
 public class ProfilePictureStorageManager implements ProfilePictureStorage {
 
