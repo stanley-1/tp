@@ -3,6 +3,7 @@ package socialite.ui;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
@@ -95,7 +96,9 @@ public class PersonCard extends UiPart<Region> {
 
         try {
             this.profilePicture.setImage(new Image(new FileInputStream(
-                    "data/profilepictures/" + this.person.getProfilePicture().value.toString()
+                    Paths.get("data", "profilepictures")
+                            .resolve(this.person.getProfilePicture().value)
+                            .toString()
             )));
         } catch (NullPointerException | FileNotFoundException e) {
             this.profilePicture.setImage(new Image(
