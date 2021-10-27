@@ -51,8 +51,7 @@ public class LogicManager implements Logic {
         try {
             storage.saveCommandHistory(model.getCommandHistory());
             storage.saveAddressBook(model.getAddressBook());
-            storage.saveProfilePicture(model.getSourceFile(), model.getDest());
-            storage.deleteProfilePicture(model.getPicToDelete());
+            storage.syncProfilePictures(model.getProfilePictureEditDescriptor());
             model.clearProfilePictureModel();
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);

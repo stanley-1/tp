@@ -98,11 +98,7 @@ public interface Model {
 
     void saveProfilePicture(File file, String prefix);
 
-    Path getPicToDelete();
-
-    String getDest();
-
-    File getSourceFile();
+    ProfilePictureSyncModel.ProfilePictureEditDescriptor getProfilePictureEditDescriptor();
 
     void clearProfilePictureModel();
 }

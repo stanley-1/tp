@@ -180,18 +180,8 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Path getPicToDelete() {
-        return this.profilePictureSyncModel.getPicToDelete();
-    }
-
-    @Override
-    public String getDest() {
-        return this.profilePictureSyncModel.getDest();
-    }
-
-    @Override
-    public File getSourceFile() {
-        return this.profilePictureSyncModel.getSourceFile();
+    public ProfilePictureSyncModel.ProfilePictureEditDescriptor getProfilePictureEditDescriptor() {
+        return this.profilePictureSyncModel.getProfilePictureEditDescriptor();
     }
 
     @Override

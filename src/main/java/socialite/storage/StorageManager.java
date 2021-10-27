@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 import socialite.commons.core.LogsCenter;
 import socialite.commons.exceptions.DataConversionException;
+import socialite.model.ProfilePictureSyncModel;
 import socialite.model.ReadOnlyAddressBook;
 import socialite.model.ReadOnlyCommandHistory;
 import socialite.model.ReadOnlyUserPrefs;
@@ -133,5 +134,10 @@ public class StorageManager implements Storage {
     @Override
     public void saveProfilePicture(File file, String prefix) {
         profilePictureStorage.saveProfilePicture(file, prefix);
+    }
+
+    @Override
+    public void syncProfilePictures(ProfilePictureSyncModel.ProfilePictureEditDescriptor profilePictureEditDescriptor) {
+        profilePictureStorage.syncProfilePictures(profilePictureEditDescriptor);
     }
 }

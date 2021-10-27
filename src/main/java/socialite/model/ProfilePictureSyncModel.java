@@ -5,6 +5,17 @@ import java.nio.file.Path;
 
 public class ProfilePictureSyncModel implements ProfilePictureSyncModelInterface {
 
+    public class ProfilePictureEditDescriptor {
+        public final Path toDelete;
+        public final String dest;
+        public final File source;
+
+        ProfilePictureEditDescriptor(Path toDelete, String dest, File source) {
+            this.toDelete = toDelete;
+            this.dest = dest;
+            this.source = source;
+        }
+    }
     private Path toDelete;
 
     private String dest;
@@ -26,16 +37,8 @@ public class ProfilePictureSyncModel implements ProfilePictureSyncModelInterface
         this.source = file;
     }
 
-    public Path getPicToDelete() {
-        return this.toDelete;
-    }
-
-    public String getDest() {
-        return this.dest;
-    }
-
-    public File getSourceFile() {
-        return this.source;
+    public ProfilePictureEditDescriptor getProfilePictureEditDescriptor() {
+        return new ProfilePictureEditDescriptor(this.toDelete, this.dest, this.source);
     }
 
     /**

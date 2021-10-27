@@ -1,5 +1,7 @@
 package socialite.storage;
 
+import socialite.model.ProfilePictureSyncModel;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -37,6 +39,13 @@ public class ProfilePictureStorageManager implements ProfilePictureStorage {
     }
 
     @Override
+    public void syncProfilePictures(
+            ProfilePictureSyncModel.ProfilePictureEditDescriptor profilePictureEditDescription) {
+        saveProfilePicture(profilePictureEditDescription.source, profilePictureEditDescription.dest);
+        deleteProfilePicture(profilePictureEditDescription.toDelete);
+    }
+
+    @Override
     public void deleteProfilePicture(Path name) {
         if (name == null) {
             return;
@@ -59,9 +68,7 @@ public class ProfilePictureStorageManager implements ProfilePictureStorage {
             return;
         }
         try {
-            System.out.println("before");
             Files.copy(file.toPath(), getProfilePictureFolderPath().resolve(name));
-            System.out.println("After");
         } catch (IOException ioe) {
             System.out.println(ioe.toString());
         }

@@ -1,5 +1,7 @@
 package socialite.storage;
 
+import socialite.model.ProfilePictureSyncModel;
+
 import java.io.File;
 import java.nio.file.Path;
 
@@ -15,5 +17,7 @@ public interface ProfilePictureStorage {
     void deleteProfilePicture(Path name);
 
     void saveProfilePicture(File profilePicture, String prefix);
+
+    void syncProfilePictures(ProfilePictureSyncModel.ProfilePictureEditDescriptor profilePictureEditDescriptor);
 
 }
