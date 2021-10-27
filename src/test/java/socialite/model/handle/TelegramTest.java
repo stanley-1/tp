@@ -37,4 +37,10 @@ public class TelegramTest {
         assertTrue(Telegram.isValidHandle("skyla_moss"));
         assertTrue(Telegram.isValidHandle("choiyoungbae"));
     }
+
+    @Test
+    public void hasLinkPrefix() {
+        Telegram t = new Telegram("name1");
+        assertTrue(t.getUrl().equals("https://www.t.me/name1"));
+    }
 }
