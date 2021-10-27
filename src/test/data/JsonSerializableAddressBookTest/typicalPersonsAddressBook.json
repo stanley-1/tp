@@ -50,7 +50,7 @@
     "dates": [ {
       "name" : "Wedding Anniversary",
       "date" : "2020-02-01",
-      "recurring": "false"
+      "recurrenceInterval" : null
     } ]
   }, {
     "name" : "Elle Meyer",
@@ -78,7 +78,7 @@
     "dates": [ {
       "name" : "Birthday",
       "date" : "2000-02-02",
-      "recurring": "false"
+      "recurrenceInterval" : null
     } ]
   }, {
     "name" : "George Best",

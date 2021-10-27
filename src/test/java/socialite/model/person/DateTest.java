@@ -1,4 +1,6 @@
 package socialite.model.person;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -26,13 +28,16 @@ public class DateTest {
         assertTrue(Date.isValidDate("date 3:2020-02-03"));
 
         // recurring dates
-        assertTrue(Date.isValidDate("date:02-02"));
-        assertTrue(Date.isValidDate("date 3:02-03"));
+        assertTrue(Date.isValidDate("date:2021-02-02:yearly"));
+        assertTrue(Date.isValidDate("date 3:2021-02-03:yearly"));
     }
 
     @Test
-    public void isRecurring() {
-        assertFalse(new Date("date:2020-02-02").isRecurring());
-        assertTrue(new Date("date:02-02").isRecurring());
+    public void getRecurrenceInterval() {
+        assertTrue(new Date("date:2020-02-02").getRecurrenceInterval().isEmpty());
+
+        Date recurringDate = new Date("date:2021-02-02:yearly");
+        assertTrue(recurringDate.getRecurrenceInterval().isPresent());
+        assertEquals("yearly", recurringDate.getRecurrenceInterval().get());
     }
 }

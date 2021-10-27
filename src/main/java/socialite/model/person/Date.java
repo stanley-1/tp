@@ -2,19 +2,20 @@ package socialite.model.person;
 
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Date {
     public static final String MESSAGE_CONSTRAINTS =
-            "Dates should be formatted as NAME:YYYY-MM-DD or NAME:MM-DD for recurring dates";
+            "Dates should be formatted as NAME:YYYY-MM-DD or NAME:YYYY-MM-DD:yearly for recurring dates";
 
     public static final String VALIDATION_REGEX =
-            "([\\w\\s]+):(?:(\\d{4})-)?(\\d{2})-(\\d{2})\\s*";
+            "([\\w\\s]+):(\\d{4})-(\\d{2})-(\\d{2})(?::(yearly))?\\s*";
 
     private String name;
     private LocalDate date;
-    private boolean recurring;
+    private String recurrenceInterval;
 
     /**
      * Construct a new {@code Date} with a given name and value,
@@ -27,16 +28,15 @@ public class Date {
 
         matcher.find();
         String name = matcher.group(1);
-        String yearString = matcher.group(2);
-        boolean recurring = yearString == null;
 
-        int year = recurring ? 0 : Integer.parseInt(yearString);
+        int year = Integer.parseInt(matcher.group(2));
         int month = Integer.parseInt(matcher.group(3));
         int day = Integer.parseInt(matcher.group(4));
+        String recurring = matcher.group(5);
 
         this.name = name;
         this.date = LocalDate.of(year, month, day);
-        this.recurring = recurring;
+        this.recurrenceInterval = recurring;
     }
 
     public String getName() {
@@ -47,8 +47,8 @@ public class Date {
         return date;
     }
 
-    public boolean isRecurring() {
-        return recurring;
+    public Optional<String> getRecurrenceInterval() {
+        return Optional.ofNullable(recurrenceInterval);
     }
 
     /**
@@ -69,11 +69,11 @@ public class Date {
                 || (other instanceof Date // instanceof handles nulls
                 && name.equals(((Date) other).name)
                 && date.equals(((Date) other).date)
-                && recurring == ((Date) other).recurring); // state check
+                && recurrenceInterval == ((Date) other).recurrenceInterval); // state check
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, date, recurring);
+        return Objects.hash(name, date, recurrenceInterval);
     }
 }
