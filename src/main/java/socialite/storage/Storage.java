@@ -12,7 +12,7 @@ import socialite.model.UserPrefs;
 /**
  * API of the Storage component
  */
-public interface Storage extends AddressBookStorage, UserPrefsStorage, CommandHistoryStorage {
+public interface Storage extends AddressBookStorage, UserPrefsStorage, CommandHistoryStorage, ProfilePictureStorage {
 
     @Override
     Optional<UserPrefs> readUserPrefs() throws DataConversionException, IOException;

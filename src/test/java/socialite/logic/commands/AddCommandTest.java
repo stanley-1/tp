@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,6 +17,7 @@ import socialite.commons.core.GuiSettings;
 import socialite.logic.commands.exceptions.CommandException;
 import socialite.model.AddressBook;
 import socialite.model.Model;
+import socialite.model.ProfilePictureSyncModel;
 import socialite.model.ReadOnlyAddressBook;
 import socialite.model.ReadOnlyCommandHistory;
 import socialite.model.ReadOnlyUserPrefs;
@@ -157,6 +159,26 @@ public class AddCommandTest {
         @Override
         public void addCommandToHistory(String command) {
             throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteProfilePicture(Path name) {
+            throw new AssertionError("This method should not be called");
+        }
+
+        @Override
+        public void saveProfilePicture(File file, String name) {
+            throw new AssertionError("This method should not be called");
+        }
+
+        @Override
+        public ProfilePictureSyncModel.ProfilePictureEditDescriptor getProfilePictureEditDescriptor() {
+            throw new AssertionError("This method should not be called");
+        }
+
+        @Override
+        public void clearProfilePictureModel() {
+            throw new AssertionError("This method should not be called");
         }
     }
 

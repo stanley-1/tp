@@ -13,6 +13,7 @@ import socialite.logic.commands.ExitCommand;
 import socialite.logic.commands.FindCommand;
 import socialite.logic.commands.HelpCommand;
 import socialite.logic.commands.ListCommand;
+import socialite.logic.commands.PictureCommand;
 import socialite.logic.commands.RemarkCommand;
 import socialite.logic.parser.exceptions.ParseException;
 
@@ -69,6 +70,9 @@ public class AddressBookParser {
 
         case RemarkCommand.COMMAND_WORD:
             return new RemarkCommandParser().parse(arguments);
+
+        case PictureCommand.COMMAND_WORD:
+            return new PictureCommandParser().parse(arguments);
 
         default:
             throw new ParseException(Messages.MESSAGE_UNKNOWN_COMMAND);

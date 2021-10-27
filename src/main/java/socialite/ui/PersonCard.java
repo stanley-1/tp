@@ -1,6 +1,9 @@
 package socialite.ui;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
@@ -10,9 +13,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.shape.Circle;
 import socialite.model.handle.Handle;
 import socialite.model.handle.Handle.Platform;
 import socialite.model.person.Person;
+import socialite.model.person.ProfilePicture;
 import socialite.model.person.Remark;
 
 /**
@@ -68,6 +73,8 @@ public class PersonCard extends UiPart<Region> {
     private FlowPane dates;
     @FXML
     private Label remark;
+    @FXML
+    private ImageView profilePicture;
 
 
     /**
@@ -79,6 +86,7 @@ public class PersonCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
         phone.setText(person.getPhone().value);
+
         remark.managedProperty().bind(remark.visibleProperty());
         this.makeRemark(person.getRemark());
         this.makeHandle(person.getFacebook(), Platform.FACEBOOK);
@@ -87,6 +95,26 @@ public class PersonCard extends UiPart<Region> {
         this.makeHandle(person.getTiktok(), Platform.TIKTOK);
         this.makeHandle(person.getTwitter(), Platform.TWITTER);
         this.handles.setSpacing(8);
+
+        try {
+            this.profilePicture.setImage(new Image(new FileInputStream(
+                    Paths.get("data", "profilepictures")
+                            .resolve(this.person.getProfilePicture().value)
+                            .toString()
+            )));
+        } catch (NullPointerException | FileNotFoundException e) {
+            this.profilePicture.setImage(new Image(
+                    this.getClass().getResourceAsStream("/" + ProfilePicture.DEFAULT_PICTURE.value.toString())
+            ));
+        }
+
+        Circle clip = new Circle(30);
+        this.profilePicture.setFitHeight(60);
+        this.profilePicture.setFitWidth(60);
+        clip.setCenterX(profilePicture.getFitHeight() / 2);
+        clip.setCenterY(profilePicture.getFitWidth() / 2);
+        this.profilePicture.setClip(clip);
+
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
