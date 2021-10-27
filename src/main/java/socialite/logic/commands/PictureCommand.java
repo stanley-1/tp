@@ -17,9 +17,14 @@ import socialite.model.person.ProfilePicture;
 
 public class PictureCommand extends Command {
 
-    //TODO: Add proper error message
-
     public static final String COMMAND_WORD = "picture";
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Adds a profile picture to the person identified by the index number"
+            + " used in the displayed person list.\n"
+            + "Parameters: INDEX (must be a positive integer)\n"
+            + "Example: " + COMMAND_WORD + " 1";
+    public static final String MESSAGE_HELP_GUIDE =
+            "Enter picture INDEX to add a profile picture to the person at INDEX";
     private final Index index;
     private final File picture;
 
@@ -52,8 +57,7 @@ public class PictureCommand extends Command {
 
         model.setPerson(personToAddPic, personWithPic);
         model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
-        //TODO: Use proper feedback message
-        return new CommandResult("picture added :-)", false, false, true);
+        return new CommandResult("picture added", false, false, true);
     }
 
     private Person addPicToPerson(Person person, File file, Model model) {

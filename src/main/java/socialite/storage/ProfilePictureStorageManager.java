@@ -3,8 +3,6 @@ package socialite.storage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -53,12 +51,8 @@ public class ProfilePictureStorageManager implements ProfilePictureStorage {
         try {
             Path pictureToDelete = PROFILE_PIC_FOLDER_PATH.resolve(name);
             Files.delete(pictureToDelete);
-        } catch (InvalidPathException ipe) {
-            System.out.println(ipe.toString());
-        } catch (NoSuchFileException nsfe) {
-            System.out.println(nsfe.toString());
-        } catch (IOException ioe) {
-            System.out.println(ioe.toString());
+        } catch (Exception e) {
+            System.out.println(e.toString());
         }
     }
 

@@ -3,7 +3,7 @@ package socialite.model;
 import java.io.File;
 import java.nio.file.Path;
 
-public class ProfilePictureSyncModel implements ProfilePictureSyncModelInterface {
+public class ProfilePictureSyncModel {
 
     public class ProfilePictureEditDescriptor {
         public final Path toDelete;
@@ -22,7 +22,6 @@ public class ProfilePictureSyncModel implements ProfilePictureSyncModelInterface
 
     private File source;
 
-    @Override
     public void deleteProfilePicture(Path name) {
         this.toDelete = name;
     }
