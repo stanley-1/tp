@@ -17,4 +17,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_TELEGRAM = new Prefix("tele/");
     public static final Prefix PREFIX_TIKTOK = new Prefix("tiktok/");
     public static final Prefix PREFIX_TWITTER = new Prefix("twitter/");
+
+    /* Used to indicate important dates for the person */
+    public static final Prefix PREFIX_DATE = new Prefix("date/");
 }

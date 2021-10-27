@@ -16,6 +16,7 @@ import socialite.model.handle.Instagram;
 import socialite.model.handle.Telegram;
 import socialite.model.handle.TikTok;
 import socialite.model.handle.Twitter;
+import socialite.model.person.Dates;
 import socialite.model.person.Name;
 import socialite.model.person.Person;
 import socialite.model.person.Phone;
@@ -38,6 +39,7 @@ class JsonAdaptedPerson {
     private final String telegram;
     private final String tiktok;
     private final String twitter;
+    private final List<JsonAdaptedDate> dates = new ArrayList<>();
     private final Path profilePic;
 
     /**
@@ -49,7 +51,7 @@ class JsonAdaptedPerson {
             @JsonProperty("profilePic") String profilePic,
             @JsonProperty("facebook") String facebook, @JsonProperty("instagram") String instagram,
             @JsonProperty("telegram") String telegram, @JsonProperty("tiktok") String tiktok,
-            @JsonProperty("twitter") String twitter) {
+            @JsonProperty("twitter") String twitter, @JsonProperty("dates") List<JsonAdaptedDate> dates) {
         this.name = name;
         this.phone = phone;
         this.remark = remark;
@@ -62,6 +64,9 @@ class JsonAdaptedPerson {
         this.telegram = telegram;
         this.tiktok = tiktok;
         this.twitter = twitter;
+        if (dates != null) {
+            this.dates.addAll(dates);
+        }
     }
 
     /**
@@ -80,6 +85,9 @@ class JsonAdaptedPerson {
         telegram = source.getTelegram().get();
         tiktok = source.getTiktok().get();
         twitter = source.getTwitter().get();
+        dates.addAll(source.getDates().value.values().stream()
+                .map(JsonAdaptedDate::new)
+                .collect(Collectors.toList()));
     }
 
     /**
@@ -138,8 +146,12 @@ class JsonAdaptedPerson {
         }
         final TikTok modelTikTok = new TikTok(tiktok);
 
+        final Dates modelDates = new Dates();
+        for (JsonAdaptedDate date : dates) {
+            modelDates.addDate(date.toModelType());
+        }
         Person modelPerson = new Person(modelName, modelPhone, modelRemark, modelTags, modelFacebook,
-                modelInstagram, modelTelegram, modelTikTok, modeTwitter);
+                modelInstagram, modelTelegram, modelTikTok, modeTwitter, modelDates);
         modelPerson.setProfilePicture(profilePic);
         return modelPerson;
     }

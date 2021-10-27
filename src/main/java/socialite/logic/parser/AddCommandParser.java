@@ -1,5 +1,6 @@
 package socialite.logic.parser;
 
+import static socialite.logic.parser.CliSyntax.PREFIX_DATE;
 import static socialite.logic.parser.CliSyntax.PREFIX_FACEBOOK;
 import static socialite.logic.parser.CliSyntax.PREFIX_INSTAGRAM;
 import static socialite.logic.parser.CliSyntax.PREFIX_NAME;
@@ -21,6 +22,7 @@ import socialite.model.handle.Instagram;
 import socialite.model.handle.Telegram;
 import socialite.model.handle.TikTok;
 import socialite.model.handle.Twitter;
+import socialite.model.person.Dates;
 import socialite.model.person.Name;
 import socialite.model.person.Person;
 import socialite.model.person.Phone;
@@ -42,7 +44,8 @@ public class AddCommandParser implements Parser<AddCommand> {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(
                         args, PREFIX_NAME, PREFIX_PHONE, PREFIX_REMARK, PREFIX_TAG,
-                        PREFIX_FACEBOOK, PREFIX_INSTAGRAM, PREFIX_TELEGRAM, PREFIX_TIKTOK, PREFIX_TWITTER);
+                        PREFIX_FACEBOOK, PREFIX_INSTAGRAM, PREFIX_TELEGRAM, PREFIX_TIKTOK, PREFIX_TWITTER,
+                        PREFIX_DATE);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_PHONE)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -59,9 +62,10 @@ public class AddCommandParser implements Parser<AddCommand> {
         Telegram telegram = ParserUtil.parseTelegram(argMultimap.getValue(PREFIX_TELEGRAM).orElse(null));
         TikTok tiktok = ParserUtil.parseTikTok(argMultimap.getValue(PREFIX_TIKTOK).orElse(null));
         Twitter twitter = ParserUtil.parseTwitter(argMultimap.getValue(PREFIX_TWITTER).orElse(null));
+        Dates dates = ParserUtil.parseDates(argMultimap.getAllValues(PREFIX_DATE));
 
         Person person = new Person(name, phone, remark, tagList, facebook,
-                instagram, telegram, tiktok, twitter);
+                instagram, telegram, tiktok, twitter, dates);
 
         return new AddCommand(person);
     }

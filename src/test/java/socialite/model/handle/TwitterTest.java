@@ -30,4 +30,10 @@ public class TwitterTest {
         assertTrue(Twitter.isValidHandle("bObbY_boy99"));
         assertTrue(Twitter.isValidHandle("12345"));
     }
+
+    @Test
+    public void hasLinkPrefix() {
+        Twitter t = new Twitter("name1");
+        assertTrue(t.getUrl().equals("https://www.twitter.com/name1"));
+    }
 }

@@ -8,7 +8,8 @@
     "tagged": [ "friends" ],
     "profilePic": "images/default_profile_pic.png",
     "tiktok": "alice.pauline",
-    "twitter": "alice_pauline"
+    "twitter": "alice_pauline",
+    "dates": [ ]
   }, {
     "name": "Alice Pauline",
     "phone": "94351253",
@@ -17,6 +18,7 @@
     "remark" : null,
     "profilePic": "images/default_profile_pic.png",
     "tiktok": "alice.pauline",
-    "twitter": "alice_pauline"
+    "twitter": "alice_pauline",
+    "dates": [ ]
   } ]
 }
