@@ -212,19 +212,17 @@ public class PersonCard extends UiPart<Region> {
     }
 
     private void renderDates(Dates displayedDates) {
-        Comparator<Date> comparator = Comparator.comparing(date -> date.getNextOccurrence(LocalDate.now())
-                        .orElse(LocalDate.MIN),
-                Comparator.reverseOrder());
-        Comparator<Date> finalComparator = comparator.thenComparing(date -> date.getDate(), Comparator.reverseOrder());
-
         displayedDates.value.values().stream()
-                .sorted(finalComparator)
+                .sorted(Date.getComparator())
                 .forEach(date -> {
                     LocalDate nextOccurrence = date.getNextOccurrence(LocalDate.now()).orElse(LocalDate.MIN);
-                    Period period = LocalDate.now().until(nextOccurrence);
+                    Period period = Period.between(LocalDate.now(), nextOccurrence);
                     boolean isUpcoming = period.getYears() == 0 && period.getMonths() == 0 && period.getDays() <= 7;
+                    String upcomingMessage = isUpcoming
+                            ? " (" + (period.getDays() == 0 ? "today" : "in " + period.getDays() + " days") + ")"
+                            : "";
 
-                    String message = date.toString() + (isUpcoming ? " (in " + period.getDays() + " days)" : "");
+                    String message = date.toString() + upcomingMessage;
                     Label label = new Label(message);
                     if (isUpcoming) {
                         label.idProperty().set("upcoming");

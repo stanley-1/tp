@@ -2,6 +2,7 @@ package socialite.model.person;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Comparator;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Matcher;
@@ -61,7 +62,7 @@ public class Date {
      */
     public Optional<LocalDate> getNextOccurrence(LocalDate referenceDate) {
         if (recurrenceInterval == null) {
-            return date.isAfter(referenceDate) ? Optional.of(date) : Optional.empty();
+            return date.isBefore(referenceDate) ? Optional.empty() : Optional.of(date);
         }
 
         Period interval = getIntervalPeriod(recurrenceInterval);
@@ -78,6 +79,19 @@ public class Date {
      */
     public static boolean isValidDate(String test) {
         return test.matches(VALIDATION_REGEX);
+    }
+
+    /**
+     * Returns a comparator which can be used to compare dates.
+     * Dates are compared based on their next occurence, followed by their original date.
+     *
+     * @return a comparator
+     */
+    public static Comparator<Date> getComparator() {
+        Comparator<Date> comparator = Comparator.comparing(date -> date.getNextOccurrence(LocalDate.now())
+                        .orElse(LocalDate.MIN),
+                Comparator.reverseOrder());
+        return comparator.thenComparing(date -> date.getDate(), Comparator.reverseOrder());
     }
 
     private static Period getIntervalPeriod(String recurrenceInterval) {
