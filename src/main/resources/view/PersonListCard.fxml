@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
+
   <GridPane HBox.hgrow="ALWAYS">
     <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="170" />
@@ -32,28 +33,30 @@
         <Region HBox.hgrow="ALWAYS" />
         <Button fx:id="share" onAction="#handleButtonAction" text="Share" HBox.hgrow="NEVER" />
       </HBox>
-      <FlowPane fx:id="tags" />
-      <FlowPane fx:id="dates" />
+      <VBox spacing="5">
+        <FlowPane fx:id="tags" />
+        <FlowPane fx:id="dates" />
+      </VBox>
       <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
       <Label fx:id="remark" styleClass="cell_small_label" text="\$remark" />
       <HBox fx:id="handles" spacing="8.0">
-        <HBox fx:id="facebook" alignment="CENTER_LEFT" styleClass="handle">
+        <HBox fx:id="facebook" alignment="CENTER_LEFT" styleClass="handle" spacing="4">
           <ImageView fx:id="facebookIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true" />
           <Label fx:id="facebookHandle" styleClass="cell_small_label" text="\$facebook" />
         </HBox>
-        <HBox fx:id="instagram" alignment="CENTER_LEFT" styleClass="handle">
+        <HBox fx:id="instagram" alignment="CENTER_LEFT" styleClass="handle" spacing="4">
           <ImageView fx:id="instagramIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true" />
           <Label fx:id="instagramHandle" styleClass="cell_small_label" text="\$instagram" />
         </HBox>
-        <HBox fx:id="telegram" alignment="CENTER_LEFT" styleClass="handle">
+        <HBox fx:id="telegram" alignment="CENTER_LEFT" styleClass="handle" spacing="4">
           <ImageView fx:id="telegramIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true" />
           <Label fx:id="telegramHandle" styleClass="cell_small_label" text="\$telegram" />
         </HBox>
-        <HBox fx:id="tiktok" alignment="CENTER_LEFT" styleClass="handle">
+        <HBox fx:id="tiktok" alignment="CENTER_LEFT" styleClass="handle" spacing="4">
           <ImageView fx:id="tiktokIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true" />
           <Label fx:id="tiktokHandle" styleClass="cell_small_label" text="\$tiktok" />
         </HBox>
-        <HBox fx:id="twitter" alignment="CENTER_LEFT" styleClass="handle">
+        <HBox fx:id="twitter" alignment="CENTER_LEFT" styleClass="handle" spacing="4">
           <ImageView fx:id="twitterIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true" />
           <Label fx:id="twitterHandle" styleClass="cell_small_label" text="\$twitter" />
         </HBox>
