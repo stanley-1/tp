@@ -24,5 +24,12 @@ public class TikTokTest {
         assertTrue(TikTok.isValidHandle("bObbY_boy99"));
         assertTrue(TikTok.isValidHandle("bObbY.boy99"));
         assertTrue(TikTok.isValidHandle("12345"));
+
+    }
+
+    @Test
+    public void hasLinkPrefix() {
+        TikTok t = new TikTok("name1");
+        assertTrue(t.getUrl().equals("https://www.tiktok.com/@name1"));
     }
 }
