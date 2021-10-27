@@ -1,6 +1,7 @@
 package socialite.model.person;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Matcher;
@@ -49,6 +50,27 @@ public class Date {
 
     public Optional<String> getRecurrenceInterval() {
         return Optional.ofNullable(recurrenceInterval);
+    }
+
+    /**
+     * Returns the next occurrence of the date after the reference date.
+     * Returns {@code Optional.empty()} for non-recurring dates which occur before the reference date.
+     *
+     * @param referenceDate The reference date.
+     * @return The next occurrence of the date.
+     */
+    public Optional<LocalDate> getNextOccurrence(LocalDate referenceDate) {
+        if (recurrenceInterval == null) {
+            return date.isAfter(referenceDate) ? Optional.of(date) : Optional.empty();
+        }
+
+        Period interval = Period.of(1, 0, 0);
+        LocalDate newDate = LocalDate.from(date);
+        while (!newDate.isAfter(referenceDate)) {
+            newDate = newDate.plus(interval);
+        }
+
+        return Optional.of(newDate);
     }
 
     /**

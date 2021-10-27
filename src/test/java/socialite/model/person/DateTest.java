@@ -2,17 +2,18 @@ package socialite.model.person;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Test;
+import java.time.LocalDate;
 
-import socialite.testutil.Assert;
+import org.junit.jupiter.api.Test;
 
 public class DateTest {
     @Test
     public void isValidDates() {
         // null date
-        Assert.assertThrows(NullPointerException.class, () -> Date.isValidDate(null));
+        assertThrows(NullPointerException.class, () -> Date.isValidDate(null));
 
         // invalid dates
         assertFalse(Date.isValidDate("")); // empty string
@@ -39,5 +40,29 @@ public class DateTest {
         Date recurringDate = new Date("date:2021-02-02:yearly");
         assertTrue(recurringDate.getRecurrenceInterval().isPresent());
         assertEquals("yearly", recurringDate.getRecurrenceInterval().get());
+    }
+
+    @Test
+    public void getNextOccurrence_nonRecurring() {
+        LocalDate referenceDate1 = LocalDate.of(2021, 04, 04);
+        LocalDate referenceDate2 = LocalDate.of(2020, 01, 01);
+        Date nonRecurring = new Date("date:2020-02-02");
+
+        assertTrue(nonRecurring.getNextOccurrence(referenceDate1).isEmpty());
+        assertTrue(nonRecurring.getNextOccurrence(referenceDate2).isPresent());
+        assertEquals(LocalDate.of(2020, 02, 02), nonRecurring.getNextOccurrence(referenceDate2).get());
+    }
+
+    @Test
+    public void getNextOccurrence_recurring() {
+        LocalDate referenceDate1 = LocalDate.of(2021, 04, 04);
+        LocalDate referenceDate2 = LocalDate.of(2020, 01, 01);
+        Date recurring = new Date("date:2020-02-02:yearly");
+
+        assertTrue(recurring.getNextOccurrence(referenceDate1).isPresent());
+        assertEquals(LocalDate.of(2022, 02, 02), recurring.getNextOccurrence(referenceDate1).get());
+
+        assertTrue(recurring.getNextOccurrence(referenceDate2).isPresent());
+        assertEquals(LocalDate.of(2020, 02, 02), recurring.getNextOccurrence(referenceDate2).get());
     }
 }
