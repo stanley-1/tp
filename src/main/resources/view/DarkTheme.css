@@ -373,3 +373,7 @@
     -fx-background-radius: 5;
     -fx-font-size: 11;
 }
+
+#dates .label#upcoming {
+    -fx-background-color: red;
+}
