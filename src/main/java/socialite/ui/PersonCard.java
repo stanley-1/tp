@@ -134,6 +134,10 @@ public class PersonCard extends UiPart<Region> {
         clip.setCenterY(profilePicture.getFitWidth() / 2);
         this.profilePicture.setClip(clip);
 
+        if (person.isPinned()) {
+            // set background colour / button colour
+        };
+
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
@@ -252,7 +256,6 @@ public class PersonCard extends UiPart<Region> {
         ClipboardContent content = new ClipboardContent();
         content.putString(person.toSharingString());
         clipboard.setContent(content);
-
 
         share.setText("Copied!");
 
