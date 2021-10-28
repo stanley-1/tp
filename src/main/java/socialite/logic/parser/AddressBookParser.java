@@ -15,6 +15,7 @@ import socialite.logic.commands.HelpCommand;
 import socialite.logic.commands.ListCommand;
 import socialite.logic.commands.PictureCommand;
 import socialite.logic.commands.RemarkCommand;
+import socialite.logic.commands.ShareCommand;
 import socialite.logic.parser.exceptions.ParseException;
 
 /**
@@ -70,6 +71,9 @@ public class AddressBookParser {
 
         case RemarkCommand.COMMAND_WORD:
             return new RemarkCommandParser().parse(arguments);
+
+        case ShareCommand.COMMAND_WORD:
+            return new ShareCommandParser().parse(arguments);
 
         case PictureCommand.COMMAND_WORD:
             return new PictureCommandParser().parse(arguments);

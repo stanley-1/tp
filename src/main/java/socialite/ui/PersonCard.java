@@ -1,12 +1,19 @@
 package socialite.ui;
 
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Comparator;
 
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -40,33 +47,45 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
-    private HBox handles;
-    @FXML
     private Label name;
     @FXML
     private Label id;
     @FXML
+    private Button share;
+    @FXML
     private Label phone;
     @FXML
-    private ImageView tiktokIcon;
+    private HBox handles;
     @FXML
-    private Label tiktok;
-    @FXML
-    private ImageView twitterIcon;
-    @FXML
-    private Label twitter;
+    private HBox facebook;
     @FXML
     private ImageView facebookIcon;
     @FXML
-    private Label facebook;
+    private Label facebookHandle;
+    @FXML
+    private HBox instagram;
     @FXML
     private ImageView instagramIcon;
     @FXML
-    private Label instagram;
+    private Label instagramHandle;
+    @FXML
+    private HBox telegram;
     @FXML
     private ImageView telegramIcon;
     @FXML
-    private Label telegram;
+    private Label telegramHandle;
+    @FXML
+    private HBox tiktok;
+    @FXML
+    private ImageView tiktokIcon;
+    @FXML
+    private Label tiktokHandle;
+    @FXML
+    private HBox twitter;
+    @FXML
+    private ImageView twitterIcon;
+    @FXML
+    private Label twitterHandle;
     @FXML
     private FlowPane tags;
     @FXML
@@ -86,7 +105,6 @@ public class PersonCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
         phone.setText(person.getPhone().value);
-
         remark.managedProperty().bind(remark.visibleProperty());
         this.makeRemark(person.getRemark());
         this.makeHandle(person.getFacebook(), Platform.FACEBOOK);
@@ -94,8 +112,6 @@ public class PersonCard extends UiPart<Region> {
         this.makeHandle(person.getTelegram(), Platform.TELEGRAM);
         this.makeHandle(person.getTiktok(), Platform.TIKTOK);
         this.makeHandle(person.getTwitter(), Platform.TWITTER);
-        this.handles.setSpacing(8);
-
         try {
             this.profilePicture.setImage(new Image(new FileInputStream(
                     Paths.get("data", "profilepictures")
@@ -136,57 +152,59 @@ public class PersonCard extends UiPart<Region> {
 
 
     private void makeHandle(Handle handle, Platform platform) {
+        HBox box = null;
         Label label = null;
         ImageView icon = null;
 
         switch (platform) {
         case FACEBOOK:
-            label = this.facebook;
+            box = this.facebook;
+            label = this.facebookHandle;
             icon = this.facebookIcon;
             break;
         case INSTAGRAM:
-            label = this.instagram;
+            box = this.instagram;
+            label = this.instagramHandle;
             icon = this.instagramIcon;
             break;
         case TELEGRAM:
-            label = this.telegram;
+            box = this.telegram;
+            label = this.telegramHandle;
             icon = this.telegramIcon;
             break;
         case TIKTOK:
-            label = this.tiktok;
+            box = this.tiktok;
+            label = this.tiktokHandle;
             icon = this.tiktokIcon;
             break;
         case TWITTER:
-            label = this.twitter;
+            box = this.twitter;
+            label = this.twitterHandle;
             icon = this.twitterIcon;
             break;
         default:
         }
 
         // if platform is correct, label and icon should not be null
+        assert box != null;
         assert label != null;
         assert icon != null;
 
-        label.managedProperty().bind(label.visibleProperty());
-        icon.managedProperty().bind(icon.visibleProperty());
-        renderHandle(handle, label, icon, "/images/" + platform.name().toLowerCase() + ".png");
+        box.managedProperty().bind(box.visibleProperty());
+        renderHandle(box, handle, label, icon, "/images/" + platform.name().toLowerCase() + ".png");
     }
 
 
-    private void renderHandle(Handle handle, Label label, ImageView icon, String iconFilePath) {
+    private void renderHandle(HBox box, Handle handle, Label label, ImageView icon, String iconFilePath) {
         if (handle.get() != null && !handle.get().equals("")) {
+            box.setVisible(true);
             icon.setImage(new Image(this.getClass().getResourceAsStream(iconFilePath)));
-            icon.setVisible(true);
-
             label.setText("@" + handle + " ");
-            label.setVisible(true);
             label.setOnMouseEntered(Event -> label.setUnderline(true));
             label.setOnMouseExited(Event -> label.setUnderline(false));
             label.setOnMouseClicked(Event -> this.openBrowser(handle.getUrl()));
         } else {
-            icon.setVisible(false);
-            label.setText(null);
-            label.setVisible(false);
+            box.setVisible(false);
         }
     }
 
@@ -204,6 +222,34 @@ public class PersonCard extends UiPart<Region> {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void handleButtonAction() {
+        StringSelection stringSelection = new StringSelection(person.toSharingString());
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(stringSelection, null);
+        share.setText("Copied!");
+
+        // Change the button text back after 2 seconds
+        Task<Void> sleeper = new Task<>() {
+            @Override
+            protected Void call() {
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException ignored) {
+                    // Yet to come up with what to do
+                }
+                return null;
+            }
+        };
+        sleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent event) {
+                share.setText("Share");
+            }
+        });
+        new Thread(sleeper).start();
     }
 
     @Override

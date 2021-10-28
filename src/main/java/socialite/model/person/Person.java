@@ -7,6 +7,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import socialite.commons.util.CollectionUtil;
+import socialite.logic.commands.ShareCommand;
 import socialite.model.handle.Facebook;
 import socialite.model.handle.Instagram;
 import socialite.model.handle.Telegram;
@@ -150,14 +151,43 @@ public class Person {
                 && otherPerson.getInstagram().equals(getInstagram())
                 && otherPerson.getTelegram().equals(getTelegram())
                 && otherPerson.getTiktok().equals(getTiktok())
-                && otherPerson.getTwitter().equals(getTwitter())
-                && otherPerson.getDates().equals(getDates());
+                && otherPerson.getTwitter().equals(getTwitter());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, tags, facebook, instagram, telegram, tiktok, twitter, dates);
+        return Objects.hash(name, phone, remark, tags, facebook, instagram, telegram, tiktok, twitter, dates);
+    }
+
+    /**
+     * Returns a formatted string when user wants to forward the contact using `share` command.
+     */
+    public String toSharingString() {
+        final StringBuilder info = new StringBuilder();
+        info.append("\tPhone: ").append(getPhone());
+
+        if (getFacebook().get() != null) {
+            info.append("\n\tFacebook: ").append(getFacebook().get());
+        }
+
+        if (getInstagram().get() != null) {
+            info.append("\n\tInstagram: ").append(getInstagram().get());
+        }
+
+        if (getTelegram().get() != null) {
+            info.append("\n\tTelegram: ").append(getTelegram().get());
+        }
+
+        if (getTiktok().get() != null) {
+            info.append("\n\tTikTok: ").append(getTiktok().get());
+        }
+
+        if (getTwitter().get() != null) {
+            info.append("\n\tTwitter: ").append(getTwitter().get());
+        }
+
+        return String.format(ShareCommand.MESSAGE_SHARE_PERSON_TEMPLATE, getName(), info);
     }
 
     @Override

@@ -6,6 +6,7 @@ import socialite.logic.commands.EditCommand;
 import socialite.logic.commands.FindCommand;
 import socialite.logic.commands.HelpCommand;
 import socialite.logic.commands.RemarkCommand;
+import socialite.logic.commands.ShareCommand;
 
 /**
  * Parses input arguments (if any) and creates a new HelpCommand object
@@ -40,6 +41,9 @@ public class HelpCommandParser implements Parser<HelpCommand> {
 
         case RemarkCommand.COMMAND_WORD:
             return new HelpCommand(RemarkCommand.MESSAGE_USAGE);
+
+        case ShareCommand.COMMAND_WORD:
+            return new HelpCommand(ShareCommand.MESSAGE_USAGE);
 
         default:
             return new HelpCommand(INVALID_KEYWORD);
