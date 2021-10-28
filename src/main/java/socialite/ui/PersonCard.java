@@ -212,7 +212,7 @@ public class PersonCard extends UiPart<Region> {
     }
 
     private void renderDates(Dates displayedDates) {
-        displayedDates.value.values().stream()
+        displayedDates.get().values().stream()
                 .sorted(Date.getComparator())
                 .forEach(date -> {
                     LocalDate nextOccurrence = date.getNextOccurrence(LocalDate.now()).orElse(LocalDate.MIN);

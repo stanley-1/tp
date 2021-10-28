@@ -107,7 +107,7 @@ public class Date {
 
     @Override
     public String toString() {
-        return name + ": " + date + (recurrenceInterval == null ? "" : " (" + recurrenceInterval + ")");
+        return "[" + name + ": " + date + (recurrenceInterval == null ? "" : " (" + recurrenceInterval + ")") + "]";
     }
 
     @Override
