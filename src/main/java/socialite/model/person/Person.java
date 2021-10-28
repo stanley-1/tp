@@ -233,7 +233,7 @@ public class Person {
         Collection<Date> dates = getDates().get().values();
         if (!dates.isEmpty()) {
             builder.append("; Dates: ");
-            dates.forEach(builder::append);
+            dates.forEach(date -> builder.append("[").append(date).append("]"));
         }
 
         return builder.toString();
