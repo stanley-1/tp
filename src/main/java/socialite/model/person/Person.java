@@ -40,6 +40,8 @@ public class Person {
 
     private final Dates dates;
 
+    private boolean isPinned = false;
+
     /**
      * Every field must be present and not null.
      */
@@ -126,6 +128,14 @@ public class Person {
         return otherPerson != null
                 && otherPerson.getName().equals(getName())
                 && otherPerson.getPhone().equals(getPhone());
+    }
+
+
+    /**
+     * Returns true if the person is pinned, false if not pinned.
+     */
+    public boolean isPinned() {
+        return isPinned;
     }
 
     /**

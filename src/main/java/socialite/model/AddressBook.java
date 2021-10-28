@@ -95,7 +95,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
 
     /**
-     * Sorts the entries in the {@code AddressBook} alphabetically.
+     * Sorts the entries in the {@code AddressBook} by pinned status first, and then alphabetically
+     * according to the full name.
      */
     public void sortPersons() {
         persons.sortPersons();

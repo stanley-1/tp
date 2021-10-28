@@ -100,10 +100,20 @@ public class UniquePersonList implements Iterable<Person> {
 
 
     /**
-     * Sorts the contents of this list alphabetically according to the full name.
+     * Sorts the contents of this list, by pinned status first, and then alphabetically according to the full name.
      */
     public void sortPersons() {
-        internalList.sort(Comparator.comparing(person -> person.getName().toString().toLowerCase()));
+        internalList.sort((p1, p2) -> {
+            if (p1.isPinned() == p2.isPinned()) {
+                String n1 = p1.getName().toString().toLowerCase();
+                String n2 = p2.getName().toString().toLowerCase();
+                return n1.compareTo(n2);
+            } else if (p1.isPinned()) {
+                return -1;
+            } else {
+                return 1;
+            }
+        });
     }
 
     /**
