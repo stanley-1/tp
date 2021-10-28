@@ -24,6 +24,7 @@ Do have a look at our Table of Contents to locate the help you need!
         3. Delete tags associated with contacts: `edit INDEX t/`
         4. Add / Edit social media handles for existing contacts: `edit INDEX [p/PLATFORM]`
         5. Query contacts based on social media platform: `find p/PLATFORM`
+        6. Sharing a contact card: `share`
     3. [Customisation Tools](#customisation)
        1. Adding remarks about a specific contact: `remark`
        2. Adding a profile picture: `picture`
@@ -37,7 +38,6 @@ Do have a look at our Table of Contents to locate the help you need!
 3. [Coming Soon](#coming_soon)
    1. Set reminders for a specific contact: `remind`
    2. Adding dates of special occasions associated with a specific contact: `date`
-   3. Forwarding a contact card: `forward`
 4. [FAQ](#faq)
 5. [Command Summary](#summary) 
 
@@ -283,6 +283,25 @@ Examples:
 * `find p/instagram` Returns all contacts who have an Instagram handle pegged with them.
 * `find p/twitter` Returns all contacts who have a Twitter handle pegged with them.
 
+<br>
+
+### Sharing a contact card: `share`
+
+Copies the contact card of the specified person to the system clipboard. User can paste the plain text in an email/text message and forward the contact card to others thereafter.
+
+Alternatively, clicking on the "Share" button at the top-right hand corner of the specific contact card will also copy the contact card to the system clipboard.
+
+Format: `share INDEX`
+
+* Copies the contact card of the person at the specified `INDEX` to the system clipboard.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+
+* `list` followed by `share 2` copies the information of the second contact in the list displayed by SociaLite.
+* Clicking on the "Share" button of Annie Baker's name card copies her contact information.
+
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -415,20 +434,6 @@ Format: `date INDEX d/YYYY-MM-DD i/DETAILS`
 Examples:
 * `list` followed by `date 1 d/2021-09-14 i/Meeting` adds the event “Meeting” which falls on 14 Sep 2021, to Annie Baker’s listing in the app.
 * `find Annie` followed by `date 1 d/2021-10-10 i/Lunch Appointment` adds the event “Lunch Appointment” which falls on 10 Oct 2021 to Annie Baker’s listing.
-
-<br>
-
-### Forwarding a contact card: `forward`
-Forwards the contact card of the specified person by storing data in a separate .txt/.pdf file. User can choose to forward the file to others thereafter.
-
-Format: `forward INDEX`
-* Forwards the contact card of the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
-
-Examples:
-* `list` followed by `forward 2` creates a file to store the contact details of Charlie Decker.
-* `find Annie` followed by `forward 1` creates a file to store Annie Baker’s contact details.
 
 --------------------------------------------------------------------------------------------------------------------
 
