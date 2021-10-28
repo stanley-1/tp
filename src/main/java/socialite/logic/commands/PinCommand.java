@@ -21,6 +21,7 @@ public class PinCommand extends Command {
 
     public static final String MESSAGE_PIN_PERSON_SUCCESS = "Pinned Person: %1$s";
     public static final String MESSAGE_PERSON_ALREADY_PINNED = "This person has already been pinned.";
+    public static final String MESSAGE_HELP_GUIDE = "Enter 'help pin' for in-app guidance.";
 
     private final Index targetIndex;
 

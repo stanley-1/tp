@@ -21,6 +21,7 @@ public class UnpinCommand extends Command {
 
     public static final String MESSAGE_UNPIN_PERSON_SUCCESS = "Unpinned Person: %1$s";
     public static final String MESSAGE_PERSON_NOT_PINNED = "This person is not pinned yet.";
+    public static final String MESSAGE_HELP_GUIDE = "Enter 'help unpin' for in-app guidance.";
 
     private final Index targetIndex;
 
