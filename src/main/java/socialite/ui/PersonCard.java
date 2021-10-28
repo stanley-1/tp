@@ -136,7 +136,7 @@ public class PersonCard extends UiPart<Region> {
 
         if (person.isPinned()) {
             // set background colour / button colour
-        };
+        }
 
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
