@@ -43,6 +43,7 @@ public class PinCommand extends Command {
             throw new CommandException(MESSAGE_PERSON_ALREADY_PINNED);
         }
         personToPin.pin();
+        model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_PIN_PERSON_SUCCESS, personToPin));
     }
 

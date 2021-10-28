@@ -43,6 +43,7 @@ public class UnpinCommand extends Command {
             throw new CommandException(MESSAGE_PERSON_NOT_PINNED);
         }
         personToUnpin.unpin();
+        model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_UNPIN_PERSON_SUCCESS, personToUnpin));
     }
 
