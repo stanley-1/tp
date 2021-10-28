@@ -1,6 +1,7 @@
 package socialite.model.person;
 
 import java.nio.file.Path;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
@@ -151,7 +152,8 @@ public class Person {
                 && otherPerson.getInstagram().equals(getInstagram())
                 && otherPerson.getTelegram().equals(getTelegram())
                 && otherPerson.getTiktok().equals(getTiktok())
-                && otherPerson.getTwitter().equals(getTwitter());
+                && otherPerson.getTwitter().equals(getTwitter())
+                && otherPerson.getDates().equals(getDates());
     }
 
     @Override
@@ -226,6 +228,12 @@ public class Person {
         if (!tags.isEmpty()) {
             builder.append("; Tags: ");
             tags.forEach(builder::append);
+        }
+
+        Collection<Date> dates = getDates().get().values();
+        if (!dates.isEmpty()) {
+            builder.append("; Dates: ");
+            dates.forEach(date -> builder.append("[").append(date).append("]"));
         }
 
         return builder.toString();

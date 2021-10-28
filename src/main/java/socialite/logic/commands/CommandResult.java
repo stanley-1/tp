@@ -11,21 +11,20 @@ public class CommandResult {
 
     private final String feedbackToUser;
 
-    /** Help information should be shown to the user. */
-    private final boolean showHelp;
-
-    /** The application should exit. */
-    private final boolean exit;
-
+    /** Check if the command falls under the following categories. */
+    private final boolean isHelpCommand;
+    private final boolean isExitCommand;
     private final boolean isPictureCommand;
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, boolean isPictureCommand) {
+    public CommandResult(
+            String feedbackToUser, boolean isHelpCommand, boolean isExitCommand, boolean isPictureCommand
+    ) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
-        this.showHelp = showHelp;
-        this.exit = exit;
+        this.isHelpCommand = isHelpCommand;
+        this.isExitCommand = isExitCommand;
         this.isPictureCommand = isPictureCommand;
     }
 
@@ -41,12 +40,12 @@ public class CommandResult {
         return feedbackToUser;
     }
 
-    public boolean isShowHelp() {
-        return showHelp;
+    public boolean isHelpCommand() {
+        return isHelpCommand;
     }
 
-    public boolean isExit() {
-        return exit;
+    public boolean isExitCommand() {
+        return isExitCommand;
     }
 
     public boolean isPictureCommand() {
@@ -66,13 +65,13 @@ public class CommandResult {
 
         CommandResult otherCommandResult = (CommandResult) other;
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
-                && showHelp == otherCommandResult.showHelp
-                && exit == otherCommandResult.exit;
+                && isHelpCommand == otherCommandResult.isHelpCommand
+                && isExitCommand == otherCommandResult.isExitCommand;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, showHelp, exit);
+        return Objects.hash(feedbackToUser, isHelpCommand, isExitCommand);
     }
 
 }

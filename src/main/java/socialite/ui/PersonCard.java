@@ -1,8 +1,5 @@
 package socialite.ui;
 
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -19,6 +16,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
@@ -212,7 +211,7 @@ public class PersonCard extends UiPart<Region> {
     }
 
     private void renderDates(Dates displayedDates) {
-        displayedDates.value.values().stream()
+        displayedDates.get().values().stream()
                 .sorted(Date.getComparator())
                 .forEach(date -> {
                     LocalDate nextOccurrence = date.getNextOccurrence(LocalDate.now()).orElse(LocalDate.MIN);
@@ -249,9 +248,12 @@ public class PersonCard extends UiPart<Region> {
 
     @FXML
     private void handleButtonAction() {
-        StringSelection stringSelection = new StringSelection(person.toSharingString());
-        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-        clipboard.setContents(stringSelection, null);
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent content = new ClipboardContent();
+        content.putString(person.toSharingString());
+        clipboard.setContent(content);
+
+
         share.setText("Copied!");
 
         // Change the button text back after 2 seconds
