@@ -1,7 +1,9 @@
 package socialite.model.person;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
@@ -37,5 +39,30 @@ public class PhoneTest {
         assertTrue(Phone.isValidPhone("911")); // exactly 3 numbers
         assertTrue(Phone.isValidPhone("93121534"));
         assertTrue(Phone.isValidPhone("124293842033123")); // long phone numbers
+    }
+
+    @Test
+    public void testToString() {
+        String expectedString = "12345678";
+        Phone phone = new Phone("12345678");
+        assertEquals(expectedString, phone.toString());
+    }
+
+    @Test
+    public void testEquals() {
+        Phone phone = new Phone("12345678");
+        Phone differentPhone = new Phone("87654321");
+        assertEquals(phone, phone);
+        assertEquals(phone, new Phone("12345678"));
+        assertNotEquals(phone, differentPhone);
+    }
+
+    @Test
+    public void testHashCode() {
+        Phone phone = new Phone("12345678");
+        Phone differentPhone = new Phone("87654321");
+
+        assertEquals(phone.hashCode(), new Phone("12345678").hashCode());
+        assertNotEquals(phone.hashCode(), differentPhone.hashCode());
     }
 }
