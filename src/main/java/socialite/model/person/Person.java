@@ -132,10 +132,18 @@ public class Person {
 
 
     /**
-     * Returns true if the person is pinned, false if not pinned.
+     * Pinning-related methods
      */
     public boolean isPinned() {
         return isPinned;
+    }
+
+    public void pin() {
+        isPinned = true;
+    }
+
+    public void unpin() {
+        isPinned = false;
     }
 
     /**
