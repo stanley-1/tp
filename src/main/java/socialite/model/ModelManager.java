@@ -138,6 +138,8 @@ public class ModelManager implements Model {
     @Override
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
+        // Sort the address book alphabetically first
+        addressBook.sortPersons();
         filteredPersons.setPredicate(predicate);
     }
 

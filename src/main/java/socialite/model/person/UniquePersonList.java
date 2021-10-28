@@ -2,6 +2,7 @@ package socialite.model.person;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -95,6 +96,14 @@ public class UniquePersonList implements Iterable<Person> {
         }
 
         internalList.setAll(persons);
+    }
+
+
+    /**
+     * Sorts the contents of this list alphabetically according to the full name.
+     */
+    public void sortPersons() {
+        internalList.sort(Comparator.comparing(person -> person.getName().toString().toLowerCase()));
     }
 
     /**
