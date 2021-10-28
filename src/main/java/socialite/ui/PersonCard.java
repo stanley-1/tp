@@ -7,6 +7,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Comparator;
 
 import javafx.concurrent.Task;
@@ -23,6 +25,8 @@ import javafx.scene.layout.Region;
 import javafx.scene.shape.Circle;
 import socialite.model.handle.Handle;
 import socialite.model.handle.Handle.Platform;
+import socialite.model.person.Date;
+import socialite.model.person.Dates;
 import socialite.model.person.Person;
 import socialite.model.person.ProfilePicture;
 import socialite.model.person.Remark;
@@ -134,10 +138,9 @@ public class PersonCard extends UiPart<Region> {
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
-        person.getDates().value.values().stream()
-                .sorted(Comparator.comparing(date -> date.getDate()))
-                .forEach(date -> dates.getChildren().add(new Label(date.toString())));
+        this.renderDates(person.getDates());
     }
+
 
     private void makeRemark(Remark remark) {
         String value = remark.get();
@@ -206,6 +209,26 @@ public class PersonCard extends UiPart<Region> {
         } else {
             box.setVisible(false);
         }
+    }
+
+    private void renderDates(Dates displayedDates) {
+        displayedDates.value.values().stream()
+                .sorted(Date.getComparator())
+                .forEach(date -> {
+                    LocalDate nextOccurrence = date.getNextOccurrence(LocalDate.now()).orElse(LocalDate.MIN);
+                    Period period = Period.between(LocalDate.now(), nextOccurrence);
+                    boolean isUpcoming = period.getYears() == 0 && period.getMonths() == 0 && period.getDays() <= 7;
+                    String upcomingMessage = isUpcoming
+                            ? " (" + (period.getDays() == 0 ? "today" : "in " + period.getDays() + " days") + ")"
+                            : "";
+
+                    String message = date.toString() + upcomingMessage;
+                    Label label = new Label(message);
+                    if (isUpcoming) {
+                        label.idProperty().set("upcoming");
+                    }
+                    dates.getChildren().add(label);
+                });
     }
 
     private void openBrowser(String url) {
