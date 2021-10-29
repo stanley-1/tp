@@ -68,6 +68,7 @@ public class EditCommandTest {
                 new ModelManager(new AddressBook(
                         model.getAddressBook()), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(lastPerson, editedPerson);
+        expectedModel.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
 
         CommandTestUtil.assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
@@ -83,6 +84,7 @@ public class EditCommandTest {
         Model expectedModel =
                 new ModelManager(
                         new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
+        expectedModel.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
 
         CommandTestUtil.assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
@@ -103,6 +105,7 @@ public class EditCommandTest {
                 new ModelManager(
                         new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(model.getFilteredPersonList().get(0), editedPerson);
+        expectedModel.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
 
         CommandTestUtil.assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
