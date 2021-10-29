@@ -27,7 +27,6 @@ import socialite.model.handle.Handle.Platform;
 import socialite.model.person.Date;
 import socialite.model.person.Dates;
 import socialite.model.person.Person;
-import socialite.model.person.ProfilePicture;
 import socialite.model.person.Remark;
 
 /**
@@ -123,7 +122,7 @@ public class PersonCard extends UiPart<Region> {
             )));
         } catch (NullPointerException | FileNotFoundException e) {
             this.profilePicture.setImage(new Image(
-                    this.getClass().getResourceAsStream("/" + ProfilePicture.DEFAULT_PICTURE.value.toString())
+                    this.getClass().getResourceAsStream("/images/default_profile_picture.png")
             ));
         }
 
