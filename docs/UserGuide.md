@@ -61,9 +61,9 @@ Do have a look at our Table of Contents to locate the help you need!
    * **`add`** `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh`: Adds a contact named `Alex Yeoh` to SociaLite.
 
    * **`find`** `find Alex` : Searches SociaLite for a contact named `Alex` and displays the contact's information.
-   
+
    * **`list`** : Displays all contacts stored on SociaLite.
-   
+
    * **`edit`** `edit 1 n/Alexis Yeoh` : Edits the name of the contact at the first position of the list to `Alexis Yeoh`.
 
    * **`delete`**`3` : Deletes the 3rd contact shown in the current list.
@@ -110,15 +110,15 @@ Do have a look at our Table of Contents to locate the help you need!
 
 Adds a person to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
+Format: `add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of tags and dates (including 0).
 </div>
 
 Examples:
-* `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh date/birthday:2000-01-01`
-* `add n/Charlotte Oliveiro p/93210284 t/neighbours fb/charlotte.oli tele/olichar twitter/charolive date/wedding anniversary:2020-01-01`
+* `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh date/birthday:2000-01-01:yearly`
+* `add n/Charlotte Oliveiro p/93210284 t/neighbours fb/charlotte.oli tele/olichar twitter/charolive date/wedding anniversary:2020-01-01:yearly`
 
 <br>
 
@@ -134,7 +134,7 @@ Format: `list`
 
 Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [r/REMARK] [t/TAG]…​ [date/NAME:YYYY-MM-DD]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
+Format: `edit INDEX [n/NAME] [p/PHONE] [r/REMARK] [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
 
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -272,6 +272,24 @@ Examples:
 
 <br>
 
+### Add / Edit dates of occasions associated with contacts: `edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​`
+Adds dates of occasions (birthdays, appointments) associated with a contact.
+
+Format: `edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​`
+* Adds a date for the contact at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+* Dates can have a name to associate them with a specific event (eg. Birthday, Meetup, Anniversary).
+* Date must be presented in `YYYY-MM-DD` format.
+* Dates can be recurring, either monthly or yearly, by adding `:monthly` or `:yearly` behind the date.
+* Each call of `edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​` will replace all previous dates.
+* Using the command `edit INDEX date/` will remove all dates from the user.
+* Upcoming dates (within 7 days) will be highlighted in the user interface.
+
+Examples:
+* `list` followed by `edit 1 date/Meeting:2021-09-14` adds the event “Meeting” which falls on 14 Sep 2021, to Annie Baker’s listing in the app.
+* `find Annie` followed by `edit 1 date/Lunch Appointment:2021-10-10` adds the event “Lunch Appointment” which falls on 10 Oct 2021 to Annie Baker’s listing.
+
 ### Query contacts based on social media platform: `find p/PLATFORM`
 
 Show all contacts with their handles on the particular social media platform.
@@ -339,7 +357,7 @@ Examples:
   listing in the app.
 * `find Charlie` followed by `picture 1` opens the file browser to let you choose a picture to add to Charlie Decker’s
   listing in the app.
-  
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Help Guide & Exiting <a name="help_guide"></a>
@@ -398,44 +416,6 @@ If your changes to the data file makes its format invalid, SociaLite will discar
 </div>
 
 --------------------------------------------------------------------------------------------------------------------
-## Coming Soon <a name="coming_soon"></a>
-
-### Set reminders for a specific contact: `remind`
-Set reminders for special occasions associated with a contact. In order to set a reminder, the date of the event has to be previously added via `addDate`.
-
-Format: `remind INDEX r/[DAYS]`
-* Sets a reminder for an event at the specified `INDEX` associated with the contact.
-* The index refers to the index number shown in the contact’s list of events.
-* The index **must be a positive integer** 1, 2, 3, …​
-* Users will be reminded of the event `[DAYS]` days in advance of the actual date.
-* By default, a reminder will appear on the user’s dashboard 3 days prior to the event if no input is specified under the `[DAYS]` field.
-
-Examples:
-For the purpose of illustrating examples in this feature, assume that the following events exist within Annie Baker’s contact card:
-
-1. 14 Sep 2021 Meeting
-2. 10 Oct 2021 Lunch Appointment
-
-* `remind 1 r/7`  sets a reminder for “Meeting”. Users will be reminded of this meeting through a banner on the app’s initialisation page daily from 7 Sep 2021 (i.e.: 7 days before the event).
-* `remind 2` sets a reminder for “Lunch Appointment”. Users will be reminded of this event through a banner on the app’s initialization page daily from 7 Oct 2021 (i.e.: 3 days before the event).
-
-<br>
-
-### Adding dates of special occasions associated with a specific contact: `date`
-Adds dates of special occasions (birthdays, appointments) associated with a contact.
-
-Format: `date INDEX d/YYYY-MM-DD i/DETAILS`
-* Adds a date for the contact at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
-* Date must be presented in `YYYY-MM-DD` format.
-* Significance of the specified date is stated at the end under the `DETAILS` field.
-
-Examples:
-* `list` followed by `date 1 d/2021-09-14 i/Meeting` adds the event “Meeting” which falls on 14 Sep 2021, to Annie Baker’s listing in the app.
-* `find Annie` followed by `date 1 d/2021-10-10 i/Lunch Appointment` adds the event “Lunch Appointment” which falls on 10 Oct 2021 to Annie Baker’s listing.
-
---------------------------------------------------------------------------------------------------------------------
 
 ## FAQ <a name="faq"></a>
 
@@ -448,9 +428,9 @@ Examples:
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]` <br> e.g., `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh`
+**Add** | `add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]` <br> e.g., `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh`
 **List** | `list`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE] [r/REMARK] [t/TAG]…​ [date/NAME:YYYY-MM-DD]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]` <br> e.g., `edit 1 p/91234567 fb/Yalex19`
+**Edit** | `edit INDEX [n/NAME] [p/PHONE] [r/REMARK] [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]` <br> e.g., `edit 1 p/91234567 fb/Yalex19`
 **Find Contact** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **Access Social Media Page** | Click on social media handle
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
