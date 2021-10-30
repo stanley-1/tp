@@ -21,6 +21,9 @@ public class GuiRobot extends FxRobot {
 
     private final boolean isHeadlessMode;
 
+    /**
+     * Creates the user simulator {@code GuiRobot} with initialised default parameters.
+     */
     public GuiRobot() {
         String headlessPropertyValue = System.getProperty(PROPERTY_TESTFX_HEADLESS);
         isHeadlessMode = headlessPropertyValue != null && headlessPropertyValue.equals("true");

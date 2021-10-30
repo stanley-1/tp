@@ -5,6 +5,8 @@ import static socialite.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static socialite.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static socialite.testutil.TypicalPersons.getTypicalAddressBook;
 
+import org.junit.jupiter.api.Test;
+
 import socialite.commons.core.Messages;
 import socialite.commons.core.index.Index;
 
@@ -12,11 +14,7 @@ import socialite.model.CommandHistory;
 import socialite.model.Model;
 import socialite.model.ModelManager;
 import socialite.model.UserPrefs;
-import socialite.model.person.Person;
-import socialite.model.person.ProfilePicture;
 
-
-import org.junit.jupiter.api.Test;
 
 import java.io.File;
 
@@ -38,9 +36,9 @@ public class PictureCommandTest {
     }
 
     @Test
-    public void execute_picture_add_success() {
+    public void execute_addPicture_success() {
         PictureCommand pictureCommand = new PictureCommand(INDEX_FIRST_PERSON, new File("/dummy.png"));
-        assertCommandSuccess(pictureCommand, model,"picture added", model);
+        assertCommandSuccess(pictureCommand, model, "picture added", model);
     }
 
 
