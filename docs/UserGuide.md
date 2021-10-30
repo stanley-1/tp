@@ -25,6 +25,7 @@ Do have a look at our Table of Contents to locate the help you need!
         4. Add / Edit social media handles for existing contacts: `edit INDEX [p/PLATFORM]`
         5. Query contacts based on social media platform: `find p/PLATFORM`
         6. Sharing a contact card: `share`
+        7. Pinning and unpinning a contact card: `pin`/`unpin`
     3. [Customisation Tools](#customisation)
        1. Adding remarks about a specific contact: `remark`
        2. Adding a profile picture: `picture`
@@ -46,15 +47,12 @@ Do have a look at our Table of Contents to locate the help you need!
 ## Quick Start <a name="quick_start"></a>
 
 1. Ensure you have `Java 11` or above installed on your Computer.
-   If you don't have `Java 11`, simply click [here](https://www.oracle.com/java/technologies/downloads/) to download the latest Java Development Kit.
-
+   If you already have `Java` installed, you might want to type in `java -verson` in your command window to ensure you are running on the correct version of `Java`!
+   If you don't have `Java 11`, simply click [here](https://www.oracle.com/java/technologies/downloads/), navigate to the "Java SE Development Kit 11.*.**" section to download the latest Java Development Kit.
 2. Download the latest `socialite.jar` from [here](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases).
-
 3. Copy the file to the folder you want to use as the _home folder_ for your SociaLite.
-
-4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+4. Double-click the file to start the app. SociaLite should start in a few seconds! The app contains some sample data for you experiment with to get familiar with the commands.<br>
    ![Ui](images/UpdatedUI.png)
-
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Here are some sample commands to get you started with SociaLite:
 
@@ -71,7 +69,6 @@ Do have a look at our Table of Contents to locate the help you need!
    * **`clear`** : Deletes all contacts. You will find this handy when deleting the sample contacts stored on SociaLite.
 
    * **`exit`** : Exits the app.
-
 6. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -320,6 +317,28 @@ Examples:
 * `list` followed by `share 2` copies the information of the second contact in the list displayed by SociaLite.
 * Clicking on the "Share" button of Annie Baker's name card copies her contact information.
 
+<br>
+
+### Pinning and unpinning a contact card: `pin`/`unpin`
+
+Pins/Unpins the contact card of the specified person to the system clipboard. The pinned contact cards will be alphabetically ordered at the top of the person list.
+
+Alternatively, clicking on the "Pin/Unpin" button at the top-right hand corner of the specific contact card will also pin the contact card.
+
+Format: `pin INDEX`/`unpin INDEX`
+
+* Pins the contact card of the person at the specified `INDEX` at the top of the person list
+* The index refers to the index number shown in the displayed person list
+* The index **must be a positive integer** 1, 2, 3, ...
+* To pin/unpin a contact card, the contact card must be unpinned/pinned.
+
+Examples:
+
+* Provided no contact card has been pinned yet, `list` followed by `pin 3` pins the third contact in the list displayed by SociaLite and places it at the top of the person list.
+* Clicking on the "Pin/Unpin" button of Annie Baker's name card unpins her contact card if has been previously pinned.
+
+
+
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -441,6 +460,8 @@ Action | Format, Examples
 **Add / Edit Social Media Handles** | `edit INDEX [p/PLATFORM]` <br> e.g., `edit 1 fb/Alv1n.y`
 **Query Contacts via Platform** | `find p/PLATFORM` <br> e.g., `find p/facebook`
 **Share Contact** | `share INDEX` <br> e.g. `share 2`
+**Pin Contact** | `pin INDEX`<br />e.g. `pin 4` 
+**Unpin Contact** | `unpin INDEX`<br>e.g. `unpin 1` 
 **Add Remark** | `remark INDEX r/[TEXT]` <br> e.g., `remark 1 r/Likes to swim`
 **Add Profile Picture** | `picture`
 **View Help** | `help`
