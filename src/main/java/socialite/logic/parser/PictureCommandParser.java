@@ -16,15 +16,12 @@ public class PictureCommandParser implements Parser<PictureCommand> {
     public PictureCommand parse(String args) throws ParseException {
         requireNonNull(args);
 
-        Index index;
-
-        try {
-            index = ParserUtil.parseIndex(args);
-        } catch (ParseException pe) {
+        if (!args.trim().matches("\\d+")) {
             throw new ParseException(
-                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, PictureCommand.MESSAGE_HELP_GUIDE), pe);
+                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, PictureCommand.MESSAGE_HELP_GUIDE));
         }
 
+        Index index = ParserUtil.parseIndex(args);
         MainWindow window = MainWindow.getWindow();
         File file = window.getFile();
         return new PictureCommand(index, file);

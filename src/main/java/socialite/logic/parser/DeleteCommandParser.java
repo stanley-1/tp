@@ -1,8 +1,11 @@
 package socialite.logic.parser;
 
+import static java.util.Objects.requireNonNull;
+
 import socialite.commons.core.Messages;
 import socialite.commons.core.index.Index;
 import socialite.logic.commands.DeleteCommand;
+import socialite.logic.commands.EditCommand;
 import socialite.logic.parser.exceptions.ParseException;
 
 /**
@@ -16,13 +19,13 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public DeleteCommand parse(String args) throws ParseException {
-        try {
-            Index index = ParserUtil.parseIndex(args);
-            return new DeleteCommand(index);
-        } catch (ParseException pe) {
+        requireNonNull(args);
+        if (!args.trim().matches("\\d+")) {
             throw new ParseException(
-                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_HELP_GUIDE), pe);
+                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_HELP_GUIDE));
         }
+        Index index = ParserUtil.parseIndex(args);
+        return new DeleteCommand(index);
     }
 
 }
