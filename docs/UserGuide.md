@@ -376,7 +376,7 @@ Format: `help`
 Displays concise instructions for users to learn the given `COMMAND`'s function.
 
 Format: `help COMMAND`
-* Acceptable keywords to use in `COMMAND`: `add` `delete` `edit` `find` `remark`
+* Acceptable keywords to use in `COMMAND`: `add` `delete` `edit` `find` `remark` `share` `picture` `pin` `unpin`
 
 Examples:
 * `help add` displays a concise guide on how to use the `add` command.
