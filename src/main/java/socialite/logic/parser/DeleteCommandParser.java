@@ -5,7 +5,6 @@ import static java.util.Objects.requireNonNull;
 import socialite.commons.core.Messages;
 import socialite.commons.core.index.Index;
 import socialite.logic.commands.DeleteCommand;
-import socialite.logic.commands.EditCommand;
 import socialite.logic.parser.exceptions.ParseException;
 
 /**

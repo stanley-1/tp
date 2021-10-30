@@ -4,10 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static socialite.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static socialite.logic.parser.CliSyntax.PREFIX_REMARK;
 
-import socialite.commons.core.Messages;
 import socialite.commons.core.index.Index;
-import socialite.commons.exceptions.IllegalValueException;
-import socialite.logic.commands.EditCommand;
 import socialite.logic.commands.RemarkCommand;
 import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.person.Remark;
