@@ -129,9 +129,10 @@ public class PersonCard extends UiPart<Region> {
         Circle clip = new Circle(30);
         this.profilePicture.setFitHeight(60);
         this.profilePicture.setFitWidth(60);
-        clip.setCenterX(profilePicture.getFitHeight() / 2);
-        clip.setCenterY(profilePicture.getFitWidth() / 2);
+        clip.setCenterX(profilePicture.getFitWidth() / 2);
+        clip.setCenterY(profilePicture.getFitHeight() / 2);
         this.profilePicture.setClip(clip);
+        centerImage(profilePicture);
 
         if (person.isPinned()) {
             // set background colour / button colour
@@ -151,6 +152,32 @@ public class PersonCard extends UiPart<Region> {
         } else {
             this.remark.setText(null);
             this.remark.setVisible(false);
+        }
+    }
+
+    // credits for this method goes to https://stackoverflow.com/questions/32781362/centering-an-image-in-an-imageview
+    private void centerImage(ImageView imageView) {
+        Image img = imageView.getImage();
+        if (img != null) {
+            double w = 0;
+            double h = 0;
+
+            double ratioX = imageView.getFitWidth() / img.getWidth();
+            double ratioY = imageView.getFitHeight() / img.getHeight();
+
+            double reducCoeff = 0;
+            if (ratioX >= ratioY) {
+                reducCoeff = ratioY;
+            } else {
+                reducCoeff = ratioX;
+            }
+
+            w = img.getWidth() * reducCoeff;
+            h = img.getHeight() * reducCoeff;
+
+            imageView.setX((imageView.getFitWidth() - w) / 2);
+            imageView.setY((imageView.getFitHeight() - h) / 2);
+
         }
     }
 
