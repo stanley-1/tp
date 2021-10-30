@@ -26,6 +26,10 @@ public class PersonCardHandle extends NodeHandle<Node> {
     private final Label emailLabel;
     private final List<Label> tagLabels;
 
+    /**
+     * Creates the card handle with relevant field ids.
+     */
+
     public PersonCardHandle(Node cardNode) {
         super(cardNode);
 

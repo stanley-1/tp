@@ -1,13 +1,13 @@
 package socialite.logic.commands;
 
+import java.io.File;
+
 import static socialite.logic.commands.CommandTestUtil.assertCommandFailure;
 import static socialite.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static socialite.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static socialite.testutil.TypicalPersons.getTypicalAddressBook;
 
 import org.junit.jupiter.api.Test;
-
-import java.io.File;
 
 import socialite.commons.core.Messages;
 import socialite.commons.core.index.Index;
