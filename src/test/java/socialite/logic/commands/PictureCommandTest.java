@@ -7,16 +7,15 @@ import static socialite.testutil.TypicalPersons.getTypicalAddressBook;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
 import socialite.commons.core.Messages;
 import socialite.commons.core.index.Index;
-
 import socialite.model.CommandHistory;
 import socialite.model.Model;
 import socialite.model.ModelManager;
 import socialite.model.UserPrefs;
 
-
-import java.io.File;
 
 public class PictureCommandTest {
 
