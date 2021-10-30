@@ -61,6 +61,10 @@ dependencies {
     implementation group: 'org.openjfx', name: 'javafx-graphics', version: javaFxVersion, classifier: 'mac'
     implementation group: 'org.openjfx', name: 'javafx-graphics', version: javaFxVersion, classifier: 'linux'
 
+    implementation group: 'org.openjfx', name: 'javafx-web', version: '13.0.1', classifier: 'win'
+    implementation group: 'org.openjfx', name: 'javafx-web', version: '13.0.1', classifier: 'mac'
+    implementation group: 'org.openjfx', name: 'javafx-web', version: '13.0.1', classifier: 'linux'
+
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.7.0'
     implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.7.4'
 
