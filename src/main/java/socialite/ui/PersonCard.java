@@ -143,7 +143,6 @@ public class PersonCard extends UiPart<Region> {
         this.renderDates(person.getDates());
     }
 
-
     private void makeRemark(Remark remark) {
         String value = remark.get();
         if (value != null && !value.equals("")) {
