@@ -25,6 +25,8 @@ Do have a look at our Table of Contents to locate the help you need!
         4. Add / Edit social media handles for existing contacts: `edit INDEX [p/PLATFORM]`
         5. Query contacts based on social media platform: `find p/PLATFORM`
         6. Sharing a contact card: `share`
+        7. Pinning a contact card: `pin`
+        8. Unpinning a contact card: `unpin`
     3. [Customisation Tools](#customisation)
        1. Adding remarks about a specific contact: `remark`
        2. Adding/ Changing a profile picture: `picture INDEX`
@@ -46,15 +48,12 @@ Do have a look at our Table of Contents to locate the help you need!
 ## Quick Start <a name="quick_start"></a>
 
 1. Ensure you have `Java 11` or above installed on your Computer.
-   If you don't have `Java 11`, simply click [here](https://www.oracle.com/java/technologies/downloads/) to download the latest Java Development Kit.
-
+   If you already have `Java` installed, you might want to type in `java -version` in your command window to ensure you are running on the correct version of `Java`!
+   If you don't have `Java 11`, simply click [here](https://www.oracle.com/java/technologies/downloads/), and navigate to the "Java SE Development Kit 11.*.**" section to download the latest Java Development Kit.
 2. Download the latest `socialite.jar` from [here](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases).
-
 3. Copy the file to the folder you want to use as the _home folder_ for your SociaLite.
-
-4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+4. Double-click the file to start the app. SociaLite should start in a few seconds! The app contains some sample data for you to experiment with to get familiar with the commands.<br>
    ![Ui](images/UpdatedUI.png)
-
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Here are some sample commands to get you started with SociaLite:
 
@@ -71,7 +70,6 @@ Do have a look at our Table of Contents to locate the help you need!
    * **`clear`** : Deletes all contacts. You will find this handy when deleting the sample contacts stored on SociaLite.
 
    * **`exit`** : Exits the app.
-
 6. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -305,9 +303,9 @@ Examples:
 
 ### Sharing a contact card: `share`
 
-Copies the contact card of the specified person to the system clipboard. User can paste the plain text in an email/text message and forward the contact card to others thereafter.
+Copies the contact card of the specified person to the system clipboard. The user can paste the plain text in an email or text message and forward the contact card to others thereafter.
 
-Alternatively, clicking on the "Share" button at the top-right hand corner of the specific contact card will also copy the contact card to the system clipboard.
+Alternatively, the user can click on the "Share" button at the top-right hand corner of the contact card that he/she would like to share instead of entering the command.
 
 Format: `share INDEX`
 
@@ -319,6 +317,46 @@ Examples:
 
 * `list` followed by `share 2` copies the information of the second contact in the list displayed by SociaLite.
 * Clicking on the "Share" button of Annie Baker's name card copies her contact information.
+
+<br>
+
+### Pinning a contact card: `pin`
+
+Affixes the contact card of the specified person onto the top of the person list. Pinned contact cards will be alphabetically ordered.
+
+Alternatively, the user can click on the "Pin" button at the top-right hand corner of the contact card that he/she would like to pin instead of entering the command.
+
+Format: `pin INDEX`
+
+* Pins the contact card of the person at the specified `INDEX` at the top of the person list.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, ...
+* The contact card must **not** be previously pinned.
+
+Examples:
+
+* Provided no contact card has been pinned yet, `list` followed by `pin 3` places the third contact in the list displayed by SociaLite at the top of the person list along with other pinned contacts.
+* Clicking on the "Pin" button of Annie Baker's name card affixes her contact card onto the top of the person list.
+
+<br>
+
+### Unpinning a contact card: `unpin`
+
+Removes the contact card of the specified person from the top of the person list.
+
+Alternatively, the user can click on the "Unpin" button at the top-right hand corner of the contact card that he/she would like to unpin instead of entering the command.
+
+Format: `unpin INDEX`
+
+* Unpins the contact card of the person at the specified `INDEX` at the top of the person list.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, ...
+* The contact card must be previously pinned.
+
+Examples:
+
+* Provided the first 4 contact cards are the pinned contact cards, `list` followed by `unpin 2` unpins the second contact in the list displayed by SociaLite.
+* Clicking on the "Unpin" button of Charlie Decker's name unpins his contact card if it was previously pinned.
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -355,8 +393,7 @@ Format: `picture INDEX`
 Examples:
 * `list` followed by `picture 1` opens the file browser to let you choose a picture to add to Annie Baker’s
   listing in the app.
-* `find Charlie` followed by `picture 1` opens the file browser to let you choose a picture to add to Charlie Decker’s
-  listing in the app.
+* `find Charlie` followed by `picture 1` opens the file browser to let you choose a picture to add to Charlie Decker’s listing in the app.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -390,6 +427,10 @@ Examples:
 Removes all contacts in the app.
 
 Format: `clear`
+
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+Please be mindful that entering this command will wipe out all your contacts stored in SociaLite!
+</div>
 
 <br>
 
@@ -441,6 +482,8 @@ Action | Format, Examples
 **Add / Edit Social Media Handles** | `edit INDEX [p/PLATFORM]` <br> e.g., `edit 1 fb/Alv1n.y`
 **Query Contacts via Platform** | `find p/PLATFORM` <br> e.g., `find p/facebook`
 **Share Contact** | `share INDEX` <br> e.g. `share 2`
+**Pin Contact** | `pin INDEX`<br />e.g. `pin 4` 
+**Unpin Contact** | `unpin INDEX`<br>e.g. `unpin 1` 
 **Add Remark** | `remark INDEX r/[TEXT]` <br> e.g., `remark 1 r/Likes to swim`
 **Add/ Change Profile Picture** | `picture INDEX`
 **View Help** | `help`
