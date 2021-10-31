@@ -27,7 +27,7 @@ Do have a look at our Table of Contents to locate the help you need!
         6. Sharing a contact card: `share`
     3. [Customisation Tools](#customisation)
        1. Adding remarks about a specific contact: `remark`
-       2. Adding a profile picture: `picture`
+       2. Adding/ Changing a profile picture: `picture INDEX`
     4. [Help Guide and Exiting](#help_guide)
        1. Viewing help: `help`
        2. Viewing in-app guidance: `help COMMAND`
@@ -343,8 +343,8 @@ Examples:
 
 <br>
 
-### Adding a profile picture: `picture`
-Adds a profile picture to an existing contact.
+### Adding/ Changing a profile picture: `picture`
+Adds a profile picture to an existing contact or changes the existing profile picture if available.
 
 Format: `picture INDEX`
 * Opens file browser allowing you to choose any .jpg or .png file as the profile picture.
@@ -442,7 +442,7 @@ Action | Format, Examples
 **Query Contacts via Platform** | `find p/PLATFORM` <br> e.g., `find p/facebook`
 **Share Contact** | `share INDEX` <br> e.g. `share 2`
 **Add Remark** | `remark INDEX r/[TEXT]` <br> e.g., `remark 1 r/Likes to swim`
-**Add Profile Picture** | `picture`
+**Add/ Change Profile Picture** | `picture INDEX`
 **View Help** | `help`
 **View In-App Guidance** | `help COMMAND` <br> e.g., `help add`
 **Remove All Data** | `clear`
