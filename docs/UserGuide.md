@@ -107,6 +107,7 @@ Do have a look at our Table of Contents to locate the help you need!
 HELLO THERE THIS IS A TEST MESSAGE
 
 </div>
+This is another message
 </div>
 
 --------------------------------------------------------------------------------------------------------------------
