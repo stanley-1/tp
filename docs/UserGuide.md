@@ -75,18 +75,16 @@ As you explore the features that SociaLite has to offer, look out for these boxe
 This box tells you the acceptable fields that you can provide for a particular command:
 
 <div markdown="block" class="alert alert-primary">
-
 **:mag_right: Format:**
 `add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
-* Explanation 1
-* Explanation 2
-* ETC
+* Detail 1
+* Detail 2
+* Detail 3
 </div>
 
 If you still aren't sure of how a particular command works, this box shows you examples that you can try out:
 
 <div markdown="block" class="alert alert-success">
-
 **:heavy_check_mark: Example:** `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh date/birthday:2000-01-01:yearly`
 
 Add a new contact called "Alex Yeoh" with phone number "87438807" to SociaLite.
@@ -94,7 +92,36 @@ Add a new contact called "Alex Yeoh" with phone number "87438807" to SociaLite.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Basic Functionality <a name="basic_functionality"></a>
+## Commands <a name="commands"></a>
+
+This section provides you with comprehensive details of all the commands available on SociaLite. 
+Simply click on any command below to learn more about it!
+
+| `COMMAND` | Description |
+| --------- | ----------- |
+| [`add`](#add) | Add a contact |
+| [`list`](#list) | List all contacts |
+| [`CLICK`](#click) | Access a contact's social media page |
+| [`↑`/`↓`](#scroll) | Track history of commands |
+| [`edit`](#edit) | Edit a contact |
+| [`edit INDEX [t/TAG]`](#edit_tag) | Create / Edit tags for existing contacts |
+| [`edit INDEX t/`](#delete_tag) | Delete all tags from a contact |
+| [`edit INDEX [p/PLATFORM]`](#edit_platform) | Modify social media handles for a contact |
+| [`edit INDEX [date/NAME:YYYY-MM-DD[:monthly/:yearly]]...`](#edit_dates) | Modify dates for a contact |
+| [`delete`](#delete) | Delete a contact |
+| [`clear`](#clear) | Delete all contacts |
+| [`find`](#find) | Find a contact by name |
+| [`find t/TAG`](#find_tag) | Find a contact through associated tags |
+| [`find p/PLATFORM`](#find_platform) | Find a contact through associated social media platforms |
+| [`picture`](#picture) | Modify profile picture of a contact |
+| [`share`](#share) | Copy contact information to system clipboard |
+| [`pin`](#pin) | Pin contact card on the top of the person list |
+| [`unpin`](#unpin) | Unpin contact card from the top of the person list |
+| [`remark`](#remark) | Add special notes about a contact |
+| [`help`](#help) | Access User Guide |
+| [`help COMMAND`](#help_command) | Access in-app guidance for selected commands |
+| [`exit`](#exit) | Exit the program |
+
 
 ### Adding a person: `add`
 
@@ -185,15 +212,15 @@ Examples:
 
 <br>
 
-### Track history of commands: `UP/DOWN` keys
+### Track history of commands: `↑` or `↓` arrow keys
 
-Scroll through your history of commands using the `UP` or `DOWN` keys.
+Scroll through your history of commands using the `↑` or `↓` arrow keys.
 
-Format: `UP` or `DOWN`
+Format: `↑` or `↓`
 
 Examples:
-* `UP` backtracks to the previous command provided as input.
-* `DOWN` advances to subsequent commands stored in history.
+* `↑` backtracks to the previous command provided as input.
+* `↓` advances to subsequent commands stored in history.
 
 --------------------------------------------------------------------------------------------------------------------
 
