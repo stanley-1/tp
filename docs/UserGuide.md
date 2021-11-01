@@ -115,7 +115,7 @@ This is another message
 </div>
 <div markdown="1" class="w-200">
 ```text
-add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]
+add
 ```
 
 <div class="d-flex alert alert-success">
