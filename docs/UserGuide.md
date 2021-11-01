@@ -87,7 +87,7 @@ If you still aren't sure of how a particular command works, this box shows you e
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh date/birthday:2000-01-01:yearly`
 
-Add a new contact called "Alex Yeoh" with phone number "87438807" to SociaLite.
+Adds a new contact called "Alex Yeoh" with phone number "87438807" to SociaLite.
 </div>
 
 --------------------------------------------------------------------------------------------------------------------
@@ -107,7 +107,7 @@ Simply click on any command below to learn more about it!
 | [`edit INDEX [t/TAG]`](#edit_tag) | Create / Edit tags for existing contacts |
 | [`edit INDEX t/`](#delete_tag) | Delete all tags from a contact |
 | [`edit INDEX [p/PLATFORM]`](#edit_platform) | Modify social media handles for a contact |
-| [`edit INDEX [date/NAME:YYYY-MM-DD[:monthly/:yearly]]...`](#edit_dates) | Modify dates for a contact |
+| [`edit INDEX [date/NAME:YYYY-MM-DD[:monthly/:yearly]]…​`](#edit_dates) | Modify dates for a contact |
 | [`delete`](#delete) | Delete a contact |
 | [`clear`](#clear) | Delete all contacts |
 | [`find`](#find) | Find a contact by name |
@@ -127,15 +127,23 @@ Simply click on any command below to learn more about it!
 
 Adds a person to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
-
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-A person can have any number of tags and dates (including 0).
+<div markdown="block" class="alert alert-primary">
+**:mag_right: Format:**
+`add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
+* A person can have any number of tags and dates (including 0).
 </div>
 
-Examples:
-* `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh date/birthday:2000-01-01:yearly`
-* `add n/Charlotte Oliveiro p/93210284 t/neighbours fb/charlotte.oli tele/olichar twitter/charolive date/wedding anniversary:2020-01-01:yearly`
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh date/birthday:2000-01-01:yearly`
+
+Adds a new contact called "Alex Yeoh" with phone number "87438807" to SociaLite.
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `add n/Charlotte Oliveiro p/93210284 t/neighbours fb/charlotte.oli tele/olichar twitter/charolive date/wedding anniversary:2020-01-01:yearly`
+
+Adds a new contact called "Charlotte Oliveiro" with phone number "93210284" to SociaLite.
+</div>
 
 <br>
 
@@ -455,21 +463,6 @@ Exits the program.
 Format: `exit`
 
 <br>
-
---------------------------------------------------------------------------------------------------------------------
-
-## Organisation of Contacts <a name="organisation"></a>
-
-
-
-
-
-
-
-
-
-
-
 
 --------------------------------------------------------------------------------------------------------------------
 
