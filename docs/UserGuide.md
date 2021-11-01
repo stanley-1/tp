@@ -109,6 +109,8 @@ HELLO THERE THIS IS A TEST MESSAGE
 This is another message
 </div>
 
+<div class="d-flex p-2 bd-highlight">I'm a flexbox container!</div>
+
 <div class="accordion" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
