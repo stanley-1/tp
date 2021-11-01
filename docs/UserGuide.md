@@ -123,7 +123,7 @@ Simply click on any command below to learn more about it!
 | [`exit`](#exit) | Exit the program |
 
 
-### Adding a person: `add`
+### Add a person: `add`
 
 Adds a person to the address book.
 
@@ -147,7 +147,7 @@ Adds a new contact called "Charlotte Oliveiro" with phone number "93210284" to S
 
 <br>
 
-### Listing all persons : `list`
+### List all persons : `list`
 
 Shows a list of all persons in the address book.
 
@@ -155,7 +155,7 @@ Format: `list`
 
 <br>
 
-### Accessing a contact's social media page
+### Access a contact's social media page
 
 Clicking on a contact's social media handle will immediately launch the user's default browser and open the contact's social media profile.
 
@@ -176,7 +176,7 @@ Examples:
 
 <br>
 
-### Editing a person : `edit`
+### Edit a person : `edit`
 
 Edits an existing person in the address book.
 
@@ -269,7 +269,7 @@ Examples:
 
 <br>
 
-### Deleting a person : `delete`
+### Delete a person : `delete`
 
 Deletes the specified person from the address book.
 
@@ -297,7 +297,7 @@ Please be mindful that entering this command will wipe out all your contacts sto
 
 <br>
 
-### Locating persons by name: `find`
+### Locate contacts by name: `find`
 
 Finds persons whose names contain any of the given keywords.
 
@@ -341,7 +341,7 @@ Examples:
 
 <br>
 
-### Adding/ Changing a profile picture: `picture`
+### Add / Change a profile picture: `picture`
 
 Adds a profile picture to an existing contact or changes the existing profile picture if available.
 
@@ -358,7 +358,7 @@ Examples:
 
 <br>
 
-### Sharing a contact card: `share`
+### Share a contact card: `share`
 
 Copies the contact card of the specified person to the system clipboard. The user can paste the plain text in an email or text message and forward the contact card to others thereafter.
 
@@ -377,7 +377,7 @@ Examples:
 
 <br>
 
-### Pinning a contact card: `pin`
+### Pin a contact card: `pin`
 
 Affixes the contact card of the specified person onto the top of the person list. Pinned contact cards will be alphabetically ordered.
 
@@ -397,7 +397,7 @@ Examples:
 
 <br>
 
-### Unpinning a contact card: `unpin`
+### Unpin a contact card: `unpin`
 
 Removes the contact card of the specified person from the top of the person list.
 
@@ -417,7 +417,7 @@ Examples:
 
 <br>
 
-### Adding remarks about a specific contact: `remark`
+### Add remarks about a specific contact: `remark`
 
 Adds special notes about a contact.
 
@@ -432,7 +432,7 @@ Examples:
 
 <br>
 
-### Viewing help: `help`
+### View help: `help`
 Shows a message explaining how to access the User Guide or obtain in-app guidance for selected commands.
 
 Format: `help`
@@ -441,7 +441,7 @@ Format: `help`
 
 <br>
 
-### Viewing in-app guidance: `help COMMAND`
+### View in-app guidance: `help COMMAND`
 
 Displays concise instructions for users to learn the given `COMMAND`'s function.
 
@@ -456,7 +456,7 @@ Examples:
 
 <br>
 
-### Exiting the program : `exit`
+### Exit the program : `exit`
 
 Exits the program.
 
