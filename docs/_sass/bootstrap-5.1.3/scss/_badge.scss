@@ -32,8 +32,8 @@
   badge-color: $dark;
 }
 
-// @each $color, $value in $theme-colors {
-//   .badge-#{$color} {
-//     @include bg-variant($value);
-//   }
-// }
+@each $color, $value in $theme-colors {
+  .badge-#{$color} {
+    @include bg-variant($value);
+  }
+}

@@ -109,7 +109,7 @@ HELLO THERE THIS IS A TEST MESSAGE
 This is another message
 </div>
 
-<div class="d-flex alert alert-info">
+<div class="d-flex alert alert-info pb-0">
 <div class="mr-3">
     <span class="badge badge-dark">FORMAT</span>
 </div>
@@ -118,7 +118,7 @@ This is another message
 add
 ```
 
-<div class="d-flex alert alert-danger">
+<div class="d-flex alert alert-danger pb-0">
 <div class="mr-3">
     <span class="badge badge-dark">EXAMPLE</span>
 </div>
