@@ -9,11 +9,33 @@ Simply follow the path that corresponds to your needs.
 
 | I am a...      | Instructions                                                             |
 | -------------- | ------------------------------------------------------------------------ |
-| new user       | View our Quick Start guide to set up SociaLite and try out the features. |
-| returning user | Jump straight to our Commands section to recall how our features work!   |
+| new user       | View our [Quick Start](#quick_start) guide to set up SociaLite and try out the features. |
+| returning user | Jump straight to our [Commands](#commands) section to recall how our features work!   |
 
 
 --------------------------------------------------------------------------------------------------------------------
+## Navigation Menu
+
+<div markdown="span" class="alert alert-warning">**[Quick Start](#quick_start)**<br>
+This section teaches you how to install **SociaLite** and includes sample commands for you to try out.
+</div>
+
+<div markdown="span" class="alert alert-warning">**[Standard Notations](#standard_notations)**<br>
+This section teaches you how to interpret instructions in this User Guide.
+</div>
+
+<div markdown="span" class="alert alert-warning">**[Commands](#commands)**<br>
+This section gives you comprehensive details of all the commands on SociaLite.
+</div>
+
+<div markdown="span" class="alert alert-warning">**[FAQ](#faq)**<br>
+This section answers frequently asked questions about SociaLite.
+</div>
+
+<div markdown="span" class="alert alert-warning">**[Command Summary](#summary)**<br>
+This section contains a glossary of all the commands and quick examples for reference.
+</div>
+
 
 ## Quick Start <a name="quick_start"></a>
 
@@ -40,11 +62,11 @@ Simply follow the path that corresponds to your needs.
    * **`clear`** : Deletes all contacts. You will find this handy when deleting the sample contacts stored on SociaLite.
 
    * **`exit`** : Exits the app.
-6. Refer to the [Features](#features) below for details of each command.
+6. Refer to the [Commands](#commands) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Standard Notations <a name="features"></a> 
+## Standard Notations <a name="standard_notations"></a> 
 
 <div markdown="block" class="alert alert-info">
 
@@ -123,7 +145,7 @@ Simply click on any command below to learn more about it!
 | [`exit`](#exit) | Exit the program |
 
 
-### Add a person: `add`
+### Add a person: `add` <a name="add"></a>
 
 Adds a person to the address book.
 
@@ -147,7 +169,7 @@ Adds a new contact called "Charlotte Oliveiro" with phone number "93210284" to S
 
 <br>
 
-### List all persons : `list`
+### List all persons : `list` <a name="list"></a>
 
 Shows a list of all persons in the address book.
 
@@ -158,7 +180,7 @@ Shows a list of all persons in the address book.
 
 <br>
 
-### Access a contact's social media page
+### Access a contact's social media page <a name="click"></a>
 
 Clicking on a contact's social media handle will immediately launch the user's default browser and open the contact's social media profile.
 
@@ -170,7 +192,7 @@ Clicking on `@tan.david` launches the user's default browser and brings the user
 
 <br>
 
-### Track history of commands: `↑` or `↓` arrow keys
+### Track history of commands: `↑` or `↓` arrow keys <a name="scroll"></a>
 
 Scroll through your history of commands using the `↑` or `↓` arrow keys.
 
@@ -191,7 +213,7 @@ Scroll through your history of commands using the `↑` or `↓` arrow keys.
 
 <br>
 
-### Edit a person : `edit`
+### Edit a person : `edit` <a name="edit"></a>
 
 Edits an existing person in the address book.
 
@@ -225,7 +247,7 @@ Edits the name of the 2nd person to be `Betsy Crower` and clears all existing ta
 
 <br>
 
-### Create / Edit tags for existing contacts: `edit INDEX [t/TAG]...`
+### Create / Edit tags for existing contacts: `edit INDEX [t/TAG]...` <a name="edit_tag"></a>
 
 Modifies tags that are associated with existing contacts in the address book.
 
@@ -252,7 +274,7 @@ Creates tags called `friend` and `neighbour` for the second person in the addres
 
 <br>
 
-### Delete tags associated with contacts: `edit INDEX t/`
+### Delete tags associated with contacts: `edit INDEX t/` <a name="delete_tag"></a>
 
 Deletes tags that are associated with contacts in the address book.
 
@@ -272,7 +294,7 @@ Deletes all tags associated with the 2nd person in the address book.
 
 <br>
 
-### Add / Edit social media handles for existing contacts: `edit INDEX [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
+### Add / Edit social media handles for existing contacts: `edit INDEX [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]` <a name="edit_platform"></a>
 
 Modifies social media handles that are associated with existing contacts in the address book.
 
@@ -302,7 +324,7 @@ Adds the Telegram handle called `alv_1_N` to the first person in the displayed p
 
 <br>
 
-### Add / Edit dates of occasions associated with contacts: `edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​`
+### Add / Edit dates of occasions associated with contacts: `edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​` <a name="edit_dates"></a>
 
 Adds / Edits dates of occasions (birthdays, appointments) associated with a contact.
 
@@ -334,7 +356,7 @@ Adds the event “Lunch Appointment” which falls on 10 Oct 2021 to Annie Baker
 
 <br>
 
-### Delete a person : `delete`
+### Delete a person : `delete` <a name="delete"></a>
 
 Deletes the specified person from the address book.
 
@@ -360,7 +382,7 @@ Deletes the 1st person in the results of the `find` command.
 
 <br>
 
-### Remove all data: `clear`
+### Remove all data: `clear` <a name="clear"></a>
 
 Removes all contacts in the app.
 
@@ -375,7 +397,7 @@ Please be mindful that entering this command will wipe out all your contacts sto
 
 <br>
 
-### Locate contacts by name: `find`
+### Locate contacts by name: `find` <a name="find"></a>
 
 Finds persons whose names contain any of the given keywords.
 
@@ -397,7 +419,7 @@ Returns `David Li` and `David Tan` <br>
 
 <br>
 
-### Query contacts based on tags: `find t/TAG`
+### Query contacts based on tags: `find t/TAG` <a name="find_tag"></a>
 
 Displays the contacts that are associated with a particular tag.
 
@@ -422,7 +444,7 @@ Checks all contacts in the address book which the user categorizes as “work”
 
 <br>
 
-### Query contacts based on social media platform: `find p/PLATFORM`
+### Query contacts based on social media platform: `find p/PLATFORM` <a name="find_platform"></a>
 
 Show all contacts with their handles on the particular social media platform.
 
@@ -446,7 +468,7 @@ Returns all contacts who have a Twitter handle pegged with them.
 
 <br>
 
-### Add / Change a profile picture: `picture`
+### Add / Change a profile picture: `picture` <a name="picture"></a>
 
 Adds a profile picture to an existing contact or changes the existing profile picture if available.
 
@@ -473,7 +495,7 @@ Opens the file browser to let you choose a picture to add to Charlie Decker’s 
 
 <br>
 
-### Share a contact card: `share`
+### Share a contact card: `share` <a name="share"></a>
 
 Copies the contact card of the specified person to the system clipboard. The user can paste the plain text in an email or text message and forward the contact card to others thereafter.
 
@@ -499,7 +521,7 @@ Copies the information of the second contact in the list displayed by SociaLite.
 
 <br>
 
-### Pin a contact card: `pin`
+### Pin a contact card: `pin` <a name="pin"></a>
 
 Affixes the contact card of the specified person onto the top of the person list. Pinned contact cards will be alphabetically ordered.
 
@@ -527,7 +549,7 @@ SociaLite, at the top  of the person list along with other pinned contacts.
 
 <br>
 
-### Unpin a contact card: `unpin`
+### Unpin a contact card: `unpin` <a name="unpin"></a>
 
 Removes the contact card of the specified person from the top of the person list.
 
@@ -554,7 +576,7 @@ Provided the first 4 contact cards are the pinned contact cards, the above comma
 
 <br>
 
-### Add remarks about a specific contact: `remark`
+### Add remarks about a specific contact: `remark` <a name="remark"></a>
 
 Adds special notes about a contact.
 
@@ -580,7 +602,7 @@ Adds the remark “Loves peas” to Annie Baker’s listing in the app.
 
 <br>
 
-### View help: `help`
+### View help: `help` <a name="help"></a>
 
 Shows a message explaining how to access the User Guide or obtain in-app guidance for selected commands.
 
@@ -592,7 +614,7 @@ Shows a message explaining how to access the User Guide or obtain in-app guidanc
 
 <br>
 
-### View in-app guidance: `help COMMAND`
+### View in-app guidance: `help COMMAND` <a name="help_command"></a>
 
 Displays concise instructions for users to learn the given `COMMAND`'s function.
 
@@ -617,7 +639,7 @@ Displays a concise guide on how to use the `edit` command.
 
 <br>
 
-### Exit the program : `exit`
+### Exit the program : `exit` <a name="exit"></a>
 
 Exits the program.
 
@@ -627,34 +649,6 @@ Exits the program.
 </div>
 
 <br>
-
---------------------------------------------------------------------------------------------------------------------
-
-## Customisation Tools <a name="customisation"></a>
-For the purpose of illustrating examples in this section, assume that the following contacts exist within the user’s app:
-1. Annie Baker
-2. Charlie Decker
-
-
-
-
---------------------------------------------------------------------------------------------------------------------
-
-## Help Guide & Exiting <a name="help_guide"></a>
-
-
-
-### Saving the data
-
-SociaLite data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
-<br>
-
-### Editing the data file
-
-SociaLite data are saved as a JSON file `[JAR file location]/data/SociaLite.json`. Advanced users are welcome to update data directly by editing that data file.
-
-
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -674,28 +668,29 @@ If your changes to the data file makes its format invalid, SociaLite will discar
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Command summary <a name="summary"></a>
+## Command Summary <a name="summary"></a>
 
 Action | Format, Examples
 --------|------------------
 **Add** | `add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]` <br> e.g., `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh`
 **List** | `list`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE] [r/REMARK] [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]` <br> e.g., `edit 1 p/91234567 fb/Yalex19`
-**Find Contact** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **Access Social Media Page** | Click on social media handle
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Track History** | `UP` or `DOWN` arrow keys
+**Edit** | `edit INDEX [n/NAME] [p/PHONE] [r/REMARK] [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]` <br> e.g., `edit 1 p/91234567 fb/Yalex19`
 **Create / Edit Categories** | `edit INDEX [t/TAG]...` <br> e.g., `edit 1 t/Friends`
-**Query Category** | `find t/TAG` <br> e.g., `find t/Friends`
 **Delete Category** | `edit INDEX t/`
 **Add / Edit Social Media Handles** | `edit INDEX [p/PLATFORM]` <br> e.g., `edit 1 fb/Alv1n.y`
+**Add / Edit Dates** | `edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​` <br> e.g., `edit 1 date/Meeting:2021-09-14`
+**Delete** | `delete INDEX`<br> e.g., `delete 3`
+**Remove All Data** | `clear`
+**Find Contact** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Query Category** | `find t/TAG` <br> e.g., `find t/Friends`
 **Query Contacts via Platform** | `find p/PLATFORM` <br> e.g., `find p/facebook`
+**Add/ Change Profile Picture** | `picture INDEX`
 **Share Contact** | `share INDEX` <br> e.g. `share 2`
 **Pin Contact** | `pin INDEX`<br />e.g. `pin 4` 
-**Unpin Contact** | `unpin INDEX`<br>e.g. `unpin 1` 
+**Unpin Contact** | `unpin INDEX`<br>e.g. `unpin 1`
 **Add Remark** | `remark INDEX r/[TEXT]` <br> e.g., `remark 1 r/Likes to swim`
-**Add/ Change Profile Picture** | `picture INDEX`
 **View Help** | `help`
 **View In-App Guidance** | `help COMMAND` <br> e.g., `help add`
-**Remove All Data** | `clear`
 **Exit** | `exit`
