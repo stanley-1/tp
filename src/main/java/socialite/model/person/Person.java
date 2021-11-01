@@ -257,4 +257,15 @@ public class Person {
         return builder.toString();
     }
 
+    /**
+     * creates a copy of this person, with the same fields
+     * @return copy of the person
+     */
+    public Person copy() {
+        Person copy = new Person(
+                this.name, this.phone, this.remark, this.tags, this.facebook, this.instagram, this.telegram,
+                this.tiktok, this.twitter, this.dates);
+        copy.setProfilePicture(this.profilePicture.value);
+        return copy;
+    }
 }

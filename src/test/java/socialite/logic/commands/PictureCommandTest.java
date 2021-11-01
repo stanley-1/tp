@@ -29,25 +29,26 @@ public class PictureCommandTest {
     @Test
     public void execute_validIndexUnfilteredList_success() {
         Person personToAddPic = model.getFilteredPersonList().get(TypicalIndexes.INDEX_FIRST_PERSON.getZeroBased());
-        PictureCommand pictureCommand = new PictureCommand(TypicalIndexes.INDEX_FIRST_PERSON, false, acceptedFile);
+        PictureCommand pictureCommand = new PictureCommand(
+                TypicalIndexes.INDEX_FIRST_PERSON, false, acceptedFile);
         Person personWithPic = pictureCommand.addPicToPerson(personToAddPic, acceptedFile, model);
 
         String expectedMessage = String.format(PictureCommand.MESSAGE_PICTURE_PERSON_SUCCESS, personToAddPic);
 
         ModelManager expectedModel = new ModelManager(
                 model.getAddressBook(), new UserPrefs(), new CommandHistory());
-        expectedModel.setPerson(personToAddPic, personWithPic);
+        expectedModel.setPerson(model.getFilteredPersonList().get(0), personWithPic);
 
         CommandTestUtil.assertCommandSuccess(pictureCommand, model, expectedMessage, expectedModel);
     }
 
-    // using without the null in PictureCommand constructor the test causes Remark tests to fail for some reason
     @Test
     public void execute_invalidIndexUnfilteredListWithoutGui_throwsCommandException() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         PictureCommand pictureCommand = new PictureCommand(outOfBoundIndex, false, null);
 
-        CommandTestUtil.assertCommandFailure(pictureCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        CommandTestUtil.assertCommandFailure(
+                pictureCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
 
     // tests that index out of bounds is caught before fileChooser is shown
@@ -63,8 +64,10 @@ public class PictureCommandTest {
     public void execute_validIndexFilteredList_success() {
         CommandTestUtil.showPersonAtIndex(model, TypicalIndexes.INDEX_FIRST_PERSON);
 
-        Person personToAddPicture = model.getFilteredPersonList().get(TypicalIndexes.INDEX_FIRST_PERSON.getZeroBased());
-        PictureCommand pictureCommand = new PictureCommand(TypicalIndexes.INDEX_FIRST_PERSON, false, acceptedFile);
+        Person personToAddPicture = model.getFilteredPersonList().get(
+                TypicalIndexes.INDEX_FIRST_PERSON.getZeroBased());
+        PictureCommand pictureCommand = new PictureCommand(
+                TypicalIndexes.INDEX_FIRST_PERSON, false, acceptedFile);
         Person personWithPicture = pictureCommand.addPicToPerson(personToAddPicture, acceptedFile, model);
 
         String expectedMessage = String.format(PictureCommand.MESSAGE_PICTURE_PERSON_SUCCESS, personToAddPicture);
