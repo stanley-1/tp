@@ -151,7 +151,10 @@ Adds a new contact called "Charlotte Oliveiro" with phone number "93210284" to S
 
 Shows a list of all persons in the address book.
 
-Format: `list`
+<div markdown="block" class="alert alert-primary">
+**:mag_right: Format:**
+`list`
+</div>
 
 <br>
 
@@ -159,8 +162,11 @@ Format: `list`
 
 Clicking on a contact's social media handle will immediately launch the user's default browser and open the contact's social media profile.
 
-Example:
-* Clicking on `@tan.david` will launch the user's default browser and bring the user to David Tan's Facebook page.
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** 
+Clicking on `@tan.david` launches the user's default browser and brings the user to David Tan's Facebook page.
+
+</div>
 
 <br>
 
@@ -168,11 +174,20 @@ Example:
 
 Scroll through your history of commands using the `↑` or `↓` arrow keys.
 
-Format: `↑` or `↓`
+<div markdown="block" class="alert alert-primary">
+**:mag_right: Format:**
+`↑` or `↓`
+</div>
 
-Examples:
-* `↑` backtracks to the previous command provided as input.
-* `↓` advances to subsequent commands stored in history.
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `↑` backtracks to the previous command provided as input.
+
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `↓` advances to subsequent commands stored in history.
+
+</div>
 
 <br>
 
@@ -180,9 +195,11 @@ Examples:
 
 Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [r/REMARK] [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
-
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+<div markdown="block" class="alert alert-primary">
+**:mag_right: Format:**
+`edit INDEX [n/NAME] [p/PHONE] [r/REMARK] [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
+* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. 
+* The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Users can opt to change any fields associated with a contact as long as they prepend the argument with the corresponding flags according to the format above.
 * Existing values will be updated to the input values.
@@ -192,10 +209,19 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [r/REMARK] [t/TAG]…​ [date/NAME:YYYY-
 * When editing dates, all existing dates of the person will be removed i.e adding of dates is not cumulative.
 * You can remove all the person’s dates by typing `date/` without
   specifying any tags after it.
+</div>
 
-Examples:
-*  `edit 1 p/91234567 fb/Yalex19` Edits the phone number and Facebook handle of the 1st person to be `91234567` and `Yalex19` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `edit 1 p/91234567 fb/Yalex19` 
+
+Edits the phone number and Facebook handle of the 1st person to be `91234567` and `Yalex19` respectively.
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `edit 2 n/Betsy Crower t/`
+
+Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+</div>
 
 <br>
 
@@ -203,15 +229,26 @@ Examples:
 
 Modifies tags that are associated with existing contacts in the address book.
 
-Format: `edit INDEX [t/TAG]...`
+<div markdown="block" class="alert alert-primary">
+**:mag_right: Format:**
+`edit INDEX [t/TAG]...`
 * Adds new tags to persons who did not have tags associated with them when they were first added to SociaLite.
 * Deletes all existing tags for the person at the specified `INDEX` and replaces them with tags specified in `[t/TAG]...`
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
+</div>
 
-Examples:
-* `edit 1 t/family` Creates a tag called `family` for the first person in the address book.
-* `edit 2 t/friend t/neighbour` Creates tags called `friend` and `neighbour` for the second person in the address book.
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `edit 1 t/family`
+
+Creates a tag called `family` for the first person in the address book.
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `edit 2 t/friend t/neighbour`
+
+Creates tags called `friend` and `neighbour` for the second person in the address book.
+</div>
 
 <br>
 
@@ -219,13 +256,19 @@ Examples:
 
 Deletes tags that are associated with contacts in the address book.
 
-Format: `edit INDEX t/`
+<div markdown="block" class="alert alert-primary">
+**:mag_right: Format:**
+`edit INDEX t/`
 * Deletes all categories tagged to the person at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
+</div>
 
-Examples:
-* `edit 2 t/` Deletes all tags associated with the 2nd person in the address book.
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `edit 2 t/` 
+
+Deletes all tags associated with the 2nd person in the address book.
+</div>
 
 <br>
 
@@ -233,7 +276,9 @@ Examples:
 
 Modifies social media handles that are associated with existing contacts in the address book.
 
-Format: `edit INDEX [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
+<div markdown="block" class="alert alert-primary">
+**:mag_right: Format:**
+`edit INDEX [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
 * Adds a new handle for contacts who did not have that specific handle pegged with them when they were first added to SociaLite.
 * Replaces the handle for the person at the specified `INDEX` according to the flag and input provided.
 * The index refers to the index number shown in the displayed person list.
@@ -241,10 +286,19 @@ Format: `edit INDEX [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK]
 * The flag refers to any of the following: `fb/` `ig/` `tele/` `tiktok/` `twitter/`
 * User input after the given flag represents the new social media handle associated with the contact.
 * Only social media handles specified as input will be altered. Other social media handles remain unchanged.
+</div>
 
-Examples:
-* `edit 1 fb/alvin.chipmunk` Adds the Facebook handle `alvin.chipmunk` to the first person in the displayed person list.
-* `edit 1 tele/alv_1_N` Adds the Telegram handle tags called `alv_1_N` to the first person in the displayed person list. The Facebook handle that was previously added is unaffected.
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `edit 1 fb/alvin.chipmunk` 
+
+Adds the Facebook handle `alvin.chipmunk` to the first person in the displayed person list.
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `edit 1 tele/alv_1_N` 
+
+Adds the Telegram handle called `alv_1_N` to the first person in the displayed person list. The Facebook handle that was previously added is unaffected.
+</div>
 
 <br>
 
@@ -252,7 +306,9 @@ Examples:
 
 Adds / Edits dates of occasions (birthdays, appointments) associated with a contact.
 
-Format: `edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​`
+<div markdown="block" class="alert alert-primary">
+**:mag_right: Format:**
+`edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​`
 * Adds a date for the contact at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
@@ -262,10 +318,19 @@ Format: `edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​`
 * Each call of `edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​` will replace all previous dates.
 * Using the command `edit INDEX date/` will remove all dates from the user.
 * Upcoming dates (within 7 days) will be highlighted in the user interface.
+</div>
 
-Examples:
-* `list` followed by `edit 1 date/Meeting:2021-09-14` adds the event “Meeting” which falls on 14 Sep 2021, to Annie Baker’s listing in the app.
-* `find Annie` followed by `edit 1 date/Lunch Appointment:2021-10-10` adds the event “Lunch Appointment” which falls on 10 Oct 2021 to Annie Baker’s listing.
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `list` followed by `edit 1 date/Meeting:2021-09-14` 
+
+Adds the event “Meeting” which falls on 14 Sep 2021, to Annie Baker’s listing in the app.
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `find Annie` followed by `edit 1 date/Lunch Appointment:2021-10-10` 
+
+Adds the event “Lunch Appointment” which falls on 10 Oct 2021 to Annie Baker’s listing.
+</div>
 
 <br>
 
