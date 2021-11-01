@@ -109,7 +109,35 @@ HELLO THERE THIS IS A TEST MESSAGE
 This is another message
 </div>
 
-<div class="d-flex alert alert-info">I'm a FLEXBOX container!</div>
+<div class="d-flex alert alert-info">
+<div class="mr-3">
+    <span class="badge badge-dark">COMMAND</span>
+</div>
+<div markdown="1" class="w-100">
+```text
+add
+```
+
+<div class="d-flex alert alert-danger">
+<div class="mr-3">
+    <span class="badge badge-dark">Add John James to the directory.</span>
+</div>
+<div markdown="1" class="w-100">
+```text
+add n/John James p/91234567
+```
+Add John James to the directory.
+</div>
+</div>
+
+</div>
+</div>
+
+
+I'm a FLEXBOX container!</div>
+
+
+
 
 <div class="accordion" id="accordionExample">
   <div class="accordion-item">
