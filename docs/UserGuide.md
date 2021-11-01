@@ -118,7 +118,7 @@ This is another message
 add
 ```
 
-<div class="d-flex alert alert-danger">
+<div class="d-flex alert alert-success">
 <div class="mr-2">
     <span class="badge bg-black text-light">EXAMPLE</span>
 </div>
