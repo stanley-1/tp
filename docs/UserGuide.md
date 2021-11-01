@@ -177,8 +177,10 @@ A person can have any number of tags and dates (including 0).
 <div class="mr-2">
     <span class="badge bg-black text-light">EXAMPLE</span>
 </div>
-<div markdown="1">
-`add n/Charlotte Oliveiro p/93210284 t/neighbours fb/charlotte.oli tele/olichar twitter/charolive date/wedding anniversary:2020-01-01:yearly`
+<div markdown="span">
+```text
+add n/Charlotte Oliveiro p/93210284 t/neighbours fb/charlotte.oli tele/olichar twitter/charolive date/wedding anniversary:2020-01-01:yearly
+```
 </div>
 
 <br>
