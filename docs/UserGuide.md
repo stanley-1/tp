@@ -110,8 +110,8 @@ This is another message
 </div>
 
 <div class="d-flex alert alert-info pb-0">
-<div class="mr-3">
-    <span class="badge bg-dark">FORMAT</span>
+<div class="mr-2">
+    <span class="badge bg-dark text-light">FORMAT</span>
 </div>
 <div markdown="1" class="w-100">
 ```text
@@ -119,8 +119,8 @@ add
 ```
 
 <div class="d-flex alert alert-danger pb-0">
-<div class="mr-3">
-    <span class="badge bg-dark">EXAMPLE</span>
+<div class="mr-2">
+    <span class="badge bg-black text-light">EXAMPLE</span>
 </div>
 <div markdown="1" class="w-100">
 ```text
