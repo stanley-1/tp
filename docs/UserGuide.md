@@ -101,8 +101,8 @@ Do have a look at our Table of Contents to locate the help you need!
 </div>
 
 
-<div markdown="block" class="alert alert-info">
-<div markdown="block" class="alert alert-blue">
+<div markdown="block" class="alert">
+<div markdown="block" class="alert-blue">
 
 HELLO THERE THIS IS A TEST MESSAGE
 
