@@ -168,7 +168,7 @@ A person can have any number of tags and dates (including 0).
 <div class="mr-2">
     <span class="badge bg-dark text-light">FORMAT</span>
 </div>
-<div markdown="span" class="w-200 text-wrap">
+<div markdown="span" class="w-200" text-wrap>
 ```text
 add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]
 ```
@@ -177,7 +177,7 @@ add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]
 <div class="mr-2">
     <span class="badge bg-black text-light">EXAMPLE</span>
 </div>
-<div markdown="span" class="w-200 text-wrap">
+<div markdown="span" class="w-200">
 ```text
 add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh date/birthday:2000-01-01:yearly
 ```
@@ -189,7 +189,7 @@ Add a new contact called "Alex Yeoh" with phone number "87438807" to SociaLite.
 <div class="mr-2">
     <span class="badge bg-black text-light">EXAMPLE</span>
 </div>
-<div markdown="1" class="w-200 text-wrap">
+<div markdown="1" class="w-200">
 ```text
 add n/Charlotte Oliveiro p/93210284 t/neighbours fb/charlotte.oli tele/olichar twitter/charolive date/wedding anniversary:2020-01-01:yearly
 ```
