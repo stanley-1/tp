@@ -180,7 +180,7 @@ A person can have any number of tags and dates (including 0).
 <div markdown="span" class="w-200">
 `add n/Charlotte Oliveiro p/93210284 t/neighbours fb/charlotte.oli tele/olichar twitter/charolive date/wedding anniversary:2020-01-01:yearly`
 
-
+<br>
 Add a new contact called "Charlotte Oliveiro" with phone number "93210284" to SociaLite.
 </div>
 </div>
