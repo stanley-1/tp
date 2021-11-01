@@ -111,7 +111,7 @@ This is another message
 
 <div class="d-flex alert alert-info">
 <div class="mr-3">
-    <span class="badge badge-dark">COMMAND</span>
+    <span class="badge badge-dark">FORMAT</span>
 </div>
 <div markdown="1" class="w-100">
 ```text
@@ -120,21 +120,18 @@ add
 
 <div class="d-flex alert alert-danger">
 <div class="mr-3">
-    <span class="badge badge-dark">Add John James to the directory.</span>
+    <span class="badge badge-dark">EXAMPLE</span>
 </div>
 <div markdown="1" class="w-100">
 ```text
 add n/John James p/91234567
 ```
-Add John James to the directory.
+Add a new contact called "John James" with phone number "91234567" to SociaLite.
 </div>
 </div>
 
 </div>
 </div>
-
-
-I'm a FLEXBOX container!</div>
 
 
 
