@@ -338,15 +338,25 @@ Adds the event “Lunch Appointment” which falls on 10 Oct 2021 to Annie Baker
 
 Deletes the specified person from the address book.
 
-Format: `delete INDEX`
-
+<div markdown="block" class="alert alert-primary">
+**:mag_right: Format:**
+`delete INDEX`
 * Deletes the person at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
+</div>
 
-Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `list` followed by `delete 2` 
+
+Deletes the 2nd person in the address book.
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `find Betsy` followed by `delete 1` 
+
+Deletes the 1st person in the results of the `find` command.
+</div>
 
 <br>
 
@@ -354,7 +364,10 @@ Examples:
 
 Removes all contacts in the app.
 
-Format: `clear`
+<div markdown="block" class="alert alert-primary">
+**:mag_right: Format:**
+`clear`
+</div>
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
 Please be mindful that entering this command will wipe out all your contacts stored in SociaLite!
@@ -366,16 +379,21 @@ Please be mindful that entering this command will wipe out all your contacts sto
 
 Finds persons whose names contain any of the given keywords.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
-
+<div markdown="block" class="alert alert-primary">
+**:mag_right: Format:**
+`find KEYWORD [MORE_KEYWORDS]`
 * The search is case-insensitive. e.g `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only full words will be matched e.g. `Han` will not match `Hans`
+* Partial matches will be displayed as results as well. e.g. `Han` will match `Hans`
 * Only the name is searched when no flags are provided as input.
+</div>
 
-Examples:
-* `find david` returns `David Li` and `David Tan`
-* ![result for 'find david'](images/findDavidResult.png)
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `find david`
+
+Returns `David Li` and `David Tan` <br>
+![result for 'find david'](images/findDavidResult.png)
+</div>
 
 <br>
 
@@ -383,13 +401,24 @@ Examples:
 
 Displays the contacts that are associated with a particular tag.
 
-Format: `find t/TAG`
+<div markdown="block" class="alert alert-primary">
+**:mag_right: Format:**
+`find t/TAG`
 * Queries all contacts that are tied to `TAG`.
 * The tag must be existent and associated with certain contacts in the address book.
+</div>
 
-Examples:
-* `find t/family` Checks all contacts in the address book which the user categorises as “family”.
-* `find t/work` Checks all contacts in the address book which the user categorises as “work”.
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `find t/family` 
+
+Checks all contacts in the address book which the user categorizes as “family”.
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `find t/work` 
+
+Checks all contacts in the address book which the user categorizes as “work”.
+</div>
 
 <br>
 
@@ -397,12 +426,23 @@ Examples:
 
 Show all contacts with their handles on the particular social media platform.
 
-Format: `find p/PLATFORM`
+<div markdown="block" class="alert alert-primary">
+**:mag_right: Format:**
+`find p/PLATFORM`
 * The social media platform must be supported by SociaLite, e.g. `facebook`, `instagram`, `telegram`, `tiktok`, `twitter`.
+</div>
 
-Examples:
-* `find p/instagram` Returns all contacts who have an Instagram handle pegged with them.
-* `find p/twitter` Returns all contacts who have a Twitter handle pegged with them.
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `find p/instagram` 
+
+Returns all contacts who have an Instagram handle pegged with them.
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `find p/twitter` 
+
+Returns all contacts who have a Twitter handle pegged with them.
+</div>
 
 <br>
 
@@ -410,16 +450,26 @@ Examples:
 
 Adds a profile picture to an existing contact or changes the existing profile picture if available.
 
-Format: `picture INDEX`
+<div markdown="block" class="alert alert-primary">
+**:mag_right: Format:**
+`picture INDEX`
 * Opens file browser allowing you to choose any .jpg or .png file as the profile picture.
 * Adds the selected picture to the contact at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
+</div>
 
-Examples:
-* `list` followed by `picture 1` opens the file browser to let you choose a picture to add to Annie Baker’s
-  listing in the app.
-* `find Charlie` followed by `picture 1` opens the file browser to let you choose a picture to add to Charlie Decker’s listing in the app.
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `list` followed by `picture 1` 
+
+Opens the file browser to let you choose a picture to add to Annie Baker’s listing in the app.
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `find Charlie` followed by `picture 1` 
+
+Opens the file browser to let you choose a picture to add to Charlie Decker’s listing in the app.
+</div>
 
 <br>
 
@@ -429,16 +479,23 @@ Copies the contact card of the specified person to the system clipboard. The use
 
 Alternatively, the user can click on the "Share" button at the top-right hand corner of the contact card that he/she would like to share instead of entering the command.
 
-Format: `share INDEX`
-
+<div markdown="block" class="alert alert-primary">
+**:mag_right: Format:**
+`share INDEX`
 * Copies the contact card of the person at the specified `INDEX` to the system clipboard.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
+</div>
 
-Examples:
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `list` followed by `share 2` 
 
-* `list` followed by `share 2` copies the information of the second contact in the list displayed by SociaLite.
-* Clicking on the "Share" button of Annie Baker's name card copies her contact information.
+Copies the information of the second contact in the list displayed by SociaLite.
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** Clicking on the "Share" button of Annie Baker's name card copies her contact information.
+</div>
 
 <br>
 
@@ -448,17 +505,25 @@ Affixes the contact card of the specified person onto the top of the person list
 
 Alternatively, the user can click on the "Pin" button at the top-right hand corner of the contact card that he/she would like to pin instead of entering the command.
 
-Format: `pin INDEX`
-
+<div markdown="block" class="alert alert-primary">
+**:mag_right: Format:**
+`pin INDEX`
 * Pins the contact card of the person at the specified `INDEX` at the top of the person list.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, ...
 * The contact card must **not** be previously pinned.
+</div>
 
-Examples:
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `list` followed by `pin 3`
 
-* Provided no contact card has been pinned yet, `list` followed by `pin 3` places the third contact in the list displayed by SociaLite at the top of the person list along with other pinned contacts.
-* Clicking on the "Pin" button of Annie Baker's name card affixes her contact card onto the top of the person list.
+Provided no contact card has been pinned yet, the above command places the third contact in the list displayed by 
+SociaLite, at the top  of the person list along with other pinned contacts.
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** Clicking on the "Pin" button of Annie Baker's name card affixes her contact card onto the top of the person list.
+</div>
 
 <br>
 
@@ -468,17 +533,24 @@ Removes the contact card of the specified person from the top of the person list
 
 Alternatively, the user can click on the "Unpin" button at the top-right hand corner of the contact card that he/she would like to unpin instead of entering the command.
 
-Format: `unpin INDEX`
-
+<div markdown="block" class="alert alert-primary">
+**:mag_right: Format:**
+`unpin INDEX`
 * Unpins the contact card of the person at the specified `INDEX` at the top of the person list.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, ...
 * The contact card must be previously pinned.
+</div>
 
-Examples:
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `list` followed by `unpin 2` 
 
-* Provided the first 4 contact cards are the pinned contact cards, `list` followed by `unpin 2` unpins the second contact in the list displayed by SociaLite.
-* Clicking on the "Unpin" button of Charlie Decker's name unpins his contact card if it was previously pinned.
+Provided the first 4 contact cards are the pinned contact cards, the above command unpins the second contact in the list displayed by SociaLite.
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** Clicking on the "Unpin" button of Charlie Decker's name unpins his contact card if it was previously pinned.
+</div>
 
 <br>
 
@@ -486,23 +558,37 @@ Examples:
 
 Adds special notes about a contact.
 
-Format: `remark INDEX r/[TEXT]`
+<div markdown="block" class="alert alert-primary">
+**:mag_right: Format:**
+`remark INDEX r/[TEXT]`
 * Adds a note about the contact at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
+</div>
 
-Examples:
-* `list` followed by `remark 2 r/Doesn’t like vegetables`  adds the remark “Doesn’t like vegetables” to Charlie Decker’s listing in the address book.
-* `find Annie` followed by `remark 1 r/Loves peas` adds the remark “Loves peas” to Annie Baker’s listing in the app.
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `list` followed by `remark 2 r/Doesn’t like vegetables`
+
+Adds the remark “Doesn’t like vegetables” to Charlie Decker’s listing in the address book.
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `find Annie` followed by `remark 1 r/Loves peas`
+
+Adds the remark “Loves peas” to Annie Baker’s listing in the app.
+</div>
 
 <br>
 
 ### View help: `help`
+
 Shows a message explaining how to access the User Guide or obtain in-app guidance for selected commands.
 
-Format: `help`
-
-![result for 'help'](images/HelpBox.png)
+<div markdown="block" class="alert alert-primary">
+**:mag_right: Format:**
+`help`
+* ![result for 'help'](images/HelpBox.png)
+</div>
 
 <br>
 
@@ -510,14 +596,24 @@ Format: `help`
 
 Displays concise instructions for users to learn the given `COMMAND`'s function.
 
-Format: `help COMMAND`
+<div markdown="block" class="alert alert-primary">
+**:mag_right: Format:**
+`help COMMAND`
 * Acceptable keywords to use in `COMMAND`: `add` `delete` `edit` `find` `remark` `share` `picture` `pin` `unpin`
+</div>
 
-Examples:
-* `help add` displays a concise guide on how to use the `add` command.
-* `help edit` displays a concise guide on how to use the `edit` command.
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `help add` 
 
-  ![result for 'help'](images/HelpAdd.png)
+* Displays a concise guide on how to use the `add` command.
+* ![result for 'help'](images/HelpAdd.png)
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `help edit` 
+
+Displays a concise guide on how to use the `edit` command.
+</div>
 
 <br>
 
@@ -525,7 +621,10 @@ Examples:
 
 Exits the program.
 
-Format: `exit`
+<div markdown="block" class="alert alert-primary">
+**:mag_right: Format:**
+`exit`
+</div>
 
 <br>
 
