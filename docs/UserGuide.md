@@ -191,6 +191,31 @@ Add a new contact called "Charlotte Oliveiro" with phone number "93210284" to So
 </div>
 </div>
 
+
+
+
+<div class="d-flex alert alert-info">
+<div class="mr-2">
+    <span class="badge bg-dark text-light">FORMAT</span>
+</div>
+<div markdown="1">
+`add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
+
+<div class="d-flex alert alert-success">
+<div class="mr-2">
+    <span class="badge bg-black text-light">EXAMPLE</span>
+</div>
+<div markdown="1">
+`add n/Charlotte Oliveiro p/93210284 t/neighbours fb/charlotte.oli tele/olichar twitter/charolive date/wedding anniversary:2020-01-01:yearly`
+
+Add a new contact called "John James" with phone number "91234567" to SociaLite.
+</div>
+</div>
+
+</div>
+</div>
+
+
 <br>
 
 
