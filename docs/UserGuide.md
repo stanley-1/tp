@@ -100,6 +100,15 @@ Do have a look at our Table of Contents to locate the help you need!
 
 </div>
 
+
+<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert">
+
+HELLO THERE THIS IS A TEST MESSAGE
+
+</div>
+</div>
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Basic Functionality <a name="basic_functionality"></a>
