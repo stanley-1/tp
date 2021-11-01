@@ -170,9 +170,7 @@ A person can have any number of tags and dates (including 0).
 </div>
 <div markdown="1" class="w-200">
 <div markdown="span" class="text-wrap">
-`
-add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]
-`
+`add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
 </div>
 
 <div class="d-flex alert alert-success">
@@ -180,9 +178,9 @@ add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]
     <span class="badge bg-black text-light">EXAMPLE</span>
 </div>
 <div markdown="span" class="w-200">
-`
-add n/Charlotte Oliveiro p/93210284 t/neighbours fb/charlotte.oli tele/olichar twitter/charolive date/wedding anniversary:2020-01-01:yearly
-`
+`add n/Charlotte Oliveiro p/93210284 t/neighbours fb/charlotte.oli tele/olichar twitter/charolive date/wedding anniversary:2020-01-01:yearly`
+
+
 Add a new contact called "Charlotte Oliveiro" with phone number "93210284" to SociaLite.
 </div>
 </div>
