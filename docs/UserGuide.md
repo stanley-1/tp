@@ -168,7 +168,7 @@ A person can have any number of tags and dates (including 0).
 <div class="mr-2">
     <span class="badge bg-dark text-light">FORMAT</span>
 </div>
-<div markdown="span" class="w-200" text-wrap>
+<div markdown="span" class="w-200">
 ```text
 add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]
 ```
