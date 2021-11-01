@@ -103,7 +103,7 @@ Do have a look at our Table of Contents to locate the help you need!
 
 <div markdown="block" class="alert alert-primary">
 
-Format:
+**:mag_right: Format:**
 `add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
 * Explanation 1
 * Explanation 2
@@ -112,7 +112,7 @@ Format:
 
 <div markdown="block" class="alert alert-success">
 
-Example: `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh date/birthday:2000-01-01:yearly`
+**:white_check_mark: Example:** `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh date/birthday:2000-01-01:yearly`
 
 Add a new contact called "Alex Yeoh" with phone number "87438807" to SociaLite.
 </div>
