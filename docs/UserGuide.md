@@ -164,7 +164,7 @@ A person can have any number of tags and dates (including 0).
 
 
 
-<div class="d-flex alert alert-info">
+<div class="d-flex alert alert-info text-wrap">
 <div class="mr-2">
     <span class="badge bg-dark text-light">FORMAT</span>
 </div>
