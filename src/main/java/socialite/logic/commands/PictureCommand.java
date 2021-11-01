@@ -101,4 +101,23 @@ public class PictureCommand extends Command {
         return person;
     }
 
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        } else if (other instanceof PictureCommand) {
+            PictureCommand otherCommand = (PictureCommand) other;
+            if (picture == null) {
+                return index.equals(otherCommand.index)
+                        && (useGui == otherCommand.useGui)
+                        && otherCommand.picture == null;
+            } else {
+                return index.equals(otherCommand.index)
+                        && (useGui == otherCommand.useGui)
+                        && picture.equals(otherCommand.picture);
+            }
+        }
+        return false;
+    }
+
 }

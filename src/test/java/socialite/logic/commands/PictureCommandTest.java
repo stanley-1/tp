@@ -3,6 +3,9 @@ package socialite.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.File;
+import java.nio.file.Paths;
+
 import org.junit.jupiter.api.Test;
 
 import socialite.commons.core.Messages;
@@ -15,8 +18,6 @@ import socialite.model.person.Person;
 import socialite.testutil.TypicalIndexes;
 import socialite.testutil.TypicalPersons;
 
-import java.io.File;
-import java.nio.file.Paths;
 
 public class PictureCommandTest {
 
@@ -40,10 +41,11 @@ public class PictureCommandTest {
         CommandTestUtil.assertCommandSuccess(pictureCommand, model, expectedMessage, expectedModel);
     }
 
+    // using without the null in PictureCommand constructor the test causes Remark tests to fail for some reason
     @Test
     public void execute_invalidIndexUnfilteredListWithoutGui_throwsCommandException() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
-        PictureCommand pictureCommand = new PictureCommand(outOfBoundIndex, false);
+        PictureCommand pictureCommand = new PictureCommand(outOfBoundIndex, false, null);
 
         CommandTestUtil.assertCommandFailure(pictureCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
@@ -87,11 +89,48 @@ public class PictureCommandTest {
         CommandTestUtil.assertCommandFailure(pictureCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
 
+    // tests if null is used for file, modelling if user clicks cancel on fileChooser
     @Test
     public void execute_validIndexUnfilteredListWithNullPicture_showsAborted() {
         PictureCommand pictureCommand = new PictureCommand(TypicalIndexes.INDEX_FIRST_PERSON, false, null);
         String expectedMessage = PictureCommand.MESSAGE_COMMAND_ABORTED;
         CommandTestUtil.assertCommandFailure(pictureCommand, model, expectedMessage);
+    }
+
+    @Test
+    public void equals() {
+        PictureCommand firstPictureCommand = new PictureCommand(
+                TypicalIndexes.INDEX_FIRST_PERSON, true, acceptedFile);
+        PictureCommand secondPictureCommand = new PictureCommand(
+                TypicalIndexes.INDEX_SECOND_PERSON, false, acceptedFile);
+        PictureCommand emptyFileCommand = new PictureCommand(TypicalIndexes.INDEX_FIRST_PERSON, false, null);
+
+        // same object
+        assertTrue(firstPictureCommand.equals(firstPictureCommand));
+        assertTrue(emptyFileCommand.equals(emptyFileCommand));
+
+        // same value -> returns true
+        PictureCommand firstCommandCopy = new PictureCommand(
+                TypicalIndexes.INDEX_FIRST_PERSON, true, acceptedFile);
+        assertTrue(firstPictureCommand.equals(firstCommandCopy));
+        PictureCommand secondCommandCopy = new PictureCommand(
+                TypicalIndexes.INDEX_SECOND_PERSON, false, acceptedFile);
+        assertTrue(secondPictureCommand.equals(secondCommandCopy));
+
+        PictureCommand emptyCommandCopy = new PictureCommand(TypicalIndexes.INDEX_FIRST_PERSON, false, null);
+        assertTrue(emptyCommandCopy.equals(emptyCommandCopy));
+
+        // different index -> false
+        assertFalse(firstPictureCommand.equals(secondPictureCommand));
+
+        // different file -> false
+        assertFalse(firstPictureCommand.equals(emptyFileCommand));
+
+        // null -> false
+        assertFalse(firstPictureCommand.equals(null));
+
+        // different type -> false
+        assertFalse(secondPictureCommand.equals(3));
     }
 
 }
