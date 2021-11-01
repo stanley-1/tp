@@ -147,6 +147,27 @@ Format: `list`
 
 <br>
 
+### Accessing a contact's social media page
+
+Clicking on a contact's social media handle will immediately launch the user's default browser and open the contact's social media profile.
+
+Example:
+* Clicking on `@tan.david` will launch the user's default browser and bring the user to David Tan's Facebook page.
+
+<br>
+
+### Track history of commands: `↑` or `↓` arrow keys
+
+Scroll through your history of commands using the `↑` or `↓` arrow keys.
+
+Format: `↑` or `↓`
+
+Examples:
+* `↑` backtracks to the previous command provided as input.
+* `↓` advances to subsequent commands stored in history.
+
+<br>
+
 ### Editing a person : `edit`
 
 Edits an existing person in the address book.
@@ -170,62 +191,6 @@ Examples:
 
 <br>
 
-### Locating persons by name: `find`
-
-Finds persons whose names contain any of the given keywords.
-
-Format: `find KEYWORD [MORE_KEYWORDS]`
-
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Only the name is searched when no flags are provided as input.
-
-Examples:
-* `find david` returns `David Li` and `David Tan`
-* ![result for 'find david'](images/findDavidResult.png)
-
-<br>
-
-### Accessing a contact's social media page
-
-Clicking on a contact's social media handle will immediately launch the user's default browser and open the contact's social media profile.
-
-Example:
-* Clicking on `@tan.david` will launch the user's default browser and bring the user to David Tan's Facebook page.
-
-<br>
-
-### Deleting a person : `delete`
-
-Deletes the specified person from the address book.
-
-Format: `delete INDEX`
-
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
-
-Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
-
-<br>
-
-### Track history of commands: `↑` or `↓` arrow keys
-
-Scroll through your history of commands using the `↑` or `↓` arrow keys.
-
-Format: `↑` or `↓`
-
-Examples:
-* `↑` backtracks to the previous command provided as input.
-* `↓` advances to subsequent commands stored in history.
-
---------------------------------------------------------------------------------------------------------------------
-
-## Organisation of Contacts <a name="organisation"></a>
-
 ### Create / Edit tags for existing contacts: `edit INDEX [t/TAG]...`
 
 Modifies tags that are associated with existing contacts in the address book.
@@ -239,20 +204,6 @@ Format: `edit INDEX [t/TAG]...`
 Examples:
 * `edit 1 t/family` Creates a tag called `family` for the first person in the address book.
 * `edit 2 t/friend t/neighbour` Creates tags called `friend` and `neighbour` for the second person in the address book.
-
-<br>
-
-### Query contacts based on tags: `find t/TAG`
-
-Displays the contacts that are associated with a particular tag.
-
-Format: `find t/TAG`
-* Queries all contacts that are tied to `TAG`.
-* The tag must be existent and associated with certain contacts in the address book.
-
-Examples:
-* `find t/family` Checks all contacts in the address book which the user categorises as “family”.
-* `find t/work` Checks all contacts in the address book which the user categorises as “work”. 
 
 <br>
 
@@ -290,7 +241,8 @@ Examples:
 <br>
 
 ### Add / Edit dates of occasions associated with contacts: `edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​`
-Adds dates of occasions (birthdays, appointments) associated with a contact.
+
+Adds / Edits dates of occasions (birthdays, appointments) associated with a contact.
 
 Format: `edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​`
 * Adds a date for the contact at the specified `INDEX`.
@@ -307,6 +259,67 @@ Examples:
 * `list` followed by `edit 1 date/Meeting:2021-09-14` adds the event “Meeting” which falls on 14 Sep 2021, to Annie Baker’s listing in the app.
 * `find Annie` followed by `edit 1 date/Lunch Appointment:2021-10-10` adds the event “Lunch Appointment” which falls on 10 Oct 2021 to Annie Baker’s listing.
 
+<br>
+
+### Deleting a person : `delete`
+
+Deletes the specified person from the address book.
+
+Format: `delete INDEX`
+
+* Deletes the person at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `list` followed by `delete 2` deletes the 2nd person in the address book.
+* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+
+<br>
+
+### Remove all data: `clear`
+
+Removes all contacts in the app.
+
+Format: `clear`
+
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+Please be mindful that entering this command will wipe out all your contacts stored in SociaLite!
+</div>
+
+<br>
+
+### Locating persons by name: `find`
+
+Finds persons whose names contain any of the given keywords.
+
+Format: `find KEYWORD [MORE_KEYWORDS]`
+
+* The search is case-insensitive. e.g `hans` will match `Hans`
+* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
+* Only full words will be matched e.g. `Han` will not match `Hans`
+* Only the name is searched when no flags are provided as input.
+
+Examples:
+* `find david` returns `David Li` and `David Tan`
+* ![result for 'find david'](images/findDavidResult.png)
+
+<br>
+
+### Query contacts based on tags: `find t/TAG`
+
+Displays the contacts that are associated with a particular tag.
+
+Format: `find t/TAG`
+* Queries all contacts that are tied to `TAG`.
+* The tag must be existent and associated with certain contacts in the address book.
+
+Examples:
+* `find t/family` Checks all contacts in the address book which the user categorises as “family”.
+* `find t/work` Checks all contacts in the address book which the user categorises as “work”.
+
+<br>
+
 ### Query contacts based on social media platform: `find p/PLATFORM`
 
 Show all contacts with their handles on the particular social media platform.
@@ -317,6 +330,23 @@ Format: `find p/PLATFORM`
 Examples:
 * `find p/instagram` Returns all contacts who have an Instagram handle pegged with them.
 * `find p/twitter` Returns all contacts who have a Twitter handle pegged with them.
+
+<br>
+
+### Adding/ Changing a profile picture: `picture`
+
+Adds a profile picture to an existing contact or changes the existing profile picture if available.
+
+Format: `picture INDEX`
+* Opens file browser allowing you to choose any .jpg or .png file as the profile picture.
+* Adds the selected picture to the contact at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `list` followed by `picture 1` opens the file browser to let you choose a picture to add to Annie Baker’s
+  listing in the app.
+* `find Charlie` followed by `picture 1` opens the file browser to let you choose a picture to add to Charlie Decker’s listing in the app.
 
 <br>
 
@@ -377,13 +407,7 @@ Examples:
 * Provided the first 4 contact cards are the pinned contact cards, `list` followed by `unpin 2` unpins the second contact in the list displayed by SociaLite.
 * Clicking on the "Unpin" button of Charlie Decker's name unpins his contact card if it was previously pinned.
 
-
---------------------------------------------------------------------------------------------------------------------
-
-## Customisation Tools <a name="customisation"></a>
-For the purpose of illustrating examples in this section, assume that the following contacts exist within the user’s app:
-1. Annie Baker
-2. Charlie Decker
+<br>
 
 ### Adding remarks about a specific contact: `remark`
 
@@ -399,24 +423,6 @@ Examples:
 * `find Annie` followed by `remark 1 r/Loves peas` adds the remark “Loves peas” to Annie Baker’s listing in the app.
 
 <br>
-
-### Adding/ Changing a profile picture: `picture`
-Adds a profile picture to an existing contact or changes the existing profile picture if available.
-
-Format: `picture INDEX`
-* Opens file browser allowing you to choose any .jpg or .png file as the profile picture.
-* Adds the selected picture to the contact at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
-
-Examples:
-* `list` followed by `picture 1` opens the file browser to let you choose a picture to add to Annie Baker’s
-  listing in the app.
-* `find Charlie` followed by `picture 1` opens the file browser to let you choose a picture to add to Charlie Decker’s listing in the app.
-
---------------------------------------------------------------------------------------------------------------------
-
-## Help Guide & Exiting <a name="help_guide"></a>
 
 ### Viewing help: `help`
 Shows a message explaining how to access the User Guide or obtain in-app guidance for selected commands.
@@ -442,17 +448,6 @@ Examples:
 
 <br>
 
-### Remove all data: `clear`
-Removes all contacts in the app.
-
-Format: `clear`
-
-<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-Please be mindful that entering this command will wipe out all your contacts stored in SociaLite!
-</div>
-
-<br>
-
 ### Exiting the program : `exit`
 
 Exits the program.
@@ -460,6 +455,37 @@ Exits the program.
 Format: `exit`
 
 <br>
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Organisation of Contacts <a name="organisation"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Customisation Tools <a name="customisation"></a>
+For the purpose of illustrating examples in this section, assume that the following contacts exist within the user’s app:
+1. Annie Baker
+2. Charlie Decker
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Help Guide & Exiting <a name="help_guide"></a>
+
+
 
 ### Saving the data
 
