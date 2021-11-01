@@ -27,3 +27,9 @@
   position: relative;
   top: -1px;
 }
+
+@each $color, $value in $theme-colors {
+  .badge-#{$color} {
+    @include badge-variant($value);
+  }
+}
