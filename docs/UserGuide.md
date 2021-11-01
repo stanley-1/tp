@@ -101,12 +101,20 @@ Do have a look at our Table of Contents to locate the help you need!
 </div>
 
 
-<div markdown="block" class="alert alert-danger">
+<div markdown="block" class="alert alert-primary">
 
+Format:
+`add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
+* Explanation 1
+* Explanation 2
+* ETC
+</div>
 
-HELLO THERE THIS IS A TEST MESSAGE
+<div markdown="block" class="alert alert-success">
 
-This is another message
+Example: `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh date/birthday:2000-01-01:yearly`
+
+Add a new contact called "Alex Yeoh" with phone number "87438807" to SociaLite.
 </div>
 
 <div class="d-flex alert alert-info">
