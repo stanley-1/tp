@@ -112,7 +112,7 @@ Do have a look at our Table of Contents to locate the help you need!
 
 <div markdown="block" class="alert alert-success">
 
-**:check_mark: Example:** `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh date/birthday:2000-01-01:yearly`
+**:heavy_check_mark: Example:** `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh date/birthday:2000-01-01:yearly`
 
 Add a new contact called "Alex Yeoh" with phone number "87438807" to SociaLite.
 </div>
