@@ -4,44 +4,14 @@ title: User Guide
 ---
 Hello there, fellow SociaLites! Welcome to the User Guide for __SociaLite__, a Command Line Interface (CLI) app that connects you with your contact's social media pages! 
 
-You may be a first-time user trying to set up SociaLite or a returning user hoping to explore advanced features. Fret not, all you need to know about this app can be found in this User Guide! 
-Do have a look at our Table of Contents to locate the help you need! 
+You may be a first-time user trying to set up SociaLite or a returning user hoping to explore advanced features. Fret not, all you need to know about this app can be found in this User Guide!
+Simply follow the path that corresponds to your needs.
 
-**Table of Contents**
-1. [Quick Start](#quick_start)
-2. [Features](#features)
-    1. [Basic Functionality](#basic_functionality)
-        1. Adding a person: `add`
-        2. Listing all persons: `list`
-        3. Editing a person: `edit`
-        4. Locating persons by name: `find`
-        5. Accessing a contact's social media page
-        6. Deleting a person: `delete`
-        7. Track history of commands: `UP/DOWN` keys
-    2. [Organisation of Contacts](#organisation)
-        1. Create / Edit tags for existing contacts: `edit INDEX [t/TAG]...`
-        2. Query contacts based on tags: `find t/TAG`
-        3. Delete tags associated with contacts: `edit INDEX t/`
-        4. Add / Edit social media handles for existing contacts: `edit INDEX [p/PLATFORM]`
-        5. Query contacts based on social media platform: `find p/PLATFORM`
-        6. Sharing a contact card: `share`
-        7. Pinning a contact card: `pin`
-        8. Unpinning a contact card: `unpin`
-    3. [Customisation Tools](#customisation)
-       1. Adding remarks about a specific contact: `remark`
-       2. Adding/ Changing a profile picture: `picture INDEX`
-    4. [Help Guide and Exiting](#help_guide)
-       1. Viewing help: `help`
-       2. Viewing in-app guidance: `help COMMAND`
-       3. Remove all data: `clear`
-       4. Exiting the program: `exit`
-       5. Saving the data
-       6. Editing the data file
-3. [Coming Soon](#coming_soon)
-   1. Set reminders for a specific contact: `remind`
-   2. Adding dates of special occasions associated with a specific contact: `date`
-4. [FAQ](#faq)
-5. [Command Summary](#summary) 
+| I am a...      | Instructions                                                             |
+| -------------- | ------------------------------------------------------------------------ |
+| new user       | View our Quick Start guide to set up SociaLite and try out the features. |
+| returning user | Jump straight to our Commands section to recall how our features work!   |
+
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -74,7 +44,7 @@ Do have a look at our Table of Contents to locate the help you need!
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Features <a name="features"></a> 
+## Standard Notations <a name="features"></a> 
 
 <div markdown="block" class="alert alert-info">
 
@@ -98,6 +68,28 @@ Do have a look at our Table of Contents to locate the help you need!
 * If you type inputs for commands that do not require any additional information (such as `list`, `exit` and `clear`), they will be ignored.<br>
   e.g. if the command specifies `list 123`, it will be interpreted as `list`.
 
+</div>
+
+As you explore the features that SociaLite has to offer, look out for these boxes:
+
+This box tells you the acceptable fields that you can provide for a particular command:
+
+<div markdown="block" class="alert alert-primary">
+
+**:mag_right: Format:**
+`add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
+* Explanation 1
+* Explanation 2
+* ETC
+</div>
+
+If you still aren't sure of how a particular command works, this box shows you examples that you can try out:
+
+<div markdown="block" class="alert alert-success">
+
+**:heavy_check_mark: Example:** `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh date/birthday:2000-01-01:yearly`
+
+Add a new contact called "Alex Yeoh" with phone number "87438807" to SociaLite.
 </div>
 
 --------------------------------------------------------------------------------------------------------------------
