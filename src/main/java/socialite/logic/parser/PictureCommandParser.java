@@ -22,6 +22,6 @@ public class PictureCommandParser implements Parser<PictureCommand> {
                     String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, PictureCommand.MESSAGE_HELP_GUIDE), pe);
         }
 
-        return new PictureCommand(index);
+        return new PictureCommand(index, true);
     }
 }

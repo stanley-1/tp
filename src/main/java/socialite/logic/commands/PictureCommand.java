@@ -27,15 +27,29 @@ public class PictureCommand extends Command {
     public static final String MESSAGE_HELP_GUIDE =
             "Enter picture INDEX to add a profile picture to the person at INDEX";
     private final Index index;
+    private final boolean useGui;
+    private File picture;
 
     /**
      * Creates a command that adds a picture to a person
      * @param index Index of person to add picture to
      */
-    public PictureCommand(Index index) {
+    public PictureCommand(Index index, boolean useGui) {
         requireNonNull(index);
 
         this.index = index;
+        this.useGui = useGui;
+    }
+
+    /**
+     * Constructor with a provided picture used for testing
+     */
+    public PictureCommand(Index index, boolean useGui, File picture) {
+        requireNonNull(index);
+
+        this.index = index;
+        this.useGui = useGui;
+        this.picture = picture;
     }
 
     @Override
@@ -48,7 +62,9 @@ public class PictureCommand extends Command {
         }
 
         Person personToAddPic = lastShownList.get(index.getZeroBased());
-        File picture = getPic();
+        if (useGui) {
+            picture = getPic();
+        }
         if (picture == null) {
             return new CommandResult("Command aborted");
         }
