@@ -587,7 +587,7 @@ Shows a message explaining how to access the User Guide or obtain in-app guidanc
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `help`
-* ![result for 'help'](images/HelpBox.png)
+![result for 'help'](images/HelpBox.png)
 </div>
 
 <br>
@@ -605,8 +605,8 @@ Displays concise instructions for users to learn the given `COMMAND`'s function.
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `help add` 
 
-* Displays a concise guide on how to use the `add` command.
-* ![result for 'help'](images/HelpAdd.png)
+Displays a concise guide on how to use the `add` command.
+![result for 'help'](images/HelpAdd.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
