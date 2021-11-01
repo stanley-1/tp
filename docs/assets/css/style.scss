@@ -4,7 +4,8 @@
 
 @import
   "minima/skins/{{ site.minima.skin | default: 'classic' }}",
-  "minima/initialize";
+  "minima/initialize",
+  "bootstrap/bootstrap";
 
 .icon {
     height: 21px;
