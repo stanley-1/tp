@@ -113,16 +113,16 @@ This is another message
 <div class="mr-2">
     <span class="badge bg-dark text-light">FORMAT</span>
 </div>
-<div markdown="1" class="w-200">
+<div>
 ```text
 add
 ```
 
-<div class="d-flex alert alert-danger">
+<div class="d-flex alert alert-primary">
 <div class="mr-2">
     <span class="badge bg-black text-light">EXAMPLE</span>
 </div>
-<div markdown="1" class="w-200">
+<div>
 ```text
 add n/John James p/91234567
 ```
