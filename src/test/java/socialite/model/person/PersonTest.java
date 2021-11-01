@@ -33,33 +33,33 @@ public class PersonTest {
                 .withTags(VALID_TAG_HUSBAND).build();
         Assertions.assertFalse(TypicalPersons.ALICE.isSamePerson(editedAlice));
 
-        // same phone number, all other attributes different -> returns false
+        // same phone number, all other attributes different -> returns true
         editedAlice = new PersonBuilder(TypicalPersons.ALICE)
                 .withName(VALID_NAME_BOB)
                 .withTags(VALID_TAG_HUSBAND).build();
-        Assertions.assertFalse(TypicalPersons.ALICE.isSamePerson(editedAlice));
+        Assertions.assertTrue(TypicalPersons.ALICE.isSamePerson(editedAlice));
 
         // same name and phone number, all other attributes different -> returns true
         editedAlice = new PersonBuilder(TypicalPersons.ALICE)
                 .withTags(VALID_TAG_HUSBAND).build();
         Assertions.assertTrue(TypicalPersons.ALICE.isSamePerson(editedAlice));
 
-        // different name, all other attributes same -> returns false
+        // different name, all other attributes same -> returns true
         editedAlice = new PersonBuilder(TypicalPersons.ALICE).withName(VALID_NAME_BOB).build();
-        Assertions.assertFalse(TypicalPersons.ALICE.isSamePerson(editedAlice));
+        Assertions.assertTrue(TypicalPersons.ALICE.isSamePerson(editedAlice));
 
         // different phone number, all other attributes same -> returns false
         editedAlice = new PersonBuilder(TypicalPersons.ALICE).withPhone(VALID_PHONE_BOB).build();
         Assertions.assertFalse(TypicalPersons.ALICE.isSamePerson(editedAlice));
 
-        // name differs in case, all other attributes same -> returns false
+        // name differs in case, all other attributes same -> returns true
         Person editedBob = new PersonBuilder(TypicalPersons.BOB).withName(VALID_NAME_BOB.toLowerCase()).build();
-        Assertions.assertFalse(TypicalPersons.BOB.isSamePerson(editedBob));
+        Assertions.assertTrue(TypicalPersons.BOB.isSamePerson(editedBob));
 
-        // name has trailing spaces, all other attributes same -> returns false
+        // name has trailing spaces, all other attributes same -> returns true
         String nameWithTrailingSpaces = VALID_NAME_BOB + " ";
         editedBob = new PersonBuilder(TypicalPersons.BOB).withName(nameWithTrailingSpaces).build();
-        Assertions.assertFalse(TypicalPersons.BOB.isSamePerson(editedBob));
+        Assertions.assertTrue(TypicalPersons.BOB.isSamePerson(editedBob));
     }
 
     @Test
