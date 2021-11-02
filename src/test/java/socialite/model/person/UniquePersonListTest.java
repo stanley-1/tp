@@ -122,7 +122,7 @@ public class UniquePersonListTest {
     }
 
     @Test
-    public void setPerson_editedPersonIsSamePerson_success() {
+    public void setPerson_editedPersonNotInListIsSamePerson_success() {
         uniquePersonList.add(TypicalPersons.ALICE);
         uniquePersonList.setPerson(TypicalPersons.ALICE, TypicalPersons.ALICE);
         UniquePersonList expectedUniquePersonList = new UniquePersonList();
@@ -131,7 +131,7 @@ public class UniquePersonListTest {
     }
 
     @Test
-    public void setPerson_editedPersonHasSameIdentity_success() {
+    public void setPerson_editedPersonNotInListHasSameIdentity_success() {
         uniquePersonList.add(TypicalPersons.ALICE);
         Person editedAlice = new PersonBuilder(TypicalPersons.ALICE)
                 .withTags(VALID_TAG_HUSBAND)
@@ -143,7 +143,7 @@ public class UniquePersonListTest {
     }
 
     @Test
-    public void setPerson_editedPersonHasDifferentIdentity_success() {
+    public void setPerson_editedPersonNotInListHasDifferentIdentity_success() {
         uniquePersonList.add(TypicalPersons.ALICE);
         uniquePersonList.setPerson(TypicalPersons.ALICE, TypicalPersons.BOB);
         UniquePersonList expectedUniquePersonList = new UniquePersonList();
@@ -152,7 +152,7 @@ public class UniquePersonListTest {
     }
 
     @Test
-    public void setPerson_editedPersonHasSamePhone_success() {
+    public void setPerson_editedPersonNotInListHasSamePhone_success() {
         uniquePersonList.add(TypicalPersons.ALICE);
         Person bobWithAlicePhone = new PersonBuilder(TypicalPersons.BOB)
                 .withPhone(TypicalPersons.ALICE.getPhone().toString()).build();
@@ -163,7 +163,7 @@ public class UniquePersonListTest {
     }
 
     @Test
-    public void setPerson_editedPersonHasNonUniqueIdentity_throwsDuplicatePersonException() {
+    public void setPerson_editedPersonExistsInList_throwsDuplicatePersonException() {
         uniquePersonList.add(TypicalPersons.ALICE);
         uniquePersonList.add(TypicalPersons.BOB);
         Assert.assertThrows(DuplicatePersonException.class, ()
@@ -171,7 +171,7 @@ public class UniquePersonListTest {
     }
 
     @Test
-    public void setPerson_editedPersonHasSameName_throwsDuplicatePersonException() {
+    public void setPerson_editedPersonExistsInListWithDiffPhone_throwsDuplicatePersonException() {
         uniquePersonList.add(TypicalPersons.ALICE);
         Person differentAlice = new PersonBuilder(TypicalPersons.ALICE)
                 .withPhone(VALID_PHONE_BOB)
@@ -179,6 +179,20 @@ public class UniquePersonListTest {
         uniquePersonList.add(differentAlice);
         Assert.assertThrows(DuplicatePersonException.class, ()
             -> uniquePersonList.setPerson(TypicalPersons.ALICE, differentAlice));
+    }
+
+    @Test
+    // Amy and differentAmy (who has Bob's phone number) already exist in the list.
+    // Attempting to set Amy with Bob's attributes will throw a DuplicatePersonException as differentAmy
+    // has Bob's phone number as her attribute.
+    public void setPerson_editedPersonHasSamePhoneNumber_throwsDuplicatePersonException() {
+        uniquePersonList.add(TypicalPersons.AMY);
+        Person differentAmy = new PersonBuilder(TypicalPersons.AMY)
+                .withPhone(VALID_PHONE_BOB)
+                .build();
+        uniquePersonList.add(differentAmy);
+        Assert.assertThrows(DuplicatePersonException.class, ()
+            -> uniquePersonList.setPerson(TypicalPersons.AMY, TypicalPersons.BOB));
     }
 
     @Test
