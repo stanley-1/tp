@@ -31,11 +31,12 @@ public class FindCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        if (predicate.hasValidHandles()) {
+
+        model.updateFilteredPersonList(predicate);
+        if (!predicate.hasValidHandles()) {
             return new CommandResult(Messages.MESSAGE_INVALID_HANDLE);
         }
 
-        model.updateFilteredPersonList(predicate);
         return new CommandResult(
                 String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));
     }
