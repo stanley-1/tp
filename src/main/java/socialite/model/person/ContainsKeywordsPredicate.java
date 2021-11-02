@@ -11,9 +11,14 @@ import socialite.model.tag.Tag;
  */
 public class ContainsKeywordsPredicate implements Predicate<Person> {
     private final List<String> keywords;
+    private boolean hasValidHandles = true;
 
     public ContainsKeywordsPredicate(List<String> keywords) {
         this.keywords = keywords;
+    }
+
+    public boolean hasValidHandles() {
+        return hasValidHandles;
     }
 
     //helper functions to test person's name, tags or handles respectively.
@@ -49,6 +54,7 @@ public class ContainsKeywordsPredicate implements Predicate<Person> {
         case "twitter":
             return !(person.getTwitter().get() == null);
         default:
+            hasValidHandles = false;
             return false;
         }
 
