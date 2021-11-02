@@ -19,13 +19,13 @@ public class ContainsKeywordsPredicate implements Predicate<Person> {
     //helper functions to test person's name, tags or handles respectively.
     private boolean testName(Person person, String keyword) {
         String name = person.getName().fullName;
-        return Pattern.compile(Pattern.quote(keyword), Pattern.CASE_INSENSITIVE).matcher(name).find();
+        return Pattern.compile("^" + Pattern.quote(keyword), Pattern.CASE_INSENSITIVE).matcher(name).find();
     }
 
     private boolean testTags(Person person, String keyword) {
         for (Tag tag : person.getTags()) {
             String tagName = tag.tagName;
-            boolean tagMatches = Pattern.compile(Pattern.quote(keyword), Pattern.CASE_INSENSITIVE)
+            boolean tagMatches = Pattern.compile("^" + Pattern.quote(keyword), Pattern.CASE_INSENSITIVE)
                     .matcher(tagName).find();
             if (tagMatches) {
                 return true;
