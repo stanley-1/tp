@@ -33,7 +33,7 @@ public class HelpCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(answer);
 
-        if (answer == GENERIC_RESPONSE) {
+        if (answer.equals(GENERIC_RESPONSE)) {
             return new CommandResult(SHOWING_HELP_MESSAGE, true, false, false);
         } else {
             return new CommandResult(answer);

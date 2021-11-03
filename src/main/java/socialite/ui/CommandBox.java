@@ -25,6 +25,8 @@ public class CommandBox extends UiPart<Region> {
     private final CommandExecutor commandExecutor;
     private final List<String> commandHistory;
     private int historyIdx;
+    private String cachedCommand = "";
+
 
     @FXML
     private TextField commandTextField;
@@ -46,11 +48,11 @@ public class CommandBox extends UiPart<Region> {
      */
     @FXML
     private void handleCommandEntered() {
-        historyIdx = commandHistory.size() + 1;
         String commandText = commandTextField.getText();
         if (commandText.equals("")) {
             return;
         }
+        historyIdx = commandHistory.size() + 1;
 
         try {
             commandExecutor.execute(commandText);
@@ -78,6 +80,9 @@ public class CommandBox extends UiPart<Region> {
     }
 
     private String getPreviousCommand() {
+        if (historyIdx == commandHistory.size()) {
+            cachedCommand = commandTextField.getText();
+        }
         historyIdx = Math.max(historyIdx - 1, 0);
         return commandHistory.get(historyIdx);
     }
@@ -87,7 +92,7 @@ public class CommandBox extends UiPart<Region> {
             historyIdx = Math.min(historyIdx + 1, commandHistory.size());
             return commandHistory.get(historyIdx);
         } catch (IndexOutOfBoundsException e) {
-            return "";
+            return cachedCommand;
         }
     }
 

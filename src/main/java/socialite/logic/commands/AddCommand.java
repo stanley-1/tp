@@ -47,7 +47,8 @@ public class AddCommand extends Command {
             + PREFIX_DATE + "ord:2020-01-01";
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_PERSON =
+            "A contact with the same phone number already exists in the address book!";
     public static final String MESSAGE_HELP_GUIDE = "Enter 'help add' for in-app guidance.";
 
     private final Person toAdd;

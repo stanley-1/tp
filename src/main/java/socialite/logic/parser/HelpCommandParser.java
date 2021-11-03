@@ -5,8 +5,11 @@ import socialite.logic.commands.DeleteCommand;
 import socialite.logic.commands.EditCommand;
 import socialite.logic.commands.FindCommand;
 import socialite.logic.commands.HelpCommand;
+import socialite.logic.commands.PictureCommand;
+import socialite.logic.commands.PinCommand;
 import socialite.logic.commands.RemarkCommand;
 import socialite.logic.commands.ShareCommand;
+import socialite.logic.commands.UnpinCommand;
 
 /**
  * Parses input arguments (if any) and creates a new HelpCommand object
@@ -44,6 +47,15 @@ public class HelpCommandParser implements Parser<HelpCommand> {
 
         case ShareCommand.COMMAND_WORD:
             return new HelpCommand(ShareCommand.MESSAGE_USAGE);
+
+        case PictureCommand.COMMAND_WORD:
+            return new HelpCommand(PictureCommand.MESSAGE_USAGE);
+
+        case PinCommand.COMMAND_WORD:
+            return new HelpCommand(PinCommand.MESSAGE_USAGE);
+
+        case UnpinCommand.COMMAND_WORD:
+            return new HelpCommand(UnpinCommand.MESSAGE_USAGE);
 
         default:
             return new HelpCommand(INVALID_KEYWORD);

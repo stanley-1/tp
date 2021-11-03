@@ -18,7 +18,7 @@ public class HelpWindow extends UiPart<Stage> {
     public static final String USERGUIDE_URL = "https://ay2122s1-cs2103t-f11-4.github.io/tp/UserGuide.html";
     public static final String HELP_MESSAGE = "Refer to the user guide: " + USERGUIDE_URL
             + "\n\nEnter 'help <COMMAND>' to receive in-app guidance for the following commands: "
-            + "\n\nadd, delete, edit, find, remark"
+            + "\n\nadd, delete, edit, find, remark, share, picture, pin, unpin"
             + "\n\nExample: help add";
 
     private static final Logger logger = LogsCenter.getLogger(HelpWindow.class);
