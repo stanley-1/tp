@@ -15,7 +15,9 @@
   <padding>
     <Insets top="5" right="5" bottom="5" left="10" />
   </padding>
-  <ImageView fx:id="profilePicture" pickOnBounds="true" preserveRatio="true" />
+  <HBox minWidth="60" alignment="CENTER">
+    <ImageView fx:id="profilePicture" preserveRatio="true" style="-fx-border-color: red"/>
+  </HBox>
   <GridPane HBox.hgrow="ALWAYS">
     <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="170" />
