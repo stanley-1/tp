@@ -685,8 +685,8 @@ Action | Format | Example (if any)
 **Add / Edit Social Media Handles** | `edit INDEX [p/PLATFORM]` | `edit 1 fb/Alv1n.y`
 **Add Remark** | `remark INDEX r/[TEXT]` | `remark 1 r/Likes to swim`
 **Delete** | `delete INDEX`| `delete 3`
+**Delete All Categories** | `edit INDEX t/` | `edit 1 t/`
 **Delete All Data** | `clear` |
-**Delete Category** | `edit INDEX t/` |
 **Edit** | `edit INDEX [n/NAME] [p/PHONE] [r/REMARK] [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]` | `edit 1 p/91234567 fb/Yalex19`
 **Exit** | `exit` |
 **Find Contacts by Category** | `find t/TAG` | `find t/Friends`
