@@ -18,6 +18,7 @@ public class ContainsKeywordsPredicate implements Predicate<Person> {
         hasValidHandles = true;
     }
 
+    //returns true if user did not search for an invalid handle
     public boolean hasValidHandles() {
         return hasValidHandles;
     }
