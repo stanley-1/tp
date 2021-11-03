@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 public class DateTest {
     @Test
-    public void isValidDates() {
+    public void isValidDate() {
         // null date
         assertThrows(NullPointerException.class, () -> Date.isValidDate(null));
 
@@ -23,6 +23,8 @@ public class DateTest {
         assertFalse(Date.isValidDate("date name")); // no date
         assertFalse(Date.isValidDate("date name:")); // no date
         assertFalse(Date.isValidDate("date:2021-02-02:hourly")); // invalid recurrence interval
+        assertFalse(Date.isValidDate("date:2021-02-29")); // non-existent date
+        assertFalse(Date.isValidDate("date:2020-03-32")); // non-existent date
 
         // valid dates
         assertTrue(Date.isValidDate("date:2020-02-02"));

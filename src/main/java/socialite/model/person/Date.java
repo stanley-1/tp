@@ -1,5 +1,6 @@
 package socialite.model.person;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Comparator;
@@ -78,7 +79,25 @@ public class Date {
      * Returns true if a given string is a valid sequence of dates.
      */
     public static boolean isValidDate(String test) {
-        return test.matches(VALIDATION_REGEX);
+        Pattern pattern = Pattern.compile(VALIDATION_REGEX);
+        Matcher matcher = pattern.matcher(test);
+
+        if (!matcher.matches()) {
+            return false;
+        }
+
+        int year = Integer.parseInt(matcher.group(2));
+        int month = Integer.parseInt(matcher.group(3));
+        int day = Integer.parseInt(matcher.group(4));
+
+        // Ensure that date is a valid date.
+        try {
+            LocalDate.of(year, month, day);
+        } catch (DateTimeException e) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
