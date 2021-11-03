@@ -12,6 +12,7 @@ import socialite.model.CommandHistory;
 import socialite.model.Model;
 import socialite.model.ModelManager;
 import socialite.model.UserPrefs;
+import socialite.model.person.Person;
 import socialite.testutil.TypicalIndexes;
 import socialite.testutil.TypicalPersons;
 
@@ -22,6 +23,35 @@ public class ShareCommandTest {
 
     private Model model =
             new ModelManager(TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
+
+    @Test
+    public void execute_validIndexUnfilteredList_success() {
+        Person personToShare = model.getFilteredPersonList().get(TypicalIndexes.INDEX_FIRST_PERSON.getZeroBased());
+        ShareCommand shareCommand = new ShareCommand(TypicalIndexes.INDEX_FIRST_PERSON);
+
+        String expectedMessage =
+                String.format(ShareCommand.MESSAGE_SHARE_PERSON_SUCCESS, personToShare.toSharingString());
+
+        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new CommandHistory());
+
+        CommandTestUtil.assertCommandSuccess(shareCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_validIndexFilteredList_success() {
+        CommandTestUtil.showPersonAtIndex(model, TypicalIndexes.INDEX_FIRST_PERSON);
+
+        Person personToShare = model.getFilteredPersonList().get(TypicalIndexes.INDEX_FIRST_PERSON.getZeroBased());
+        ShareCommand shareCommand = new ShareCommand(TypicalIndexes.INDEX_FIRST_PERSON);
+
+        String expectedMessage =
+                String.format(ShareCommand.MESSAGE_SHARE_PERSON_SUCCESS, personToShare.toSharingString());
+
+        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new CommandHistory());
+        CommandTestUtil.showPersonAtIndex(expectedModel, TypicalIndexes.INDEX_FIRST_PERSON);
+
+        CommandTestUtil.assertCommandSuccess(shareCommand, model, expectedMessage, expectedModel);
+    }
 
     @Test
     public void execute_invalidIndexUnfilteredList_throwsCommandException() {
