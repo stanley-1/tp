@@ -32,7 +32,7 @@ This section gives you comprehensive details of all the commands on SociaLite.
 This section answers frequently asked questions about SociaLite.
 </div>
 
-<div markdown="span" class="alert alert-warning">**[Command Summary](#summary)**<br>
+<div markdown="span" class="alert alert-warning">**[Command Index](#index)**<br>
 This section contains a glossary of all the commands and quick examples for reference.
 </div>
 
@@ -673,29 +673,29 @@ If your changes to the data file makes its format invalid, SociaLite will discar
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Command Summary <a name="summary"></a>
+## Command Index <a name="index"></a>
 
-Action | Format, Examples
---------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]` <br> e.g., `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh`
-**List** | `list`
-**Access Social Media Page** | Click on social media handle
-**Track History** | `UP` or `DOWN` arrow keys
-**Edit** | `edit INDEX [n/NAME] [p/PHONE] [r/REMARK] [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]` <br> e.g., `edit 1 p/91234567 fb/Yalex19`
-**Create / Edit Categories** | `edit INDEX [t/TAG]...` <br> e.g., `edit 1 t/Friends`
-**Delete Category** | `edit INDEX t/`
-**Add / Edit Social Media Handles** | `edit INDEX [p/PLATFORM]` <br> e.g., `edit 1 fb/Alv1n.y`
-**Add / Edit Dates** | `edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​` <br> e.g., `edit 1 date/Meeting:2021-09-14`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Remove All Data** | `clear`
-**Find Contact** | `find NAME [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**Query Category** | `find t/TAG` <br> e.g., `find t/Friends`
-**Query Contacts via Platform** | `find p/PLATFORM` <br> e.g., `find p/facebook`
-**Add / Change Profile Picture** | `picture INDEX`
-**Share Contact** | `share INDEX` <br> e.g. `share 2`
-**Pin Contact** | `pin INDEX`<br />e.g. `pin 4` 
-**Unpin Contact** | `unpin INDEX`<br>e.g. `unpin 1`
-**Add Remark** | `remark INDEX r/[TEXT]` <br> e.g., `remark 1 r/Likes to swim`
-**View Help** | `help`
-**View In-App Guidance** | `help COMMAND` <br> e.g., `help add`
-**Exit** | `exit`
+Action | Format | Example (if any)
+--------|------------------|--------------------
+**Access Social Media Page** | Click on social media handle | 
+**Add** | `add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]` | `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh`
+**Add / Edit Categories** | `edit INDEX [t/TAG]...` | `edit 1 t/Friends`
+**Add / Edit Dates** | `edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​` | `edit 1 date/Meeting:2021-09-14`
+**Add / Edit Profile Picture** | `picture INDEX` | `picture 1`
+**Add / Edit Social Media Handles** | `edit INDEX [p/PLATFORM]` | `edit 1 fb/Alv1n.y`
+**Add Remark** | `remark INDEX r/[TEXT]` | `remark 1 r/Likes to swim`
+**Delete** | `delete INDEX`| `delete 3`
+**Delete All Data** | `clear` |
+**Delete Category** | `edit INDEX t/` |
+**Edit** | `edit INDEX [n/NAME] [p/PHONE] [r/REMARK] [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]` | `edit 1 p/91234567 fb/Yalex19`
+**Exit** | `exit` |
+**Find Contacts by Category** | `find t/TAG` | `find t/Friends`
+**Find Contacts by Name** | `find NAME [MORE_KEYWORDS]`| `find James Jake`
+**Find Contacts by Platform** | `find p/PLATFORM` | `find p/facebook`
+**List** | `list` |
+**Pin Contact** | `pin INDEX` | `pin 4`
+**Share Contact** | `share INDEX` | `share 2`
+**Track History** | `UP` or `DOWN` arrow keys |
+**Unpin Contact** | `unpin INDEX` | `unpin 1`
+**View Help** | `help` |
+**View In-App Guidance** | `help COMMAND` | `help add`
