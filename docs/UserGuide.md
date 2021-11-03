@@ -82,7 +82,7 @@ This section contains a glossary of all the commands and quick examples for refe
 * Items with `…`​ after them can be used any number of times.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
-* The '|' vertical bar indicates a choice that you have to make between the left and right options.<br>
+* The `|` vertical bar indicates a choice that you have to make between the left and right options.<br>
   e.g. in `[date/NAME:YYYY-MM-DD[:monthly|:yearly]]`, you can enter `date/Birthday:2021-01-01:yearly` to indicate an annual event called `Birthday` that repeats on 1 Jan yearly.
 
 * You may type your inputs in any order.<br>
