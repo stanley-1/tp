@@ -14,6 +14,7 @@ import socialite.logic.commands.exceptions.CommandException;
 import socialite.model.Model;
 import socialite.model.person.Person;
 import socialite.model.person.ProfilePicture;
+import socialite.ui.MainWindow;
 
 public class PictureCommand extends Command {
 
@@ -26,25 +27,33 @@ public class PictureCommand extends Command {
     public static final String MESSAGE_HELP_GUIDE =
             "Enter picture INDEX to add a profile picture to the person at INDEX";
     private final Index index;
-    private final File picture;
+    private final boolean useGui;
+    private File picture;
 
     /**
      * Creates a command that adds a picture to a person
      * @param index Index of person to add picture to
-     * @param picture File to add to person
      */
-    public PictureCommand(Index index, File picture) {
+    public PictureCommand(Index index, boolean useGui) {
         requireNonNull(index);
 
         this.index = index;
+        this.useGui = useGui;
+    }
+
+    /**
+     * Constructor with a provided picture used for testing
+     */
+    public PictureCommand(Index index, boolean useGui, File picture) {
+        requireNonNull(index);
+
+        this.index = index;
+        this.useGui = useGui;
         this.picture = picture;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        if (this.picture == null) {
-            return new CommandResult("Command aborted");
-        }
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
 
@@ -53,11 +62,24 @@ public class PictureCommand extends Command {
         }
 
         Person personToAddPic = lastShownList.get(index.getZeroBased());
+        if (useGui) {
+            picture = getPic();
+        }
+        if (picture == null) {
+            return new CommandResult("Command aborted");
+        }
+
         Person personWithPic = addPicToPerson(personToAddPic, picture, model);
 
         model.setPerson(personToAddPic, personWithPic);
         model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult("picture added", false, false, true);
+    }
+
+    private File getPic() {
+        MainWindow window = MainWindow.getWindow();
+        File file = window.getFile();
+        return file;
     }
 
     private Person addPicToPerson(Person person, File file, Model model) {
