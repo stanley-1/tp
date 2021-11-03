@@ -1,5 +1,6 @@
 package socialite.model.handle;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -34,6 +35,14 @@ public class TwitterTest {
     @Test
     public void hasLinkPrefix() {
         Twitter t = new Twitter("name1");
-        assertTrue(t.getUrl().equals("https://www.twitter.com/name1"));
+        assertEquals("https://www.twitter.com/name1", t.getUrl());
+    }
+
+    @Test
+    public void testEquals() {
+        Twitter t1 = new Twitter("validhandle");
+        Twitter t2 = new Twitter("validhandle");
+        assertEquals(t1, t2);
+        assertEquals(t1.hashCode(), t2.hashCode());
     }
 }
