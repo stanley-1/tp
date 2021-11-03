@@ -19,16 +19,16 @@ public class CommandResultTest {
     public void isShowHelp() {
         CommandResult helpCommandResult = new CommandResult("feedback", true, false, false);
         CommandResult notHelpCommandResult = new CommandResult("feedback", false, false, false);
-        assertTrue(helpCommandResult.isShowHelp());
-        assertFalse(notHelpCommandResult.isShowHelp());
+        assertTrue(helpCommandResult.isHelpCommand());
+        assertFalse(notHelpCommandResult.isHelpCommand());
     }
 
     @Test
     public void isExit() {
         CommandResult exitCommandResult = new CommandResult("feedback", false, true, false);
         CommandResult notExitCommandResult = new CommandResult("feedback", false, false, false);
-        assertTrue(exitCommandResult.isExit());
-        assertFalse(notExitCommandResult.isExit());
+        assertTrue(exitCommandResult.isExitCommand());
+        assertFalse(notExitCommandResult.isExitCommand());
     }
 
     @Test
