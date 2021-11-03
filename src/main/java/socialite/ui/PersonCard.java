@@ -158,27 +158,27 @@ public class PersonCard extends UiPart<Region> {
     // credits for this method goes to https://stackoverflow.com/questions/32781362/centering-an-image-in-an-imageview
     private void centerImage(ImageView imageView) {
         Image img = imageView.getImage();
-        if (img != null) {
-            double w = 0;
-            double h = 0;
-
-            double ratioX = imageView.getFitWidth() / img.getWidth();
-            double ratioY = imageView.getFitHeight() / img.getHeight();
-
-            double reducCoeff = 0;
-            if (ratioX >= ratioY) {
-                reducCoeff = ratioY;
-            } else {
-                reducCoeff = ratioX;
-            }
-
-            w = img.getWidth() * reducCoeff;
-            h = img.getHeight() * reducCoeff;
-
-            imageView.setX((imageView.getFitWidth() - w) / 2);
-            imageView.setY((imageView.getFitHeight() - h) / 2);
-
+        if (img == null) {
+            return;
         }
+        double w = 0;
+        double h = 0;
+
+        double ratioX = imageView.getFitWidth() / img.getWidth();
+        double ratioY = imageView.getFitHeight() / img.getHeight();
+
+        double reducCoeff = 0;
+        if (ratioX >= ratioY) {
+            reducCoeff = ratioY;
+        } else {
+            reducCoeff = ratioX;
+        }
+
+        w = img.getWidth() * reducCoeff;
+        h = img.getHeight() * reducCoeff;
+
+        imageView.setX((imageView.getFitWidth() - w) / 2);
+        imageView.setY((imageView.getFitHeight() - h) / 2);
     }
 
 
