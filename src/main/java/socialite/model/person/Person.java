@@ -187,23 +187,23 @@ public class Person {
         info.append("\tPhone: ").append(getPhone());
 
         if (getFacebook().get() != null) {
-            info.append("\n\tFacebook: ").append(getFacebook().get());
+            info.append("\n\tFacebook: ").append(getFacebook().getUrl());
         }
 
         if (getInstagram().get() != null) {
-            info.append("\n\tInstagram: ").append(getInstagram().get());
+            info.append("\n\tInstagram: ").append(getInstagram().getUrl());
         }
 
         if (getTelegram().get() != null) {
-            info.append("\n\tTelegram: ").append(getTelegram().get());
+            info.append("\n\tTelegram: ").append(getTelegram().getUrl());
         }
 
         if (getTiktok().get() != null) {
-            info.append("\n\tTikTok: ").append(getTiktok().get());
+            info.append("\n\tTikTok: ").append(getTiktok().getUrl());
         }
 
         if (getTwitter().get() != null) {
-            info.append("\n\tTwitter: ").append(getTwitter().get());
+            info.append("\n\tTwitter: ").append(getTwitter().getUrl());
         }
 
         return String.format(ShareCommand.MESSAGE_SHARE_PERSON_TEMPLATE, getName(), info);
