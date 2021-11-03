@@ -24,8 +24,7 @@ public class PictureCommand extends Command {
             + " used in the displayed person list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
-    public static final String MESSAGE_HELP_GUIDE =
-            "Enter picture INDEX to add a profile picture to the person at INDEX";
+    public static final String MESSAGE_HELP_GUIDE = "Enter 'help picture' for in-app guidance.";
     private final Index index;
     private final boolean useGui;
     private File picture;

@@ -27,26 +27,26 @@ public class AddCommand extends Command {
             + PREFIX_NAME + "NAME "
             + PREFIX_PHONE + "PHONE "
             + "[" + PREFIX_TAG + "TAG]... "
+            + "[" + PREFIX_DATE + "NAME:YYYY-MM-DD[:monthly|:yearly]]... "
             + "[" + PREFIX_FACEBOOK + "FACEBOOK] "
             + "[" + PREFIX_INSTAGRAM + "INSTAGRAM] "
             + "[" + PREFIX_TELEGRAM + "TELEGRAM] "
             + "[" + PREFIX_TIKTOK + "TIKTOK] "
-            + "[" + PREFIX_TWITTER + "TWITTER] "
-            + "[" + PREFIX_DATE + "NAME:YYYY-MM-DD]...\n"
+            + "[" + PREFIX_TWITTER + "TWITTER]\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
             + PREFIX_PHONE + "98765432 "
             + PREFIX_TAG + "friends "
             + PREFIX_TAG + "owesMoney "
+            + PREFIX_DATE + "birthday:2000-01-01 "
+            + PREFIX_DATE + "ord:2020-01-01 "
             + PREFIX_FACEBOOK + "john.doe "
             + PREFIX_INSTAGRAM + "john.doe "
             + PREFIX_TELEGRAM + "johndoe "
             + PREFIX_TIKTOK + "johndoe "
-            + PREFIX_TWITTER + "johndoe "
-            + PREFIX_DATE + "birthday:2000-01-01 "
-            + PREFIX_DATE + "ord:2020-01-01";
+            + PREFIX_TWITTER + "johndoe";
 
-    public static final String MESSAGE_SUCCESS = "New person added: %1$s";
+    public static final String MESSAGE_ADD_PERSON_SUCCESS = "New person added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON =
             "A contact with the same phone number already exists in the address book!";
     public static final String MESSAGE_HELP_GUIDE = "Enter 'help add' for in-app guidance.";
@@ -70,7 +70,7 @@ public class AddCommand extends Command {
         }
 
         model.addPerson(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_ADD_PERSON_SUCCESS, toAdd));
     }
 
     @Override
