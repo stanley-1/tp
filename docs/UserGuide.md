@@ -58,7 +58,7 @@ This section contains a glossary of all the commands and quick examples for refe
 
    * **`edit`** `edit 1 n/Alexis Yeoh` : Edits the name of the contact at the first position of the list to `Alexis Yeoh`.
 
-   * **`delete`**`3` : Deletes the 3rd contact shown in the current list.
+   * **`delete`** `delete 3` : Deletes the 3rd contact shown in the current list.
 
    * **`clear`** : Deletes all contacts. You will find this handy when deleting the sample contacts stored on SociaLite.
 
@@ -82,6 +82,9 @@ This section contains a glossary of all the commands and quick examples for refe
 * Items with `…`​ after them can be used any number of times.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
+* The '|' vertical bar indicates a choice that you have to make between the left and right options.<br>
+  e.g. in `[date/NAME:YYYY-MM-DD[:monthly|:yearly]]`, you can enter `date/Birthday:2021-01-01:yearly` to indicate an annual event called `Birthday` that repeats on 1 Jan yearly.
+
 * You may type your inputs in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
@@ -95,7 +98,7 @@ This section contains a glossary of all the commands and quick examples for refe
 
 As you explore the features that SociaLite has to offer, look out for these boxes:
 
-This box tells you the acceptable fields that you can provide for a particular command:
+The blue boxes tell you the acceptable fields that you can provide for a particular command:
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
@@ -105,7 +108,7 @@ This box tells you the acceptable fields that you can provide for a particular c
 * Detail 3
 </div>
 
-If you still aren't sure of how a particular command works, this box shows you examples that you can try out:
+If you still aren't sure of how a particular command works, the green boxes provide you with examples that you can try out:
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh date/birthday:2000-01-01:yearly`
@@ -122,31 +125,31 @@ Simply click on any command below to learn more about it!
 
 | `COMMAND` | Description |
 | --------- | ----------- |
-| [`add`](#add) | Add a contact |
+| [`add n/NAME p/PHONE_NUMBER ...`](#add) | Add a contact |
 | [`list`](#list) | List all contacts |
 | [`CLICK`](#click) | Access a contact's social media page |
 | [`↑`/`↓`](#scroll) | Track history of commands |
-| [`edit`](#edit) | Edit a contact |
+| [`edit INDEX ...`](#edit) | Edit a contact |
 | [`edit INDEX [t/TAG]`](#edit_tag) | Create / Edit tags for existing contacts |
 | [`edit INDEX t/`](#delete_tag) | Delete all tags from a contact |
 | [`edit INDEX [p/PLATFORM]`](#edit_platform) | Modify social media handles for a contact |
-| [`edit INDEX [date/NAME:YYYY-MM-DD[:monthly/:yearly]]…​`](#edit_dates) | Modify dates for a contact |
-| [`delete`](#delete) | Delete a contact |
+| [`edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​`](#edit_dates) | Modify dates for a contact |
+| [`delete INDEX`](#delete) | Delete a contact |
 | [`clear`](#clear) | Delete all contacts |
-| [`find`](#find) | Find a contact by name |
+| [`find NAME`](#find) | Find a contact by name |
 | [`find t/TAG`](#find_tag) | Find a contact through associated tags |
 | [`find p/PLATFORM`](#find_platform) | Find a contact through associated social media platforms |
-| [`picture`](#picture) | Modify profile picture of a contact |
-| [`share`](#share) | Copy contact information to system clipboard |
-| [`pin`](#pin) | Pin contact card on the top of the person list |
-| [`unpin`](#unpin) | Unpin contact card from the top of the person list |
-| [`remark`](#remark) | Add special notes about a contact |
+| [`picture INDEX`](#picture) | Modify profile picture of a contact |
+| [`share INDEX`](#share) | Copy contact information to system clipboard |
+| [`pin INDEX`](#pin) | Pin contact card on the top of the person list |
+| [`unpin INDEX`](#unpin) | Unpin contact card from the top of the person list |
+| [`remark INDEX r/[TEXT]`](#remark) | Add special notes about a contact |
 | [`help`](#help) | Access User Guide |
 | [`help COMMAND`](#help_command) | Access in-app guidance for selected commands |
 | [`exit`](#exit) | Exit the program |
 
 
-### Add a person: `add` <a name="add"></a>
+### Add a person: `add n/NAME p/PHONE_NUMBER ...` <a name="add"></a>
 
 Adds a person to the address book.
 
@@ -154,6 +157,7 @@ Adds a person to the address book.
 **:mag_right: Format:**
 `add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
 * A person can have any number of tags and dates (including 0).
+* To add a contact to SociaLite, you need to provide the **name** and a **unique phone number** for the person!
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -214,7 +218,7 @@ Scroll through your history of commands using the `↑` or `↓` arrow keys.
 
 <br>
 
-### Edit a person : `edit` <a name="edit"></a>
+### Edit a person : `edit INDEX ...` <a name="edit"></a>
 
 Edits an existing person in the address book.
 
@@ -357,7 +361,7 @@ Adds the event “Lunch Appointment” which falls on 10 Oct 2021 to Annie Baker
 
 <br>
 
-### Delete a person : `delete` <a name="delete"></a>
+### Delete a person : `delete INDEX` <a name="delete"></a>
 
 Deletes the specified person from the address book.
 
@@ -398,13 +402,13 @@ Please be mindful that entering this command will wipe out all your contacts sto
 
 <br>
 
-### Locate contacts by name: `find` <a name="find"></a>
+### Locate contacts by name: `find NAME` <a name="find"></a>
 
 Finds persons whose names contain any of the given keywords.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
-`find KEYWORD [MORE_KEYWORDS]`
+`find NAME [MORE_KEYWORDS]`
 * The search is case-insensitive. e.g `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
 * Partial matches will be displayed as results as well. e.g. `Han` will match `Hans`
@@ -469,7 +473,7 @@ Returns all contacts who have a Twitter handle pegged with them.
 
 <br>
 
-### Add / Change a profile picture: `picture` <a name="picture"></a>
+### Add / Change a profile picture: `picture INDEX` <a name="picture"></a>
 
 Adds a profile picture to an existing contact or changes the existing profile picture if available.
 
@@ -496,7 +500,7 @@ Opens the file browser to let you choose a picture to add to Charlie Decker’s 
 
 <br>
 
-### Share a contact card: `share` <a name="share"></a>
+### Share a contact card: `share INDEX` <a name="share"></a>
 
 Copies the contact card of the specified person to the system clipboard. The user can paste the plain text in an email or text message and forward the contact card to others thereafter.
 
@@ -522,7 +526,7 @@ Copies the information of the second contact in the list displayed by SociaLite.
 
 <br>
 
-### Pin a contact card: `pin` <a name="pin"></a>
+### Pin a contact card: `pin INDEX` <a name="pin"></a>
 
 Affixes the contact card of the specified person onto the top of the person list. Pinned contact cards will be alphabetically ordered.
 
@@ -550,7 +554,7 @@ SociaLite, at the top  of the person list along with other pinned contacts.
 
 <br>
 
-### Unpin a contact card: `unpin` <a name="unpin"></a>
+### Unpin a contact card: `unpin INDEX` <a name="unpin"></a>
 
 Removes the contact card of the specified person from the top of the person list.
 
@@ -577,7 +581,7 @@ Provided the first 4 contact cards are the pinned contact cards, the above comma
 
 <br>
 
-### Add remarks about a specific contact: `remark` <a name="remark"></a>
+### Add remarks about a specific contact: `remark INDEX r/[TEXT]` <a name="remark"></a>
 
 Adds special notes about a contact.
 
@@ -662,7 +666,7 @@ Exits the program.
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous SociaLite home folder.
 
 **Q**: Can I edit my data?<br>
-**A**: SociaLite data are saved as a JSON file `[JAR file location]/data/SociaLite.json`. Advanced users are welcome to update data directly by editing that data file.
+**A**: SociaLite data are saved as a JSON file `<JAR file location>/data/SociaLite.json`. Advanced users are welcome to update data directly by editing that data file.
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
 If your changes to the data file makes its format invalid, SociaLite will discard all data and start with an empty data file at the next run.
 </div>
@@ -684,10 +688,10 @@ Action | Format, Examples
 **Add / Edit Dates** | `edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​` <br> e.g., `edit 1 date/Meeting:2021-09-14`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Remove All Data** | `clear`
-**Find Contact** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Find Contact** | `find NAME [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **Query Category** | `find t/TAG` <br> e.g., `find t/Friends`
 **Query Contacts via Platform** | `find p/PLATFORM` <br> e.g., `find p/facebook`
-**Add/ Change Profile Picture** | `picture INDEX`
+**Add / Change Profile Picture** | `picture INDEX`
 **Share Contact** | `share INDEX` <br> e.g. `share 2`
 **Pin Contact** | `pin INDEX`<br />e.g. `pin 4` 
 **Unpin Contact** | `unpin INDEX`<br>e.g. `unpin 1`
