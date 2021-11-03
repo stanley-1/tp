@@ -159,13 +159,15 @@ Finds persons whose names contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Only the name is searched when no flags are provided as input.
+* The search is case-insensitive.
+* The order of the keywords does not matter.
+* Find supports partial matching from the START of each word. e.g. 
+* Name is searched by default when no flags (or invalid flags) are provided as input.
 
 Examples:
 * `find david` returns `David Li` and `David Tan`
+* `find Hans Bo` will match `Bo Hans`
+* `find han` will match `Hans` but not `Khan`
 * ![result for 'find david'](images/findDavidResult.png)
 
 <br>
@@ -232,10 +234,13 @@ Displays the contacts that are associated with a particular tag.
 Format: `find t/TAG`
 * Queries all contacts that are tied to `TAG`.
 * The tag must be existent and associated with certain contacts in the address book.
+* Tags are matched from the start of their names.
 
 Examples:
 * `find t/family` Checks all contacts in the address book which the user categorises as “family”.
 * `find t/work` Checks all contacts in the address book which the user categorises as “work”. 
+* `find t/classmate` Checks all contacts which are categorised as "classmate" OR "classmates" etc.
+* `find t/mates` Checks all contacts categorised as "mates" BUT NOT "classmates".
 
 <br>
 
@@ -295,7 +300,8 @@ Examples:
 Show all contacts with their handles on the particular social media platform.
 
 Format: `find p/PLATFORM`
-* The social media platform must be supported by SociaLite, e.g. `facebook`, `instagram`, `telegram`, `tiktok`, `twitter`.
+* The social media platform entered must only be ones supported by SociaLite, 
+`facebook`, `instagram`, `telegram`, `tiktok`, `twitter`.
 
 Examples:
 * `find p/instagram` Returns all contacts who have an Instagram handle pegged with them.

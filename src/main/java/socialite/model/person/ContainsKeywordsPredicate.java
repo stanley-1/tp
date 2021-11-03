@@ -13,6 +13,9 @@ public class ContainsKeywordsPredicate implements Predicate<Person> {
     private final List<String> keywords;
     private boolean hasValidHandles;
 
+    /**
+     * Creates the Predicate with the list of keywords entered by the user.
+     */
     public ContainsKeywordsPredicate(List<String> keywords) {
         this.keywords = keywords;
         hasValidHandles = true;
