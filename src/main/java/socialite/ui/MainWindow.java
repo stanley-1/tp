@@ -35,8 +35,10 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
-    private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+
+    // ResultDisplay set as protected to update result when clicking pin/unpin and share button
+    protected ResultDisplay resultDisplay;
 
     @FXML
     private StackPane commandBoxPlaceholder;
