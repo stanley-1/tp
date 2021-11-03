@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.awt.GraphicsEnvironment;
+
 import org.junit.jupiter.api.Test;
 
 import socialite.commons.core.Messages;
@@ -26,6 +28,9 @@ public class ShareCommandTest {
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
+        if (GraphicsEnvironment.isHeadless()) {
+            return; // for environment without keyboard/mouse
+        }
         Person personToShare = model.getFilteredPersonList().get(TypicalIndexes.INDEX_FIRST_PERSON.getZeroBased());
         ShareCommand shareCommand = new ShareCommand(TypicalIndexes.INDEX_FIRST_PERSON);
 
@@ -39,6 +44,9 @@ public class ShareCommandTest {
 
     @Test
     public void execute_validIndexFilteredList_success() {
+        if (GraphicsEnvironment.isHeadless()) {
+            return; // for environment without keyboard/mouse
+        }
         CommandTestUtil.showPersonAtIndex(model, TypicalIndexes.INDEX_FIRST_PERSON);
 
         Person personToShare = model.getFilteredPersonList().get(TypicalIndexes.INDEX_FIRST_PERSON.getZeroBased());
