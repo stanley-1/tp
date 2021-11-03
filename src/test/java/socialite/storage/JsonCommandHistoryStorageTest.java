@@ -18,7 +18,8 @@ import socialite.testutil.Assert;
 import socialite.testutil.TypicalCommandHistory;
 
 public class JsonCommandHistoryStorageTest {
-    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonCommandHistoryStorageTest");
+    private static final Path TEST_DATA_FOLDER =
+            Paths.get("src", "test", "data", "JsonCommandHistoryStorageTest");
 
     @TempDir
     public Path testFolder;
@@ -29,7 +30,8 @@ public class JsonCommandHistoryStorageTest {
     }
 
     private java.util.Optional<ReadOnlyCommandHistory> readCommandHistory(String filePath) throws Exception {
-        return new JsonCommandHistoryStorage(Paths.get(filePath)).readCommandHistory(addToTestDataPathIfNotNull(filePath));
+        return new JsonCommandHistoryStorage(Paths.get(filePath))
+                .readCommandHistory(addToTestDataPathIfNotNull(filePath));
     }
 
 
@@ -46,7 +48,8 @@ public class JsonCommandHistoryStorageTest {
 
     @Test
     public void read_notJsonFormat_exceptionThrown() {
-        Assert.assertThrows(DataConversionException.class, () -> readCommandHistory("notJsonFormatCommandHistory.json"));
+        Assert.assertThrows(DataConversionException.class, ()
+            -> readCommandHistory("notJsonFormatCommandHistory.json"));
     }
 
     @Test

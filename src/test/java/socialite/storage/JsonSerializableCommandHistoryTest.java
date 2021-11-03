@@ -23,5 +23,4 @@ public class JsonSerializableCommandHistoryTest {
         CommandHistory typicalCommandHistory = TypicalCommandHistory.getTypicalCommandHistory();
         assertEquals(commandHistoryFromFile, typicalCommandHistory);
     }
-
 }
