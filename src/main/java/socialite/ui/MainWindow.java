@@ -207,8 +207,7 @@ public class MainWindow extends UiPart<Stage> {
             }
 
             if (commandResult.isPictureCommand()) {
-                personListPanel = new PersonListPanel(logic.getFullPersonList());
-                personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+                showFullPersonList();
             }
 
             return commandResult;
@@ -219,7 +218,7 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
-    void updatePersonList() {
+    void showFullPersonList() {
         personListPanel = new PersonListPanel(logic.getFullPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
     }

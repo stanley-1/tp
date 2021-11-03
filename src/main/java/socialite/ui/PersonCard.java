@@ -139,8 +139,10 @@ public class PersonCard extends UiPart<Region> {
         if (person.isPinned()) {
             // set background colour / button colour
             pinButton.setText("Unpin");
+            pinButton.getStyleClass().add("pinButton");
         } else {
             pinButton.setText("Pin");
+            pinButton.getStyleClass().remove("pinButton");
         }
 
         person.getTags().stream()
@@ -283,7 +285,7 @@ public class PersonCard extends UiPart<Region> {
         } else {
             person.pin();
         }
-        MainWindow.getWindow().updatePersonList();
+        MainWindow.getWindow().showFullPersonList();
     }
 
     @FXML
