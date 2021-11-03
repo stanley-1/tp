@@ -53,7 +53,9 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private Button share;
+    private Button pinButton;
+    @FXML
+    private Button shareButton;
     @FXML
     private Label phone;
     @FXML
@@ -136,6 +138,9 @@ public class PersonCard extends UiPart<Region> {
 
         if (person.isPinned()) {
             // set background colour / button colour
+            pinButton.setText("Unpin");
+        } else {
+            pinButton.setText("Pin");
         }
 
         person.getTags().stream()
@@ -167,15 +172,10 @@ public class PersonCard extends UiPart<Region> {
         double ratioX = imageView.getFitWidth() / img.getWidth();
         double ratioY = imageView.getFitHeight() / img.getHeight();
 
-        double reducCoeff = 0;
-        if (ratioX >= ratioY) {
-            reducCoeff = ratioY;
-        } else {
-            reducCoeff = ratioX;
-        }
+        double reduceCoeff = Math.min(ratioX, ratioY);
 
-        w = img.getWidth() * reducCoeff;
-        h = img.getHeight() * reducCoeff;
+        w = img.getWidth() * reduceCoeff;
+        h = img.getHeight() * reduceCoeff;
 
         imageView.setX((imageView.getFitWidth() - w) / 2);
         imageView.setY((imageView.getFitHeight() - h) / 2);
@@ -275,14 +275,25 @@ public class PersonCard extends UiPart<Region> {
         }
     }
 
+
     @FXML
-    private void handleButtonAction() {
+    private void handlePinButtonAction() {
+        if (person.isPinned()) {
+            person.unpin();
+        } else {
+            person.pin();
+        }
+        MainWindow.getWindow().updatePersonList();
+    }
+
+    @FXML
+    private void handleShareButtonAction() {
         Clipboard clipboard = Clipboard.getSystemClipboard();
         ClipboardContent content = new ClipboardContent();
         content.putString(person.toSharingString());
         clipboard.setContent(content);
 
-        share.setText("Copied!");
+        shareButton.setText("Copied!");
 
         // Change the button text back after 2 seconds
         Task<Void> sleeper = new Task<>() {
@@ -291,7 +302,7 @@ public class PersonCard extends UiPart<Region> {
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException ignored) {
-                    // Yet to come up with what to do
+                    // TODO: throw some exception?
                 }
                 return null;
             }
@@ -299,7 +310,7 @@ public class PersonCard extends UiPart<Region> {
         sleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
             @Override
             public void handle(WorkerStateEvent event) {
-                share.setText("Share");
+                shareButton.setText("Share");
             }
         });
         new Thread(sleeper).start();

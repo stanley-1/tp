@@ -142,6 +142,7 @@ public class MainWindow extends UiPart<Stage> {
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
 
+
     /**
      * Sets the default size based on {@code guiSettings}.
      */
@@ -206,7 +207,7 @@ public class MainWindow extends UiPart<Stage> {
             }
 
             if (commandResult.isPictureCommand()) {
-                personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+                personListPanel = new PersonListPanel(logic.getFullPersonList());
                 personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
             }
 
@@ -216,6 +217,11 @@ public class MainWindow extends UiPart<Stage> {
             resultDisplay.setFeedbackToUser(e.getMessage());
             throw e;
         }
+    }
+
+    void updatePersonList() {
+        personListPanel = new PersonListPanel(logic.getFullPersonList());
+        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
     }
 
     public File getFile() {
