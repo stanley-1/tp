@@ -24,21 +24,20 @@ import socialite.logic.parser.exceptions.ParseException;
  * a menu bar and space where other JavaFX elements can be placed.
  */
 public class MainWindow extends UiPart<Stage> {
-
     private static MainWindow window;
     private static final String FXML = "MainWindow.fxml";
+
+    // ResultDisplay set as package private to update result when clicking pin/unpin and share button
+    protected ResultDisplay resultDisplay;
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
     private Stage primaryStage;
     private Logic logic;
 
-    // Independent Ui parts residing in this Ui container
+    // Independent Ui parts residing in this Ui container (excluding result display)
     private PersonListPanel personListPanel;
     private HelpWindow helpWindow;
-
-    // ResultDisplay set as protected to update result when clicking pin/unpin and share button
-    protected ResultDisplay resultDisplay;
 
     @FXML
     private StackPane commandBoxPlaceholder;
