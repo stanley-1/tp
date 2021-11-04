@@ -115,6 +115,14 @@ public class DateTest {
     }
 
     @Test
+    public void getUpcomingDays() {
+        Date date = new Date("date:2020-02-02:yearly");
+
+        assertEquals(0, date.getUpcomingDays(LocalDate.of(2020, 2, 2)));
+        assertEquals(276, date.getUpcomingDays(LocalDate.of(2020, 5, 2)));
+    }
+
+    @Test
     public void equals_success() {
         Date date = new Date("date:2020-02-02:yearly");
 

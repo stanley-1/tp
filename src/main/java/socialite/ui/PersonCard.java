@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.Comparator;
 
 import javafx.concurrent.Task;
@@ -244,11 +243,10 @@ public class PersonCard extends UiPart<Region> {
         displayedDates.get().values().stream()
                 .sorted(Date.getComparator())
                 .forEach(date -> {
-                    LocalDate nextOccurrence = date.getNextOccurrence(LocalDate.now()).orElse(LocalDate.MIN);
-                    Period period = Period.between(LocalDate.now(), nextOccurrence);
-                    boolean isUpcoming = period.getYears() == 0 && period.getMonths() == 0 && period.getDays() <= 7;
+                    long upcomingDays = date.getUpcomingDays(LocalDate.now());
+                    boolean isUpcoming = upcomingDays >= 0 && upcomingDays <= 7;
                     String upcomingMessage = isUpcoming
-                            ? " (" + (period.getDays() == 0 ? "today" : "in " + period.getDays() + " days") + ")"
+                            ? " (" + (upcomingDays == 0 ? "today" : "in " + upcomingDays + " days") + ")"
                             : "";
 
                     String message = date.toString() + upcomingMessage;

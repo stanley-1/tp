@@ -3,6 +3,7 @@ package socialite.model.person;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.Comparator;
 import java.util.Objects;
 import java.util.Optional;
@@ -74,6 +75,19 @@ public class Date {
         }
 
         return Optional.of(newDate);
+    }
+
+    /**
+     * Returns the number of days from the next occurrence of the date to the reference date.
+     * A negative number will be returned if the next occurrence is before the reference date.
+     *
+     * @param referenceDate The reference date.
+     * @return The number of days.
+     */
+    public long getUpcomingDays(LocalDate referenceDate) {
+        LocalDate nextOccurrence = getNextOccurrence(referenceDate).orElse(LocalDate.MIN);
+
+        return ChronoUnit.DAYS.between(referenceDate, nextOccurrence);
     }
 
     /**
