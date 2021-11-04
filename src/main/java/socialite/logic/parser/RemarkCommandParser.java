@@ -2,6 +2,7 @@ package socialite.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static socialite.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static socialite.commons.core.Messages.MESSAGE_REMARK_EXCEED_LIMIT;
 import static socialite.logic.parser.CliSyntax.PREFIX_REMARK;
 
 import socialite.commons.core.index.Index;
@@ -33,6 +34,9 @@ public class RemarkCommandParser implements Parser<RemarkCommand> {
 
         Remark remark = ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).orElse(null));
 
+        if (!remark.value.isEmpty() && remark.get().length() > 150) {
+            throw new ParseException(MESSAGE_REMARK_EXCEED_LIMIT);
+        }
         return new RemarkCommand(index, remark);
     }
 }
