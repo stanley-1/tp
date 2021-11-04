@@ -3,7 +3,6 @@ layout: page
 title: Developer Guide
 ---
 * Table of Contents
-{:toc}
 1. [Acknowledgements](#acknowledgements)
 2. [Setting Up, Getting Started](#setting-up-getting-started)
 3. [Design](#design)
@@ -14,6 +13,9 @@ title: Developer Guide
     5. [Storage Component](#storage)
     6. [Common Classes](#common)
 4. [Implementation](#implementation)
+   1. [Help Command](#help_command)
+   2. [Find Command](#find_command)
+   3. [Picture Command](#picture_command)
 5. [Documentation](#docs)
 6. [Appendix: Requirements](#requirements)
     1. [Product Scope](#scope)
@@ -173,7 +175,33 @@ Classes used by multiple components are in the `socialite.commons` package.
 
 This section describes some noteworthy details on how certain features are implemented.
 
-### \[Proposed\] Undo/redo feature
+### Help Command <a name="help_command"></a>
+
+In order to simplify the error messages displayed via the GUI whenever a user enters an invalid command or non-conforming command format, 
+the display of in-app guidance and help messages has been abstracted away from the specific command. As a result, the existing `HelpCommand` was 
+revamped and expanded to display in-app guidance, consisting of the following details for a specified command:
+* Overview of specified command's function
+* Acceptable format of user input
+* Example of using the specified command
+
+Represented below is the sequence diagram when `help XYZ` is executed. For illustration purposes, `XYZ` refers to an acceptable command in SociaLite that has in-app guidance for users' reference.
+
+![HelpSequenceDiagram](images/HelpSequenceDiagram.png)
+
+For the correct `HelpCommand` to be created and appropriate in-app guidance to be displayed, a `HelpCommandParser` was created to parse additional keywords provided by the user. 
+The acceptable keywords are: `add` `delete` `edit` `find` `picture` `pin` `unpin` `remark` and `share`.
+
+Should an invalid keyword accompany `help`, the `HelpCommandParser` will create a generic `HelpCommand` that displays the HelpWindow dialog box. 
+The HelpWindow dialog box provides users with the link to our User Guide and the list of acceptable keywords (as listed above) to view in-app guidance.
+
+
+### Find Command <a name="find_command"></a>
+
+
+### Picture Command <a name="picture_command"></a>
+
+
+### \[Proposed\] Undo/redo feature (TO BE REMOVED)
 
 #### Proposed Implementation
 

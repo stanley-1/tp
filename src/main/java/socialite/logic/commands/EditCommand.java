@@ -51,12 +51,12 @@ public class EditCommand extends Command {
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_REMARK + "REMARK] "
             + "[" + PREFIX_TAG + "TAG]... "
+            + "[" + PREFIX_DATE + "NAME:YYYY-MM-DD[:monthly|:yearly]]... "
             + "[" + PREFIX_FACEBOOK + "FACEBOOK] "
             + "[" + PREFIX_INSTAGRAM + "INSTAGRAM] "
             + "[" + PREFIX_TELEGRAM + "TELEGRAM] "
             + "[" + PREFIX_TIKTOK + "TIKTOK] "
-            + "[" + PREFIX_TWITTER + "TWITTER] "
-            + "[" + PREFIX_DATE + "NAME:YYYY-MM-DD]...\n"
+            + "[" + PREFIX_TWITTER + "TWITTER]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 ";
 

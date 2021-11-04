@@ -24,11 +24,12 @@ public class PictureCommand extends Command {
             + " used in the displayed person list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
-    public static final String MESSAGE_HELP_GUIDE =
-            "Enter picture INDEX to add a profile picture to the person at INDEX";
+    public static final String MESSAGE_HELP_GUIDE = "Enter 'help picture' for in-app guidance.";
+    public static final String MESSAGE_PICTURE_PERSON_SUCCESS = "Changed Profile Picture of Person: %1$s";
+    public static final String MESSAGE_COMMAND_ABORTED = "Command Aborted";
     private final Index index;
     private final boolean useGui;
-    private File picture;
+    private File picture = null;
 
     /**
      * Creates a command that adds a picture to a person
@@ -66,14 +67,15 @@ public class PictureCommand extends Command {
             picture = getPic();
         }
         if (picture == null) {
-            return new CommandResult("Command aborted");
+            throw new CommandException(MESSAGE_COMMAND_ABORTED);
         }
 
         Person personWithPic = addPicToPerson(personToAddPic, picture, model);
 
         model.setPerson(personToAddPic, personWithPic);
         model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult("picture added", false, false, true);
+        return new CommandResult(
+                String.format(MESSAGE_PICTURE_PERSON_SUCCESS, personToAddPic), false, false, true);
     }
 
     private File getPic() {
@@ -82,7 +84,10 @@ public class PictureCommand extends Command {
         return file;
     }
 
-    private Person addPicToPerson(Person person, File file, Model model) {
+    /**
+     * Adds picture to person provided
+     */
+    public Person addPicToPerson(Person person, File file, Model model) {
         if (!person.getProfilePicture().equals(ProfilePicture.DEFAULT_PICTURE)) {
             // delete file if not default picture
             model.deleteProfilePicture(person.getProfilePicture().value);
@@ -93,6 +98,25 @@ public class PictureCommand extends Command {
         model.saveProfilePicture(file, filename);
         person.setProfilePicture(Paths.get(filename));
         return person;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        } else if (other instanceof PictureCommand) {
+            PictureCommand otherCommand = (PictureCommand) other;
+            if (picture == null) {
+                return index.equals(otherCommand.index)
+                        && (useGui == otherCommand.useGui)
+                        && otherCommand.picture == null;
+            } else {
+                return index.equals(otherCommand.index)
+                        && (useGui == otherCommand.useGui)
+                        && picture.equals(otherCommand.picture);
+            }
+        }
+        return false;
     }
 
 }

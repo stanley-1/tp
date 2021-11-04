@@ -24,19 +24,17 @@ import socialite.logic.parser.exceptions.ParseException;
  * a menu bar and space where other JavaFX elements can be placed.
  */
 public class MainWindow extends UiPart<Stage> {
-
     private static MainWindow window;
     private static final String FXML = "MainWindow.fxml";
-
     private final Logger logger = LogsCenter.getLogger(getClass());
 
     private Stage primaryStage;
     private Logic logic;
 
-    // Independent Ui parts residing in this Ui container
+    // Independent Ui parts residing in this Ui container (excluding result display)
     private PersonListPanel personListPanel;
-    private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private ResultDisplay resultDisplay;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -154,6 +152,14 @@ public class MainWindow extends UiPart<Stage> {
             primaryStage.setY(guiSettings.getWindowCoordinates().getY());
         }
     }
+
+    /**
+     * Sets the feedback to user in the result display, used by other independent UI parts.
+     */
+    public void setFeedbackToUser(String feedback) {
+        resultDisplay.setFeedbackToUser(feedback);
+    }
+
 
     /**
      * Opens the help window or focuses on it if it's already opened.
