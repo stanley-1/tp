@@ -25,6 +25,12 @@ public class TelegramTest {
         assertFalse(Telegram.isValidHandle("john+appleseed")); // invalid token "+"
         assertFalse(Telegram.isValidHandle("john%appleseed")); // invalid token "%"
 
+        assertFalse(Telegram.isValidHandle("john__doe")); // cannot have consecutive '_'
+        assertFalse(Telegram.isValidHandle("john___doe")); // cannot have consecutive '_'
+        assertFalse(Telegram.isValidHandle("_johnny")); // cannot begin with '_'
+        assertFalse(Telegram.isValidHandle("johnny_")); // cannot end with '_'
+        assertFalse(Telegram.isValidHandle("_johnny_")); // cannot start and end with '_'
+
         // valid handles
         assertTrue(Telegram.isValidHandle("abcde")); // 5 characters
         assertTrue(Telegram.isValidHandle("ab_cd")); // 5 characters including underscore
