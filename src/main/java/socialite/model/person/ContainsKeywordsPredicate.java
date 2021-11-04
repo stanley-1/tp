@@ -29,7 +29,9 @@ public class ContainsKeywordsPredicate implements Predicate<Person> {
     }
 
     //returns true if tag queried is an empty string
-    public boolean isEmptyTag() { return isEmptyTag; }
+    public boolean isEmptyTag() {
+        return isEmptyTag;
+    }
 
     //helper functions to test person's name, tags or handles respectively.
     private boolean testName(Person person, String keyword) {
@@ -47,7 +49,7 @@ public class ContainsKeywordsPredicate implements Predicate<Person> {
     }
 
     private boolean testTags(Person person, String keyword) {
-        if (keyword.equals("")){
+        if (keyword.equals("")) {
             this.isEmptyTag = true;
             return true;
         }

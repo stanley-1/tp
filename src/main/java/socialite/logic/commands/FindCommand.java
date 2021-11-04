@@ -37,7 +37,7 @@ public class FindCommand extends Command {
             return new CommandResult(Messages.MESSAGE_INVALID_HANDLE);
         }
 
-        if (predicate.isEmptyTag()){
+        if (predicate.isEmptyTag()) {
             return new CommandResult(Messages.MESSAGE_EMPTY_TAG);
         }
 
