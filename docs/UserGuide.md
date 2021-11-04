@@ -630,18 +630,19 @@ Adds special notes about a contact.
 * Adds a note about the contact at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
+* Only one remark can be stored for each contact. If users provide multiple remarks as input, only the last remark will be stored.
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `list` followed by `remark 2 r/Doesn’t like vegetables`
 
-Adds the remark “Doesn’t like vegetables” to Charlie Decker’s listing in the address book.
+Adds the remark “Doesn’t like vegetables” to Charlie Decker’s listing in the app.
 </div>
 
 <div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `find Annie` followed by `remark 1 r/Loves peas`
+**:heavy_check_mark: Example:** `find Annie` followed by `remark 1 r/Loves peas r/Allergic to prawns r/Hates carrots`
 
-Adds the remark “Loves peas” to Annie Baker’s listing in the app.
+Only the remark “Hates carrots” is added to Annie Baker’s listing in the app.
 </div>
 
 <br>
