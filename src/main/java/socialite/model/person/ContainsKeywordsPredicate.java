@@ -12,19 +12,24 @@ import socialite.model.tag.Tag;
 public class ContainsKeywordsPredicate implements Predicate<Person> {
     private final List<String> keywords;
     private boolean hasValidHandles;
+    private boolean isEmptyTag;
 
     /**
      * Creates the Predicate with the list of keywords entered by the user.
      */
     public ContainsKeywordsPredicate(List<String> keywords) {
         this.keywords = keywords;
-        hasValidHandles = true;
+        this.hasValidHandles = true;
+        this.isEmptyTag = false;
     }
 
-    //returns true if user did not search for an invalid handle
+    //returns false if user searched for an invalid handle
     public boolean hasValidHandles() {
         return hasValidHandles;
     }
+
+    //returns true if tag queried is an empty string
+    public boolean isEmptyTag() { return isEmptyTag; }
 
     //helper functions to test person's name, tags or handles respectively.
     private boolean testName(Person person, String keyword) {
@@ -42,6 +47,10 @@ public class ContainsKeywordsPredicate implements Predicate<Person> {
     }
 
     private boolean testTags(Person person, String keyword) {
+        if (keyword.equals("")){
+            this.isEmptyTag = true;
+            return true;
+        }
         for (Tag tag : person.getTags()) {
             String tagName = tag.tagName;
             boolean tagMatches = Pattern.compile("^" + Pattern.quote(keyword), Pattern.CASE_INSENSITIVE)

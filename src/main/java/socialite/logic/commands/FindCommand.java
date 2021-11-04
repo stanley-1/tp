@@ -37,6 +37,10 @@ public class FindCommand extends Command {
             return new CommandResult(Messages.MESSAGE_INVALID_HANDLE);
         }
 
+        if (predicate.isEmptyTag()){
+            return new CommandResult(Messages.MESSAGE_EMPTY_TAG);
+        }
+
         return new CommandResult(
                 String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));
     }
