@@ -1,5 +1,6 @@
 package socialite.model.handle;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -38,9 +39,18 @@ public class FacebookTest {
         assertTrue(Facebook.isValidHandle("Nat.321")); // start with uppercase letter
 
     }
+
     @Test
     public void hasLinkPrefix() {
         Facebook f = new Facebook("name1");
-        assertTrue(f.getUrl().equals("https://www.facebook.com/name1"));
+        assertEquals("https://www.facebook.com/name1", f.getUrl());
+    }
+
+    @Test
+    public void testEquals() {
+        Facebook fb1 = new Facebook("validhandle");
+        Facebook fb2 = new Facebook("validhandle");
+        assertEquals(fb1, fb2);
+        assertEquals(fb1.hashCode(), fb2.hashCode());
     }
 }
