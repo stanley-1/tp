@@ -102,6 +102,26 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.sortPersons();
     }
 
+    /**
+     * Set the target person as pinned contact.
+     * {@code person} must be unpinned and exist in the address book.
+     */
+    public void pinPerson(Person person) {
+        Person pinnedPerson = person.copy();
+        pinnedPerson.pin();
+        persons.setPerson(person, pinnedPerson);
+    }
+
+    /**
+     * Set the target person as unpinned contact.
+     * {@code person} must be pinned and exist in the address book.
+     */
+    public void unpinPerson(Person person) {
+        Person unpinnedPerson = person.copy();
+        unpinnedPerson.unpin();
+        persons.setPerson(person, unpinnedPerson);
+    }
+
 
     //// util methods
 
