@@ -77,7 +77,7 @@ This section contains a glossary of all the commands and quick examples for refe
   e.g. in `add n/NAME`, `NAME` is an input which can be used as `add n/John Doe`.
 
 * Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+  e.g. `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
 
 * Items with `…`​ after them can be used any number of times.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
@@ -409,10 +409,10 @@ Finds persons whose names contain any of the given keywords.
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `find NAME [MORE_KEYWORDS]`
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Partial matches will be displayed as results as well. e.g. `Han` will match `Hans`
-* Only the name is searched when no flags are provided as input.
+* The search is case-insensitive.
+* The order of the keywords does not matter.
+* Supports partial matching from the start of each word in a contact's name.
+* Name is searched by default when no flags (or invalid flags) are given as input.
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -420,6 +420,18 @@ Finds persons whose names contain any of the given keywords.
 
 Returns `David Li` and `David Tan` <br>
 ![result for 'find david'](images/findDavidResult.png)
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `find Hans Bo` will match `Bo Hans`
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `find han` will match `Hans` but not `Khan`
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `find Ben Mei` will match `Benson Meier`
 </div>
 
 <br>
@@ -433,18 +445,38 @@ Displays the contacts that are associated with a particular tag.
 `find t/TAG`
 * Queries all contacts that are tied to `TAG`.
 * The tag must be existent and associated with certain contacts in the address book.
+* Tags are matched from the start of their names.
+* If multiple tags are queried, only contacts possessing all given tags are returned.
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `find t/family` 
 
-Checks all contacts in the address book which the user categorizes as “family”.
+Checks for contacts which the user categorized as “family”.
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `find t/work` 
 
-Checks all contacts in the address book which the user categorizes as “work”.
+Checks for contacts which the user categorized as “work”.
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `find t/classmate` 
+
+Checks for contacts which the user categorized as “classmate” OR "classmates" etc.
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `find t/mates` 
+
+Checks for contacts which the user categorized as “mates” BUT NOT "classmates".
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `find t/friend t/classmate` 
+
+Checks for contacts which are categorized as BOTH “friend” AND "classmate".
 </div>
 
 <br>
@@ -456,7 +488,8 @@ Show all contacts with their handles on the particular social media platform.
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `find p/PLATFORM`
-* The social media platform must be supported by SociaLite, e.g. `facebook`, `instagram`, `telegram`, `tiktok`, `twitter`.
+* The social media platform entered must be supported by SociaLite, (i.e.: Only `facebook`, `instagram`, `telegram`, `tiktok`, `twitter` are accepted).
+* If multiple platforms are queried, only contacts with handles for ALL specified platforms are returned.
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -469,6 +502,12 @@ Returns all contacts who have an Instagram handle pegged with them.
 **:heavy_check_mark: Example:** `find p/twitter` 
 
 Returns all contacts who have a Twitter handle pegged with them.
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `find p/facebook p/instagram` 
+
+Returns all contacts who have BOTH a Facebook and Instagram handle pegged with them.
 </div>
 
 <br>
