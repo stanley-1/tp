@@ -13,8 +13,13 @@ public class Instagram extends Handle {
     public static final String MESSAGE_CONSTRAINTS =
             "Instagram handles should only contain alphanumeric characters, periods & underscores.\n"
             + "A handle is limited to 30 characters and can't use other punctuation marks.\n"
+            + "Furthermore, it cannot start or end with a period or an underscore.\n"
+            + "Consecutive periods or underscores cannot appear in the username either.\n"
+            + "Lastly, the username should not contain \".com\" or \".net\"\n"
             + "https://tinyurl.com/instaHandle";
-    public static final String VALIDATION_REGEX = "^[a-zA-Z0-9._]{1,30}$";
+    public static final String VALIDATION_REGEX =
+            "^((?!.*^\\.)(?!.*^_)[a-zA-Z0-9._](?!(\\.com|\\.net)+$)(?!.*\\.\\.)(?!.*__)(?!.*\\._)(?!.*_\\.)(?!.*\\.$)"
+                    + "(?!.*_$)){1,30}$";
 
     /**
      * Constructs a {@code Instagram}.
