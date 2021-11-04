@@ -38,7 +38,7 @@ public class AddCommand extends Command {
             + PREFIX_PHONE + "98765432 "
             + PREFIX_TAG + "friends "
             + PREFIX_TAG + "owesMoney "
-            + PREFIX_DATE + "birthday:2000-01-01 "
+            + PREFIX_DATE + "birthday:2000-01-01:yearly "
             + PREFIX_DATE + "ord:2020-01-01 "
             + PREFIX_FACEBOOK + "john.doe "
             + PREFIX_INSTAGRAM + "john.doe "
