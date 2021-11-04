@@ -90,7 +90,15 @@ public class DateTest {
     }
 
     @Test
-    public void hashCode_tests() {
+    public void equals_success() {
+        Date date = new Date("date:2020-02-02:yearly");
+
+        assertEquals(date, new Date("date:2020-02-02:yearly"));
+        assertNotEquals(date, new Date("date:2020-02-02"));
+    }
+
+    @Test
+    public void hashCode_success() {
         Date date = new Date("date:2020-02-02:yearly");
 
         assertEquals(date.hashCode(), new Date("date:2020-02-02:yearly").hashCode());
