@@ -22,6 +22,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.shape.Circle;
+import socialite.logic.commands.ShareCommand;
 import socialite.model.handle.Handle;
 import socialite.model.handle.Handle.Platform;
 import socialite.model.person.Date;
@@ -281,6 +282,9 @@ public class PersonCard extends UiPart<Region> {
         ClipboardContent content = new ClipboardContent();
         content.putString(person.toSharingString());
         clipboard.setContent(content);
+
+        // Show the copied info in result display
+        MainWindow.getWindow().setFeedbackToUser(String.format(ShareCommand.MESSAGE_SHARE_PERSON_SUCCESS, content));
 
         share.setText("Copied!");
 
