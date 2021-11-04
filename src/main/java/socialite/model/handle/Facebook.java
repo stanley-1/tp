@@ -13,9 +13,12 @@ public class Facebook extends Handle {
     public static final String MESSAGE_CONSTRAINTS =
             "A Facebook username should only contain alphanumeric characters and full stops.\n"
             + "It must also be at least 5 characters long.\n"
-            + "Furthermore, it should not contain \".com\" or \".net\"\n"
+            + "Furthermore, it cannot start or end with a full stop.\n"
+            + "Neither can full stops appear consecutively in the username.\n"
+            + "Lastly, the username should not contain \".com\" or \".net\"\n"
             + "https://www.facebook.com/help/105399436216001/?helpref=uf_share";
-    public static final String VALIDATION_REGEX = "^([a-zA-Z0-9.](?!((\\.com|\\.net))+$)){5,}$";
+    public static final String VALIDATION_REGEX =
+            "^((?!.*^\\.)[a-zA-Z0-9.](?!(\\.com|\\.net)+$)(?!.*\\.\\.)(?!.*\\.$)){5,}$";
 
     /**
      * Constructs a {@code Facebook}.
