@@ -234,7 +234,7 @@ public class PersonCard extends UiPart<Region> {
             label.setText("@" + handle + " ");
             label.setOnMouseEntered(Event -> label.setUnderline(true));
             label.setOnMouseExited(Event -> label.setUnderline(false));
-            label.setOnMouseClicked(Event -> this.openBrowser(handle.getUrl()));
+            label.setOnMousePressed(Event -> this.openBrowser(handle.getUrl()));
         } else {
             box.setVisible(false);
         }
