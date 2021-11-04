@@ -134,8 +134,7 @@ public class Date {
                 || (other instanceof Date // instanceof handles nulls
                 && name.equals(((Date) other).name)
                 && date.equals(((Date) other).date)
-                && ((recurrenceInterval == null && ((Date) other).recurrenceInterval == null)
-                    || recurrenceInterval.equals(((Date) other).recurrenceInterval))); // state check
+                && Objects.equals(recurrenceInterval, ((Date) other).recurrenceInterval)); // state check
     }
 
     @Override
