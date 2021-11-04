@@ -9,6 +9,37 @@ import org.junit.jupiter.api.Test;
 
 public class CommandResultTest {
     @Test
+    public void getFeedbackToUser() {
+        CommandResult commandResult = new CommandResult("feedback");
+        String expectedFeedback = "feedback";
+        assertEquals(expectedFeedback, commandResult.getFeedbackToUser());
+    }
+
+    @Test
+    public void isShowHelp() {
+        CommandResult helpCommandResult = new CommandResult("feedback", true, false, false);
+        CommandResult notHelpCommandResult = new CommandResult("feedback", false, false, false);
+        assertTrue(helpCommandResult.isHelpCommand());
+        assertFalse(notHelpCommandResult.isHelpCommand());
+    }
+
+    @Test
+    public void isExit() {
+        CommandResult exitCommandResult = new CommandResult("feedback", false, true, false);
+        CommandResult notExitCommandResult = new CommandResult("feedback", false, false, false);
+        assertTrue(exitCommandResult.isExitCommand());
+        assertFalse(notExitCommandResult.isExitCommand());
+    }
+
+    @Test
+    public void isPictureCommand() {
+        CommandResult pictureCommandResult = new CommandResult("feedback", false, false, true);
+        CommandResult notPictureCommandResult = new CommandResult("feedback", false, false, false);
+        assertTrue(pictureCommandResult.isPictureCommand());
+        assertFalse(notPictureCommandResult.isPictureCommand());
+    }
+
+    @Test
     public void equals() {
         CommandResult commandResult = new CommandResult("feedback");
 

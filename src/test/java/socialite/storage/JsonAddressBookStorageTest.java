@@ -59,6 +59,12 @@ public class JsonAddressBookStorageTest {
     }
 
     @Test
+    public void readAddressBook_duplicatePersonAddressBook_throwDataConversionException() {
+        Assert.assertThrows(DataConversionException.class, ()
+            -> readAddressBook("duplicatePersonAddressBook.json"));
+    }
+
+    @Test
     public void readAndSaveAddressBook_allInOrder_success() throws Exception {
         Path filePath = testFolder.resolve("TempAddressBook.json");
         AddressBook original = TypicalPersons.getTypicalAddressBook();
