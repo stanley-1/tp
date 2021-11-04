@@ -22,7 +22,9 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.shape.Circle;
+import socialite.logic.commands.PinCommand;
 import socialite.logic.commands.ShareCommand;
+import socialite.logic.commands.UnpinCommand;
 import socialite.model.handle.Handle;
 import socialite.model.handle.Handle.Platform;
 import socialite.model.person.Date;
@@ -280,12 +282,15 @@ public class PersonCard extends UiPart<Region> {
 
     @FXML
     private void handlePinButtonAction() {
+        MainWindow mainWindow = MainWindow.getWindow();
         if (person.isPinned()) {
             person.unpin();
+            mainWindow.setFeedbackToUser(String.format(UnpinCommand.MESSAGE_UNPIN_PERSON_SUCCESS, person));
         } else {
             person.pin();
+            mainWindow.setFeedbackToUser(String.format(PinCommand.MESSAGE_PIN_PERSON_SUCCESS, person));
         }
-        MainWindow.getWindow().showFullPersonList();
+        mainWindow.showFullPersonList();
     }
 
     @FXML
@@ -298,7 +303,6 @@ public class PersonCard extends UiPart<Region> {
         // Show the copied info in result display
         MainWindow.getWindow().setFeedbackToUser(String.format(ShareCommand.MESSAGE_SHARE_PERSON_SUCCESS, content));
 
-        share.setText("Copied!");
         shareButton.setText("Copied!");
 
         // Change the button text back after 2 seconds
