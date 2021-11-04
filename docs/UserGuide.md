@@ -161,13 +161,14 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 * The search is case-insensitive.
 * The order of the keywords does not matter.
-* Find supports partial matching from the START of each word. e.g. 
+* Find supports partial matching from the start of each word in a name.
 * Name is searched by default when no flags (or invalid flags) are provided as input.
 
 Examples:
 * `find david` returns `David Li` and `David Tan`
 * `find Hans Bo` will match `Bo Hans`
 * `find han` will match `Hans` but not `Khan`
+* `find Ben Mei` will match `Benson Meier`  
 * ![result for 'find david'](images/findDavidResult.png)
 
 <br>
@@ -235,13 +236,14 @@ Format: `find t/TAG`
 * Queries all contacts that are tied to `TAG`.
 * The tag must be existent and associated with certain contacts in the address book.
 * Tags are matched from the start of their names.
+* If multiple tags are queried, only contacts matching all given tags are returned.
 
 Examples:
 * `find t/family` Checks all contacts in the address book which the user categorises as “family”.
 * `find t/work` Checks all contacts in the address book which the user categorises as “work”. 
 * `find t/classmate` Checks all contacts which are categorised as "classmate" OR "classmates" etc.
 * `find t/mates` Checks all contacts categorised as "mates" BUT NOT "classmates".
-
+* `find t/friend t/classmate` Checks all contacts categorised as BOTH "friend" and "classmate"
 <br>
 
 ### Delete tags associated with contacts: `edit INDEX t/`
@@ -302,11 +304,12 @@ Show all contacts with their handles on the particular social media platform.
 Format: `find p/PLATFORM`
 * The social media platform entered must only be ones supported by SociaLite, 
 `facebook`, `instagram`, `telegram`, `tiktok`, `twitter`.
+* If multiple platforms are queried, then only contacts with handles for all given platforms are returned
 
 Examples:
 * `find p/instagram` Returns all contacts who have an Instagram handle pegged with them.
 * `find p/twitter` Returns all contacts who have a Twitter handle pegged with them.
-
+* `find p/facebook p/instagram` Returns all contacts who have BOTH a Facebook and Instagram handle.
 <br>
 
 ### Sharing a contact card: `share`
