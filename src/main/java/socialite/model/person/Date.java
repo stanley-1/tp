@@ -28,7 +28,7 @@ public class Date {
      */
     public Date(String date) {
         Matcher matcher = VALIDATION_PATTERN.matcher(date);
-        matcher.matches();
+        assert matcher.matches();
 
         String name = matcher.group(1);
 
@@ -67,6 +67,7 @@ public class Date {
         }
 
         Period interval = getIntervalPeriod(recurrenceInterval);
+        assert interval != null;
         LocalDate newDate = LocalDate.from(date);
         while (newDate.isBefore(referenceDate)) {
             newDate = newDate.plus(interval);
