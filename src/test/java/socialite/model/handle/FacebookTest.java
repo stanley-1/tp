@@ -27,6 +27,11 @@ public class FacebookTest {
         assertFalse(Facebook.isValidHandle("john#chapman")); // invalid token '#'
         assertFalse(Facebook.isValidHandle("john.com")); // invalid token ".com"
         assertFalse(Facebook.isValidHandle("john.net")); // invalid token ".net"
+        assertFalse(Facebook.isValidHandle("john..doe")); // cannot have consecutive periods
+        assertFalse(Facebook.isValidHandle("john...doe")); // cannot have consecutive periods
+        assertFalse(Facebook.isValidHandle(".john.apple")); // cannot begin with '.'
+        assertFalse(Facebook.isValidHandle("john.apple.")); // cannot end with '.'
+        assertFalse(Facebook.isValidHandle(".john.apple.")); // cannot start and end with '.'
 
         // valid Facebook usernames
         assertTrue(Facebook.isValidHandle("john1")); // at least 5 characters
