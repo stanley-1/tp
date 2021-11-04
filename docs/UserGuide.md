@@ -151,7 +151,7 @@ Simply click on any command below to learn more about it!
 
 ### Add a person: `add n/NAME p/PHONE_NUMBER ...` <a name="add"></a>
 
-Adds a person to the address book.
+Adds a person to SociaLite.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
@@ -176,7 +176,7 @@ Adds a new contact called "Charlotte Oliveiro" with phone number "93210284" to S
 
 ### List all persons : `list` <a name="list"></a>
 
-Shows a list of all persons in the address book.
+Shows a list of all persons stored on SociaLite.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
@@ -220,12 +220,12 @@ Scroll through your history of commands using the `↑` or `↓` arrow keys.
 
 ### Edit a person : `edit INDEX ...` <a name="edit"></a>
 
-Edits an existing person in the address book.
+Edits an existing contact on SociaLite.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `edit INDEX [n/NAME] [p/PHONE] [r/REMARK] [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. 
+* Edits the person at the specified `INDEX`. The index refers to the index number shown on the displayed person list. 
 * The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Users can opt to change any fields associated with a contact as long as they prepend the argument with the corresponding flags according to the format above.
@@ -254,61 +254,61 @@ Edits the name of the 2nd person to be `Betsy Crower` and clears all existing ta
 
 ### Create / Edit tags for existing contacts: `edit INDEX [t/TAG]...` <a name="edit_tag"></a>
 
-Modifies tags that are associated with existing contacts in the address book.
+Modifies tags that are associated with existing contacts stored on SociaLite.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `edit INDEX [t/TAG]...`
 * Adds new tags to persons who did not have tags associated with them when they were first added to SociaLite.
 * Deletes all existing tags for the person at the specified `INDEX` and replaces them with tags specified in `[t/TAG]...`
-* The index refers to the index number shown in the displayed person list.
+* The index refers to the index number shown on the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `edit 1 t/family`
 
-Creates a tag called `family` for the first person in the address book.
+Creates a tag called `family` for the first person on the displayed person list.
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `edit 2 t/friend t/neighbour`
 
-Creates tags called `friend` and `neighbour` for the second person in the address book.
+Creates tags called `friend` and `neighbour` for the second person on the displayed person list.
 </div>
 
 <br>
 
 ### Delete tags associated with contacts: `edit INDEX t/` <a name="delete_tag"></a>
 
-Deletes tags that are associated with contacts in the address book.
+Deletes all tags that are associated with a specified contact on SociaLite.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `edit INDEX t/`
 * Deletes all categories tagged to the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
+* The index refers to the index number shown on the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `edit 2 t/` 
 
-Deletes all tags associated with the 2nd person in the address book.
+Deletes all tags associated with the 2nd person on the displayed person list.
 </div>
 
 <br>
 
 ### Add / Edit social media handles for existing contacts: `edit INDEX [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]` <a name="edit_platform"></a>
 
-Modifies social media handles that are associated with existing contacts in the address book.
+Modifies social media handles that are associated with existing contacts on SociaLite.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `edit INDEX [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
 * Adds a new handle for contacts who did not have that specific handle pegged with them when they were first added to SociaLite.
 * Replaces the handle for the person at the specified `INDEX` according to the flag and input provided.
-* The index refers to the index number shown in the displayed person list.
+* The index refers to the index number shown on the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * The flag refers to any of the following: `fb/` `ig/` `tele/` `tiktok/` `twitter/`
 * User input after the given flag represents the new social media handle associated with the contact.
@@ -318,13 +318,13 @@ Modifies social media handles that are associated with existing contacts in the 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `edit 1 fb/alvin.chipmunk` 
 
-Adds the Facebook handle `alvin.chipmunk` to the first person in the displayed person list.
+Adds the Facebook handle `alvin.chipmunk` to the first person on the displayed person list.
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `edit 1 tele/alv_1_N` 
 
-Adds the Telegram handle called `alv_1_N` to the first person in the displayed person list. The Facebook handle that was previously added is unaffected.
+Adds the Telegram handle called `alv_1_N` to the first person on the displayed person list. The Facebook handle that was previously added is unaffected.
 </div>
 
 <br>
@@ -337,7 +337,7 @@ Adds / Edits dates of occasions (birthdays, appointments) associated with a cont
 **:mag_right: Format:**
 `edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​`
 * Adds a date for the contact at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
+* The index refers to the index number shown on the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * Dates can have a name to associate them with a specific event (eg. Birthday, Meetup, Anniversary).
 * Date must be presented in `YYYY-MM-DD` format.
@@ -350,7 +350,7 @@ Adds / Edits dates of occasions (birthdays, appointments) associated with a cont
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `list` followed by `edit 1 date/Meeting:2021-09-14` 
 
-Adds the event “Meeting” which falls on 14 Sep 2021, to Annie Baker’s listing in the app.
+Adds the event “Meeting” which falls on 14 Sep 2021, to Annie Baker’s listing.
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -363,26 +363,26 @@ Adds the event “Lunch Appointment” which falls on 10 Oct 2021 to Annie Baker
 
 ### Delete a person : `delete INDEX` <a name="delete"></a>
 
-Deletes the specified person from the address book.
+Deletes the specified person from SociaLite.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `delete INDEX`
 * Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
+* The index refers to the index number shown on the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `list` followed by `delete 2` 
 
-Deletes the 2nd person in the address book.
+Deletes the 2nd person on the displayed person list.
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `find Betsy` followed by `delete 1` 
 
-Deletes the 1st person in the results of the `find` command.
+Deletes the 1st person on the displayed person list of the `find` command.
 </div>
 
 <br>
@@ -444,7 +444,7 @@ Displays the contacts that are associated with a particular tag.
 **:mag_right: Format:**
 `find t/TAG`
 * Queries all contacts that are tied to `TAG`.
-* The tag must be existent and associated with certain contacts in the address book.
+* The tag must be existent and associated with certain contacts stored on SociaLite.
 * Tags are matched from the start of their names.
 * If multiple tags are queried, only contacts possessing all given tags are returned.
 </div>
@@ -521,7 +521,7 @@ Adds a profile picture to an existing contact or changes the existing profile pi
 `picture INDEX`
 * Opens file browser allowing you to choose any .jpg or .png file as the profile picture.
 * Adds the selected picture to the contact at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
+* The index refers to the index number shown on the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 </div>
 
@@ -549,7 +549,7 @@ Alternatively, the user can click on the "Share" button at the top-right hand co
 **:mag_right: Format:**
 `share INDEX`
 * Copies the contact card of the person at the specified `INDEX` to the system clipboard.
-* The index refers to the index number shown in the displayed person list.
+* The index refers to the index number shown on the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 </div>
 
@@ -575,7 +575,7 @@ Alternatively, the user can click on the "Pin" button at the top-right hand corn
 **:mag_right: Format:**
 `pin INDEX`
 * Pins the contact card of the person at the specified `INDEX` at the top of the person list.
-* The index refers to the index number shown in the displayed person list.
+* The index refers to the index number shown on the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, ...
 * The contact card must **not** be previously pinned.
 </div>
@@ -603,7 +603,7 @@ Alternatively, the user can click on the "Unpin" button at the top-right hand co
 **:mag_right: Format:**
 `unpin INDEX`
 * Unpins the contact card of the person at the specified `INDEX` at the top of the person list.
-* The index refers to the index number shown in the displayed person list.
+* The index refers to the index number shown on the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, ...
 * The contact card must be previously pinned.
 </div>
@@ -628,7 +628,7 @@ Adds special notes about a contact.
 **:mag_right: Format:**
 `remark INDEX r/[TEXT]`
 * Adds a note about the contact at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
+* The index refers to the index number shown on the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * Only one remark can be stored for each contact. If users provide multiple remarks as input, only the last remark will be stored.
 </div>
