@@ -33,7 +33,7 @@ public class ShareCommand extends Command {
     public static final String MESSAGE_SHARE_PERSON_TEMPLATE = "Here are the social media handles for %1$s!\n"
             + "%2$s\n"
             + "Hey, have you tried SociaLite? I have enjoyed using it, you should check it out too!\n"
-            + "Simply go to https://tinyurl.com/CS2103SociaLite!";
+            + "Simply go to https://tinyurl.com/CS2103SociaLite";
 
 
     public static final String MESSAGE_HELP_GUIDE = "Enter 'help share' for in-app guidance.";

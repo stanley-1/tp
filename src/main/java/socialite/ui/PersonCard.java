@@ -284,8 +284,7 @@ public class PersonCard extends UiPart<Region> {
         clipboard.setContent(content);
 
         // Show the copied info in result display
-        ResultDisplay resultDisplay = MainWindow.getWindow().resultDisplay;
-        resultDisplay.setFeedbackToUser(String.format(ShareCommand.MESSAGE_SHARE_PERSON_SUCCESS, content));
+        MainWindow.getWindow().setFeedbackToUser(String.format(ShareCommand.MESSAGE_SHARE_PERSON_SUCCESS, content));
 
         share.setText("Copied!");
 

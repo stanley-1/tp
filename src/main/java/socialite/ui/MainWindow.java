@@ -26,10 +26,6 @@ import socialite.logic.parser.exceptions.ParseException;
 public class MainWindow extends UiPart<Stage> {
     private static MainWindow window;
     private static final String FXML = "MainWindow.fxml";
-
-    // ResultDisplay set as package private to update result when clicking pin/unpin and share button
-    protected ResultDisplay resultDisplay;
-
     private final Logger logger = LogsCenter.getLogger(getClass());
 
     private Stage primaryStage;
@@ -38,6 +34,7 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container (excluding result display)
     private PersonListPanel personListPanel;
     private HelpWindow helpWindow;
+    private ResultDisplay resultDisplay;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -154,6 +151,14 @@ public class MainWindow extends UiPart<Stage> {
             primaryStage.setY(guiSettings.getWindowCoordinates().getY());
         }
     }
+
+    /**
+     * Sets the feedback to user in the result display, used by other independent UI parts.
+     */
+    public void setFeedbackToUser(String feedback) {
+        resultDisplay.setFeedbackToUser(feedback);
+    }
+
 
     /**
      * Opens the help window or focuses on it if it's already opened.
