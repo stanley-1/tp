@@ -15,10 +15,11 @@ public class Date {
 
     public static final String VALIDATION_REGEX =
             "([\\w\\s]+):(\\d{4})-(\\d{2})-(\\d{2})(?::(yearly|monthly))?\\s*";
+    public static final Pattern VALIDATION_PATTERN = Pattern.compile(VALIDATION_REGEX);
 
-    private String name;
-    private LocalDate date;
-    private String recurrenceInterval;
+    private final String name;
+    private final LocalDate date;
+    private final String recurrenceInterval;
 
     /**
      * Construct a new {@code Date} with a given name and value,
@@ -26,10 +27,9 @@ public class Date {
      * @param date The input string to parse.
      */
     public Date(String date) {
-        Pattern pattern = Pattern.compile(VALIDATION_REGEX);
-        Matcher matcher = pattern.matcher(date);
+        Matcher matcher = VALIDATION_PATTERN.matcher(date);
+        matcher.matches();
 
-        matcher.find();
         String name = matcher.group(1);
 
         int year = Integer.parseInt(matcher.group(2));
@@ -79,9 +79,7 @@ public class Date {
      * Returns true if a given string is a valid sequence of dates.
      */
     public static boolean isValidDate(String test) {
-        Pattern pattern = Pattern.compile(VALIDATION_REGEX);
-        Matcher matcher = pattern.matcher(test);
-
+        Matcher matcher = VALIDATION_PATTERN.matcher(test);
         if (!matcher.matches()) {
             return false;
         }
@@ -102,7 +100,7 @@ public class Date {
 
     /**
      * Returns a comparator which can be used to compare dates.
-     * Dates are compared based on their next occurence, followed by their original date.
+     * Dates are compared based on their next occurrence, followed by their original date.
      *
      * @return a comparator
      */
@@ -110,7 +108,7 @@ public class Date {
         Comparator<Date> comparator = Comparator.comparing(date -> date.getNextOccurrence(LocalDate.now())
                         .orElse(LocalDate.MIN),
                 Comparator.reverseOrder());
-        return comparator.thenComparing(date -> date.getDate(), Comparator.reverseOrder());
+        return comparator.thenComparing(Date::getDate, Comparator.reverseOrder());
     }
 
     private static Period getIntervalPeriod(String recurrenceInterval) {
