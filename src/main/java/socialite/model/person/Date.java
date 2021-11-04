@@ -68,7 +68,7 @@ public class Date {
 
         Period interval = getIntervalPeriod(recurrenceInterval);
         LocalDate newDate = LocalDate.from(date);
-        while (!newDate.isAfter(referenceDate)) {
+        while (newDate.isBefore(referenceDate)) {
             newDate = newDate.plus(interval);
         }
 

@@ -41,12 +41,15 @@ public class DateTest {
 
     @Test
     public void getRecurrenceInterval() {
+        // empty recurrence interval
         assertTrue(new Date("date:2020-02-02").getRecurrenceInterval().isEmpty());
 
+        // yearly recurrence interval
         Date recurringDateYearly = new Date("date:2021-02-02:yearly");
         assertTrue(recurringDateYearly.getRecurrenceInterval().isPresent());
         assertEquals("yearly", recurringDateYearly.getRecurrenceInterval().get());
 
+        // monthly recurrence interval
         Date recurringDateMonthly = new Date("date:2021-02-02:monthly");
         assertTrue(recurringDateMonthly.getRecurrenceInterval().isPresent());
         assertEquals("monthly", recurringDateMonthly.getRecurrenceInterval().get());
@@ -54,39 +57,61 @@ public class DateTest {
 
     @Test
     public void getNextOccurrence_nonRecurring() {
-        LocalDate referenceDate1 = LocalDate.of(2021, 4, 4);
-        LocalDate referenceDate2 = LocalDate.of(2020, 1, 1);
         Date nonRecurring = new Date("date:2020-02-02");
 
+        // next occurrence with reference date after a non-recurring date should be empty
+        LocalDate referenceDate1 = LocalDate.of(2021, 4, 4);
         assertTrue(nonRecurring.getNextOccurrence(referenceDate1).isEmpty());
+
+        // next occurrence with reference date before a non-recurring date should be the non-recurring date
+        LocalDate referenceDate2 = LocalDate.of(2020, 1, 1);
         assertTrue(nonRecurring.getNextOccurrence(referenceDate2).isPresent());
         assertEquals(LocalDate.of(2020, 2, 2), nonRecurring.getNextOccurrence(referenceDate2).get());
+
+        // next occurrence with reference date on a non-recurring date should be the non-recurring date
+        LocalDate referenceDate3 = LocalDate.of(2020, 2, 2);
+        assertTrue(nonRecurring.getNextOccurrence(referenceDate3).isPresent());
+        assertEquals(LocalDate.of(2020, 2, 2), nonRecurring.getNextOccurrence(referenceDate3).get());
     }
 
     @Test
     public void getNextOccurrence_recurringMonthly() {
-        LocalDate referenceDate1 = LocalDate.of(2021, 4, 4);
-        LocalDate referenceDate2 = LocalDate.of(2020, 1, 1);
         Date recurring = new Date("date:2020-02-02:monthly");
 
+        // next occurrence with reference date after a recurring date should not be empty
+        LocalDate referenceDate1 = LocalDate.of(2021, 4, 4);
         assertTrue(recurring.getNextOccurrence(referenceDate1).isPresent());
         assertEquals(LocalDate.of(2021, 5, 2), recurring.getNextOccurrence(referenceDate1).get());
 
+        // next occurrence with reference date before a recurring date should the recurring date
+        LocalDate referenceDate2 = LocalDate.of(2020, 1, 1);
         assertTrue(recurring.getNextOccurrence(referenceDate2).isPresent());
         assertEquals(LocalDate.of(2020, 2, 2), recurring.getNextOccurrence(referenceDate2).get());
+
+        // next occurrence with reference date on a recurring date should be the recurring date
+        LocalDate referenceDate3 = LocalDate.of(2020, 2, 2);
+        assertTrue(recurring.getNextOccurrence(referenceDate3).isPresent());
+        assertEquals(LocalDate.of(2020, 2, 2), recurring.getNextOccurrence(referenceDate3).get());
     }
 
     @Test
     public void getNextOccurrence_recurringYearly() {
-        LocalDate referenceDate1 = LocalDate.of(2021, 4, 4);
-        LocalDate referenceDate2 = LocalDate.of(2020, 1, 1);
         Date recurring = new Date("date:2020-02-02:yearly");
 
+        // next occurrence with reference date after a recurring date should not be empty
+        LocalDate referenceDate1 = LocalDate.of(2021, 4, 4);
         assertTrue(recurring.getNextOccurrence(referenceDate1).isPresent());
         assertEquals(LocalDate.of(2022, 2, 2), recurring.getNextOccurrence(referenceDate1).get());
 
+        // next occurrence with reference date before a recurring date should the recurring date
+        LocalDate referenceDate2 = LocalDate.of(2020, 1, 1);
         assertTrue(recurring.getNextOccurrence(referenceDate2).isPresent());
         assertEquals(LocalDate.of(2020, 2, 2), recurring.getNextOccurrence(referenceDate2).get());
+
+        // next occurrence with reference date on a recurring date should be the recurring date
+        LocalDate referenceDate3 = LocalDate.of(2020, 2, 2);
+        assertTrue(recurring.getNextOccurrence(referenceDate3).isPresent());
+        assertEquals(LocalDate.of(2020, 2, 2), recurring.getNextOccurrence(referenceDate3).get());
     }
 
     @Test
