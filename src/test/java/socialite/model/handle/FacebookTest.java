@@ -29,6 +29,7 @@ public class FacebookTest {
         assertFalse(Facebook.isValidHandle("john.com")); // invalid token ".com"
         assertFalse(Facebook.isValidHandle("john.net")); // invalid token ".net"
 
+        // invalid Facebook usernames with incorrect placement of periods
         assertFalse(Facebook.isValidHandle("john..doe")); // cannot have consecutive periods
         assertFalse(Facebook.isValidHandle("john...doe")); // cannot have consecutive periods
         assertFalse(Facebook.isValidHandle(".johnny")); // cannot begin with '.'

@@ -28,18 +28,21 @@ public class InstagramTest {
         assertFalse(Instagram.isValidHandle("john-chapman")); // invalid token '-'
         assertFalse(Instagram.isValidHandle("ThisIsALongHandleThatShouldBeInvalid")); // exceeds max length
 
+        // invalid Instagram handles with incorrect placement of periods
         assertFalse(Instagram.isValidHandle("john..doe")); // cannot have consecutive periods
         assertFalse(Instagram.isValidHandle("john...doe")); // cannot have consecutive periods
         assertFalse(Instagram.isValidHandle(".johnny")); // cannot begin with '.'
         assertFalse(Instagram.isValidHandle("johnny.")); // cannot end with '.'
         assertFalse(Instagram.isValidHandle(".johnny.")); // cannot start and end with '.'
 
+        // invalid Instagram handles with incorrect placement of underscores
         assertFalse(Instagram.isValidHandle("john__doe")); // cannot have consecutive '_'
         assertFalse(Instagram.isValidHandle("john___doe")); // cannot have consecutive '_'
         assertFalse(Instagram.isValidHandle("_johnny")); // cannot begin with '_'
         assertFalse(Instagram.isValidHandle("johnny_")); // cannot end with '_'
         assertFalse(Instagram.isValidHandle("_johnny_")); // cannot start and end with '_'
 
+        // invalid Instagram handles with incorrect placement of acceptable special characters
         assertFalse(Instagram.isValidHandle("john_.doe")); // cannot have consecutive special characters
         assertFalse(Instagram.isValidHandle("john._doe")); // cannot have consecutive special characters
 
