@@ -62,7 +62,7 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label phone;
     @FXML
-    private HBox handles;
+    private FlowPane handles;
     @FXML
     private HBox facebook;
     @FXML
@@ -297,11 +297,12 @@ public class PersonCard extends UiPart<Region> {
     private void handleShareButtonAction() {
         Clipboard clipboard = Clipboard.getSystemClipboard();
         ClipboardContent content = new ClipboardContent();
-        content.putString(person.toSharingString());
+        String shareInfo = person.toSharingString();
+        content.putString(shareInfo);
         clipboard.setContent(content);
 
         // Show the copied info in result display
-        MainWindow.getWindow().setFeedbackToUser(String.format(ShareCommand.MESSAGE_SHARE_PERSON_SUCCESS, content));
+        MainWindow.getWindow().setFeedbackToUser(String.format(ShareCommand.MESSAGE_SHARE_PERSON_SUCCESS, shareInfo));
 
         shareButton.setText("Copied!");
 
