@@ -14,7 +14,6 @@ public class PictureCommandParser implements Parser<PictureCommand> {
         requireNonNull(args);
 
         Index index;
-
         try {
             index = ParserUtil.parseIndex(args);
         } catch (ParseException pe) {

@@ -42,7 +42,7 @@ public class EditCommandParserTest {
 
         // zero index
         CommandParserTestUtil.assertParseFailure(
-                parser, "0" + CommandTestUtil.NAME_DESC_AMY, MESSAGE_INVALID_FORMAT
+                parser, "0" + CommandTestUtil.NAME_DESC_AMY, ParserUtil.MESSAGE_INVALID_INDEX
         );
 
         // invalid arguments being parsed as preamble

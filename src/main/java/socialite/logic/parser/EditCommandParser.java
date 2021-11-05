@@ -44,15 +44,13 @@ public class EditCommandParser implements Parser<EditCommand> {
                         PREFIX_INSTAGRAM, PREFIX_TELEGRAM, PREFIX_TIKTOK, PREFIX_TWITTER, PREFIX_DATE
                 );
 
-        Index index;
-
-        try {
-            index = ParserUtil.parseIndex(argMultimap.getPreamble());
-        } catch (ParseException pe) {
+        String indexField = argMultimap.getPreamble().trim();
+        if (!indexField.matches("\\d+")) {
             throw new ParseException(
-                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_HELP_GUIDE), pe
-            );
+                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_HELP_GUIDE));
         }
+        Index index = ParserUtil.parseIndex(argMultimap.getPreamble());
+
 
         EditCommand.EditPersonDescriptor editPersonDescriptor = new EditCommand.EditPersonDescriptor();
         if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
