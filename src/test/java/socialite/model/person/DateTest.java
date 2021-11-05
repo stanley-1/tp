@@ -85,4 +85,17 @@ public class DateTest {
         assertTrue(recurring.getNextOccurrence(referenceDate2).isPresent());
         assertEquals(LocalDate.of(2020, 02, 02), recurring.getNextOccurrence(referenceDate2).get());
     }
+
+    @Test
+    public void check_equal_dates() {
+        Date d1 = new Date("date:2020-02-02");
+        Date d2 = new Date("date:2020-02-02");
+        assertTrue(d1.equals(d2));
+    }
+
+    @Test
+    public void check_date_string() {
+        Date d1 = new Date("date:2020-01-01");
+        assertEquals("date: 2020-01-01", d1.toString());
+    }
 }
