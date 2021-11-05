@@ -18,12 +18,12 @@ import socialite.model.person.Person;
 import socialite.testutil.TypicalIndexes;
 import socialite.testutil.TypicalPersons;
 
-
 public class PictureCommandTest {
 
     private Model model =
             new ModelManager(
                     TypicalPersons.getTypicalContactList(), new UserPrefs(), new CommandHistory());
+
     private File acceptedFile = Paths.get("data", "profilepictures", "simu.jpeg").toFile();
 
     @Test
@@ -135,5 +135,6 @@ public class PictureCommandTest {
         // different type -> false
         assertFalse(secondPictureCommand.equals(3));
     }
+
 
 }

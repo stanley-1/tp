@@ -15,6 +15,7 @@ import socialite.testutil.TypicalPersons;
 
 public class JsonSerializableContactListTest {
 
+
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializableContactListTest");
     private static final Path TYPICAL_PERSONS_FILE = TEST_DATA_FOLDER.resolve("typicalPersonsContactList.json");
     private static final Path INVALID_PERSON_FILE = TEST_DATA_FOLDER.resolve("invalidPersonContactList.json");
