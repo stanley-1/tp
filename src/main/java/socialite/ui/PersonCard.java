@@ -22,6 +22,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.shape.Circle;
+import socialite.logic.commands.ShareCommand;
 import socialite.model.handle.Handle;
 import socialite.model.handle.Handle.Platform;
 import socialite.model.person.Date;
@@ -129,9 +130,10 @@ public class PersonCard extends UiPart<Region> {
         Circle clip = new Circle(30);
         this.profilePicture.setFitHeight(60);
         this.profilePicture.setFitWidth(60);
-        clip.setCenterX(profilePicture.getFitHeight() / 2);
-        clip.setCenterY(profilePicture.getFitWidth() / 2);
+        clip.setCenterX(profilePicture.getFitWidth() / 2);
+        clip.setCenterY(profilePicture.getFitHeight() / 2);
         this.profilePicture.setClip(clip);
+        centerImage(profilePicture);
 
         if (person.isPinned()) {
             // set background colour / button colour
@@ -143,7 +145,6 @@ public class PersonCard extends UiPart<Region> {
         this.renderDates(person.getDates());
     }
 
-
     private void makeRemark(Remark remark) {
         String value = remark.get();
         if (value != null && !value.equals("")) {
@@ -153,6 +154,32 @@ public class PersonCard extends UiPart<Region> {
             this.remark.setText(null);
             this.remark.setVisible(false);
         }
+    }
+
+    // credits for this method goes to https://stackoverflow.com/questions/32781362/centering-an-image-in-an-imageview
+    private void centerImage(ImageView imageView) {
+        Image img = imageView.getImage();
+        if (img == null) {
+            return;
+        }
+        double w = 0;
+        double h = 0;
+
+        double ratioX = imageView.getFitWidth() / img.getWidth();
+        double ratioY = imageView.getFitHeight() / img.getHeight();
+
+        double reducCoeff = 0;
+        if (ratioX >= ratioY) {
+            reducCoeff = ratioY;
+        } else {
+            reducCoeff = ratioX;
+        }
+
+        w = img.getWidth() * reducCoeff;
+        h = img.getHeight() * reducCoeff;
+
+        imageView.setX((imageView.getFitWidth() - w) / 2);
+        imageView.setY((imageView.getFitHeight() - h) / 2);
     }
 
 
@@ -207,7 +234,7 @@ public class PersonCard extends UiPart<Region> {
             label.setText("@" + handle + " ");
             label.setOnMouseEntered(Event -> label.setUnderline(true));
             label.setOnMouseExited(Event -> label.setUnderline(false));
-            label.setOnMouseClicked(Event -> this.openBrowser(handle.getUrl()));
+            label.setOnMousePressed(Event -> this.openBrowser(handle.getUrl()));
         } else {
             box.setVisible(false);
         }
@@ -255,6 +282,9 @@ public class PersonCard extends UiPart<Region> {
         ClipboardContent content = new ClipboardContent();
         content.putString(person.toSharingString());
         clipboard.setContent(content);
+
+        // Show the copied info in result display
+        MainWindow.getWindow().setFeedbackToUser(String.format(ShareCommand.MESSAGE_SHARE_PERSON_SUCCESS, content));
 
         share.setText("Copied!");
 
