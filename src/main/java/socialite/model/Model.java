@@ -50,7 +50,7 @@ public interface Model {
      */
     void setAddressBook(ReadOnlyAddressBook addressBook);
 
-    /** Returns the AddressBook */
+    /** Returns the ContactList */
     ReadOnlyAddressBook getAddressBook();
 
     /**
@@ -94,8 +94,6 @@ public interface Model {
      */
     void addCommandToHistory(String command);
 
-
-    // Profile picture related methods
     void deleteProfilePicture(Path name);
 
     void saveProfilePicture(File file, String prefix);
@@ -104,8 +102,6 @@ public interface Model {
 
     void clearProfilePictureModel();
 
-
-    // Pin & unpin related methods
     void pinPerson(Person person);
 
     void unpinPerson(Person person);

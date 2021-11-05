@@ -20,14 +20,14 @@ import socialite.model.person.Person;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook addressBook;
+    private final ContactList contactList;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final CommandHistory commandHistory;
     private final ProfilePictureSyncModel profilePictureSyncModel;
 
     /**
-     * Initializes a ModelManager with the given addressBook, userPrefs and commandHistory.
+     * Initializes a ModelManager with the given contactList, userPrefs and commandHistory.
      */
     public ModelManager(
             ReadOnlyAddressBook addressBook,
@@ -36,9 +36,9 @@ public class ModelManager implements Model {
         super();
         CollectionUtil.requireAllNonNull(addressBook, userPrefs);
 
-        this.addressBook = new AddressBook(addressBook);
+        this.contactList = new ContactList(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        filteredPersons = new FilteredList<>(this.contactList.getPersonList());
         this.commandHistory = new CommandHistory(commandHistory);
         this.profilePictureSyncModel = new ProfilePictureSyncModel();
 
@@ -50,7 +50,7 @@ public class ModelManager implements Model {
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs(), new CommandHistory());
+        this(new ContactList(), new UserPrefs(), new CommandHistory());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -79,41 +79,41 @@ public class ModelManager implements Model {
 
     @Override
     public Path getAddressBookFilePath() {
-        return userPrefs.getAddressBookFilePath();
+        return userPrefs.getContactListFilePath();
     }
 
     @Override
     public void setAddressBookFilePath(Path addressBookFilePath) {
         requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+        userPrefs.setContactListFilePath(addressBookFilePath);
     }
 
-    //=========== AddressBook ================================================================================
+    //=========== ContactList ================================================================================
 
     @Override
     public void setAddressBook(ReadOnlyAddressBook addressBook) {
-        this.addressBook.resetData(addressBook);
+        this.contactList.resetData(addressBook);
     }
 
     @Override
     public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
+        return contactList;
     }
 
     @Override
     public boolean hasPerson(Person person) {
         requireNonNull(person);
-        return addressBook.hasPerson(person);
+        return contactList.hasPerson(person);
     }
 
     @Override
     public void deletePerson(Person target) {
-        addressBook.removePerson(target);
+        contactList.removePerson(target);
     }
 
     @Override
     public void addPerson(Person person) {
-        addressBook.addPerson(person);
+        contactList.addPerson(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
@@ -121,7 +121,7 @@ public class ModelManager implements Model {
     public void setPerson(Person target, Person editedPerson) {
         CollectionUtil.requireAllNonNull(target, editedPerson);
 
-        addressBook.setPerson(target, editedPerson);
+        contactList.setPerson(target, editedPerson);
     }
 
     //=========== Filtered Person List Accessors =============================================================
@@ -139,7 +139,7 @@ public class ModelManager implements Model {
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         // Sort the address book
-        addressBook.sortPersons();
+        contactList.sortPersons();
         filteredPersons.setPredicate(predicate);
     }
 
@@ -169,7 +169,7 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return addressBook.equals(other.addressBook)
+        return contactList.equals(other.contactList)
                 && userPrefs.equals(other.userPrefs)
                 && filteredPersons.equals(other.filteredPersons);
     }
@@ -200,12 +200,12 @@ public class ModelManager implements Model {
     //=========== Pin & Unpin ================================================================================
     @Override
     public void pinPerson(Person person) {
-        addressBook.pinPerson(person);
+        contactList.pinPerson(person);
     }
 
     @Override
     public void unpinPerson(Person person) {
-        addressBook.unpinPerson(person);
+        contactList.unpinPerson(person);
     }
 
 }
