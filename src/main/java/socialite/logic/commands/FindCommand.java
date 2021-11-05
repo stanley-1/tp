@@ -16,6 +16,12 @@ public class FindCommand extends Command {
 
     public static final String MESSAGE_HELP_GUIDE = "Enter 'help find' for in-app guidance.";
 
+    public static final String MESSAGE_INVALID_HANDLE = "Invalid platform specified. "
+            + "Only the following inputs are supported:\n"
+            + "p/facebook, p/instagram, p/telegram, p/tiktok, p/twitter.";
+
+    public static final String MESSAGE_EMPTY_TAG = "Tags to search for must not be empty.";
+
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters contacts containing ALL keywords listed.\n"
             + "Keywords can be in the form of tags (prefix with 't/'), "
             + "handles (prefix with 'p/'), and names (no prefix needed).\n"
@@ -33,12 +39,13 @@ public class FindCommand extends Command {
         requireNonNull(model);
 
         model.updateFilteredPersonList(predicate);
-        if (!predicate.hasValidHandles()) {
-            return new CommandResult(Messages.MESSAGE_INVALID_HANDLE);
-        }
 
         if (predicate.isEmptyTag()) {
-            return new CommandResult(Messages.MESSAGE_EMPTY_TAG);
+            return new CommandResult(MESSAGE_EMPTY_TAG);
+        }
+
+        if (!predicate.hasValidHandles()) {
+            return new CommandResult(MESSAGE_INVALID_HANDLE);
         }
 
         return new CommandResult(

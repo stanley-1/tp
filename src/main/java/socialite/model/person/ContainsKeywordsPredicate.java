@@ -23,17 +23,17 @@ public class ContainsKeywordsPredicate implements Predicate<Person> {
         this.isEmptyTag = false;
     }
 
-    //returns false if user searched for an invalid handle
+    // returns false if user searched for an invalid handle
     public boolean hasValidHandles() {
         return hasValidHandles;
     }
 
-    //returns true if tag queried is an empty string
+    // returns true if tag queried is an empty string
     public boolean isEmptyTag() {
         return isEmptyTag;
     }
 
-    //helper functions to test person's name, tags or handles respectively.
+    // helper functions to test person's name, tags or handles respectively.
     private boolean testName(Person person, String keyword) {
         String fullName = person.getName().fullName;
         String[] names = fullName.split(" ");
@@ -61,7 +61,7 @@ public class ContainsKeywordsPredicate implements Predicate<Person> {
                 return true;
             }
         }
-        //if none of the person's tags match the keyword.
+        // if none of the person's tags match the keyword.
         return false;
     }
 
@@ -87,7 +87,7 @@ public class ContainsKeywordsPredicate implements Predicate<Person> {
 
     @Override
     public boolean test(Person person) {
-        //Tests just one person. For their name, tags or handles.
+        // Tests just one person. For their name, tags or handles.
         if (keywords.size() == 0) {
             return false;
         }
