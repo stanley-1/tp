@@ -699,7 +699,7 @@ _Customization of Contacts_
 
       Use case resumes at step 2.
 
-* 3b. The specified contact is already pinned.
+* 3b. The specified contact is already pinned. 
 
       Use case ends.
 
@@ -728,7 +728,7 @@ _Customization of Contacts_
 
       Use case resumes at step 2.
 
-* 3b. The specified contact is not pinned.
+* 3b. The specified contact is not pinned. 
 
       Use case ends.
 
