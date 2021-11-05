@@ -2,8 +2,12 @@ package socialite.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.File;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -66,6 +70,24 @@ public class StorageManagerTest {
     @Test
     public void getAddressBookFilePath() {
         assertNotNull(storageManager.getAddressBookFilePath());
+    }
+
+    @Test
+    public void getProfilePictureFilePath() {
+        assertNotNull(storageManager.getProfilePictureFolderPath());
+    }
+
+    @Test
+    public void addAndDeleteProfilePicture() throws Exception {
+        File testFile = Paths.get("src", "test", "data", "profilepictures", "simu.jpeg").toFile();
+        storageManager.saveProfilePicture(testFile, "testPicture");
+        String[] files = ProfilePictureStorageManager.PROFILE_PIC_FOLDER_PATH.toFile().list();
+        assertTrue(Arrays.stream(files).anyMatch(file -> file.equals("testPicture")));
+        storageManager.deleteProfilePicture(Path.of("testPicture"));
+        files = ProfilePictureStorageManager.PROFILE_PIC_FOLDER_PATH.toFile().list();
+        if (files != null) {
+            assertTrue(Arrays.stream(files).noneMatch(file -> file.equals("testPicture")));
+        }
     }
 
 }
