@@ -271,6 +271,7 @@ Modifies tags that are associated with existing contacts stored on SociaLite.
 Creates a tag called `family` for the first person on the displayed person list.
 </div>
 
+
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `edit 2 t/friend t/neighbour`
 
@@ -385,6 +386,7 @@ Deletes the 2nd person on the displayed person list.
 Deletes the 1st person on the displayed person list of the `find` command.
 </div>
 
+
 <br>
 
 ### Remove all data: `clear` <a name="clear"></a>
@@ -488,7 +490,8 @@ Show all contacts with their handles on the particular social media platform.
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `find p/PLATFORM`
-* The social media platform entered must be supported by SociaLite, (i.e.: Only `facebook`, `instagram`, `telegram`, `tiktok`, `twitter` are accepted).
+* The social media platform entered must be supported by SociaLite, 
+(i.e.: Only `facebook`, `instagram`, `telegram`, `tiktok`, `twitter` are accepted, case insensitive).
 * If multiple platforms are queried, only contacts with handles for ALL specified platforms are returned.
 </div>
 
