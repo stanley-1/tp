@@ -4,7 +4,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * Represents a Person's Profile Picture in address book.
+ * Represents a Person's Profile Picture in the contact list.
  * Default value is the default profile picture.
  */
 public class ProfilePicture {

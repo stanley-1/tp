@@ -9,10 +9,10 @@ import socialite.model.person.Person;
 import socialite.model.person.UniquePersonList;
 
 /**
- * Wraps all data at the address-book level
+ * Wraps all data at the contact-list level
  * Duplicates are not allowed (by .isSamePerson comparison)
  */
-public class ContactList implements ReadOnlyAddressBook {
+public class ContactList implements ReadOnlyContactList {
 
     private final UniquePersonList persons;
 
@@ -30,9 +30,9 @@ public class ContactList implements ReadOnlyAddressBook {
     public ContactList() {}
 
     /**
-     * Creates an ContactList using the Persons in the {@code toBeCopied}
+     * Creates a ContactList using the Persons in the {@code toBeCopied}
      */
-    public ContactList(ReadOnlyAddressBook toBeCopied) {
+    public ContactList(ReadOnlyContactList toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -50,7 +50,7 @@ public class ContactList implements ReadOnlyAddressBook {
     /**
      * Resets the existing data of this {@code ContactList} with {@code newData}.
      */
-    public void resetData(ReadOnlyAddressBook newData) {
+    public void resetData(ReadOnlyContactList newData) {
         requireNonNull(newData);
 
         setPersons(newData.getPersonList());
@@ -59,7 +59,7 @@ public class ContactList implements ReadOnlyAddressBook {
     //// person-level operations
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
+     * Returns true if a person with the same identity as {@code person} exists in the contact list.
      */
     public boolean hasPerson(Person person) {
         requireNonNull(person);
@@ -67,8 +67,8 @@ public class ContactList implements ReadOnlyAddressBook {
     }
 
     /**
-     * Adds a person to the address book.
-     * The person must not already exist in the address book.
+     * Adds a person to the contact list.
+     * The person must not already exist in the contact list.
      */
     public void addPerson(Person p) {
         persons.add(p);
@@ -76,8 +76,8 @@ public class ContactList implements ReadOnlyAddressBook {
 
     /**
      * Replaces the given person {@code target} in the list with {@code editedPerson}.
-     * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
+     * {@code target} must exist in the contact list.
+     * The person identity of {@code editedPerson} must not be the same as another existing person in the contact list.
      */
     public void setPerson(Person target, Person editedPerson) {
         requireNonNull(editedPerson);
@@ -87,7 +87,7 @@ public class ContactList implements ReadOnlyAddressBook {
 
     /**
      * Removes {@code key} from this {@code ContactList}.
-     * {@code key} must exist in the address book.
+     * {@code key} must exist in the contact list.
      */
     public void removePerson(Person key) {
         persons.remove(key);
@@ -104,7 +104,7 @@ public class ContactList implements ReadOnlyAddressBook {
 
     /**
      * Set the target person as pinned contact.
-     * {@code person} must be unpinned and exist in the address book.
+     * {@code person} must be unpinned and exist in the contact list.
      */
     public void pinPerson(Person person) {
         Person pinnedPerson = person.copy();
@@ -114,7 +114,7 @@ public class ContactList implements ReadOnlyAddressBook {
 
     /**
      * Set the target person as unpinned contact.
-     * {@code person} must be pinned and exist in the address book.
+     * {@code person} must be pinned and exist in the contact list.
      */
     public void unpinPerson(Person person) {
         Person unpinnedPerson = person.copy();

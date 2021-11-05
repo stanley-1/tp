@@ -10,11 +10,11 @@ import socialite.commons.core.LogsCenter;
 import socialite.logic.commands.Command;
 import socialite.logic.commands.CommandResult;
 import socialite.logic.commands.exceptions.CommandException;
-import socialite.logic.parser.AddressBookParser;
+import socialite.logic.parser.SocialiteParser;
 import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.Model;
-import socialite.model.ReadOnlyAddressBook;
 import socialite.model.ReadOnlyCommandHistory;
+import socialite.model.ReadOnlyContactList;
 import socialite.model.person.Person;
 import socialite.storage.Storage;
 
@@ -26,7 +26,7 @@ public class LogicManager implements Logic {
     private final Logger logger = LogsCenter.getLogger(LogicManager.class);
     private final Model model;
     private final Storage storage;
-    private final AddressBookParser addressBookParser;
+    private final SocialiteParser socialiteParser;
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
@@ -34,7 +34,7 @@ public class LogicManager implements Logic {
     public LogicManager(Model model, Storage storage) {
         this.model = model;
         this.storage = storage;
-        addressBookParser = new AddressBookParser();
+        socialiteParser = new SocialiteParser();
     }
 
     @Override
@@ -44,12 +44,12 @@ public class LogicManager implements Logic {
         model.addCommandToHistory(commandText);
 
         CommandResult commandResult;
-        Command command = addressBookParser.parseCommand(commandText);
+        Command command = socialiteParser.parseCommand(commandText);
         commandResult = command.execute(model);
 
         try {
             storage.saveCommandHistory(model.getCommandHistory());
-            storage.saveContactList(model.getAddressBook());
+            storage.saveContactList(model.getContactList());
             storage.syncProfilePictures(model.getProfilePictureEditDescriptor());
             model.clearProfilePictureModel();
         } catch (IOException ioe) {
@@ -60,8 +60,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return model.getAddressBook();
+    public ReadOnlyContactList getContactList() {
+        return model.getContactList();
     }
 
     @Override
@@ -76,8 +76,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
-        return model.getAddressBookFilePath();
+    public Path getContactListFilePath() {
+        return model.getContactListFilePath();
     }
 
     @Override

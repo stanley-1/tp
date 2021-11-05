@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 import socialite.model.CommandHistory;
 import socialite.model.ContactList;
-import socialite.model.ReadOnlyAddressBook;
 import socialite.model.ReadOnlyCommandHistory;
+import socialite.model.ReadOnlyContactList;
 import socialite.model.handle.Facebook;
 import socialite.model.handle.Instagram;
 import socialite.model.handle.Telegram;
@@ -71,7 +71,7 @@ public class SampleDataUtil {
     }
 
 
-    public static ReadOnlyAddressBook getSampleAddressBook() {
+    public static ReadOnlyContactList getSampleContactList() {
         ContactList sampleAb = new ContactList();
         for (Person samplePerson : getSamplePersons()) {
             sampleAb.addPerson(samplePerson);

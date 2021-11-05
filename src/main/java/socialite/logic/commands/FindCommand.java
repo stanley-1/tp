@@ -7,8 +7,8 @@ import socialite.model.Model;
 import socialite.model.person.ContainsKeywordsPredicate;
 
 /**
- * Finds and lists all persons in address book whose name contains any of the argument keywords.
- * Keyword matching is case insensitive.
+ * Finds and lists all persons in the contact list whose name contains any of the argument keywords.
+ * Keyword matching is case-insensitive.
  */
 public class FindCommand extends Command {
 

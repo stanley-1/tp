@@ -23,7 +23,7 @@ import socialite.testutil.TypicalPersons;
 public class UnpinCommandTest {
 
     private Model model =
-            new ModelManager(TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
+            new ModelManager(TypicalPersons.getTypicalContactList(), new UserPrefs(), new CommandHistory());
 
     @Test
     public void execute_invalidIndexUnfilteredList_throwsCommandException() {
@@ -38,8 +38,8 @@ public class UnpinCommandTest {
         CommandTestUtil.showPersonAtIndex(model, TypicalIndexes.INDEX_FIRST_PERSON);
 
         Index outOfBoundIndex = TypicalIndexes.INDEX_SECOND_PERSON;
-        // ensures that outOfBoundIndex is still in bounds of address book list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getPersonList().size());
+        // ensures that outOfBoundIndex is still in bounds of the contact list
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getContactList().getPersonList().size());
 
         UnpinCommand unpinCommand = new UnpinCommand(outOfBoundIndex);
 
@@ -62,7 +62,7 @@ public class UnpinCommandTest {
             throw new AssertionError("Execution of command should not fail.", ce);
         }
 
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new CommandHistory());
+        ModelManager expectedModel = new ModelManager(model.getContactList(), new UserPrefs(), new CommandHistory());
         expectedModel.pinPerson(personToUnpin);
         expectedModel.unpinPerson(personToUnpin);
         expectedModel.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
@@ -84,7 +84,7 @@ public class UnpinCommandTest {
             throw new AssertionError("Execution of command should not fail.", ce);
         }
 
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new CommandHistory());
+        ModelManager expectedModel = new ModelManager(model.getContactList(), new UserPrefs(), new CommandHistory());
         expectedModel.pinPerson(personToUnpin);
         expectedModel.unpinPerson(personToUnpin);
         expectedModel.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);

@@ -15,7 +15,7 @@ import org.junit.jupiter.api.io.TempDir;
 
 import socialite.commons.core.GuiSettings;
 import socialite.model.ContactList;
-import socialite.model.ReadOnlyAddressBook;
+import socialite.model.ReadOnlyContactList;
 import socialite.model.UserPrefs;
 import socialite.testutil.TypicalPersons;
 
@@ -28,12 +28,12 @@ public class StorageManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonContactListStorage addressBookStorage = new JsonContactListStorage(getTempFilePath("ab"));
+        JsonContactListStorage contactListStorage = new JsonContactListStorage(getTempFilePath("ab"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
         JsonCommandHistoryStorage commandHistoryStorage = new JsonCommandHistoryStorage(getTempFilePath("ch"));
         ProfilePictureStorage profilePictureStorage = ProfilePictureStorageManager.getInstance();
         storageManager = new StorageManager(
-                addressBookStorage, userPrefsStorage, commandHistoryStorage, profilePictureStorage);
+                contactListStorage, userPrefsStorage, commandHistoryStorage, profilePictureStorage);
     }
 
     private Path getTempFilePath(String fileName) {
@@ -55,20 +55,20 @@ public class StorageManagerTest {
     }
 
     @Test
-    public void addressBookReadSave() throws Exception {
+    public void contactListReadSave() throws Exception {
         /*
          * Note: This is an integration test that verifies the StorageManager is properly wired to the
          * {@link JsonContactListStorage} class.
          * More extensive testing of UserPref saving/reading is done in {@link JsonContactListStorageTest} class.
          */
-        ContactList original = TypicalPersons.getTypicalAddressBook();
+        ContactList original = TypicalPersons.getTypicalContactList();
         storageManager.saveContactList(original);
-        ReadOnlyAddressBook retrieved = storageManager.readContactList().get();
+        ReadOnlyContactList retrieved = storageManager.readContactList().get();
         assertEquals(original, new ContactList(retrieved));
     }
 
     @Test
-    public void getAddressBookFilePath() {
+    public void getContactListFilePath() {
         assertNotNull(storageManager.getContactListFilePath());
     }
 

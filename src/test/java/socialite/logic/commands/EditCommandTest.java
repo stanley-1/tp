@@ -25,7 +25,7 @@ public class EditCommandTest {
 
     private Model model =
             new ModelManager(
-                    TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
+                    TypicalPersons.getTypicalContactList(), new UserPrefs(), new CommandHistory());
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
@@ -37,7 +37,7 @@ public class EditCommandTest {
 
         Model expectedModel =
                 new ModelManager(
-                        new ContactList(model.getAddressBook()), new UserPrefs(), new CommandHistory());
+                        new ContactList(model.getContactList()), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(model.getFilteredPersonList().get(0), editedPerson);
 
         CommandTestUtil.assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -66,7 +66,7 @@ public class EditCommandTest {
 
         Model expectedModel =
                 new ModelManager(new ContactList(
-                        model.getAddressBook()), new UserPrefs(), new CommandHistory());
+                        model.getContactList()), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(lastPerson, editedPerson);
         expectedModel.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
 
@@ -83,7 +83,7 @@ public class EditCommandTest {
 
         Model expectedModel =
                 new ModelManager(
-                        new ContactList(model.getAddressBook()), new UserPrefs(), new CommandHistory());
+                        new ContactList(model.getContactList()), new UserPrefs(), new CommandHistory());
         expectedModel.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
 
         CommandTestUtil.assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -103,7 +103,7 @@ public class EditCommandTest {
 
         Model expectedModel =
                 new ModelManager(
-                        new ContactList(model.getAddressBook()), new UserPrefs(), new CommandHistory());
+                        new ContactList(model.getContactList()), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(model.getFilteredPersonList().get(0), editedPerson);
         expectedModel.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
 
@@ -123,9 +123,9 @@ public class EditCommandTest {
     public void execute_duplicatePersonFilteredList_failure() {
         CommandTestUtil.showPersonAtIndex(model, TypicalIndexes.INDEX_FIRST_PERSON);
 
-        // edit person in filtered list into a duplicate in address book
+        // edit person in filtered list into a duplicate in the contact list
         Person personInList =
-                model.getAddressBook().getPersonList().get(TypicalIndexes.INDEX_SECOND_PERSON.getZeroBased());
+                model.getContactList().getPersonList().get(TypicalIndexes.INDEX_SECOND_PERSON.getZeroBased());
         EditCommand editCommand = new EditCommand(TypicalIndexes.INDEX_FIRST_PERSON,
                 new EditPersonDescriptorBuilder(personInList).build());
 
@@ -144,14 +144,14 @@ public class EditCommandTest {
 
     /**
      * Edit filtered list where index is larger than size of filtered list,
-     * but smaller than size of address book
+     * but smaller than size of the contact list
      */
     @Test
     public void execute_invalidPersonIndexFilteredList_failure() {
         CommandTestUtil.showPersonAtIndex(model, TypicalIndexes.INDEX_FIRST_PERSON);
         Index outOfBoundIndex = TypicalIndexes.INDEX_SECOND_PERSON;
-        // ensures that outOfBoundIndex is still in bounds of address book list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getPersonList().size());
+        // ensures that outOfBoundIndex is still in bounds of the contact list
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getContactList().getPersonList().size());
 
         EditCommand editCommand = new EditCommand(outOfBoundIndex,
                 new EditPersonDescriptorBuilder().withName(CommandTestUtil.VALID_NAME_BOB).build());

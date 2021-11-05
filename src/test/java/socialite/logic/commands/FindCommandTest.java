@@ -23,10 +23,10 @@ import socialite.testutil.TypicalPersons;
 public class FindCommandTest {
     private Model model =
             new ModelManager(
-                    TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
+                    TypicalPersons.getTypicalContactList(), new UserPrefs(), new CommandHistory());
     private Model expectedModel =
             new ModelManager(
-                    TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
+                    TypicalPersons.getTypicalContactList(), new UserPrefs(), new CommandHistory());
 
     @Test
     public void equals() {
