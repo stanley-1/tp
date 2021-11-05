@@ -7,8 +7,10 @@ import socialite.commons.util.AppUtil;
 
 public class TikTok extends Handle {
 
-    public static final String MESSAGE_CONSTRAINTS = "Username should only consist of alphanumerical characters, "
-            + "underscores and periods, and should not end with period";
+    public static final String MESSAGE_CONSTRAINTS =
+            "A TikTok Username should only consist of alphanumerical characters, underscores & periods.\n"
+            + "It must not end with period.\n"
+            + "https://support.tiktok.com/en/getting-started/setting-up-your-profile/changing-your-username";
     public static final String VALIDATION_REGEX = "^[a-zA-Z0-9._]*[a-zA-Z0-9_]$";
 
     /**

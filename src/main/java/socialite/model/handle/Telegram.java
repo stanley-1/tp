@@ -11,8 +11,8 @@ import socialite.commons.util.AppUtil;
 public class Telegram extends Handle {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Telegram handles should only contain alphanumeric characters and underscores, "
-            + "and they should be at least 5 characters long.\n"
+            "Telegram handles should only contain alphanumeric characters and underscores.\n"
+            + "They should also be at least 5 characters long.\n"
             + "Furthermore, the handle cannot start or end with an underscore.\n"
             + "Consecutive underscores cannot appear in the handle either.\n"
             + "https://telegram.org/faq#q-what-can-i-use-as-my-username";
