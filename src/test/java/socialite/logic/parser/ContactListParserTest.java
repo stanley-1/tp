@@ -33,7 +33,7 @@ import socialite.testutil.PersonUtil;
 import socialite.testutil.TypicalIndexes;
 
 
-public class AddressBookParserTest {
+public class ContactListParserTest {
 
     private final AddressBookParser parser = new AddressBookParser();
 

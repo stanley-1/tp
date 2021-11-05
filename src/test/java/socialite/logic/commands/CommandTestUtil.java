@@ -10,7 +10,7 @@ import java.util.List;
 import socialite.commons.core.index.Index;
 import socialite.logic.commands.exceptions.CommandException;
 import socialite.logic.parser.CliSyntax;
-import socialite.model.AddressBook;
+import socialite.model.ContactList;
 import socialite.model.Model;
 import socialite.model.person.ContainsKeywordsPredicate;
 import socialite.model.person.Person;
@@ -120,11 +120,11 @@ public class CommandTestUtil {
     public static void assertCommandFailure(Command command, Model actualModel, String expectedMessage) {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
-        AddressBook expectedAddressBook = new AddressBook(actualModel.getAddressBook());
+        ContactList expectedContactList = new ContactList(actualModel.getAddressBook());
         List<Person> expectedFilteredList = new ArrayList<>(actualModel.getFilteredPersonList());
 
         Assert.assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
-        assertEquals(expectedAddressBook, actualModel.getAddressBook());
+        assertEquals(expectedContactList, actualModel.getAddressBook());
         assertEquals(expectedFilteredList, actualModel.getFilteredPersonList());
     }
     /**

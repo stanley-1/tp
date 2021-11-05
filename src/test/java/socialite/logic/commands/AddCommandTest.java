@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.ObservableList;
 import socialite.commons.core.GuiSettings;
 import socialite.logic.commands.exceptions.CommandException;
-import socialite.model.AddressBook;
+import socialite.model.ContactList;
 import socialite.model.Model;
 import socialite.model.ProfilePictureSyncModel;
 import socialite.model.ReadOnlyAddressBook;
@@ -231,7 +231,7 @@ public class AddCommandTest {
 
         @Override
         public ReadOnlyAddressBook getAddressBook() {
-            return new AddressBook();
+            return new ContactList();
         }
     }
 

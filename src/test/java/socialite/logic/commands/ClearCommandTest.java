@@ -2,7 +2,7 @@ package socialite.logic.commands;
 
 import org.junit.jupiter.api.Test;
 
-import socialite.model.AddressBook;
+import socialite.model.ContactList;
 import socialite.model.CommandHistory;
 import socialite.model.Model;
 import socialite.model.ModelManager;
@@ -27,7 +27,7 @@ public class ClearCommandTest {
         Model expectedModel =
                 new ModelManager(
                         TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
-        expectedModel.setAddressBook(new AddressBook());
+        expectedModel.setAddressBook(new ContactList());
 
         CommandTestUtil.assertCommandSuccess(new ClearCommand(), model, ClearCommand.MESSAGE_SUCCESS, expectedModel);
     }

@@ -11,13 +11,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import socialite.commons.exceptions.DataConversionException;
-import socialite.model.AddressBook;
+import socialite.model.ContactList;
 import socialite.model.ReadOnlyAddressBook;
 import socialite.testutil.Assert;
 import socialite.testutil.TypicalPersons;
 
-public class JsonAddressBookStorageTest {
-    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonAddressBookStorageTest");
+public class JsonContactListStorageTest {
+    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonContactListStorageTest");
 
     @TempDir
     public Path testFolder;
@@ -28,7 +28,7 @@ public class JsonAddressBookStorageTest {
     }
 
     private java.util.Optional<ReadOnlyAddressBook> readAddressBook(String filePath) throws Exception {
-        return new JsonAddressBookStorage(Paths.get(filePath)).readAddressBook(addToTestDataPathIfNotNull(filePath));
+        return new JsonContactListStorage(Paths.get(filePath)).readContactList(addToTestDataPathIfNotNull(filePath));
     }
 
     private Path addToTestDataPathIfNotNull(String prefsFileInTestDataFolder) {
@@ -67,26 +67,26 @@ public class JsonAddressBookStorageTest {
     @Test
     public void readAndSaveAddressBook_allInOrder_success() throws Exception {
         Path filePath = testFolder.resolve("TempAddressBook.json");
-        AddressBook original = TypicalPersons.getTypicalAddressBook();
-        JsonAddressBookStorage jsonAddressBookStorage = new JsonAddressBookStorage(filePath);
+        ContactList original = TypicalPersons.getTypicalAddressBook();
+        JsonContactListStorage jsonAddressBookStorage = new JsonContactListStorage(filePath);
 
         // Save in new file and read back
-        jsonAddressBookStorage.saveAddressBook(original, filePath);
-        ReadOnlyAddressBook readBack = jsonAddressBookStorage.readAddressBook(filePath).get();
-        assertEquals(original, new AddressBook(readBack));
+        jsonAddressBookStorage.saveContactList(original, filePath);
+        ReadOnlyAddressBook readBack = jsonAddressBookStorage.readContactList(filePath).get();
+        assertEquals(original, new ContactList(readBack));
 
         // Modify data, overwrite exiting file, and read back
         original.addPerson(TypicalPersons.HOON);
         original.removePerson(TypicalPersons.ALICE);
-        jsonAddressBookStorage.saveAddressBook(original, filePath);
-        readBack = jsonAddressBookStorage.readAddressBook(filePath).get();
-        assertEquals(original, new AddressBook(readBack));
+        jsonAddressBookStorage.saveContactList(original, filePath);
+        readBack = jsonAddressBookStorage.readContactList(filePath).get();
+        assertEquals(original, new ContactList(readBack));
 
         // Save and read without specifying file path
         original.addPerson(TypicalPersons.IDA);
-        jsonAddressBookStorage.saveAddressBook(original); // file path not specified
-        readBack = jsonAddressBookStorage.readAddressBook().get(); // file path not specified
-        assertEquals(original, new AddressBook(readBack));
+        jsonAddressBookStorage.saveContactList(original); // file path not specified
+        readBack = jsonAddressBookStorage.readContactList().get(); // file path not specified
+        assertEquals(original, new ContactList(readBack));
 
     }
 
@@ -100,8 +100,8 @@ public class JsonAddressBookStorageTest {
      */
     private void saveAddressBook(ReadOnlyAddressBook addressBook, String filePath) {
         try {
-            new JsonAddressBookStorage(Paths.get(filePath))
-                    .saveAddressBook(addressBook, addToTestDataPathIfNotNull(filePath));
+            new JsonContactListStorage(Paths.get(filePath))
+                    .saveContactList(addressBook, addToTestDataPathIfNotNull(filePath));
         } catch (IOException ioe) {
             throw new AssertionError("There should not be an error writing to the file.", ioe);
         }
@@ -109,6 +109,6 @@ public class JsonAddressBookStorageTest {
 
     @Test
     public void saveAddressBook_nullFilePath_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> saveAddressBook(new AddressBook(), null));
+        Assert.assertThrows(NullPointerException.class, () -> saveAddressBook(new ContactList(), null));
     }
 }

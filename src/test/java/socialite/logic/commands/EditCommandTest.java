@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import socialite.commons.core.Messages;
 import socialite.commons.core.index.Index;
-import socialite.model.AddressBook;
+import socialite.model.ContactList;
 import socialite.model.CommandHistory;
 import socialite.model.Model;
 import socialite.model.ModelManager;
@@ -37,7 +37,7 @@ public class EditCommandTest {
 
         Model expectedModel =
                 new ModelManager(
-                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
+                        new ContactList(model.getAddressBook()), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(model.getFilteredPersonList().get(0), editedPerson);
 
         CommandTestUtil.assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -65,7 +65,7 @@ public class EditCommandTest {
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedPerson);
 
         Model expectedModel =
-                new ModelManager(new AddressBook(
+                new ModelManager(new ContactList(
                         model.getAddressBook()), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(lastPerson, editedPerson);
         expectedModel.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
@@ -83,7 +83,7 @@ public class EditCommandTest {
 
         Model expectedModel =
                 new ModelManager(
-                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
+                        new ContactList(model.getAddressBook()), new UserPrefs(), new CommandHistory());
         expectedModel.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
 
         CommandTestUtil.assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -103,7 +103,7 @@ public class EditCommandTest {
 
         Model expectedModel =
                 new ModelManager(
-                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
+                        new ContactList(model.getAddressBook()), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(model.getFilteredPersonList().get(0), editedPerson);
         expectedModel.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
 

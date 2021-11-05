@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import socialite.commons.core.Messages;
 import socialite.commons.core.index.Index;
-import socialite.model.AddressBook;
+import socialite.model.ContactList;
 import socialite.model.CommandHistory;
 import socialite.model.Model;
 import socialite.model.ModelManager;
@@ -45,7 +45,7 @@ public class RemarkCommandTest {
 
         Model expectedModel =
                 new ModelManager(
-                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
+                        new ContactList(model.getAddressBook()), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(firstPerson, editedPerson);
 
         assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);
@@ -63,7 +63,7 @@ public class RemarkCommandTest {
 
         Model expectedModel =
                 new ModelManager(
-                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
+                        new ContactList(model.getAddressBook()), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(firstPerson, editedPerson);
 
         assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);
@@ -83,7 +83,7 @@ public class RemarkCommandTest {
 
         Model expectedModel =
                 new ModelManager(
-                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
+                        new ContactList(model.getAddressBook()), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(firstPerson, editedPerson);
 
         assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);
