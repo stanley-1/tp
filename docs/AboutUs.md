@@ -22,6 +22,7 @@ We are a team based in the [School of Computing](https://www.comp.nus.edu.sg/), 
 
 * Role: Code Quality & Documentation
 * [Email](mailto:stanley.tan@u.nus.edu)
+* [Personal Portfolio Page](team/stanley-1.md)
 
 ### Zachary Chua Yan Ern [<img src="images/github-icon.png" width="40px">](https://github.com/Zacchua)
 
