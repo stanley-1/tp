@@ -1,5 +1,6 @@
 package socialite.storage;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
@@ -27,14 +28,14 @@ public class ProfilePictureStorageManagerTest {
     }
 
     @Test
-    public void saveNullFile_notSaved() throws Exception {
-        manager.saveProfilePicture(null, TEST_FILE_NAME);
+    public void saveNullFile_notSaved() {
+        assertDoesNotThrow(() -> manager.saveProfilePicture(null, TEST_FILE_NAME));
         assertTrue(Arrays.stream(FOLDER_PATH.toFile().list()).noneMatch(x -> x.equals(TEST_FILE_NAME)));
     }
 
     @Test
-    public void saveNullName_notSaved() throws Exception {
-        manager.saveProfilePicture(validFile, null);
+    public void saveNullName_notSaved() {
+        assertDoesNotThrow(() -> manager.saveProfilePicture(validFile, null));
         assertTrue(Arrays.stream(FOLDER_PATH.toFile().list()).noneMatch(x -> x.equals(validFile.toString())));
     }
 
