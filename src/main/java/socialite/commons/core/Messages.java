@@ -1,7 +1,7 @@
 package socialite.commons.core;
 
 /**
- * Container for user visible messages.
+ * Container for user visible messages shared by multiple classes.
  */
 public class Messages {
 
@@ -10,8 +10,5 @@ public class Messages {
     public static final String MESSAGE_INVALID_PERSON_DISPLAYED_INDEX = "The person index provided is invalid";
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
     public static final String MESSAGE_REMARK_EXCEED_LIMIT = "Remark must be 150 characters or less (including spaces)";
-    public static final String MESSAGE_INVALID_HANDLE = "Invalid platform type given for p/\n "
-            + "Only facebook, instagram, telegram, tiktok & twitter are accepted.";
-    public static final String MESSAGE_EMPTY_TAG = "Tag must not be empty.";
 
 }

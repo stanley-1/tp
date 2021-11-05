@@ -22,6 +22,10 @@ public class FindCommand extends Command {
             + "Parameters: find [KEYWORDS]; "
             + "Example: " + COMMAND_WORD + " alice t/colleagues p/instagram";
 
+    public static final String MESSAGE_INVALID_HANDLE = "Invalid platform type given for p/\n "
+            + "Only facebook, instagram, telegram, tiktok & twitter are accepted.";
+    public static final String MESSAGE_EMPTY_TAG = "Tag must not be empty.";
+
     private final ContainsKeywordsPredicate predicate;
 
     public FindCommand(ContainsKeywordsPredicate predicate) {
@@ -34,11 +38,11 @@ public class FindCommand extends Command {
 
         model.updateFilteredPersonList(predicate);
         if (!predicate.hasValidHandles()) {
-            return new CommandResult(Messages.MESSAGE_INVALID_HANDLE);
+            return new CommandResult(MESSAGE_INVALID_HANDLE);
         }
 
         if (predicate.isEmptyTag()) {
-            return new CommandResult(Messages.MESSAGE_EMPTY_TAG);
+            return new CommandResult(MESSAGE_EMPTY_TAG);
         }
 
         return new CommandResult(
