@@ -26,6 +26,7 @@ A summary of my contributions to the project is detailed below.
     * This alteration addresses the inconvenience that users might have in adding contacts with similar names.
     * This allows users to add more contacts to their database.
     
+<br>
 
 * **Revamped Feature**: Enhanced ability for users to obtain help or in-app guidance.
   * What it does: 
@@ -35,6 +36,7 @@ A summary of my contributions to the project is detailed below.
   * Highlights:
     * Serves as an umbrella command which abstracts away the appearance of Help Messages for all other valid commands.
     
+<br>
 
 * **New Feature**: Added support for Facebook and Instagram social media handles
   * What it does: 
@@ -45,14 +47,18 @@ A summary of my contributions to the project is detailed below.
     * Adhered to teammate's (Xiaozhi's) pre-designed framework for storing social media handles when enhancing support for Facebook and Instagram handles.
     * Scalable feature which can support other social media platforms in the future.
     
+<br>
 
 * **Code contributed**: [RepoSense link](https://tinyurl.com/f11-4-stanley)
+
+<br>
 
 * **Project management**:
   * Designed interim UI mock-up for `v1.2` which has since been adapted in subsequent iterations.
   * Managed release `v1.2` on GitHub.
   * Acted as minute-taker to take note and summarize points raised in our team meetings held twice a week.
   
+<br>
 
 * **Documentation**:
   * User Guide:
@@ -73,6 +79,7 @@ A summary of my contributions to the project is detailed below.
     * Added and organized majority of User Stories and Use Cases.
     * Reviewed and suggested improvements for team members' additions to Developer Guide.
     
+<br>
 
 * **Community**:
   * Reviewed 29 PRs in total. Selection of PRs with non-trivial review comments: [\#77](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/77), [\#129](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/129)
