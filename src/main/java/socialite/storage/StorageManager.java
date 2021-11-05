@@ -9,8 +9,8 @@ import java.util.logging.Logger;
 import socialite.commons.core.LogsCenter;
 import socialite.commons.exceptions.DataConversionException;
 import socialite.model.ProfilePictureSyncModel;
-import socialite.model.ReadOnlyContactList;
 import socialite.model.ReadOnlyCommandHistory;
+import socialite.model.ReadOnlyContactList;
 import socialite.model.ReadOnlyUserPrefs;
 import socialite.model.UserPrefs;
 

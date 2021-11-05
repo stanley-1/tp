@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.Optional;
 
 import socialite.commons.exceptions.DataConversionException;
-import socialite.model.ReadOnlyContactList;
 import socialite.model.ReadOnlyCommandHistory;
+import socialite.model.ReadOnlyContactList;
 import socialite.model.ReadOnlyUserPrefs;
 import socialite.model.UserPrefs;
 

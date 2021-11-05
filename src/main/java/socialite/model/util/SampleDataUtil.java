@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 import socialite.model.CommandHistory;
 import socialite.model.ContactList;
-import socialite.model.ReadOnlyContactList;
 import socialite.model.ReadOnlyCommandHistory;
+import socialite.model.ReadOnlyContactList;
 import socialite.model.handle.Facebook;
 import socialite.model.handle.Instagram;
 import socialite.model.handle.Telegram;

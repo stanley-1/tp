@@ -14,8 +14,8 @@ import org.junit.jupiter.api.Test;
 
 import socialite.commons.core.GuiSettings;
 import socialite.model.person.ContainsKeywordsPredicate;
-import socialite.testutil.ContactListBuilder;
 import socialite.testutil.Assert;
+import socialite.testutil.ContactListBuilder;
 import socialite.testutil.TypicalPersons;
 
 public class ModelManagerTest {

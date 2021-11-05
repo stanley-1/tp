@@ -8,8 +8,8 @@ import socialite.logic.commands.CommandResult;
 import socialite.logic.commands.exceptions.CommandException;
 import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.Model;
-import socialite.model.ReadOnlyContactList;
 import socialite.model.ReadOnlyCommandHistory;
+import socialite.model.ReadOnlyContactList;
 import socialite.model.person.Person;
 
 /**
