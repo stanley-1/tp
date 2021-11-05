@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 
 import socialite.commons.exceptions.IllegalValueException;
 import socialite.model.ContactList;
-import socialite.model.ReadOnlyAddressBook;
+import socialite.model.ReadOnlyContactList;
 import socialite.model.person.Person;
 
 /**
@@ -36,7 +36,7 @@ class JsonSerializableContactList {
      *
      * @param source future changes to this will not affect the created {@code JsonSerializableContactList}.
      */
-    public JsonSerializableContactList(ReadOnlyAddressBook source) {
+    public JsonSerializableContactList(ReadOnlyContactList source) {
         persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
     }
 

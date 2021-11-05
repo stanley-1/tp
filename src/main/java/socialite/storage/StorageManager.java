@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 import socialite.commons.core.LogsCenter;
 import socialite.commons.exceptions.DataConversionException;
 import socialite.model.ProfilePictureSyncModel;
-import socialite.model.ReadOnlyAddressBook;
+import socialite.model.ReadOnlyContactList;
 import socialite.model.ReadOnlyCommandHistory;
 import socialite.model.ReadOnlyUserPrefs;
 import socialite.model.UserPrefs;
@@ -67,23 +67,23 @@ public class StorageManager implements Storage {
     }
 
     @Override
-    public Optional<ReadOnlyAddressBook> readContactList() throws DataConversionException, IOException {
+    public Optional<ReadOnlyContactList> readContactList() throws DataConversionException, IOException {
         return readContactList(contactListStorage.getContactListFilePath());
     }
 
     @Override
-    public Optional<ReadOnlyAddressBook> readContactList(Path filePath) throws DataConversionException, IOException {
+    public Optional<ReadOnlyContactList> readContactList(Path filePath) throws DataConversionException, IOException {
         logger.fine("Attempting to read data from file: " + filePath);
         return contactListStorage.readContactList(filePath);
     }
 
     @Override
-    public void saveContactList(ReadOnlyAddressBook addressBook) throws IOException {
+    public void saveContactList(ReadOnlyContactList addressBook) throws IOException {
         saveContactList(addressBook, contactListStorage.getContactListFilePath());
     }
 
     @Override
-    public void saveContactList(ReadOnlyAddressBook addressBook, Path filePath) throws IOException {
+    public void saveContactList(ReadOnlyContactList addressBook, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
         contactListStorage.saveContactList(addressBook, filePath);
     }

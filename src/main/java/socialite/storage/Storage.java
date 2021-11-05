@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 import socialite.commons.exceptions.DataConversionException;
-import socialite.model.ReadOnlyAddressBook;
+import socialite.model.ReadOnlyContactList;
 import socialite.model.ReadOnlyCommandHistory;
 import socialite.model.ReadOnlyUserPrefs;
 import socialite.model.UserPrefs;
@@ -21,10 +21,10 @@ public interface Storage extends ContactListStorage, UserPrefsStorage, CommandHi
     void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException;
 
     @Override
-    Optional<ReadOnlyAddressBook> readContactList() throws DataConversionException, IOException;
+    Optional<ReadOnlyContactList> readContactList() throws DataConversionException, IOException;
 
     @Override
-    void saveContactList(ReadOnlyAddressBook addressBook) throws IOException;
+    void saveContactList(ReadOnlyContactList addressBook) throws IOException;
 
     @Override
     Optional<ReadOnlyCommandHistory> readCommandHistory() throws DataConversionException, IOException;

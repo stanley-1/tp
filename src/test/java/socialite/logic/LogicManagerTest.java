@@ -19,7 +19,7 @@ import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.CommandHistory;
 import socialite.model.Model;
 import socialite.model.ModelManager;
-import socialite.model.ReadOnlyAddressBook;
+import socialite.model.ReadOnlyContactList;
 import socialite.model.UserPrefs;
 import socialite.model.person.Person;
 import socialite.storage.JsonCommandHistoryStorage;
@@ -142,7 +142,7 @@ public class LogicManagerTest {
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
         Model expectedModel = new ModelManager(
-                model.getAddressBook(), new UserPrefs(), new CommandHistory());
+                model.getContactList(), new UserPrefs(), new CommandHistory());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 
@@ -168,7 +168,7 @@ public class LogicManagerTest {
         }
 
         @Override
-        public void saveContactList(ReadOnlyAddressBook addressBook, Path filePath) throws IOException {
+        public void saveContactList(ReadOnlyContactList addressBook, Path filePath) throws IOException {
             throw DUMMY_IO_EXCEPTION;
         }
     }

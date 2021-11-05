@@ -23,7 +23,7 @@ public class PictureCommandTest {
 
     private Model model =
             new ModelManager(
-                    TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
+                    TypicalPersons.getTypicalContactList(), new UserPrefs(), new CommandHistory());
     private File acceptedFile = Paths.get("data", "profilepictures", "simu.jpeg").toFile();
 
     @Test
@@ -36,7 +36,7 @@ public class PictureCommandTest {
         String expectedMessage = String.format(PictureCommand.MESSAGE_PICTURE_PERSON_SUCCESS, personToAddPic);
 
         ModelManager expectedModel = new ModelManager(
-                model.getAddressBook(), new UserPrefs(), new CommandHistory());
+                model.getContactList(), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(model.getFilteredPersonList().get(0), personWithPic);
 
         CommandTestUtil.assertCommandSuccess(pictureCommand, model, expectedMessage, expectedModel);
@@ -73,7 +73,7 @@ public class PictureCommandTest {
         String expectedMessage = String.format(PictureCommand.MESSAGE_PICTURE_PERSON_SUCCESS, personToAddPicture);
 
         Model expectedModel = new ModelManager(
-                model.getAddressBook(), new UserPrefs(), new CommandHistory());
+                model.getContactList(), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(personToAddPicture, personWithPicture);
 
         CommandTestUtil.assertCommandSuccess(pictureCommand, model, expectedMessage, expectedModel);
@@ -85,7 +85,7 @@ public class PictureCommandTest {
 
         Index outOfBoundIndex = TypicalIndexes.INDEX_SECOND_PERSON;
         // ensures that outOfBoundIndex is still in bounds of address book list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getPersonList().size());
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getContactList().getPersonList().size());
 
         PictureCommand pictureCommand = new PictureCommand(outOfBoundIndex, false);
 

@@ -15,7 +15,7 @@ import org.junit.jupiter.api.io.TempDir;
 
 import socialite.commons.core.GuiSettings;
 import socialite.model.ContactList;
-import socialite.model.ReadOnlyAddressBook;
+import socialite.model.ReadOnlyContactList;
 import socialite.model.UserPrefs;
 import socialite.testutil.TypicalPersons;
 
@@ -61,9 +61,9 @@ public class StorageManagerTest {
          * {@link JsonContactListStorage} class.
          * More extensive testing of UserPref saving/reading is done in {@link JsonContactListStorageTest} class.
          */
-        ContactList original = TypicalPersons.getTypicalAddressBook();
+        ContactList original = TypicalPersons.getTypicalContactList();
         storageManager.saveContactList(original);
-        ReadOnlyAddressBook retrieved = storageManager.readContactList().get();
+        ReadOnlyContactList retrieved = storageManager.readContactList().get();
         assertEquals(original, new ContactList(retrieved));
     }
 

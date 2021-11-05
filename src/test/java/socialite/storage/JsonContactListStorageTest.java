@@ -12,7 +12,7 @@ import org.junit.jupiter.api.io.TempDir;
 
 import socialite.commons.exceptions.DataConversionException;
 import socialite.model.ContactList;
-import socialite.model.ReadOnlyAddressBook;
+import socialite.model.ReadOnlyContactList;
 import socialite.testutil.Assert;
 import socialite.testutil.TypicalPersons;
 
@@ -27,7 +27,7 @@ public class JsonContactListStorageTest {
         Assert.assertThrows(NullPointerException.class, () -> readContactList(null));
     }
 
-    private java.util.Optional<ReadOnlyAddressBook> readContactList(String filePath) throws Exception {
+    private java.util.Optional<ReadOnlyContactList> readContactList(String filePath) throws Exception {
         return new JsonContactListStorage(Paths.get(filePath)).readContactList(addToTestDataPathIfNotNull(filePath));
     }
 
@@ -67,12 +67,12 @@ public class JsonContactListStorageTest {
     @Test
     public void readAndSaveContactList_allInOrder_success() throws Exception {
         Path filePath = testFolder.resolve("TempAddressBook.json");
-        ContactList original = TypicalPersons.getTypicalAddressBook();
+        ContactList original = TypicalPersons.getTypicalContactList();
         JsonContactListStorage jsonContactListStorage = new JsonContactListStorage(filePath);
 
         // Save in new file and read back
         jsonContactListStorage.saveContactList(original, filePath);
-        ReadOnlyAddressBook readBack = jsonContactListStorage.readContactList(filePath).get();
+        ReadOnlyContactList readBack = jsonContactListStorage.readContactList(filePath).get();
         assertEquals(original, new ContactList(readBack));
 
         // Modify data, overwrite exiting file, and read back
@@ -98,7 +98,7 @@ public class JsonContactListStorageTest {
     /**
      * Saves {@code addressBook} at the specified {@code filePath}.
      */
-    private void saveContactList(ReadOnlyAddressBook addressBook, String filePath) {
+    private void saveContactList(ReadOnlyContactList addressBook, String filePath) {
         try {
             new JsonContactListStorage(Paths.get(filePath))
                     .saveContactList(addressBook, addToTestDataPathIfNotNull(filePath));

@@ -86,12 +86,12 @@ public class TypicalPersons {
     /**
      * Returns an {@code ContactList} with all the typical persons.
      */
-    public static ContactList getTypicalAddressBook() {
-        ContactList ab = new ContactList();
+    public static ContactList getTypicalContactList() {
+        ContactList cl = new ContactList();
         for (Person person : getTypicalPersons()) {
-            ab.addPerson(person.copy());
+            cl.addPerson(person.copy());
         }
-        return ab;
+        return cl;
     }
 
     public static List<Person> getTypicalPersons() {

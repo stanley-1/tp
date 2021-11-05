@@ -15,7 +15,7 @@ import socialite.commons.util.CollectionUtil;
 import socialite.model.person.Person;
 
 /**
- * Represents the in-memory model of the address book data.
+ * Represents the in-memory model of the contact list data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
@@ -30,13 +30,13 @@ public class ModelManager implements Model {
      * Initializes a ModelManager with the given contactList, userPrefs and commandHistory.
      */
     public ModelManager(
-            ReadOnlyAddressBook addressBook,
+            ReadOnlyContactList contactList,
             ReadOnlyUserPrefs userPrefs,
             ReadOnlyCommandHistory commandHistory) {
         super();
-        CollectionUtil.requireAllNonNull(addressBook, userPrefs);
+        CollectionUtil.requireAllNonNull(contactList, userPrefs);
 
-        this.contactList = new ContactList(addressBook);
+        this.contactList = new ContactList(contactList);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.contactList.getPersonList());
         this.commandHistory = new CommandHistory(commandHistory);
@@ -44,7 +44,7 @@ public class ModelManager implements Model {
 
 
         logger.fine("Initializing with:"
-                + "\naddress book: " + addressBook
+                + "\ncontact list: " + contactList
                 + "\nuser prefs: " + userPrefs
                 + "\ncommand history: " + commandHistory);
     }
@@ -78,25 +78,25 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
+    public Path getContactListFilePath() {
         return userPrefs.getContactListFilePath();
     }
 
     @Override
-    public void setAddressBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setContactListFilePath(addressBookFilePath);
+    public void setContactListFilePath(Path contactListFilePath) {
+        requireNonNull(contactListFilePath);
+        userPrefs.setContactListFilePath(contactListFilePath);
     }
 
     //=========== ContactList ================================================================================
 
     @Override
-    public void setAddressBook(ReadOnlyAddressBook addressBook) {
-        this.contactList.resetData(addressBook);
+    public void setContactList(ReadOnlyContactList contactList) {
+        this.contactList.resetData(contactList);
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
+    public ReadOnlyContactList getContactList() {
         return contactList;
     }
 
@@ -128,7 +128,7 @@ public class ModelManager implements Model {
 
     /**
      * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
-     * {@code versionedAddressBook}
+     * {@code versionedContactList}
      */
     @Override
     public ObservableList<Person> getFilteredPersonList() {
@@ -138,7 +138,7 @@ public class ModelManager implements Model {
     @Override
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
-        // Sort the address book
+        // Sort the contact list
         contactList.sortPersons();
         filteredPersons.setPredicate(predicate);
     }

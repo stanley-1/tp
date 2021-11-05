@@ -13,7 +13,7 @@ import socialite.logic.commands.exceptions.CommandException;
 import socialite.logic.parser.SocialiteParser;
 import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.Model;
-import socialite.model.ReadOnlyAddressBook;
+import socialite.model.ReadOnlyContactList;
 import socialite.model.ReadOnlyCommandHistory;
 import socialite.model.person.Person;
 import socialite.storage.Storage;
@@ -49,7 +49,7 @@ public class LogicManager implements Logic {
 
         try {
             storage.saveCommandHistory(model.getCommandHistory());
-            storage.saveContactList(model.getAddressBook());
+            storage.saveContactList(model.getContactList());
             storage.syncProfilePictures(model.getProfilePictureEditDescriptor());
             model.clearProfilePictureModel();
         } catch (IOException ioe) {
@@ -60,8 +60,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return model.getAddressBook();
+    public ReadOnlyContactList getContactList() {
+        return model.getContactList();
     }
 
     @Override
@@ -76,8 +76,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
-        return model.getAddressBookFilePath();
+    public Path getContactListFilePath() {
+        return model.getContactListFilePath();
     }
 
     @Override

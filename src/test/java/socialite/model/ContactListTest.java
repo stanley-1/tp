@@ -36,7 +36,7 @@ public class ContactListTest {
 
     @Test
     public void resetData_withValidReadOnlyAddressBook_replacesData() {
-        ContactList newData = TypicalPersons.getTypicalAddressBook();
+        ContactList newData = TypicalPersons.getTypicalContactList();
         contactList.resetData(newData);
         assertEquals(newData, contactList);
     }
@@ -86,7 +86,7 @@ public class ContactListTest {
     /**
      * A stub ReadOnlyAddressBook whose persons list can violate interface constraints.
      */
-    private static class AddressBookStub implements ReadOnlyAddressBook {
+    private static class AddressBookStub implements ReadOnlyContactList {
         private final ObservableList<Person> persons = FXCollections.observableArrayList();
 
         AddressBookStub(Collection<Person> persons) {
