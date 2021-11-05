@@ -46,23 +46,23 @@
       <HBox fx:id="handles" spacing="8.0">
         <HBox fx:id="facebook" alignment="CENTER_LEFT" styleClass="handle" spacing="4">
           <ImageView fx:id="facebookIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true" />
-          <Label fx:id="facebookHandle" styleClass="cell_small_label" text="\$facebook" />
+          <Label fx:id="facebookHandle" styleClass="cell_small_label" text="\$facebook" maxWidth="150" />
         </HBox>
         <HBox fx:id="instagram" alignment="CENTER_LEFT" styleClass="handle" spacing="4">
           <ImageView fx:id="instagramIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true" />
-          <Label fx:id="instagramHandle" styleClass="cell_small_label" text="\$instagram" />
+          <Label fx:id="instagramHandle" styleClass="cell_small_label" text="\$instagram" maxWidth="150" />
         </HBox>
         <HBox fx:id="telegram" alignment="CENTER_LEFT" styleClass="handle" spacing="4">
           <ImageView fx:id="telegramIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true" />
-          <Label fx:id="telegramHandle" styleClass="cell_small_label" text="\$telegram" />
+          <Label fx:id="telegramHandle" styleClass="cell_small_label" text="\$telegram" maxWidth="150" />
         </HBox>
         <HBox fx:id="tiktok" alignment="CENTER_LEFT" styleClass="handle" spacing="4">
           <ImageView fx:id="tiktokIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true" />
-          <Label fx:id="tiktokHandle" styleClass="cell_small_label" text="\$tiktok" />
+          <Label fx:id="tiktokHandle" styleClass="cell_small_label" text="\$tiktok" maxWidth="150" />
         </HBox>
         <HBox fx:id="twitter" alignment="CENTER_LEFT" styleClass="handle" spacing="4">
           <ImageView fx:id="twitterIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true" />
-          <Label fx:id="twitterHandle" styleClass="cell_small_label" text="\$twitter" />
+          <Label fx:id="twitterHandle" styleClass="cell_small_label" text="\$twitter" maxWidth="150" />
         </HBox>
       </HBox>
     </VBox>
