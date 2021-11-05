@@ -181,6 +181,16 @@ public class AddCommandTest {
         public void clearProfilePictureModel() {
             throw new AssertionError("This method should not be called");
         }
+
+        @Override
+        public void pinPerson(Person person) {
+            throw new AssertionError("This method should not be called");
+        }
+
+        @Override
+        public void unpinPerson(Person person) {
+            throw new AssertionError("This method should not be called");
+        }
     }
 
     /**

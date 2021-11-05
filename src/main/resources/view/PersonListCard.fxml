@@ -35,7 +35,8 @@
         </Label>
         <Label fx:id="name" styleClass="cell_big_label" text="\$first" />
         <Region HBox.hgrow="ALWAYS" />
-        <Button fx:id="share" onAction="#handleButtonAction" text="Share" HBox.hgrow="NEVER" />
+        <Button fx:id="pinButton" onAction="#handlePinButtonAction" text="\$pin/unpin" HBox.hgrow="NEVER"/>
+        <Button fx:id="shareButton" onAction="#handleShareButtonAction" text="Share" HBox.hgrow="NEVER" />
       </HBox>
       <VBox spacing="5">
         <FlowPane fx:id="tags" />
