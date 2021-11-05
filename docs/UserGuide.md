@@ -630,10 +630,12 @@ Adds special notes about a contact.
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `remark INDEX r/[TEXT]`
-* Adds a note about the contact at the specified `INDEX`.
-* The index refers to the index number shown on the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
-* Only one remark can be stored for each contact. If users provide multiple remarks as input, only the last remark will be stored.
+
+* Adds a short note about the contact at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …
+* Remarks must be 150 characters in length or less (inclusive of spaces)
+
 </div>
 
 <div markdown="block" class="alert alert-success">
