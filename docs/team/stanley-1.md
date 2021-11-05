@@ -85,4 +85,3 @@ A summary of my contributions to the project is detailed below.
     * [Unable to change password](https://github.com/AY2122S1-CS2103T-W13-2/tp/issues/186)
     * [HelpWindow does not show User Guide on subsequent attempts](https://github.com/AY2122S1-CS2103T-W13-2/tp/issues/138)
     * [Lack of guidance on adding multiple tags](https://github.com/AY2122S1-CS2103T-W13-2/tp/issues/159)
-    
