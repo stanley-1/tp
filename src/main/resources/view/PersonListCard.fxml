@@ -34,7 +34,8 @@
         </Label>
         <Label fx:id="name" styleClass="cell_big_label" text="\$first" />
         <Region HBox.hgrow="ALWAYS" />
-        <Button fx:id="share" onAction="#handleButtonAction" text="Share" HBox.hgrow="NEVER" minWidth="75"/>
+        <Button fx:id="pinButton" onAction="#handlePinButtonAction" text="\$pin/unpin" HBox.hgrow="NEVER" minWidth="75" />
+        <Button fx:id="shareButton" onAction="#handleShareButtonAction" text="Share" HBox.hgrow="NEVER" minWidth="75" />
       </HBox>
       <VBox spacing="5">
         <padding>

@@ -1,5 +1,7 @@
 package socialite.logic.parser;
 
+import static java.util.Objects.requireNonNull;
+
 import socialite.commons.core.Messages;
 import socialite.commons.core.index.Index;
 import socialite.logic.commands.ShareCommand;
@@ -15,12 +17,12 @@ public class ShareCommandParser implements Parser<ShareCommand> {
      * @throws ParseException if the user input does not conform with the expected format
      */
     public ShareCommand parse(String args) throws ParseException {
-        try {
-            Index index = ParserUtil.parseIndex(args);
-            return new ShareCommand(index);
-        } catch (ParseException pe) {
+        requireNonNull(args);
+        if (!args.trim().matches("\\d+")) {
             throw new ParseException(
-                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, ShareCommand.MESSAGE_HELP_GUIDE), pe);
+                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, ShareCommand.MESSAGE_HELP_GUIDE));
         }
+        Index index = ParserUtil.parseIndex(args);
+        return new ShareCommand(index);
     }
 }

@@ -196,4 +196,16 @@ public class ModelManager implements Model {
         this.profilePictureSyncModel.clear();
     }
 
+
+    //=========== Pin & Unpin ================================================================================
+    @Override
+    public void pinPerson(Person person) {
+        addressBook.pinPerson(person);
+    }
+
+    @Override
+    public void unpinPerson(Person person) {
+        addressBook.unpinPerson(person);
+    }
+
 }
