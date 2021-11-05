@@ -56,9 +56,4 @@ public class CommandHistory implements ReadOnlyCommandHistory {
     public String toString() {
         return this.history.toString();
     }
-
-    @Override
-    public int hashCode() {
-        return history.hashCode();
-    }
 }
