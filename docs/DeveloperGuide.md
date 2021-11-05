@@ -390,7 +390,6 @@ _Customization of Contacts_
 
 (For all use cases below, the **System** is `SociaLite` and the **Actor** is the `user`, unless specified otherwise)
 
-***Basic Functionalities*** 
 
 **Use Case 01: Add a person**
 
@@ -411,12 +410,12 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 02: List entries in SociaLite**
+**Use Case 02: List contacts in SociaLite**
 
 *MSS*
 
 1.  User requests to list contacts
-2.  SociaLite shows a list of contacts
+2.  SociaLite shows a list of all contacts
 
     Use case ends.
 
@@ -428,13 +427,52 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 03: Edit entries in SociaLite**
+**Use Case 03: Find a contact by name, tags or social media platform**
 
 *MSS*
 
-1.  User requests to list contacts
-2.  SociaLite shows a list of contacts
-3.  User requests to edit a specific contact in the list
+1.  User requests to locate a specific contact by name, tags or social media platform.
+2.  SociaLite shows a list of contacts that matches the given criteria
+
+    Use case ends.
+
+*Extensions*
+
+* 2a. The list is empty as there are no matches found.
+
+  Use case ends.
+
+<br/>
+
+**Use Case 04: Access contact's social media page**
+
+*MSS*
+
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
+2.  SociaLite returns a list of contacts according to the UC called
+3.  User requests to open the chosen contact's social media page
+
+    Use case ends.
+
+*Extensions*
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 2b. The contact does not have social media handles.
+
+  Use case ends.
+
+<br/>
+
+**Use Case 05: Edit entries in SociaLite**
+
+*MSS*
+
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
+2.  SociaLite returns a list of contacts according to the UC called
+3.  User requests to edit the information (name, phone number, remark, tag, date, platform) of a specific contact in the list
 4.  SociaLite updates the contact with the specified input
 
     Use case ends.
@@ -453,35 +491,18 @@ _Customization of Contacts_
 
 * 3b. User's input does not conform with the specified format.
 
-    * 3a1. SociaLite shows an error message.
+    * 3b1. SociaLite shows an error message.
 
       Use case resumes at step 2.
 
 <br/>
 
-**Use Case 04: Find a contact**
+**Use Case 06: Delete a person**
 
 *MSS*
 
-1.  User requests to locate a specific contact through keywords
-2.  SociaLite shows a list of contacts that matches the given criteria
-
-    Use case ends.
-
-*Extensions*
-
-* 2a. The list is empty as there are no matches found.
-
-  Use case ends.
-
-<br/>
-
-**Use Case 05: Delete a person**
-
-*MSS*
-
-1.  User requests to list contacts
-2.  SociaLite shows a list of contacts
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
+2.  SociaLite returns a list of contacts according to the UC called
 3.  User requests to delete a specific contact in the list
 4.  SociaLite deletes the contact
 
@@ -501,129 +522,25 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 06: Go to social media site**
+**Use Case 07: Purge contacts stored in SociaLite**
 
 *MSS*
 
-1.  User requests to list contacts (UC02) or find contact (UC04)
-2. SociaLite returns a list of contacts according to the UC called
-3.  User requests to open handle in browser
+1.  User requests to clear all existing contacts 
+2.  SociaLite clears contact list data from storage
 
     Use case ends.
 
-*Extensions*
+<br>
 
-* 2a. The list is empty.
-
-  Use case ends.
-
-<br/>
-
-***Organisation of Contacts***
-
-**Use Case 07: Create new category**
+**Use Case 08: Add tags for contacts**
 
 *MSS*
 
-1.  User types in command to create a new category (with category name)
-2.  SociaLite shows a list of contacts
-3.  User can select multiple contacts to add to the category
-4.  User selects `create` button
-
-    Use case ends.
-
-*Extensions*
-
-* 2a. Category exists.
-
-    * 2a1. SociaLite shows an error message.
-
-      Use case ends.
-
-<br/>
-
-**Use Case 08: Query categories**
-
-*MSS*
-
-1.  User types in `query` command (with category name)
-2.  SociaLite shows a list of contacts in the category specified
-
-    Use case ends.
-
-*Extensions*
-
-* 2a. Category does not exist.
-
-    * 2a1. SociaLite shows an error message.
-
-      Use case ends.
-
-<br/>
-
-**Use Case 09: Edit categories**
-
-*MSS*
-
-1.  User enters command to add contact to the category
-2.  SociaLite shows a list of updated contacts in the category
-
-    Use case ends.
-
-<br/>
-
-**Use Case 10: Delete categories**
-
-*MSS*
-
-1.  User requests to list contacts
-2.  SociaLite shows a list of contacts
-3.  User requests to delete a category tagged to a specific contact in the list
-4.  SociaLite deletes the tag
-
-    Use case ends.
-
-*Extensions*
-
-* 2a. The list is empty.
-
-  Use case ends.
-
-* 3a. The given index is invalid.
-
-    * 3a1. SociaLite shows an error message.
-
-      Use case resumes at step 2.
-
-* 3b. The given category does not exist.
-
-    * 3a1. SociaLite shows an error message.
-
-      Use case resumes at step 2.
-
-<br/>
-
-**Use Case 11: Retrieve last queried contact**
-
-*MSS*
-
-1.  User requests to retrieve the information of the last queried contact
-2.  SociaLite returns the entry that fits this criteria
-
-    Use case ends.
-
-<br/>
-
-***Customization Tools***
-
-**Use Case 12: Add remark for a specific contact**
-
-*MSS*
-
-1.  User requests to **list contacts (UC02)** or **find contact (UC04)**
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
 2.  SociaLite returns a list of contacts according to the UC called
-3.  User specifies a remark to be added to the specified contact's entry
-4.  SociaLite adds a remark to the specified contact's entry
+3.  User requests to add tags to a contact
+4.  SociaLite updates the contact with the specified input
 
     Use case ends.
 
@@ -639,16 +556,22 @@ _Customization of Contacts_
 
       Use case resumes at step 2.
 
+* 3b. User's input does not conform with the specified format.
+
+    * 3b1. SociaLite shows an error message.
+
+      Use case resumes at step 2.
+
 <br/>
 
-**Use Case 13: View contact card**
+**Use Case 09: Delete all tags from a contact**
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC04)**
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
 2.  SociaLite returns a list of contacts according to the UC called
-3.  User specifies the index of his desired contact
-4.  SociaLite opens a contact card which presents all previously stored details associated with the contact
+3.  User requests to delete all tags associated with a specific contact in the list
+4.  SociaLite deletes all tags
 
     Use case ends.
 
@@ -664,13 +587,19 @@ _Customization of Contacts_
 
       Use case resumes at step 2.
 
+* 3b. User's input does not conform with the specified format.
+
+    * 3b1. SociaLite shows an error message.
+
+      Use case resumes at step 2.
+
 <br/>
 
-**Use Case 14: Add date(s) to contact**
+**Use Case 10: Add date(s) to contact**
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC04)**
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
 2.  SociaLite returns a list of contacts according to the UC called
 3.  User specifies the index of his desired contact, and the dates to be associated with the contact
 4.  SociaLite adds the specified dates to the user's contact entry
@@ -697,46 +626,166 @@ _Customization of Contacts_
 
 <br/>
 
-***Help Guide & Exiting***
+**Use Case 11: Modify profile picture for a specific contact**
 
-**Use Case 15: View User Guide**
+*MSS*
+
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
+2.  SociaLite returns a list of contacts according to the UC called
+3.  User specifies the contact and picture to be used
+4.  SociaLite adds the chosen picture to the contact's entry
+
+    Use case ends.
+
+*Extensions*
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. SociaLite shows an error message.
+
+      Use case resumes at step 2.
+
+<br/>
+
+**Use Case 12: Copy contact information of a contact**
+
+*MSS*
+
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
+2.  SociaLite returns a list of contacts according to the UC called
+3.  User specifies the contact whose information is to be copied
+4.  SociaLite copies the information to the clipboard
+
+    Use case ends.
+
+*Extensions*
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. SociaLite shows an error message.
+
+      Use case resumes at step 2.
+
+<br/>
+
+**Use Case 13: Pin contact card on the top of person list**
+
+*MSS*
+
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
+2.  SociaLite returns a list of contacts according to the UC called
+3.  User specifies contact to be pinned at the top of the list
+4.  SociaLite pins the contact at the top of the list
+
+    Use case ends.
+
+*Extensions*
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. SociaLite shows an error message.
+
+      Use case resumes at step 2.
+
+* 3b. The specified contact is already pinned.
+
+      Use case ends.
+
+<br/>
+
+**Use Case 14: Unpin contact card from the top of person list**
+
+*MSS*
+
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
+2.  SociaLite returns a list of contacts according to the UC called
+3.  User specifies contact to be unpinned from the top of the list
+4.  SociaLite unpins the contact from the top of the list
+
+    Use case ends.
+
+*Extensions*
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. SociaLite shows an error message.
+
+      Use case resumes at step 2.
+
+* 3b. The specified contact is not pinned.
+
+      Use case ends.
+
+<br/>
+
+**Use Case 15: Add remark for a specific contact**
+
+*MSS*
+
+1.  User requests to **list contacts (UC02)** or **find contact (UC04)**
+2.  SociaLite returns a list of contacts according to the UC called
+3.  User specifies a remark to be added to the specified contact's entry
+4.  SociaLite adds a remark to the specified contact's entry
+
+    Use case ends.
+
+*Extensions*
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. SociaLite shows an error message.
+
+      Use case resumes at step 2.
+
+<br/>
+
+**Use Case 16: View User Guide**
 
 *MSS*
 
 1.  User requests to view User Guide
-2.  SociaLite displays a link to User Guide and instructions to obtain in-app guidance for five selected commands
+2.  SociaLite displays a link to User Guide and instructions to obtain in-app guidance for valid commands
 
     Use case ends.
 
 <br/>
 
-**Use Case 16: View in-app guidance for selected commands**
+**Use Case 17: View in-app guidance for selected commands**
 
 *MSS*
 
-1.  User requests to view in-app guidance for one out of five selected commands
+1.  User requests to view in-app guidance for valid commands
 2.  SociaLite returns an overview and quick guide of the command given as input
 
     Use case ends.
 
-*Extensions* 
+*Extensions*
 
 * 1a. The keyword given as input is invalid.
 
     * 1a1. SociaLite launches HelpWindow for **User Guide (UC15)** by default
-    
-        Use case ends.
 
-<br/>
-
-**Use Case 17: Purge contacts stored in SociaLite**
-
-*MSS*
-
-1.  User requests to clear all existing contacts (from demo version)
-2.  SociaLite clears specimen data from memory
-
-    Use case ends.
+      Use case ends.
 
 <br/>
 
@@ -749,20 +798,6 @@ _Customization of Contacts_
 
     Use case ends.
 
-
-***Ease of Accessibility***
-
-**Use Case 19: Finding a contact in the list**
-
-1. User types in the 'find' command with the names, tags and/or handle types to search for 
-2. Socialite shows all contacts matching all given input keywords in the UI, and the number of contacts found.
-
-    Use case ends.
-
-*Extensions*
-* 2a. No contacts match all given keywords, blank list is returned
-
-    Use case ends.
 
 *{More to be added}*
 
