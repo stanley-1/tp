@@ -94,6 +94,38 @@ public class ModelManagerTest {
     }
 
     @Test
+    public void setDeleteProfilePicture_returnsTrue() {
+        Path fileToDelete = Paths.get("data", "profilepictures", "dummyFile");
+        modelManager.deleteProfilePicture(fileToDelete);
+        assertTrue(modelManager.getProfilePictureEditDescriptor().toDelete.equals(fileToDelete));
+    }
+
+    @Test
+    public void setSaveProfilePicture_returnsTrue() {
+        Path fileSource = Paths.get("path", "to", "dummySource");
+        String dest = "dummyFileName";
+        modelManager.saveProfilePicture(fileSource.toFile(), dest);
+        assertTrue(modelManager.getProfilePictureEditDescriptor().dest.equals(dest));
+        assertTrue(modelManager.getProfilePictureEditDescriptor().source.equals(fileSource.toFile()));
+    }
+
+    @Test
+    public void clearSaveProfilePicture_returnsTrue() {
+        Path fileSource = Paths.get("path", "to", "dummySource");
+        String dest = "dummyFileName";
+        modelManager.saveProfilePicture(fileSource.toFile(), dest);
+        Path fileToDelete = Paths.get("data", "profilepictures", "dummyFile");
+        modelManager.deleteProfilePicture(fileToDelete);
+        assertTrue(modelManager.getProfilePictureEditDescriptor().toDelete.equals(fileToDelete));
+        assertTrue(modelManager.getProfilePictureEditDescriptor().dest.equals(dest));
+        assertTrue(modelManager.getProfilePictureEditDescriptor().source.equals(fileSource.toFile()));
+        modelManager.clearProfilePictureModel();
+        assertTrue(modelManager.getProfilePictureEditDescriptor().source == null);
+        assertTrue(modelManager.getProfilePictureEditDescriptor().dest == null);
+        assertTrue(modelManager.getProfilePictureEditDescriptor().toDelete == null);
+    }
+
+    @Test
     public void equals() {
         AddressBook addressBook =
                 new AddressBookBuilder().withPerson(TypicalPersons.ALICE).withPerson(TypicalPersons.BENSON).build();

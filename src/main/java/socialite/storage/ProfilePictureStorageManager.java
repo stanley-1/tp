@@ -37,34 +37,26 @@ public class ProfilePictureStorageManager implements ProfilePictureStorage {
     }
 
     @Override
-    public void syncProfilePictures(
-            ProfilePictureSyncModel.ProfilePictureEditDescriptor profilePictureEditDescription) {
+    public void syncProfilePictures (
+            ProfilePictureSyncModel.ProfilePictureEditDescriptor profilePictureEditDescription) throws IOException {
         saveProfilePicture(profilePictureEditDescription.source, profilePictureEditDescription.dest);
         deleteProfilePicture(profilePictureEditDescription.toDelete);
     }
 
     @Override
-    public void deleteProfilePicture(Path name) {
+    public void deleteProfilePicture(Path name) throws IOException {
         if (name == null) {
             return;
         }
-        try {
-            Path pictureToDelete = PROFILE_PIC_FOLDER_PATH.resolve(name);
-            Files.delete(pictureToDelete);
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
+        Path pictureToDelete = PROFILE_PIC_FOLDER_PATH.resolve(name);
+        Files.delete(pictureToDelete);
     }
 
     @Override
-    public void saveProfilePicture(File file, String name) {
+    public void saveProfilePicture(File file, String name) throws IOException {
         if (file == null || name == null) {
             return;
         }
-        try {
-            Files.copy(file.toPath(), getProfilePictureFolderPath().resolve(name));
-        } catch (IOException ioe) {
-            System.out.println(ioe.toString());
-        }
+        Files.copy(file.toPath(), getProfilePictureFolderPath().resolve(name));
     }
 }
