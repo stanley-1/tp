@@ -16,7 +16,7 @@ import socialite.model.person.Person;
 /**
  * An Immutable ContactList that is serializable to JSON format.
  */
-@JsonRootName(value = "addressbook")
+@JsonRootName(value = "contactlist")
 class JsonSerializableContactList {
 
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";

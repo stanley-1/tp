@@ -44,7 +44,7 @@ public class LogicManagerTest {
     @BeforeEach
     public void setUp() {
         JsonContactListStorage contactListStorage =
-                new JsonContactListStorage(temporaryFolder.resolve("addressBook.json"));
+                new JsonContactListStorage(temporaryFolder.resolve("contactList.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
         JsonCommandHistoryStorage commandHistoryStorage =
                 new JsonCommandHistoryStorage(temporaryFolder.resolve("commandHistory.json"));
@@ -76,7 +76,7 @@ public class LogicManagerTest {
     public void execute_storageThrowsIoException_throwsCommandException() {
         // Setup LogicManager with JsonContactListIoExceptionThrowingStub
         JsonContactListStorage contactListStorage =
-                new JsonContactListIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionAddressBook.json"));
+                new JsonContactListIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionContactList.json"));
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
         JsonCommandHistoryStorage commandHistoryStorage =

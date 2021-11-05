@@ -66,7 +66,7 @@ public class JsonContactListStorageTest {
 
     @Test
     public void readAndSaveContactList_allInOrder_success() throws Exception {
-        Path filePath = testFolder.resolve("TempAddressBook.json");
+        Path filePath = testFolder.resolve("TempContactList.json");
         ContactList original = TypicalPersons.getTypicalContactList();
         JsonContactListStorage jsonContactListStorage = new JsonContactListStorage(filePath);
 

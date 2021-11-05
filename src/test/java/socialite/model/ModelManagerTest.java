@@ -37,14 +37,14 @@ public class ModelManagerTest {
     @Test
     public void setUserPrefs_validUserPrefs_copiesUserPrefs() {
         UserPrefs userPrefs = new UserPrefs();
-        userPrefs.setContactListFilePath(Paths.get("address/book/file/path"));
+        userPrefs.setContactListFilePath(Paths.get("contact/list/file/path"));
         userPrefs.setGuiSettings(new GuiSettings(1, 2, 3, 4));
         modelManager.setUserPrefs(userPrefs);
         assertEquals(userPrefs, modelManager.getUserPrefs());
 
         // Modifying userPrefs should not modify modelManager's userPrefs
         UserPrefs oldUserPrefs = new UserPrefs(userPrefs);
-        userPrefs.setContactListFilePath(Paths.get("new/address/book/file/path"));
+        userPrefs.setContactListFilePath(Paths.get("new/contact/list/file/path"));
         assertEquals(oldUserPrefs, modelManager.getUserPrefs());
     }
 
@@ -67,7 +67,7 @@ public class ModelManagerTest {
 
     @Test
     public void setContactListFilePath_validPath_setsContactListFilePath() {
-        Path path = Paths.get("address/book/file/path");
+        Path path = Paths.get("contact/list/file/path");
         modelManager.setContactListFilePath(path);
         assertEquals(path, modelManager.getContactListFilePath());
     }
