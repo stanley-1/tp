@@ -10,7 +10,7 @@ import socialite.commons.core.LogsCenter;
 import socialite.logic.commands.Command;
 import socialite.logic.commands.CommandResult;
 import socialite.logic.commands.exceptions.CommandException;
-import socialite.logic.parser.AddressBookParser;
+import socialite.logic.parser.SocialiteParser;
 import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.Model;
 import socialite.model.ReadOnlyAddressBook;
@@ -26,7 +26,7 @@ public class LogicManager implements Logic {
     private final Logger logger = LogsCenter.getLogger(LogicManager.class);
     private final Model model;
     private final Storage storage;
-    private final AddressBookParser addressBookParser;
+    private final SocialiteParser socialiteParser;
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
@@ -34,7 +34,7 @@ public class LogicManager implements Logic {
     public LogicManager(Model model, Storage storage) {
         this.model = model;
         this.storage = storage;
-        addressBookParser = new AddressBookParser();
+        socialiteParser = new SocialiteParser();
     }
 
     @Override
@@ -44,7 +44,7 @@ public class LogicManager implements Logic {
         model.addCommandToHistory(commandText);
 
         CommandResult commandResult;
-        Command command = addressBookParser.parseCommand(commandText);
+        Command command = socialiteParser.parseCommand(commandText);
         commandResult = command.execute(model);
 
         try {
