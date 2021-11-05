@@ -1,6 +1,7 @@
 package socialite.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static socialite.commons.core.Messages.MESSAGE_REMARK_EXCEED_LIMIT;
 import static socialite.logic.parser.CliSyntax.PREFIX_DATE;
 import static socialite.logic.parser.CliSyntax.PREFIX_FACEBOOK;
 import static socialite.logic.parser.CliSyntax.PREFIX_INSTAGRAM;
@@ -22,6 +23,7 @@ import socialite.commons.core.index.Index;
 import socialite.logic.commands.EditCommand;
 import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.person.Dates;
+import socialite.model.person.Remark;
 import socialite.model.tag.Tag;
 
 /**
@@ -60,6 +62,13 @@ public class EditCommandParser implements Parser<EditCommand> {
             editPersonDescriptor.setPhone(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
         }
         if (argMultimap.getValue(PREFIX_REMARK).isPresent()) {
+            Remark r = ParserUtil.parseRemark(
+                    argMultimap.getValue(PREFIX_REMARK).orElse(null));
+
+            if (r.get().length() > 150) {
+                throw new ParseException(MESSAGE_REMARK_EXCEED_LIMIT);
+            }
+
             editPersonDescriptor.setRemark(ParserUtil.parseRemark(
                     argMultimap.getValue(PREFIX_REMARK).orElse(null)));
         }
