@@ -66,7 +66,7 @@
         </HBox>
         <HBox fx:id="twitter" alignment="CENTER_LEFT" styleClass="handle" spacing="4">
           <ImageView fx:id="twitterIcon" fitHeight="14" fitWidth="14" pickOnBounds="true" preserveRatio="true" />
-          <Label fx:id="twitterHandle" styleClass="cell_small_label" text="\$twitter" maxWidth="150" />
+          <Label fx:id="twitterHandle" styleClass="cell_small_label" text="\$twitter" maxWidth="200" />
         </HBox>
       </FlowPane>
     </VBox>
