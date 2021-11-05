@@ -49,7 +49,7 @@ public class LogicManager implements Logic {
 
         try {
             storage.saveCommandHistory(model.getCommandHistory());
-            storage.saveAddressBook(model.getAddressBook());
+            storage.saveContactList(model.getAddressBook());
             storage.syncProfilePictures(model.getProfilePictureEditDescriptor());
             model.clearProfilePictureModel();
         } catch (IOException ioe) {
@@ -62,6 +62,12 @@ public class LogicManager implements Logic {
     @Override
     public ReadOnlyAddressBook getAddressBook() {
         return model.getAddressBook();
+    }
+
+    @Override
+    public ObservableList<Person> getFullPersonList() {
+        model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
+        return getFilteredPersonList();
     }
 
     @Override

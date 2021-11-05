@@ -28,7 +28,6 @@ test {
     useJUnitPlatform()
     finalizedBy jacocoTestReport
 
-    exclude 'socialite/ui/**'
 }
 
 task coverage(type: JacocoReport) {

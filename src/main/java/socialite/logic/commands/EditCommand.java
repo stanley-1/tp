@@ -113,6 +113,7 @@ public class EditCommand extends Command {
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Remark updatedRemark = editPersonDescriptor.getRemark().orElse(personToEdit.getRemark());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        boolean isPinned = personToEdit.getPinnedStatus();
         ProfilePicture profilePicture = personToEdit.getProfilePicture();
         Facebook updatedFacebook = editPersonDescriptor.getFacebook().orElse(personToEdit.getFacebook());
         Instagram updatedInstagram = editPersonDescriptor.getInstagram().orElse(personToEdit.getInstagram());
@@ -123,6 +124,7 @@ public class EditCommand extends Command {
 
         Person editedPerson = new Person(updatedName, updatedPhone, updatedRemark, updatedTags, updatedFacebook,
                 updatedInstagram, updatedTelegram, updatedTikTok, updatedTwitter, updatedDates);
+        editedPerson.setPinned(isPinned);
         editedPerson.setProfilePicture(profilePicture.value);
         return editedPerson;
     }

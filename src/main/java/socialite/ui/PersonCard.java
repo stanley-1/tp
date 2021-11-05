@@ -22,7 +22,9 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.shape.Circle;
+import socialite.logic.commands.PinCommand;
 import socialite.logic.commands.ShareCommand;
+import socialite.logic.commands.UnpinCommand;
 import socialite.model.handle.Handle;
 import socialite.model.handle.Handle.Platform;
 import socialite.model.person.Date;
@@ -42,7 +44,7 @@ public class PersonCard extends UiPart<Region> {
      * As a consequence, UI elements' variable names cannot be set to such keywords
      * or an exception will be thrown by JavaFX during runtime.
      *
-     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
+     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on ContactList level 4</a>
      */
 
     public final Person person;
@@ -54,7 +56,9 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private Button share;
+    private Button pinButton;
+    @FXML
+    private Button shareButton;
     @FXML
     private Label phone;
     @FXML
@@ -137,6 +141,11 @@ public class PersonCard extends UiPart<Region> {
 
         if (person.isPinned()) {
             // set background colour / button colour
+            pinButton.setText("Unpin");
+            pinButton.getStyleClass().add("pinButton");
+        } else {
+            pinButton.setText("Pin");
+            pinButton.getStyleClass().remove("pinButton");
         }
 
         person.getTags().stream()
@@ -168,15 +177,10 @@ public class PersonCard extends UiPart<Region> {
         double ratioX = imageView.getFitWidth() / img.getWidth();
         double ratioY = imageView.getFitHeight() / img.getHeight();
 
-        double reducCoeff = 0;
-        if (ratioX >= ratioY) {
-            reducCoeff = ratioY;
-        } else {
-            reducCoeff = ratioX;
-        }
+        double reduceCoeff = Math.min(ratioX, ratioY);
 
-        w = img.getWidth() * reducCoeff;
-        h = img.getHeight() * reducCoeff;
+        w = img.getWidth() * reduceCoeff;
+        h = img.getHeight() * reduceCoeff;
 
         imageView.setX((imageView.getFitWidth() - w) / 2);
         imageView.setY((imageView.getFitHeight() - h) / 2);
@@ -277,7 +281,20 @@ public class PersonCard extends UiPart<Region> {
     }
 
     @FXML
-    private void handleButtonAction() {
+    private void handlePinButtonAction() {
+        MainWindow mainWindow = MainWindow.getWindow();
+        if (person.isPinned()) {
+            person.unpin();
+            mainWindow.setFeedbackToUser(String.format(UnpinCommand.MESSAGE_UNPIN_PERSON_SUCCESS, person));
+        } else {
+            person.pin();
+            mainWindow.setFeedbackToUser(String.format(PinCommand.MESSAGE_PIN_PERSON_SUCCESS, person));
+        }
+        mainWindow.showFullPersonList();
+    }
+
+    @FXML
+    private void handleShareButtonAction() {
         Clipboard clipboard = Clipboard.getSystemClipboard();
         ClipboardContent content = new ClipboardContent();
         content.putString(person.toSharingString());
@@ -286,7 +303,7 @@ public class PersonCard extends UiPart<Region> {
         // Show the copied info in result display
         MainWindow.getWindow().setFeedbackToUser(String.format(ShareCommand.MESSAGE_SHARE_PERSON_SUCCESS, content));
 
-        share.setText("Copied!");
+        shareButton.setText("Copied!");
 
         // Change the button text back after 2 seconds
         Task<Void> sleeper = new Task<>() {
@@ -295,7 +312,7 @@ public class PersonCard extends UiPart<Region> {
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException ignored) {
-                    // Yet to come up with what to do
+                    // TODO: throw some exception?
                 }
                 return null;
             }
@@ -303,7 +320,7 @@ public class PersonCard extends UiPart<Region> {
         sleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
             @Override
             public void handle(WorkerStateEvent event) {
-                share.setText("Share");
+                shareButton.setText("Share");
             }
         });
         new Thread(sleeper).start();

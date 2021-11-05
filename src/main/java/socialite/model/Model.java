@@ -50,7 +50,7 @@ public interface Model {
      */
     void setAddressBook(ReadOnlyAddressBook addressBook);
 
-    /** Returns the AddressBook */
+    /** Returns the ContactList */
     ReadOnlyAddressBook getAddressBook();
 
     /**
@@ -101,4 +101,8 @@ public interface Model {
     ProfilePictureSyncModel.ProfilePictureEditDescriptor getProfilePictureEditDescriptor();
 
     void clearProfilePictureModel();
+
+    void pinPerson(Person person);
+
+    void unpinPerson(Person person);
 }

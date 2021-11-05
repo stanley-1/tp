@@ -2,15 +2,19 @@ package socialite.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.File;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import socialite.commons.core.GuiSettings;
-import socialite.model.AddressBook;
+import socialite.model.ContactList;
 import socialite.model.ReadOnlyAddressBook;
 import socialite.model.UserPrefs;
 import socialite.testutil.TypicalPersons;
@@ -24,7 +28,7 @@ public class StorageManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonAddressBookStorage addressBookStorage = new JsonAddressBookStorage(getTempFilePath("ab"));
+        JsonContactListStorage addressBookStorage = new JsonContactListStorage(getTempFilePath("ab"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
         JsonCommandHistoryStorage commandHistoryStorage = new JsonCommandHistoryStorage(getTempFilePath("ch"));
         ProfilePictureStorage profilePictureStorage = ProfilePictureStorageManager.getInstance();
@@ -54,18 +58,36 @@ public class StorageManagerTest {
     public void addressBookReadSave() throws Exception {
         /*
          * Note: This is an integration test that verifies the StorageManager is properly wired to the
-         * {@link JsonAddressBookStorage} class.
-         * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBookStorageTest} class.
+         * {@link JsonContactListStorage} class.
+         * More extensive testing of UserPref saving/reading is done in {@link JsonContactListStorageTest} class.
          */
-        AddressBook original = TypicalPersons.getTypicalAddressBook();
-        storageManager.saveAddressBook(original);
-        ReadOnlyAddressBook retrieved = storageManager.readAddressBook().get();
-        assertEquals(original, new AddressBook(retrieved));
+        ContactList original = TypicalPersons.getTypicalAddressBook();
+        storageManager.saveContactList(original);
+        ReadOnlyAddressBook retrieved = storageManager.readContactList().get();
+        assertEquals(original, new ContactList(retrieved));
     }
 
     @Test
     public void getAddressBookFilePath() {
-        assertNotNull(storageManager.getAddressBookFilePath());
+        assertNotNull(storageManager.getContactListFilePath());
+    }
+
+    @Test
+    public void getProfilePictureFilePath() {
+        assertNotNull(storageManager.getProfilePictureFolderPath());
+    }
+
+    @Test
+    public void addAndDeleteProfilePicture() throws Exception {
+        File testFile = Paths.get("src", "test", "data", "profilepictures", "simu.jpeg").toFile();
+        storageManager.saveProfilePicture(testFile, "testPicture");
+        String[] files = ProfilePictureStorageManager.PROFILE_PIC_FOLDER_PATH.toFile().list();
+        assertTrue(Arrays.stream(files).anyMatch(file -> file.equals("testPicture")));
+        storageManager.deleteProfilePicture(Path.of("testPicture"));
+        files = ProfilePictureStorageManager.PROFILE_PIC_FOLDER_PATH.toFile().list();
+        if (files != null) {
+            assertTrue(Arrays.stream(files).noneMatch(file -> file.equals("testPicture")));
+        }
     }
 
 }

@@ -22,8 +22,8 @@ import socialite.model.ModelManager;
 import socialite.model.ReadOnlyAddressBook;
 import socialite.model.UserPrefs;
 import socialite.model.person.Person;
-import socialite.storage.JsonAddressBookStorage;
 import socialite.storage.JsonCommandHistoryStorage;
+import socialite.storage.JsonContactListStorage;
 import socialite.storage.JsonUserPrefsStorage;
 import socialite.storage.ProfilePictureStorage;
 import socialite.storage.ProfilePictureStorageManager;
@@ -43,8 +43,8 @@ public class LogicManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonAddressBookStorage addressBookStorage =
-                new JsonAddressBookStorage(temporaryFolder.resolve("addressBook.json"));
+        JsonContactListStorage addressBookStorage =
+                new JsonContactListStorage(temporaryFolder.resolve("addressBook.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
         JsonCommandHistoryStorage commandHistoryStorage =
                 new JsonCommandHistoryStorage(temporaryFolder.resolve("commandHistory.json"));
@@ -74,9 +74,9 @@ public class LogicManagerTest {
 
     @Test
     public void execute_storageThrowsIoException_throwsCommandException() {
-        // Setup LogicManager with JsonAddressBookIoExceptionThrowingStub
-        JsonAddressBookStorage addressBookStorage =
-                new JsonAddressBookIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionAddressBook.json"));
+        // Setup LogicManager with JsonContactListIoExceptionThrowingStub
+        JsonContactListStorage addressBookStorage =
+                new JsonContactListIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionAddressBook.json"));
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
         JsonCommandHistoryStorage commandHistoryStorage =
@@ -162,13 +162,13 @@ public class LogicManagerTest {
     /**
      * A stub class to throw an {@code IOException} when the save method is called.
      */
-    private static class JsonAddressBookIoExceptionThrowingStub extends JsonAddressBookStorage {
-        private JsonAddressBookIoExceptionThrowingStub(Path filePath) {
+    private static class JsonContactListIoExceptionThrowingStub extends JsonContactListStorage {
+        private JsonContactListIoExceptionThrowingStub(Path filePath) {
             super(filePath);
         }
 
         @Override
-        public void saveAddressBook(ReadOnlyAddressBook addressBook, Path filePath) throws IOException {
+        public void saveContactList(ReadOnlyAddressBook addressBook, Path filePath) throws IOException {
             throw DUMMY_IO_EXCEPTION;
         }
     }
