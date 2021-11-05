@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import socialite.model.ContactList;
 import socialite.model.CommandHistory;
+import socialite.model.ContactList;
 import socialite.model.ReadOnlyAddressBook;
 import socialite.model.ReadOnlyCommandHistory;
 import socialite.model.handle.Facebook;

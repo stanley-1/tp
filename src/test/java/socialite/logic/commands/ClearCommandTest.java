@@ -2,8 +2,8 @@ package socialite.logic.commands;
 
 import org.junit.jupiter.api.Test;
 
-import socialite.model.ContactList;
 import socialite.model.CommandHistory;
+import socialite.model.ContactList;
 import socialite.model.Model;
 import socialite.model.ModelManager;
 import socialite.model.UserPrefs;

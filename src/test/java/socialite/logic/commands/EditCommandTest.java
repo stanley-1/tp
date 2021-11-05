@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import socialite.commons.core.Messages;
 import socialite.commons.core.index.Index;
-import socialite.model.ContactList;
 import socialite.model.CommandHistory;
+import socialite.model.ContactList;
 import socialite.model.Model;
 import socialite.model.ModelManager;
 import socialite.model.UserPrefs;
