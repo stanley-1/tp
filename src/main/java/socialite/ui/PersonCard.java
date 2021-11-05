@@ -58,7 +58,7 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label phone;
     @FXML
-    private HBox handles;
+    private FlowPane handles;
     @FXML
     private HBox facebook;
     @FXML
