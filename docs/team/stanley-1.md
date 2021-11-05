@@ -76,8 +76,7 @@ A summary of my contributions to the project is detailed below.
     * Aided in conceptualization of Product Scope, including the definition of our target user profile and value proposition.
     * Added and organized majority of User Stories and Use Cases.
     * Reviewed and suggested improvements for team members' additions to Developer Guide.
-    
-<br>
+
 
 * **Community**:
   * Reviewed 29 PRs in total. Selection of PRs with non-trivial review comments: [\#77](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/77), [\#129](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/129)
