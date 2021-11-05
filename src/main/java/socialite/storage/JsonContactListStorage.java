@@ -47,14 +47,14 @@ public class JsonContactListStorage implements ContactListStorage {
     public Optional<ReadOnlyAddressBook> readContactList(Path filePath) throws DataConversionException {
         requireNonNull(filePath);
 
-        Optional<JsonSerializableContactList> jsonAddressBook = JsonUtil.readJsonFile(
+        Optional<JsonSerializableContactList> jsonContactsList = JsonUtil.readJsonFile(
                 filePath, JsonSerializableContactList.class);
-        if (jsonAddressBook.isEmpty()) {
+        if (jsonContactsList.isEmpty()) {
             return Optional.empty();
         }
 
         try {
-            return Optional.of(jsonAddressBook.get().toModelType());
+            return Optional.of(jsonContactsList.get().toModelType());
         } catch (IllegalValueException ive) {
             logger.info("Illegal values found in " + filePath + ": " + ive.getMessage());
             throw new DataConversionException(ive);

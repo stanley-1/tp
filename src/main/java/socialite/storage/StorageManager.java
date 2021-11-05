@@ -127,17 +127,18 @@ public class StorageManager implements Storage {
     }
 
     @Override
-    public void deleteProfilePicture(Path name) {
+    public void deleteProfilePicture(Path name) throws IOException {
         profilePictureStorage.deleteProfilePicture(name);
     }
 
     @Override
-    public void saveProfilePicture(File file, String prefix) {
+    public void saveProfilePicture(File file, String prefix) throws IOException {
         profilePictureStorage.saveProfilePicture(file, prefix);
     }
 
     @Override
-    public void syncProfilePictures(ProfilePictureSyncModel.ProfilePictureEditDescriptor profilePictureEditDescriptor) {
+    public void syncProfilePictures(
+            ProfilePictureSyncModel.ProfilePictureEditDescriptor profilePictureEditDescriptor) throws IOException {
         profilePictureStorage.syncProfilePictures(profilePictureEditDescriptor);
     }
 }

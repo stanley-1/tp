@@ -101,4 +101,8 @@ public interface Model {
     ProfilePictureSyncModel.ProfilePictureEditDescriptor getProfilePictureEditDescriptor();
 
     void clearProfilePictureModel();
+
+    void pinPerson(Person person);
+
+    void unpinPerson(Person person);
 }

@@ -200,12 +200,12 @@ public class ModelManager implements Model {
     //=========== Pin & Unpin ================================================================================
     @Override
     public void pinPerson(Person person) {
-        addressBook.pinPerson(person);
+        contactList.pinPerson(person);
     }
 
     @Override
     public void unpinPerson(Person person) {
-        addressBook.unpinPerson(person);
+        contactList.unpinPerson(person);
     }
 
 }
