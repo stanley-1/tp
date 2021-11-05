@@ -84,7 +84,7 @@ public class TypicalPersons {
     private TypicalPersons() {} // prevents instantiation
 
     /**
-     * Returns an {@code ContactList} with all the typical persons.
+     * Returns a {@code ContactList} with all the typical persons.
      */
     public static ContactList getTypicalContactList() {
         ContactList cl = new ContactList();
