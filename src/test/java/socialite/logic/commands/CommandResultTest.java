@@ -84,4 +84,14 @@ public class CommandResultTest {
         assertNotEquals(commandResult.hashCode(),
                 new CommandResult("feedback", false, true, false).hashCode());
     }
+
+    @Test
+    public void result_has_parameter() {
+        CommandResult cr = new CommandResult("help", true, false, false);
+
+        assertTrue(cr.isHelpCommand());
+        assertFalse(cr.isExitCommand());
+        assertFalse(cr.isPictureCommand());
+
+    }
 }
