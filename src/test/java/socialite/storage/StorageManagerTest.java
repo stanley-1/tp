@@ -28,12 +28,12 @@ public class StorageManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonContactListStorage addressBookStorage = new JsonContactListStorage(getTempFilePath("ab"));
+        JsonContactListStorage contactListStorage = new JsonContactListStorage(getTempFilePath("ab"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
         JsonCommandHistoryStorage commandHistoryStorage = new JsonCommandHistoryStorage(getTempFilePath("ch"));
         ProfilePictureStorage profilePictureStorage = ProfilePictureStorageManager.getInstance();
         storageManager = new StorageManager(
-                addressBookStorage, userPrefsStorage, commandHistoryStorage, profilePictureStorage);
+                contactListStorage, userPrefsStorage, commandHistoryStorage, profilePictureStorage);
     }
 
     private Path getTempFilePath(String fileName) {
@@ -55,7 +55,7 @@ public class StorageManagerTest {
     }
 
     @Test
-    public void addressBookReadSave() throws Exception {
+    public void contactListReadSave() throws Exception {
         /*
          * Note: This is an integration test that verifies the StorageManager is properly wired to the
          * {@link JsonContactListStorage} class.
@@ -68,7 +68,7 @@ public class StorageManagerTest {
     }
 
     @Test
-    public void getAddressBookFilePath() {
+    public void getContactListFilePath() {
         assertNotNull(storageManager.getContactListFilePath());
     }
 

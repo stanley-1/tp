@@ -16,7 +16,7 @@ public class UnpinCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Unpins the person identified by the index number used in the displayed person list "
-            + "at the top of the address book if it is already pinned.\n"
+            + "from the top of the contact list if it is already pinned.\n"
             + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_UNPIN_PERSON_SUCCESS = "Unpinned Person: %1$s";

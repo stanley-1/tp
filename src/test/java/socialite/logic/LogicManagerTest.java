@@ -43,14 +43,14 @@ public class LogicManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonContactListStorage addressBookStorage =
+        JsonContactListStorage contactListStorage =
                 new JsonContactListStorage(temporaryFolder.resolve("addressBook.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
         JsonCommandHistoryStorage commandHistoryStorage =
                 new JsonCommandHistoryStorage(temporaryFolder.resolve("commandHistory.json"));
         ProfilePictureStorage profilePictureStorage = ProfilePictureStorageManager.getInstance();
         StorageManager storage = new StorageManager(
-                addressBookStorage, userPrefsStorage, commandHistoryStorage, profilePictureStorage);
+                contactListStorage, userPrefsStorage, commandHistoryStorage, profilePictureStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -75,7 +75,7 @@ public class LogicManagerTest {
     @Test
     public void execute_storageThrowsIoException_throwsCommandException() {
         // Setup LogicManager with JsonContactListIoExceptionThrowingStub
-        JsonContactListStorage addressBookStorage =
+        JsonContactListStorage contactListStorage =
                 new JsonContactListIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionAddressBook.json"));
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
@@ -83,7 +83,7 @@ public class LogicManagerTest {
                 new JsonCommandHistoryStorage(temporaryFolder.resolve("ioExceptionCommandHistory.json"));
         ProfilePictureStorage profilePictureStorage = ProfilePictureStorageManager.getInstance();
         StorageManager storage = new StorageManager(
-                addressBookStorage, userPrefsStorage, commandHistoryStorage, profilePictureStorage);
+                contactListStorage, userPrefsStorage, commandHistoryStorage, profilePictureStorage);
         logic = new LogicManager(model, storage);
 
         // Execute add command
@@ -168,7 +168,7 @@ public class LogicManagerTest {
         }
 
         @Override
-        public void saveContactList(ReadOnlyContactList addressBook, Path filePath) throws IOException {
+        public void saveContactList(ReadOnlyContactList contactList, Path filePath) throws IOException {
             throw DUMMY_IO_EXCEPTION;
         }
     }

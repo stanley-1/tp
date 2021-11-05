@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import socialite.commons.core.GuiSettings;
 import socialite.model.person.ContainsKeywordsPredicate;
-import socialite.testutil.AddressBookBuilder;
+import socialite.testutil.ContactListBuilder;
 import socialite.testutil.Assert;
 import socialite.testutil.TypicalPersons;
 
@@ -61,12 +61,12 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void setAddressBookFilePath_nullPath_throwsNullPointerException() {
+    public void setContactListFilePath_nullPath_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> modelManager.setContactListFilePath(null));
     }
 
     @Test
-    public void setAddressBookFilePath_validPath_setsAddressBookFilePath() {
+    public void setContactListFilePath_validPath_setsContactListFilePath() {
         Path path = Paths.get("address/book/file/path");
         modelManager.setContactListFilePath(path);
         assertEquals(path, modelManager.getContactListFilePath());
@@ -78,12 +78,12 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void hasPerson_personNotInAddressBook_returnsFalse() {
+    public void hasPerson_personNotInContactList_returnsFalse() {
         assertFalse(modelManager.hasPerson(TypicalPersons.ALICE));
     }
 
     @Test
-    public void hasPerson_personInAddressBook_returnsTrue() {
+    public void hasPerson_personInContactList_returnsTrue() {
         modelManager.addPerson(TypicalPersons.ALICE);
         assertTrue(modelManager.hasPerson(TypicalPersons.ALICE));
     }
@@ -128,7 +128,7 @@ public class ModelManagerTest {
     @Test
     public void equals() {
         ContactList contactList =
-                new AddressBookBuilder().withPerson(TypicalPersons.ALICE).withPerson(TypicalPersons.BENSON).build();
+                new ContactListBuilder().withPerson(TypicalPersons.ALICE).withPerson(TypicalPersons.BENSON).build();
         ContactList differentContactList = new ContactList();
         UserPrefs userPrefs = new UserPrefs();
         CommandHistory commandHistory = new CommandHistory();

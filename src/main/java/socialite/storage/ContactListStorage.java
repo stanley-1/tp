@@ -33,14 +33,14 @@ public interface ContactListStorage {
 
     /**
      * Saves the given {@link ReadOnlyContactList} to the storage.
-     * @param addressBook cannot be null.
+     * @param contactList cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */
-    void saveContactList(ReadOnlyContactList addressBook) throws IOException;
+    void saveContactList(ReadOnlyContactList contactList) throws IOException;
 
     /**
      * @see #saveContactList(ReadOnlyContactList)
      */
-    void saveContactList(ReadOnlyContactList addressBook, Path filePath) throws IOException;
+    void saveContactList(ReadOnlyContactList contactList, Path filePath) throws IOException;
 
 }

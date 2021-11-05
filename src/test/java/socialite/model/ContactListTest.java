@@ -35,7 +35,7 @@ public class ContactListTest {
     }
 
     @Test
-    public void resetData_withValidReadOnlyAddressBook_replacesData() {
+    public void resetData_withValidReadOnlyContactList_replacesData() {
         ContactList newData = TypicalPersons.getTypicalContactList();
         contactList.resetData(newData);
         assertEquals(newData, contactList);
@@ -48,7 +48,7 @@ public class ContactListTest {
                 .withTags(VALID_TAG_HUSBAND)
                 .build();
         List<Person> newPersons = Arrays.asList(TypicalPersons.ALICE, editedAlice);
-        AddressBookStub newData = new AddressBookStub(newPersons);
+        ContactListStub newData = new ContactListStub(newPersons);
 
         Assert.assertThrows(DuplicatePersonException.class, () -> contactList.resetData(newData));
     }
@@ -59,18 +59,18 @@ public class ContactListTest {
     }
 
     @Test
-    public void hasPerson_personNotInAddressBook_returnsFalse() {
+    public void hasPerson_personNotInContactList_returnsFalse() {
         assertFalse(contactList.hasPerson(TypicalPersons.ALICE));
     }
 
     @Test
-    public void hasPerson_personInAddressBook_returnsTrue() {
+    public void hasPerson_personInContactList_returnsTrue() {
         contactList.addPerson(TypicalPersons.ALICE);
         assertTrue(contactList.hasPerson(TypicalPersons.ALICE));
     }
 
     @Test
-    public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
+    public void hasPerson_personWithSameIdentityFieldsInContactList_returnsTrue() {
         contactList.addPerson(TypicalPersons.ALICE);
         Person editedAlice = new PersonBuilder(TypicalPersons.ALICE)
                 .withTags(VALID_TAG_HUSBAND)
@@ -84,12 +84,12 @@ public class ContactListTest {
     }
 
     /**
-     * A stub ReadOnlyAddressBook whose persons list can violate interface constraints.
+     * A stub ReadOnlyContactList whose persons list can violate interface constraints.
      */
-    private static class AddressBookStub implements ReadOnlyContactList {
+    private static class ContactListStub implements ReadOnlyContactList {
         private final ObservableList<Person> persons = FXCollections.observableArrayList();
 
-        AddressBookStub(Collection<Person> persons) {
+        ContactListStub(Collection<Person> persons) {
             this.persons.setAll(persons);
         }
 

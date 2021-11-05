@@ -14,7 +14,7 @@ import socialite.model.person.Person;
 import socialite.model.person.Remark;
 
 /**
- * Changes the remark of an existing person in the address book.
+ * Changes the remark of an existing person in the contact list.
  */
 public class RemarkCommand extends Command {
 

@@ -62,8 +62,8 @@ public class JsonContactListStorage implements ContactListStorage {
     }
 
     @Override
-    public void saveContactList(ReadOnlyContactList addressBook) throws IOException {
-        saveContactList(addressBook, filePath);
+    public void saveContactList(ReadOnlyContactList contactList) throws IOException {
+        saveContactList(contactList, filePath);
     }
 
     /**
@@ -71,12 +71,12 @@ public class JsonContactListStorage implements ContactListStorage {
      *
      * @param filePath location of the data. Cannot be null.
      */
-    public void saveContactList(ReadOnlyContactList addressBook, Path filePath) throws IOException {
-        requireNonNull(addressBook);
+    public void saveContactList(ReadOnlyContactList contactList, Path filePath) throws IOException {
+        requireNonNull(contactList);
         requireNonNull(filePath);
 
         FileUtil.createIfMissing(filePath);
-        JsonUtil.saveJsonFile(new JsonSerializableContactList(addressBook), filePath);
+        JsonUtil.saveJsonFile(new JsonSerializableContactList(contactList), filePath);
     }
 
 }

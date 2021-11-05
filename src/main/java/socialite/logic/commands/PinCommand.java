@@ -16,7 +16,7 @@ public class PinCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Pins the person identified by the index number used in the displayed person list "
-            + "at the top of the address book if it is not already pinned.\n"
+            + "at the top of the contact list if it is not already pinned.\n"
             + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_PIN_PERSON_SUCCESS = "Pinned Person: %1$s";

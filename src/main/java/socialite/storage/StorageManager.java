@@ -78,14 +78,14 @@ public class StorageManager implements Storage {
     }
 
     @Override
-    public void saveContactList(ReadOnlyContactList addressBook) throws IOException {
-        saveContactList(addressBook, contactListStorage.getContactListFilePath());
+    public void saveContactList(ReadOnlyContactList contactList) throws IOException {
+        saveContactList(contactList, contactListStorage.getContactListFilePath());
     }
 
     @Override
-    public void saveContactList(ReadOnlyContactList addressBook, Path filePath) throws IOException {
+    public void saveContactList(ReadOnlyContactList contactList, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
-        contactListStorage.saveContactList(addressBook, filePath);
+        contactListStorage.saveContactList(contactList, filePath);
     }
 
 

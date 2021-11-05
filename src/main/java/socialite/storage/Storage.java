@@ -24,7 +24,7 @@ public interface Storage extends ContactListStorage, UserPrefsStorage, CommandHi
     Optional<ReadOnlyContactList> readContactList() throws DataConversionException, IOException;
 
     @Override
-    void saveContactList(ReadOnlyContactList addressBook) throws IOException;
+    void saveContactList(ReadOnlyContactList contactList) throws IOException;
 
     @Override
     Optional<ReadOnlyCommandHistory> readCommandHistory() throws DataConversionException, IOException;
