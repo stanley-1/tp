@@ -7,7 +7,7 @@ Hello there, fellow SociaLites! Welcome to the User Guide for __SociaLite__, a C
 You may be a first-time user trying to set up SociaLite or a returning user hoping to explore advanced features. Fret not, all you need to know about this app can be found in this User Guide!
 Simply follow the path that corresponds to your needs.
 
-| I am a...      | Instructions                                                             |
+| If you are a...| You should...                                                            |
 | -------------- | ------------------------------------------------------------------------ |
 | new user       | View our [Quick Start](#quick_start) guide to set up SociaLite and try out the features. |
 | returning user | Jump straight to our [Commands](#commands) section to recall how our features work!   |
