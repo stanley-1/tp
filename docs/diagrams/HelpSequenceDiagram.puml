@@ -1,0 +1,46 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":HelpCommandParser" as HelpCommandParser LOGIC_COLOR
+participant "h:HelpCommand" as HelpCommand LOGIC_COLOR
+end box
+
+
+[-> LogicManager : execute(help XYZ)
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand(help XYZ)
+activate AddressBookParser
+
+create HelpCommandParser
+AddressBookParser -> HelpCommandParser
+activate HelpCommandParser
+
+create HelpCommand
+HelpCommandParser -> HelpCommand : parse(XYZ)
+activate HelpCommand
+HelpCommand --> HelpCommandParser :
+deactivate HelpCommand
+
+HelpCommandParser --> AddressBookParser :h
+deactivate HelpCommandParser
+deactivate HelpCommand
+
+AddressBookParser --> LogicManager : h
+deactivate AddressBookParser
+destroy HelpCommandParser
+
+LogicManager -> HelpCommand : execute()
+activate HelpCommand
+
+HelpCommand --> LogicManager : commandResult
+deactivate HelpCommand
+HelpCommand -[hidden]-> LogicManager : result
+destroy HelpCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml

@@ -1,6 +1,7 @@
 package socialite.model.person;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
@@ -67,7 +68,7 @@ public class ContainsKeywordsPredicate implements Predicate<Person> {
 
     private boolean testPlatforms(Person person, String keyword) {
 
-        switch (keyword) {
+        switch (keyword.toLowerCase()) {
         case "facebook":
             return !(person.getFacebook().get() == null);
         case "instagram":

@@ -51,18 +51,19 @@ public class EditCommand extends Command {
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_REMARK + "REMARK] "
             + "[" + PREFIX_TAG + "TAG]... "
+            + "[" + PREFIX_DATE + "NAME:YYYY-MM-DD[:monthly|:yearly]]... "
             + "[" + PREFIX_FACEBOOK + "FACEBOOK] "
             + "[" + PREFIX_INSTAGRAM + "INSTAGRAM] "
             + "[" + PREFIX_TELEGRAM + "TELEGRAM] "
             + "[" + PREFIX_TIKTOK + "TIKTOK] "
-            + "[" + PREFIX_TWITTER + "TWITTER] "
-            + "[" + PREFIX_DATE + "NAME:YYYY-MM-DD]...\n"
+            + "[" + PREFIX_TWITTER + "TWITTER]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 ";
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_PERSON =
+            "A contact with the same phone number already exists in the address book!";
     public static final String MESSAGE_HELP_GUIDE = "Enter 'help edit' for in-app guidance.";
 
     private final Index index;
