@@ -51,8 +51,6 @@ A summary of my contributions to the project is detailed below.
 
 * **Code contributed**: [RepoSense link](https://tinyurl.com/f11-4-stanley)
 
-<br>
-
 * **Project management**:
   * Designed interim UI mock-up for `v1.2` which has since been adapted in subsequent iterations.
   * Managed release `v1.2` on GitHub.
