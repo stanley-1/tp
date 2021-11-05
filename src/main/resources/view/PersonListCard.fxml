@@ -22,14 +22,13 @@
     <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="170" />
     </columnConstraints>
-    <VBox alignment="CENTER_LEFT" minHeight="50" GridPane.columnIndex="0" VBox.vgrow="ALWAYS">
+    <VBox alignment="CENTER_LEFT" minHeight="50" GridPane.columnIndex="0" VBox.vgrow="ALWAYS" >
       <padding>
         <Insets bottom="5" left="15" right="5" top="5" />
       </padding>
       <HBox alignment="CENTER_LEFT" spacing="5">
         <Label fx:id="id" styleClass="cell_big_label">
           <minWidth>
-            <!-- Ensures that the label text is never truncated -->
             <Region fx:constant="USE_PREF_SIZE" />
           </minWidth>
         </Label>
@@ -38,8 +37,8 @@
         <Button fx:id="share" onAction="#handleButtonAction" text="Share" HBox.hgrow="NEVER" minWidth="75"/>
       </HBox>
       <VBox spacing="5">
-        <FlowPane fx:id="tags" />
-        <FlowPane fx:id="dates" />
+        <FlowPane fx:id="tags" prefWrapLength="200" />
+        <FlowPane fx:id="dates" prefWrapLength="200" />
       </VBox>
       <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
       <Label fx:id="remark" styleClass="cell_small_label" text="\$remark" />
