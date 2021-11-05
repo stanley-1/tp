@@ -8,13 +8,19 @@ import java.nio.file.Paths;
 
 import org.junit.jupiter.api.Test;
 
+import socialite.commons.core.Messages;
+import socialite.commons.core.index.Index;
+import socialite.model.CommandHistory;
+import socialite.model.ModelManager;
+import socialite.model.Model;
+import socialite.model.UserPrefs;
 import socialite.model.person.Person;
 import socialite.testutil.TypicalIndexes;
 import socialite.testutil.TypicalPersons;
 
 public class PictureCommandTest {
 
-    private Model model = new ModelManager(TypicalPersons.getTypicalAddressBook(), 
+    private Model model = new ModelManager(TypicalPersons.getTypicalAddressBook(),
                                            new UserPrefs(), new CommandHistory());
     private File acceptedFile = Paths.get("data", "profilepictures", "simu.jpeg").toFile();
 

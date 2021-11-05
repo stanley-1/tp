@@ -89,8 +89,8 @@ public class CommandResultTest {
     public void result_has_parameter() {
         CommandResult cr = new CommandResult("help", true, false, false);
 
-        assertTrue(cr.isShowHelp());
-        assertFalse(cr.isExit());
+        assertTrue(cr.isHelpCommand());
+        assertFalse(cr.isExitCommand());
         assertFalse(cr.isPictureCommand());
 
     }
