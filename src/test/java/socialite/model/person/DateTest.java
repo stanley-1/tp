@@ -123,6 +123,13 @@ public class DateTest {
     }
 
     @Test
+    public void toString_success() {
+        assertEquals("date: 2020-02-02", new Date("date:2020-02-02").toString());
+        assertEquals("date: 2020-02-02 (monthly)", new Date("date:2020-02-02:monthly").toString());
+        assertEquals("date: 2020-02-02 (yearly)", new Date("date:2020-02-02:yearly").toString());
+    }
+
+    @Test
     public void equals_success() {
         Date date = new Date("date:2020-02-02:yearly");
 

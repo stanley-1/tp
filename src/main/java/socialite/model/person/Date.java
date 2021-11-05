@@ -29,7 +29,8 @@ public class Date {
      */
     public Date(String date) {
         Matcher matcher = VALIDATION_PATTERN.matcher(date);
-        assert matcher.matches();
+        boolean matches = matcher.matches();
+        assert matches;
 
         String name = matcher.group(1);
 
@@ -119,8 +120,8 @@ public class Date {
      *
      * @return a comparator
      */
-    public static Comparator<Date> getComparator() {
-        Comparator<Date> comparator = Comparator.comparing(date -> date.getNextOccurrence(LocalDate.now())
+    public static Comparator<Date> getComparator(LocalDate referenceDate) {
+        Comparator<Date> comparator = Comparator.comparing(date -> date.getNextOccurrence(referenceDate)
                         .orElse(LocalDate.MIN),
                 Comparator.reverseOrder());
         return comparator.thenComparing(Date::getDate, Comparator.reverseOrder());

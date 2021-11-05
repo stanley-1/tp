@@ -241,7 +241,7 @@ public class PersonCard extends UiPart<Region> {
 
     private void renderDates(Dates displayedDates) {
         displayedDates.get().values().stream()
-                .sorted(Date.getComparator())
+                .sorted(Date.getComparator(LocalDate.now()))
                 .forEach(date -> {
                     long upcomingDays = date.getUpcomingDays(LocalDate.now());
                     boolean isUpcoming = upcomingDays >= 0 && upcomingDays <= 7;
