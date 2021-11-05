@@ -1,34 +1,34 @@
 package socialite.testutil;
 
-import socialite.model.AddressBook;
+import socialite.model.ContactList;
 import socialite.model.person.Person;
 
 /**
  * A utility class to help with building Addressbook objects.
  * Example usage: <br>
- *     {@code AddressBook ab = new AddressBookBuilder().withPerson("John", "Doe").build();}
+ *     {@code ContactList ab = new AddressBookBuilder().withPerson("John", "Doe").build();}
  */
 public class AddressBookBuilder {
 
-    private AddressBook addressBook;
+    private ContactList contactList;
 
     public AddressBookBuilder() {
-        addressBook = new AddressBook();
+        contactList = new ContactList();
     }
 
-    public AddressBookBuilder(AddressBook addressBook) {
-        this.addressBook = addressBook;
+    public AddressBookBuilder(ContactList contactList) {
+        this.contactList = contactList;
     }
 
     /**
-     * Adds a new {@code Person} to the {@code AddressBook} that we are building.
+     * Adds a new {@code Person} to the {@code ContactList} that we are building.
      */
     public AddressBookBuilder withPerson(Person person) {
-        addressBook.addPerson(person);
+        contactList.addPerson(person);
         return this;
     }
 
-    public AddressBook build() {
-        return addressBook;
+    public ContactList build() {
+        return contactList;
     }
 }
