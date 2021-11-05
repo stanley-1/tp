@@ -62,7 +62,7 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
-        ContactListStorage contactListStorage = new JsonContactListStorage(userPrefs.getAddressBookFilePath());
+        ContactListStorage contactListStorage = new JsonContactListStorage(userPrefs.getContactListFilePath());
         CommandHistoryStorage commandHistoryStorage =
                 new JsonCommandHistoryStorage(userPrefs.getCommandHistoryFilePath());
         ProfilePictureStorage profilePictureStorage = ProfilePictureStorageManager.getInstance();
