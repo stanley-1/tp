@@ -55,8 +55,6 @@ A summary of my contributions to the project is detailed below.
   * Designed interim UI mock-up for `v1.2` which has since been adapted in subsequent iterations.
   * Managed release `v1.2` on GitHub.
   * Acted as minute-taker to take note and summarize points raised in our team meetings held twice a week.
-  
-<br>
 
 * **Documentation**:
   * User Guide:
