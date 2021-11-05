@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static socialite.logic.commands.CommandTestUtil.VALID_REMARK_AMY;
 import static socialite.logic.commands.CommandTestUtil.VALID_REMARK_BOB;
 import static socialite.logic.commands.CommandTestUtil.assertCommandFailure;
+import static socialite.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static socialite.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static socialite.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static socialite.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
@@ -14,11 +15,14 @@ import org.junit.jupiter.api.Test;
 
 import socialite.commons.core.Messages;
 import socialite.commons.core.index.Index;
+import socialite.model.AddressBook;
 import socialite.model.CommandHistory;
 import socialite.model.Model;
 import socialite.model.ModelManager;
 import socialite.model.UserPrefs;
+import socialite.model.person.Person;
 import socialite.model.person.Remark;
+import socialite.testutil.PersonBuilder;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for RemarkCommand.
@@ -30,6 +34,60 @@ public class RemarkCommandTest {
             getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
 
 
+    @Test
+    public void execute_addRemarkUnfilteredList_success() {
+        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person editedPerson = new PersonBuilder(firstPerson).withRemark(REMARK_STUB).build();
+
+        RemarkCommand remarkCommand = new RemarkCommand(INDEX_FIRST_PERSON, new Remark(editedPerson.getRemark().get()));
+
+        String expectedMessage = String.format(RemarkCommand.MESSAGE_ADD_REMARK_SUCCESS, editedPerson);
+
+        Model expectedModel =
+                new ModelManager(
+                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
+        expectedModel.setPerson(firstPerson, editedPerson);
+
+        assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_deleteRemarkUnfilteredList_success() {
+        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person editedPerson = new PersonBuilder(firstPerson).withRemark(null).build();
+
+        RemarkCommand remarkCommand = new RemarkCommand(INDEX_FIRST_PERSON,
+                new Remark(editedPerson.getRemark().get()));
+
+        String expectedMessage = String.format(RemarkCommand.MESSAGE_DELETE_REMARK_SUCCESS, editedPerson);
+
+        Model expectedModel =
+                new ModelManager(
+                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
+        expectedModel.setPerson(firstPerson, editedPerson);
+
+        assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_filteredList_success() {
+        showPersonAtIndex(model, INDEX_FIRST_PERSON);
+
+        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person editedPerson = new PersonBuilder(model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased()))
+                .withRemark(REMARK_STUB).build();
+
+        RemarkCommand remarkCommand = new RemarkCommand(INDEX_FIRST_PERSON, new Remark(editedPerson.getRemark().get()));
+
+        String expectedMessage = String.format(RemarkCommand.MESSAGE_ADD_REMARK_SUCCESS, editedPerson);
+
+        Model expectedModel =
+                new ModelManager(
+                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
+        expectedModel.setPerson(firstPerson, editedPerson);
+
+        assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);
+    }
 
     @Test
     public void execute_invalidPersonIndexUnfilteredList_failure() {
