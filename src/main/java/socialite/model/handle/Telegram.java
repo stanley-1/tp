@@ -12,9 +12,11 @@ public class Telegram extends Handle {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Telegram handles should only contain alphanumeric characters and underscores, "
-            + "and it should be at least 5 characters long.\n"
+            + "and they should be at least 5 characters long.\n"
+            + "Furthermore, the handle cannot start or end with an underscore.\n"
+            + "Consecutive underscores cannot appear in the handle either.\n"
             + "https://telegram.org/faq#q-what-can-i-use-as-my-username";
-    public static final String VALIDATION_REGEX = "^[a-zA-Z0-9_]{5,}$";
+    public static final String VALIDATION_REGEX = "^((?!.*^_)[a-zA-Z0-9_](?!.*__)(?!.*_$)){5,}$";
 
     /**
      * Constructs a {@code Telegram}.

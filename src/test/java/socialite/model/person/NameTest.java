@@ -1,6 +1,8 @@
 package socialite.model.person;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -37,5 +39,31 @@ public class NameTest {
         assertTrue(Name.isValidName("peter the 2nd")); // alphanumeric characters
         assertTrue(Name.isValidName("Capital Tan")); // with capital letters
         assertTrue(Name.isValidName("David Roger Jackson Ray Jr 2nd")); // long names
+    }
+
+
+    @Test
+    public void testToString() {
+        String expectedString = "Alan";
+        Name name = new Name("Alan");
+        assertEquals(expectedString, name.toString());
+    }
+
+    @Test
+    public void testEquals() {
+        Name name = new Name("Alan");
+        Name differentName = new Name("Bernice");
+        assertEquals(name, name);
+        assertEquals(name, new Name("Alan"));
+        assertNotEquals(name, differentName);
+    }
+
+    @Test
+    public void testHashCode() {
+        Name name = new Name("Alan");
+        Name differentName = new Name("Bernice");
+
+        assertEquals(name.hashCode(), new Name("Alan").hashCode());
+        assertNotEquals(name.hashCode(), differentName.hashCode());
     }
 }

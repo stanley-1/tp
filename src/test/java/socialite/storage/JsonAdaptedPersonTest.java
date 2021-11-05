@@ -41,7 +41,7 @@ public class JsonAdaptedPersonTest {
     private static final String VALID_TIKTOK = TypicalPersons.BENSON.getTiktok().toString();
     private static final String VALID_TWITTER = TypicalPersons.BENSON.getTwitter().toString();
     private static final String VALID_PROFILE_PIC = TypicalPersons.BENSON.getProfilePicture().toString();
-    private static final List<JsonAdaptedDate> VALID_DATES = TypicalPersons.BENSON.getDates().value.values().stream()
+    private static final List<JsonAdaptedDate> VALID_DATES = TypicalPersons.BENSON.getDates().get().values().stream()
             .map(JsonAdaptedDate::new)
             .collect(Collectors.toList());
 

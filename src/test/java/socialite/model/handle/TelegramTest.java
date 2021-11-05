@@ -1,5 +1,6 @@
 package socialite.model.handle;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -24,6 +25,13 @@ public class TelegramTest {
         assertFalse(Telegram.isValidHandle("john+appleseed")); // invalid token "+"
         assertFalse(Telegram.isValidHandle("john%appleseed")); // invalid token "%"
 
+        // invalid handles with incorrect placement of underscores
+        assertFalse(Telegram.isValidHandle("john__doe")); // cannot have consecutive '_'
+        assertFalse(Telegram.isValidHandle("john___doe")); // cannot have consecutive '_'
+        assertFalse(Telegram.isValidHandle("_johnny")); // cannot begin with '_'
+        assertFalse(Telegram.isValidHandle("johnny_")); // cannot end with '_'
+        assertFalse(Telegram.isValidHandle("_johnny_")); // cannot start and end with '_'
+
         // valid handles
         assertTrue(Telegram.isValidHandle("abcde")); // 5 characters
         assertTrue(Telegram.isValidHandle("ab_cd")); // 5 characters including underscore
@@ -41,6 +49,14 @@ public class TelegramTest {
     @Test
     public void hasLinkPrefix() {
         Telegram t = new Telegram("name1");
-        assertTrue(t.getUrl().equals("https://www.t.me/name1"));
+        assertEquals("https://www.t.me/name1", t.getUrl());
+    }
+
+    @Test
+    public void testEquals() {
+        Telegram t1 = new Telegram("validhandle");
+        Telegram t2 = new Telegram("validhandle");
+        assertEquals(t1, t2);
+        assertEquals(t1.hashCode(), t2.hashCode());
     }
 }

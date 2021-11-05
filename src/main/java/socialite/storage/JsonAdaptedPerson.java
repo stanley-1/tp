@@ -85,7 +85,7 @@ class JsonAdaptedPerson {
         telegram = source.getTelegram().get();
         tiktok = source.getTiktok().get();
         twitter = source.getTwitter().get();
-        dates.addAll(source.getDates().value.values().stream()
+        dates.addAll(source.getDates().get().values().stream()
                 .map(JsonAdaptedDate::new)
                 .collect(Collectors.toList()));
     }

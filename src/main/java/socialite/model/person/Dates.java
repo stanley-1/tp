@@ -3,7 +3,7 @@ package socialite.model.person;
 import java.util.HashMap;
 
 public class Dates {
-    public final HashMap<String, Date> value;
+    private final HashMap<String, Date> value;
 
     public Dates() {
         value = new HashMap<>();
@@ -23,6 +23,10 @@ public class Dates {
 
     public void addDate(Date date) {
         value.put(date.getName(), date);
+    }
+
+    public HashMap<String, Date> get() {
+        return this.value;
     }
 
     @Override

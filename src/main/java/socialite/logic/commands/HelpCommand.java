@@ -31,9 +31,9 @@ public class HelpCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) {
-        requireNonNull(answer);
+        requireNonNull(model);
 
-        if (answer == GENERIC_RESPONSE) {
+        if (answer.equals(GENERIC_RESPONSE)) {
             return new CommandResult(SHOWING_HELP_MESSAGE, true, false, false);
         } else {
             return new CommandResult(answer);
