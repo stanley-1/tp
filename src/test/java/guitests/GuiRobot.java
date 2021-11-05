@@ -25,10 +25,18 @@ public class GuiRobot extends FxRobot {
      * Creates the user simulator {@code GuiRobot} with initialised default parameters.
      */
     public GuiRobot() {
+        setHeadlessModeToTrue();
         String headlessPropertyValue = System.getProperty(PROPERTY_TESTFX_HEADLESS);
         isHeadlessMode = headlessPropertyValue != null && headlessPropertyValue.equals("true");
     }
 
+    private static void setHeadlessModeToTrue() {
+        System.setProperty("testfx.robot", "glass");
+        System.setProperty("testfx.headless", "true");
+        System.setProperty("prism.order", "sw");
+        System.setProperty("prism.text", "t2k");
+        System.setProperty("java.awt.headless", "true");
+    }
     /**
      * Pauses execution for {@code PAUSE_FOR_HUMAN_DELAY_MILLISECONDS} milliseconds for a human to examine the
      * effects of the test. This method will be disabled when the GUI tests are executed in headless mode to avoid
