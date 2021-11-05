@@ -701,7 +701,7 @@ _Customization of Contacts_
 
 * 3b. The specified contact is already pinned. 
 
-      Use case ends.
+  Use case ends.
 
 <br/>
 
@@ -730,7 +730,7 @@ _Customization of Contacts_
 
 * 3b. The specified contact is not pinned. 
 
-      Use case ends.
+  Use case ends.
 
 <br/>
 
@@ -738,7 +738,7 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC04)**
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
 2.  SociaLite returns a list of contacts according to the UC called
 3.  User specifies a remark to be added to the specified contact's entry
 4.  SociaLite adds a remark to the specified contact's entry
@@ -783,7 +783,7 @@ _Customization of Contacts_
 
 * 1a. The keyword given as input is invalid.
 
-    * 1a1. SociaLite launches HelpWindow for **User Guide (UC15)** by default
+    * 1a1. SociaLite launches HelpWindow for **User Guide (UC16)** by default
 
       Use case ends.
 
