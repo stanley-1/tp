@@ -325,7 +325,7 @@ _Customization of Contacts_
 *Extensions*
 
 * 1a. User's input does not conform with the specified format.
-    
+  
     * 1a1. SociaLite shows an error message.
       
         Use case resumes at step 1.
@@ -623,7 +623,7 @@ _Customization of Contacts_
 
 * 3b. The specified contact is already pinned. 
     * 3b1. SociaLite shows an error message. 
-     
+    
       Use case ends.
 
 <br/>
@@ -767,49 +767,155 @@ _Customization of Contacts_
 
 Given below are instructions to test the app manually.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing.
-
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The instructions and test cases under this section only provide the general aspects of the SociaLite app for testers to work on. If you happen to be a tester, please feel free to explore around using your own test cases!
 </div>
+### Launch and exiting the app
 
-### Launch and shutdown
+Download the latest `jar` file from SociaLite [release page](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases), and copy it into an empty folder that you have access to read and write.
 
-1. Initial launch
+1. Launching
+   1. Double-click on the `jar` file icon in your OS' GUI
+   
+   	Expected: the GUI for SociaLite app shows up with a set of sample contacts.
+   
+   2. Locate the directory using your terminal and enter `java -jar socialite.jar`.
+   
+   	Expected: ditto.
+   
+2. Exiting
 
-   1. Download the jar file and copy into an empty folder
+	While SociaLite is running:
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+	1. Click on the `X` button on the window (top-left for macOS, top-right for Windows).
 
-1. Saving window preferences
+		Expected: the Socialite app quits normally.
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+	2. While SociaLite is running, type `exit` in the command box of the GUI and hit `Enter`.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+		Expected: ditto.
 
-1. _{ more test cases …​ }_
+### Adding a contact
 
-### Deleting a person
+While SociaLite is running, try out the following test cases in sequence.
 
-1. Deleting a person while all persons are being shown
+1. Enter `add n/aa p/12345678` in the command box.
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+	Expected: A new contact card with name "aa" and phone number "12345678" is created. The contact card is most likely to be appearing at the top, since SociaLite arranges the contact cards according to their names alphabetically.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+2. Enter `add n/ab p/12345678` in the command box.
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+	Expected: SociaLite shows error message "A contact with the same phone number already exists in the contact list!".
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+3. Enter `add n/aa` in the command box.
 
-1. _{ more test cases …​ }_
+	Expected: SociaLite shows error message, indicating invalid command format given. This is because name and phone fields are compulsory for the addition of contact.
 
-### Saving data
+4. Enter `add n/aa p/87654321` in the command box.
 
-1. Dealing with missing/corrupted data files
+	Expected: A new contact card with name "aa" and phone number "87654321" is created. SociaLite allows repetitive names in the contact list, but uses phone number as the unique identifier for a contact.
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+5. Enter `add n/John Appleseed p/13572468 fb/john.appleseed twitter/morethanfifteenchars`.
 
-1. _{ more test cases …​ }_
+	Expected: SociaLite shows error message, indicating that the telegram username does not follow their naming convention.
+
+### Editing a contact
+
+Assuming all test cases in the previous section were carried out, and that the first contact card in the list is "aa", and there are only 10 contacts stored in SociaLite:
+
+1. Enter `edit 1 n/abc` in the command box.
+
+	Expected: the first contact card's name changes to "abc". It might not be the first contact card in the list due to alphabetical ordering.
+
+2. Enter `edit 100 n/abc` in the command box.
+
+	Expected: SociaLite shows error message, indicating invalid person index provided.
+
+3. Enter `edit 2` in the command box.
+
+	Expected: SociaLite shows error message, indicating at least one field to edit must be provided.
+
+4. Enter `edit 1 fb/hello` in the command box.
+
+	Expected: the first contact card in SociaLite should have a Facebook icon showed up at the bottom, with its handle being "hello".
+
+5. Enter `edit 1 t/tag1 t/tag2 t/tag3 t/tag4` followed by `edit 1 t/` in the command box.
+
+	Expected: the first contact card in SociaLite will be shown to have four tags, and all four tags will disappear upon entering the second command.
+
+### Deleting a contact
+
+Assuming there are 10 contacts stored in SociaLite:
+
+1. Enter `delete 1` in the command box.
+
+	Expected: the first contact card in SociaLite will be deleted. There will be 9 contacts in SociaLite.
+
+2. Enter `delete 100` in the command box.
+
+	Expected: SociaLite shows error message, indicating invalid person index provided.
+
+3. Enter `delete 0` in the command box.
+
+	Expected: SociaLite shows error message, indicating index must be non-zero unsigned integer.
+
+### Finding a contact
+
+Assuming there is a contact called "Aaron Tan" in SociaLite.
+
+1. Enter `find aaron tan` in the command box.
+
+	Expected: only contact cards with the name "aaron tan" (case-insensitive) will show up in the list.
+
+2. Enter `find a t` in the command box.
+
+	Expected: all contacts whose name starts with "a" and "t" (e.g. Aaron Tan, Alice Teo, Arthur Taylor) will show up in the list.
+
+3. Enter `find at` in the command box.
+
+	Expected: the contact card "aaron tan" will **NOT** show up in the list.
+
+4. Enter `find p/telegram` in the command box.
+
+	Expected: all contact cards with Telegram handles will show up in the contact list.
+
+5. Enter `find p/instagram p/tiktok` in the command box.
+
+	Expected: all contact cards with both Instagram and TikTok handles will show up in the contact list.
+
+6. Enter `find p/linkedin` in the command box.
+
+	Expected: SociaLite shows error message, indicating invalid platform specified.
+
+7. Enter `find t/tag1` in the command box.
+
+	Expected: all contact cards with "tag1" will show up, which includes the first contact from the earlier test case.
+
+8. Enter `find t/` in the command box.
+
+	Expected: Socialite shows error message, indicating tags to search for must not be empty.
+
+### Accessing social media page
+
+To test out this feature, you can choose to add your own contact information to SociaLite with your own social media handle. For example, you can enter `add n/<your name> p/<your phone number> ig/<your instagram handle>`.
+
+1. Hover your cursor on top of your Instagram handle in SociaLite.
+
+	Expected: the handle will turn underlined and the cursor will turn into a hand.
+
+2. Click your mouse when it is hovering on top of a certain handle.
+
+	Expected: SociaLite will open your default web browser and direct you to the specific social media page (e.g. your own Instagram profile).
+
+### Adding a profile picture to a contact
+
+
+### Pinning/Unpinning a contact
+
+
+### Sharing a contact
+
+
+### Dealing with data
+
+
+
