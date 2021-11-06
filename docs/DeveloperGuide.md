@@ -650,7 +650,28 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 15: Add remark for a specific contact**
+**Use Case 15: Navigate through command history**
+
+*MSS*
+
+1. User requests to track previous command entered.
+2. SociaLite displays the command for user to edit.
+
+    Use case ends.
+
+*Extensions*
+
+* 2a. User requests to track another preceding command in the command history.
+
+     Use case resumes at step 2.
+
+* 2b. User requests to track the next command in command history.
+
+     Use case resumes at step 2.
+
+<br/>
+
+**Use Case 16: Add remark for a specific contact**
 
 *MSS*
 
@@ -675,7 +696,7 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 16: View User Guide**
+**Use Case 17: View User Guide**
 
 *MSS*
 
@@ -686,7 +707,7 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 17: View in-app guidance for selected commands**
+**Use Case 18: View in-app guidance for selected commands**
 
 *MSS*
 
@@ -705,7 +726,7 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 18: Exit application**
+**Use Case 19: Exit application**
 
 *MSS*
 
@@ -713,9 +734,6 @@ _Customization of Contacts_
 2.  SociaLite closes.
 
     Use case ends.
-
-
-*{More to be added}*
 
 <br/>
 
@@ -728,8 +746,6 @@ _Customization of Contacts_
 3.  Should be able to keep track of at least 1000 past commands without noticeable lag when tracking past commands.
 4.  Should be intuitive enough for users of all technical backgrounds to operate.
 5.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
-*{More to be added}*
 
 ### Glossary <a name="glossary"></a>
 
