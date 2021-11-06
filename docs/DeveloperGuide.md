@@ -66,7 +66,7 @@ Given below is a quick overview of main components and how they interact with ea
 The rest of the App consists of four components.
 
 * [**`UI`**](#ui-component): The UI of the App.
-* [**`Logic`**](#logic-component): The command executor.
+* [**`Logic`**](#logic-component): Parses and executes the appropriate command according to the user's input.
 * [**`Model`**](#model-component): Holds the data of the App in memory.
 * [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
 
