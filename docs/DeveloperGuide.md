@@ -248,7 +248,6 @@ _Core Functionalities_
 |`* * *` | user                                         | visit the social media site when I click on the handle                             | easily go to the social media site, without having to switch to the browser while remembering the handle|
 |`* *`   | user                                         | browse a list of all my contacts                                                   | view all my contacts at a glance                                                                        |
 |`*`     | beginner user                                | update contacts                                                                    | modify existing social media handles and add new ones when they are created                             |
-|`*`     | beginner user                                | view the recent feed of my contacts                                                | have more meaningful and frequent interactions with my contacts on multiple platforms                   |
 
 <br/>
 
@@ -267,12 +266,11 @@ _Organization of Contacts_
 
 | Priority | As a / an …​       | I want to …​                                        | So that I can…​                                               |
 | -------- | ----------------- | -------------------------------------------------- | ------------------------------------------------------------ |
-| `* *`    | organized user    | create categories to group my contacts             | organize my list of contacts                                 |
-| `* *`    | organized user    | edit categories as and when required               | repurpose such pre-existing categories                       |
+| `* *`    | organized user    | create tags to group my contacts                   | organize my list of contacts                                 |
+| `* *`    | organized user    | edit tags as and when required                     | repurpose such pre-existing tags                       |
 | `* *`    | organized user    | query a group of contacts                          | have greater ease of access to my frequent contacts and efficiently contact people for similar purposes |
-| `*`      | organized user    | delete categories associated with contacts         | declutter my contact list when the category is no longer relevant |
+| `*`      | organized user    | delete tags associated with contacts               | de-clutter my contact list when the category is no longer relevant |
 | `*`      | intermediate user | filter contacts based on social media platform     | find out whose social media contacts I have not gotten and request it from them |
-| `*`      | user              | track when I last queried my contact's information | find out who I have not communicated with for an extended period of time |
 | `*`      | user              | navigate through my command history                | make slight adjustments to my last command if I happen to have a typo |
 
 <br/>
@@ -284,7 +282,8 @@ _Ease of Accessibility_
 |`* * *` | user with many contacts                      | find a contact by name, tag or handle                                              | easily find a contact without having to scroll through my entire contact list
 |`* *`   | avid social media user with many connections | be redirected to my chosen contact's social media platform                         | avoid initialising every social media platform and search for his/her account manually                  |
 |`*`     | expert user                                  | customise the information presented to me when the app is initialised              | view the social media contacts of my close friends quickly without keying in additional prompts         |
-|`*`     | frequent user                                | create keyboard shortcuts/hotkeys                                                  | quickly pull up the social media handles of a contact-of-interest in the least keystrokes possible      |
+|`*`     | user                                         | view a dashboard of significant events associated with my contact                  | be reminded of these dates                                                                              |
+|`*`     | user                                         | forward relevant details of an existing contact                                    | easily share such information upon request                                                              |
 
 <br/>
 
@@ -296,8 +295,7 @@ _Customization of Contacts_
 |`*`     | user                                         | add notes about contacts                                                           | recall specific items about my contacts                                                                 |
 |`*`     | user                                         | add dates of special occasions (birthdays/appointments) associated with my contact | view important information of my contacts                                                               |
 |`*`     | user                                         | set reminders for special occasions associated with my contact                     | be alerted of these events                                                                              |
-|`*`     | user                                         | view a dashboard of significant events associated with my contact                  | be reminded of these dates                                                                              |
-|`*`     | user                                         | forward relevant details of an existing contact                                    | easily share such information upon request                                                              |
+
 
 <br/>
 
