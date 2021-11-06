@@ -796,7 +796,7 @@ Download the latest `jar` file from SociaLite [release page](https://github.com/
 
 ### Adding a contact
 
-While SociaLite is running, try out the following test cases in sequence.
+While SociaLite is running, try out the following test cases in sequence:
 
 1. Enter `add n/aa p/12345678` in the command box.
 
@@ -860,7 +860,7 @@ Assuming there are 10 contacts stored in SociaLite:
 
 ### Finding a contact
 
-Assuming there is a contact called "Aaron Tan" in SociaLite.
+Assuming there is a contact called "Aaron Tan" in SociaLite:
 
 1. Enter `find aaron tan` in the command box.
 
@@ -908,11 +908,71 @@ To test out this feature, you can choose to add your own contact information to 
 
 ### Adding a profile picture to a contact
 
+Assuming there are 10 contacts stored in SociaLite:
+
+1. Enter `picture 1` in the command box.
+
+	Expected: a file chooser will show up for you to select your profile picture.
+
+	1. Click on `cancel` button or press `Esc` button in your OS.
+
+		Expected: you will be redirected to the SociaLite app, with error message indicating command aborted.
+
+	2. Locate a `.jpg` or `.png` file of your liking and select it in the file chooser.
+
+		Expected: the first contact card's profile picture will update to be the file that you have chosen.
+
+2. Enter `picture 100` in the command box.
+
+	Expected: SociaLite shows error message, indicating invalid person index provided.
 
 ### Pinning/Unpinning a contact
 
+Assuming there are 10 contacts stored in SociaLite and none of them are pinned, try out the following test cases in sequence:
+
+1. Enter `pin 3` in the command box.
+
+	Expected: the third contact card in the list will be brought forward to the top of the list. The button "Pin" will change colour and its text will become "Unpin".
+
+2. Enter `unpin 1` in the command box.
+
+	Expected: the first contact card in the list (previously the third in the list) will be removed from the top of the list and go back to its original position. The button "Unpin" will change back to its original colour and its text will become "Pin".
+
+3. Enter `unpin 1` one more time in the command box.
+
+	Expected: SociaLite shows error message, indicating that the person is not pinned yet.
+
+4. Enter `pin 2` followed by `pin 1` in the command box.
+
+	Expected: Socialite shows error message, indicating that the person has already been pinned.
+
+5. Enter `pin 100` in the command box.
+
+	Expected: SociaLite shows error message, indicating invalid person index provided.
+
+6. Navigate to the sixth contact card in the GUI and click on the "Pin" button with your mouse.
+
+	Expected: The sixth contact card in the list will be pinned to the top of the list. The button "Pin" will change colour and its text will become "Unpin".
+
+7. Click on the "Unpin" button of the first contact card in the list with your mouse 
+
+	Expected: same as test case number 2.
 
 ### Sharing a contact
+
+Assuming there are 10 contacts stored in SociaLite:
+
+1. Enter `share 1` in the command box.
+
+	Expected: SociaLite shows that the contact information has been copied to the clipboard. You may also try to paste it to text editor or Word document to verify the information.
+
+2. Navigate to the fifth contact card in the GUI and click on the "Share" button with your mouse.
+
+	Expected: Socialite shows that the contact information of the fifth contact has been copied to the system clipboard. The "Share" button will change its text to "Copied!" for two seconds, before reverting back to "Share".
+
+3. Enter `share 100` in the command box.
+
+	Expected: SociaLite shows error message, indicating invalid person index provided.
 
 
 ### Dealing with data
