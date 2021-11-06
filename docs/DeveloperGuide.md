@@ -309,8 +309,8 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to add a new contact
-2.  SociaLite adds the contact
+1.  User requests to add a new contact.
+2.  SociaLite adds the contact.
 
     Use case ends.
 
@@ -328,8 +328,8 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to list contacts
-2.  SociaLite shows a list of all contacts
+1.  User requests to list contacts.
+2.  SociaLite shows a list of all contacts.
 
     Use case ends.
 
@@ -362,9 +362,9 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
-2.  SociaLite returns a list of contacts according to the UC called
-3.  User requests to open the chosen contact's social media page
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**.
+2.  SociaLite returns a list of contacts according to the UC called.
+3.  User requests to open the chosen contact's social media page.
 
     Use case ends.
 
@@ -384,10 +384,10 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
-2.  SociaLite returns a list of contacts according to the UC called
-3.  User requests to edit the information (name, phone number, remark, tag, date, platform) of a specific contact in the list
-4.  SociaLite updates the contact with the specified input
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**.
+2.  SociaLite returns a list of contacts according to the UC called.
+3.  User requests to edit the information (name, phone number, remark, tag, date, platform) of a specific contact in the list.
+4.  SociaLite updates the contact with the specified input.
 
     Use case ends.
 
@@ -415,10 +415,10 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
-2.  SociaLite returns a list of contacts according to the UC called
-3.  User requests to delete a specific contact in the list
-4.  SociaLite deletes the contact
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**.
+2.  SociaLite returns a list of contacts according to the UC called.
+3.  User requests to delete a specific contact in the list.
+4.  SociaLite deletes the contact.
 
     Use case ends.
 
@@ -440,8 +440,8 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to clear all existing contacts 
-2.  SociaLite clears contact list data from storage
+1.  User requests to clear all existing contacts.
+2.  SociaLite clears contact list data from storage.
 
     Use case ends.
 
@@ -451,10 +451,10 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
-2.  SociaLite returns a list of contacts according to the UC called
-3.  User requests to add tags to a contact
-4.  SociaLite updates the contact with the specified input
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**.
+2.  SociaLite returns a list of contacts according to the UC called.
+3.  User requests to add tags to a contact.
+4.  SociaLite updates the contact with the specified input.
 
     Use case ends.
 
@@ -482,10 +482,10 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
-2.  SociaLite returns a list of contacts according to the UC called
-3.  User requests to delete all tags associated with a specific contact in the list
-4.  SociaLite deletes all tags
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**.
+2.  SociaLite returns a list of contacts according to the UC called.
+3.  User requests to delete all tags associated with a specific contact in the list.
+4.  SociaLite deletes all tags.
 
     Use case ends.
 
@@ -513,10 +513,10 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
-2.  SociaLite returns a list of contacts according to the UC called
-3.  User specifies the index of his desired contact, and the dates to be associated with the contact
-4.  SociaLite adds the specified dates to the user's contact entry
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**.
+2.  SociaLite returns a list of contacts according to the UC called.
+3.  User specifies the index of his desired contact, and the dates to be associated with the contact.
+4.  SociaLite adds the specified dates to the user's contact entry.
 
     Use case ends.
 
@@ -544,10 +544,10 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
-2.  SociaLite returns a list of contacts according to the UC called
-3.  User specifies the contact and picture to be used
-4.  SociaLite adds the chosen picture to the contact's entry
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**.
+2.  SociaLite returns a list of contacts according to the UC called.
+3.  User specifies the contact and picture to be used.
+4.  SociaLite adds the chosen picture to the contact's entry.
 
     Use case ends.
 
@@ -569,10 +569,10 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
-2.  SociaLite returns a list of contacts according to the UC called
-3.  User specifies the contact whose information is to be copied
-4.  SociaLite copies the information to the clipboard
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**.
+2.  SociaLite returns a list of contacts according to the UC called.
+3.  User specifies the contact whose information is to be copied.
+4.  SociaLite copies the information to the clipboard.
 
     Use case ends.
 
@@ -594,10 +594,10 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
-2.  SociaLite returns a list of contacts according to the UC called
-3.  User specifies contact to be pinned at the top of the list
-4.  SociaLite pins the contact at the top of the list
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**.
+2.  SociaLite returns a list of contacts according to the UC called.
+3.  User specifies contact to be pinned on the top of the list.
+4.  SociaLite pins the contact on the top of the list.
 
     Use case ends.
 
@@ -614,8 +614,9 @@ _Customization of Contacts_
       Use case resumes at step 2.
 
 * 3b. The specified contact is already pinned. 
-
-  Use case ends.
+    * 3b1. SociaLite shows an error message. 
+     
+      Use case ends.
 
 <br/>
 
@@ -623,10 +624,10 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
-2.  SociaLite returns a list of contacts according to the UC called
-3.  User specifies contact to be unpinned from the top of the list
-4.  SociaLite unpins the contact from the top of the list
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**.
+2.  SociaLite returns a list of contacts according to the UC called.
+3.  User specifies contact to be unpinned from the top of the list.
+4.  SociaLite unpins the contact from the top of the list.
 
     Use case ends.
 
@@ -643,8 +644,9 @@ _Customization of Contacts_
       Use case resumes at step 2.
 
 * 3b. The specified contact is not pinned. 
+    * 3b1. SociaLite shows an error message.
 
-  Use case ends.
+      Use case ends.
 
 <br/>
 
@@ -652,10 +654,10 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
-2.  SociaLite returns a list of contacts according to the UC called
-3.  User specifies a remark to be added to the specified contact's entry
-4.  SociaLite adds a remark to the specified contact's entry
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**.
+2.  SociaLite returns a list of contacts according to the UC called.
+3.  User specifies a remark to be added to the specified contact's entry.
+4.  SociaLite adds a remark to the specified contact's entry.
 
     Use case ends.
 
@@ -677,8 +679,8 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to view User Guide
-2.  SociaLite displays a link to User Guide and instructions to obtain in-app guidance for valid commands
+1.  User requests to view User Guide.
+2.  SociaLite displays a link to User Guide and instructions to obtain in-app guidance for valid commands.
 
     Use case ends.
 
@@ -688,8 +690,8 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to view in-app guidance for valid commands
-2.  SociaLite returns an overview and quick guide of the command given as input
+1.  User requests to view in-app guidance for valid commands.
+2.  SociaLite returns an overview and quick guide of the command given as input.
 
     Use case ends.
 
@@ -697,7 +699,7 @@ _Customization of Contacts_
 
 * 1a. The keyword given as input is invalid.
 
-    * 1a1. SociaLite launches HelpWindow for **User Guide (UC16)** by default
+    * 1a1. SociaLite launches HelpWindow for **User Guide (UC16)** by default.
 
       Use case ends.
 
@@ -707,8 +709,8 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User types in command to exit application
-2.  SociaLite closes
+1.  User types in command to exit application.
+2.  SociaLite closes.
 
     Use case ends.
 
