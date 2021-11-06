@@ -3,7 +3,7 @@
 
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
-participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":SocialiteParser" as SocialiteParser LOGIC_COLOR
 participant ":HelpCommandParser" as HelpCommandParser LOGIC_COLOR
 participant "h:HelpCommand" as HelpCommand LOGIC_COLOR
 end box
@@ -12,11 +12,11 @@ end box
 [-> LogicManager : execute(help XYZ)
 activate LogicManager
 
-LogicManager -> AddressBookParser : parseCommand(help XYZ)
-activate AddressBookParser
+LogicManager -> SocialiteParser : parseCommand(help XYZ)
+activate SocialiteParser
 
 create HelpCommandParser
-AddressBookParser -> HelpCommandParser
+SocialiteParser -> HelpCommandParser
 activate HelpCommandParser
 
 create HelpCommand
@@ -25,12 +25,12 @@ activate HelpCommand
 HelpCommand --> HelpCommandParser :
 deactivate HelpCommand
 
-HelpCommandParser --> AddressBookParser :h
+HelpCommandParser --> SocialiteParser :h
 deactivate HelpCommandParser
 deactivate HelpCommand
 
-AddressBookParser --> LogicManager : h
-deactivate AddressBookParser
+SocialiteParser --> LogicManager : h
+deactivate SocialiteParser
 destroy HelpCommandParser
 
 LogicManager -> HelpCommand : execute()
