@@ -11,7 +11,7 @@ import socialite.model.Model;
 import socialite.model.person.Person;
 
 /**
- * Deletes a person identified using it's displayed index from the address book.
+ * Deletes a person identified using its displayed index from the contact list.
  */
 public class DeleteCommand extends Command {
 

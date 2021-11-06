@@ -9,12 +9,13 @@ package Storage{
 Interface Storage <<Interface>>
 Class StorageManager
 
-package "AddressBook Storage" #F4F6F6{
-Interface AddressBookStorage <<Interface>>
-Class JsonAddressBookStorage
-Class JsonSerializableAddressBook
+package "ContactList Storage" #F4F6F6{
+Interface ContactListStorage <<Interface>>
+Class JsonContactListStorage
+Class JsonSerializableContactList
 Class JsonAdaptedPerson
 Class JsonAdaptedTag
+Class JsonAdaptedDate
 }
 
 package "CommandHistory Storage" #F4F6F6{
@@ -27,6 +28,11 @@ package "UserPrefs Storage" #F4F6F6{
 Interface UserPrefsStorage <<Interface>>
 Class JsonUserPrefsStorage
 }
+
+package "ProfilePicture Storage" #F4F6F6{
+Interface ProfilePictureStorage <<Interface>>
+Class ProfilePictureStorageManager
+}
 }
 
 
@@ -35,23 +41,28 @@ HiddenOutside .right.> Storage
 StorageManager ..|> Storage
 StorageManager .[hidden]up.> Storage
 
-JsonAddressBookStorage .up.|> AddressBookStorage
-JsonAddressBookStorage .down.> JsonSerializableAddressBook
-JsonSerializableAddressBook -down-> "*" JsonAdaptedPerson
+JsonContactListStorage .up.|> ContactListStorage
+JsonContactListStorage .down.> JsonSerializableContactList
+JsonSerializableContactList -down-> "*" JsonAdaptedPerson
 JsonAdaptedPerson -down-> "*" JsonAdaptedTag
+JsonAdaptedPerson -down-> "*" JsonAdaptedDate
 
 JsonUserPrefsStorage .up.|> UserPrefsStorage
 
 JsonCommandHistoryStorage .up.|> CommandHistoryStorage
 JsonCommandHistoryStorage .down.> JsonSerializableCommandHistory
 
+ProfilePictureStorageManager .up.|> ProfilePictureStorage
+
 StorageManager ---> "1" UserPrefsStorage
-StorageManager ---> "1" AddressBookStorage
+StorageManager ---> "1" ContactListStorage
 StorageManager ---> "1" CommandHistoryStorage
+StorageManager ---> "1" ProfilePictureStorage
 
 Storage ----|> UserPrefsStorage
-Storage ----|> AddressBookStorage
+Storage ----|> ContactListStorage
 Storage ----|> CommandHistoryStorage
+Storage ----|> ProfilePictureStorage
 
 
 

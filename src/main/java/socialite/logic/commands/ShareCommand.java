@@ -15,7 +15,7 @@ import socialite.model.Model;
 import socialite.model.person.Person;
 
 /**
- * Copies a person's contact info to the system clipboard using its displayed index from the address book.
+ * Copies a person's contact info to the system clipboard using its displayed index on the contact list.
  */
 public class ShareCommand extends Command {
 

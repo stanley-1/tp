@@ -19,8 +19,8 @@ import socialite.model.CommandHistory;
 import socialite.model.ContactList;
 import socialite.model.Model;
 import socialite.model.ModelManager;
-import socialite.model.ReadOnlyAddressBook;
 import socialite.model.ReadOnlyCommandHistory;
+import socialite.model.ReadOnlyContactList;
 import socialite.model.ReadOnlyUserPrefs;
 import socialite.model.UserPrefs;
 import socialite.model.util.SampleDataUtil;
@@ -79,27 +79,27 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code ModelManager} with the data from {@code storage}'s address book and {@code userPrefs}. <br>
-     * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
-     * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
+     * Returns a {@code ModelManager} with the data from {@code storage}'s contact list and {@code userPrefs}. <br>
+     * The data from the sample contact list will be used instead if {@code storage}'s contact list is not found,
+     * or an empty contact list will be used instead if errors occur when reading {@code storage}'s contact list.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
-        Optional<ReadOnlyAddressBook> addressBookOptional;
-        ReadOnlyAddressBook initialAddressBook;
+        Optional<ReadOnlyContactList> contactListOptional;
+        ReadOnlyContactList initialContactList;
         Optional<ReadOnlyCommandHistory> commandHistoryOptional;
         ReadOnlyCommandHistory initialCommandHistory;
         try {
-            addressBookOptional = storage.readContactList();
-            if (addressBookOptional.isEmpty()) {
+            contactListOptional = storage.readContactList();
+            if (contactListOptional.isEmpty()) {
                 logger.info("ContactList file not found. Will be starting with a sample ContactList");
             }
-            initialAddressBook = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
+            initialContactList = contactListOptional.orElseGet(SampleDataUtil::getSampleContactList);
         } catch (DataConversionException e) {
             logger.warning("ContactList file not in the correct format. Will be starting with an empty ContactList");
-            initialAddressBook = new ContactList();
+            initialContactList = new ContactList();
         } catch (IOException e) {
             logger.warning("Problem while reading from the ContactList. Will be starting with an empty ContactList");
-            initialAddressBook = new ContactList();
+            initialContactList = new ContactList();
         }
 
         try {
@@ -118,7 +118,7 @@ public class MainApp extends Application {
             initialCommandHistory = new CommandHistory();
         }
 
-        return new ModelManager(initialAddressBook, userPrefs, initialCommandHistory);
+        return new ModelManager(initialContactList, userPrefs, initialCommandHistory);
     }
 
     private void initLogging(Config config) {
@@ -152,7 +152,7 @@ public class MainApp extends Application {
             initializedConfig = new Config();
         }
 
-        //Update config file in case it was missing to begin with or there are new/unused fields
+        // Update config file in case it was missing to begin with or there are new/unused fields
         try {
             ConfigUtil.saveConfig(initializedConfig, configFilePathUsed);
         } catch (IOException e) {
@@ -201,9 +201,9 @@ public class MainApp extends Application {
 
     @Override
     public void stop() {
-        logger.info("============================ [ Stopping Address Book ] =============================");
+        logger.info("============================ [ Stopping SociaLite ] =============================");
         try {
-            storage.saveContactList(model.getAddressBook());
+            storage.saveContactList(model.getContactList());
             storage.saveCommandHistory(model.getCommandHistory());
             storage.saveUserPrefs(model.getUserPrefs());
         } catch (IOException e) {

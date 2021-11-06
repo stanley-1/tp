@@ -10,13 +10,13 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 
 import socialite.commons.exceptions.IllegalValueException;
 import socialite.model.ContactList;
-import socialite.model.ReadOnlyAddressBook;
+import socialite.model.ReadOnlyContactList;
 import socialite.model.person.Person;
 
 /**
  * An Immutable ContactList that is serializable to JSON format.
  */
-@JsonRootName(value = "addressbook")
+@JsonRootName(value = "contactlist")
 class JsonSerializableContactList {
 
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
@@ -32,16 +32,16 @@ class JsonSerializableContactList {
     }
 
     /**
-     * Converts a given {@code ReadOnlyAddressBook} into this class for Jackson use.
+     * Converts a given {@code ReadOnlyContactList} into this class for Jackson use.
      *
      * @param source future changes to this will not affect the created {@code JsonSerializableContactList}.
      */
-    public JsonSerializableContactList(ReadOnlyAddressBook source) {
+    public JsonSerializableContactList(ReadOnlyContactList source) {
         persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
     }
 
     /**
-     * Converts this address book into the model's {@code ContactList} object.
+     * Converts this contact list into the model's {@code ContactList} object.
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */

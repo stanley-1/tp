@@ -19,7 +19,7 @@ import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.CommandHistory;
 import socialite.model.Model;
 import socialite.model.ModelManager;
-import socialite.model.ReadOnlyAddressBook;
+import socialite.model.ReadOnlyContactList;
 import socialite.model.UserPrefs;
 import socialite.model.person.Person;
 import socialite.storage.JsonCommandHistoryStorage;
@@ -43,14 +43,14 @@ public class LogicManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonContactListStorage addressBookStorage =
-                new JsonContactListStorage(temporaryFolder.resolve("addressBook.json"));
+        JsonContactListStorage contactListStorage =
+                new JsonContactListStorage(temporaryFolder.resolve("contactList.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
         JsonCommandHistoryStorage commandHistoryStorage =
                 new JsonCommandHistoryStorage(temporaryFolder.resolve("commandHistory.json"));
         ProfilePictureStorage profilePictureStorage = ProfilePictureStorageManager.getInstance();
         StorageManager storage = new StorageManager(
-                addressBookStorage, userPrefsStorage, commandHistoryStorage, profilePictureStorage);
+                contactListStorage, userPrefsStorage, commandHistoryStorage, profilePictureStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -75,15 +75,15 @@ public class LogicManagerTest {
     @Test
     public void execute_storageThrowsIoException_throwsCommandException() {
         // Setup LogicManager with JsonContactListIoExceptionThrowingStub
-        JsonContactListStorage addressBookStorage =
-                new JsonContactListIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionAddressBook.json"));
+        JsonContactListStorage contactListStorage =
+                new JsonContactListIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionContactList.json"));
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
         JsonCommandHistoryStorage commandHistoryStorage =
                 new JsonCommandHistoryStorage(temporaryFolder.resolve("ioExceptionCommandHistory.json"));
         ProfilePictureStorage profilePictureStorage = ProfilePictureStorageManager.getInstance();
         StorageManager storage = new StorageManager(
-                addressBookStorage, userPrefsStorage, commandHistoryStorage, profilePictureStorage);
+                contactListStorage, userPrefsStorage, commandHistoryStorage, profilePictureStorage);
         logic = new LogicManager(model, storage);
 
         // Execute add command
@@ -142,7 +142,7 @@ public class LogicManagerTest {
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
         Model expectedModel = new ModelManager(
-                model.getAddressBook(), new UserPrefs(), new CommandHistory());
+                model.getContactList(), new UserPrefs(), new CommandHistory());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 
@@ -168,7 +168,7 @@ public class LogicManagerTest {
         }
 
         @Override
-        public void saveContactList(ReadOnlyAddressBook addressBook, Path filePath) throws IOException {
+        public void saveContactList(ReadOnlyContactList contactList, Path filePath) throws IOException {
             throw DUMMY_IO_EXCEPTION;
         }
     }

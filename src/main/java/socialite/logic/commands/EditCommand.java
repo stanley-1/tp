@@ -37,7 +37,7 @@ import socialite.model.person.Remark;
 import socialite.model.tag.Tag;
 
 /**
- * Edits the details of an existing person in the address book.
+ * Edits the details of an existing person in the contact list.
  */
 public class EditCommand extends Command {
 
@@ -63,7 +63,7 @@ public class EditCommand extends Command {
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_PERSON =
-            "A contact with the same phone number already exists in the address book!";
+            "A contact with the same phone number already exists in the contact list!";
     public static final String MESSAGE_HELP_GUIDE = "Enter 'help edit' for in-app guidance.";
 
     private final Index index;

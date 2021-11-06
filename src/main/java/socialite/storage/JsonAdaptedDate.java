@@ -46,6 +46,9 @@ class JsonAdaptedDate {
      * @throws IllegalValueException if there were any data constraints violated in the adapted Date.
      */
     public Date toModelType() throws IllegalValueException {
+        if (name == null || date == null) {
+            throw new IllegalValueException(Date.MESSAGE_CONSTRAINTS);
+        }
         String constructedDate = name + ":" + DATE_FORMATTER.format(date)
                 + Optional.ofNullable(recurrenceInterval).map(interval -> ":" + interval).orElse("");
         if (!Date.isValidDate(constructedDate)) {

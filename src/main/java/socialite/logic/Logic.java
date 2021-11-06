@@ -8,8 +8,8 @@ import socialite.logic.commands.CommandResult;
 import socialite.logic.commands.exceptions.CommandException;
 import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.Model;
-import socialite.model.ReadOnlyAddressBook;
 import socialite.model.ReadOnlyCommandHistory;
+import socialite.model.ReadOnlyContactList;
 import socialite.model.person.Person;
 
 /**
@@ -28,9 +28,9 @@ public interface Logic {
     /**
      * Returns the ContactList.
      *
-     * @see Model#getAddressBook()
+     * @see Model#getContactList()
      */
-    ReadOnlyAddressBook getAddressBook();
+    ReadOnlyContactList getContactList();
 
     /** Returns an unmodifiable view of an entire list of persons */
     ObservableList<Person> getFullPersonList();
@@ -39,9 +39,9 @@ public interface Logic {
     ObservableList<Person> getFilteredPersonList();
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' contact list file path.
      */
-    Path getAddressBookFilePath();
+    Path getContactListFilePath();
 
     /**
      * Returns the user prefs' GUI settings.

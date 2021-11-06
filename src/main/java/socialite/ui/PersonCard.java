@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.Comparator;
 
 import javafx.concurrent.Task;
@@ -62,7 +61,7 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label phone;
     @FXML
-    private HBox handles;
+    private FlowPane handles;
     @FXML
     private HBox facebook;
     @FXML
@@ -246,13 +245,12 @@ public class PersonCard extends UiPart<Region> {
 
     private void renderDates(Dates displayedDates) {
         displayedDates.get().values().stream()
-                .sorted(Date.getComparator())
+                .sorted(Date.getComparator(LocalDate.now()))
                 .forEach(date -> {
-                    LocalDate nextOccurrence = date.getNextOccurrence(LocalDate.now()).orElse(LocalDate.MIN);
-                    Period period = Period.between(LocalDate.now(), nextOccurrence);
-                    boolean isUpcoming = period.getYears() == 0 && period.getMonths() == 0 && period.getDays() <= 7;
+                    long upcomingDays = date.getUpcomingDays(LocalDate.now());
+                    boolean isUpcoming = upcomingDays >= 0 && upcomingDays <= 7;
                     String upcomingMessage = isUpcoming
-                            ? " (" + (period.getDays() == 0 ? "today" : "in " + period.getDays() + " days") + ")"
+                            ? " (" + (upcomingDays == 0 ? "today" : "in " + upcomingDays + " days") + ")"
                             : "";
 
                     String message = date.toString() + upcomingMessage;
@@ -297,11 +295,12 @@ public class PersonCard extends UiPart<Region> {
     private void handleShareButtonAction() {
         Clipboard clipboard = Clipboard.getSystemClipboard();
         ClipboardContent content = new ClipboardContent();
-        content.putString(person.toSharingString());
+        String shareInfo = person.toSharingString();
+        content.putString(shareInfo);
         clipboard.setContent(content);
 
         // Show the copied info in result display
-        MainWindow.getWindow().setFeedbackToUser(String.format(ShareCommand.MESSAGE_SHARE_PERSON_SUCCESS, content));
+        MainWindow.getWindow().setFeedbackToUser(String.format(ShareCommand.MESSAGE_SHARE_PERSON_SUCCESS, shareInfo));
 
         shareButton.setText("Copied!");
 
