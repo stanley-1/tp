@@ -161,8 +161,8 @@ The `Model` component,
 <img src="images/StorageClassDiagram.png" width="550" />
 
 The `Storage` component,
-* can save address book data, user preference data and command history data in json format, and read them back into corresponding objects.
-* inherits from `AddressBookStorage`, `UserPrefStorage` and `CommandHistoryStorage` which means it can be treated as any one (if the functionality of only one is needed).
+* can save contact list data, user preference data and command history data in json format, and read them back into corresponding objects.
+* inherits from `ContactListStorage`, `UserPrefsStorage`, `CommandHistoryStorage` and `ProfilePictureStorage` which means it can be treated as any one (if the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
 ### Common classes <a name="common"></a>
@@ -199,6 +199,14 @@ The HelpWindow dialog box provides users with the link to our User Guide and the
 
 
 ### Picture Command <a name="picture_command"></a>
+
+The Picture command allows users to add a profile picture to their contacts. The user can enter the command `picture INDEX` which would open a file browser to let the user choose any .jpg or .png file to be used as the profile picture, provided `INDEX` is a valid index
+
+Represented below is the sequence diagram when `picture INDEX` is executed. For illustration purposes, `INDEX` refers to any valid index starting from 1 to the number of contacts in the displayed list.
+
+![PictureSequenceDiagram](images/PictureSequenceDiagram.png)
+
+Note that the picture command depends on the MainWindow in the UI package as it retrieves the file from a file chooser.
 
 
 ### \[Proposed\] Undo/redo feature (TO BE REMOVED)
