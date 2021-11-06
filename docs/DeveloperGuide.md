@@ -977,5 +977,17 @@ Assuming there are 10 contacts stored in SociaLite:
 
 ### Dealing with data
 
+You can find the data files for SociaLite in the `data/` directory. You may wish to try out the following test cases in parallel:
 
+1. Before launching SociaLite, delete `contactlist.json`.
+
+	Expected: Socialite will start with a set of sample contacts. Upon closing, a new `contactlist.json` file is created with the sample contacts.
+
+2. With SociaLite running, delete `contactlist.json`.
+
+	Expected: SociaLite functions as per normal. Upon closing, the correct `.json` file will be created by SociaLite under the same directory.
+
+3. Before launching SociaLite, open `contactlist.json` and type in some random characters to make it an invalid `.json` file.
+
+	Expected: SociaLite will start with an empty contact list. SociaLite still functions as per normal.  Upon closing, a new `contactlist.json` file is created with the sample contacts. If you are using terminal to open the `jar` file, you will see a log message indicating that SociaLite will start with an empty contact list.
 
