@@ -85,7 +85,7 @@ Given below are my contributions to the project.
 * **Project management**:
   * Team leader of the SociaLite team, facilitated discussions during weekly team meetings and oversaw the entire project. 
   * Created GitHub organization and set up team project repository.
-  * Managed all four milestones ([`v1.1`](https://github.com/AY2122S1-CS2103T-F11-4/tp/milestone/1), [`v1.2`](https://github.com/AY2122S1-CS2103T-F11-4/tp/milestone/1), [`v1.3`](https://github.com/AY2122S1-CS2103T-F11-4/tp/milestone/3), [`v1.4`](https://github.com/AY2122S1-CS2103T-F11-4/tp/milestone/4)) on GitHub.
+  * Managed all four milestones ([`v1.1`](https://github.com/AY2122S1-CS2103T-F11-4/tp/milestone/1), [`v1.2`](https://github.com/AY2122S1-CS2103T-F11-4/tp/milestone/1), [`v1.3`](https://github.com/AY2122S1-CS2103T-F11-4/tp/milestone/3), [`v1.4`](https://github.com/AY2122S1-CS2103T-F11-4/tp/milestone/4)) on GitHub and assigned issues to respective team members.
   * Managed three releases ([`v1.3`](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases/tag/v1.3), [`v1.3.1`](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases/tag/v1.3.1), [`v1.3.2`](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases/tag/v1.3.2)) on GitHub.
 
   
@@ -106,5 +106,5 @@ Given below are my contributions to the project.
 
 
 * **Community**:
-  * PRs reviewed (with non-trivial review comments): 
+  * PRs reviewed (with non-trivial review comments): [\#11](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/11), [\#16](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/16), [\#35](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/35), [\#38](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/38), [\#42](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/42), [\#49](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/49), [\#50](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/50), [\#51](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/51), [\#58](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/58), [\#65](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/65), [\#70](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/70), [\#84](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/84), [\#128](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/128), [\#137](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/137), [\#138](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/138), [\#143](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/143), [\#149](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/149), [\#150](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/150), [\#158](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/158)
   * Reported 4 bugs for the peer team during [PE-D](https://github.com/david-eom/ped/issues).
