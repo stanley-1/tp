@@ -3,7 +3,7 @@
 
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
-participant ":ContactListParser" as ContactListParser LOGIC_COLOR
+participant ":SocialiteParser" as SocialiteParserjjjjjjjj LOGIC_COLOR
 participant ":PictureCommandParser" as PictureCommandParser LOGIC_COLOR
 participant "p:PictureCommand" as PictureCommand LOGIC_COLOR
 end box
@@ -19,25 +19,25 @@ end box
 [-> LogicManager : execute(picture INDEX)
 activate LogicManager
 
-LogicManager -> ContactListParser : parseCommand(picture INDEX))
-activate ContactListParser
+LogicManager -> SocialiteParser : parseCommand(picture INDEX)
+activate SocialiteParser
 
 create PictureCommandParser
-ContactListParser -> PictureCommandParser
+SocialiteParser -> PictureCommandParser
 activate PictureCommandParser
 
 create PictureCommand
 PictureCommandParser -> PictureCommand : parse(INDEX)
 activate PictureCommand
-PictureCommand --> PictureCommandParser :
+PictureCommand --> PictureCommandParser : p
 deactivate PictureCommand
 
-PictureCommandParser --> ContactListParser : p
+PictureCommandParser --> SocialiteParser : p
 deactivate PictureCommandParser
 deactivate PictureCommand
 
-ContactListParser --> LogicManager : p
-deactivate ContactListParser
+SocialiteParser --> LogicManager : p
+deactivate SocialiteParser
 destroy PictureCommandParser
 
 LogicManager -> PictureCommand : execute()
@@ -55,13 +55,13 @@ deactivate MainWindow
 PictureCommand --> PictureCommand : file
 deactivate PictureCommand
 
-PictureCommand -> Model : setPerson
+PictureCommand -> Model : setPerson()
 activate Model
 
 Model --> PictureCommand :
 deactivate Model
 
-PictureCommand -> Model : updateFilteredPersonList
+PictureCommand -> Model : updateFilteredPersonList()
 activate Model
 
 Model --> PictureCommand :

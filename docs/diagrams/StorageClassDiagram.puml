@@ -15,6 +15,7 @@ Class JsonContactListStorage
 Class JsonSerializableContactList
 Class JsonAdaptedPerson
 Class JsonAdaptedTag
+Class JsonAdaptedDate
 }
 
 package "CommandHistory Storage" #F4F6F6{
@@ -44,6 +45,7 @@ JsonContactListStorage .up.|> ContactListStorage
 JsonContactListStorage .down.> JsonSerializableContactList
 JsonSerializableContactList -down-> "*" JsonAdaptedPerson
 JsonAdaptedPerson -down-> "*" JsonAdaptedTag
+JsonAdaptedPerson -down-> "*" JsonAdaptedDate
 
 JsonUserPrefsStorage .up.|> UserPrefsStorage
 
