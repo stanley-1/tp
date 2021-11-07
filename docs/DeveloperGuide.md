@@ -29,8 +29,8 @@ title: Developer Guide
 
 ## **Acknowledgements** <a name="acknowledgements"></a>
 
-* {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
-* Adapted from [_SE-Education_](https://se-education.org/addressbook-level3/DeveloperGuide.html) 's original *AddressBook*
+* Adapted from [_SE-Education_](https://se-education.org/addressbook-level3/DeveloperGuide.html)'s original [*AddressBook*](https://github.com/se-edu/addressbook-level3)
+* GUI tests adapted from [*AddressBook* Level 4](https://github.com/se-edu/addressbook-level4)
 
 --------------------------------------------------------------------------------------------------------------------
 
