@@ -102,7 +102,7 @@
 }
 
 .list-cell:filled:even {
-    -fx-background-color: #547696;
+    -fx-background-color: #52749f;
 }
 
 .list-cell:filled:odd {
@@ -110,7 +110,7 @@
 }
 
 .list-cell:filled:selected {
-    -fx-background-color: #424d5f;
+    -fx-background-color: #57657d;
     -fx-border-radius: 15;
     -fx-border-color: #3e7b91;
     -fx-border-width: 1;
@@ -215,7 +215,7 @@
 .button {
     -fx-padding: 5 10 5 10;
     -fx-background-radius: 10;
-    -fx-background-color: #3e5291;
+    -fx-background-color: #405c7d;
     -fx-font-family: "Open Sans Regular";
     -fx-font-size: 11pt;
     -fx-text-fill: #d8d8d8;
@@ -223,11 +223,11 @@
 }
 
 .button:hover {
-    -fx-background-color: #4e67b4;
+    -fx-background-color: #49688e;
 }
 
 .button:pressed, .button:default:hover:pressed {
-  -fx-background-color: #6076bb;
+  -fx-background-color: #6f8eb5;
   -fx-text-fill: #d8d8d8;
 }
 
@@ -348,7 +348,7 @@
 
 #tags .label {
     -fx-text-fill: white;
-    -fx-background-color: #3e914f;
+    -fx-background-color: #587241;
     -fx-padding: 1 5 1 5;
     -fx-border-radius: 5;
     -fx-background-radius: 5;
@@ -362,15 +362,17 @@
 
 #dates .hbox {
     -fx-text-fill: white;
-    -fx-background-color: #8f1d3d;
+    -fx-background-color: #bd8921;
     -fx-padding: 1 5 1 5;
     -fx-border-radius: 5;
     -fx-background-radius: 5;
 }
 
 #dates .hbox.upcoming {
-    -fx-background-color: red;
+    -fx-background-color: #a9444e;
 }
+
+
 
 #dates .label {
     -fx-font-size: 11;
@@ -379,18 +381,19 @@
 .pinButton {
     -fx-padding: 5 10 5 10;
     -fx-background-radius: 10;
-    -fx-background-color: #913e52;
+    -fx-background-color: #c3674a;
     -fx-font-family: "Open Sans Regular";
     -fx-font-size: 11pt;
     -fx-text-fill: #d8d8d8;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
+
 .pinButton:hover {
-    -fx-background-color: #a76474;
+    -fx-background-color: #ca775d;
 }
 
 .pinButton:pressed, #pinButton:default:hover:pressed {
-  -fx-background-color: #bd8b97;
+  -fx-background-color: #d08770;
   -fx-text-fill: #d8d8d8;
 }
