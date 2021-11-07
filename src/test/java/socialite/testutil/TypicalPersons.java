@@ -36,7 +36,8 @@ public class TypicalPersons {
     public static final Person ALICE = new PersonBuilder().withName("Alice Pauline")
             .withPhone("94351253").withRemark("She likes aardvarks.").withTags("friends")
             .withFacebook("alice.p").withInstagram("alice.p").withTelegram("alice_pauline")
-            .withTikTok("alice.pauline").withTwitter(null).withProfilePic(PersonBuilder.DEFAULT_PROFILE_PIC).build();
+            .withTikTok("alice.pauline").withTwitter(null).withProfilePic(PersonBuilder.DEFAULT_PROFILE_PIC)
+            .withPinnedStatus(true).build();
     public static final Person BENSON = new PersonBuilder().withName("Benson Meier")
             .withPhone("98765432").withRemark("He can't take beer!").withTags("owesMoney", "friends")
             .withFacebook("benson.m").withInstagram("benson.m").withTelegram("benson_meier")
