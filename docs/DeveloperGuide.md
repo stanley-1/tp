@@ -90,13 +90,13 @@ The sections below give more details of each component.
 
 ### UI component <a name="ui"></a>
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/java/socialite/ui/Ui.java)
+The `UI` component interacts with other components of SociaLite, and uses the JavaFx UI framework to render a GUI.
+
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/java/socialite/ui/Ui.java).
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
-
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/java/socialite/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/resources/view/MainWindow.fxml)
+The UI consists of a `MainWindow` that is made up of parts, including `CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter`, etc. All the parts, as well as the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.  The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/java/socialite/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/resources/view/MainWindow.fxml).
 
 The `UI` component,
 
@@ -105,6 +105,8 @@ The `UI` component,
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
 * depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
 
+The `PersonCard` part also has a reference to the `MainWindow` to provide improved user feedback via the main window after user interactions which do not execute a command using `Logic`.
+cc
 ### Logic component <a name="logic"></a>
 
 **API** : [`Logic.java`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/java/socialite/logic/Logic.java)
