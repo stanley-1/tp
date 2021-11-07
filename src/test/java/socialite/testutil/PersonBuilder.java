@@ -43,6 +43,7 @@ public class PersonBuilder {
     private Twitter twitter;
     private Dates dates;
     private ProfilePicture profilePic;
+    private boolean pinned;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -59,6 +60,7 @@ public class PersonBuilder {
         twitter = new Twitter(DEFAULT_TWITTER);
         dates = new Dates();
         profilePic = DEFAULT_PROFILE_PIC;
+        pinned = false;
     }
 
     /**
@@ -76,6 +78,7 @@ public class PersonBuilder {
         twitter = personToCopy.getTwitter();
         dates = personToCopy.getDates();
         profilePic = personToCopy.getProfilePicture();
+        pinned = personToCopy.getPinnedStatus();
     }
 
     /**
@@ -159,10 +162,18 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Profile Picture} of the (@code Person} that we are building
+     * Sets the {@code ProfilePicture} of the (@code Person} that we are building
      */
     public PersonBuilder withProfilePic(ProfilePicture pic) {
         this.profilePic = pic;
+        return this;
+    }
+
+    /**
+     * Sets the pinned status of the (@code Person} that we are building
+     */
+    public PersonBuilder withPinnedStatus(boolean pinned) {
+        this.pinned = pinned;
         return this;
     }
 
@@ -173,6 +184,7 @@ public class PersonBuilder {
     public Person build() {
         Person p = new Person(name, phone, remark, tags, facebook, instagram, telegram, tiktok, twitter, dates);
         p.setProfilePicture(profilePic.value);
+        p.setPinned(pinned);
         return p;
     }
 
