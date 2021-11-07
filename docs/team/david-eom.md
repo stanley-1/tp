@@ -9,6 +9,7 @@ title: Yan Xiaozhi's Project Portfolio Page
 
 Given below are my contributions to the project.
 
+
 * **New Feature**: Command history (PR [\#52](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/52), [\#130](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/130))
 
   What it does:
@@ -25,6 +26,7 @@ Given below are my contributions to the project.
   * The design of this feature involves thorough understanding of the `Storage` component, and multiple new classes are created.
 
 
+
 * **New Feature**: Pin/Unpin contact card (PR [\#81](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/81), [\#142](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/142))
 
   What it does:
@@ -37,7 +39,8 @@ Given below are my contributions to the project.
   Highlights:
   * The design of this feature involves thorough understanding of `ContactList`, `UniquePersonList`.
   * This feature provides support for both CLI and GUI.
-  
+
+
 
 * **New Feature**: Share contact (PR [\#71](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/71), [\#140](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/140))
 
@@ -53,6 +56,7 @@ Given below are my contributions to the project.
   * This feature provides support for both CLI and GUI.
 
 
+
 * **New Feature**: Telegram handle support (PR [\#31](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/31))
 
   What it does:
@@ -63,6 +67,7 @@ Given below are my contributions to the project.
 
   Highlights:
   * Being the first PR of the kind, the implementation of this feature provides a scalable framework for teammates regarding the storing of other social media handles (PR [\#35](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/35), [\#36](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/36), [\#37](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/37)).
+
 
 
 * **Altered Feature**: Optional remark (PR [\#56](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/56))
@@ -76,10 +81,12 @@ Given below are my contributions to the project.
   Highlights:
   * Being the first PR of the kind, the implementation of this feature provides a scalable framework for teammates regarding the storing of other social media handles (PR [\#35](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/35), [\#36](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/36), [\#37](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/37)).
 
+
   
 * **Code contribution**:
 
   Please refer to the [RepoSense link](https://nus-cs2103-ay2122s1.github.io/tp-dashboard/?search=david-eom&sort=totalCommits%20dsc&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByNone&breakdown=true&tabOpen=true&tabType=authorship&tabAuthor=david-eom&tabRepo=AY2122S1-CS2103T-F11-4%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code~other&authorshipIsBinaryFileTypeChecked=false&checkedFileTypes=docs~functional-code~test-code~other).
+
 
 
 * **Project management**:
@@ -88,11 +95,13 @@ Given below are my contributions to the project.
   * Managed all four milestones ([`v1.1`](https://github.com/AY2122S1-CS2103T-F11-4/tp/milestone/1), [`v1.2`](https://github.com/AY2122S1-CS2103T-F11-4/tp/milestone/1), [`v1.3`](https://github.com/AY2122S1-CS2103T-F11-4/tp/milestone/3), [`v1.4`](https://github.com/AY2122S1-CS2103T-F11-4/tp/milestone/4)) on GitHub and assigned issues to respective team members.
   * Managed three releases ([`v1.3`](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases/tag/v1.3), [`v1.3.1`](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases/tag/v1.3.1), [`v1.3.2`](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases/tag/v1.3.2)) on GitHub.
 
+
   
 * **Enhancements to existing features**:
   * Wrote additional tests for existing features to increase coverage from 61% to 63% (PR [\#80](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/80)).
   * Make parser throw the correct exception when index overflows e.g. `delete 2147483648` (PR [\#131](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/131)).
   * Fixed multiple issues pertaining overflowing in UI (PR [\#152](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/152)).
+
 
 
 * **Documentation**:
@@ -104,6 +113,7 @@ Given below are my contributions to the project.
   Developer Guide:
   * Created the entire set of manual testcases and updated implementation & sequence diagram of command history (PR [#162](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/162)).
   * Updated `Storage` and `Model` diagram (PR [\#57](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/57)).
+
 
 
 * **Community**:
