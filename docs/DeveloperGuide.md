@@ -90,7 +90,7 @@ The sections below give more details of each component.
 
 ### UI component <a name="ui"></a>
 
-The `UI` component interacts with other components of SociaLite, and uses the JavaFx UI framework to render a GUI.
+The `UI` component interacts with other components of SociaLite, and uses the JavaFX UI framework to render a GUI.
 
 The **API** of this component is specified in [`Ui.java`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/java/socialite/ui/Ui.java).
 
