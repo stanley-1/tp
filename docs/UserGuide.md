@@ -243,6 +243,7 @@ Edits an existing contact on SociaLite.
 **:heavy_check_mark: Example:** `edit 1 p/91234567 fb/Yalex19` 
 
 Edits the phone number and Facebook handle of the 1st person to be `91234567` and `Yalex19` respectively.
+![05_edit](images/UG/05_edit.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -270,6 +271,7 @@ Modifies tags that are associated with existing contacts stored on SociaLite.
 **:heavy_check_mark: Example:** `edit 1 t/buddy`
 
 Creates a tag called `buddy` for the first person on the displayed person list.
+![06_edit_tag](images/UG/06_edit_tag.png)
 </div>
 
 
@@ -297,6 +299,7 @@ Deletes all tags that are associated with a specified contact on SociaLite.
 **:heavy_check_mark: Example:** `edit 2 t/` 
 
 Deletes all tags associated with the 2nd person on the displayed person list.
+![07_delete_tags](images/UG/07_delete_tags.png)
 </div>
 
 <br>
@@ -327,6 +330,7 @@ Changes the Facebook handle of the first person on the displayed person list to 
 **:heavy_check_mark: Example:** `edit 1 twitter/xelayeoh` 
 
 Adds the Twitter handle called `xelayeoh` to the first person on the displayed person list. The Facebook handle that was previously modified is unaffected.
+![08_edit_handles](images/UG/08_edit_handles.png)
 </div>
 
 <br>
@@ -353,6 +357,7 @@ Adds / Edits dates of occasions (birthdays, appointments) associated with a cont
 **:heavy_check_mark: Example:** `list` followed by `edit 1 date/Meeting:2021-09-14` 
 
 Adds the event “Meeting” which falls on 14 Sep 2021, to Alex Yeoh’s listing.
+![09_edit_dates](images/UG/09_edit_dates.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -376,9 +381,10 @@ Deletes the specified person from SociaLite.
 </div>
 
 <div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `list` followed by `delete 4` 
+**:heavy_check_mark: Example:** `list` followed by `delete 7` 
 
-Deletes the 4th person on the displayed person list.
+Deletes the 7th person on the displayed person list.
+![10_delete](images/UG/10_delete.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -422,7 +428,7 @@ Finds persons whose names contain any of the given keywords.
 **:heavy_check_mark: Example:** `find david`
 
 Returns `David Li` and `David Tan` <br>
-![result for 'find david'](images/findDavidResult.png)
+![12_find_name](images/UG/12_find_name.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -456,6 +462,7 @@ Displays the contacts that are associated with a particular tag.
 **:heavy_check_mark: Example:** `find t/family` 
 
 Checks for contacts which the user categorized as “family”.
+![13_find_tag](images/UG/13_find_tag.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -500,6 +507,7 @@ Show all contacts with their handles on the particular social media platform.
 **:heavy_check_mark: Example:** `find p/facebook p/instagram` 
 
 Returns all contacts who have BOTH a Facebook and Instagram handle pegged with them.
+![14_find_platform](images/UG/14_find_platform.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -533,6 +541,10 @@ Adds a profile picture to an existing contact or changes the existing profile pi
 **:heavy_check_mark: Example:** `list` followed by `picture 2` 
 
 Opens the file browser to let you choose a picture to add to Annie Wan’s listing in the app.
+![15_pic_window](images/UG/15_pic_window.png)
+
+Updates Annie Wan's profile picture in SociaLite.
+![15_pic_ui](images/UG/15_pic_ui.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -561,6 +573,7 @@ Alternatively, the user can click on the "Share" button at the top-right hand co
 **:heavy_check_mark: Example:** `list` followed by `share 2` 
 
 Copies the information of the second contact in the list displayed by SociaLite.
+![16_share](images/UG/16_share.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -589,10 +602,13 @@ Alternatively, the user can click on the "Pin" button at the top-right hand corn
 
 Provided no contact card has been pinned yet, the above command places the third contact in the list displayed by 
 SociaLite, at the top of the person list along with other pinned contacts.
+![17_pin](images/UG/17_pin.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** Clicking on the "Pin" button of Annie Wan's name card affixes her contact card onto the top of the person list.
+
+![17_pin_2](images/UG/17_pin_2.png)
 </div>
 
 <br>
@@ -620,6 +636,8 @@ Provided the first 2 contact cards are the pinned contact cards, the above comma
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** Clicking on the "Unpin" button of Bernice Yu's name unpins her contact card if it was previously pinned.
+
+![18_unpin](images/UG/18_unpin.png)
 </div>
 
 <br>
@@ -643,12 +661,14 @@ Adds special notes about a contact.
 **:heavy_check_mark: Example:** `list` followed by `remark 1 r/Doesn’t like vegetables`
 
 Adds the remark “Doesn’t like vegetables” to Alex Yeoh’s listing in the app.
+![19_remark_alex](images/UG/19_remark_alex.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `find Annie` followed by `remark 1 r/Loves peas r/Allergic to prawns r/Hates carrots`
 
 Only the remark “Hates carrots” is added to Annie Wan’s listing in the app.
+![19_remark_annie](images/UG/19_remark_annie.png)
 </div>
 
 <br>
@@ -660,7 +680,7 @@ Shows a message explaining how to access the User Guide or obtain in-app guidanc
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `help`
-![result for 'help'](images/HelpBox.png)
+![20_help](images/UG/20_help.png)
 </div>
 
 <br>
@@ -679,7 +699,7 @@ Displays concise instructions for users to learn the given `COMMAND`'s function.
 **:heavy_check_mark: Example:** `help add` 
 
 Displays a concise guide on how to use the `add` command.
-![result for 'help'](images/HelpAdd.png)
+![21_help_add](images/UG/21_help_add.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
