@@ -151,7 +151,7 @@ The `Model` component,
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in SociaLite, which `Person` references. This allows SociaLite to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
 
-<img src="images/BetterModelClassDiagram.png" width="450" />
+<img src="images/BetterModelClassDiagram.png" width="650" />
 
 </div>
 
@@ -160,7 +160,7 @@ The `Model` component,
 
 **API** : [`Storage.java`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/java/socialite/storage/Storage.java)
 
-<img src="images/StorageClassDiagram.png" width="650" />
+<img src="images/StorageClassDiagram.png" width="850" />
 
 The `Storage` component,
 * can save contact list data, user preference data and command history data in json format, and read them back into corresponding objects.
