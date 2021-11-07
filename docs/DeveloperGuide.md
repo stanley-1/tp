@@ -792,15 +792,16 @@ Download the latest `jar` file from SociaLite [release page](https://github.com/
    
 2. Exiting
 
-  While SociaLite is running:
+	While SociaLite is running:
 
-  1. Click on the `X` button on the window (top-left for macOS, top-right for Windows).
+	1. Click on the `X` button on the window (top-left for macOS, top-right for Windows).
 
-    Expected: the Socialite app quits normally.
+		Expected: the Socialite app quits normally.
 
-  2. While SociaLite is running, type `exit` in the command box of the GUI and hit `Enter`.
+	2. While SociaLite is running, type `exit` in the command box of the GUI and hit `Enter`.
 
-    Expected: ditto.
+		Expected: ditto.
+
 
 ### Adding a contact
 
@@ -920,15 +921,15 @@ Assuming there are 10 contacts stored in SociaLite:
 
 1. Enter `picture 1` in the command box.
 
-	Expected: a file chooser will show up for you to select your profile picture.
+  Expected: a file chooser will show up for you to select your profile picture.
 
-	1. Click on `cancel` button or press `Esc` button in your OS.
+  1. Click on `cancel` button or press `Esc` button in your OS.
 
-		Expected: you will be redirected to the SociaLite app, with error message indicating command aborted.
+  	Expected: you will be redirected to the SociaLite app, with error message indicating command aborted.
 
-	2. Locate a `.jpg` or `.png` file of your liking and select it in the file chooser.
+  2. Locate a `.jpg` or `.png` file of your liking and select it in the file chooser.
 
-		Expected: the first contact card's profile picture will update to be the file that you have chosen.
+  	Expected: the first contact card's profile picture will update to be the file that you have chosen.
 
 2. Enter `picture 100` in the command box.
 
