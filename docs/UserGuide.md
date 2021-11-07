@@ -46,7 +46,7 @@ This section contains a glossary of all the commands and quick examples for refe
 2. Download the latest `socialite.jar` from [here](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases).
 3. Copy the file to the folder you want to use as the _home folder_ for your SociaLite.
 4. Double-click the file to start the app. SociaLite should start in a few seconds! The app contains some sample data for you to experiment with to get familiar with the commands.<br>
-   ![Ui](images/UpdatedUI.png)
+   ![Ui](images/UG/Ui.png)
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Here are some sample commands to get you started with SociaLite:
 
