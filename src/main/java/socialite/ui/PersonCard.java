@@ -253,12 +253,21 @@ public class PersonCard extends UiPart<Region> {
                             ? " (" + (upcomingDays == 0 ? "today" : "in " + upcomingDays + " days") + ")"
                             : "";
 
-                    String message = date.toString() + upcomingMessage;
-                    Label label = new Label(message);
+                    HBox hbox = new HBox();
+                    hbox.getStyleClass().add("hbox");
                     if (isUpcoming) {
-                        label.idProperty().set("upcoming");
+                        hbox.getStyleClass().add("upcoming");
                     }
-                    dates.getChildren().add(label);
+
+                    String message = date + upcomingMessage;
+                    String[] parts = message.split(": ");
+                    Label name = new Label(parts[0]);
+                    name.getStyleClass().add("name");
+                    Label details = new Label(": " + parts[1]);
+
+                    hbox.getChildren().add(name);
+                    hbox.getChildren().add(details);
+                    dates.getChildren().add(hbox);
                 });
     }
 

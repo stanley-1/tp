@@ -361,7 +361,7 @@
     -fx-vgap: 3;
 }
 
-#dates .label {
+#dates .hbox {
     -fx-text-fill: white;
     -fx-background-color: #91543e;
     -fx-padding: 1 5 1 5;
@@ -370,10 +370,13 @@
     -fx-font-size: 11;
 }
 
-#dates .label#upcoming {
+#dates .hbox.upcoming {
     -fx-background-color: red;
 }
 
+#dates .label.name {
+    -fx-max-width: 200px;
+}
 
 .pinButton {
     -fx-padding: 5 10 5 10;
