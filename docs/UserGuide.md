@@ -761,7 +761,7 @@ Action | Format | Example (if any)
 **List** | `list` |
 **Pin Contact** | `pin INDEX` | `pin 4`
 **Share Contact** | `share INDEX` | `share 2`
-**Track History** | `UP` or `DOWN` arrow keys |
+**Track History** | `↑` or `↓` arrow keys |
 **Unpin Contact** | `unpin INDEX` | `unpin 1`
 **View Help** | `help` |
 **View In-App Guidance** | `help COMMAND` | `help add`
