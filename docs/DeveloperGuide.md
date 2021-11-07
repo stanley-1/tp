@@ -207,7 +207,7 @@ Note that the picture command depends on the MainWindow in the UI package as it 
 
 Command history allows users to navigate through commands that they have entered previously by pressing `UP/DOWN` key in the command box. It resembles the behavior of a macOS or Windows terminal. As a result, users can simply make slight edit to the previous command to rectify a typo.
 
-Command history from all previous sessions will be stored in `commandhistory.json`, and loaded as an list of strings in `CommandHistory` class when SociaLite is launched. The command history of the current session will be added to the list of strings, and written back to the `.json` file upon exiting SocaiLite.
+Command history from all previous sessions will be stored in `commandhistory.json`, and loaded as a list of strings in `CommandHistory` class when SociaLite is launched. The command history of the current session will be added to the list of strings, and written back to the `.json` file upon exiting SocaiLite.
 
 If the `.json` file is non-existent or faulty, or if SociaLite encounters any problem reading the `.json` file , it will start with an empty command history.
 
@@ -781,25 +781,26 @@ Given below are instructions to test the app manually.
 Download the latest `jar` file from SociaLite [release page](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases), and copy it into an empty folder that you have access to read and write.
 
 1. Launching
+   
    1. Double-click on the `jar` file icon in your OS' GUI
    
-   	Expected: the GUI for SociaLite app shows up with a set of sample contacts.
+      Expected: the GUI for SociaLite app shows up with a set of sample contacts.
    
    2. Locate the directory using your terminal and enter `java -jar socialite.jar`.
    
-   	Expected: ditto.
+      Expected: ditto.
    
 2. Exiting
 
-	While SociaLite is running:
+  While SociaLite is running:
 
-	1. Click on the `X` button on the window (top-left for macOS, top-right for Windows).
+  1. Click on the `X` button on the window (top-left for macOS, top-right for Windows).
 
-		Expected: the Socialite app quits normally.
+    Expected: the Socialite app quits normally.
 
-	2. While SociaLite is running, type `exit` in the command box of the GUI and hit `Enter`.
+  2. While SociaLite is running, type `exit` in the command box of the GUI and hit `Enter`.
 
-		Expected: ditto.
+    Expected: ditto.
 
 ### Adding a contact
 

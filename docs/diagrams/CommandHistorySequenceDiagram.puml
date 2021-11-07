@@ -3,7 +3,7 @@
 
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
-participant ":SociaiteParser" as SocialiteParser LOGIC_COLOR
+participant ":SocialiteParser" as SocialiteParser LOGIC_COLOR
 participant ":XYZCommand" as XYZcommand LOGIC_COLOR
 end box
 
@@ -35,7 +35,7 @@ deactivate SocialiteParser
 
 LogicManager -> XYZcommand : execute()
 activate XYZcommand
-XYZcommand --> LogicManager : result
+XYZcommand --> LogicManager : commandResult
 deactivate XYZcommand
 
 LogicManager -> Storage : saveCommandHistory()
