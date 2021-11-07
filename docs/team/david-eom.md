@@ -102,6 +102,7 @@ Given below are my contributions to the project.
   * Updated pin & unpin command (PR [\#129](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/129)).
 
   Developer Guide:
+  * Created the entire set of manual testcases and updated implementation & sequence diagram of command history (PR [#162](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/162)).
   * Updated `Storage` and `Model` diagram (PR [\#57](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/57)).
 
 
