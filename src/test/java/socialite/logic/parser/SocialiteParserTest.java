@@ -33,9 +33,9 @@ import socialite.testutil.PersonUtil;
 import socialite.testutil.TypicalIndexes;
 
 
-public class AddressBookParserTest {
+public class SocialiteParserTest {
 
-    private final AddressBookParser parser = new AddressBookParser();
+    private final SocialiteParser parser = new SocialiteParser();
 
     @Test
     public void parseCommand_add() throws Exception {

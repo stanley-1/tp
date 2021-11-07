@@ -372,3 +372,23 @@
 #dates .label#upcoming {
     -fx-background-color: red;
 }
+
+
+.pinButton {
+    -fx-padding: 5 10 5 10;
+    -fx-background-radius: 10;
+    -fx-background-color: #913e52;
+    -fx-font-family: "Open Sans Regular";
+    -fx-font-size: 11pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.pinButton:hover {
+    -fx-background-color: #a76474;
+}
+
+.pinButton:pressed, #pinButton:default:hover:pressed {
+  -fx-background-color: #bd8b97;
+  -fx-text-fill: #d8d8d8;
+}

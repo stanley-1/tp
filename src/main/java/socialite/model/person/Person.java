@@ -17,7 +17,7 @@ import socialite.model.handle.Twitter;
 import socialite.model.tag.Tag;
 
 /**
- * Represents a Person in the address book.
+ * Represents a Person on the contact list.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Person {
@@ -30,6 +30,7 @@ public class Person {
     private final Remark remark;
     private final Set<Tag> tags = new HashSet<>();
     private ProfilePicture profilePicture = ProfilePicture.DEFAULT_PICTURE;
+    private boolean isPinned = false;
 
     // Social media handle fields
     private final Facebook facebook;
@@ -37,10 +38,8 @@ public class Person {
     private final Telegram telegram;
     private final TikTok tiktok;
     private final Twitter twitter;
-
     private final Dates dates;
 
-    private boolean isPinned = false;
 
     /**
      * Every field must be present and not null.
@@ -89,6 +88,10 @@ public class Person {
         return Collections.unmodifiableSet(tags);
     }
 
+    public boolean getPinnedStatus() {
+        return isPinned;
+    }
+
     public ProfilePicture getProfilePicture() {
         return profilePicture;
     }
@@ -109,6 +112,10 @@ public class Person {
         return dates;
     }
 
+    public void setPinned(boolean isPinned) {
+        this.isPinned = isPinned;
+    }
+
     public void setProfilePicture(Path value) {
         this.profilePicture = new ProfilePicture(value);
     }
@@ -126,7 +133,6 @@ public class Person {
         }
 
         return otherPerson != null
-                && otherPerson.getName().equals(getName())
                 && otherPerson.getPhone().equals(getPhone());
     }
 
@@ -166,6 +172,7 @@ public class Person {
                 && otherPerson.getRemark().equals(getRemark())
                 && otherPerson.getTags().equals(getTags())
                 && otherPerson.getProfilePicture().equals(getProfilePicture())
+                && otherPerson.getPinnedStatus() == getPinnedStatus()
                 && otherPerson.getFacebook().equals(getFacebook())
                 && otherPerson.getInstagram().equals(getInstagram())
                 && otherPerson.getTelegram().equals(getTelegram())
@@ -183,28 +190,29 @@ public class Person {
     /**
      * Returns a formatted string when user wants to forward the contact using `share` command.
      */
+
     public String toSharingString() {
         final StringBuilder info = new StringBuilder();
         info.append("\tPhone: ").append(getPhone());
 
         if (getFacebook().get() != null) {
-            info.append("\n\tFacebook: ").append(getFacebook().get());
+            info.append("\n\tFacebook: ").append(getFacebook().getUrl());
         }
 
         if (getInstagram().get() != null) {
-            info.append("\n\tInstagram: ").append(getInstagram().get());
+            info.append("\n\tInstagram: ").append(getInstagram().getUrl());
         }
 
         if (getTelegram().get() != null) {
-            info.append("\n\tTelegram: ").append(getTelegram().get());
+            info.append("\n\tTelegram: ").append(getTelegram().getUrl());
         }
 
         if (getTiktok().get() != null) {
-            info.append("\n\tTikTok: ").append(getTiktok().get());
+            info.append("\n\tTikTok: ").append(getTiktok().getUrl());
         }
 
         if (getTwitter().get() != null) {
-            info.append("\n\tTwitter: ").append(getTwitter().get());
+            info.append("\n\tTwitter: ").append(getTwitter().getUrl());
         }
 
         return String.format(ShareCommand.MESSAGE_SHARE_PERSON_TEMPLATE, getName(), info);
@@ -257,4 +265,15 @@ public class Person {
         return builder.toString();
     }
 
+    /**
+     * creates a copy of this person, with the same fields
+     * @return copy of the person
+     */
+    public Person copy() {
+        Person copy = new Person(
+                this.name, this.phone, this.remark, this.tags, this.facebook, this.instagram, this.telegram,
+                this.tiktok, this.twitter, this.dates);
+        copy.setProfilePicture(this.profilePicture.value);
+        return copy;
+    }
 }

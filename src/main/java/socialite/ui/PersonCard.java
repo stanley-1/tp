@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.Comparator;
 
 import javafx.concurrent.Task;
@@ -22,6 +21,9 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.shape.Circle;
+import socialite.logic.commands.PinCommand;
+import socialite.logic.commands.ShareCommand;
+import socialite.logic.commands.UnpinCommand;
 import socialite.model.handle.Handle;
 import socialite.model.handle.Handle.Platform;
 import socialite.model.person.Date;
@@ -41,7 +43,7 @@ public class PersonCard extends UiPart<Region> {
      * As a consequence, UI elements' variable names cannot be set to such keywords
      * or an exception will be thrown by JavaFX during runtime.
      *
-     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
+     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on ContactList level 4</a>
      */
 
     public final Person person;
@@ -53,11 +55,13 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private Button share;
+    private Button pinButton;
+    @FXML
+    private Button shareButton;
     @FXML
     private Label phone;
     @FXML
-    private HBox handles;
+    private FlowPane handles;
     @FXML
     private HBox facebook;
     @FXML
@@ -129,12 +133,18 @@ public class PersonCard extends UiPart<Region> {
         Circle clip = new Circle(30);
         this.profilePicture.setFitHeight(60);
         this.profilePicture.setFitWidth(60);
-        clip.setCenterX(profilePicture.getFitHeight() / 2);
-        clip.setCenterY(profilePicture.getFitWidth() / 2);
+        clip.setCenterX(profilePicture.getFitWidth() / 2);
+        clip.setCenterY(profilePicture.getFitHeight() / 2);
         this.profilePicture.setClip(clip);
+        centerImage(profilePicture);
 
         if (person.isPinned()) {
             // set background colour / button colour
+            pinButton.setText("Unpin");
+            pinButton.getStyleClass().add("pinButton");
+        } else {
+            pinButton.setText("Pin");
+            pinButton.getStyleClass().remove("pinButton");
         }
 
         person.getTags().stream()
@@ -142,7 +152,6 @@ public class PersonCard extends UiPart<Region> {
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
         this.renderDates(person.getDates());
     }
-
 
     private void makeRemark(Remark remark) {
         String value = remark.get();
@@ -153,6 +162,27 @@ public class PersonCard extends UiPart<Region> {
             this.remark.setText(null);
             this.remark.setVisible(false);
         }
+    }
+
+    // credits for this method goes to https://stackoverflow.com/questions/32781362/centering-an-image-in-an-imageview
+    private void centerImage(ImageView imageView) {
+        Image img = imageView.getImage();
+        if (img == null) {
+            return;
+        }
+        double w = 0;
+        double h = 0;
+
+        double ratioX = imageView.getFitWidth() / img.getWidth();
+        double ratioY = imageView.getFitHeight() / img.getHeight();
+
+        double reduceCoeff = Math.min(ratioX, ratioY);
+
+        w = img.getWidth() * reduceCoeff;
+        h = img.getHeight() * reduceCoeff;
+
+        imageView.setX((imageView.getFitWidth() - w) / 2);
+        imageView.setY((imageView.getFitHeight() - h) / 2);
     }
 
 
@@ -207,7 +237,7 @@ public class PersonCard extends UiPart<Region> {
             label.setText("@" + handle + " ");
             label.setOnMouseEntered(Event -> label.setUnderline(true));
             label.setOnMouseExited(Event -> label.setUnderline(false));
-            label.setOnMouseClicked(Event -> this.openBrowser(handle.getUrl()));
+            label.setOnMousePressed(Event -> this.openBrowser(handle.getUrl()));
         } else {
             box.setVisible(false);
         }
@@ -215,13 +245,12 @@ public class PersonCard extends UiPart<Region> {
 
     private void renderDates(Dates displayedDates) {
         displayedDates.get().values().stream()
-                .sorted(Date.getComparator())
+                .sorted(Date.getComparator(LocalDate.now()))
                 .forEach(date -> {
-                    LocalDate nextOccurrence = date.getNextOccurrence(LocalDate.now()).orElse(LocalDate.MIN);
-                    Period period = Period.between(LocalDate.now(), nextOccurrence);
-                    boolean isUpcoming = period.getYears() == 0 && period.getMonths() == 0 && period.getDays() <= 7;
+                    long upcomingDays = date.getUpcomingDays(LocalDate.now());
+                    boolean isUpcoming = upcomingDays >= 0 && upcomingDays <= 7;
                     String upcomingMessage = isUpcoming
-                            ? " (" + (period.getDays() == 0 ? "today" : "in " + period.getDays() + " days") + ")"
+                            ? " (" + (upcomingDays == 0 ? "today" : "in " + upcomingDays + " days") + ")"
                             : "";
 
                     String message = date.toString() + upcomingMessage;
@@ -250,13 +279,30 @@ public class PersonCard extends UiPart<Region> {
     }
 
     @FXML
-    private void handleButtonAction() {
+    private void handlePinButtonAction() {
+        MainWindow mainWindow = MainWindow.getWindow();
+        if (person.isPinned()) {
+            person.unpin();
+            mainWindow.setFeedbackToUser(String.format(UnpinCommand.MESSAGE_UNPIN_PERSON_SUCCESS, person));
+        } else {
+            person.pin();
+            mainWindow.setFeedbackToUser(String.format(PinCommand.MESSAGE_PIN_PERSON_SUCCESS, person));
+        }
+        mainWindow.showFullPersonList();
+    }
+
+    @FXML
+    private void handleShareButtonAction() {
         Clipboard clipboard = Clipboard.getSystemClipboard();
         ClipboardContent content = new ClipboardContent();
-        content.putString(person.toSharingString());
+        String shareInfo = person.toSharingString();
+        content.putString(shareInfo);
         clipboard.setContent(content);
 
-        share.setText("Copied!");
+        // Show the copied info in result display
+        MainWindow.getWindow().setFeedbackToUser(String.format(ShareCommand.MESSAGE_SHARE_PERSON_SUCCESS, shareInfo));
+
+        shareButton.setText("Copied!");
 
         // Change the button text back after 2 seconds
         Task<Void> sleeper = new Task<>() {
@@ -265,7 +311,7 @@ public class PersonCard extends UiPart<Region> {
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException ignored) {
-                    // Yet to come up with what to do
+                    // TODO: throw some exception?
                 }
                 return null;
             }
@@ -273,7 +319,7 @@ public class PersonCard extends UiPart<Region> {
         sleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
             @Override
             public void handle(WorkerStateEvent event) {
-                share.setText("Share");
+                shareButton.setText("Share");
             }
         });
         new Thread(sleeper).start();

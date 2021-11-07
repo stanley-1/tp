@@ -15,11 +15,11 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.ObservableList;
 import socialite.commons.core.GuiSettings;
 import socialite.logic.commands.exceptions.CommandException;
-import socialite.model.AddressBook;
+import socialite.model.ContactList;
 import socialite.model.Model;
 import socialite.model.ProfilePictureSyncModel;
-import socialite.model.ReadOnlyAddressBook;
 import socialite.model.ReadOnlyCommandHistory;
+import socialite.model.ReadOnlyContactList;
 import socialite.model.ReadOnlyUserPrefs;
 import socialite.model.person.Person;
 import socialite.testutil.Assert;
@@ -39,7 +39,8 @@ public class AddCommandTest {
 
         CommandResult commandResult = new AddCommand(validPerson).execute(modelStub);
 
-        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validPerson), commandResult.getFeedbackToUser());
+        assertEquals(String.format(AddCommand.MESSAGE_ADD_PERSON_SUCCESS, validPerson),
+                commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(validPerson), modelStub.personsAdded);
     }
 
@@ -102,12 +103,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public Path getAddressBookFilePath() {
+        public Path getContactListFilePath() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setAddressBookFilePath(Path addressBookFilePath) {
+        public void setContactListFilePath(Path contactListFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -117,12 +118,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public void setAddressBook(ReadOnlyAddressBook newData) {
+        public void setContactList(ReadOnlyContactList newData) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyAddressBook getAddressBook() {
+        public ReadOnlyContactList getContactList() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -180,6 +181,16 @@ public class AddCommandTest {
         public void clearProfilePictureModel() {
             throw new AssertionError("This method should not be called");
         }
+
+        @Override
+        public void pinPerson(Person person) {
+            throw new AssertionError("This method should not be called");
+        }
+
+        @Override
+        public void unpinPerson(Person person) {
+            throw new AssertionError("This method should not be called");
+        }
     }
 
     /**
@@ -219,8 +230,8 @@ public class AddCommandTest {
         }
 
         @Override
-        public ReadOnlyAddressBook getAddressBook() {
-            return new AddressBook();
+        public ReadOnlyContactList getContactList() {
+            return new ContactList();
         }
     }
 

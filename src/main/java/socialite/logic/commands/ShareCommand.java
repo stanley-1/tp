@@ -15,7 +15,7 @@ import socialite.model.Model;
 import socialite.model.person.Person;
 
 /**
- * Copies a person's contact info to the system clipboard using its displayed index from the address book.
+ * Copies a person's contact info to the system clipboard using its displayed index on the contact list.
  */
 public class ShareCommand extends Command {
 
@@ -33,7 +33,7 @@ public class ShareCommand extends Command {
     public static final String MESSAGE_SHARE_PERSON_TEMPLATE = "Here are the social media handles for %1$s!\n"
             + "%2$s\n"
             + "Hey, have you tried SociaLite? I have enjoyed using it, you should check it out too!\n"
-            + "https://ay2122s1-cs2103t-f11-4.github.io/tp/";
+            + "Simply go to https://tinyurl.com/CS2103SociaLite";
 
 
     public static final String MESSAGE_HELP_GUIDE = "Enter 'help share' for in-app guidance.";

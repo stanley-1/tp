@@ -15,6 +15,7 @@ We are a team based in the [School of Computing](https://www.comp.nus.edu.sg/), 
 
 * Role: Team Lead
 * [Email](mailto:yan_xiaozhi@u.nus.edu)
+* [Personal Portfolio Page](team/david-eom.md)
 
 ### Stanley Tan Wen Sheng [<img src="images/github-icon.png" width="40px">](https://github.com/stanley-1)
 
@@ -22,6 +23,7 @@ We are a team based in the [School of Computing](https://www.comp.nus.edu.sg/), 
 
 * Role: Code Quality & Documentation
 * [Email](mailto:stanley.tan@u.nus.edu)
+* [Personal Portfolio Page](team/stanley-1.md)
 
 ### Zachary Chua Yan Ern [<img src="images/github-icon.png" width="40px">](https://github.com/Zacchua)
 
@@ -29,6 +31,7 @@ We are a team based in the [School of Computing](https://www.comp.nus.edu.sg/), 
 
 * Role: Integration & Code Quality
 * [Email](mailto:e0543984@u.nus.edu)
+* [Personal Portfolio Page](team/zacchua.md)
 
 ### Tan Siong Min, Benjamin [<img src="images/github-icon.png" width="40px">](https://github.com/bnjmnt4n)
 
@@ -36,6 +39,7 @@ We are a team based in the [School of Computing](https://www.comp.nus.edu.sg/), 
 
 * Role: Testing & Integration
 * [Email](mailto:benjamint@u.nus.edu)
+* [Personal Portfolio Page](team/bnjmnt4n.md)
 
 ### Tang Swen Yi [<img src="images/github-icon.png" width="40px">](https://github.com/EssWhyy)
 
@@ -43,3 +47,4 @@ We are a team based in the [School of Computing](https://www.comp.nus.edu.sg/), 
 
 * Role: Testing & Documentation
 * [Email](mailto:e0532612@u.nus.edu)
+* [Personal Portfolio Page](team/esswhyy.md)

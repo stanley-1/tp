@@ -14,6 +14,7 @@ import socialite.logic.commands.exceptions.CommandException;
 import socialite.model.Model;
 import socialite.model.person.Person;
 import socialite.model.person.ProfilePicture;
+import socialite.ui.MainWindow;
 
 public class PictureCommand extends Command {
 
@@ -23,28 +24,37 @@ public class PictureCommand extends Command {
             + " used in the displayed person list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
-    public static final String MESSAGE_HELP_GUIDE =
-            "Enter picture INDEX to add a profile picture to the person at INDEX";
+    public static final String MESSAGE_HELP_GUIDE = "Enter 'help picture' for in-app guidance.";
+    public static final String MESSAGE_PICTURE_PERSON_SUCCESS = "Changed Profile Picture of Person: %1$s";
+    public static final String MESSAGE_COMMAND_ABORTED = "Command Aborted";
     private final Index index;
-    private final File picture;
+    private final boolean useGui;
+    private File picture = null;
 
     /**
      * Creates a command that adds a picture to a person
      * @param index Index of person to add picture to
-     * @param picture File to add to person
      */
-    public PictureCommand(Index index, File picture) {
+    public PictureCommand(Index index, boolean useGui) {
         requireNonNull(index);
 
         this.index = index;
+        this.useGui = useGui;
+    }
+
+    /**
+     * Constructor with a provided picture used for testing
+     */
+    public PictureCommand(Index index, boolean useGui, File picture) {
+        requireNonNull(index);
+
+        this.index = index;
+        this.useGui = useGui;
         this.picture = picture;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        if (this.picture == null) {
-            return new CommandResult("Command aborted");
-        }
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
 
@@ -53,14 +63,31 @@ public class PictureCommand extends Command {
         }
 
         Person personToAddPic = lastShownList.get(index.getZeroBased());
+        if (useGui) {
+            picture = getPic();
+        }
+        if (picture == null) {
+            throw new CommandException(MESSAGE_COMMAND_ABORTED);
+        }
+
         Person personWithPic = addPicToPerson(personToAddPic, picture, model);
 
         model.setPerson(personToAddPic, personWithPic);
         model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult("picture added", false, false, true);
+        return new CommandResult(
+                String.format(MESSAGE_PICTURE_PERSON_SUCCESS, personToAddPic), false, false, true);
     }
 
-    private Person addPicToPerson(Person person, File file, Model model) {
+    private File getPic() {
+        MainWindow window = MainWindow.getWindow();
+        File file = window.getFile();
+        return file;
+    }
+
+    /**
+     * Adds picture to person provided
+     */
+    public Person addPicToPerson(Person person, File file, Model model) {
         if (!person.getProfilePicture().equals(ProfilePicture.DEFAULT_PICTURE)) {
             // delete file if not default picture
             model.deleteProfilePicture(person.getProfilePicture().value);
@@ -71,6 +98,25 @@ public class PictureCommand extends Command {
         model.saveProfilePicture(file, filename);
         person.setProfilePicture(Paths.get(filename));
         return person;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        } else if (other instanceof PictureCommand) {
+            PictureCommand otherCommand = (PictureCommand) other;
+            if (picture == null) {
+                return index.equals(otherCommand.index)
+                        && (useGui == otherCommand.useGui)
+                        && otherCommand.picture == null;
+            } else {
+                return index.equals(otherCommand.index)
+                        && (useGui == otherCommand.useGui)
+                        && picture.equals(otherCommand.picture);
+            }
+        }
+        return false;
     }
 
 }

@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import socialite.model.AddressBook;
 import socialite.model.CommandHistory;
-import socialite.model.ReadOnlyAddressBook;
+import socialite.model.ContactList;
 import socialite.model.ReadOnlyCommandHistory;
+import socialite.model.ReadOnlyContactList;
 import socialite.model.handle.Facebook;
 import socialite.model.handle.Instagram;
 import socialite.model.handle.Telegram;
@@ -21,7 +21,7 @@ import socialite.model.person.Remark;
 import socialite.model.tag.Tag;
 
 /**
- * Contains utility methods for populating {@code AddressBook} with sample data.
+ * Contains utility methods for populating {@code ContactList} with sample data.
  */
 public class SampleDataUtil {
 
@@ -71,8 +71,8 @@ public class SampleDataUtil {
     }
 
 
-    public static ReadOnlyAddressBook getSampleAddressBook() {
-        AddressBook sampleAb = new AddressBook();
+    public static ReadOnlyContactList getSampleContactList() {
+        ContactList sampleAb = new ContactList();
         for (Person samplePerson : getSamplePersons()) {
             sampleAb.addPerson(samplePerson);
         }

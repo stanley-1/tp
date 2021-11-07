@@ -1,6 +1,7 @@
 package socialite.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static socialite.commons.core.Messages.MESSAGE_REMARK_EXCEED_LIMIT;
 import static socialite.logic.parser.CliSyntax.PREFIX_DATE;
 import static socialite.logic.parser.CliSyntax.PREFIX_FACEBOOK;
 import static socialite.logic.parser.CliSyntax.PREFIX_INSTAGRAM;
@@ -22,6 +23,7 @@ import socialite.commons.core.index.Index;
 import socialite.logic.commands.EditCommand;
 import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.person.Dates;
+import socialite.model.person.Remark;
 import socialite.model.tag.Tag;
 
 /**
@@ -42,15 +44,13 @@ public class EditCommandParser implements Parser<EditCommand> {
                         PREFIX_INSTAGRAM, PREFIX_TELEGRAM, PREFIX_TIKTOK, PREFIX_TWITTER, PREFIX_DATE
                 );
 
-        Index index;
-
-        try {
-            index = ParserUtil.parseIndex(argMultimap.getPreamble());
-        } catch (ParseException pe) {
+        String indexField = argMultimap.getPreamble().trim();
+        if (!indexField.matches("\\d+")) {
             throw new ParseException(
-                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_HELP_GUIDE), pe
-            );
+                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_HELP_GUIDE));
         }
+        Index index = ParserUtil.parseIndex(argMultimap.getPreamble());
+
 
         EditCommand.EditPersonDescriptor editPersonDescriptor = new EditCommand.EditPersonDescriptor();
         if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
@@ -60,6 +60,13 @@ public class EditCommandParser implements Parser<EditCommand> {
             editPersonDescriptor.setPhone(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
         }
         if (argMultimap.getValue(PREFIX_REMARK).isPresent()) {
+            Remark r = ParserUtil.parseRemark(
+                    argMultimap.getValue(PREFIX_REMARK).orElse(null));
+
+            if (r.get().length() > 150) {
+                throw new ParseException(MESSAGE_REMARK_EXCEED_LIMIT);
+            }
+
             editPersonDescriptor.setRemark(ParserUtil.parseRemark(
                     argMultimap.getValue(PREFIX_REMARK).orElse(null)));
         }

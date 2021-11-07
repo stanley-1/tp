@@ -1,5 +1,7 @@
 package socialite.logic.parser;
 
+import static java.util.Objects.requireNonNull;
+
 import socialite.commons.core.Messages;
 import socialite.commons.core.index.Index;
 import socialite.logic.commands.PinCommand;
@@ -15,12 +17,12 @@ public class PinCommandParser implements Parser<PinCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public PinCommand parse(String args) throws ParseException {
-        try {
-            Index index = ParserUtil.parseIndex(args);
-            return new PinCommand(index);
-        } catch (ParseException pe) {
+        requireNonNull(args);
+        if (!args.trim().matches("\\d+")) {
             throw new ParseException(
-                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, PinCommand.MESSAGE_HELP_GUIDE), pe);
+                    String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, PinCommand.MESSAGE_HELP_GUIDE));
         }
+        Index index = ParserUtil.parseIndex(args);
+        return new PinCommand(index);
     }
 }

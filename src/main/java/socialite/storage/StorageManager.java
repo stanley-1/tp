@@ -9,33 +9,33 @@ import java.util.logging.Logger;
 import socialite.commons.core.LogsCenter;
 import socialite.commons.exceptions.DataConversionException;
 import socialite.model.ProfilePictureSyncModel;
-import socialite.model.ReadOnlyAddressBook;
 import socialite.model.ReadOnlyCommandHistory;
+import socialite.model.ReadOnlyContactList;
 import socialite.model.ReadOnlyUserPrefs;
 import socialite.model.UserPrefs;
 
 /**
- * Manages storage of AddressBook data in local storage.
+ * Manages storage of ContactList data in local storage.
  */
 public class StorageManager implements Storage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
-    private AddressBookStorage addressBookStorage;
+    private ContactListStorage contactListStorage;
     private UserPrefsStorage userPrefsStorage;
     private CommandHistoryStorage commandHistoryStorage;
     private ProfilePictureStorage profilePictureStorage;
 
     /**
-     * Creates a {@code StorageManager} with the given {@code AddressBookStorage},
+     * Creates a {@code StorageManager} with the given {@code ContactListStorage},
      * @code UserPrefStorage}, {@code commandHistoryStorage}, {@code profilePictureStorage}.
      */
     public StorageManager(
-            AddressBookStorage addressBookStorage,
+            ContactListStorage contactListStorage,
             UserPrefsStorage userPrefsStorage,
             CommandHistoryStorage commandHistoryStorage,
             ProfilePictureStorage profilePictureStorage) {
         super();
-        this.addressBookStorage = addressBookStorage;
+        this.contactListStorage = contactListStorage;
         this.userPrefsStorage = userPrefsStorage;
         this.profilePictureStorage = profilePictureStorage;
         this.commandHistoryStorage = commandHistoryStorage;
@@ -59,33 +59,33 @@ public class StorageManager implements Storage {
     }
 
 
-    // ================ AddressBook methods ==============================
+    // ================ ContactList methods ==============================
 
     @Override
-    public Path getAddressBookFilePath() {
-        return addressBookStorage.getAddressBookFilePath();
+    public Path getContactListFilePath() {
+        return contactListStorage.getContactListFilePath();
     }
 
     @Override
-    public Optional<ReadOnlyAddressBook> readAddressBook() throws DataConversionException, IOException {
-        return readAddressBook(addressBookStorage.getAddressBookFilePath());
+    public Optional<ReadOnlyContactList> readContactList() throws DataConversionException, IOException {
+        return readContactList(contactListStorage.getContactListFilePath());
     }
 
     @Override
-    public Optional<ReadOnlyAddressBook> readAddressBook(Path filePath) throws DataConversionException, IOException {
+    public Optional<ReadOnlyContactList> readContactList(Path filePath) throws DataConversionException, IOException {
         logger.fine("Attempting to read data from file: " + filePath);
-        return addressBookStorage.readAddressBook(filePath);
+        return contactListStorage.readContactList(filePath);
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyAddressBook addressBook) throws IOException {
-        saveAddressBook(addressBook, addressBookStorage.getAddressBookFilePath());
+    public void saveContactList(ReadOnlyContactList contactList) throws IOException {
+        saveContactList(contactList, contactListStorage.getContactListFilePath());
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyAddressBook addressBook, Path filePath) throws IOException {
+    public void saveContactList(ReadOnlyContactList contactList, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
-        addressBookStorage.saveAddressBook(addressBook, filePath);
+        contactListStorage.saveContactList(contactList, filePath);
     }
 
 
@@ -127,17 +127,18 @@ public class StorageManager implements Storage {
     }
 
     @Override
-    public void deleteProfilePicture(Path name) {
+    public void deleteProfilePicture(Path name) throws IOException {
         profilePictureStorage.deleteProfilePicture(name);
     }
 
     @Override
-    public void saveProfilePicture(File file, String prefix) {
+    public void saveProfilePicture(File file, String prefix) throws IOException {
         profilePictureStorage.saveProfilePicture(file, prefix);
     }
 
     @Override
-    public void syncProfilePictures(ProfilePictureSyncModel.ProfilePictureEditDescriptor profilePictureEditDescriptor) {
+    public void syncProfilePictures(
+            ProfilePictureSyncModel.ProfilePictureEditDescriptor profilePictureEditDescriptor) throws IOException {
         profilePictureStorage.syncProfilePictures(profilePictureEditDescriptor);
     }
 }

@@ -11,33 +11,63 @@ import socialite.model.tag.Tag;
  */
 public class ContainsKeywordsPredicate implements Predicate<Person> {
     private final List<String> keywords;
+    private boolean hasValidHandles;
+    private boolean isEmptyTag;
 
+    /**
+     * Creates the Predicate with the list of keywords entered by the user.
+     */
     public ContainsKeywordsPredicate(List<String> keywords) {
         this.keywords = keywords;
+        this.hasValidHandles = true;
+        this.isEmptyTag = false;
     }
 
-    //helper functions to test person's name, tags or handles respectively.
+    // returns false if user searched for an invalid handle
+    public boolean hasValidHandles() {
+        return hasValidHandles;
+    }
+
+    // returns true if tag queried is an empty string
+    public boolean isEmptyTag() {
+        return isEmptyTag;
+    }
+
+    // helper functions to test person's name, tags or handles respectively.
     private boolean testName(Person person, String keyword) {
-        String name = person.getName().fullName;
-        return Pattern.compile(Pattern.quote(keyword), Pattern.CASE_INSENSITIVE).matcher(name).find();
+        String fullName = person.getName().fullName;
+        String[] names = fullName.split(" ");
+
+        for (String name : names) {
+            boolean nameMatches = Pattern.compile("^" + Pattern.quote(keyword), Pattern.CASE_INSENSITIVE)
+                    .matcher(name).find();
+            if (nameMatches) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private boolean testTags(Person person, String keyword) {
+        if (keyword.equals("")) {
+            this.isEmptyTag = true;
+            return true;
+        }
         for (Tag tag : person.getTags()) {
             String tagName = tag.tagName;
-            boolean tagMatches = Pattern.compile(Pattern.quote(keyword), Pattern.CASE_INSENSITIVE)
+            boolean tagMatches = Pattern.compile("^" + Pattern.quote(keyword), Pattern.CASE_INSENSITIVE)
                     .matcher(tagName).find();
             if (tagMatches) {
                 return true;
             }
         }
-        //if none of the person's tags match the keyword.
+        // if none of the person's tags match the keyword.
         return false;
     }
 
     private boolean testPlatforms(Person person, String keyword) {
 
-        switch (keyword) {
+        switch (keyword.toLowerCase()) {
         case "facebook":
             return !(person.getFacebook().get() == null);
         case "instagram":
@@ -49,14 +79,15 @@ public class ContainsKeywordsPredicate implements Predicate<Person> {
         case "twitter":
             return !(person.getTwitter().get() == null);
         default:
-            return false;
+            this.hasValidHandles = false;
+            return true;
         }
 
     }
 
     @Override
     public boolean test(Person person) {
-        //Tests just one person. For their name, tags or handles.
+        // Tests just one person. For their name, tags or handles.
         if (keywords.size() == 0) {
             return false;
         }
