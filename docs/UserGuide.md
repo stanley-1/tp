@@ -164,6 +164,7 @@ Adds a person to SociaLite.
 **:heavy_check_mark: Example:** `add n/Annie Wan p/98571082 t/Friend fb/annie.wan ig/ann.wan tele/annie tiktok/annie.wan2 date/birthday:1999-02-12:yearly`
 
 Adds a new contact called "Annie Wan" with phone number "98571082" to SociaLite.
+![01_add](images/UG/01_add.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
