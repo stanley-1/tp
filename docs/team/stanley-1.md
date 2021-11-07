@@ -82,7 +82,7 @@ A summary of my contributions to the project is detailed below.
     
 
 * **Community**:
-  * Reviewed 39 PRs in total. Selection of PRs with non-trivial review comments: [\#52](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/52), [\#57](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/57), [\#77](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/77), [\#129](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/129), [\#158](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/158)
+  * Reviewed 40 PRs in total. Selection of PRs with non-trivial review comments: [\#52](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/52), [\#57](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/57), [\#77](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/77), [\#129](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/129), [\#158](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/158), [\#162](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/162)
   * Reported 14 bugs and suggestions for peers in PE-Dry Run
     * [Unable to change password](https://github.com/AY2122S1-CS2103T-W13-2/tp/issues/186)
     * [HelpWindow does not show User Guide on subsequent attempts](https://github.com/AY2122S1-CS2103T-W13-2/tp/issues/138)
