@@ -367,11 +367,14 @@
     -fx-padding: 1 5 1 5;
     -fx-border-radius: 5;
     -fx-background-radius: 5;
-    -fx-font-size: 11;
 }
 
 #dates .hbox.upcoming {
     -fx-background-color: red;
+}
+
+#dates .label {
+    -fx-font-size: 11;
 }
 
 #dates .label.name {
