@@ -1,5 +1,7 @@
 package socialite.model.person;
 
+import static java.util.Objects.requireNonNull;
+
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.Period;
@@ -10,9 +12,12 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import socialite.commons.util.AppUtil;
+
 public class Date {
     public static final String MESSAGE_CONSTRAINTS =
-            "Dates should be formatted as NAME:YYYY-MM-DD or NAME:YYYY-MM-DD:[monthly|yearly] for recurring dates";
+            "Dates should be formatted as NAME:YYYY-MM-DD or NAME:YYYY-MM-DD:[monthly|yearly] for recurring dates.\n"
+                    + "The date name should have a length of up to 50 characters.";
 
     public static final String VALIDATION_REGEX =
             "([\\w\\s]+):(\\d{4})-(\\d{2})-(\\d{2})(?::(yearly|monthly))?\\s*";
@@ -28,11 +33,14 @@ public class Date {
      * @param date The input string to parse.
      */
     public Date(String date) {
+        requireNonNull(date);
+        AppUtil.checkArgument(isValidDate(date), MESSAGE_CONSTRAINTS);
+
         Matcher matcher = VALIDATION_PATTERN.matcher(date);
         boolean matches = matcher.matches();
         assert matches;
 
-        String name = matcher.group(1);
+        String name = matcher.group(1).trim();
 
         int year = Integer.parseInt(matcher.group(2));
         int month = Integer.parseInt(matcher.group(3));
@@ -97,6 +105,11 @@ public class Date {
     public static boolean isValidDate(String test) {
         Matcher matcher = VALIDATION_PATTERN.matcher(test);
         if (!matcher.matches()) {
+            return false;
+        }
+
+        String name = matcher.group(1).trim();
+        if (name.length() > 50) {
             return false;
         }
 

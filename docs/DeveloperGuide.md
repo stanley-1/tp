@@ -30,6 +30,7 @@ title: Developer Guide
 
 ## **Acknowledgements** <a name="acknowledgements"></a>
 
+
 * SociaLite is adapted from SE-Education's [*AddressBook Level-3*](https://se-education.org/addressbook-level3/DeveloperGuide.html).
 * GUI tests are adapted from [`src/test/java/guitests/`](https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/guitests) of SE-Education's [*AddressBook Level-4](https://se-education.org/addressbook-level4/).
 
@@ -62,14 +63,14 @@ Given below is a quick overview of main components and how they interact with ea
 * At app launch: Initializes the components in the correct sequence, and connects them with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
-[**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
+[**`Commons`**](#common) represents a collection of classes used by multiple other components.
 
 The rest of the App consists of four components.
 
-* [**`UI`**](#ui-component): The UI of the App.
-* [**`Logic`**](#logic-component): Parses and executes the appropriate command according to the user's input.
-* [**`Model`**](#model-component): Holds the data of the App in memory.
-* [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
+* [**`UI`**](#ui): The UI of the App.
+* [**`Logic`**](#logic): Parses and executes the appropriate command according to the user's input.
+* [**`Model`**](#model): Holds the data of the App in memory.
+* [**`Storage`**](#storage): Reads data from, and writes data to, the hard disk.
 
 
 **How the architecture components interact with each other**
@@ -91,13 +92,13 @@ The sections below give more details of each component.
 
 ### UI component <a name="ui"></a>
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/java/socialite/ui/Ui.java)
+The `UI` component interacts with other components of SociaLite, and uses the JavaFX UI framework to render a GUI.
+
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/java/socialite/ui/Ui.java).
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
-
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/java/socialite/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/resources/view/MainWindow.fxml)
+The UI consists of a `MainWindow` that is made up of parts, including `CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter`, etc. All the parts, as well as the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.  The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/java/socialite/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/resources/view/MainWindow.fxml).
 
 The `UI` component,
 
@@ -105,6 +106,8 @@ The `UI` component,
 * listens for changes to `Model` data so that the UI can be updated with the modified data.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
 * depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
+
+The `PersonCard` part also has a reference to the `MainWindow` to provide improved user feedback via the main window after user interactions which do not execute a command using `Logic`.
 
 ### Logic component <a name="logic"></a>
 
@@ -138,7 +141,7 @@ How the parsing works:
 ### Model component <a name="model"></a>
 **API** : [`Model.java`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/java/socialite/model/Model.java)
 
-<img src="images/ModelClassDiagram.png" width="450" />
+<img src="images/ModelClassDiagram.png" width="700" />
 
 
 The `Model` component,
@@ -153,7 +156,7 @@ The `Model` component,
 
 **API** : [`Storage.java`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/java/socialite/storage/Storage.java)
 
-<img src="images/StorageClassDiagram.png" width="550" />
+<img src="images/StorageClassDiagram.png" width="950" />
 
 The `Storage` component,
 * can save contact list data, user preference data and command history data in json format, and read them back into corresponding objects.
@@ -162,7 +165,11 @@ The `Storage` component,
 
 ### Common classes <a name="common"></a>
 
-Classes used by multiple components are in the `socialite.commons` package.
+Classes used by multiple components are in the `socialite.commons` package. These include:
+
+* [`core`](https://github.com/AY2122S1-CS2103T-F11-4/tp/tree/master/src/main/java/socialite/commons/core): General classes which deal with storage of SociaLite configuration and GUI settings, logging and commonly used messages. The [`Index`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/java/socialite/commons/core/index/Index.java) class is also used widely to manage references to specific items in the contact list.
+* [`exceptions`](https://github.com/AY2122S1-CS2103T-F11-4/tp/tree/master/src/main/java/socialite/commons/exceptions): Common exceptions used throughout SociaLite.
+* [`util`](https://github.com/AY2122S1-CS2103T-F11-4/tp/tree/master/src/main/java/socialite/commons/util): Utility methods pertaining to collections, files, JSON, strings, etc.
 
 --------------------------------------------------------------------------------------------------------------------
 
