@@ -98,7 +98,7 @@ Given below are my contributions to the project.
 
 
 * **Enhancements to existing features**:
-  * Wrote additional tests for existing features to increase coverage from 61% to 63% (PR [\#80](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/80)).
+  * Wrote additional tests for existing features to increase coverage from 61% to 63% (PR [\#80](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/80), [\#177](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/177)).
   * Make parser throw the correct exception when index overflows e.g. `delete 2147483648` (PR [\#131](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/131)).
   * Fixed multiple issues pertaining overflowing in UI (PR [\#152](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/152)).
 
