@@ -29,11 +29,18 @@ Given below are my contributions to the project.
 
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2122s1.github.io/tp-dashboard/?search=&sort=groupTitle&sortWithin=title&since=2021-09-17&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false&tabOpen=true&tabType=authorship&tabAuthor=Zacchua&tabRepo=AY2122S1-CS2103T-F11-4%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code&authorshipIsBinaryFileTypeChecked=false)
 
+* **Enhancement to Existing Features**:
+  * Refactored Storage package from Addressbook to ContactList. [\#153](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/153)
+  * Wrote tests to test profile picture related commands, parser, model and storage, raising coverage by 2.12% and 0.80% respectively [\#137](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/137). [\#144](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/144)
+
 * **Documentation**:
   * User Guide:
     * Did the initial update from Addressbook 3 User Guide to Socialite User Guide [\#10](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/10)
     * Added documentation for the hyperlinks feature [\#54](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/54)
     * Added documentation for the profile picture feature [\#75](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/75)
+  * Developer Guide:
+    * Updated Storage package portion of DG, which includes documentation and UML diagrams [\#158](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/158)
+    * Added Picture Command portion into Implementation section of DG, including sequence diagram and write-up [\#158](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/158)
 
 * **Community**:
-  * PRs reviewed (with non-trivial review comments): [\#50](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/50), [\#52](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/52), [\#56](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/56), [\#135](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/135)
+  * PRs reviewed (with non-trivial review comments): [\#50](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/50), [\#52](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/52), [\#56](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/56), [\#135](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/135), [\#140](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/140),
