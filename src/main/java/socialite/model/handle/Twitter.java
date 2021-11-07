@@ -6,8 +6,10 @@ import socialite.commons.util.AppUtil;
 
 public class Twitter extends Handle {
 
-    public static final String MESSAGE_CONSTRAINTS = "Handle should only consist of alphanumerical characters \n"
-            + "and underscores, should be between 4-15 characters long";
+    public static final String MESSAGE_CONSTRAINTS =
+            "A Twitter username should only consist of alphanumerical characters and underscores.\n"
+            + "It must also be between 4-15 characters long.\n"
+            + "https://help.twitter.com/en/managing-your-account/twitter-username-rules";
     public static final String VALIDATION_REGEX = "^[a-zA-Z0-9_]{4,15}$";
 
     /**

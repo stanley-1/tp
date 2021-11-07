@@ -17,7 +17,7 @@ import socialite.model.handle.Twitter;
 import socialite.model.tag.Tag;
 
 /**
- * Represents a Person in the address book.
+ * Represents a Person on the contact list.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Person {
@@ -30,6 +30,7 @@ public class Person {
     private final Remark remark;
     private final Set<Tag> tags = new HashSet<>();
     private ProfilePicture profilePicture = ProfilePicture.DEFAULT_PICTURE;
+    private boolean isPinned = false;
 
     // Social media handle fields
     private final Facebook facebook;
@@ -37,10 +38,8 @@ public class Person {
     private final Telegram telegram;
     private final TikTok tiktok;
     private final Twitter twitter;
-
     private final Dates dates;
 
-    private boolean isPinned = false;
 
     /**
      * Every field must be present and not null.
@@ -89,6 +88,10 @@ public class Person {
         return Collections.unmodifiableSet(tags);
     }
 
+    public boolean getPinnedStatus() {
+        return isPinned;
+    }
+
     public ProfilePicture getProfilePicture() {
         return profilePicture;
     }
@@ -107,6 +110,10 @@ public class Person {
 
     public Dates getDates() {
         return dates;
+    }
+
+    public void setPinned(boolean isPinned) {
+        this.isPinned = isPinned;
     }
 
     public void setProfilePicture(Path value) {
@@ -165,6 +172,7 @@ public class Person {
                 && otherPerson.getRemark().equals(getRemark())
                 && otherPerson.getTags().equals(getTags())
                 && otherPerson.getProfilePicture().equals(getProfilePicture())
+                && otherPerson.getPinnedStatus() == getPinnedStatus()
                 && otherPerson.getFacebook().equals(getFacebook())
                 && otherPerson.getInstagram().equals(getInstagram())
                 && otherPerson.getTelegram().equals(getTelegram())
@@ -182,6 +190,7 @@ public class Person {
     /**
      * Returns a formatted string when user wants to forward the contact using `share` command.
      */
+
     public String toSharingString() {
         final StringBuilder info = new StringBuilder();
         info.append("\tPhone: ").append(getPhone());

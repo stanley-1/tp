@@ -9,14 +9,14 @@ import static socialite.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static socialite.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static socialite.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static socialite.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
-import static socialite.testutil.TypicalPersons.getTypicalAddressBook;
+import static socialite.testutil.TypicalPersons.getTypicalContactList;
 
 import org.junit.jupiter.api.Test;
 
 import socialite.commons.core.Messages;
 import socialite.commons.core.index.Index;
-import socialite.model.AddressBook;
 import socialite.model.CommandHistory;
+import socialite.model.ContactList;
 import socialite.model.Model;
 import socialite.model.ModelManager;
 import socialite.model.UserPrefs;
@@ -31,7 +31,7 @@ public class RemarkCommandTest {
 
     private static final String REMARK_STUB = "Some remark";
     private final Model model = new ModelManager(
-            getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
+            getTypicalContactList(), new UserPrefs(), new CommandHistory());
 
 
     @Test
@@ -45,7 +45,7 @@ public class RemarkCommandTest {
 
         Model expectedModel =
                 new ModelManager(
-                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
+                        new ContactList(model.getContactList()), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(firstPerson, editedPerson);
 
         assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);
@@ -63,7 +63,7 @@ public class RemarkCommandTest {
 
         Model expectedModel =
                 new ModelManager(
-                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
+                        new ContactList(model.getContactList()), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(firstPerson, editedPerson);
 
         assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);
@@ -83,7 +83,7 @@ public class RemarkCommandTest {
 
         Model expectedModel =
                 new ModelManager(
-                        new AddressBook(model.getAddressBook()), new UserPrefs(), new CommandHistory());
+                        new ContactList(model.getContactList()), new UserPrefs(), new CommandHistory());
         expectedModel.setPerson(firstPerson, editedPerson);
 
         assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);
@@ -99,14 +99,14 @@ public class RemarkCommandTest {
 
     /**
      * Edit filtered list where index is larger than size of filtered list,
-     * but smaller than size of address book
+     * but smaller than size of the contact list
      */
     @Test
     public void execute_invalidPersonIndexFilteredList_failure() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
         Index outOfBoundIndex = INDEX_SECOND_PERSON;
-        // ensures that outOfBoundIndex is still in bounds of address book list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getPersonList().size());
+        // ensures that outOfBoundIndex is still in bounds of the contact list
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getContactList().getPersonList().size());
 
         RemarkCommand remarkCommand = new RemarkCommand(outOfBoundIndex, new Remark(VALID_REMARK_BOB));
 

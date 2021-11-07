@@ -8,10 +8,12 @@ import org.junit.jupiter.api.Test;
 
 import socialite.commons.core.Messages;
 import socialite.commons.core.index.Index;
+import socialite.logic.commands.exceptions.CommandException;
 import socialite.model.CommandHistory;
 import socialite.model.Model;
 import socialite.model.ModelManager;
 import socialite.model.UserPrefs;
+import socialite.model.person.Person;
 import socialite.testutil.TypicalIndexes;
 import socialite.testutil.TypicalPersons;
 
@@ -21,7 +23,7 @@ import socialite.testutil.TypicalPersons;
 public class UnpinCommandTest {
 
     private Model model =
-            new ModelManager(TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
+            new ModelManager(TypicalPersons.getTypicalContactList(), new UserPrefs(), new CommandHistory());
 
     @Test
     public void execute_invalidIndexUnfilteredList_throwsCommandException() {
@@ -36,8 +38,8 @@ public class UnpinCommandTest {
         CommandTestUtil.showPersonAtIndex(model, TypicalIndexes.INDEX_FIRST_PERSON);
 
         Index outOfBoundIndex = TypicalIndexes.INDEX_SECOND_PERSON;
-        // ensures that outOfBoundIndex is still in bounds of address book list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getPersonList().size());
+        // ensures that outOfBoundIndex is still in bounds of the contact list
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getContactList().getPersonList().size());
 
         UnpinCommand unpinCommand = new UnpinCommand(outOfBoundIndex);
 
@@ -45,7 +47,58 @@ public class UnpinCommandTest {
 
     }
 
-    //TODO: execute_unpinAnUnpinnedPerson_throwsCommandException()
+    @Test
+    public void execute_validIndexFilteredList_success() {
+        // Filter and only show the third person in the list
+        CommandTestUtil.showPersonAtIndex(model, TypicalIndexes.INDEX_THIRD_PERSON);
+
+        // Pin the person and unpin it afterwards
+        Person personToUnpin = model.getFilteredPersonList().get(TypicalIndexes.INDEX_FIRST_PERSON.getZeroBased());
+        PinCommand pinCommand = new PinCommand(TypicalIndexes.INDEX_FIRST_PERSON);
+        UnpinCommand unpinCommand = new UnpinCommand(TypicalIndexes.INDEX_FIRST_PERSON);
+        try {
+            pinCommand.execute(model);
+        } catch (CommandException ce) {
+            throw new AssertionError("Execution of command should not fail.", ce);
+        }
+
+        ModelManager expectedModel = new ModelManager(model.getContactList(), new UserPrefs(), new CommandHistory());
+        expectedModel.pinPerson(personToUnpin);
+        expectedModel.unpinPerson(personToUnpin);
+        expectedModel.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
+
+        String expectedMessage = String.format(UnpinCommand.MESSAGE_UNPIN_PERSON_SUCCESS, personToUnpin);
+        CommandTestUtil.assertCommandSuccess(unpinCommand, model, expectedMessage, expectedModel);
+    }
+
+
+    @Test
+    public void execute_validIndexUnfilteredList_success() {
+        // Pin the third person in the list and unpin it afterwards
+        Person personToUnpin = model.getFilteredPersonList().get(TypicalIndexes.INDEX_THIRD_PERSON.getZeroBased());
+        PinCommand pinCommand = new PinCommand(TypicalIndexes.INDEX_THIRD_PERSON);
+        UnpinCommand unpinCommand = new UnpinCommand(TypicalIndexes.INDEX_FIRST_PERSON);
+        try {
+            pinCommand.execute(model);
+        } catch (CommandException ce) {
+            throw new AssertionError("Execution of command should not fail.", ce);
+        }
+
+        ModelManager expectedModel = new ModelManager(model.getContactList(), new UserPrefs(), new CommandHistory());
+        expectedModel.pinPerson(personToUnpin);
+        expectedModel.unpinPerson(personToUnpin);
+        expectedModel.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
+
+        String expectedMessage = String.format(UnpinCommand.MESSAGE_UNPIN_PERSON_SUCCESS, personToUnpin);
+        CommandTestUtil.assertCommandSuccess(unpinCommand, model, expectedMessage, expectedModel);
+    }
+
+
+    @Test
+    public void execute_unpinUnpinnedPerson_throwsCommandException() {
+        UnpinCommand unpinCommand = new UnpinCommand(TypicalIndexes.INDEX_FIRST_PERSON);
+        CommandTestUtil.assertCommandFailure(unpinCommand, model, UnpinCommand.MESSAGE_PERSON_NOT_PINNED);
+    }
 
     @Test
     public void equals() {

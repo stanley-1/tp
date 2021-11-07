@@ -16,13 +16,13 @@ import socialite.model.Model;
 import socialite.model.person.Person;
 
 /**
- * Adds a person to the address book.
+ * Adds a person to the contact list.
  */
 public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person to the address book. \n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person to the contact list. \n"
             + "Parameters: "
             + PREFIX_NAME + "NAME "
             + PREFIX_PHONE + "PHONE "
@@ -48,7 +48,7 @@ public class AddCommand extends Command {
 
     public static final String MESSAGE_ADD_PERSON_SUCCESS = "New person added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON =
-            "A contact with the same phone number already exists in the address book!";
+            "A contact with the same phone number already exists in the contact list!";
     public static final String MESSAGE_HELP_GUIDE = "Enter 'help add' for in-app guidance.";
 
     private final Person toAdd;

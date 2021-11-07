@@ -3,7 +3,7 @@ package socialite.model.person;
 import java.util.Optional;
 
 /**
- * Represents a Person's remark in the address book.
+ * Represents a Person's remark in the contact list.
  * Guarantees: immutable; is always valid
  */
 public class Remark {

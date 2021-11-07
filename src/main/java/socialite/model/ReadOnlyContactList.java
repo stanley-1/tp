@@ -4,9 +4,9 @@ import javafx.collections.ObservableList;
 import socialite.model.person.Person;
 
 /**
- * Unmodifiable view of an address book
+ * Unmodifiable view of a contact list
  */
-public interface ReadOnlyAddressBook {
+public interface ReadOnlyContactList {
 
     /**
      * Returns an unmodifiable view of the persons list.

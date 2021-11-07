@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.Comparator;
 
 import javafx.concurrent.Task;
@@ -22,7 +21,9 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.shape.Circle;
+import socialite.logic.commands.PinCommand;
 import socialite.logic.commands.ShareCommand;
+import socialite.logic.commands.UnpinCommand;
 import socialite.model.handle.Handle;
 import socialite.model.handle.Handle.Platform;
 import socialite.model.person.Date;
@@ -54,11 +55,13 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private Button share;
+    private Button pinButton;
+    @FXML
+    private Button shareButton;
     @FXML
     private Label phone;
     @FXML
-    private HBox handles;
+    private FlowPane handles;
     @FXML
     private HBox facebook;
     @FXML
@@ -137,7 +140,16 @@ public class PersonCard extends UiPart<Region> {
 
         if (person.isPinned()) {
             // set background colour / button colour
+            pinButton.setText("Unpin");
+            pinButton.getStyleClass().add("pinButton");
+        } else {
+            pinButton.setText("Pin");
+            pinButton.getStyleClass().remove("pinButton");
         }
+
+        // Permits wrapping of tags/dates, when used in combination with `-fx-max-width`.
+        tags.setMinWidth(Region.USE_PREF_SIZE);
+        dates.setMinWidth(Region.USE_PREF_SIZE);
 
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
@@ -168,15 +180,10 @@ public class PersonCard extends UiPart<Region> {
         double ratioX = imageView.getFitWidth() / img.getWidth();
         double ratioY = imageView.getFitHeight() / img.getHeight();
 
-        double reducCoeff = 0;
-        if (ratioX >= ratioY) {
-            reducCoeff = ratioY;
-        } else {
-            reducCoeff = ratioX;
-        }
+        double reduceCoeff = Math.min(ratioX, ratioY);
 
-        w = img.getWidth() * reducCoeff;
-        h = img.getHeight() * reducCoeff;
+        w = img.getWidth() * reduceCoeff;
+        h = img.getHeight() * reduceCoeff;
 
         imageView.setX((imageView.getFitWidth() - w) / 2);
         imageView.setY((imageView.getFitHeight() - h) / 2);
@@ -242,21 +249,34 @@ public class PersonCard extends UiPart<Region> {
 
     private void renderDates(Dates displayedDates) {
         displayedDates.get().values().stream()
-                .sorted(Date.getComparator())
+                .sorted(Date.getComparator(LocalDate.now()))
                 .forEach(date -> {
-                    LocalDate nextOccurrence = date.getNextOccurrence(LocalDate.now()).orElse(LocalDate.MIN);
-                    Period period = Period.between(LocalDate.now(), nextOccurrence);
-                    boolean isUpcoming = period.getYears() == 0 && period.getMonths() == 0 && period.getDays() <= 7;
+                    long upcomingDays = date.getUpcomingDays(LocalDate.now());
+                    boolean isUpcoming = upcomingDays >= 0 && upcomingDays <= 7;
                     String upcomingMessage = isUpcoming
-                            ? " (" + (period.getDays() == 0 ? "today" : "in " + period.getDays() + " days") + ")"
+                            ? " ("
+                                + (upcomingDays == 0
+                                    ? "today"
+                                    : upcomingDays == 1
+                                        ? "in 1 day"
+                                        : "in " + upcomingDays + " days") + ")"
                             : "";
 
-                    String message = date.toString() + upcomingMessage;
-                    Label label = new Label(message);
+                    HBox hbox = new HBox();
+                    hbox.getStyleClass().add("hbox");
                     if (isUpcoming) {
-                        label.idProperty().set("upcoming");
+                        hbox.getStyleClass().add("upcoming");
                     }
-                    dates.getChildren().add(label);
+
+                    String message = date + upcomingMessage;
+                    String[] parts = message.split(": ");
+                    Label name = new Label(parts[0]);
+                    name.getStyleClass().add("name");
+                    Label details = new Label(": " + parts[1]);
+
+                    hbox.getChildren().add(name);
+                    hbox.getChildren().add(details);
+                    dates.getChildren().add(hbox);
                 });
     }
 
@@ -277,16 +297,30 @@ public class PersonCard extends UiPart<Region> {
     }
 
     @FXML
-    private void handleButtonAction() {
+    private void handlePinButtonAction() {
+        MainWindow mainWindow = MainWindow.getWindow();
+        if (person.isPinned()) {
+            person.unpin();
+            mainWindow.setFeedbackToUser(String.format(UnpinCommand.MESSAGE_UNPIN_PERSON_SUCCESS, person));
+        } else {
+            person.pin();
+            mainWindow.setFeedbackToUser(String.format(PinCommand.MESSAGE_PIN_PERSON_SUCCESS, person));
+        }
+        mainWindow.showFullPersonList();
+    }
+
+    @FXML
+    private void handleShareButtonAction() {
         Clipboard clipboard = Clipboard.getSystemClipboard();
         ClipboardContent content = new ClipboardContent();
-        content.putString(person.toSharingString());
+        String shareInfo = person.toSharingString();
+        content.putString(shareInfo);
         clipboard.setContent(content);
 
         // Show the copied info in result display
-        MainWindow.getWindow().setFeedbackToUser(String.format(ShareCommand.MESSAGE_SHARE_PERSON_SUCCESS, content));
+        MainWindow.getWindow().setFeedbackToUser(String.format(ShareCommand.MESSAGE_SHARE_PERSON_SUCCESS, shareInfo));
 
-        share.setText("Copied!");
+        shareButton.setText("Copied!");
 
         // Change the button text back after 2 seconds
         Task<Void> sleeper = new Task<>() {
@@ -295,7 +329,7 @@ public class PersonCard extends UiPart<Region> {
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException ignored) {
-                    // Yet to come up with what to do
+                    // TODO: throw some exception?
                 }
                 return null;
             }
@@ -303,7 +337,7 @@ public class PersonCard extends UiPart<Region> {
         sleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
             @Override
             public void handle(WorkerStateEvent event) {
-                share.setText("Share");
+                shareButton.setText("Share");
             }
         });
         new Thread(sleeper).start();

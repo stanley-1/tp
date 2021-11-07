@@ -15,42 +15,42 @@ import socialite.commons.util.CollectionUtil;
 import socialite.model.person.Person;
 
 /**
- * Represents the in-memory model of the address book data.
+ * Represents the in-memory model of the contact list data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook addressBook;
+    private final ContactList contactList;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final CommandHistory commandHistory;
     private final ProfilePictureSyncModel profilePictureSyncModel;
 
     /**
-     * Initializes a ModelManager with the given addressBook, userPrefs and commandHistory.
+     * Initializes a ModelManager with the given contactList, userPrefs and commandHistory.
      */
     public ModelManager(
-            ReadOnlyAddressBook addressBook,
+            ReadOnlyContactList contactList,
             ReadOnlyUserPrefs userPrefs,
             ReadOnlyCommandHistory commandHistory) {
         super();
-        CollectionUtil.requireAllNonNull(addressBook, userPrefs);
+        CollectionUtil.requireAllNonNull(contactList, userPrefs);
 
-        this.addressBook = new AddressBook(addressBook);
+        this.contactList = new ContactList(contactList);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        filteredPersons = new FilteredList<>(this.contactList.getPersonList());
         this.commandHistory = new CommandHistory(commandHistory);
         this.profilePictureSyncModel = new ProfilePictureSyncModel();
 
 
         logger.fine("Initializing with:"
-                + "\naddress book: " + addressBook
+                + "\ncontact list: " + contactList
                 + "\nuser prefs: " + userPrefs
                 + "\ncommand history: " + commandHistory);
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs(), new CommandHistory());
+        this(new ContactList(), new UserPrefs(), new CommandHistory());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -78,42 +78,42 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
-        return userPrefs.getAddressBookFilePath();
+    public Path getContactListFilePath() {
+        return userPrefs.getContactListFilePath();
     }
 
     @Override
-    public void setAddressBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+    public void setContactListFilePath(Path contactListFilePath) {
+        requireNonNull(contactListFilePath);
+        userPrefs.setContactListFilePath(contactListFilePath);
     }
 
-    //=========== AddressBook ================================================================================
+    //=========== ContactList ================================================================================
 
     @Override
-    public void setAddressBook(ReadOnlyAddressBook addressBook) {
-        this.addressBook.resetData(addressBook);
+    public void setContactList(ReadOnlyContactList contactList) {
+        this.contactList.resetData(contactList);
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
+    public ReadOnlyContactList getContactList() {
+        return contactList;
     }
 
     @Override
     public boolean hasPerson(Person person) {
         requireNonNull(person);
-        return addressBook.hasPerson(person);
+        return contactList.hasPerson(person);
     }
 
     @Override
     public void deletePerson(Person target) {
-        addressBook.removePerson(target);
+        contactList.removePerson(target);
     }
 
     @Override
     public void addPerson(Person person) {
-        addressBook.addPerson(person);
+        contactList.addPerson(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
@@ -121,14 +121,14 @@ public class ModelManager implements Model {
     public void setPerson(Person target, Person editedPerson) {
         CollectionUtil.requireAllNonNull(target, editedPerson);
 
-        addressBook.setPerson(target, editedPerson);
+        contactList.setPerson(target, editedPerson);
     }
 
     //=========== Filtered Person List Accessors =============================================================
 
     /**
      * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
-     * {@code versionedAddressBook}
+     * {@code versionedContactList}
      */
     @Override
     public ObservableList<Person> getFilteredPersonList() {
@@ -138,8 +138,8 @@ public class ModelManager implements Model {
     @Override
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
-        // Sort the address book
-        addressBook.sortPersons();
+        // Sort the contact list
+        contactList.sortPersons();
         filteredPersons.setPredicate(predicate);
     }
 
@@ -169,7 +169,7 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return addressBook.equals(other.addressBook)
+        return contactList.equals(other.contactList)
                 && userPrefs.equals(other.userPrefs)
                 && filteredPersons.equals(other.filteredPersons);
     }
@@ -194,6 +194,18 @@ public class ModelManager implements Model {
     @Override
     public void clearProfilePictureModel() {
         this.profilePictureSyncModel.clear();
+    }
+
+
+    //=========== Pin & Unpin ================================================================================
+    @Override
+    public void pinPerson(Person person) {
+        contactList.pinPerson(person);
+    }
+
+    @Override
+    public void unpinPerson(Person person) {
+        contactList.unpinPerson(person);
     }
 
 }

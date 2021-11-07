@@ -7,14 +7,20 @@ import socialite.model.Model;
 import socialite.model.person.ContainsKeywordsPredicate;
 
 /**
- * Finds and lists all persons in address book whose name contains any of the argument keywords.
- * Keyword matching is case insensitive.
+ * Finds and lists all persons in the contact list whose name contains any of the argument keywords.
+ * Keyword matching is case-insensitive.
  */
 public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
     public static final String MESSAGE_HELP_GUIDE = "Enter 'help find' for in-app guidance.";
+
+    public static final String MESSAGE_INVALID_HANDLE = "Invalid platform specified. "
+            + "Only the following inputs are supported:\n"
+            + "p/facebook, p/instagram, p/telegram, p/tiktok, p/twitter.";
+
+    public static final String MESSAGE_EMPTY_TAG = "Tags to search for must not be empty.";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters contacts containing ALL keywords listed.\n"
             + "Keywords can be in the form of tags (prefix with 't/'), "
@@ -33,12 +39,13 @@ public class FindCommand extends Command {
         requireNonNull(model);
 
         model.updateFilteredPersonList(predicate);
-        if (!predicate.hasValidHandles()) {
-            return new CommandResult(Messages.MESSAGE_INVALID_HANDLE);
-        }
 
         if (predicate.isEmptyTag()) {
-            return new CommandResult(Messages.MESSAGE_EMPTY_TAG);
+            return new CommandResult(MESSAGE_EMPTY_TAG);
+        }
+
+        if (!predicate.hasValidHandles()) {
+            return new CommandResult(MESSAGE_INVALID_HANDLE);
         }
 
         return new CommandResult(

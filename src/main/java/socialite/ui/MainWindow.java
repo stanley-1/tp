@@ -133,12 +133,13 @@ public class MainWindow extends UiPart<Stage> {
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
-        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
+        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getContactListFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
         CommandBox commandBox = new CommandBox(this::executeCommand, logic.getCommandHistory());
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
+
 
     /**
      * Sets the default size based on {@code guiSettings}.
@@ -212,8 +213,7 @@ public class MainWindow extends UiPart<Stage> {
             }
 
             if (commandResult.isPictureCommand()) {
-                personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-                personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+                showFullPersonList();
             }
 
             return commandResult;
@@ -222,6 +222,11 @@ public class MainWindow extends UiPart<Stage> {
             resultDisplay.setFeedbackToUser(e.getMessage());
             throw e;
         }
+    }
+
+    void showFullPersonList() {
+        personListPanel = new PersonListPanel(logic.getFullPersonList());
+        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
     }
 
     public File getFile() {

@@ -24,7 +24,7 @@ import socialite.testutil.TypicalPersons;
 public class ShareCommandTest {
 
     private Model model =
-            new ModelManager(TypicalPersons.getTypicalAddressBook(), new UserPrefs(), new CommandHistory());
+            new ModelManager(TypicalPersons.getTypicalContactList(), new UserPrefs(), new CommandHistory());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -37,7 +37,7 @@ public class ShareCommandTest {
         String expectedMessage =
                 String.format(ShareCommand.MESSAGE_SHARE_PERSON_SUCCESS, personToShare.toSharingString());
 
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new CommandHistory());
+        ModelManager expectedModel = new ModelManager(model.getContactList(), new UserPrefs(), new CommandHistory());
 
         CommandTestUtil.assertCommandSuccess(shareCommand, model, expectedMessage, expectedModel);
     }
@@ -55,7 +55,7 @@ public class ShareCommandTest {
         String expectedMessage =
                 String.format(ShareCommand.MESSAGE_SHARE_PERSON_SUCCESS, personToShare.toSharingString());
 
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new CommandHistory());
+        Model expectedModel = new ModelManager(model.getContactList(), new UserPrefs(), new CommandHistory());
         CommandTestUtil.showPersonAtIndex(expectedModel, TypicalIndexes.INDEX_FIRST_PERSON);
 
         CommandTestUtil.assertCommandSuccess(shareCommand, model, expectedMessage, expectedModel);
@@ -74,8 +74,8 @@ public class ShareCommandTest {
         CommandTestUtil.showPersonAtIndex(model, TypicalIndexes.INDEX_FIRST_PERSON);
 
         Index outOfBoundIndex = TypicalIndexes.INDEX_SECOND_PERSON;
-        // ensures that outOfBoundIndex is still in bounds of address book list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getPersonList().size());
+        // ensures that outOfBoundIndex is still in bounds of the contact list
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getContactList().getPersonList().size());
 
         ShareCommand shareCommand = new ShareCommand(outOfBoundIndex);
 

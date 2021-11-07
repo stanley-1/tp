@@ -41,6 +41,7 @@ class JsonAdaptedPerson {
     private final String twitter;
     private final List<JsonAdaptedDate> dates = new ArrayList<>();
     private final Path profilePic;
+    private final boolean isPinned;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -48,7 +49,7 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("remark") String remark, @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
-            @JsonProperty("profilePic") String profilePic,
+            @JsonProperty("isPinned") boolean isPinned, @JsonProperty("profilePic") String profilePic,
             @JsonProperty("facebook") String facebook, @JsonProperty("instagram") String instagram,
             @JsonProperty("telegram") String telegram, @JsonProperty("tiktok") String tiktok,
             @JsonProperty("twitter") String twitter, @JsonProperty("dates") List<JsonAdaptedDate> dates) {
@@ -58,6 +59,7 @@ class JsonAdaptedPerson {
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
+        this.isPinned = isPinned;
         this.profilePic = Path.of(profilePic);
         this.facebook = facebook;
         this.instagram = instagram;
@@ -79,6 +81,7 @@ class JsonAdaptedPerson {
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+        isPinned = source.getPinnedStatus();
         profilePic = source.getProfilePicture().value;
         facebook = source.getFacebook().get();
         instagram = source.getInstagram().get();
@@ -152,6 +155,8 @@ class JsonAdaptedPerson {
         }
         Person modelPerson = new Person(modelName, modelPhone, modelRemark, modelTags, modelFacebook,
                 modelInstagram, modelTelegram, modelTikTok, modeTwitter, modelDates);
+
+        modelPerson.setPinned(isPinned);
         modelPerson.setProfilePicture(profilePic);
         return modelPerson;
     }

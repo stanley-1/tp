@@ -14,8 +14,8 @@ import org.junit.jupiter.api.Test;
 
 import socialite.commons.core.GuiSettings;
 import socialite.model.person.ContainsKeywordsPredicate;
-import socialite.testutil.AddressBookBuilder;
 import socialite.testutil.Assert;
+import socialite.testutil.ContactListBuilder;
 import socialite.testutil.TypicalPersons;
 
 public class ModelManagerTest {
@@ -26,7 +26,7 @@ public class ModelManagerTest {
     public void constructor() {
         assertEquals(new UserPrefs(), modelManager.getUserPrefs());
         Assertions.assertEquals(new GuiSettings(), modelManager.getGuiSettings());
-        assertEquals(new AddressBook(), new AddressBook(modelManager.getAddressBook()));
+        assertEquals(new ContactList(), new ContactList(modelManager.getContactList()));
     }
 
     @Test
@@ -37,14 +37,14 @@ public class ModelManagerTest {
     @Test
     public void setUserPrefs_validUserPrefs_copiesUserPrefs() {
         UserPrefs userPrefs = new UserPrefs();
-        userPrefs.setAddressBookFilePath(Paths.get("address/book/file/path"));
+        userPrefs.setContactListFilePath(Paths.get("contact/list/file/path"));
         userPrefs.setGuiSettings(new GuiSettings(1, 2, 3, 4));
         modelManager.setUserPrefs(userPrefs);
         assertEquals(userPrefs, modelManager.getUserPrefs());
 
         // Modifying userPrefs should not modify modelManager's userPrefs
         UserPrefs oldUserPrefs = new UserPrefs(userPrefs);
-        userPrefs.setAddressBookFilePath(Paths.get("new/address/book/file/path"));
+        userPrefs.setContactListFilePath(Paths.get("new/contact/list/file/path"));
         assertEquals(oldUserPrefs, modelManager.getUserPrefs());
     }
 
@@ -61,15 +61,15 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void setAddressBookFilePath_nullPath_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> modelManager.setAddressBookFilePath(null));
+    public void setContactListFilePath_nullPath_throwsNullPointerException() {
+        Assert.assertThrows(NullPointerException.class, () -> modelManager.setContactListFilePath(null));
     }
 
     @Test
-    public void setAddressBookFilePath_validPath_setsAddressBookFilePath() {
-        Path path = Paths.get("address/book/file/path");
-        modelManager.setAddressBookFilePath(path);
-        assertEquals(path, modelManager.getAddressBookFilePath());
+    public void setContactListFilePath_validPath_setsContactListFilePath() {
+        Path path = Paths.get("contact/list/file/path");
+        modelManager.setContactListFilePath(path);
+        assertEquals(path, modelManager.getContactListFilePath());
     }
 
     @Test
@@ -78,12 +78,12 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void hasPerson_personNotInAddressBook_returnsFalse() {
+    public void hasPerson_personNotInContactList_returnsFalse() {
         assertFalse(modelManager.hasPerson(TypicalPersons.ALICE));
     }
 
     @Test
-    public void hasPerson_personInAddressBook_returnsTrue() {
+    public void hasPerson_personInContactList_returnsTrue() {
         modelManager.addPerson(TypicalPersons.ALICE);
         assertTrue(modelManager.hasPerson(TypicalPersons.ALICE));
     }
@@ -127,15 +127,15 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        AddressBook addressBook =
-                new AddressBookBuilder().withPerson(TypicalPersons.ALICE).withPerson(TypicalPersons.BENSON).build();
-        AddressBook differentAddressBook = new AddressBook();
+        ContactList contactList =
+                new ContactListBuilder().withPerson(TypicalPersons.ALICE).withPerson(TypicalPersons.BENSON).build();
+        ContactList differentContactList = new ContactList();
         UserPrefs userPrefs = new UserPrefs();
         CommandHistory commandHistory = new CommandHistory();
 
         // same values -> returns true
-        modelManager = new ModelManager(addressBook, userPrefs, commandHistory);
-        ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs, commandHistory);
+        modelManager = new ModelManager(contactList, userPrefs, commandHistory);
+        ModelManager modelManagerCopy = new ModelManager(contactList, userPrefs, commandHistory);
         assertEquals(modelManager, modelManagerCopy);
 
         // same object -> returns true
@@ -147,22 +147,22 @@ public class ModelManagerTest {
         // different types -> returns false
         assertNotEquals(5, modelManager);
 
-        // different addressBook -> returns false
+        // different contactList -> returns false
         assertNotEquals(modelManager, new ModelManager(
-                differentAddressBook, userPrefs, commandHistory));
+                differentContactList, userPrefs, commandHistory));
 
         // different filteredList -> returns false
         String[] keywords = TypicalPersons.ALICE.getName().fullName.split("\\s+");
         modelManager.updateFilteredPersonList(new ContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs, commandHistory)));
+        assertFalse(modelManager.equals(new ModelManager(contactList, userPrefs, commandHistory)));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
 
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
-        differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
+        differentUserPrefs.setContactListFilePath(Paths.get("differentFilePath"));
         assertNotEquals(modelManager, new ModelManager(
-                addressBook, differentUserPrefs, commandHistory));
+                contactList, differentUserPrefs, commandHistory));
     }
 }

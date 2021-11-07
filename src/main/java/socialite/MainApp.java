@@ -15,19 +15,19 @@ import socialite.commons.util.ConfigUtil;
 import socialite.commons.util.StringUtil;
 import socialite.logic.Logic;
 import socialite.logic.LogicManager;
-import socialite.model.AddressBook;
 import socialite.model.CommandHistory;
+import socialite.model.ContactList;
 import socialite.model.Model;
 import socialite.model.ModelManager;
-import socialite.model.ReadOnlyAddressBook;
 import socialite.model.ReadOnlyCommandHistory;
+import socialite.model.ReadOnlyContactList;
 import socialite.model.ReadOnlyUserPrefs;
 import socialite.model.UserPrefs;
 import socialite.model.util.SampleDataUtil;
-import socialite.storage.AddressBookStorage;
 import socialite.storage.CommandHistoryStorage;
-import socialite.storage.JsonAddressBookStorage;
+import socialite.storage.ContactListStorage;
 import socialite.storage.JsonCommandHistoryStorage;
+import socialite.storage.JsonContactListStorage;
 import socialite.storage.JsonUserPrefsStorage;
 import socialite.storage.ProfilePictureStorage;
 import socialite.storage.ProfilePictureStorageManager;
@@ -54,7 +54,7 @@ public class MainApp extends Application {
 
     @Override
     public void init() throws Exception {
-        logger.info("=============================[ Initializing AddressBook ]===========================");
+        logger.info("=============================[ Initializing ContactList ]===========================");
         super.init();
 
         AppParameters appParameters = AppParameters.parse(getParameters());
@@ -62,12 +62,12 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
-        AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
+        ContactListStorage contactListStorage = new JsonContactListStorage(userPrefs.getContactListFilePath());
         CommandHistoryStorage commandHistoryStorage =
                 new JsonCommandHistoryStorage(userPrefs.getCommandHistoryFilePath());
         ProfilePictureStorage profilePictureStorage = ProfilePictureStorageManager.getInstance();
         storage = new StorageManager(
-                addressBookStorage, userPrefsStorage, commandHistoryStorage, profilePictureStorage);
+                contactListStorage, userPrefsStorage, commandHistoryStorage, profilePictureStorage);
 
         initLogging(config);
 
@@ -79,27 +79,27 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code ModelManager} with the data from {@code storage}'s address book and {@code userPrefs}. <br>
-     * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
-     * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
+     * Returns a {@code ModelManager} with the data from {@code storage}'s contact list and {@code userPrefs}. <br>
+     * The data from the sample contact list will be used instead if {@code storage}'s contact list is not found,
+     * or an empty contact list will be used instead if errors occur when reading {@code storage}'s contact list.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
-        Optional<ReadOnlyAddressBook> addressBookOptional;
-        ReadOnlyAddressBook initialAddressBook;
+        Optional<ReadOnlyContactList> contactListOptional;
+        ReadOnlyContactList initialContactList;
         Optional<ReadOnlyCommandHistory> commandHistoryOptional;
         ReadOnlyCommandHistory initialCommandHistory;
         try {
-            addressBookOptional = storage.readAddressBook();
-            if (addressBookOptional.isEmpty()) {
-                logger.info("AddressBook file not found. Will be starting with a sample AddressBook");
+            contactListOptional = storage.readContactList();
+            if (contactListOptional.isEmpty()) {
+                logger.info("ContactList file not found. Will be starting with a sample ContactList");
             }
-            initialAddressBook = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
+            initialContactList = contactListOptional.orElseGet(SampleDataUtil::getSampleContactList);
         } catch (DataConversionException e) {
-            logger.warning("AddressBook file not in the correct format. Will be starting with an empty AddressBook");
-            initialAddressBook = new AddressBook();
+            logger.warning("ContactList file not in the correct format. Will be starting with an empty ContactList");
+            initialContactList = new ContactList();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the AddressBook. Will be starting with an empty AddressBook");
-            initialAddressBook = new AddressBook();
+            logger.warning("Problem while reading from the ContactList. Will be starting with an empty ContactList");
+            initialContactList = new ContactList();
         }
 
         try {
@@ -118,7 +118,7 @@ public class MainApp extends Application {
             initialCommandHistory = new CommandHistory();
         }
 
-        return new ModelManager(initialAddressBook, userPrefs, initialCommandHistory);
+        return new ModelManager(initialContactList, userPrefs, initialCommandHistory);
     }
 
     private void initLogging(Config config) {
@@ -152,7 +152,7 @@ public class MainApp extends Application {
             initializedConfig = new Config();
         }
 
-        //Update config file in case it was missing to begin with or there are new/unused fields
+        // Update config file in case it was missing to begin with or there are new/unused fields
         try {
             ConfigUtil.saveConfig(initializedConfig, configFilePathUsed);
         } catch (IOException e) {
@@ -179,7 +179,7 @@ public class MainApp extends Application {
                     + "Using default user prefs");
             initializedPrefs = new UserPrefs();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
+            logger.warning("Problem while reading from the file. Will be starting with an empty ContactList");
             initializedPrefs = new UserPrefs();
         }
 
@@ -195,15 +195,15 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        logger.info("Starting AddressBook " + MainApp.VERSION);
+        logger.info("Starting ContactList " + MainApp.VERSION);
         ui.start(primaryStage);
     }
 
     @Override
     public void stop() {
-        logger.info("============================ [ Stopping Address Book ] =============================");
+        logger.info("============================ [ Stopping SociaLite ] =============================");
         try {
-            storage.saveAddressBook(model.getAddressBook());
+            storage.saveContactList(model.getContactList());
             storage.saveCommandHistory(model.getCommandHistory());
             storage.saveUserPrefs(model.getUserPrefs());
         } catch (IOException e) {
