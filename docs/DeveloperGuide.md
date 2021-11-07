@@ -167,7 +167,11 @@ The `Storage` component,
 
 ### Common classes <a name="common"></a>
 
-Classes used by multiple components are in the `socialite.commons` package.
+Classes used by multiple components are in the `socialite.commons` package. These include:
+
+* [`core`](https://github.com/AY2122S1-CS2103T-F11-4/tp/tree/master/src/main/java/socialite/commons/core): General classes which deal with storage of SociaLite configuration and GUI settings, logging and commonly used messages. The [`Index`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/java/socialite/commons/core/index/Index.java) class is also used widely to manage references to specific items in the contact list.
+* [`exceptions`](https://github.com/AY2122S1-CS2103T-F11-4/tp/tree/master/src/main/java/socialite/commons/exceptions): Common exceptions used throughout SociaLite.
+* [`util`](https://github.com/AY2122S1-CS2103T-F11-4/tp/tree/master/src/main/java/socialite/commons/util): Utility methods pertaining to collections, files, JSON, strings, etc.
 
 --------------------------------------------------------------------------------------------------------------------
 
