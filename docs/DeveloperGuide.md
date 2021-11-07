@@ -16,6 +16,7 @@ title: Developer Guide
    1. [Help Command](#help_command)
    2. [Find Command](#find_command)
    3. [Picture Command](#picture_command)
+   4. [Command History](#command_history)
 5. [Documentation](#docs)
 6. [Appendix: Requirements](#requirements)
     1. [Product Scope](#scope)
@@ -208,6 +209,17 @@ Represented below is the sequence diagram when `picture INDEX` is executed. For 
 
 Note that the picture command depends on the MainWindow in the UI package as it retrieves the file from a file chooser.
 
+### Command History <a name="command_history"></a>
+
+Command history allows users to navigate through commands that they have entered previously by pressing `UP/DOWN` key in the command box. It resembles the behavior of a macOS or Windows terminal. As a result, users can simply make slight edit to the previous command to rectify a typo.
+
+Command history from all previous sessions will be stored in `commandhistory.json`, and loaded as an list of strings in `CommandHistory` class when SociaLite is launched. The command history of the current session will be added to the list of strings, and written back to the `.json` file upon exiting SocaiLite.
+
+If the `.json` file is non-existent or faulty, or if SociaLite encounters any problem reading the `.json` file , it will start with an empty command history.
+
+Represented below is the sequence diagram on how command history is saved when any command is executed. For illustration purposes, `CMD` refers to any command (valid or invalid) that the user type in the command box, `XYZ` is a placeholder for the specific command name.
+
+![CommandHistorySequenceDiagram](images/CommandHistorySequenceDiagram.png)
 
 
 --------------------------------------------------------------------------------------------------------------------
