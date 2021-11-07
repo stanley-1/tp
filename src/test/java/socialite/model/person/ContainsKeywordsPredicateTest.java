@@ -1,6 +1,8 @@
 package socialite.model.person;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
@@ -22,20 +24,20 @@ public class ContainsKeywordsPredicateTest {
         ContainsKeywordsPredicate secondPredicate = new ContainsKeywordsPredicate(secondPredicateKeywordList);
 
         // same object -> returns true
-        assertTrue(firstPredicate.equals(firstPredicate));
+        assertEquals(firstPredicate, firstPredicate);
 
         // same values -> returns true
         ContainsKeywordsPredicate firstPredicateCopy = new ContainsKeywordsPredicate(firstPredicateKeywordList);
-        assertTrue(firstPredicate.equals(firstPredicateCopy));
+        assertEquals(firstPredicate, firstPredicateCopy);
 
         // different types -> returns false
-        assertFalse(firstPredicate.equals(1));
+        assertNotEquals(1, firstPredicate);
 
         // null -> returns false
-        assertFalse(firstPredicate.equals(null));
+        assertNotEquals(null, firstPredicate);
 
         // different person -> returns false
-        assertFalse(firstPredicate.equals(secondPredicate));
+        assertNotEquals(firstPredicate, secondPredicate);
     }
 
     @Test
@@ -75,9 +77,24 @@ public class ContainsKeywordsPredicateTest {
 
     @Test
     public void test_personHasHandles() {
-        ContainsKeywordsPredicate predicate = new ContainsKeywordsPredicate(Arrays.asList("p/instagram"));
-        assertTrue(predicate.test(new PersonBuilder().withName("Alice").withInstagram("dummy_link").build()));
-        assertFalse(predicate.test(new PersonBuilder().withName("Bob").withInstagram(null).build()));
+        ContainsKeywordsPredicate fbPredicate = new ContainsKeywordsPredicate(Arrays.asList("p/facebook"));
+        assertTrue(fbPredicate.test(new PersonBuilder().withName("Alice").withFacebook("dummy.link").build()));
+        assertFalse(fbPredicate.test(new PersonBuilder().withName("Bob").withFacebook(null).build()));
+        ContainsKeywordsPredicate igPredicate = new ContainsKeywordsPredicate(Arrays.asList("p/instagram"));
+        assertTrue(igPredicate.test(new PersonBuilder().withName("Alice").withInstagram("dummy_link").build()));
+        assertFalse(igPredicate.test(new PersonBuilder().withName("Bob").withInstagram(null).build()));
+
+        ContainsKeywordsPredicate telePredicate = new ContainsKeywordsPredicate(Arrays.asList("p/telegram"));
+        assertTrue(telePredicate.test(new PersonBuilder().withName("Alice").withTelegram("dummy_link").build()));
+        assertFalse(telePredicate.test(new PersonBuilder().withName("Bob").withTelegram(null).build()));
+
+        ContainsKeywordsPredicate tiktokPredicate = new ContainsKeywordsPredicate(Arrays.asList("p/tiktok"));
+        assertTrue(tiktokPredicate.test(new PersonBuilder().withName("Alice").withTikTok("dummy.link").build()));
+        assertFalse(tiktokPredicate.test(new PersonBuilder().withName("Bob").withTikTok(null).build()));
+
+        ContainsKeywordsPredicate twitterPredicate = new ContainsKeywordsPredicate(Arrays.asList("p/twitter"));
+        assertTrue(twitterPredicate.test(new PersonBuilder().withName("Alice").withTwitter("dummylink").build()));
+        assertFalse(twitterPredicate.test(new PersonBuilder().withName("Bob").withTwitter(null).build()));
     }
 
     @Test
@@ -85,6 +102,12 @@ public class ContainsKeywordsPredicateTest {
         ContainsKeywordsPredicate predicate = new ContainsKeywordsPredicate(Arrays.asList("t/colleagues"));
         assertTrue(predicate.test(new PersonBuilder().withName("Alice").withTags("colleagues", "friends").build()));
         assertFalse(predicate.test(new PersonBuilder().withName("Bob").withTags("friends").build()));
+
+        // Empty predicate -> anything returns true
+        ContainsKeywordsPredicate emptyPredicate = new ContainsKeywordsPredicate(Arrays.asList("t/"));
+        assertTrue(emptyPredicate.test(new PersonBuilder().withName("Alice").withTags("colleagues", "friends").build()));
+        assertTrue(emptyPredicate.test(new PersonBuilder().withName("Bob").withTags("friends").build()));
+
     }
 
 

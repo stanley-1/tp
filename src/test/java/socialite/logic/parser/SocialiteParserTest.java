@@ -21,7 +21,11 @@ import socialite.logic.commands.ExitCommand;
 import socialite.logic.commands.FindCommand;
 import socialite.logic.commands.HelpCommand;
 import socialite.logic.commands.ListCommand;
+import socialite.logic.commands.PictureCommand;
+import socialite.logic.commands.PinCommand;
 import socialite.logic.commands.RemarkCommand;
+import socialite.logic.commands.ShareCommand;
+import socialite.logic.commands.UnpinCommand;
 import socialite.logic.parser.exceptions.ParseException;
 import socialite.model.person.ContainsKeywordsPredicate;
 import socialite.model.person.Person;
@@ -114,6 +118,34 @@ public class SocialiteParserTest {
         RemarkCommand command = (RemarkCommand) parser.parseCommand(RemarkCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_REMARK + remark.get());
         assertEquals(new RemarkCommand(INDEX_FIRST_PERSON, remark), command);
+    }
+
+    @Test
+    public void parseCommand_share() throws Exception {
+        ShareCommand command = (ShareCommand) parser.parseCommand(
+                ShareCommand.COMMAND_WORD + " " + TypicalIndexes.INDEX_FIRST_PERSON.getOneBased());
+        assertEquals(new ShareCommand(TypicalIndexes.INDEX_FIRST_PERSON), command);
+    }
+
+    @Test
+    public void parseCommand_picture() throws Exception {
+        PictureCommand command = (PictureCommand) parser.parseCommand(
+                PictureCommand.COMMAND_WORD + " " + TypicalIndexes.INDEX_FIRST_PERSON.getOneBased());
+        assertEquals(new PictureCommand(TypicalIndexes.INDEX_FIRST_PERSON, true), command);
+    }
+
+    @Test
+    public void parseCommand_pin() throws Exception {
+        PinCommand command = (PinCommand) parser.parseCommand(
+                PinCommand.COMMAND_WORD + " " + TypicalIndexes.INDEX_FIRST_PERSON.getOneBased());
+        assertEquals(new PinCommand(TypicalIndexes.INDEX_FIRST_PERSON), command);
+    }
+
+    @Test
+    public void parseCommand_unpin() throws Exception {
+        UnpinCommand command = (UnpinCommand) parser.parseCommand(
+                UnpinCommand.COMMAND_WORD + " " + TypicalIndexes.INDEX_FIRST_PERSON.getOneBased());
+        assertEquals(new UnpinCommand(TypicalIndexes.INDEX_FIRST_PERSON), command);
     }
 
 }
