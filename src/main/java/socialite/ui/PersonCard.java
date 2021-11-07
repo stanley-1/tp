@@ -43,7 +43,7 @@ public class PersonCard extends UiPart<Region> {
      * As a consequence, UI elements' variable names cannot be set to such keywords
      * or an exception will be thrown by JavaFX during runtime.
      *
-     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on ContactList level 4</a>
+     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
 
     public final Person person;
@@ -146,6 +146,10 @@ public class PersonCard extends UiPart<Region> {
             pinButton.setText("Pin");
             pinButton.getStyleClass().remove("pinButton");
         }
+
+        // Permits wrapping of tags/dates, when used in combination with `-fx-max-width`.
+        tags.setMinWidth(Region.USE_PREF_SIZE);
+        dates.setMinWidth(Region.USE_PREF_SIZE);
 
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
@@ -250,7 +254,12 @@ public class PersonCard extends UiPart<Region> {
                     long upcomingDays = date.getUpcomingDays(LocalDate.now());
                     boolean isUpcoming = upcomingDays >= 0 && upcomingDays <= 7;
                     String upcomingMessage = isUpcoming
-                            ? " (" + (upcomingDays == 0 ? "today" : "in " + upcomingDays + " days") + ")"
+                            ? " (" +
+                                (upcomingDays == 0
+                                    ? "today"
+                                    : upcomingDays == 1
+                                        ? "in 1 day"
+                                        : "in " + upcomingDays + " days") + ")"
                             : "";
 
                     HBox hbox = new HBox();

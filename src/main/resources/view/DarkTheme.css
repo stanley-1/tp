@@ -367,6 +367,7 @@
     -fx-padding: 1 5 1 5;
     -fx-border-radius: 5;
     -fx-background-radius: 5;
+    -fx-max-width: 350px;
 }
 
 #dates .hbox.upcoming {
@@ -378,7 +379,7 @@
 }
 
 #dates .label.name {
-    -fx-max-width: 200px;
+    -fx-max-width: 150px;
 }
 
 .pinButton {
