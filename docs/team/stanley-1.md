@@ -14,10 +14,11 @@ A summary of my contributions to the project is detailed below.
 
 
 
-* **Altered Feature**: Redefined criteria for duplicate persons to be detected.
+* **Altered Feature**: Redefined criteria for duplicate persons to be detected. [\#68](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/68)
   * What it does:
     * SociaLite now detects duplicate entries by comparing the contacts' phone number instead of name.
     * Users can add contacts who coincidentally have the same names, without a DuplicatePersonException being thrown.
+    * For example, if a contact `Alex Yeoh` with the phone number `91234567` already exists in memory, another `Alex Yeoh` can now be added, provided he has a different phone number (i.e. `98571082`).
   * Justification:
     * The original AB-3 code detects duplicate entries within the address book by comparing the names (in string) of contacts that already exist in the database.
     * However, there can be instances where users meet acquaintances who coincidentally share the same name but are separate persons altogether.
@@ -27,38 +28,42 @@ A summary of my contributions to the project is detailed below.
     * This allows users to add more contacts to their database.
     
 
-* **Revamped Feature**: Enhanced ability for users to obtain help or in-app guidance.
+* **Revamped Feature**: Enhanced ability for users to obtain help or in-app guidance. [\#50](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/50), [\#127](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/127)
   * What it does: 
     * Allows users to access in-app guidance by typing in `help <COMMAND>` where `<COMMAND>` refers to a command of the user's choice.
+    * For example, `help add` will return an overview of the `add` command, including its expected input format and an example for the user to learn/recall the use of the `add` command.
   * Justification:
     * This command allows users to quickly refer to in-app guidance and perform their desired function correctly, without having to open the User Guide.
   * Highlights:
     * Serves as an umbrella command which abstracts away the appearance of Help Messages for all other valid commands.
     
 
-* **New Feature**: Added support for Facebook and Instagram social media handles
+* **New Feature**: Added support for Facebook and Instagram social media handles. [\#36](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/36), [\#37](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/37)
   * What it does: 
-    * Allows users to add Facebook and Instagram social media handles for a contact.
+    * Allows users to add Facebook and Instagram social media handles that conform to the prescribed regex, for a contact.
   * Justification:
     * Users can conveniently add and access a contact's Facebook and Instagram pages as SociaLite supports these two commonly used platforms.
   * Highlights:
     * Adhered to teammate's (Xiaozhi's) pre-designed framework for storing social media handles when enhancing support for Facebook and Instagram handles.
+    * Refined regex of Facebook, Instagram and Telegram handles to meet stricter requirements imposed by social media platforms. [\#145](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/145)
     * Scalable feature which can support other social media platforms in the future.
     
 
 * **Code contributed**: [RepoSense link](https://tinyurl.com/f11-4-stanley)
 
 * **Project management**:
-  * Designed interim UI mock-up for `v1.2` which has since been adapted in subsequent iterations.
+  * Designed interim UI mock-up for `v1.2` which has since been adapted in subsequent iterations. [\#30](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/30)
   * Managed release `v1.2` on GitHub.
   * Acted as minute-taker to take note and summarize points raised in our team meetings held twice a week.
+  * Reviewed and suggested non-trivial improvements to documentation submissions by all members.
+  * Refactored components of the codebase for clarity. [\#154](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/154)
   
 
 * **Documentation**:
   * User Guide:
     * Supported team members in the initial revamp of User Guide to match SociaLite
       * Drafted documentation for the features on our initial Google Doc.
-    * Major changes for `v1.3`: [\#70](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/70)
+    * Major changes for `v1.3`: [\#70](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/70), [\#73](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/73), [\#79](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/79)
       * Added documentation for the feature `help COMMAND`
       * Updated all sections and features to match our new input format for SociaLite.
       * Added around 10 missing commands and examples to Command Summary.
@@ -70,12 +75,14 @@ A summary of my contributions to the project is detailed below.
       * Updated FAQ section.
   * Developer Guide:
     * Aided in conceptualization of Product Scope, including the definition of our target user profile and value proposition.
-    * Added and organized majority of User Stories and Use Cases.
-    * Reviewed and suggested improvements for team members' additions to Developer Guide.
+    * Added and organized majority of User Stories and Use Cases. [\#11](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/11)
+    * Added implementation details on Help Command and accompanying UML Sequence Diagram. [\#139](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/139), [\#155](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/155)
+    * Update details on Architecture of SociaLite. [\#155](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/155)
+    * Reviewed and suggested improvements for every team member's additions to the Developer Guide.
     
 
 * **Community**:
-  * Reviewed 29 PRs in total. Selection of PRs with non-trivial review comments: [\#77](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/77), [\#129](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/129)
+  * Reviewed 39 PRs in total. Selection of PRs with non-trivial review comments: [\#52](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/52), [\#57](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/57), [\#77](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/77), [\#129](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/129), [\#158](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/158)
   * Reported 14 bugs and suggestions for peers in PE-Dry Run
     * [Unable to change password](https://github.com/AY2122S1-CS2103T-W13-2/tp/issues/186)
     * [HelpWindow does not show User Guide on subsequent attempts](https://github.com/AY2122S1-CS2103T-W13-2/tp/issues/138)
