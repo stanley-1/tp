@@ -18,7 +18,6 @@ A summary of my contributions to the project is detailed below.
   * What it does:
     * SociaLite now detects duplicate entries by comparing the contacts' phone number instead of name.
     * Users can add contacts who coincidentally have the same names, without a DuplicatePersonException being thrown.
-    * For example, if a contact `Alex Yeoh` with the phone number `91234567` already exists in memory, another `Alex Yeoh` can now be added, provided he has a different phone number (i.e. `98571082`).
   * Justification:
     * The original AB-3 code detects duplicate entries within the address book by comparing the names (in string) of contacts that already exist in the database.
     * However, there can be instances where users meet acquaintances who coincidentally share the same name but are separate persons altogether.
@@ -31,7 +30,6 @@ A summary of my contributions to the project is detailed below.
 * **Revamped Feature**: Enhanced ability for users to obtain help or in-app guidance. [\#50](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/50), [\#127](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/127)
   * What it does: 
     * Allows users to access in-app guidance by typing in `help <COMMAND>` where `<COMMAND>` refers to a command of the user's choice.
-    * For example, `help add` will return an overview of the `add` command, including its expected input format and an example for the user to learn/recall the use of the `add` command.
   * Justification:
     * This command allows users to quickly refer to in-app guidance and perform their desired function correctly, without having to open the User Guide.
   * Highlights:
@@ -77,8 +75,7 @@ A summary of my contributions to the project is detailed below.
     * Aided in conceptualization of Product Scope, including the definition of our target user profile and value proposition.
     * Added and organized majority of User Stories and Use Cases. [\#11](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/11)
     * Added implementation details on Help Command and accompanying UML Sequence Diagram. [\#139](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/139), [\#155](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/155)
-    * Update details on Architecture of SociaLite. [\#155](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/155)
-    * Reviewed and suggested improvements for every team member's additions to the Developer Guide.
+    * Updated details on Architecture of SociaLite. [\#155](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/155)
     
 
 * **Community**:
