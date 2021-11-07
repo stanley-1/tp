@@ -139,7 +139,7 @@ How the parsing works:
 ### Model component <a name="model"></a>
 **API** : [`Model.java`](https://github.com/AY2122S1-CS2103T-F11-4/tp/blob/master/src/main/java/socialite/model/Model.java)
 
-<img src="images/ModelClassDiagram.png" width="750" />
+<img src="images/ModelClassDiagram.png" width="700" />
 
 
 The `Model` component,
