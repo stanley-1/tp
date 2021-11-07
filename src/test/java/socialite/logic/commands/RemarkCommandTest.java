@@ -52,6 +52,28 @@ public class RemarkCommandTest {
     }
 
     @Test
+    public void execute_addRemarkPinnedPersonUnfilteredList_success() {
+        // Duplicate model to test pinning the first person.
+        Model model = new ModelManager(
+                getTypicalContactList(), new UserPrefs(), new CommandHistory());
+
+        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        firstPerson.setPinned(true);
+        Person editedPerson = new PersonBuilder(firstPerson).withRemark(REMARK_STUB).build();
+
+        RemarkCommand remarkCommand = new RemarkCommand(INDEX_FIRST_PERSON, new Remark(editedPerson.getRemark().get()));
+
+        String expectedMessage = String.format(RemarkCommand.MESSAGE_ADD_REMARK_SUCCESS, editedPerson);
+
+        Model expectedModel =
+                new ModelManager(
+                        new ContactList(model.getContactList()), new UserPrefs(), new CommandHistory());
+        expectedModel.setPerson(firstPerson, editedPerson);
+
+        assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
     public void execute_deleteRemarkUnfilteredList_success() {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person editedPerson = new PersonBuilder(firstPerson).withRemark(null).build();
