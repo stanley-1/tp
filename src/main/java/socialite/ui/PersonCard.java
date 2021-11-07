@@ -254,8 +254,8 @@ public class PersonCard extends UiPart<Region> {
                     long upcomingDays = date.getUpcomingDays(LocalDate.now());
                     boolean isUpcoming = upcomingDays >= 0 && upcomingDays <= 7;
                     String upcomingMessage = isUpcoming
-                            ? " (" +
-                                (upcomingDays == 0
+                            ? " ("
+                                + (upcomingDays == 0
                                     ? "today"
                                     : upcomingDays == 1
                                         ? "in 1 day"
