@@ -16,8 +16,8 @@ import socialite.commons.util.AppUtil;
 
 public class Date {
     public static final String MESSAGE_CONSTRAINTS =
-            "Dates should be formatted as NAME:YYYY-MM-DD or NAME:YYYY-MM-DD:[monthly|yearly] for recurring dates.\n" +
-            "The date name should have a length of up to 50 characters.";
+            "Dates should be formatted as NAME:YYYY-MM-DD or NAME:YYYY-MM-DD:[monthly|yearly] for recurring dates.\n"
+                    + "The date name should have a length of up to 50 characters.";
 
     public static final String VALIDATION_REGEX =
             "([\\w\\s]+):(\\d{4})-(\\d{2})-(\\d{2})(?::(yearly|monthly))?\\s*";
