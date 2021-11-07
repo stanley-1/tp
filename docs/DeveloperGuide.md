@@ -30,7 +30,7 @@ title: Developer Guide
 
 ## **Acknowledgements** <a name="acknowledgements"></a>
 
-* SociaLite is adapted from SE-Education's [*AddressBook Level-3*]((https://se-education.org/addressbook-level3/DeveloperGuide.html)).
+* SociaLite is adapted from SE-Education's [*AddressBook Level-3*](https://se-education.org/addressbook-level3/DeveloperGuide.html).
 * GUI tests are adapted from [`src/test/java/guitests/`](https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/guitests) of SE-Education's [*AddressBook Level-4](https://se-education.org/addressbook-level4/).
 
 --------------------------------------------------------------------------------------------------------------------
@@ -781,7 +781,8 @@ Given below are instructions to test the app manually.
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The instructions and test cases under this section only provide the general aspects of the SociaLite app for testers to work on. If you happen to be a tester, please feel free to explore around using your own test cases!
 </div>
-### Launch and exiting the app
+
+### Launching and exiting the app
 
 Download the latest `jar` file from SociaLite [release page](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases), and copy it into an empty folder that you have access to read and write.
 
@@ -812,7 +813,7 @@ While SociaLite is running, try out the following test cases in sequence:
 
 1. Enter `add n/aa p/12345678` in the command box.
 
-	Expected: A new contact card with name "aa" and phone number "12345678" is created. The contact card is most likely to be appearing at the top, since SociaLite arranges the contact cards according to their names alphabetically.
+	Expected: A new contact card with name "aa" and phone number "12345678" is created. This contact card will likely appear at the top, as SociaLite displays records in alphabetical order of contacts' names.
 
 2. Enter `add n/ab p/12345678` in the command box.
 
@@ -824,35 +825,35 @@ While SociaLite is running, try out the following test cases in sequence:
 
 4. Enter `add n/aa p/87654321` in the command box.
 
-	Expected: A new contact card with name "aa" and phone number "87654321" is created. SociaLite allows repetitive names in the contact list, but uses phone number as the unique identifier for a contact.
+	Expected: A new contact card with name "aa" and phone number "87654321" is created. SociaLite allows names to be repeated in the contact list as it uniquely identifies contacts through their phone number.
 
 5. Enter `add n/John Appleseed p/13572468 fb/john.appleseed twitter/morethanfifteenchars`.
 
-	Expected: SociaLite shows error message, indicating that the telegram username does not follow their naming convention.
+	Expected: SociaLite shows error message, indicating that the Twitter handle does not follow their naming convention.
 
 ### Editing a contact
 
-Assuming all test cases in the previous section were carried out, and that the first contact card in the list is "aa", and there are only 10 contacts stored in SociaLite:
+Assuming you have performed all preceding test cases in order, you should have 10 contacts stored in SociaLite, with the contact card "aa" appearing at the top of the list.
 
 1. Enter `edit 1 n/abc` in the command box.
 
-	Expected: the first contact card's name changes to "abc". It might not be the first contact card in the list due to alphabetical ordering.
+    Expected: the first contact card's name changes to "abc". After this modification, this contact card might no longer be the first in the list due to alphabetical ordering
 
 2. Enter `edit 100 n/abc` in the command box.
 
-	Expected: SociaLite shows error message, indicating invalid person index provided.
+    Expected: SociaLite shows error message, indicating invalid person index provided.
 
 3. Enter `edit 2` in the command box.
 
-	Expected: SociaLite shows error message, indicating at least one field to edit must be provided.
+    Expected: SociaLite shows error message, indicating at least one field to edit must be provided.
 
 4. Enter `edit 1 fb/hello` in the command box.
 
-	Expected: the first contact card in SociaLite should have a Facebook icon showed up at the bottom, with its handle being "hello".
+    Expected: the first contact card in SociaLite should now display a Facebook icon at the bottom, with the handle "hello".
 
 5. Enter `edit 1 t/tag1 t/tag2 t/tag3 t/tag4` followed by `edit 1 t/` in the command box.
 
-	Expected: the first contact card in SociaLite will be shown to have four tags, and all four tags will disappear upon entering the second command.
+    Expected: the first contact card in SociaLite will be shown to have four tags, and all four tags will disappear upon entering the second command.
 
 ### Deleting a contact
 
@@ -860,7 +861,7 @@ Assuming there are 10 contacts stored in SociaLite:
 
 1. Enter `delete 1` in the command box.
 
-	Expected: the first contact card in SociaLite will be deleted. There will be 9 contacts in SociaLite.
+	Expected: the first contact card in SociaLite will be deleted. There will be 9 contacts left in SociaLite.
 
 2. Enter `delete 100` in the command box.
 
@@ -880,7 +881,7 @@ Assuming there is a contact called "Aaron Tan" in SociaLite:
 
 2. Enter `find a t` in the command box.
 
-	Expected: all contacts whose name starts with "a" and "t" (e.g. Aaron Tan, Alice Teo, Arthur Taylor) will show up in the list.
+	Expected: all contacts whose name contain two or more words, with any of the word starting with "a" and another starting with "t" (e.g. Aaron Tan, Alice Teo, Tony Ang, Terry Au) will show up in the list.
 
 3. Enter `find at` in the command box.
 
@@ -910,13 +911,13 @@ Assuming there is a contact called "Aaron Tan" in SociaLite:
 
 To test out this feature, you can choose to add your own contact information to SociaLite with your own social media handle. For example, you can enter `add n/<your name> p/<your phone number> ig/<your instagram handle>`.
 
-1. Hover your cursor on top of your Instagram handle in SociaLite.
+1. Hover your cursor over your Instagram handle in SociaLite.
 
 	Expected: the handle will turn underlined and the cursor will turn into a hand.
 
-2. Click your mouse when it is hovering on top of a certain handle.
+2. Click your mouse when it is hovering over a certain handle.
 
-	Expected: SociaLite will open your default web browser and direct you to the specific social media page (e.g. your own Instagram profile).
+	Expected: SociaLite will open your default web browser and launch your chosen social media page (e.g. your own Instagram profile).
 
 ### Adding a profile picture to a contact
 
@@ -944,31 +945,31 @@ Assuming there are 10 contacts stored in SociaLite and none of them are pinned, 
 
 1. Enter `pin 3` in the command box.
 
-	Expected: the third contact card in the list will be brought forward to the top of the list. The button "Pin" will change colour and its text will become "Unpin".
+    Expected: the third contact card in the list will be brought forward to the top of the list. The button "Pin" will change colour and its text will become "Unpin".
 
 2. Enter `unpin 1` in the command box.
 
-	Expected: the first contact card in the list (previously the third in the list) will be removed from the top of the list and go back to its original position. The button "Unpin" will change back to its original colour and its text will become "Pin".
+    Expected: the first contact card in the list (previously the third in the list) will be removed from the top of the list and return to its original position (i.e. in alphabetical order of names). The button "Unpin" will return to its original colour and its text will display "Pin".
 
-3. Enter `unpin 1` one more time in the command box.
+4. Enter `unpin 1` one more time in the command box.
 
-	Expected: SociaLite shows error message, indicating that the person is not pinned yet.
+    Expected: SociaLite shows error message, indicating that the person is not pinned yet.
 
-4. Enter `pin 2` followed by `pin 1` in the command box.
+5. Enter `pin 2` followed by `pin 1` in the command box.
 
-	Expected: Socialite shows error message, indicating that the person has already been pinned.
+    Expected: Socialite shows error message, indicating that the person has already been pinned.
 
-5. Enter `pin 100` in the command box.
+6. Enter `pin 100` in the command box.
 
-	Expected: SociaLite shows error message, indicating invalid person index provided.
+    Expected: SociaLite shows error message, indicating invalid person index provided.
 
-6. Navigate to the sixth contact card in the GUI and click on the "Pin" button with your mouse.
+7. Navigate to the sixth contact card in the GUI and click on the "Pin" button with your mouse.
 
-	Expected: The sixth contact card in the list will be pinned to the top of the list. The button "Pin" will change colour and its text will become "Unpin".
+    Expected: The sixth contact card in the list will be pinned to the top of the list. The button "Pin" will change colour and its text will become "Unpin".
 
-7. Click on the "Unpin" button of the first contact card in the list with your mouse 
+8. Click on the "Unpin" button of the first contact card in the list with your mouse.
 
-	Expected: same as test case number 2.
+    Expected: same as test case number 2. The chosen contact card will be unpinned and return to its original position in the list (i.e. in alphabetical order of names). The button "Unpin" will return to its original colour and its text will display "Pin".
 
 ### Sharing a contact
 
@@ -980,7 +981,7 @@ Assuming there are 10 contacts stored in SociaLite:
 
 2. Navigate to the fifth contact card in the GUI and click on the "Share" button with your mouse.
 
-	Expected: Socialite shows that the contact information of the fifth contact has been copied to the system clipboard. The "Share" button will change its text to "Copied!" for two seconds, before reverting back to "Share".
+	Expected: Socialite shows that the contact information of the fifth contact has been copied to the system clipboard. The "Share" button will change its text to "Copied!" for two seconds, before reverting to "Share".
 
 3. Enter `share 100` in the command box.
 
