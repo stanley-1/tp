@@ -42,7 +42,7 @@ This section contains a glossary of all the commands and quick examples for refe
 
 1. Ensure you have `Java 11` or above installed on your Computer.
    If you already have `Java` installed, you might want to type in `java -version` in your command window to ensure you are running on the correct version of `Java`!
-   If you don't have `Java 11`, simply click [here](https://www.oracle.com/java/technologies/downloads/), and navigate to the "Java SE Development Kit 11.*.**" section to download the latest Java Development Kit.
+   If you don't have `Java 11`, simply click [here](https://www.oracle.com/java/technologies/downloads/), and navigate to the "Java SE Development Kit 11.x.xx" section to download the latest Java Development Kit.
 2. Download the latest `socialite.jar` from [here](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases).
 3. Copy the file to the folder you want to use as the _home folder_ for your SociaLite.
 4. Double-click the file to start the app. SociaLite should start in a few seconds! The app contains some sample data for you to experiment with to get familiar with the commands.<br>
