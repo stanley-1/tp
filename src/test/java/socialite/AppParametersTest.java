@@ -1,7 +1,7 @@
 package socialite;
 
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -57,21 +57,21 @@ public class AppParametersTest {
 
     @Test
     public void testHashCode() {
-        AppParameters AP1 = new AppParameters();
-        AP1.setConfigPath(Path.of("data/"));
-        AppParameters AP2 = new AppParameters();
-        AP2.setConfigPath(Path.of("data/"));
-        AppParameters AP3 = new AppParameters();
-        AP3.setConfigPath(Path.of("data/images/"));
+        AppParameters ap1 = new AppParameters();
+        ap1.setConfigPath(Path.of("data/"));
+        AppParameters ap2 = new AppParameters();
+        ap2.setConfigPath(Path.of("data/"));
+        AppParameters ap3 = new AppParameters();
+        ap3.setConfigPath(Path.of("data/images/"));
 
         // Same app parameter -> same hash code
-        assertEquals(AP1.hashCode(), AP1.hashCode());
+        assertEquals(ap1.hashCode(), ap1.hashCode());
 
         // Identical config path -> same hash code
-        assertEquals(AP1.hashCode(), AP2.hashCode());
+        assertEquals(ap1.hashCode(), ap2.hashCode());
 
         // Different config path -> different hash code
-        assertNotEquals(AP1.hashCode(), AP3.hashCode());
+        assertNotEquals(ap1.hashCode(), ap3.hashCode());
     }
 
     private static class ParametersStub extends Application.Parameters {

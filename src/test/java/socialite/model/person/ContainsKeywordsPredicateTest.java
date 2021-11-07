@@ -105,7 +105,8 @@ public class ContainsKeywordsPredicateTest {
 
         // Empty predicate -> anything returns true
         ContainsKeywordsPredicate emptyPredicate = new ContainsKeywordsPredicate(Arrays.asList("t/"));
-        assertTrue(emptyPredicate.test(new PersonBuilder().withName("Alice").withTags("colleagues", "friends").build()));
+        assertTrue(emptyPredicate.test(
+                new PersonBuilder().withName("Alice").withTags("colleagues", "friends").build()));
         assertTrue(emptyPredicate.test(new PersonBuilder().withName("Bob").withTags("friends").build()));
 
     }
