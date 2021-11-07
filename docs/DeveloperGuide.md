@@ -31,7 +31,7 @@ title: Developer Guide
 
 * {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
 * Adapted from [_SE-Education_](https://se-education.org/addressbook-level3/DeveloperGuide.html) 's original *AddressBook*
-
+* Test cases from UI adapted from [SE-Education AddressBook-Level 4](https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/guitests)
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Setting Up, Getting Started** <a name="setting-up-getting-started"></a>
@@ -196,7 +196,20 @@ The HelpWindow dialog box provides users with the link to our User Guide and the
 
 
 ### Find Command <a name="find_command"></a>
+The Find command allows users to find a contact in their list by keywords. 
+Keywords can target contact's names & tags and/or a certain social media platform type. 
 
+Command is in the form `find KEYWORDS`, where `KEYWORDS` can include multiple spaced user inputs,
+prefixed with `t/` for tags, `p/` for social platforms or no prefix for names.
+
+Find Command will update the person list under Model package, based on which contacts match the keywords,
+and return a CommandResult which tells how many contacts matched in the search
+
+Should KEYWORDS be improperly formatted or empty, a generic CommandResult with an error message will be given and Model will not be updated.
+
+Below is the sequence diagram for an execution of `find KEYWORDS`, assuming `KEYWORDS` are a valid query string
+
+![FindSequenceDiagram](images/FindSequenceDiagram.png)
 
 ### Picture Command <a name="picture_command"></a>
 
