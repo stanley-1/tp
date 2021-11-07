@@ -16,6 +16,7 @@ title: Developer Guide
    1. [Help Command](#help_command)
    2. [Find Command](#find_command)
    3. [Picture Command](#picture_command)
+   4. [Command History](#command_history)
 5. [Documentation](#docs)
 6. [Appendix: Requirements](#requirements)
     1. [Product Scope](#scope)
@@ -29,8 +30,9 @@ title: Developer Guide
 
 ## **Acknowledgements** <a name="acknowledgements"></a>
 
-* Adapted from [_SE-Education_](https://se-education.org/addressbook-level3/DeveloperGuide.html)'s original [*AddressBook*](https://github.com/se-edu/addressbook-level3)
-* GUI tests adapted from [*AddressBook* Level 4](https://github.com/se-edu/addressbook-level4)
+
+* SociaLite is adapted from SE-Education's [*AddressBook Level-3*](https://se-education.org/addressbook-level3/DeveloperGuide.html).
+* GUI tests are adapted from [`src/test/java/guitests/`](https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/guitests) of SE-Education's [*AddressBook Level-4](https://se-education.org/addressbook-level4/).
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -149,12 +151,6 @@ The `Model` component,
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in SociaLite, which `Person` references. This allows SociaLite to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
-
-<img src="images/BetterModelClassDiagram.png" width="550" />
-
-</div>
-
 
 ### Storage component <a name="storage"></a>
 
@@ -214,6 +210,17 @@ Represented below is the sequence diagram when `picture INDEX` is executed. For 
 
 Note that the picture command depends on the MainWindow in the UI package as it retrieves the file from a file chooser.
 
+### Command History <a name="command_history"></a>
+
+Command history allows users to navigate through commands that they have entered previously by pressing `UP/DOWN` key in the command box. It resembles the behavior of a macOS or Windows terminal. As a result, users can simply make slight edit to the previous command to rectify a typo.
+
+Command history from all previous sessions will be stored in `commandhistory.json`, and loaded as a list of strings in `CommandHistory` class when SociaLite is launched. The command history of the current session will be added to the list of strings, and written back to the `.json` file upon exiting SocaiLite.
+
+If the `.json` file is non-existent or faulty, or if SociaLite encounters any problem reading the `.json` file , it will start with an empty command history.
+
+Represented below is the sequence diagram on how command history is saved when any command is executed. For illustration purposes, `CMD` refers to any command (valid or invalid) that the user type in the command box, `XYZ` is a placeholder for the specific command name.
+
+![CommandHistorySequenceDiagram](images/CommandHistorySequenceDiagram.png)
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -323,15 +330,15 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to add a new contact
-2.  SociaLite adds the contact
+1.  User requests to add a new contact.
+2.  SociaLite adds the contact.
 
     Use case ends.
 
 *Extensions*
 
 * 1a. User's input does not conform with the specified format.
-    
+  
     * 1a1. SociaLite shows an error message.
       
         Use case resumes at step 1.
@@ -342,8 +349,8 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to list contacts
-2.  SociaLite shows a list of all contacts
+1.  User requests to list contacts.
+2.  SociaLite shows a list of all contacts.
 
     Use case ends.
 
@@ -376,9 +383,9 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
-2.  SociaLite returns a list of contacts according to the UC called
-3.  User requests to open the chosen contact's social media page
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**.
+2.  SociaLite returns a list of contacts according to the UC called.
+3.  User requests to open the chosen contact's social media page.
 
     Use case ends.
 
@@ -398,10 +405,10 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
-2.  SociaLite returns a list of contacts according to the UC called
-3.  User requests to edit the information (name, phone number, remark, tag, date, platform) of a specific contact in the list
-4.  SociaLite updates the contact with the specified input
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**.
+2.  SociaLite returns a list of contacts according to the UC called.
+3.  User requests to edit the information (name, phone number, remark, tag, date, platform) of a specific contact in the list.
+4.  SociaLite updates the contact with the specified input.
 
     Use case ends.
 
@@ -429,10 +436,10 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
-2.  SociaLite returns a list of contacts according to the UC called
-3.  User requests to delete a specific contact in the list
-4.  SociaLite deletes the contact
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**.
+2.  SociaLite returns a list of contacts according to the UC called.
+3.  User requests to delete a specific contact in the list.
+4.  SociaLite deletes the contact.
 
     Use case ends.
 
@@ -454,8 +461,8 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to clear all existing contacts 
-2.  SociaLite clears contact list data from storage
+1.  User requests to clear all existing contacts.
+2.  SociaLite clears contact list data from storage.
 
     Use case ends.
 
@@ -465,10 +472,10 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
-2.  SociaLite returns a list of contacts according to the UC called
-3.  User requests to add tags to a contact
-4.  SociaLite updates the contact with the specified input
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**.
+2.  SociaLite returns a list of contacts according to the UC called.
+3.  User requests to add tags to a contact.
+4.  SociaLite updates the contact with the specified input.
 
     Use case ends.
 
@@ -496,10 +503,10 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
-2.  SociaLite returns a list of contacts according to the UC called
-3.  User requests to delete all tags associated with a specific contact in the list
-4.  SociaLite deletes all tags
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**.
+2.  SociaLite returns a list of contacts according to the UC called.
+3.  User requests to delete all tags associated with a specific contact in the list.
+4.  SociaLite deletes all tags.
 
     Use case ends.
 
@@ -527,10 +534,10 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
-2.  SociaLite returns a list of contacts according to the UC called
-3.  User specifies the index of his desired contact, and the dates to be associated with the contact
-4.  SociaLite adds the specified dates to the user's contact entry
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**.
+2.  SociaLite returns a list of contacts according to the UC called.
+3.  User specifies the index of his desired contact, and the dates to be associated with the contact.
+4.  SociaLite adds the specified dates to the user's contact entry.
 
     Use case ends.
 
@@ -558,10 +565,10 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
-2.  SociaLite returns a list of contacts according to the UC called
-3.  User specifies the contact and picture to be used
-4.  SociaLite adds the chosen picture to the contact's entry
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**.
+2.  SociaLite returns a list of contacts according to the UC called.
+3.  User specifies the contact and picture to be used.
+4.  SociaLite adds the chosen picture to the contact's entry.
 
     Use case ends.
 
@@ -583,10 +590,10 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
-2.  SociaLite returns a list of contacts according to the UC called
-3.  User specifies the contact whose information is to be copied
-4.  SociaLite copies the information to the clipboard
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**.
+2.  SociaLite returns a list of contacts according to the UC called.
+3.  User specifies the contact whose information is to be copied.
+4.  SociaLite copies the information to the clipboard.
 
     Use case ends.
 
@@ -608,10 +615,10 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
-2.  SociaLite returns a list of contacts according to the UC called
-3.  User specifies contact to be pinned at the top of the list
-4.  SociaLite pins the contact at the top of the list
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**.
+2.  SociaLite returns a list of contacts according to the UC called.
+3.  User specifies contact to be pinned on the top of the list.
+4.  SociaLite pins the contact on the top of the list.
 
     Use case ends.
 
@@ -628,8 +635,9 @@ _Customization of Contacts_
       Use case resumes at step 2.
 
 * 3b. The specified contact is already pinned. 
-
-  Use case ends.
+    * 3b1. SociaLite shows an error message. 
+    
+      Use case ends.
 
 <br/>
 
@@ -637,10 +645,10 @@ _Customization of Contacts_
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
-2.  SociaLite returns a list of contacts according to the UC called
-3.  User specifies contact to be unpinned from the top of the list
-4.  SociaLite unpins the contact from the top of the list
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**.
+2.  SociaLite returns a list of contacts according to the UC called.
+3.  User specifies contact to be unpinned from the top of the list.
+4.  SociaLite unpins the contact from the top of the list.
 
     Use case ends.
 
@@ -657,19 +665,41 @@ _Customization of Contacts_
       Use case resumes at step 2.
 
 * 3b. The specified contact is not pinned. 
+    * 3b1. SociaLite shows an error message.
 
-  Use case ends.
+      Use case ends.
 
 <br/>
 
-**Use Case 15: Add remark for a specific contact**
+**Use Case 15: Navigate through command history**
 
 *MSS*
 
-1.  User requests to **list contacts (UC02)** or **find contact (UC03)**
-2.  SociaLite returns a list of contacts according to the UC called
-3.  User specifies a remark to be added to the specified contact's entry
-4.  SociaLite adds a remark to the specified contact's entry
+1. User requests to track previous command entered.
+2. SociaLite displays the command for user to edit.
+
+    Use case ends.
+
+*Extensions*
+
+* 2a. User requests to track another preceding command in the command history.
+
+     Use case resumes at step 2.
+
+* 2b. User requests to track the next command in command history.
+
+     Use case resumes at step 2.
+
+<br/>
+
+**Use Case 16: Add remark for a specific contact**
+
+*MSS*
+
+1.  User requests to **list contacts (UC02)** or **find contact (UC03)**.
+2.  SociaLite returns a list of contacts according to the UC called.
+3.  User specifies a remark to be added to the specified contact's entry.
+4.  SociaLite adds a remark to the specified contact's entry.
 
     Use case ends.
 
@@ -687,23 +717,23 @@ _Customization of Contacts_
 
 <br/>
 
-**Use Case 16: View User Guide**
+**Use Case 17: View User Guide**
 
 *MSS*
 
-1.  User requests to view User Guide
-2.  SociaLite displays a link to User Guide and instructions to obtain in-app guidance for valid commands
+1.  User requests to view User Guide.
+2.  SociaLite displays a link to User Guide and instructions to obtain in-app guidance for valid commands.
 
     Use case ends.
 
 <br/>
 
-**Use Case 17: View in-app guidance for selected commands**
+**Use Case 18: View in-app guidance for selected commands**
 
 *MSS*
 
-1.  User requests to view in-app guidance for valid commands
-2.  SociaLite returns an overview and quick guide of the command given as input
+1.  User requests to view in-app guidance for valid commands.
+2.  SociaLite returns an overview and quick guide of the command given as input.
 
     Use case ends.
 
@@ -711,23 +741,20 @@ _Customization of Contacts_
 
 * 1a. The keyword given as input is invalid.
 
-    * 1a1. SociaLite launches HelpWindow for **User Guide (UC16)** by default
+    * 1a1. SociaLite launches HelpWindow for **User Guide (UC16)** by default.
 
       Use case ends.
 
 <br/>
 
-**Use Case 18: Exit application**
+**Use Case 19: Exit application**
 
 *MSS*
 
-1.  User types in command to exit application
-2.  SociaLite closes
+1.  User types in command to exit application.
+2.  SociaLite closes.
 
     Use case ends.
-
-
-*{More to be added}*
 
 <br/>
 
@@ -741,8 +768,6 @@ _Customization of Contacts_
 4.  Should be intuitive enough for users of all technical backgrounds to operate.
 5.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 
-*{More to be added}*
-
 ### Glossary <a name="glossary"></a>
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
@@ -755,49 +780,230 @@ _Customization of Contacts_
 
 Given below are instructions to test the app manually.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing.
-
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The instructions and test cases under this section only provide the general aspects of the SociaLite app for testers to work on. If you happen to be a tester, please feel free to explore around using your own test cases!
 </div>
 
-### Launch and shutdown
+### Launching and exiting the app
 
-1. Initial launch
+Download the latest `jar` file from SociaLite [release page](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases), and copy it into an empty folder that you have access to read and write.
 
-   1. Download the jar file and copy into an empty folder
+1. Launching
+   
+   1. Double-click on the `jar` file icon in your OS' GUI
+   
+      Expected: the GUI for SociaLite app shows up with a set of sample contacts.
+   
+   2. Locate the directory using your terminal and enter `java -jar socialite.jar`.
+   
+      Expected: ditto.
+   
+2. Exiting
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+	While SociaLite is running:
 
-1. Saving window preferences
+	1. Click on the `X` button on the window (top-left for macOS, top-right for Windows).
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+		Expected: the Socialite app quits normally.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+	2. While SociaLite is running, type `exit` in the command box of the GUI and hit `Enter`.
 
-1. _{ more test cases …​ }_
+		Expected: ditto.
 
-### Deleting a person
 
-1. Deleting a person while all persons are being shown
+### Adding a contact
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+While SociaLite is running, try out the following test cases in sequence:
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+1. Enter `add n/aa p/12345678` in the command box.
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+	Expected: A new contact card with name "aa" and phone number "12345678" is created. This contact card will likely appear at the top, as SociaLite displays records in alphabetical order of contacts' names.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+2. Enter `add n/ab p/12345678` in the command box.
 
-1. _{ more test cases …​ }_
+	Expected: SociaLite shows error message "A contact with the same phone number already exists in the contact list!".
 
-### Saving data
+3. Enter `add n/aa` in the command box.
 
-1. Dealing with missing/corrupted data files
+	Expected: SociaLite shows error message, indicating invalid command format given. This is because name and phone fields are compulsory for the addition of contact.
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+4. Enter `add n/aa p/87654321` in the command box.
 
-1. _{ more test cases …​ }_
+	Expected: A new contact card with name "aa" and phone number "87654321" is created. SociaLite allows names to be repeated in the contact list as it uniquely identifies contacts through their phone number.
+
+5. Enter `add n/John Appleseed p/13572468 fb/john.appleseed twitter/morethanfifteenchars`.
+
+	Expected: SociaLite shows error message, indicating that the Twitter handle does not follow their naming convention.
+
+### Editing a contact
+
+Assuming you have performed all preceding test cases in order, you should have 10 contacts stored in SociaLite, with the contact card "aa" appearing at the top of the list.
+
+1. Enter `edit 1 n/abc` in the command box.
+
+    Expected: the first contact card's name changes to "abc". After this modification, this contact card might no longer be the first in the list due to alphabetical ordering
+
+2. Enter `edit 100 n/abc` in the command box.
+
+    Expected: SociaLite shows error message, indicating invalid person index provided.
+
+3. Enter `edit 2` in the command box.
+
+    Expected: SociaLite shows error message, indicating at least one field to edit must be provided.
+
+4. Enter `edit 1 fb/hello` in the command box.
+
+    Expected: the first contact card in SociaLite should now display a Facebook icon at the bottom, with the handle "hello".
+
+5. Enter `edit 1 t/tag1 t/tag2 t/tag3 t/tag4` followed by `edit 1 t/` in the command box.
+
+    Expected: the first contact card in SociaLite will be shown to have four tags, and all four tags will disappear upon entering the second command.
+
+### Deleting a contact
+
+Assuming there are 10 contacts stored in SociaLite:
+
+1. Enter `delete 1` in the command box.
+
+	Expected: the first contact card in SociaLite will be deleted. There will be 9 contacts left in SociaLite.
+
+2. Enter `delete 100` in the command box.
+
+	Expected: SociaLite shows error message, indicating invalid person index provided.
+
+3. Enter `delete 0` in the command box.
+
+	Expected: SociaLite shows error message, indicating index must be non-zero unsigned integer.
+
+### Finding a contact
+
+Assuming there is a contact called "Aaron Tan" in SociaLite:
+
+1. Enter `find aaron tan` in the command box.
+
+	Expected: only contact cards with the name "aaron tan" (case-insensitive) will show up in the list.
+
+2. Enter `find a t` in the command box.
+
+	Expected: all contacts whose name contain two or more words, with any of the word starting with "a" and another starting with "t" (e.g. Aaron Tan, Alice Teo, Tony Ang, Terry Au) will show up in the list.
+
+3. Enter `find at` in the command box.
+
+	Expected: the contact card "aaron tan" will **NOT** show up in the list.
+
+4. Enter `find p/telegram` in the command box.
+
+	Expected: all contact cards with Telegram handles will show up in the contact list.
+
+5. Enter `find p/instagram p/tiktok` in the command box.
+
+	Expected: all contact cards with both Instagram and TikTok handles will show up in the contact list.
+
+6. Enter `find p/linkedin` in the command box.
+
+	Expected: SociaLite shows error message, indicating invalid platform specified.
+
+7. Enter `find t/tag1` in the command box.
+
+	Expected: all contact cards with "tag1" will show up, which includes the first contact from the earlier test case.
+
+8. Enter `find t/` in the command box.
+
+	Expected: Socialite shows error message, indicating tags to search for must not be empty.
+
+### Accessing social media page
+
+To test out this feature, you can choose to add your own contact information to SociaLite with your own social media handle. For example, you can enter `add n/<your name> p/<your phone number> ig/<your instagram handle>`.
+
+1. Hover your cursor over your Instagram handle in SociaLite.
+
+	Expected: the handle will turn underlined and the cursor will turn into a hand.
+
+2. Click your mouse when it is hovering over a certain handle.
+
+	Expected: SociaLite will open your default web browser and launch your chosen social media page (e.g. your own Instagram profile).
+
+### Adding a profile picture to a contact
+
+Assuming there are 10 contacts stored in SociaLite:
+
+1. Enter `picture 1` in the command box.
+
+  Expected: a file chooser will show up for you to select your profile picture.
+
+  1. Click on `cancel` button or press `Esc` button in your OS.
+
+  	Expected: you will be redirected to the SociaLite app, with error message indicating command aborted.
+
+  2. Locate a `.jpg` or `.png` file of your liking and select it in the file chooser.
+
+  	Expected: the first contact card's profile picture will update to be the file that you have chosen.
+
+2. Enter `picture 100` in the command box.
+
+	Expected: SociaLite shows error message, indicating invalid person index provided.
+
+### Pinning/Unpinning a contact
+
+Assuming there are 10 contacts stored in SociaLite and none of them are pinned, try out the following test cases in sequence:
+
+1. Enter `pin 3` in the command box.
+
+    Expected: the third contact card in the list will be brought forward to the top of the list. The button "Pin" will change colour and its text will become "Unpin".
+
+2. Enter `unpin 1` in the command box.
+
+    Expected: the first contact card in the list (previously the third in the list) will be removed from the top of the list and return to its original position (i.e. in alphabetical order of names). The button "Unpin" will return to its original colour and its text will display "Pin".
+
+4. Enter `unpin 1` one more time in the command box.
+
+    Expected: SociaLite shows error message, indicating that the person is not pinned yet.
+
+5. Enter `pin 2` followed by `pin 1` in the command box.
+
+    Expected: Socialite shows error message, indicating that the person has already been pinned.
+
+6. Enter `pin 100` in the command box.
+
+    Expected: SociaLite shows error message, indicating invalid person index provided.
+
+7. Navigate to the sixth contact card in the GUI and click on the "Pin" button with your mouse.
+
+    Expected: The sixth contact card in the list will be pinned to the top of the list. The button "Pin" will change colour and its text will become "Unpin".
+
+8. Click on the "Unpin" button of the first contact card in the list with your mouse.
+
+    Expected: same as test case number 2. The chosen contact card will be unpinned and return to its original position in the list (i.e. in alphabetical order of names). The button "Unpin" will return to its original colour and its text will display "Pin".
+
+### Sharing a contact
+
+Assuming there are 10 contacts stored in SociaLite:
+
+1. Enter `share 1` in the command box.
+
+	Expected: SociaLite shows that the contact information has been copied to the clipboard. You may also try to paste it to text editor or Word document to verify the information.
+
+2. Navigate to the fifth contact card in the GUI and click on the "Share" button with your mouse.
+
+	Expected: Socialite shows that the contact information of the fifth contact has been copied to the system clipboard. The "Share" button will change its text to "Copied!" for two seconds, before reverting to "Share".
+
+3. Enter `share 100` in the command box.
+
+	Expected: SociaLite shows error message, indicating invalid person index provided.
+
+
+### Dealing with data
+
+You can find the data files for SociaLite in the `data/` directory. You may wish to try out the following test cases in parallel:
+
+1. Before launching SociaLite, delete `contactlist.json`.
+
+	Expected: Socialite will start with a set of sample contacts. Upon closing, a new `contactlist.json` file is created with the sample contacts.
+
+2. With SociaLite running, delete `contactlist.json`.
+
+	Expected: SociaLite functions as per normal. Upon closing, the correct `.json` file will be created by SociaLite under the same directory.
+
+3. Before launching SociaLite, open `contactlist.json` and type in some random characters to make it an invalid `.json` file.
+
+	Expected: SociaLite will start with an empty contact list. SociaLite still functions as per normal.  Upon closing, a new `contactlist.json` file is created with the sample contacts. If you are using terminal to open the `jar` file, you will see a log message indicating that SociaLite will start with an empty contact list.
+
