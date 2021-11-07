@@ -43,7 +43,7 @@ public class PersonCard extends UiPart<Region> {
      * As a consequence, UI elements' variable names cannot be set to such keywords
      * or an exception will be thrown by JavaFX during runtime.
      *
-     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on ContactList level 4</a>
+     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
 
     public final Person person;
@@ -146,6 +146,10 @@ public class PersonCard extends UiPart<Region> {
             pinButton.setText("Pin");
             pinButton.getStyleClass().remove("pinButton");
         }
+
+        // Permits wrapping of tags/dates, when used in combination with `-fx-max-width`.
+        tags.setMinWidth(Region.USE_PREF_SIZE);
+        dates.setMinWidth(Region.USE_PREF_SIZE);
 
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
@@ -250,15 +254,29 @@ public class PersonCard extends UiPart<Region> {
                     long upcomingDays = date.getUpcomingDays(LocalDate.now());
                     boolean isUpcoming = upcomingDays >= 0 && upcomingDays <= 7;
                     String upcomingMessage = isUpcoming
-                            ? " (" + (upcomingDays == 0 ? "today" : "in " + upcomingDays + " days") + ")"
+                            ? " ("
+                                + (upcomingDays == 0
+                                    ? "today"
+                                    : upcomingDays == 1
+                                        ? "in 1 day"
+                                        : "in " + upcomingDays + " days") + ")"
                             : "";
 
-                    String message = date.toString() + upcomingMessage;
-                    Label label = new Label(message);
+                    HBox hbox = new HBox();
+                    hbox.getStyleClass().add("hbox");
                     if (isUpcoming) {
-                        label.idProperty().set("upcoming");
+                        hbox.getStyleClass().add("upcoming");
                     }
-                    dates.getChildren().add(label);
+
+                    String message = date + upcomingMessage;
+                    String[] parts = message.split(": ");
+                    Label name = new Label(parts[0]);
+                    name.getStyleClass().add("name");
+                    Label details = new Label(": " + parts[1]);
+
+                    hbox.getChildren().add(name);
+                    hbox.getChildren().add(details);
+                    dates.getChildren().add(hbox);
                 });
     }
 

@@ -26,6 +26,8 @@ public class DateTest {
         assertFalse(Date.isValidDate("date:2021-02-02:hourly")); // invalid recurrence interval
         assertFalse(Date.isValidDate("date:2021-02-29")); // non-existent date
         assertFalse(Date.isValidDate("date:2020-03-32")); // non-existent date
+        // name over 50 characters long
+        assertFalse(Date.isValidDate("date ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ:2021-02-02:yearly"));
 
         // valid dates
         assertTrue(Date.isValidDate("date:2020-02-02"));
