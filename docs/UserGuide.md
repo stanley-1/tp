@@ -294,6 +294,12 @@ Scroll through your history of commands using the `↑` or `↓` arrow keys.
 </div>
 
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ### Edit a person : `edit INDEX ...` <a name="edit"></a>
 
