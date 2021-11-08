@@ -186,6 +186,43 @@ Simply click on any command below to learn more about it!
 | [`exit`](#exit) | Exit the program |
 
 
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ### Add a person: `add n/NAME p/PHONE_NUMBER ...` <a name="add"></a>
 
 Adds a person to SociaLite.
