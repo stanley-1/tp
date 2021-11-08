@@ -36,6 +36,8 @@ This section answers frequently asked questions about SociaLite.
 This section contains a glossary of all the commands and quick examples for reference.
 </div>
 
+<br>
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick Start <a name="quick_start"></a>
