@@ -365,6 +365,12 @@ Creates tags called `friend` and `neighbour` for the second person on the displa
 </div>
 
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ### Delete tags associated with contacts: `edit INDEX t/` <a name="delete_tag"></a>
 
