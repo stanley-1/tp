@@ -102,7 +102,6 @@ This section contains a glossary of all the commands and quick examples for refe
 <br>
 <br>
 <br>
-<br>
 
 ## Standard Notations <a name="standard_notations"></a> 
 
