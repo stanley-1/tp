@@ -761,7 +761,7 @@ Provided the first 2 contact cards are the pinned contact cards, the above comma
 **:heavy_check_mark: Example:** Clicking on the "Unpin" button of Bernice Yu's name unpins her contact card if it was previously pinned.
 
 <p align="center">
-    <img src="images/UG/18_unpin.png", alt="18_unpin">
+    <img src="images/UG/18_unpin.png" alt="18_unpin">
 </p>
 </div>
 
