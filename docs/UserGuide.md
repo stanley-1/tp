@@ -98,6 +98,11 @@ This section contains a glossary of all the commands and quick examples for refe
 
 </div>
 
+<br>
+<br>
+<br>
+<br>
+
 As you explore the features that SociaLite has to offer, look out for these boxes:
 
 The blue boxes tell you the acceptable fields that you can provide for a particular command:
