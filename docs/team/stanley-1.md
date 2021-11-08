@@ -41,8 +41,7 @@ A summary of my contributions to the project is detailed below.
   * Highlights:
     * Adhered to teammate's (Xiaozhi's) pre-designed framework for storing social media handles when enhancing support for Facebook and Instagram handles.
     * Refined regex of Facebook, Instagram and Telegram handles to meet stricter requirements imposed by social media platforms. [\#145](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/145)
-
-<br>
+    
 
 * **Code contributed**: [RepoSense link](https://tinyurl.com/f11-4-stanley)
 
@@ -75,9 +74,10 @@ A summary of my contributions to the project is detailed below.
     * Added implementation details on Help Command and accompanying UML Sequence Diagram. [\#139](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/139), [\#155](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/155)
     * Updated details on Architecture of SociaLite. [\#155](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/155)
     
+<br>
 
 * **Community**:
-  * Reviewed 40 PRs in total. Selection of PRs with non-trivial review comments: [\#52](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/52), [\#57](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/57), [\#77](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/77), [\#129](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/129), [\#158](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/158), [\#162](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/162)
+  * Reviewed 50 PRs in total. Selection of PRs with non-trivial review comments: [\#52](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/52), [\#57](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/57), [\#77](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/77), [\#129](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/129), [\#158](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/158), [\#162](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/162), [\#171](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/171)
   * Reported 14 bugs and suggestions for peers in PE-Dry Run
     * [Unable to change password](https://github.com/AY2122S1-CS2103T-W13-2/tp/issues/186)
     * [HelpWindow does not show User Guide on subsequent attempts](https://github.com/AY2122S1-CS2103T-W13-2/tp/issues/138)
