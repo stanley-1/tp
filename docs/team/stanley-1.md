@@ -41,8 +41,9 @@ A summary of my contributions to the project is detailed below.
     * Users can conveniently add and access a contact's Facebook and Instagram pages as SociaLite supports these two commonly used platforms.
   * Highlights:
     * Adhered to teammate's (Xiaozhi's) pre-designed framework for storing social media handles when enhancing support for Facebook and Instagram handles.
-    * Refined regex of Facebook, Instagram and Telegram handles to meet stricter requirements imposed by social media platforms. [\#145](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/145) <br>
-    
+    * Refined regex of Facebook, Instagram and Telegram handles to meet stricter requirements imposed by social media platforms. [\#145](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/145)
+
+<br>
 
 * **Code contributed**: [RepoSense link](https://tinyurl.com/f11-4-stanley)
 
@@ -53,6 +54,7 @@ A summary of my contributions to the project is detailed below.
   * Reviewed and suggested non-trivial improvements to documentation submissions by all members.
   * Refactored components of the codebase for clarity. [\#154](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/154)
   
+<br>
 
 * **Documentation**:
   * User Guide:
@@ -66,7 +68,7 @@ A summary of my contributions to the project is detailed below.
       * Added Navigation Menu and consolidated Table of Commands (both with hyperlinks for users to access their desired section/feature efficiently).
       * Revamped layout and organization of all features - related commands are now found in the same section of the UG.
       * Re-designed how format and examples are presented to readers for all features through standardized notations.
-      * Included screenshots for relevant examples.
+      * Included screenshots for relevant examples. [\#160](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/160)
       * Updated FAQ section.
   * Developer Guide:
     * Aided in conceptualization of Product Scope, including the definition of our target user profile and value proposition.
