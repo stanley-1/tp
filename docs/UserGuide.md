@@ -612,7 +612,7 @@ Returns all contacts who have BOTH a Facebook and Instagram handle pegged with t
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `find p/telegram` 
 
-Returns all contacts who have an Telegram handle pegged with them.
+Returns all contacts who have a Telegram handle pegged with them.
 </div>
 
 <br>
