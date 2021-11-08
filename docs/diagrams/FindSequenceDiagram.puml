@@ -14,7 +14,7 @@ participant "p:ContainsKeywordsPredicate" as ContainsKeywordsPredicate MODEL_COL
 participant ":Model" as Model MODEL_COLOR
 end box
 
-[-> LogicManager : execute(find KEYWORD)
+[-> LogicManager : execute(find KEYWORDS)
 activate LogicManager
 
 LogicManager -> SocialiteParser : parseCommand(find KEYWORDS)
@@ -35,12 +35,14 @@ ContainsKeywordsPredicate --> FindCommand : p
 deactivate ContainsKeywordsPredicate
 
 FindCommand --> FindCommandParser : f
+destroy ContainsKeywordsPredicate
 deactivate FindCommand
 
 FindCommandParser --> SocialiteParser:f
 deactivate FindCommandParser
 
 SocialiteParser --> LogicManager:f
+deactivate SocialiteParser
 destroy FindCommandParser
 
 
@@ -59,6 +61,5 @@ FindCommand --> LogicManager : commandResult
 [<--LogicManager
 deactivate LogicManager
 destroy FindCommand
-destroy ContainsKeywordsPredicate
 
 @enduml
