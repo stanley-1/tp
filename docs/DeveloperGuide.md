@@ -31,7 +31,7 @@ title: Developer Guide
 ## **Acknowledgements** <a name="acknowledgements"></a>
 
 * SociaLite is adapted from SE-Education's [*AddressBook Level-3*](https://se-education.org/addressbook-level3/DeveloperGuide.html).
-* GUI tests are adapted from [`src/test/java/guitests/`](https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/guitests) of SE-Education's [*AddressBook Level-4](https://se-education.org/addressbook-level4/).
+* GUI tests are adapted from [`src/test/java/guitests/`](https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/guitests) of SE-Education's [*AddressBook Level-4*](https://se-education.org/addressbook-level4/).
 
 --------------------------------------------------------------------------------------------------------------------
 
