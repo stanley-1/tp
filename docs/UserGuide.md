@@ -634,10 +634,14 @@ Adds a profile picture to an existing contact or changes the existing profile pi
 **:heavy_check_mark: Example:** `list` followed by `picture 2` 
 
 Opens the file browser to let you choose a picture to add to Annie Wan’s listing in the app.
-![15_pic_window](images/UG/15_pic_window.png)
+<p align="center">
+    <img src="images/UG/15_pic_window.png" alt="15_pic_window">
+</p>
 
 Updates Annie Wan's profile picture in SociaLite.
-![15_pic_ui](images/UG/15_pic_ui.png)
+<p align="center">
+    <img src="images/UG/15_pic_ui.png" alt="15_pic_ui">
+</p>
 </div>
 
 <div markdown="block" class="alert alert-success">
