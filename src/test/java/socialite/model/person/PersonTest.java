@@ -63,31 +63,6 @@ public class PersonTest {
         Assertions.assertTrue(TypicalPersons.BOB.isSamePerson(editedBob));
     }
 
-    @Test
-    public void testHashCode() {
-        // same person details -> same hash code
-        Person aliceCopy = new PersonBuilder(TypicalPersons.ALICE).build();
-        Assertions.assertEquals(TypicalPersons.ALICE.hashCode(), aliceCopy.hashCode());
-
-        // same person -> different hash code
-        Assertions.assertEquals(TypicalPersons.ALICE.hashCode(), TypicalPersons.ALICE.hashCode());
-
-        // different person -> different hash code
-        Assertions.assertNotEquals(TypicalPersons.ALICE.hashCode(), TypicalPersons.BOB.hashCode());
-
-        // different name -> different hash code
-        Person editedAlice = new PersonBuilder(TypicalPersons.ALICE).withName(VALID_NAME_BOB).build();
-        Assertions.assertNotEquals(TypicalPersons.ALICE.hashCode(), editedAlice.hashCode());
-
-        // different phone -> different hash code
-        editedAlice = new PersonBuilder(TypicalPersons.ALICE).withPhone(VALID_PHONE_BOB).build();
-        Assertions.assertNotEquals(TypicalPersons.ALICE.hashCode(), editedAlice.hashCode());
-
-        // different tags -> different hash code
-        editedAlice = new PersonBuilder(TypicalPersons.ALICE).withTags(VALID_TAG_HUSBAND).build();
-        Assertions.assertNotEquals(TypicalPersons.ALICE.hashCode(), editedAlice.hashCode());
-    }
-
 
     @Test
     public void testSharingString() {
