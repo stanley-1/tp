@@ -2,7 +2,6 @@
 layout: page
 title: Stanley Tan's Project Portfolio Page
 ---
-
 ### Project: SociaLite
 
 **SociaLite** is a desktop app for **connecting avid social media users with their contacts’ social media pages**, optimized for use via a command line interface (CLI).
@@ -17,12 +16,12 @@ A summary of my contributions to the project is detailed below.
 * **Altered Feature**: Redefined criteria for duplicate persons to be detected. [\#68](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/68)
   * What it does:
     * SociaLite detects duplicate entries by comparing contacts' phone number instead of name.
-    * Users can add contacts who coincidentally have the same names, without a DuplicatePersonException being thrown.
+    * Users can now add contacts who might have the same names.
   * Justification:
     * There can be instances where users meet acquaintances who coincidentally share the same name but are separate persons altogether.
     * Hence, the phone number (which is a compulsory field in SociaLite) is now used as a determinant for duplicate persons as no two persons have the same phone number.
   * Highlights:
-    * This alteration addresses the inconvenience that users might have in adding contacts with similar names.
+    * Addresses the inconvenience that users might have in adding contacts with similar names.
     
 
 * **Revamped Feature**: Enhanced ability for users to obtain help or in-app guidance. [\#50](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/50), [\#127](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/127)
@@ -36,7 +35,7 @@ A summary of my contributions to the project is detailed below.
 
 * **New Feature**: Added support for Facebook and Instagram social media handles. [\#36](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/36), [\#37](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/37)
   * What it does: 
-    * Allows users to add Facebook and Instagram social media handles that conform to the prescribed regex, for a contact.
+    * Allows users to add Facebook & Instagram handles that conform with prescribed regex, for a contact.
   * Justification:
     * Users can conveniently add and access a contact's Facebook and Instagram pages as SociaLite supports these two commonly used platforms.
   * Highlights:
