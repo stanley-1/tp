@@ -54,7 +54,7 @@ public class MainApp extends Application {
 
     @Override
     public void init() throws Exception {
-        logger.info("=============================[ Initializing ContactList ]===========================");
+        logger.info("=============================[ Initializing SociaLite ]===========================");
         super.init();
 
         AppParameters appParameters = AppParameters.parse(getParameters());
@@ -195,7 +195,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        logger.info("Starting ContactList " + MainApp.VERSION);
+        logger.info("Starting SociaLite " + MainApp.VERSION);
         ui.start(primaryStage);
     }
 
