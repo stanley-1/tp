@@ -52,6 +52,7 @@ deactivate CommandHistoryStorage
 
 
 Storage --> LogicManager
+deactivate Storage
 
 [<--LogicManager
 deactivate LogicManager
