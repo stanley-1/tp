@@ -49,6 +49,8 @@ Refer to the guide [_Setting Up and Getting Started_](SettingUp.md).
 :bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2122S1-CS2103T-F11-4/tp/tree/master/docs/diagrams) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
 </div>
 
+<div style="page-break-after: always;"></div>
+
 ### Architecture <a name="architecture"></a>
 
 <img src="images/ArchitectureDiagram.png" width="280" />
