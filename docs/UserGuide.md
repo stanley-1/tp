@@ -102,6 +102,7 @@ This section contains a glossary of all the commands and quick examples for refe
 <br>
 <br>
 <br>
+<br>
 
 ## Standard Notations <a name="standard_notations"></a> 
 
@@ -142,7 +143,6 @@ The blue boxes tell you the acceptable fields that you can provide for a particu
 `add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
 * Detail 1
 * Detail 2
-* Detail 3
 </div>
 
 If you still aren't sure of how a particular command works, the green boxes provide you with examples that you can try out:
