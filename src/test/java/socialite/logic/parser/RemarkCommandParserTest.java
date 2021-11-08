@@ -1,6 +1,7 @@
 package socialite.logic.parser;
 
 import static socialite.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static socialite.commons.core.Messages.MESSAGE_REMARK_EXCEED_LIMIT;
 import static socialite.logic.parser.CliSyntax.PREFIX_REMARK;
 import static socialite.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static socialite.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -39,5 +40,15 @@ public class RemarkCommandParserTest {
 
         // no index
         assertParseFailure(parser, RemarkCommand.COMMAND_WORD + " " + nonEmptyRemark, expectedMessage);
+    }
+
+    @Test
+    public void parse_longCommand_throwsCommandException() {
+        String longRemark = "1234567890123456789012345678901234567890123456789012345678901234567890"
+                + "1234567890123456789012345678901234567890123456789012345678901234567890"
+                + "1234567890123456789012345678901234567890123456789012345678901234567890";
+        assertParseFailure(parser,
+                INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_REMARK + longRemark,
+                MESSAGE_REMARK_EXCEED_LIMIT);
     }
 }
