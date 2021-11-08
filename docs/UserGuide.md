@@ -647,6 +647,22 @@ Opens the file browser to let you change the profile picture for Alex Yeoh’s l
 </div>
 
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ### Share a contact card: `share INDEX` <a name="share"></a>
 
