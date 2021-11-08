@@ -30,7 +30,6 @@ title: Developer Guide
 
 ## **Acknowledgements** <a name="acknowledgements"></a>
 
-
 * SociaLite is adapted from SE-Education's [*AddressBook Level-3*](https://se-education.org/addressbook-level3/DeveloperGuide.html).
 * GUI tests are adapted from [`src/test/java/guitests/`](https://github.com/se-edu/addressbook-level4/tree/master/src/test/java/guitests) of SE-Education's [*AddressBook Level-4](https://se-education.org/addressbook-level4/).
 
@@ -115,7 +114,7 @@ The `PersonCard` part also has a reference to the `MainWindow` to provide improv
 
 Here's a (partial) class diagram of the `Logic` component:
 
-<img src="images/LogicClassDiagram.png" width="550"/>
+![Logic Class Diagram](images/LogicClassDiagram.png)
 
 How the `Logic` component works:
 1. When `Logic` is called upon to execute a command, it uses the `SocialiteParser` class to parse the user command.
@@ -132,7 +131,7 @@ The Sequence Diagram below illustrates the interactions within the `Logic` compo
 
 Here are the other classes in `Logic` (omitted from the class diagram above) that are used for parsing a user command:
 
-<img src="images/ParserClasses.png" width="600"/>
+![Parser Class Diagram](images/ParserClasses.png)
 
 How the parsing works:
 * When called upon to parse a user command, the `SocialiteParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `SocialiteParser` returns back as a `Command` object.
@@ -198,7 +197,20 @@ The HelpWindow dialog box provides users with the link to our User Guide and the
 
 
 ### Find Command <a name="find_command"></a>
+The Find command allows users to find a contact in their list by keywords.
+A contact's name, tags and/or social media platforms can be specified as keywords. 
 
+Command takes inputs of the form `find KEYWORDS`, where `KEYWORDS` can include multiple spaced user inputs,
+prefixed with `t/` for tags, `p/` for social media platforms or no prefix for names.
+
+Find Command will update the person list under Model package, based on which contacts match the keywords,
+and return a CommandResult which tells how many contacts matched in the search.
+
+Should `KEYWORDS` be improperly formatted or empty, a generic CommandResult with an error message will be given and Model will not be updated.
+
+Below is the sequence diagram for an execution of `find KEYWORDS`, assuming `KEYWORDS` are a valid query string
+
+![FindSequenceDiagram](images/FindSequenceDiagram.png)
 
 ### Picture Command <a name="picture_command"></a>
 

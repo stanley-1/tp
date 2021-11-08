@@ -35,9 +35,9 @@ platforms are handled.
 **Documentation:**
 
 User Guide:
-- Added Use Cases and functionality for find command
+- Added Use Cases and functionality for Find Command
 
 Developer Guide:
-- Added UML Diagram for Find Command
-- Added acknowledgement for test classes from AB4, which was used in the user guide 
+- Added UML Diagram for Find Command and basic structure + functionality information
+- Updated Logic UML Diagrams
 

@@ -65,5 +65,4 @@ Storage ----|> CommandHistoryStorage
 Storage ----|> ProfilePictureStorage
 
 
-
 @enduml
