@@ -905,7 +905,7 @@ Exits the program.
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous SociaLite home folder.
 
 **Q**: Can I edit my data?<br>
-**A**: SociaLite data are saved as a JSON file `<JAR file location>/data/SociaLite.json`. Advanced users are welcome to update data directly by editing that data file.
+**A**: SociaLite data are saved as a JSON file `<JAR file location>/data/contactlist.json`. Advanced users are welcome to update data directly by editing that data file.
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
 If your changes to the data file makes its format invalid, SociaLite will discard all data and start with an empty data file at the next run.
 </div>
