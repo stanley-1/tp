@@ -732,6 +732,7 @@ SociaLite, at the top of the person list along with other pinned contacts.
 <br>
 <br>
 <br>
+<br>
 
 ### Unpin a contact card: `unpin INDEX` <a name="unpin"></a>
 
