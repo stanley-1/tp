@@ -571,12 +571,6 @@ Checks for contacts which the user categorized as “family”.
 </div>
 
 <div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `find t/neighbour` 
-
-Checks for contacts which the user categorized as “neighbour”.
-</div>
-
-<div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `find t/classmate` 
 
 Checks for contacts which the user categorized as “classmate” OR "classmates" etc.
@@ -619,12 +613,6 @@ Returns all contacts who have BOTH a Facebook and Instagram handle pegged with t
 **:heavy_check_mark: Example:** `find p/telegram` 
 
 Returns all contacts who have an Telegram handle pegged with them.
-</div>
-
-<div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `find p/twitter` 
-
-Returns all contacts who have a Twitter handle pegged with them.
 </div>
 
 <br>
