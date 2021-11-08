@@ -371,6 +371,7 @@ Creates tags called `friend` and `neighbour` for the second person on the displa
 <br>
 <br>
 <br>
+<br>
 
 ### Delete tags associated with contacts: `edit INDEX t/` <a name="delete_tag"></a>
 
@@ -391,6 +392,17 @@ Deletes all tags associated with the 2nd person on the displayed person list.
 ![07_delete_tags](images/UG/07_delete_tags.png)
 </div>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 
 ### Add / Edit social media handles for existing contacts: `edit INDEX [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]` <a name="edit_platform"></a>
