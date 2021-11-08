@@ -705,6 +705,8 @@ SociaLite, at the top of the person list along with other pinned contacts.
 ![17_pin](images/UG/17_pin.png)
 </div>
 
+<br>
+
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** Clicking on the "Pin" button of Annie Wan's name card affixes her contact card onto the top of the person list.
 
@@ -758,7 +760,9 @@ Provided the first 2 contact cards are the pinned contact cards, the above comma
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** Clicking on the "Unpin" button of Bernice Yu's name unpins her contact card if it was previously pinned.
 
-![18_unpin](images/UG/18_unpin.png)
+<p align="center">
+    <img src="images/UG/18_unpin.png", alt="18_unpin">
+</p>
 </div>
 
 <br>
