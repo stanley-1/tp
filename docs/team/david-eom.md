@@ -64,7 +64,7 @@ Given below are my contributions to the project.
   * Team leader of the SociaLite team, facilitated discussions during weekly team meetings and oversaw the entire project. 
   * Created GitHub organization and set up team project repository.
   * Managed all four milestones ([`v1.1`](https://github.com/AY2122S1-CS2103T-F11-4/tp/milestone/1), [`v1.2`](https://github.com/AY2122S1-CS2103T-F11-4/tp/milestone/1), [`v1.3`](https://github.com/AY2122S1-CS2103T-F11-4/tp/milestone/3), [`v1.4`](https://github.com/AY2122S1-CS2103T-F11-4/tp/milestone/4)) on GitHub and assigned issues to respective team members.
-  * Managed three releases ([`v1.3`](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases/tag/v1.3), [`v1.3.1`](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases/tag/v1.3.1), [`v1.3.2`](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases/tag/v1.3.2)) on GitHub.
+  * Managed four releases ([`v1.3`](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases/tag/v1.3), [`v1.3.1`](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases/tag/v1.3.1), [`v1.3.2`](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases/tag/v1.3.2), [`v1.4`](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases/tag/v1.4)) on GitHub.
 
 * **Enhancements to existing features**:
   * Wrote additional tests for existing features to increase coverage from 61% to 63% (PR [\#80](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/80), [\#177](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/177)).
