@@ -826,7 +826,7 @@ Shows a message explaining how to access the User Guide or obtain in-app guidanc
 ![20_help](images/UG/20_help.png)
 </div>
 
-<br>
+
 
 ### View in-app guidance: `help COMMAND` <a name="help_command"></a>
 
