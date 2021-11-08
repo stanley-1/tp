@@ -851,7 +851,7 @@ Displays a concise guide on how to use the `add` command.
 Displays a concise guide on how to use the `edit` command.
 </div>
 
-<br>
+
 
 ### Exit the program : `exit` <a name="exit"></a>
 
@@ -865,6 +865,39 @@ Exits the program.
 <br>
 
 --------------------------------------------------------------------------------------------------------------------
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## FAQ <a name="faq"></a>
 
