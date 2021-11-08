@@ -222,6 +222,7 @@ Simply click on any command below to learn more about it!
 <br>
 <br>
 <br>
+<br>
 
 ### Add a person: `add n/NAME p/PHONE_NUMBER ...` <a name="add"></a>
 
