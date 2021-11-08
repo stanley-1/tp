@@ -61,6 +61,8 @@ public class RemarkCommand extends Command {
                 personToEdit.getTags(), personToEdit.getFacebook(), personToEdit.getInstagram(),
                 personToEdit.getTelegram(), personToEdit.getTiktok(), personToEdit.getTwitter(),
                 personToEdit.getDates());
+        editedPerson.setProfilePicture(personToEdit.getProfilePicture().value);
+        editedPerson.setPinned(personToEdit.getPinnedStatus());
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);

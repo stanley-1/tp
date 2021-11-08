@@ -184,7 +184,8 @@ public class Person {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, remark, tags, facebook, instagram, telegram, tiktok, twitter, dates);
+        return Objects.hash(name, phone, remark, tags, facebook, instagram, telegram, tiktok, twitter, dates,
+                profilePicture, isPinned);
     }
 
     /**
@@ -274,6 +275,7 @@ public class Person {
                 this.name, this.phone, this.remark, this.tags, this.facebook, this.instagram, this.telegram,
                 this.tiktok, this.twitter, this.dates);
         copy.setProfilePicture(this.profilePicture.value);
+        copy.setPinned(this.isPinned);
         return copy;
     }
 }
