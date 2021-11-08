@@ -263,6 +263,7 @@ Modifies tags that are associated with existing contacts stored on SociaLite.
 `edit INDEX [t/TAG]...`
 * Adds new tags to persons who did not have tags associated with them when they were first added to SociaLite.
 * Deletes all existing tags for the person at the specified `INDEX` and replaces them with tags specified in `[t/TAG]...`
+* Each tag can only be up to 50 characters long.
 * The index refers to the index number shown on the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 </div>
@@ -346,6 +347,7 @@ Adds / Edits dates of occasions (birthdays, appointments) associated with a cont
 * The index refers to the index number shown on the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * Dates can have a name to associate them with a specific event (eg. Birthday, Meetup, Anniversary).
+* The name associated with the event can only be up to 50 characters long.
 * Date must be presented in `YYYY-MM-DD` format.
 * Dates can be recurring, either monthly or yearly, by adding `:monthly` or `:yearly` behind the date.
 * Each call of `edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​` will replace all previous dates.
