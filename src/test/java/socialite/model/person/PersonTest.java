@@ -62,7 +62,7 @@ public class PersonTest {
         editedBob = new PersonBuilder(TypicalPersons.BOB).withName(nameWithTrailingSpaces).build();
         Assertions.assertTrue(TypicalPersons.BOB.isSamePerson(editedBob));
     }
-    
+
 
     @Test
     public void testSharingString() {
