@@ -693,6 +693,7 @@ Copies the information of the second contact in the list displayed by SociaLite.
 
 <br>
 <br>
+<br>
 
 ### Pin a contact card: `pin INDEX` <a name="pin"></a>
 
@@ -723,6 +724,24 @@ SociaLite, at the top of the person list along with other pinned contacts.
 ![17_pin_2](images/UG/17_pin_2.png)
 </div>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 
 ### Unpin a contact card: `unpin INDEX` <a name="unpin"></a>
