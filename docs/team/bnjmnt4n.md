@@ -12,7 +12,7 @@ Below are some of my contributions to the project:
 * **New Feature**: Added the ability to add dates to each contact ([\#58](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/58), [\#76](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/76))
     * What it does: Allows the user to add dates associated with each contact, such as birthdays, anniversaries, meetings and other miscellaneous events. Dates can be just for a single event, or recurring monthly or yearly. Upcoming dates (occurring within the next 7 days) are also highlighted in the GUI.
     * Justification: This feature improves the product significantly as it allows users to be able to keep track of important interactions with users, meeting our aim of encouraging more personalized connections in today's social media age.
-    * Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
+    * Highlights: This change touched a large portion of the codebase, including updates to the models, storage and the GUI.
 
 * **Altered Feature**: Removed unused fields from each contact ([\#38](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/38))
     * What it does: SociaLite no longer stores the email and address fields for each contact.
