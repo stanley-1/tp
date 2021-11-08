@@ -663,6 +663,8 @@ Opens the file browser to let you change the profile picture for Alex Yeoh’s l
 <br>
 <br>
 <br>
+<br>
+<br>
 
 ### Share a contact card: `share INDEX` <a name="share"></a>
 
@@ -689,6 +691,7 @@ Copies the information of the second contact in the list displayed by SociaLite.
 **:heavy_check_mark: Example:** Clicking on the "Share" button of Annie Wan's name card copies her contact information.
 </div>
 
+<br>
 <br>
 
 ### Pin a contact card: `pin INDEX` <a name="pin"></a>
