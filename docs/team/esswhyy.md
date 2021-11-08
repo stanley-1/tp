@@ -1,17 +1,23 @@
-##Swen's Project Portfolio Page
-#Project: SociaLite
+---
+layout: page
+title: Tang Swen Yi's Project Portfolio Page
+---
+
+###Project: SociaLite
 
 SociaLite is a desktop app designed to better connect social media users with their contacts. 
 It is a Java based Command Line Interface (CLI) program with added JavaFX UI.
 
-###Summary of my contributions:
+Below is a summary of my contributions:
 
 **New Features**
 - Added the ability to add short Remarks to each contact, with a 150-character limit
+
 Impact: Allows users to better identify their contacts when storing them.
 
 - Added the ability to find contacts via names, tags and/or social platforms.
-  Impact: Allows the user to effectively and efficiently manage a large network of contacts.
+  
+Impact: Allows the user to effectively and efficiently manage a large network of contacts.
 
 Most of my feature contributions were for the Find Command, this is because there are many sub-functionalities for Find,
 for example, needing to properly implement partial matching for names and tags, and ensuring improper social media 
@@ -29,7 +35,9 @@ platforms are handled.
 
 **Miscellaneous Team-Based Tasks:**
 - Assisted in product demo for the app (for both CS2101 and CS2103T)
-- PRs reviewed: 18 in total, most with minor comments or improvements to the code changes.
+  
+- PRs reviewed: 23 in total, most with minor comments or improvements to the code changes.
+  
 - Reported 4 bugs for another team during PE-Dry Run.
 
 **Documentation:**
@@ -39,5 +47,8 @@ User Guide:
 
 Developer Guide:
 - Added UML Diagram for Find Command and basic structure + functionality information
+  
 - Updated Logic UML Diagrams
+
+- Conversion and Submission of Final DG PDF
 
