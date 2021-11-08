@@ -263,7 +263,7 @@ Represented below is the sequence diagram on how command history is saved when a
 
 **Value proposition**: 
 
-Our product serves as an integrated dashboard for a user to retrieve the social media activities and account information of his/her contacts. This makes it seamless for the user to interact with his/her contacts instead of having to access each social media account that the contact owns.
+Our product serves as an integrated dashboard for a user to retrieve the social media handles and account information of his/her contacts. This makes it seamless for the user to interact with his/her contacts instead of having to access each social media account that the contact owns.
 
 ### User stories <a name="user-stories"></a>
 
