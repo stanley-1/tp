@@ -14,7 +14,7 @@ participant "p:ContainsKeywordsPredicate" as ContainsKeywordsPredicate MODEL_COL
 participant ":Model" as Model MODEL_COLOR
 end box
 
-[-> LogicManager : execute(find KEYWORD)
+[-> LogicManager : execute(find KEYWORDS)
 activate LogicManager
 
 LogicManager -> SocialiteParser : parseCommand(find KEYWORDS)
