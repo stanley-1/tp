@@ -16,15 +16,13 @@ A summary of my contributions to the project is detailed below.
 
 * **Altered Feature**: Redefined criteria for duplicate persons to be detected. [\#68](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/68)
   * What it does:
-    * SociaLite now detects duplicate entries by comparing the contacts' phone number instead of name.
+    * SociaLite detects duplicate entries by comparing contacts' phone number instead of name.
     * Users can add contacts who coincidentally have the same names, without a DuplicatePersonException being thrown.
   * Justification:
-    * The original AB-3 code detects duplicate entries within the address book by comparing the names (in string) of contacts that already exist in the database.
-    * However, there can be instances where users meet acquaintances who coincidentally share the same name but are separate persons altogether.
+    * There can be instances where users meet acquaintances who coincidentally share the same name but are separate persons altogether.
     * Hence, the phone number (which is a compulsory field in SociaLite) is now used as a determinant for duplicate persons as no two persons have the same phone number.
   * Highlights:
     * This alteration addresses the inconvenience that users might have in adding contacts with similar names.
-    * This allows users to add more contacts to their database.
     
 
 * **Revamped Feature**: Enhanced ability for users to obtain help or in-app guidance. [\#50](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/50), [\#127](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/127)
@@ -43,8 +41,7 @@ A summary of my contributions to the project is detailed below.
     * Users can conveniently add and access a contact's Facebook and Instagram pages as SociaLite supports these two commonly used platforms.
   * Highlights:
     * Adhered to teammate's (Xiaozhi's) pre-designed framework for storing social media handles when enhancing support for Facebook and Instagram handles.
-    * Refined regex of Facebook, Instagram and Telegram handles to meet stricter requirements imposed by social media platforms. [\#145](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/145)
-    * Scalable feature which can support other social media platforms in the future.
+    * Refined regex of Facebook, Instagram and Telegram handles to meet stricter requirements imposed by social media platforms. [\#145](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/145) <br>
     
 
 * **Code contributed**: [RepoSense link](https://tinyurl.com/f11-4-stanley)
@@ -67,9 +64,9 @@ A summary of my contributions to the project is detailed below.
       * Added around 10 missing commands and examples to Command Summary.
     * Performed major overhaul of UG for enhanced readability following PE-D review: [\#138](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/138)
       * Added Navigation Menu and consolidated Table of Commands (both with hyperlinks for users to access their desired section/feature efficiently).
-      * Created different pathways to cater to different user demographics.
-      * Revamped the layout and organization of all features - related commands are now found in the same section of the UG.
+      * Revamped layout and organization of all features - related commands are now found in the same section of the UG.
       * Re-designed how format and examples are presented to readers for all features through standardized notations.
+      * Included screenshots for relevant examples.
       * Updated FAQ section.
   * Developer Guide:
     * Aided in conceptualization of Product Scope, including the definition of our target user profile and value proposition.
