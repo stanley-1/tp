@@ -105,7 +105,6 @@ The blue boxes tell you the acceptable fields that you can provide for a particu
 `add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
 * Detail 1
 * Detail 2
-* Detail 3
 </div>
 
 If you still aren't sure of how a particular command works, the green boxes provide you with examples that you can try out:
@@ -468,12 +467,6 @@ Checks for contacts which the user categorized as “family”.
 </div>
 
 <div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `find t/neighbour` 
-
-Checks for contacts which the user categorized as “neighbour”.
-</div>
-
-<div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `find t/classmate` 
 
 Checks for contacts which the user categorized as “classmate” OR "classmates" etc.
@@ -515,13 +508,7 @@ Returns all contacts who have BOTH a Facebook and Instagram handle pegged with t
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `find p/telegram` 
 
-Returns all contacts who have an Telegram handle pegged with them.
-</div>
-
-<div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `find p/twitter` 
-
-Returns all contacts who have a Twitter handle pegged with them.
+Returns all contacts who have a Telegram handle pegged with them.
 </div>
 
 <br>
