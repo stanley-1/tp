@@ -512,6 +512,9 @@ Please be mindful that entering this command will wipe out all your contacts sto
 </div>
 
 <br>
+<br>
+<br>
+<br>
 
 ### Locate contacts by name: `find NAME` <a name="find"></a>
 
