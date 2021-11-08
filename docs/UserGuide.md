@@ -102,6 +102,8 @@ This section contains a glossary of all the commands and quick examples for refe
 <br>
 <br>
 <br>
+<br>
+<br>
 
 As you explore the features that SociaLite has to offer, look out for these boxes:
 
@@ -122,6 +124,11 @@ If you still aren't sure of how a particular command works, the green boxes prov
 
 Adds a new contact called "Alex Yeoh" with phone number "87438807" to SociaLite.
 </div>
+
+<br>
+<br>
+<br>
+<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
