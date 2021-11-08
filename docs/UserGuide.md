@@ -315,10 +315,10 @@ Edits an existing contact on SociaLite.
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
 * You can remove all the person’s tags by typing `t/` without
-    specifying any tags after it.
+    specifying any tag after it.
 * When editing dates, all existing dates of the person will be removed i.e adding of dates is not cumulative.
 * You can remove all the person’s dates by typing `date/` without
-  specifying any tags after it.
+  specifying any date after it.
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -592,7 +592,7 @@ Checks for contacts which are categorized as BOTH “colleagues” AND "friends"
 
 ### Query contacts based on social media platform: `find p/PLATFORM` <a name="find_platform"></a>
 
-Show all contacts with their handles on the particular social media platform.
+Shows all contacts with their handles on the specified social media platform.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
@@ -785,7 +785,7 @@ Adds special notes about a contact.
 * Adds a short note about the contact at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …
-* Remarks must be 150 characters in length or less (inclusive of spaces)
+* Remarks must be 150 characters in length or less (inclusive of spaces).
 
 </div>
 
