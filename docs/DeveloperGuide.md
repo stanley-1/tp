@@ -2,7 +2,8 @@
 layout: page
 title: Developer Guide
 ---
-* Table of Contents
+### Table of Contents
+
 1. [Acknowledgements](#acknowledgements)
 2. [Setting Up, Getting Started](#setting-up-getting-started)
 3. [Design](#design)
@@ -13,10 +14,10 @@ title: Developer Guide
     5. [Storage Component](#storage)
     6. [Common Classes](#common)
 4. [Implementation](#implementation)
-   1. [Help Command](#help_command)
-   2. [Find Command](#find_command)
-   3. [Picture Command](#picture_command)
-   4. [Command History](#command_history)
+    1. [Help Command](#help_command)
+    2. [Find Command](#find_command)
+    3. [Picture Command](#picture_command)
+    4. [Command History](#command_history)
 5. [Documentation](#docs)
 6. [Appendix: Requirements](#requirements)
     1. [Product Scope](#scope)
