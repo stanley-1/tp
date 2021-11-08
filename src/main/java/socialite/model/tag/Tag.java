@@ -10,8 +10,8 @@ import socialite.commons.util.AppUtil;
  */
 public class Tag {
 
-    public static final String MESSAGE_CONSTRAINTS = "Tag names should be alphanumeric";
-    public static final String VALIDATION_REGEX = "\\p{Alnum}+";
+    public static final String MESSAGE_CONSTRAINTS = "Tag names should be alphanumeric, and up to 50 characters long";
+    public static final String VALIDATION_REGEX = "^\\p{Alnum}{1,50}$";
 
     public final String tagName;
 
