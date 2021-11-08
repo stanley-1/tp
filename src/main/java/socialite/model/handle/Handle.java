@@ -5,13 +5,7 @@ import java.util.Optional;
 public abstract class Handle {
     protected Optional<String> value;
 
-    public static enum Platform {
-        FACEBOOK,
-        INSTAGRAM,
-        TELEGRAM,
-        TIKTOK,
-        TWITTER
-    }
+    public static enum Platform { FACEBOOK, INSTAGRAM, TELEGRAM, TIKTOK, TWITTER }
 
     /**
      * Getter for value of handle
