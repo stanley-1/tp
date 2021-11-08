@@ -941,17 +941,17 @@ Assuming there are 10 contacts stored in SociaLite:
 
 1. Enter `picture 1` in the command box.
 
-  Expected: a file chooser will show up for you to select your profile picture.
+	Expected: a file chooser will show up for you to select your profile picture.
 
-  1. Click on `cancel` button or press `Esc` button in your OS.
+2. Click on `cancel` button or press `Esc` button in your OS.
 
-  	Expected: you will be redirected to the SociaLite app, with error message indicating command aborted.
+	Expected: you will be redirected to the SociaLite app, with error message indicating command aborted.
 
-  2. Locate a `.jpg` or `.png` file of your liking and select it in the file chooser.
+3. Locate a `.jpg` or `.png` file of your liking and select it in the file chooser.
 
-  	Expected: the first contact card's profile picture will update to be the file that you have chosen.
+	Expected: the first contact card's profile picture will update to be the file that you have chosen.
 
-2. Enter `picture 100` in the command box.
+4. Enter `picture 100` in the command box.
 
 	Expected: SociaLite shows error message, indicating invalid person index provided.
 
