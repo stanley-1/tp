@@ -42,6 +42,7 @@ A summary of my contributions to the project is detailed below.
     * Adhered to teammate's (Xiaozhi's) pre-designed framework for storing social media handles when enhancing support for Facebook and Instagram handles.
     * Refined regex of Facebook, Instagram and Telegram handles to meet stricter requirements imposed by social media platforms. [\#145](https://github.com/AY2122S1-CS2103T-F11-4/tp/pull/145)
     
+<br>
 
 * **Code contributed**: [RepoSense link](https://tinyurl.com/f11-4-stanley)
 
