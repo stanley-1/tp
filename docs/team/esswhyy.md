@@ -3,7 +3,7 @@ layout: page
 title: Tang Swen Yi's Project Portfolio Page
 ---
 
-###Project: SociaLite
+### Project: SociaLite
 
 SociaLite is a desktop app designed to better connect social media users with their contacts. 
 It is a Java based Command Line Interface (CLI) program with added JavaFX UI.
