@@ -131,8 +131,8 @@ Simply click on any command below to learn more about it!
 | [`edit INDEX ...`](#edit) | Edit a contact |
 | [`edit INDEX [t/TAG]`](#edit_tag) | Create / Edit tags for existing contacts |
 | [`edit INDEX t/`](#delete_tag) | Delete all tags from a contact |
-| [`edit INDEX [p/PLATFORM]`](#edit_platform) | Modify social media handles for a contact |
-| [`edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​`](#edit_dates) | Modify dates for a contact |
+| [`edit INDEX [p/PLATFORM]`](#edit_platform) | Modify social media handles of a contact |
+| [`edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​`](#edit_dates) | Modify associated dates of a contact |
 | [`delete INDEX`](#delete) | Delete a contact |
 | [`clear`](#clear) | Delete all contacts |
 | [`find NAME`](#find) | Find a contact by name |
@@ -140,43 +140,50 @@ Simply click on any command below to learn more about it!
 | [`find p/PLATFORM`](#find_platform) | Find a contact through associated social media platforms |
 | [`picture INDEX`](#picture) | Modify profile picture of a contact |
 | [`share INDEX`](#share) | Copy contact information to system clipboard |
-| [`pin INDEX`](#pin) | Pin contact card on the top of the person list |
-| [`unpin INDEX`](#unpin) | Unpin contact card from the top of the person list |
+| [`pin INDEX`](#pin) | Pin contact card on the top of the contact list |
+| [`unpin INDEX`](#unpin) | Unpin contact card from the top of the contact list |
 | [`remark INDEX r/[TEXT]`](#remark) | Add special notes about a contact |
 | [`help`](#help) | Access User Guide |
 | [`help COMMAND`](#help_command) | Access in-app guidance for selected commands |
 | [`exit`](#exit) | Exit the program |
 
 
-### Add a person: `add n/NAME p/PHONE_NUMBER ...` <a name="add"></a>
+### Add a contact: `add n/NAME p/PHONE_NUMBER ...` <a name="add"></a>
 
-Adds a person to SociaLite.
+Adds a contact to SociaLite.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
-`add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
-* A person can have any number of tags and dates (including 0).
-* To add a contact to SociaLite, you need to provide the **name** and a **unique phone number** for the person!
+`add n/NAME p/PHONE_NUMBER 
+(Optional: [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER])`
+* To add a contact to SociaLite, you must provide the **name of the person** and a **unique phone number**!
+* A contact can have any number of tags and dates (including 0).
+* A contact can have a handle under each of these 5 social media platforms: *Facebook, Instagram, Telegram, Tiktok & Twitter*.
+
 </div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `add n/David Tan p/91082942`
+
+Adds a new contact named "David Tan" with phone number "91082942" to SociaLite.
+</div>
+
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `add n/Annie Wan p/98571082 t/Friend fb/annie.wan ig/ann.wan tele/annie tiktok/annie.wan2 date/birthday:1999-02-12:yearly`
 
-Adds a new contact called "Annie Wan" with phone number "98571082" to SociaLite.
+Adds a new contact named "Annie Wan" with phone number "98571082" to SociaLite.
+The contact has a tag, a date, and 4 social media handles as shown below.
 ![01_add](images/UG/01_add.png)
 </div>
 
-<div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `add n/David Tan p/91082942 t/neighbour fb/tan.david tele/d_av_id`
 
-Adds a new contact called "David Tan" with phone number "91082942" to SociaLite.
-</div>
 
 <br>
 
 ### List all persons : `list` <a name="list"></a>
 
-Shows a list of all persons stored on SociaLite.
+Shows the list of all contacts stored on SociaLite.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
