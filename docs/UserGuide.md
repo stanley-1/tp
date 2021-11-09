@@ -520,8 +520,8 @@ This command adds a profile picture to an existing contact or changes the existi
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `picture INDEX`
-* A file browser will be opened allowing you to choose any .jpg or .png file as the profile picture.
-* The selected picture will be added to the contact at the specified `INDEX`.
+* A file browser will be opened, allowing you to choose any .jpg or .png file as the profile picture.
+* Your selected picture will be added to the contact at the specified `INDEX`.
 * The index refers to the index number shown on the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 </div>
@@ -664,7 +664,7 @@ Only the remark “Hates carrots” is added to Annie Wan’s listing in the app
 
 ### View help: `help` <a name="help"></a>
 
-This command shows a message explaining how to access the User Guide or obtain in-app guidance for selected commands.
+This command displays a message that shows you how you can access our User Guide or obtain in-app guidance for selected commands.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
@@ -676,7 +676,7 @@ This command shows a message explaining how to access the User Guide or obtain i
 
 ### View in-app guidance: `help COMMAND` <a name="help_command"></a>
 
-This command displays concise instructions for users to learn the given `COMMAND`'s function.
+This command displays concise instructions within the app for you to learn the given `COMMAND`'s function.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
