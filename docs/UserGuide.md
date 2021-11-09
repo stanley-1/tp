@@ -183,7 +183,7 @@ The contact has a tag, a date, and 4 social media handles as shown below.
 
 ### List all persons : `list` <a name="list"></a>
 
-Shows the list of all contacts stored on SociaLite.
+Shows the list of all contacts currently stored on SociaLite.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
@@ -194,11 +194,11 @@ Shows the list of all contacts stored on SociaLite.
 
 ### Access a contact's social media page <a name="click"></a>
 
-Clicking on a contact's social media handle will immediately launch the user's default browser and open the contact's social media profile.
+Clicking on a contact's social media handle will launch your default browser and open the contact's social media profile.
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** 
-Clicking on the Facebook handle `@alex.yeoh` launches the user's default browser and brings the user to Alex Yeoh's Facebook page.
+Clicking on the Facebook handle `@alex.yeoh` launches your default browser and brings you to Alex Yeoh's Facebook page.
 
 </div>
 
