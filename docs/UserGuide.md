@@ -319,7 +319,7 @@ Modifies social media handles that are associated with existing contacts on Soci
 * New handles will be added for contacts who do not have any specific handle pegged with them.
 * If the person at the specified `INDEX` already has a handle for a specific platform flagged in the command, that handle will be replaced.
 * Only social media handles specified as input will be altered. Other social media handles remain unchanged.
-* The flag refers to any of the following: `fb/` `ig/` `tele/` `tiktok/` `twitter/`
+* The flag must be one of the following: `fb/` `ig/` `tele/` `tiktok/` `twitter/`
 * Only one of each flag may be entered per command
 * User input after the given flag represents the new social media handle associated with the contact.
 
@@ -328,13 +328,13 @@ Modifies social media handles that are associated with existing contacts on Soci
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `edit 1 fb/al3x.ye0h` 
 
-Changes the Facebook handle of the first person on the displayed person list to `al3x.ye0h`.
+Changes the Facebook handle of the first contact on the displayed list to `al3x.ye0h`.
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `edit 1 twitter/xelayeoh` 
 
-Adds the Twitter handle called `xelayeoh` to the first person on the displayed person list. The Facebook handle that was previously modified is unaffected.
+Adds the Twitter handle called `xelayeoh` to the first contact on the displayed list. The Facebook handle that was previously modified is unaffected.
 ![08_edit_handles](images/UG/08_edit_handles.png)
 </div>
 
@@ -416,7 +416,7 @@ Removes all contacts in the app.
 
 ### Locate contacts by name: `find NAME` <a name="find"></a>
 
-Finds persons whose names contain any of the given keywords.
+Finds contacts who have names that contain any of the given keywords.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
@@ -458,7 +458,7 @@ Displays the contacts that are associated with a particular tag.
 * Queries all contacts that are tied to `TAG`.
 * The tag must be existent and associated with certain contacts stored on SociaLite.
 * Tags are matched from the start of their names.
-* If multiple tags are queried, only contacts possessing all given tags are returned.
+* If multiple tags are queried, only contacts possessing **all given tags** are returned.
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -496,8 +496,14 @@ Shows all contacts with their handles on the specified social media platform.
 **:mag_right: Format:**
 `find p/PLATFORM`
 * The social media platform entered must be supported by SociaLite, 
-(i.e.: Only `facebook`, `instagram`, `telegram`, `tiktok`, `twitter` are accepted, case insensitive).
+(i.e.: `PLATFORM` must be one of `facebook`, `instagram`, `telegram`, `tiktok`, `twitter`, case insensitive).
 * If multiple platforms are queried, only contacts with handles for ALL specified platforms are returned.
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `find p/telegram` 
+
+Returns all contacts who have a Telegram handle pegged with them.
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -507,11 +513,6 @@ Returns all contacts who have BOTH a Facebook and Instagram handle pegged with t
 ![14_find_platform](images/UG/14_find_platform.png)
 </div>
 
-<div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `find p/telegram` 
-
-Returns all contacts who have a Telegram handle pegged with them.
-</div>
 
 <br>
 
