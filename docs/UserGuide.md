@@ -232,7 +232,7 @@ This command allows you to edit the information stored with a contact using your
 * Furthermore, upcoming dates (within 7 days) will be highlighted in the user interface.
 </div>
 
-<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+<div markdown="block" class="alert alert-warning">:exclamation: **Caution:**
 
 * Before you specify information for any field that you wish to modify, you should prepend your input with its corresponding flag (e.g. `n/` `p/` etc.) according to the format above.
 * You should check your input before you hit ENTER as SociaLite will overwrite the contact's existing information for any valid field that you furnish.
