@@ -710,13 +710,13 @@ Exits the program.
 
 ## FAQ <a name="faq"></a>
 
-**Q**: How is my data saved?<br>
+**Q**: Do I need to save my data like a Word document while using SociaLite?<br>
 **A**: SociaLite data are saved in the hard disk automatically after any command that alters the data. There is no need to save manually.
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Upon installing the app in the other computer, simply overwrite the `contactlist.json` file under the `data/` folder with the same file from your previous SociaLite home folder.
 
-**Q**: Can I edit my data?<br>
+**Q**: Can I edit my data file directly?<br>
 **A**: SociaLite data are saved as a JSON file `<JAR file location>/data/contactlist.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
