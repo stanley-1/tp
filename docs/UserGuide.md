@@ -515,13 +515,13 @@ Returns all contacts who have a Telegram handle pegged with them.
 
 ### Add / Change a profile picture: `picture INDEX` <a name="picture"></a>
 
-Adds a profile picture to an existing contact or changes the existing profile picture if available.
+This command adds a profile picture to an existing contact or changes the existing profile picture if available.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `picture INDEX`
-* Opens file browser allowing you to choose any .jpg or .png file as the profile picture.
-* Adds the selected picture to the contact at the specified `INDEX`.
+* A file browser will be opened allowing you to choose any .jpg or .png file as the profile picture.
+* The selected picture will be added to the contact at the specified `INDEX`.
 * The index refers to the index number shown on the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 </div>
@@ -529,31 +529,31 @@ Adds a profile picture to an existing contact or changes the existing profile pi
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `list` followed by `picture 2` 
 
-Opens the file browser to let you choose a picture to add to Annie Wan’s listing in the app.
+A file browser will be opened to let you choose a picture to add to Annie Wan’s listing in the app.
 ![15_pic_window](images/UG/15_pic_window.png)
 
-Updates Annie Wan's profile picture in SociaLite.
+Annie Wan's profile picture will be updated in SociaLite.
 ![15_pic_ui](images/UG/15_pic_ui.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `find Alex` followed by `picture 1` 
 
-Opens the file browser to let you change the profile picture for Alex Yeoh’s listing in the app.
+The file browser will be opened to let you change the profile picture for Alex Yeoh’s listing in the app.
 </div>
 
 <br>
 
 ### Share a contact card: `share INDEX` <a name="share"></a>
 
-Copies the contact card of the specified person to the system clipboard. The user can paste the plain text in an email or text message and forward the contact card to others thereafter.
+This command copies the contact card of the specified person to the system clipboard. You can paste the plain text in an email or text message and forward the contact card to others thereafter.
 
-Alternatively, the user can click on the "Share" button at the top-right hand corner of the contact card that he/she would like to share instead of entering the command.
+Alternatively, you can click on the "Share" button at the top-right hand corner of the contact card that you would like to share instead of entering the command.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `share INDEX`
-* Copies the contact card of the person at the specified `INDEX` to the system clipboard.
+* The contact card of the person at the specified `INDEX` will be copied to the system clipboard.
 * The index refers to the index number shown on the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 </div>
@@ -561,26 +561,26 @@ Alternatively, the user can click on the "Share" button at the top-right hand co
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `list` followed by `share 2` 
 
-Copies the information of the second contact in the list displayed by SociaLite.
+The information of the second contact in the list displayed by SociaLite will be copied.
 ![16_share](images/UG/16_share.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** Clicking on the "Share" button of Annie Wan's name card copies her contact information.
+**:heavy_check_mark: Example:** Click on the "Share" button of Annie Wan's name card to copy her contact information.
 </div>
 
 <br>
 
 ### Pin a contact card: `pin INDEX` <a name="pin"></a>
 
-Affixes the contact card of the specified person onto the top of the person list. Pinned contact cards will be alphabetically ordered.
+This command affixes the contact card of the specified person onto the top of the person list. Pinned contact cards will be alphabetically ordered.
 
-Alternatively, the user can click on the "Pin" button at the top-right hand corner of the contact card that he/she would like to pin instead of entering the command.
+Alternatively, you can click on the "Pin" button at the top-right hand corner of the contact card that you would like to pin instead of entering the command.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `pin INDEX`
-* Pins the contact card of the person at the specified `INDEX` at the top of the person list.
+* The contact card of the person at the specified `INDEX` will be pinned at the top of the person list.
 * The index refers to the index number shown on the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, ...
 * The contact card must **not** be previously pinned.
@@ -595,7 +595,7 @@ SociaLite, at the top of the person list along with other pinned contacts.
 </div>
 
 <div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** Clicking on the "Pin" button of Annie Wan's name card affixes her contact card onto the top of the person list.
+**:heavy_check_mark: Example:** Click on the "Pin" button of Annie Wan's name card to affix her contact card onto the top of the person list.
 
 ![17_pin_2](images/UG/17_pin_2.png)
 </div>
@@ -604,14 +604,14 @@ SociaLite, at the top of the person list along with other pinned contacts.
 
 ### Unpin a contact card: `unpin INDEX` <a name="unpin"></a>
 
-Removes the contact card of the specified person from the top of the person list.
+This command removes the contact card of the specified person from the top of the person list.
 
-Alternatively, the user can click on the "Unpin" button at the top-right hand corner of the contact card that he/she would like to unpin instead of entering the command.
+Alternatively, you can click on the "Unpin" button at the top-right hand corner of the contact card that you would like to unpin instead of entering the command.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `unpin INDEX`
-* Unpins the contact card of the person at the specified `INDEX` at the top of the person list.
+* The contact card of the person at the specified `INDEX` at the top of the person list will be unpinned.
 * The index refers to the index number shown on the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, ...
 * The contact card must be previously pinned.
@@ -624,7 +624,7 @@ Provided the first 2 contact cards are the pinned contact cards, the above comma
 </div>
 
 <div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** Clicking on the "Unpin" button of Bernice Yu's name unpins her contact card if it was previously pinned.
+**:heavy_check_mark: Example:** Click on the "Unpin" button of Bernice Yu's name to unpin her contact card if it was previously pinned.
 
 ![18_unpin](images/UG/18_unpin.png)
 </div>
@@ -633,13 +633,13 @@ Provided the first 2 contact cards are the pinned contact cards, the above comma
 
 ### Add remarks about a specific contact: `remark INDEX r/[TEXT]` <a name="remark"></a>
 
-Adds special notes about a contact.
+This command adds special notes about a contact.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `remark INDEX r/[TEXT]`
 
-* Adds a short note about the contact at the specified `INDEX`.
+* A short note about the contact at the specified `INDEX` will be added.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …
 * Remarks must be 150 characters in length or less (inclusive of spaces).
@@ -649,7 +649,7 @@ Adds special notes about a contact.
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `list` followed by `remark 1 r/Doesn’t like vegetables`
 
-Adds the remark “Doesn’t like vegetables” to Alex Yeoh’s listing in the app.
+The remark “Doesn’t like vegetables” will be added to Alex Yeoh’s listing in the app.
 ![19_remark_alex](images/UG/19_remark_alex.png)
 </div>
 
@@ -664,7 +664,7 @@ Only the remark “Hates carrots” is added to Annie Wan’s listing in the app
 
 ### View help: `help` <a name="help"></a>
 
-Shows a message explaining how to access the User Guide or obtain in-app guidance for selected commands.
+This command shows a message explaining how to access the User Guide or obtain in-app guidance for selected commands.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
@@ -676,7 +676,7 @@ Shows a message explaining how to access the User Guide or obtain in-app guidanc
 
 ### View in-app guidance: `help COMMAND` <a name="help_command"></a>
 
-Displays concise instructions for users to learn the given `COMMAND`'s function.
+This command displays concise instructions for users to learn the given `COMMAND`'s function.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
@@ -687,21 +687,21 @@ Displays concise instructions for users to learn the given `COMMAND`'s function.
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `help add` 
 
-Displays a concise guide on how to use the `add` command.
+A concise guide on how to use the `add` command is displayed.
 ![21_help_add](images/UG/21_help_add.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `help edit` 
 
-Displays a concise guide on how to use the `edit` command.
+A concise guide on how to use the `edit` command is displayed.
 </div>
 
 <br>
 
 ### Exit the program : `exit` <a name="exit"></a>
 
-Exits the program.
+This command exits the program.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
