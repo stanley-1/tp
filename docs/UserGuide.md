@@ -233,14 +233,17 @@ This command allows you to edit the information stored with a contact using your
 </div>
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+
 * Before you specify information for any field that you wish to modify, you should prepend your input with its corresponding flag (e.g. `n/` `p/` etc.) according to the format above.
 * You should check your input before you hit ENTER as SociaLite will overwrite the contact's existing information for any valid field that you furnish.
 * When you modify `TAG`s or `DATE`s, the existing `TAG`s or `DATE`s of the person will be removed i.e. adding of `TAG`s or `DATE`s is not cumulative.
 * Your input should conform with the character limit for the following fields:
+
     | Field    | Character Limit |
     | `TAG`    | 50              |
     | `DATE`   | 50              |
     | `REMARK` | 150             |
+
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -346,14 +349,14 @@ This command allows you to delete selected fields that are associated with a spe
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `edit 2 t/` 
 
-Deletes all tags associated with the 2nd person on the displayed person list.
+When you enter the above command, all tags associated with the 2nd person on the displayed person list are deleted.
 ![07_delete_tags](images/UG/07_delete_tags.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `edit 4 date/ fb/` 
 
-Deletes all dates and the Facebook handle associated with the 4th person on the displayed person list.
+When you enter the above command, all dates and the Facebook handle associated with the 4th person on the displayed person list are deleted.
 </div>
 
 <br>
