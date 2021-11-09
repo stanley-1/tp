@@ -225,7 +225,7 @@ This command allows you to edit the information stored with a contact using your
 * Information of the contact at your specified `INDEX` will be modified. 
 * The index refers to the index number shown on the displayed person list. 
 * The index **must be a positive integer** 1, 2, 3, …​
-* You can provide the following fields (i.e. `[k/KEYWORDS]`) in any order when editing a contact's information: `[n/NAME] [p/PHONE] [r/REMARK] [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]` 
+* You can provide the following fields (i.e. `[k/KEYWORDS]`) in any order when editing a contact's information: `[n/NAME] [p/PHONE] [r/REMARK] [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`. 
 * You should provide at least one field from the above list for this command to run successfully.
 * In addition, you can add a name for each `DATE` (e.g. Birthday, Meet-Up, Anniversary).
 * If your dates represent events that recur monthly or yearly, you can add the keyword `:monthly` or `:yearly` behind the date which has to be specified in `YYYY-MM-DD` format.
@@ -247,7 +247,7 @@ This command allows you to edit the information stored with a contact using your
 </div>
 
 <div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** Edit `NAME`
+**:heavy_check_mark: Example:** Edit contact's name
 
 `edit 5 n/Eric Wong` 
 
@@ -255,7 +255,7 @@ When you enter the above command, the name of the 5th person is changed to `Eric
 </div>
 
 <div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** Edit `PHONE`
+**:heavy_check_mark: Example:** Edit phone number
 
 `edit 6 p/91082857`
 
@@ -263,7 +263,7 @@ When you enter the above command, the phone number of the 6th person is changed 
 </div>
 
 <div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** Edit one `TAG`
+**:heavy_check_mark: Example:** Edit one tag
 
 `edit 1 t/buddy`
 
@@ -272,7 +272,7 @@ When you enter the above command, a tag called `buddy` is created for the first 
 </div>
 
 <div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** Edit two `TAG`s
+**:heavy_check_mark: Example:** Edit two tags
 
 `edit 2 t/friend t/neighbour`
 
@@ -280,7 +280,7 @@ When you enter the above command, the tags called `friend` and `neighbour` are a
 </div>
 
 <div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** Edit `FACEBOOK` handle
+**:heavy_check_mark: Example:** Edit Facebook handle
 
 `edit 1 fb/al3x.ye0h` 
 
@@ -288,7 +288,7 @@ When you enter the above command, you change the Facebook handle of the first pe
 </div>
 
 <div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** Add `TWITTER` handle
+**:heavy_check_mark: Example:** Add Twitter handle
 
 `edit 1 twitter/xelayeoh` 
 
@@ -323,7 +323,7 @@ This command allows you to change the phone number and Facebook handle of the 1s
 </div>
 
 <div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** Edit multiple fields: `p/94850285` and `t/TAG`
+**:heavy_check_mark: Example:** Edit multiple fields: `p/PHONE` and `t/TAG`
 
 `edit 4 p/94850285 t/Boss`
 
