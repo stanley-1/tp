@@ -41,28 +41,25 @@ This section contains a glossary of all the commands and quick examples for refe
 ## Quick Start <a name="quick_start"></a>
 
 1. Ensure you have `Java 11` or above installed on your Computer.
-   If you already have `Java` installed, you might want to type in `java -version` in your command window to ensure you are running on the correct version of `Java`!
-   If you don't have `Java 11`, simply click [here](https://www.oracle.com/java/technologies/downloads/), and navigate to the "Java SE Development Kit 11.x.xx" section to download the latest Java Development Kit.
+   * If you already have `Java` installed, you might want to type in `java -version` in your command window to ensure you are running on the correct version of `Java`!
+   * If you don't have `Java 11`, simply click [here](https://www.oracle.com/java/technologies/downloads/), and navigate to the "Java SE Development Kit 11.x.xx" section to download the latest Java Development Kit.
 2. Download the latest `socialite.jar` from our [GitHub release page](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases).
 3. Copy the file to the folder you want to use as the home folder for your SociaLite.
-4. Double-click the file to start the app. SociaLite should be launched in a few seconds! If you are opening the app for the first time, you will see some sample data for you to experiment with and get familiar with the commands.<br>
-   ![Ui](images/UG/Ui.png)
-5. Type the command in the command box and press **`Enter`** to execute it. e.g. typing **`help`** and pressing **`Enter`** will open the help window.<br>
-   Here are some sample commands to get you started with SociaLite:
+4. Double-click the file to start the app. SociaLite should be launched in a few seconds! If you are opening the app for the first time, you will see some sample data for you to experiment with.
 
-   * **`add`** `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh`: Adds a contact named `Alex Yeoh` to SociaLite.
+![Ui](images/UG/Ui.png)
 
-   * **`find`** `find Alex` : Searches SociaLite for a contact named `Alex` and displays the contact's information.
-
-   * **`list`** : Displays all contacts stored on SociaLite.
-
-   * **`edit`** `edit 1 n/Alexis Yeoh` : Edits the name of the contact at the first position of the list to `Alexis Yeoh`.
-
-   * **`delete`** `delete 3` : Deletes the 3rd contact shown in the current list.
-
-   * **`clear`** : Deletes all contacts. You will find this handy when deleting the sample contacts stored on SociaLite.
-
-   * **`exit`** : Exits the app.
+5. Type the command in the command box and press **`Enter`** to execute it. E.g. typing **`help`** and pressing **`Enter`** will open the help window.
+    Here are some sample commands you can try out to get started with SociaLite:
+    
+    * **`add`** `add n/Alex Yeoh p/87438807 ig/alex.yeoh`: A contact named `Alex Yeoh` with Instagram handle `alex.yeoh` will be added to SociaLite.
+    * **`find`** `find Alex`: This command searches SociaLite for a contact named `Alex` and displays the contact's information.
+    * **`list`**: All contacts stored on SociaLite will be displayed.
+    * **`edit`** `edit 1 n/Alexis Yeoh`: The name of the first contact in the list will be changed to `Alexis Yeoh`.
+    * **`delete`** `delete 3`: The third contact shown in the current list will be deleted.
+    * **`clear`**: The SociaLite database will be purged and all contacts will be deleted. You will find this handy when deleting the sample contacts stored on SociaLite.
+    * **`exit`**: Type in this command to quit SociaLite.
+    
 6. Refer to the [Commands](#commands) section below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -70,7 +67,6 @@ This section contains a glossary of all the commands and quick examples for refe
 ## Standard Notations <a name="standard_notations"></a> 
 
 <div markdown="block" class="alert alert-info">
-
 **:information_source: Hold your horses SociaLites! Before you venture any further, here are some standard notations for you to take note of:**<br>
 
 * You provide words in `UPPER_CASE` as input.<br>
@@ -718,39 +714,39 @@ Exits the program.
 **A**: SociaLite data are saved in the hard disk automatically after any command that alters the data. There is no need to save manually.
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous SociaLite home folder.
+**A**: Upon installing the app in the other computer, simply overwrite the `contactlist.json` file under the `data/` folder with the same file from your previous SociaLite home folder.
 
 **Q**: Can I edit my data?<br>
 **A**: SociaLite data are saved as a JSON file `<JAR file location>/data/contactlist.json`. Advanced users are welcome to update data directly by editing that data file.
+
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, SociaLite will discard all data and start with an empty data file at the next run.
+If your changes to the data file makes its format invalid, SociaLite will discard all data and start with an empty data file at the next run. You are advised to backup your data before editing the JSON file!
 </div>
+
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command Index <a name="index"></a>
 
-Action | Format | Example (if any)
---------|------------------|--------------------
-**Access Social Media Page** | Click on social media handle | 
-**Add** | `add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]` | `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh`
-**Add / Edit Categories** | `edit INDEX [t/TAG]...` | `edit 1 t/Friends`
-**Add / Edit Dates** | `edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​` | `edit 1 date/Meeting:2021-09-14`
-**Add / Edit Profile Picture** | `picture INDEX` | `picture 1`
-**Add / Edit Social Media Handles** | `edit INDEX [p/PLATFORM]` | `edit 1 fb/Alv1n.y`
-**Add Remark** | `remark INDEX r/[TEXT]` | `remark 1 r/Likes to swim`
-**Delete** | `delete INDEX`| `delete 3`
-**Delete All Categories** | `edit INDEX t/` | `edit 1 t/`
-**Delete All Data** | `clear` |
-**Edit** | `edit INDEX [n/NAME] [p/PHONE] [r/REMARK] [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]` | `edit 1 p/91234567 fb/Yalex19`
-**Exit** | `exit` |
-**Find Contacts by Category** | `find t/TAG` | `find t/Friends`
-**Find Contacts by Name** | `find NAME [MORE_KEYWORDS]`| `find James Jake`
-**Find Contacts by Platform** | `find p/PLATFORM` | `find p/facebook`
-**List** | `list` |
-**Pin Contact** | `pin INDEX` | `pin 4`
-**Share Contact** | `share INDEX` | `share 2`
-**Track History** | `↑` or `↓` arrow keys |
-**Unpin Contact** | `unpin INDEX` | `unpin 1`
-**View Help** | `help` |
-**View In-App Guidance** | `help COMMAND` | `help add`
+ Command | Action | Example (if any)
+------------------|--------------------|------------------
+ `add n/NAME p/PHONE_NUMBER ...` | Add a contact | `add n/Alex Yeoh p/87438807 fb/alex.yeoh ig/alex.yeoh` 
+ `clear` | Delete all contacts |  
+ `edit INDEX [k/]...` | Delete optional fields | `edit 1 tiktok/berniceyu` 
+ `edit INDEX [k/KEYWORDS]...` | Edit a contact | `edit 1 t/` 
+ `delete INDEX` | Delete a contact | `delete 3` 
+ `exit` | Exit the program |  
+ `find NAME`                     | Find by name             | `find James Jake`                                      
+ `find t/TAG`                    | Find by tags             | `find t/Friends`                                       
+ `find p/PLATFORM`               | Find by platforms        | `find p/facebook`                                      
+ `help`                          | Access user guide        |                                                        
+ `help COMMAND`                  | Access in-app guidance   | `help add`                                             
+ `list`                          | List all contacts        |                                                        
+ `picture INDEX`                 | Modify profile picture   | `picture 1`                                            
+ `pin INDEX`                     | Pin a contact            | `pin 4`                                                
+ `remark INDEX r/[TEXT]`         | Add remarks              | `remark 1 r/Arrange outing soon`                       
+ `share INDEX`                   | Share a contact          | `share 2`                                              
+ `unpin INDEX`                   | Unpin a contact          | `unpin 1`                                              
+ `↑`/`↓`                         | Track history            |                                                        
+ `CLICK`                         | Access social media page |                                                        
+
