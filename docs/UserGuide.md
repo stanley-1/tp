@@ -154,8 +154,7 @@ Adds a contact to SociaLite.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
-`add n/NAME p/PHONE_NUMBER 
-(Optional: [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER])`
+`add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
 * To add a contact to SociaLite, you must provide the **name of the person** and a **unique phone number**!
 * A contact can have any number of tags and dates (including 0).
 * A contact can have a handle under each of these 5 social media platforms: *Facebook, Instagram, Telegram, Tiktok & Twitter*.
@@ -225,37 +224,35 @@ Scroll through your history of commands using the `↑` or `↓` arrow keys.
 
 <br>
 
-### Edit a person : `edit INDEX ...` <a name="edit"></a>
+### Edit a contact : `edit INDEX ...` <a name="edit"></a>
 
 Edits an existing contact on SociaLite.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `edit INDEX [n/NAME] [p/PHONE] [r/REMARK] [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
-* Edits the person at the specified `INDEX`. The index refers to the index number shown on the displayed person list. 
-* The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided.
-* Users can opt to change any fields associated with a contact as long as they prepend the argument with the corresponding flags according to the format above.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
-    specifying any tag after it.
-* When editing dates, all existing dates of the person will be removed i.e adding of dates is not cumulative.
-* You can remove all the person’s dates by typing `date/` without
-  specifying any date after it.
+* Edits the contact at the specified `INDEX`. The index refers to the index number shown on the displayed contact list. 
+* The index must be an **integer ranging from 1 to the last index of the contact list** 
+* At least one of the fields after `INDEX` must be provided.
+* When keying in the command, you must prepend each field with the corresponding flag according to the format above.
+* Existing values will be updated to the input values from the command.
+* When editing tags, the existing tags of the contact will be removed *(i.e adding of tags is not cumulative)*.
+* You can remove all the contact’s tags by typing `t/` without specifying any tag after it.
+* When editing dates, all existing dates of the contact will be removed *(i.e adding of dates is not cumulative)*.
+* You can remove all the contact’s dates by typing `date/` without specifying any date after it.
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `edit 1 p/91234567 fb/Yalex19` 
 
-Edits the phone number and Facebook handle of the 1st person to be `91234567` and `Yalex19` respectively.
+Edits the phone number and Facebook handle of the 1st contact to be `91234567` and `Yalex19` respectively.
 ![05_edit](images/UG/05_edit.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `edit 4 n/Betsy Crower t/`
 
-Edits the name of the 4th person to be `Betsy Crower` and clears all existing tags.
+Edits the name of the 4th contact to be `Betsy Crower` and clears all existing tags.
 </div>
 
 <br>
@@ -267,17 +264,17 @@ Modifies tags that are associated with existing contacts stored on SociaLite.
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `edit INDEX [t/TAG]...`
-* Adds new tags to persons who did not have tags associated with them when they were first added to SociaLite.
-* Deletes all existing tags for the person at the specified `INDEX` and replaces them with tags specified in `[t/TAG]...`
-* Each tag can only be up to 50 characters long.
-* The index refers to the index number shown on the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* You can add new tags to contacts who do not have tags associated with them.
+* If the contact at specified `INDEX` has pre-existing tags, they will be deleted and replaced with the tags specified in `[t/TAG]...`
+* Multiple tags can be entered, but each tag must be **50 characters** in length or less.
+* `INDEX` refers to the index number shown on the displayed contact list.
+* The index must be an **integer ranging from 1 to the last index of the contact list** 
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `edit 1 t/buddy`
 
-Creates a tag called `buddy` for the first person on the displayed person list.
+Creates a tag called `buddy` for the first contact in the displayed list.
 ![06_edit_tag](images/UG/06_edit_tag.png)
 </div>
 
@@ -285,7 +282,7 @@ Creates a tag called `buddy` for the first person on the displayed person list.
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `edit 2 t/friend t/neighbour`
 
-Creates tags called `friend` and `neighbour` for the second person on the displayed person list.
+Creates tags called `friend` and `neighbour` for the second contact in the displayed list.
 </div>
 
 <br>
@@ -297,15 +294,15 @@ Deletes all tags that are associated with a specified contact on SociaLite.
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `edit INDEX t/`
-* Deletes all categories tagged to the person at the specified `INDEX`.
-* The index refers to the index number shown on the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* Deletes all tags binded to the contact at the specified `INDEX`.
+* `INDEX` refers to the index number shown on the displayed contact list.
+* The index must be an **integer ranging from 1 to the last index of the contact list** 
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `edit 2 t/` 
 
-Deletes all tags associated with the 2nd person on the displayed person list.
+Deletes all tags associated with the 2nd contact on the displayed list.
 ![07_delete_tags](images/UG/07_delete_tags.png)
 </div>
 
@@ -318,13 +315,14 @@ Modifies social media handles that are associated with existing contacts on Soci
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `edit INDEX [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
-* Adds a new handle for contacts who did not have that specific handle pegged with them when they were first added to SociaLite.
-* Replaces the handle for the person at the specified `INDEX` according to the flag and input provided.
-* The index refers to the index number shown on the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
-* The flag refers to any of the following: `fb/` `ig/` `tele/` `tiktok/` `twitter/`
-* User input after the given flag represents the new social media handle associated with the contact.
+* The index must be an **integer ranging from 1 to the last index of the contact list**
+* New handles will be added for contacts who do not have any specific handle pegged with them.
+* If the person at the specified `INDEX` already has a handle for a specific platform flagged in the command, that handle will be replaced.
 * Only social media handles specified as input will be altered. Other social media handles remain unchanged.
+* The flag refers to any of the following: `fb/` `ig/` `tele/` `tiktok/` `twitter/`
+* Only one of each flag may be entered per command
+* User input after the given flag represents the new social media handle associated with the contact.
+
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -350,15 +348,14 @@ Adds / Edits dates of occasions (birthdays, appointments) associated with a cont
 **:mag_right: Format:**
 `edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​`
 * Adds a date for the contact at the specified `INDEX`.
-* The index refers to the index number shown on the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* The index must be an **integer ranging from 1 to the last index of the contact list**
 * Dates can have a name to associate them with a specific event (eg. Birthday, Meetup, Anniversary).
-* The name associated with the event can only be up to 50 characters long.
+* The name associated with the date event can only be up to **50 characters** long.
 * Date must be presented in `YYYY-MM-DD` format.
 * Dates can be recurring, either monthly or yearly, by adding `:monthly` or `:yearly` behind the date.
-* Each call of `edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​` will replace all previous dates.
+* Each call of `edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​` will **replace all previous dates**, if any.
 * Using the command `edit INDEX date/` will remove all dates from the user.
-* Upcoming dates (within 7 days) will be highlighted in the user interface.
+* Upcoming dates *(within 7 days)* will be highlighted in the user interface.
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -376,31 +373,29 @@ Adds the event “Birthday” which falls on 9 Sep every year to Bernice Yu’s 
 
 <br>
 
-### Delete a person : `delete INDEX` <a name="delete"></a>
+### Delete a contact : `delete INDEX` <a name="delete"></a>
 
-Deletes the specified person from SociaLite.
+Deletes the specified contact from SociaLite.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `delete INDEX`
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown on the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* Deletes the contact at the specified `INDEX`.
+* The index must be an **integer ranging from 1 to the last index of the contact list**
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `list` followed by `delete 7` 
 
-Deletes the 7th person on the displayed person list.
+Deletes the 7th contact on the displayed contact list.
 ![10_delete](images/UG/10_delete.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `find Roy` followed by `delete 1` 
 
-Deletes the 1st person on the displayed person list of the `find` command.
+Deletes the 1st contact on the displayed contact list of the `find` command.
 </div>
-
 
 <br>
 
@@ -414,7 +409,7 @@ Removes all contacts in the app.
 </div>
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-Please be mindful that entering this command will wipe out all your contacts stored in SociaLite!
+**Please be mindful that entering this command will wipe out **all your contacts** stored in SociaLite! This cannot be undone!**
 </div>
 
 <br>
