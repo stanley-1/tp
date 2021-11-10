@@ -732,9 +732,9 @@ If your changes to the data file makes its format invalid, SociaLite will discar
 ------------------|--------------------|------------------
  `add n/NAME p/PHONE_NUMBER ...` | Add a contact | `add n/Alex Yeoh p/87438807 fb/alex.yeoh ig/alex.yeoh` 
  `clear` | Delete all contacts |  
- `edit INDEX [k/]...` | Delete optional fields | `edit 1 tiktok/berniceyu` 
- `edit INDEX [k/KEYWORDS]...` | Edit a contact | `edit 1 t/` 
  `delete INDEX` | Delete a contact | `delete 3` 
+ `edit INDEX [k/]...` | Delete optional fields | `edit 1 t/` 
+ `edit INDEX [k/KEYWORDS]...` | Edit a contact | `edit 1 tiktok/berniceyu` 
  `exit` | Exit the program |  
  `find NAME`                     | Find by name             | `find James Jake`                                      
  `find t/TAG`                    | Find by tags             | `find t/Friends`                                       
