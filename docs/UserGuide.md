@@ -70,8 +70,7 @@ This section contains a glossary of all the commands and quick examples for refe
 ## Standard Notations <a name="standard_notations"></a> 
 
 <div markdown="block" class="alert alert-info">
-
-**:information_source: Hold your horses SociaLites! Before you venture any further, here are some standard notations for you to take note of:**<br>
+**:information_source: Hold your horses SociaLites! Before you venture any further, here are some standard notations used throughout this user guide for you to take note of:**<br>
 
 * You provide words in `UPPER_CASE` as input.<br>
   e.g. in `add n/NAME`, `NAME` is an input which can be used as `add n/John Doe`.
@@ -83,12 +82,12 @@ This section contains a glossary of all the commands and quick examples for refe
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
 * The `|` vertical bar indicates a choice that you have to make between the left and right options.<br>
-  e.g. in `[date/NAME:YYYY-MM-DD[:monthly|:yearly]]`, you can enter `date/Birthday:2021-01-01:yearly` to indicate an annual event called `Birthday` that repeats on 1 Jan yearly.
+  e.g. in `[date/NAME:YYYY-MM-DD[:monthly|:yearly]]`, you can enter either `date/Event:2021-01-01:yearly` or `date/Event:2021-01-01:monthly`.
 
-* You may type your inputs in any order.<br>
+* You may enter your inputs in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
-* If an input for a particular field is expected only once in the command but you specified it multiple times, only the last occurrence of the input will be taken.<br>
+* If an input for a particular field is expected only once in the command but you specify it multiple times, only the last occurrence of the input will be taken.<br>
   e.g. if you specify `p/12341234 p/56785678`, only `p/56785678` will be taken.
 
 * If you type inputs for commands that do not require any additional information (such as `list`, `exit` and `clear`), they will be ignored.<br>
@@ -98,21 +97,21 @@ This section contains a glossary of all the commands and quick examples for refe
 
 As you explore the features that SociaLite has to offer, look out for these boxes:
 
-The blue boxes tell you the acceptable fields that you can provide for a particular command:
+The blue boxes describe the acceptable fields that you can provide for a particular command:
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
-* Detail 1
-* Detail 2
+* Detail 1 about the acceptable fields
+* Detail 2 about the acceptable fields
 </div>
 
-If you still aren't sure of how a particular command works, the green boxes provide you with examples that you can try out:
+If you still aren't sure of how a particular command works, the green boxes list some examples that you can try out:
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh date/birthday:2000-01-01:yearly`
 
-Adds a new contact called "Alex Yeoh" with phone number "87438807" to SociaLite.
+This command adds a new contact called "Alex Yeoh" with phone number "87438807" to SociaLite.
 </div>
 
 --------------------------------------------------------------------------------------------------------------------
