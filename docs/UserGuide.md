@@ -131,8 +131,8 @@ Simply click on any command below to learn more about it!
 | [`edit INDEX ...`](#edit) | Edit a contact |
 | [`edit INDEX [t/TAG]`](#edit_tag) | Create / Edit tags for existing contacts |
 | [`edit INDEX t/`](#delete_tag) | Delete all tags from a contact |
-| [`edit INDEX [p/PLATFORM]`](#edit_platform) | Modify social media handles of a contact |
-| [`edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​`](#edit_dates) | Modify associated dates of a contact |
+| [`edit INDEX [p/PLATFORM]`](#edit_platform) | Modify social media handles for a contact |
+| [`edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​`](#edit_dates) | Modify dates of a contact |
 | [`delete INDEX`](#delete) | Delete a contact |
 | [`clear`](#clear) | Delete all contacts |
 | [`find NAME`](#find) | Find a contact by name |
@@ -150,28 +150,29 @@ Simply click on any command below to learn more about it!
 
 ### Add a contact: `add n/NAME p/PHONE_NUMBER ...` <a name="add"></a>
 
-Adds a contact to SociaLite.
+This command adds a contact to SociaLite.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
 * To add a contact to SociaLite, you must provide the **name of the person** and a **unique phone number**!
-* A contact can have any number of tags and dates (including 0).
-* A contact can have a handle under each of these 5 social media platforms: *Facebook, Instagram, Telegram, Tiktok & Twitter*.
+* You can add any number of tags or dates (including 0) for a contact.
+* You can add handles from any of these five social media platforms: *Facebook, Instagram, Telegram, TikTok and Twitter*.
 
 </div>
 
 <div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `add n/David Tan p/91082942`
+**:heavy_check_mark: Example:** `add n/David Tan p/91082942 t/neighbour fb/tan.david tele/d_av_id`
 
-Adds a new contact named "David Tan" with phone number "91082942" to SociaLite.
+Adds a new contact named "David Tan" with phone number "91082942" to SociaLite. 
+The contact is tagged as 'neighbour' and has a facebook handle and telegram handle.
 </div>
 
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `add n/Annie Wan p/98571082 t/Friend fb/annie.wan ig/ann.wan tele/annie tiktok/annie.wan2 date/birthday:1999-02-12:yearly`
 
-Adds a new contact named "Annie Wan" with phone number "98571082" to SociaLite.
+This command adds a new contact named "Annie Wan" with phone number "98571082" to SociaLite.
 The contact has a tag, a date, and 4 social media handles as shown below.
 ![01_add](images/UG/01_add.png)
 </div>
@@ -182,7 +183,7 @@ The contact has a tag, a date, and 4 social media handles as shown below.
 
 ### List all persons : `list` <a name="list"></a>
 
-Shows the list of all contacts currently stored on SociaLite.
+This command shows the list of all contacts currently stored on SociaLite.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
@@ -232,7 +233,7 @@ Edits an existing contact on SociaLite.
 **:mag_right: Format:**
 `edit INDEX [n/NAME] [p/PHONE] [r/REMARK] [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
 * Edits the contact at the specified `INDEX`. The index refers to the index number shown on the displayed contact list. 
-* The index must be an **integer ranging from 1 to the last index of the contact list** 
+* The index **must be a positive integer** 1, 2, 3, ... 
 * At least one of the fields after `INDEX` must be provided.
 * When keying in the command, you must prepend each field with the corresponding flag according to the format above.
 * Existing values will be updated to the input values from the command.
@@ -265,10 +266,10 @@ Modifies tags that are associated with existing contacts stored on SociaLite.
 **:mag_right: Format:**
 `edit INDEX [t/TAG]...`
 * You can add new tags to contacts who do not have tags associated with them.
-* If the contact at specified `INDEX` has pre-existing tags, they will be deleted and replaced with the tags specified in `[t/TAG]...`
+* If the contact at specified `INDEX` has pre-existing tags, all tags will be deleted and replaced with the tags specified in `[t/TAG]...`
 * Multiple tags can be entered, but each tag must be **50 characters** in length or less.
 * `INDEX` refers to the index number shown on the displayed contact list.
-* The index must be an **integer ranging from 1 to the last index of the contact list** 
+* The index **must be a positive integer** 1, 2, 3, ... 
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -296,7 +297,7 @@ Deletes all tags that are associated with a specified contact on SociaLite.
 `edit INDEX t/`
 * Deletes all tags binded to the contact at the specified `INDEX`.
 * `INDEX` refers to the index number shown on the displayed contact list.
-* The index must be an **integer ranging from 1 to the last index of the contact list** 
+* The index **must be a positive integer** 1, 2, 3, ... 
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -315,12 +316,12 @@ Modifies social media handles that are associated with existing contacts on Soci
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `edit INDEX [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
-* The index must be an **integer ranging from 1 to the last index of the contact list**
+* The index **must be a positive integer** 1, 2, 3, ...
 * New handles will be added for contacts who do not have any specific handle pegged with them.
 * If the person at the specified `INDEX` already has a handle for a specific platform flagged in the command, that handle will be replaced.
 * Only social media handles specified as input will be altered. Other social media handles remain unchanged.
 * The flag must be one of the following: `fb/` `ig/` `tele/` `tiktok/` `twitter/`
-* Only one of each flag may be entered per command
+* Only one of each flag may be entered per command.
 * User input after the given flag represents the new social media handle associated with the contact.
 
 </div>
@@ -348,7 +349,7 @@ Adds / Edits dates of occasions (birthdays, appointments) associated with a cont
 **:mag_right: Format:**
 `edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​`
 * Adds a date for the contact at the specified `INDEX`.
-* The index must be an **integer ranging from 1 to the last index of the contact list**
+* The index **must be a positive integer** 1, 2, 3, ...
 * Dates can have a name to associate them with a specific event (eg. Birthday, Meetup, Anniversary).
 * The name associated with the date event can only be up to **50 characters** long.
 * Date must be presented in `YYYY-MM-DD` format.
@@ -375,13 +376,13 @@ Adds the event “Birthday” which falls on 9 Sep every year to Bernice Yu’s 
 
 ### Delete a contact : `delete INDEX` <a name="delete"></a>
 
-Deletes the specified contact from SociaLite.
+This command deletes the specified contact from SociaLite.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `delete INDEX`
-* Deletes the contact at the specified `INDEX`.
-* The index must be an **integer ranging from 1 to the last index of the contact list**
+* This command deletes the contact at the specified `INDEX`.
+* The index **must be a positive integer** 1, 2, 3, ...
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -409,7 +410,7 @@ Removes all contacts in the app.
 </div>
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-**Please be mindful that entering this command will wipe out **all your contacts** stored in SociaLite! This cannot be undone!**
+**Please be mindful that entering this command will wipe out ALL your contacts stored in SociaLite! This cannot be undone!**
 </div>
 
 <br>
@@ -435,15 +436,15 @@ Returns `David Li` and `David Tan` <br>
 </div>
 
 <div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `find Hans Bo` will match `Bo Hans`
+**:heavy_check_mark: Example:** `find Hans Bo` will match `Bo Hans`.
 </div>
 
 <div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `find han` will match `Hans` but not `Khan`
+**:heavy_check_mark: Example:** `find han` will match `Hans` but not `Khan`.
 </div>
 
 <div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `find Al Y` will match `Alex Yeoh`
+**:heavy_check_mark: Example:** `find Al Y` will match `Alex Yeoh`.
 </div>
 
 <br>
