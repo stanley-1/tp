@@ -41,29 +41,26 @@ This section contains a glossary of all the commands and quick examples for refe
 ## Quick Start <a name="quick_start"></a>
 
 1. Ensure you have `Java 11` or above installed on your Computer.
-   If you already have `Java` installed, you might want to type in `java -version` in your command window to ensure you are running on the correct version of `Java`!
-   If you don't have `Java 11`, simply click [here](https://www.oracle.com/java/technologies/downloads/), and navigate to the "Java SE Development Kit 11.x.xx" section to download the latest Java Development Kit.
-2. Download the latest `socialite.jar` from [here](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases).
-3. Copy the file to the folder you want to use as the _home folder_ for your SociaLite.
-4. Double-click the file to start the app. SociaLite should start in a few seconds! The app contains some sample data for you to experiment with to get familiar with the commands.<br>
-   ![Ui](images/UG/Ui.png)
-5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Here are some sample commands to get you started with SociaLite:
+   * If you already have `Java` installed, you might want to type in `java -version` in your command window to ensure you are running on the correct version of `Java`!
+   * If you don't have `Java 11`, simply click [here](https://www.oracle.com/java/technologies/downloads/), and navigate to the "Java SE Development Kit 11.x.xx" section to download the latest Java Development Kit.
+2. Download the latest `socialite.jar` from our [GitHub release page](https://github.com/AY2122S1-CS2103T-F11-4/tp/releases).
+3. Copy the file to the folder you want to use as the home folder for your SociaLite.
+4. Double-click the file to start the app. SociaLite should be launched in a few seconds! If you are opening the app for the first time, you will see some sample data for you to experiment with.
 
-   * **`add`** `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh`: Adds a contact named `Alex Yeoh` to SociaLite.
+![Ui](images/UG/Ui.png)
 
-   * **`find`** `find Alex` : Searches SociaLite for a contact named `Alex` and displays the contact's information.
-
-   * **`list`** : Displays all contacts stored on SociaLite.
-
-   * **`edit`** `edit 1 n/Alexis Yeoh` : Edits the name of the contact at the first position of the list to `Alexis Yeoh`.
-
-   * **`delete`** `delete 3` : Deletes the 3rd contact shown in the current list.
-
-   * **`clear`** : Deletes all contacts. You will find this handy when deleting the sample contacts stored on SociaLite.
-
-   * **`exit`** : Exits the app.
-6. Refer to the [Commands](#commands) below for details of each command.
+5. Type the command in the command box and press **`Enter`** to execute it. E.g. typing **`help`** and pressing **`Enter`** will open the help window.
+    Here are some sample commands you can try out to get started with SociaLite:
+    
+    * **`add`** `add n/Alex Yeoh p/87438807 ig/alex.yeoh`: A contact named `Alex Yeoh` with Instagram handle `alex.yeoh` will be added to SociaLite.
+    * **`find`** `find Alex`: This command searches SociaLite for a contact named `Alex` and displays the contact's information.
+    * **`list`**: All contacts stored on SociaLite will be displayed.
+    * **`edit`** `edit 1 n/Alexis Yeoh`: The name of the first contact in the list will be changed to `Alexis Yeoh`.
+    * **`delete`** `delete 3`: The third contact shown in the current list will be deleted.
+    * **`clear`**: The SociaLite database will be purged and all contacts will be deleted. You will find this handy when deleting the sample contacts stored on SociaLite.
+    * **`exit`**: Type in this command to quit SociaLite.
+    
+6. Refer to the [Commands](#commands) section below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -127,11 +124,8 @@ Simply click on any command below to learn more about it!
 | [`list`](#list) | List all contacts |
 | [`CLICK`](#click) | Access a contact's social media page |
 | [`↑`/`↓`](#scroll) | Track history of commands |
-| [`edit INDEX ...`](#edit) | Edit a contact |
-| [`edit INDEX [t/TAG]`](#edit_tag) | Create / Edit tags for existing contacts |
-| [`edit INDEX t/`](#delete_tag) | Delete all tags from a contact |
-| [`edit INDEX [p/PLATFORM]`](#edit_platform) | Modify social media handles for a contact |
-| [`edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​`](#edit_dates) | Modify dates for a contact |
+| [`edit INDEX [k/KEYWORDS]...`](#edit) | Edit a contact |
+| [`edit INDEX [k/]...`](#delete_fields) | Delete optional fields from a contact |
 | [`delete INDEX`](#delete) | Delete a contact |
 | [`clear`](#clear) | Delete all contacts |
 | [`find NAME`](#find) | Find a contact by name |
@@ -217,153 +211,148 @@ Scroll through your history of commands using the `↑` or `↓` arrow keys.
 
 <br>
 
-### Edit a person : `edit INDEX ...` <a name="edit"></a>
+### Edit a person : `edit INDEX [k/KEYWORDS]...` <a name="edit"></a>
 
-Edits an existing contact on SociaLite.
+This command allows you to edit the information stored with a contact using your specified input.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
-`edit INDEX [n/NAME] [p/PHONE] [r/REMARK] [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
-* Edits the person at the specified `INDEX`. The index refers to the index number shown on the displayed person list. 
+`edit INDEX [k/KEYWORDS]...`
+* Information of the contact at your specified `INDEX` will be modified. 
+* The index refers to the index number shown on the displayed person list. 
 * The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided.
-* Users can opt to change any fields associated with a contact as long as they prepend the argument with the corresponding flags according to the format above.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
-    specifying any tag after it.
-* When editing dates, all existing dates of the person will be removed i.e adding of dates is not cumulative.
-* You can remove all the person’s dates by typing `date/` without
-  specifying any date after it.
+* You can provide the following fields (i.e. `[k/KEYWORDS]`) in any order when editing a contact's information: `[n/NAME] [p/PHONE] [r/REMARK] [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`. 
+* You should provide at least one field from the above list for this command to run successfully.
+* In addition, you can add a name for each `DATE` (e.g. Birthday, Meet-Up, Anniversary).
+* If your dates represent events that recur monthly or yearly, you can add the keyword `:monthly` or `:yearly` behind the date which has to be specified in `YYYY-MM-DD` format.
+* Furthermore, upcoming dates (within 7 days) will be highlighted in the user interface.
+</div>
+
+<div markdown="block" class="alert alert-warning">:exclamation: **Caution:**
+
+* Before you specify information for any field that you wish to modify, you should prepend your input with its corresponding flag (e.g. `n/` `p/` etc.) according to the format above.
+* You should check your input before you hit ENTER as SociaLite will overwrite the contact's existing information for any valid field that you furnish.
+* When you modify `TAG`s or `DATE`s, the existing `TAG`s or `DATE`s of the person will be removed i.e. adding of `TAG`s or `DATE`s is not cumulative.
+* Your input should conform with the character limit for the following fields:
+
+    | Field    | Character Limit |
+    | `TAG`    | 50              |
+    | `DATE`   | 50              |
+    | `REMARK` | 150             |
+
 </div>
 
 <div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `edit 1 p/91234567 fb/Yalex19` 
+**:heavy_check_mark: Example:** Edit contact's name
 
-Edits the phone number and Facebook handle of the 1st person to be `91234567` and `Yalex19` respectively.
+`edit 5 n/Eric Wong` 
+
+When you enter the above command, the name of the 5th person is changed to `Eric Wong`.
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** Edit phone number
+
+`edit 6 p/91082857`
+
+When you enter the above command, the phone number of the 6th person is changed to `91082857`.
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** Edit one tag
+
+`edit 1 t/buddy`
+
+When you enter the above command, a tag called `buddy` is created for the first person on the displayed person list.
+![06_edit_tag](images/UG/06_edit_tag.png)
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** Edit two tags
+
+`edit 2 t/friend t/neighbour`
+
+When you enter the above command, the tags called `friend` and `neighbour` are added for the second person on the displayed person list.
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** Edit Facebook handle
+
+`edit 1 fb/al3x.ye0h` 
+
+When you enter the above command, you change the Facebook handle of the first person on the displayed person list to `al3x.ye0h`. Other handles will not be affected by this change.
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** Add Twitter handle
+
+`edit 1 twitter/xelayeoh` 
+
+When you enter the above command, you add the Twitter handle called `xelayeoh` to the first person on the displayed person list. Other handles will not be affected by this addition.
+![08_edit_handles](images/UG/08_edit_handles.png)
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** Add a non-recurring `DATE`
+
+`list` followed by `edit 1 date/Meeting:2021-09-14` 
+
+This allows you to add the one-off event, “Meeting”, which falls on 14 Sep 2021, to Alex Yeoh’s listing.
+![09_edit_dates](images/UG/09_edit_dates.png)
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** Add a `DATE` that recurs yearly
+
+`find Bernice` followed by `edit 1 date/Birthday:1999-09-09:yearly` 
+
+This allows you to add the event “Birthday” which falls on 9 Sep every year to Bernice Yu’s listing.
+</div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** Edit multiple fields: `n/NAME` and `fb/FACEBOOK`
+
+`edit 1 p/91234567 fb/Yalex19` 
+
+This command allows you to change the phone number and Facebook handle of the 1st person to `91234567` and `Yalex19` respectively.
 ![05_edit](images/UG/05_edit.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `edit 4 n/Betsy Crower t/`
+**:heavy_check_mark: Example:** Edit multiple fields: `p/PHONE` and `t/TAG`
 
-Edits the name of the 4th person to be `Betsy Crower` and clears all existing tags.
+`edit 4 p/94850285 t/Boss`
+
+This command allows you to change the phone number of the 4th person to `94850285` and adds the tag `Boss`.
 </div>
 
 <br>
 
-### Create / Edit tags for existing contacts: `edit INDEX [t/TAG]...` <a name="edit_tag"></a>
+### Delete optional fields associated with contacts: `edit INDEX [k/]...` <a name="delete_fields"></a>
 
-Modifies tags that are associated with existing contacts stored on SociaLite.
-
-<div markdown="block" class="alert alert-primary">
-**:mag_right: Format:**
-`edit INDEX [t/TAG]...`
-* Adds new tags to persons who did not have tags associated with them when they were first added to SociaLite.
-* Deletes all existing tags for the person at the specified `INDEX` and replaces them with tags specified in `[t/TAG]...`
-* Each tag can only be up to 50 characters long.
-* The index refers to the index number shown on the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
-</div>
-
-<div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `edit 1 t/buddy`
-
-Creates a tag called `buddy` for the first person on the displayed person list.
-![06_edit_tag](images/UG/06_edit_tag.png)
-</div>
-
-
-<div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `edit 2 t/friend t/neighbour`
-
-Creates tags called `friend` and `neighbour` for the second person on the displayed person list.
-</div>
-
-<br>
-
-### Delete tags associated with contacts: `edit INDEX t/` <a name="delete_tag"></a>
-
-Deletes all tags that are associated with a specified contact on SociaLite.
+This command allows you to delete selected fields that are associated with a specified contact on SociaLite.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
-`edit INDEX t/`
-* Deletes all categories tagged to the person at the specified `INDEX`.
-* The index refers to the index number shown on the displayed person list.
+`edit INDEX [k/]...`
+* Information of the contact at your specified `INDEX` will be deleted. 
+* The index refers to the index number shown on the displayed person list. 
 * The index **must be a positive integer** 1, 2, 3, …​
+* You can provide the following flags (i.e. `[k/]...`) in any order when deleting a contact's information: `[t/] [date/] [fb/] [ig/] [tele/] [tiktok/] [twitter/]` 
+* You should provide at least one field from the above list for this command to run successfully.
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `edit 2 t/` 
 
-Deletes all tags associated with the 2nd person on the displayed person list.
+When you enter the above command, all tags associated with the 2nd person on the displayed person list are deleted.
 ![07_delete_tags](images/UG/07_delete_tags.png)
 </div>
 
-<br>
-
-### Add / Edit social media handles for existing contacts: `edit INDEX [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]` <a name="edit_platform"></a>
-
-Modifies social media handles that are associated with existing contacts on SociaLite.
-
-<div markdown="block" class="alert alert-primary">
-**:mag_right: Format:**
-`edit INDEX [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
-* Adds a new handle for contacts who did not have that specific handle pegged with them when they were first added to SociaLite.
-* Replaces the handle for the person at the specified `INDEX` according to the flag and input provided.
-* The index refers to the index number shown on the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
-* The flag refers to any of the following: `fb/` `ig/` `tele/` `tiktok/` `twitter/`
-* User input after the given flag represents the new social media handle associated with the contact.
-* Only social media handles specified as input will be altered. Other social media handles remain unchanged.
-</div>
-
 <div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `edit 1 fb/al3x.ye0h` 
+**:heavy_check_mark: Example:** `edit 4 date/ fb/` 
 
-Changes the Facebook handle of the first person on the displayed person list to `al3x.ye0h`.
-</div>
-
-<div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `edit 1 twitter/xelayeoh` 
-
-Adds the Twitter handle called `xelayeoh` to the first person on the displayed person list. The Facebook handle that was previously modified is unaffected.
-![08_edit_handles](images/UG/08_edit_handles.png)
-</div>
-
-<br>
-
-### Add / Edit dates of occasions associated with contacts: `edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​` <a name="edit_dates"></a>
-
-Adds / Edits dates of occasions (birthdays, appointments) associated with a contact.
-
-<div markdown="block" class="alert alert-primary">
-**:mag_right: Format:**
-`edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​`
-* Adds a date for the contact at the specified `INDEX`.
-* The index refers to the index number shown on the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
-* Dates can have a name to associate them with a specific event (eg. Birthday, Meetup, Anniversary).
-* The name associated with the event can only be up to 50 characters long.
-* Date must be presented in `YYYY-MM-DD` format.
-* Dates can be recurring, either monthly or yearly, by adding `:monthly` or `:yearly` behind the date.
-* Each call of `edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​` will replace all previous dates.
-* Using the command `edit INDEX date/` will remove all dates from the user.
-* Upcoming dates (within 7 days) will be highlighted in the user interface.
-</div>
-
-<div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `list` followed by `edit 1 date/Meeting:2021-09-14` 
-
-Adds the event “Meeting” which falls on 14 Sep 2021, to Alex Yeoh’s listing.
-![09_edit_dates](images/UG/09_edit_dates.png)
-</div>
-
-<div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `find Bernice` followed by `edit 1 date/Birthday:1999-09-09:yearly` 
-
-Adds the event “Birthday” which falls on 9 Sep every year to Bernice Yu’s listing.
+When you enter the above command, all dates and the Facebook handle associated with the 4th person on the displayed person list are deleted.
 </div>
 
 <br>
@@ -713,43 +702,43 @@ This command exits the program.
 
 ## FAQ <a name="faq"></a>
 
-**Q**: How is my data saved?<br>
+**Q**: Do I need to save my data like a Word document while using SociaLite?<br>
 **A**: SociaLite data are saved in the hard disk automatically after any command that alters the data. There is no need to save manually.
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous SociaLite home folder.
+**A**: Upon installing the app in the other computer, simply overwrite the `contactlist.json` file under the `data/` folder with the same file from your previous SociaLite home folder.
 
-**Q**: Can I edit my data?<br>
+**Q**: Can I edit my data file directly?<br>
 **A**: SociaLite data are saved as a JSON file `<JAR file location>/data/contactlist.json`. Advanced users are welcome to update data directly by editing that data file.
+
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, SociaLite will discard all data and start with an empty data file at the next run.
+If your changes to the data file makes its format invalid, SociaLite will discard all data and start with an empty data file at the next run. You are advised to backup your data before editing the JSON file!
 </div>
+
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command Index <a name="index"></a>
 
-Action | Format | Example (if any)
---------|------------------|--------------------
-**Access Social Media Page** | Click on social media handle | 
-**Add** | `add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]` | `add n/Alex Yeoh p/87438807 t/friends fb/alex.yeoh ig/alex.yeoh tele/alyeoh tiktok/alex.yeoh`
-**Add / Edit Categories** | `edit INDEX [t/TAG]...` | `edit 1 t/Friends`
-**Add / Edit Dates** | `edit INDEX [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​` | `edit 1 date/Meeting:2021-09-14`
-**Add / Edit Profile Picture** | `picture INDEX` | `picture 1`
-**Add / Edit Social Media Handles** | `edit INDEX [p/PLATFORM]` | `edit 1 fb/Alv1n.y`
-**Add Remark** | `remark INDEX r/[TEXT]` | `remark 1 r/Likes to swim`
-**Delete** | `delete INDEX`| `delete 3`
-**Delete All Categories** | `edit INDEX t/` | `edit 1 t/`
-**Delete All Data** | `clear` |
-**Edit** | `edit INDEX [n/NAME] [p/PHONE] [r/REMARK] [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]` | `edit 1 p/91234567 fb/Yalex19`
-**Exit** | `exit` |
-**Find Contacts by Category** | `find t/TAG` | `find t/Friends`
-**Find Contacts by Name** | `find NAME [MORE_KEYWORDS]`| `find James Jake`
-**Find Contacts by Platform** | `find p/PLATFORM` | `find p/facebook`
-**List** | `list` |
-**Pin Contact** | `pin INDEX` | `pin 4`
-**Share Contact** | `share INDEX` | `share 2`
-**Track History** | `↑` or `↓` arrow keys |
-**Unpin Contact** | `unpin INDEX` | `unpin 1`
-**View Help** | `help` |
-**View In-App Guidance** | `help COMMAND` | `help add`
+ Command | Action | Example (if any)
+------------------|--------------------|------------------
+ `add n/NAME p/PHONE_NUMBER ...` | Add a contact | `add n/Alex Yeoh p/87438807 fb/alex.yeoh ig/alex.yeoh` 
+ `clear` | Delete all contacts |  
+ `delete INDEX` | Delete a contact | `delete 3` 
+ `edit INDEX [k/]...` | Delete optional fields | `edit 1 t/` 
+ `edit INDEX [k/KEYWORDS]...` | Edit a contact | `edit 1 tiktok/berniceyu` 
+ `exit` | Exit the program |  
+ `find NAME`                     | Find by name             | `find James Jake`                                      
+ `find t/TAG`                    | Find by tags             | `find t/Friends`                                       
+ `find p/PLATFORM`               | Find by platforms        | `find p/facebook`                                      
+ `help`                          | Access user guide        |                                                        
+ `help COMMAND`                  | Access in-app guidance   | `help add`                                             
+ `list`                          | List all contacts        |                                                        
+ `picture INDEX`                 | Modify profile picture   | `picture 1`                                            
+ `pin INDEX`                     | Pin a contact            | `pin 4`                                                
+ `remark INDEX r/[TEXT]`         | Add remarks              | `remark 1 r/Arrange outing soon`                       
+ `share INDEX`                   | Share a contact          | `share 2`                                              
+ `unpin INDEX`                   | Unpin a contact          | `unpin 1`                                              
+ `↑`/`↓`                         | Track history            |                                                        
+ `CLICK`                         | Access social media page |                                                        
+
