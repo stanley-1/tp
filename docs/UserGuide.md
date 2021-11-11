@@ -157,7 +157,7 @@ This command adds a contact to SociaLite.
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `add n/David Tan p/91082942 t/neighbour fb/tan.david tele/d_av_id`
 
-Adds a new contact named "David Tan" with phone number "91082942" to SociaLite. 
+This will add a new contact named "David Tan" with phone number "91082942" to SociaLite. 
 The contact is tagged as 'neighbour' and has a facebook handle and telegram handle.
 </div>
 
@@ -165,7 +165,7 @@ The contact is tagged as 'neighbour' and has a facebook handle and telegram hand
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `add n/Annie Wan p/98571082 t/Friend fb/annie.wan ig/ann.wan tele/annie tiktok/annie.wan2 date/birthday:1999-02-12:yearly`
 
-This command adds a new contact named "Annie Wan" with phone number "98571082" to SociaLite.
+This will add a new contact named "Annie Wan" with phone number "98571082" to SociaLite.
 The contact has a tag, a date, and 4 social media handles as shown below.
 ![01_add](images/UG/01_add.png)
 </div>
@@ -187,7 +187,7 @@ This command shows the list of all contacts currently stored on SociaLite.
 
 ### Access a contact's social media page <a name="click"></a>
 
-Clicking on a contact's social media handle will launch your default browser and open the contact's social media profile.
+You can click on a contact's social media handle to launch your default browser and open the contact's social media profile.
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** 
@@ -199,7 +199,7 @@ Clicking on the Facebook handle `@alex.yeoh` launches your default browser and b
 
 ### Track history of commands: `↑` or `↓` arrow keys <a name="scroll"></a>
 
-Scroll through your history of commands using the `↑` or `↓` arrow keys.
+You can scroll through your history of commands using the `↑` or `↓` arrow keys.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
@@ -393,21 +393,21 @@ This command deletes the specified contact from SociaLite.
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `list` followed by `delete 7` 
 
-Deletes the 7th contact on the displayed contact list.
+This will delete the 7th contact on the displayed contact list.
 ![10_delete](images/UG/10_delete.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `find Roy` followed by `delete 1` 
 
-Deletes the 1st contact on the displayed contact list of the `find` command.
+This deletes the 1st contact on the displayed contact list of the `find` command.
 </div>
 
 <br>
 
 ### Remove all data: `clear` <a name="clear"></a>
 
-Removes all contacts in the app.
+This command removes all contacts in the app.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
@@ -422,7 +422,7 @@ Removes all contacts in the app.
 
 ### Locate contacts by name: `find NAME` <a name="find"></a>
 
-Finds contacts who have names that contain any of the given keywords.
+This command finds contacts who have names that contain any of the given keywords.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
@@ -456,7 +456,7 @@ Returns `David Li` and `David Tan` <br>
 
 ### Query contacts based on tags: `find t/TAG` <a name="find_tag"></a>
 
-Displays the contacts that are associated with a particular tag.
+This command displays the contacts that are associated with a particular tag.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
@@ -470,33 +470,33 @@ Displays the contacts that are associated with a particular tag.
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `find t/family` 
 
-Checks for contacts which the user categorized as “family”.
+This checks for contacts which the user categorized as “family”.
 ![13_find_tag](images/UG/13_find_tag.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `find t/classmate` 
 
-Checks for contacts which the user categorized as “classmate” OR "classmates" etc.
+This checks for contacts which the user categorized as “classmate” OR "classmates" etc.
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `find t/mates` 
 
-Checks for contacts which the user categorized as “mates” BUT NOT "classmates".
+This checks for contacts which the user categorized as “mates” BUT NOT "classmates".
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `find t/colleagues t/friends` 
 
-Checks for contacts which are categorized as BOTH “colleagues” AND "friends".
+This checks for contacts which are categorized as BOTH “colleagues” AND "friends".
 </div>
 
 <br>
 
 ### Query contacts based on social media platform: `find p/PLATFORM` <a name="find_platform"></a>
 
-Shows all contacts with their handles on the specified social media platform.
+This command shows all contacts with their handles on the specified social media platform.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
@@ -509,13 +509,13 @@ Shows all contacts with their handles on the specified social media platform.
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `find p/telegram` 
 
-Returns all contacts who have a Telegram handle pegged with them.
+This returns all contacts who have a Telegram handle pegged with them.
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `find p/facebook p/instagram` 
 
-Returns all contacts who have BOTH a Facebook and Instagram handle pegged with them.
+This returns all contacts who have BOTH a Facebook and Instagram handle pegged with them.
 ![14_find_platform](images/UG/14_find_platform.png)
 </div>
 
