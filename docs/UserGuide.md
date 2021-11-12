@@ -38,7 +38,6 @@ This section contains a glossary of all the commands and quick examples for refe
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always;"></div>
-
 ## Quick Start <a name="quick_start"></a>
 
 1. Ensure you have `Java 11` or above installed on your Computer.
@@ -65,7 +64,6 @@ This section contains a glossary of all the commands and quick examples for refe
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always;"></div>
-
 ## Standard Notations <a name="standard_notations"></a> 
 
 <div markdown="block" class="alert alert-info">
