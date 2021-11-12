@@ -665,6 +665,27 @@ SociaLite, at the top of the person list along with other pinned contacts.
 </div>
 
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ### Unpin a contact card: `unpin INDEX` <a name="unpin"></a>
 
@@ -690,7 +711,9 @@ Provided the first 2 contact cards are the pinned contact cards, the above comma
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** Click on the "Unpin" button of Bernice Yu's name to unpin her contact card if it was previously pinned.
 
-![18_unpin](images/UG/18_unpin.png)
+<p align="center">
+    <img src="images/UG/18_unpin.png" alt="18_unpin">
+</p>
 </div>
 
 <br>
