@@ -767,7 +767,7 @@ This command displays a message that shows you how you can access our User Guide
 ![20_help](images/UG/20_help.png)
 </div>
 
-<br>
+
 
 ### View in-app guidance: `help COMMAND` <a name="help_command"></a>
 
