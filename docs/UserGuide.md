@@ -178,6 +178,7 @@ Simply click on any command below to learn more about it!
 | [`help COMMAND`](#help_command) | Access in-app guidance for selected commands |
 | [`exit`](#exit) | Exit the program |
 
+<div style="page-break-after: always;"></div>
 
 ### Add a contact: `add n/NAME p/PHONE_NUMBER ...` <a name="add"></a>
 
@@ -210,7 +211,7 @@ The contact has a tag, a date, and 4 social media handles as shown below.
 
 
 
-<br>
+<div style="page-break-after: always;"></div>
 
 ### List all persons : `list` <a name="list"></a>
 
