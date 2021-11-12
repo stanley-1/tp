@@ -37,6 +37,7 @@ This section contains a glossary of all the commands and quick examples for refe
 </div>
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## Quick Start <a name="quick_start"></a>
 
@@ -63,6 +64,7 @@ This section contains a glossary of all the commands and quick examples for refe
 6. Refer to the [Commands](#commands) section below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## Standard Notations <a name="standard_notations"></a> 
 
@@ -112,6 +114,8 @@ This command adds a new contact called "Alex Yeoh" with phone number "87438807" 
 </div>
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Commands <a name="commands"></a>
 
