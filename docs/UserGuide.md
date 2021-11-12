@@ -206,7 +206,9 @@ The contact is tagged as 'neighbour' and has a Facebook handle and Telegram hand
 
 This will add a new contact named "Annie Wan" with phone number "98571082" to SociaLite.
 The contact has a tag, a date, and 4 social media handles as shown below.
-![01_add](images/UG/01_add.png)
+<p align="center">
+    <img src="images/UG/01_add.png" alt="01_add">
+</p>
 </div>
 
 
@@ -255,8 +257,8 @@ You can scroll through your history of commands using the `↑` or `↓` arrow k
 
 </div>
 
-<br>
 
+<div style="page-break-after: always;"></div>
 
 ### Edit a person : `edit INDEX [k/KEYWORDS]...` <a name="edit"></a>
 
@@ -299,6 +301,8 @@ This command allows you to edit the information stored with a contact using your
 When you enter the above command, the name of the 5th person is changed to `Eric Wong`.
 </div>
 
+<div style="page-break-after: always;"></div>
+
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** Edit phone number
 
@@ -336,6 +340,8 @@ When you enter the above command, you change the Facebook handle of the first pe
 
 </div>
 
+<div style="page-break-after: always;"></div>
+
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** Add Twitter handle
 
@@ -355,6 +361,7 @@ This allows you to add the one-off event, “Meeting”, which falls on 14 Sep 2
 ![09_edit_dates](images/UG/09_edit_dates.png)
 </div>
 
+<div style="page-break-after: always;"></div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** Add a `DATE` that recurs yearly
@@ -384,7 +391,7 @@ This command allows you to change the phone number of the 4th person to `9485028
 
 </div>
 
-<br>
+<div style="page-break-after: always;"></div>
 
 ### Delete optional fields associated with contacts: `edit INDEX [k/]...` <a name="delete_fields"></a>
 
@@ -415,7 +422,7 @@ When you enter the above command, all tags associated with the 2nd person on the
 When you enter the above command, all dates and the Facebook handle associated with the 4th person on the displayed person list are deleted.
 </div>
 
-<br>
+<div style="page-break-after: always;"></div>
 
 ### Delete a contact : `delete INDEX` <a name="delete"></a>
 
