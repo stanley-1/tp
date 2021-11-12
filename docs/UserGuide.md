@@ -716,7 +716,7 @@ Provided the first 2 contact cards are the pinned contact cards, the above comma
 </p>
 </div>
 
-<br>
+<div style="page-break-after: always;"></div>
 
 ### Add remarks about a specific contact: `remark INDEX r/[TEXT]` <a name="remark"></a>
 
@@ -747,7 +747,7 @@ Only the remark “Hates carrots” is added to Annie Wan’s listing in the app
 ![19_remark_annie](images/UG/19_remark_annie.png)
 </div>
 
-<br>
+<div style="page-break-after: always;"></div>
 
 ### View help: `help` <a name="help"></a>
 
@@ -784,7 +784,7 @@ A concise guide on how to use the `add` command is displayed.
 A concise guide on how to use the `edit` command is displayed.
 </div>
 
-<br>
+<div style="page-break-after: always;"></div>
 
 ### Exit the program : `exit` <a name="exit"></a>
 
@@ -798,6 +798,7 @@ This command exits the program.
 <br>
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## FAQ <a name="faq"></a>
 
@@ -816,6 +817,7 @@ If your changes to the data file makes its format invalid, SociaLite will discar
 
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## Command Index <a name="index"></a>
 
