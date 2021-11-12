@@ -747,7 +747,14 @@ Only the remark “Hates carrots” is added to Annie Wan’s listing in the app
 ![19_remark_annie](images/UG/19_remark_annie.png)
 </div>
 
-<div style="page-break-after: always;"></div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ### View help: `help` <a name="help"></a>
 
@@ -784,7 +791,7 @@ A concise guide on how to use the `add` command is displayed.
 A concise guide on how to use the `edit` command is displayed.
 </div>
 
-<div style="page-break-after: always;"></div>
+<br>
 
 ### Exit the program : `exit` <a name="exit"></a>
 
