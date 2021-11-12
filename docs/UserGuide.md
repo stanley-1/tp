@@ -825,7 +825,37 @@ If your changes to the data file makes its format invalid, SociaLite will discar
 
 
 --------------------------------------------------------------------------------------------------------------------
-<div style="page-break-after: always;"></div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Command Index <a name="index"></a>
 
