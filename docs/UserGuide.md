@@ -36,6 +36,8 @@ This section answers frequently asked questions about SociaLite.
 This section contains a glossary of all the commands and quick examples for reference.
 </div>
 
+<br>
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick Start <a name="quick_start"></a>
@@ -67,6 +69,41 @@ This section contains a glossary of all the commands and quick examples for refe
 
 --------------------------------------------------------------------------------------------------------------------
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ## Standard Notations <a name="standard_notations"></a> 
 
 <div markdown="block" class="alert alert-info">
@@ -95,6 +132,7 @@ This section contains a glossary of all the commands and quick examples for refe
   e.g. if the command specifies `list 123`, it will be interpreted as `list`.
 
 </div>
+
 
 As you explore the features that SociaLite has to offer, look out for these boxes:
 
@@ -147,6 +185,45 @@ Simply click on any command below to learn more about it!
 | [`help COMMAND`](#help_command) | Access in-app guidance for selected commands |
 | [`exit`](#exit) | Exit the program |
 
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ### Add a person: `add n/NAME p/PHONE_NUMBER ...` <a name="add"></a>
 
@@ -217,6 +294,12 @@ Scroll through your history of commands using the `↑` or `↓` arrow keys.
 </div>
 
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ### Edit a person : `edit INDEX ...` <a name="edit"></a>
 
@@ -282,6 +365,13 @@ Creates tags called `friend` and `neighbour` for the second person on the displa
 </div>
 
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ### Delete tags associated with contacts: `edit INDEX t/` <a name="delete_tag"></a>
 
@@ -302,6 +392,17 @@ Deletes all tags associated with the 2nd person on the displayed person list.
 ![07_delete_tags](images/UG/07_delete_tags.png)
 </div>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 
 ### Add / Edit social media handles for existing contacts: `edit INDEX [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]` <a name="edit_platform"></a>
@@ -410,6 +511,9 @@ Removes all contacts in the app.
 Please be mindful that entering this command will wipe out all your contacts stored in SociaLite!
 </div>
 
+<br>
+<br>
+<br>
 <br>
 
 ### Locate contacts by name: `find NAME` <a name="find"></a>
@@ -530,10 +634,14 @@ Adds a profile picture to an existing contact or changes the existing profile pi
 **:heavy_check_mark: Example:** `list` followed by `picture 2` 
 
 Opens the file browser to let you choose a picture to add to Annie Wan’s listing in the app.
-![15_pic_window](images/UG/15_pic_window.png)
+<p align="center">
+    <img src="images/UG/15_pic_window.png" alt="15_pic_window">
+</p>
 
 Updates Annie Wan's profile picture in SociaLite.
-![15_pic_ui](images/UG/15_pic_ui.png)
+<p align="center">
+    <img src="images/UG/15_pic_ui.png" alt="15_pic_ui">
+</p>
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -542,6 +650,7 @@ Updates Annie Wan's profile picture in SociaLite.
 Opens the file browser to let you change the profile picture for Alex Yeoh’s listing in the app.
 </div>
 
+<br>
 <br>
 
 ### Share a contact card: `share INDEX` <a name="share"></a>
@@ -570,6 +679,8 @@ Copies the information of the second contact in the list displayed by SociaLite.
 </div>
 
 <br>
+<br>
+<br>
 
 ### Pin a contact card: `pin INDEX` <a name="pin"></a>
 
@@ -594,12 +705,35 @@ SociaLite, at the top of the person list along with other pinned contacts.
 ![17_pin](images/UG/17_pin.png)
 </div>
 
+<br>
+
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** Clicking on the "Pin" button of Annie Wan's name card affixes her contact card onto the top of the person list.
 
 ![17_pin_2](images/UG/17_pin_2.png)
 </div>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 
 ### Unpin a contact card: `unpin INDEX` <a name="unpin"></a>
@@ -626,7 +760,9 @@ Provided the first 2 contact cards are the pinned contact cards, the above comma
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** Clicking on the "Unpin" button of Bernice Yu's name unpins her contact card if it was previously pinned.
 
-![18_unpin](images/UG/18_unpin.png)
+<p align="center">
+    <img src="images/UG/18_unpin.png" alt="18_unpin">
+</p>
 </div>
 
 <br>
@@ -661,6 +797,17 @@ Only the remark “Hates carrots” is added to Annie Wan’s listing in the app
 </div>
 
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ### View help: `help` <a name="help"></a>
 
@@ -672,7 +819,7 @@ Shows a message explaining how to access the User Guide or obtain in-app guidanc
 ![20_help](images/UG/20_help.png)
 </div>
 
-<br>
+
 
 ### View in-app guidance: `help COMMAND` <a name="help_command"></a>
 
@@ -697,7 +844,7 @@ Displays a concise guide on how to use the `add` command.
 Displays a concise guide on how to use the `edit` command.
 </div>
 
-<br>
+
 
 ### Exit the program : `exit` <a name="exit"></a>
 
@@ -711,6 +858,43 @@ Exits the program.
 <br>
 
 --------------------------------------------------------------------------------------------------------------------
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## FAQ <a name="faq"></a>
 
@@ -727,6 +911,38 @@ If your changes to the data file makes its format invalid, SociaLite will discar
 </div>
 
 --------------------------------------------------------------------------------------------------------------------
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Command Index <a name="index"></a>
 
