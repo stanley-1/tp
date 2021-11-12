@@ -629,6 +629,9 @@ The information of the second contact in the list displayed by SociaLite will be
 </div>
 
 <br>
+<br>
+<br>
+<br>
 
 ### Pin a contact card: `pin INDEX` <a name="pin"></a>
 
@@ -650,7 +653,9 @@ Alternatively, you can click on the "Pin" button at the top-right hand corner of
 
 Provided no contact card has been pinned yet, the above command places the third contact in the list displayed by 
 SociaLite, at the top of the person list along with other pinned contacts.
-![17_pin](images/UG/17_pin.png)
+<p align="center">
+    <img src="images/UG/17_pin.png" alt="17_pin">
+</p>
 </div>
 
 <div markdown="block" class="alert alert-success">
