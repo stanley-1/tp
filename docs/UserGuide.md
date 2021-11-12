@@ -133,43 +133,50 @@ Simply click on any command below to learn more about it!
 | [`find p/PLATFORM`](#find_platform) | Find a contact through associated social media platforms |
 | [`picture INDEX`](#picture) | Modify profile picture of a contact |
 | [`share INDEX`](#share) | Copy contact information to system clipboard |
-| [`pin INDEX`](#pin) | Pin contact card on the top of the person list |
-| [`unpin INDEX`](#unpin) | Unpin contact card from the top of the person list |
+| [`pin INDEX`](#pin) | Pin contact card on the top of the contact list |
+| [`unpin INDEX`](#unpin) | Unpin contact card from the top of the contact list |
 | [`remark INDEX r/[TEXT]`](#remark) | Add special notes about a contact |
 | [`help`](#help) | Access User Guide |
 | [`help COMMAND`](#help_command) | Access in-app guidance for selected commands |
 | [`exit`](#exit) | Exit the program |
 
 
-### Add a person: `add n/NAME p/PHONE_NUMBER ...` <a name="add"></a>
+### Add a contact: `add n/NAME p/PHONE_NUMBER ...` <a name="add"></a>
 
-Adds a person to SociaLite.
+This command adds a contact to SociaLite.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `add n/NAME p/PHONE_NUMBER [t/TAG]…​ [date/NAME:YYYY-MM-DD[:monthly|:yearly]]…​ [fb/FACEBOOK] [ig/INSTAGRAM] [tele/TELEGRAM] [tiktok/TIKTOK] [twitter/TWITTER]`
-* A person can have any number of tags and dates (including 0).
-* To add a contact to SociaLite, you need to provide the **name** and a **unique phone number** for the person!
-</div>
+* To add a contact to SociaLite, you must provide the **name of the person** and a **unique phone number**!
+* You can add any number of tags or dates (including 0) for a contact.
+* You can add handles from any of these five social media platforms: *Facebook, Instagram, Telegram, TikTok and Twitter*.
 
-<div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `add n/Annie Wan p/98571082 t/Friend fb/annie.wan ig/ann.wan tele/annie tiktok/annie.wan2 date/birthday:1999-02-12:yearly`
-
-Adds a new contact called "Annie Wan" with phone number "98571082" to SociaLite.
-![01_add](images/UG/01_add.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `add n/David Tan p/91082942 t/neighbour fb/tan.david tele/d_av_id`
 
-Adds a new contact called "David Tan" with phone number "91082942" to SociaLite.
+This will add a new contact named "David Tan" with phone number "91082942" to SociaLite. 
+The contact is tagged as 'neighbour' and has a facebook handle and telegram handle.
 </div>
+
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `add n/Annie Wan p/98571082 t/Friend fb/annie.wan ig/ann.wan tele/annie tiktok/annie.wan2 date/birthday:1999-02-12:yearly`
+
+This will add a new contact named "Annie Wan" with phone number "98571082" to SociaLite.
+The contact has a tag, a date, and 4 social media handles as shown below.
+![01_add](images/UG/01_add.png)
+</div>
+
+
 
 <br>
 
 ### List all persons : `list` <a name="list"></a>
 
-Shows a list of all persons stored on SociaLite.
+This command shows the list of all contacts currently stored on SociaLite.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
@@ -180,11 +187,11 @@ Shows a list of all persons stored on SociaLite.
 
 ### Access a contact's social media page <a name="click"></a>
 
-Clicking on a contact's social media handle will immediately launch the user's default browser and open the contact's social media profile.
+You can click on a contact's social media handle to launch your default browser and open the contact's social media profile.
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** 
-Clicking on the Facebook handle `@alex.yeoh` launches the user's default browser and brings the user to Alex Yeoh's Facebook page.
+Clicking on the Facebook handle `@alex.yeoh` launches your default browser and brings you to Alex Yeoh's Facebook page.
 
 </div>
 
@@ -192,7 +199,7 @@ Clicking on the Facebook handle `@alex.yeoh` launches the user's default browser
 
 ### Track history of commands: `↑` or `↓` arrow keys <a name="scroll"></a>
 
-Scroll through your history of commands using the `↑` or `↓` arrow keys.
+You can scroll through your history of commands using the `↑` or `↓` arrow keys.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
@@ -211,12 +218,15 @@ Scroll through your history of commands using the `↑` or `↓` arrow keys.
 
 <br>
 
+
 ### Edit a person : `edit INDEX [k/KEYWORDS]...` <a name="edit"></a>
+
 
 This command allows you to edit the information stored with a contact using your specified input.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
+
 `edit INDEX [k/KEYWORDS]...`
 * Information of the contact at your specified `INDEX` will be modified. 
 * The index refers to the index number shown on the displayed person list. 
@@ -226,6 +236,7 @@ This command allows you to edit the information stored with a contact using your
 * In addition, you can add a name for each `DATE` (e.g. Birthday, Meet-Up, Anniversary).
 * If your dates represent events that recur monthly or yearly, you can add the keyword `:monthly` or `:yearly` behind the date which has to be specified in `YYYY-MM-DD` format.
 * Furthermore, upcoming dates (within 7 days) will be highlighted in the user interface.
+
 </div>
 
 <div markdown="block" class="alert alert-warning">:exclamation: **Caution:**
@@ -256,6 +267,7 @@ When you enter the above command, the name of the 5th person is changed to `Eric
 `edit 6 p/91082857`
 
 When you enter the above command, the phone number of the 6th person is changed to `91082857`.
+
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -264,11 +276,13 @@ When you enter the above command, the phone number of the 6th person is changed 
 `edit 1 t/buddy`
 
 When you enter the above command, a tag called `buddy` is created for the first person on the displayed person list.
+
 ![06_edit_tag](images/UG/06_edit_tag.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** Edit two tags
+
 
 `edit 2 t/friend t/neighbour`
 
@@ -281,6 +295,7 @@ When you enter the above command, the tags called `friend` and `neighbour` are a
 `edit 1 fb/al3x.ye0h` 
 
 When you enter the above command, you change the Facebook handle of the first person on the displayed person list to `al3x.ye0h`. Other handles will not be affected by this change.
+
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -290,6 +305,7 @@ When you enter the above command, you change the Facebook handle of the first pe
 
 When you enter the above command, you add the Twitter handle called `xelayeoh` to the first person on the displayed person list. Other handles will not be affected by this addition.
 ![08_edit_handles](images/UG/08_edit_handles.png)
+
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -301,12 +317,14 @@ This allows you to add the one-off event, “Meeting”, which falls on 14 Sep 2
 ![09_edit_dates](images/UG/09_edit_dates.png)
 </div>
 
+
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** Add a `DATE` that recurs yearly
 
 `find Bernice` followed by `edit 1 date/Birthday:1999-09-09:yearly` 
 
 This allows you to add the event “Birthday” which falls on 9 Sep every year to Bernice Yu’s listing.
+
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -316,6 +334,7 @@ This allows you to add the event “Birthday” which falls on 9 Sep every year 
 
 This command allows you to change the phone number and Facebook handle of the 1st person to `91234567` and `Yalex19` respectively.
 ![05_edit](images/UG/05_edit.png)
+
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -324,6 +343,7 @@ This command allows you to change the phone number and Facebook handle of the 1s
 `edit 4 p/94850285 t/Boss`
 
 This command allows you to change the phone number of the 4th person to `94850285` and adds the tag `Boss`.
+
 </div>
 
 <br>
@@ -334,12 +354,14 @@ This command allows you to delete selected fields that are associated with a spe
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
+
 `edit INDEX [k/]...`
 * Information of the contact at your specified `INDEX` will be deleted. 
 * The index refers to the index number shown on the displayed person list. 
 * The index **must be a positive integer** 1, 2, 3, …​
 * You can provide the following flags (i.e. `[k/]...`) in any order when deleting a contact's information: `[t/] [date/] [fb/] [ig/] [tele/] [tiktok/] [twitter/]` 
 * You should provide at least one field from the above list for this command to run successfully.
+
 </div>
 
 <div markdown="block" class="alert alert-success">
@@ -357,37 +379,35 @@ When you enter the above command, all dates and the Facebook handle associated w
 
 <br>
 
-### Delete a person : `delete INDEX` <a name="delete"></a>
+### Delete a contact : `delete INDEX` <a name="delete"></a>
 
-Deletes the specified person from SociaLite.
+This command deletes the specified contact from SociaLite.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `delete INDEX`
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown on the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* This command deletes the contact at the specified `INDEX`.
+* The index **must be a positive integer** 1, 2, 3, ...
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `list` followed by `delete 7` 
 
-Deletes the 7th person on the displayed person list.
+This will delete the 7th contact on the displayed contact list.
 ![10_delete](images/UG/10_delete.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `find Roy` followed by `delete 1` 
 
-Deletes the 1st person on the displayed person list of the `find` command.
+This deletes the 1st contact on the displayed contact list of the `find` command.
 </div>
-
 
 <br>
 
 ### Remove all data: `clear` <a name="clear"></a>
 
-Removes all contacts in the app.
+This command removes all contacts in the app.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
@@ -395,14 +415,14 @@ Removes all contacts in the app.
 </div>
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-Please be mindful that entering this command will wipe out all your contacts stored in SociaLite!
+**Please be mindful that entering this command will wipe out ALL your contacts stored in SociaLite! This cannot be undone!**
 </div>
 
 <br>
 
 ### Locate contacts by name: `find NAME` <a name="find"></a>
 
-Finds persons whose names contain any of the given keywords.
+This command finds contacts who have names that contain any of the given keywords.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
@@ -421,22 +441,22 @@ Returns `David Li` and `David Tan` <br>
 </div>
 
 <div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `find Hans Bo` will match `Bo Hans`
+**:heavy_check_mark: Example:** `find Hans Bo` will match `Bo Hans`.
 </div>
 
 <div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `find han` will match `Hans` but not `Khan`
+**:heavy_check_mark: Example:** `find han` will match `Hans` but not `Khan`.
 </div>
 
 <div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `find Al Y` will match `Alex Yeoh`
+**:heavy_check_mark: Example:** `find Al Y` will match `Alex Yeoh`.
 </div>
 
 <br>
 
 ### Query contacts based on tags: `find t/TAG` <a name="find_tag"></a>
 
-Displays the contacts that are associated with a particular tag.
+This command displays the contacts that are associated with a particular tag.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
@@ -444,60 +464,61 @@ Displays the contacts that are associated with a particular tag.
 * Queries all contacts that are tied to `TAG`.
 * The tag must be existent and associated with certain contacts stored on SociaLite.
 * Tags are matched from the start of their names.
-* If multiple tags are queried, only contacts possessing all given tags are returned.
+* If multiple tags are queried, only contacts possessing **all given tags** are returned.
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `find t/family` 
 
-Checks for contacts which the user categorized as “family”.
+This checks for contacts which the user categorized as “family”.
 ![13_find_tag](images/UG/13_find_tag.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `find t/classmate` 
 
-Checks for contacts which the user categorized as “classmate” OR "classmates" etc.
+This checks for contacts which the user categorized as “classmate” OR "classmates" etc.
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `find t/mates` 
 
-Checks for contacts which the user categorized as “mates” BUT NOT "classmates".
+This checks for contacts which the user categorized as “mates” BUT NOT "classmates".
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `find t/colleagues t/friends` 
 
-Checks for contacts which are categorized as BOTH “colleagues” AND "friends".
+This checks for contacts which are categorized as BOTH “colleagues” AND "friends".
 </div>
 
 <br>
 
 ### Query contacts based on social media platform: `find p/PLATFORM` <a name="find_platform"></a>
 
-Shows all contacts with their handles on the specified social media platform.
+This command shows all contacts with their handles on the specified social media platform.
 
 <div markdown="block" class="alert alert-primary">
 **:mag_right: Format:**
 `find p/PLATFORM`
 * The social media platform entered must be supported by SociaLite, 
-(i.e.: Only `facebook`, `instagram`, `telegram`, `tiktok`, `twitter` are accepted, case insensitive).
+(i.e.: `PLATFORM` must be one of `facebook`, `instagram`, `telegram`, `tiktok`, `twitter`, case insensitive).
 * If multiple platforms are queried, only contacts with handles for ALL specified platforms are returned.
-</div>
-
-<div markdown="block" class="alert alert-success">
-**:heavy_check_mark: Example:** `find p/facebook p/instagram` 
-
-Returns all contacts who have BOTH a Facebook and Instagram handle pegged with them.
-![14_find_platform](images/UG/14_find_platform.png)
 </div>
 
 <div markdown="block" class="alert alert-success">
 **:heavy_check_mark: Example:** `find p/telegram` 
 
-Returns all contacts who have a Telegram handle pegged with them.
+This returns all contacts who have a Telegram handle pegged with them.
 </div>
+
+<div markdown="block" class="alert alert-success">
+**:heavy_check_mark: Example:** `find p/facebook p/instagram` 
+
+This returns all contacts who have BOTH a Facebook and Instagram handle pegged with them.
+![14_find_platform](images/UG/14_find_platform.png)
+</div>
+
 
 <br>
 
