@@ -158,7 +158,7 @@ This command adds a contact to SociaLite.
 **:heavy_check_mark: Example:** `add n/David Tan p/91082942 t/neighbour fb/tan.david tele/d_av_id`
 
 This will add a new contact named "David Tan" with phone number "91082942" to SociaLite. 
-The contact is tagged as 'neighbour' and has a facebook handle and telegram handle.
+The contact is tagged as 'neighbour' and has a Facebook handle and Telegram handle.
 </div>
 
 
@@ -220,7 +220,6 @@ You can scroll through your history of commands using the `↑` or `↓` arrow k
 
 
 ### Edit a person : `edit INDEX [k/KEYWORDS]...` <a name="edit"></a>
-
 
 This command allows you to edit the information stored with a contact using your specified input.
 
