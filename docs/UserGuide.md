@@ -464,6 +464,7 @@ This command removes all contacts in the app.
 </div>
 
 <br>
+<br>
 
 ### Locate contacts by name: `find NAME` <a name="find"></a>
 
@@ -584,10 +585,14 @@ This command adds a profile picture to an existing contact or changes the existi
 **:heavy_check_mark: Example:** `list` followed by `picture 2` 
 
 A file browser will be opened to let you choose a picture to add to Annie Wan’s listing in the app.
-![15_pic_window](images/UG/15_pic_window.png)
+<p align="center">
+    <img src="images/UG/15_pic_window.png" alt="15_pic_window">
+</p>
 
 Annie Wan's profile picture will be updated in SociaLite.
-![15_pic_ui](images/UG/15_pic_ui.png)
+<p align="center">
+    <img src="images/UG/15_pic_ui.png" alt="15_pic_ui">
+</p>
 </div>
 
 <div markdown="block" class="alert alert-success">
